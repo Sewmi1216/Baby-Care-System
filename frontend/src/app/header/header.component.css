@@ -1,0 +1,11 @@
+
+ul > li{
+  font-weight: bold;font-size: 20px;margin-left: 75px;color: #e0ddd8;
+}
+ul > li:first-child {
+  margin-left: 150px;
+}
+.btn{
+  background-color: #877DCB;
+  color: white;
+}
