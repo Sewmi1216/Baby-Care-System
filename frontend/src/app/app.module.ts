@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -40,7 +38,6 @@ import { MainHeaderComponent } from './main/main-header/main-header.component';
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
-    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
