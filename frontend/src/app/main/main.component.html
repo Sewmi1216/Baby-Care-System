@@ -1,14 +1,72 @@
-<app-header></app-header>
-
-<div class="" style="min-height: calc(100vh - 225px);position: relative">
-  <div
-    style="min-width: 220px;position: absolute;height: 100%;border-right: 1px solid #aca9a4;background-image: linear-gradient(rgba(227, 205, 238, 1),rgba(111, 90, 158, 1))">
-    <app-navbar></app-navbar>
-  </div>
-  <div class="" style="margin-left: 230px;">
-    <div style="padding-top: 10px">
-      <router-outlet></router-outlet>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <aside id="sidebar" [ngClass]="{'collapsed': isCollapsed}"
+         style="background:  linear-gradient(#BFBBF1, rgba(227, 205, 238, 1),rgba(111, 90, 158, 1))">
+    <div class="h-100">
+      <div class="sidebar-logo">
+        <a href="#">Cuddle Care</a>
+      </div>
+      <!-- Sidebar Navigation -->
+      <app-navbar></app-navbar>
     </div>
+  </aside>
+  <!--   Main Component-->
+  <div class="main">
+    <nav class="navbar navbar-expand px-3 border-bottom"
+         style="background: linear-gradient(to right, #BFBBF1, #FFDDFC, #DDFFFF, #F6DDFF, #BCB8E8)">
+      <!-- Button for sidebar toggle -->
+      <button class="btn" type="button" data-bs-theme="dark" (click)="toggleSidebar()">
+        <i class="fas fa-bars" style="color: black"></i>
+      </button>
+
+
+      <div class="container-fluid">
+        <img src="../../assets/logo.png" width="80px">
+
+        <div>
+          <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+
+            <li class="nav-item" style="padding-right: 30px;">
+              <i class="fas fa-bell" style="color: black"></i>
+            </li>
+            <li class="nav-item" style="padding-right: 30px;">
+              <i class="fas fa-comment-alt" style="color: black"></i>
+
+            </li>
+            <!--            profile img-->
+
+            <div class="dropdown pb-2">
+              <a href="#" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
+                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../../assets/sewmi.jpg" alt="profile" width="50" height="50" class="img-fluid rounded-circle">
+                <span class="d-none d-sm-inline mx-1" style="font-size: 15px;">Sewmi Thimaya</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow drop">
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </ul>
+
+
+        </div>
+      </div>
+    </nav>
+    <main class="content px-3 py-2">
+      <router-outlet></router-outlet>
+    </main>
   </div>
 </div>
-<app-footer></app-footer>

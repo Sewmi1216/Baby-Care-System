@@ -15,7 +15,6 @@ import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { AdminDashboardComponent } from './main/content/admin/admin-dashboard/admin-dashboard.component';
-import { MainHeaderComponent } from './main/main-header/main-header.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
@@ -36,7 +35,6 @@ import { SignupComponent } from './signup/signup.component';
     NavBabysitterComponent,
     NavDomainExpertComponent,
     AdminDashboardComponent,
-    MainHeaderComponent,
     ParentDashboardComponent,
     BabysitterDashboardComponent,
     DomainExpertDashboardComponent,
