@@ -23,6 +23,7 @@ const routes: Routes = [
     path: 'babysitter-view-request',
     component: ViewRequestComponent,
   },
+  {
     path: 'login',
     component:LoginComponent,
   },
