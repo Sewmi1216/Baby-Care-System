@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
+import { ViewRequestComponent } from './main/content/babysitter/view-request/view-request.component';
 import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
@@ -19,6 +20,9 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'babysitter-view-request',
+    component: ViewRequestComponent,
+  },
     path: 'login',
     component:LoginComponent,
   },
