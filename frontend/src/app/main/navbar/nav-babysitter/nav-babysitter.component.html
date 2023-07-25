@@ -12,26 +12,26 @@
     <label>Dashboard</label>
   </div>
   <div
-  routerLink="/main/babysitter_my-profile"
-  #my-profile="routerLinkActive"
+  routerLink="/main/babysitter_myprofile"
+  #myprofile="routerLinkActive"
   routerLinkActive
-  [ngStyle]="{'background-color': my-profile.isActive ? '#7E57C2' : '', 'color': my-profile.isActive ? '#fff' : ''}">
+  [ngStyle]="{'background-color': myprofile.isActive ? '#7E57C2' : '', 'color': myprofile.isActive ? '#fff' : ''}">
   <i class="fas fa-user"></i>
   <label>My Profile</label>
 </div>
   <div
-    routerLink="/main/babysitter_view-request"
-    #view-request="routerLinkActive"
+    routerLink="/main/babysitter_viewrequest"
+    #viewrequest="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': view-request.isActive ? '#7E57C2' : '', 'color': view-request.isActive ? '#fff' : ''}">
-    <i class="fa-thin fa-list-check"></i>
+    [ngStyle]="{'background-color': viewrequest.isActive ? '#7E57C2' : '', 'color': viewrequest.isActive ? '#fff' : ''}">
+    <i class="fas fa-user-plus"></i>
     <label>View Requests</label>
   </div>
   <div
-    routerLink="/main/babysitter_task-list"
-    #task-list="routerLinkActive"
+    routerLink="/main/babysitter_tasklist"
+    #tasklist="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': task-list.isActive ? '#7E57C2' : '', 'color': task-list.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': tasklist.isActive ? '#7E57C2' : '', 'color': tasklist.isActive ? '#fff' : ''}">
     <i class="fas fa-clipboard-list"></i>
     <label>Task List</label>
   </div>
@@ -50,5 +50,5 @@
   [ngStyle]="{'background-color': blog.isActive ? '#7E57C2' : '', 'color': blog.isActive ? '#fff' : ''}">
   <i class="fas fa-blog"></i>
   <label>Blog</label>
-</div>
+  </div>
 </div>
