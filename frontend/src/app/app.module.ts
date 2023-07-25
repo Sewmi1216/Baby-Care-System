@@ -13,20 +13,16 @@ import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
 import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { AdminDashboardComponent } from './main/content/admin/admin-dashboard/admin-dashboard.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 
 //babysitter
-
+import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
-import { BabysitterBlogComponent } from './main/content/babysitter/babysitter-blog/babysitter-blog.component';
-import { BabysitterViewrequestComponent } from './main/content/babysitter/babysitter-viewrequest/babysitter-viewrequest.component';
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterMyprofileComponent } from './main/content/babysitter/babysitter-myprofile/babysitter-myprofile.component';
+import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +45,8 @@ import { BabysitterMyprofileComponent } from './main/content/babysitter/babysitt
     //babysitter
     NavBabysitterComponent,
     BabysitterDashboardComponent,
-    BabysitterChatComponent,
-    BabysitterBlogComponent,
-    BabysitterViewrequestComponent,
     BabysitterTasklistComponent,
-    BabysitterMyprofileComponent,
+    BabysitterParentrequestComponent,
 
   ],
   imports: [

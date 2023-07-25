@@ -12,20 +12,12 @@
     <label>Dashboard</label>
   </div>
   <div
-  routerLink="/main/babysitter_myprofile"
-  #myprofile="routerLinkActive"
-  routerLinkActive
-  [ngStyle]="{'background-color': myprofile.isActive ? '#7E57C2' : '', 'color': myprofile.isActive ? '#fff' : ''}">
-  <i class="fas fa-user"></i>
-  <label>My Profile</label>
-</div>
-  <div
-    routerLink="/main/babysitter_viewrequest"
-    #viewrequest="routerLinkActive"
+    routerLink="/main/babysitter_parentrequest"
+    #parentrequest="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': viewrequest.isActive ? '#7E57C2' : '', 'color': viewrequest.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': parentrequest.isActive ? '#7E57C2' : '', 'color': parentrequest.isActive ? '#fff' : ''}">
     <i class="fas fa-user-plus"></i>
-    <label>View Requests</label>
+    <label>Parent Requests</label>
   </div>
   <div
     routerLink="/main/babysitter_tasklist"
@@ -34,21 +26,5 @@
     [ngStyle]="{'background-color': tasklist.isActive ? '#7E57C2' : '', 'color': tasklist.isActive ? '#fff' : ''}">
     <i class="fas fa-clipboard-list" ></i>
     <label>Task List</label>
-  </div>
-  <div
-    routerLink="/main/babysitter_chat"
-    #chat="routerLinkActive"
-    routerLinkActive
-    [ngStyle]="{'background-color': chat.isActive ? '#7E57C2' : '', 'color': chat.isActive ? '#fff' : ''}">
-    <i class="fas fa-search"></i>
-    <label>Chat</label>
-  </div>
-  <div
-  routerLink="/main/babysitter_blog"
-  #blog="routerLinkActive"
-  routerLinkActive
-  [ngStyle]="{'background-color': blog.isActive ? '#7E57C2' : '', 'color': blog.isActive ? '#fff' : ''}">
-  <i class="fas fa-blog"></i>
-  <label>Blog</label>
   </div>
 </div>

@@ -10,11 +10,9 @@ import {SignupComponent} from "./signup/signup.component";
 
 //babysitter
 import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
-import { BabysitterMyprofileComponent } from './main/content/babysitter/babysitter-myprofile/babysitter-myprofile.component';
-import { BabysitterViewrequestComponent } from './main/content/babysitter/babysitter-viewrequest/babysitter-viewrequest.component';
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
-import { BabysitterBlogComponent } from './main/content/babysitter/babysitter-blog/babysitter-blog.component';
+import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+
 
 const routes: Routes = [
   {
@@ -53,25 +51,13 @@ const routes: Routes = [
         component: BabysitterDashboardComponent
       },
       {
-        path: 'babysitter_myprofile',
-        component: BabysitterMyprofileComponent
-      },
-      {
-        path: 'babysitter_viewrequest',
-        component: BabysitterViewrequestComponent,
-      },
-      {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
       {
-        path: 'babysitter_chat',
-        component: BabysitterChatComponent,
-      },
-      {
-        path: 'babysitter_blog',
-        component: BabysitterBlogComponent,
-      },
+        path: 'babysitter_parentrequest',
+        component: BabysitterParentrequestComponent,
+      }
     ]
   }
   ]
