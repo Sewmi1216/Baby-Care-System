@@ -10,9 +10,9 @@ import {SignupComponent} from "./signup/signup.component";
 
 //babysitter
 import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
-import { BabysitterMyProfileComponent } from './main/content/babysitter/babysitter-my-profile/babysitter-my-profile.component';
-import { BabysitterViewRequestComponent } from './main/content/babysitter/babysitter-view-request/babysitter-view-request.component';
-import { BabysitterTaskListComponent } from './main/content/babysitter/babysitter-task-list/babysitter-task-list.component';
+import { BabysitterMyprofileComponent } from './main/content/babysitter/babysitter-myprofile/babysitter-myprofile.component';
+import { BabysitterViewrequestComponent } from './main/content/babysitter/babysitter-viewrequest/babysitter-viewrequest.component';
+import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 import { BabysitterBlogComponent } from './main/content/babysitter/babysitter-blog/babysitter-blog.component';
 
@@ -53,16 +53,16 @@ const routes: Routes = [
         component: BabysitterDashboardComponent
       },
       {
-        path: 'babysitter_my-profile',
-        component: BabysitterMyProfileComponent
+        path: 'babysitter_myprofile',
+        component: BabysitterMyprofileComponent
       },
       {
-        path: 'babysitter_view-request',
-        component: BabysitterViewRequestComponent,
+        path: 'babysitter_viewrequest',
+        component: BabysitterViewrequestComponent,
       },
       {
-        path: 'babysitter_task-list',
-        component: BabysitterTaskListComponent,
+        path: 'babysitter_tasklist',
+        component: BabysitterTasklistComponent,
       },
       {
         path: 'babysitter_chat',
