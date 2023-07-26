@@ -11,11 +11,17 @@
 
 img{
     border-radius: 50%;
+    width: 65px;
+    height: 65px;
 }
 
 .card{
     flex-direction: row;
     background-color: #f6f6ff83;
+}
+
+.card-text{
+    color: blue;
 }
 
 .view-button-babysitter{
