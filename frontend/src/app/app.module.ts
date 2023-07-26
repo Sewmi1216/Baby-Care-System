@@ -23,6 +23,7 @@ import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysit
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { BabysitterParentrequestComponent } from './main/content/babysitter/baby
     BabysitterDashboardComponent,
     BabysitterTasklistComponent,
     BabysitterParentrequestComponent,
+    BabysitterRequestdetailsComponent,
 
   ],
   imports: [
