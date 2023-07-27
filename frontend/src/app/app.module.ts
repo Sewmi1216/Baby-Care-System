@@ -20,6 +20,7 @@ import { ParentDashboardComponent } from './main/content/parent/parent-dashboard
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
+import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SignupComponent } from './signup/signup.component';
     BabysitterDashboardComponent,
     DomainExpertDashboardComponent,
     SignupComponent,
+    HomeHeaderComponent,
   ],
   imports: [
     BrowserModule,

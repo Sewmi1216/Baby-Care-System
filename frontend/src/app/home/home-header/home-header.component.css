@@ -1,0 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,200&family=Sofia+Sans:wght@1;200;300;400&family=Stylish&family=Sunshiney&display=swap');
+
+.navbar-brand{
+  font-family: 'Sunshiney', cursive;
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+nav:hover{
+  background-color: rgba(223, 221, 255, 1);
+}
+
+.nav-item{
+  margin-left: 30px;
+  font-family: 'Stylish', sans-serif;
+  font-size: 25px;
+}
