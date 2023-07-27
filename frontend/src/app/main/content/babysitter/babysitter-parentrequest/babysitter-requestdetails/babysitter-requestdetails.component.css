@@ -1,0 +1,28 @@
+.babysitter-container{
+    background-color: #DFDDFF;
+    border-radius: 1rem; 
+    width: 1100px;
+}
+
+.first-row, .second-row{
+    display: flex;
+    /* flex-direction: row; */
+    gap: 10rem;
+}
+
+.card-text{
+    background-color: white;
+    border-radius: 0.2rem;
+    padding: 4px;
+}
+
+.time-period{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.no-of-babies{
+    width: 4rem;
+    text-align: center;
+}
