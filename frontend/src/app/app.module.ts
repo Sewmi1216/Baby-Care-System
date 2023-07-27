@@ -12,10 +12,10 @@ import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
 import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
+import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { AdminDashboardComponent } from './main/content/admin/admin-dashboard/admin-dashboard.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
-
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
@@ -24,12 +24,6 @@ import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-de
 import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
 import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
 import { SitterPersonalInformationComponent } from './main/content/parent/sitter-personal-information/sitter-personal-information.component';
-
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
-
 
 @NgModule({
   declarations: [
@@ -43,22 +37,19 @@ import { BabysitterRequestdetailsComponent } from './main/content/babysitter/bab
     NavbarComponent,
     NavParentComponent,
     NavAdminComponent,
+    NavBabysitterComponent,
     NavDomainExpertComponent,
     AdminDashboardComponent,
     ParentDashboardComponent,
+    BabysitterDashboardComponent,
+    DomainExpertDashboardComponent,
+    SignupComponent,
+
     BabyDetailsComponent,
      ViewBabyDetailsComponent,
      ViewBabySittersComponent,
      SitterPersonalInformationComponent,
-    DomainExpertDashboardComponent,
-    SignupComponent,
 
-    //babysitter
-    NavBabysitterComponent,
-    BabysitterDashboardComponent,
-    BabysitterTasklistComponent,
-    BabysitterParentrequestComponent,
-    BabysitterRequestdetailsComponent,
   ],
   imports: [
     BrowserModule,
