@@ -1,0 +1,14 @@
+/* Custom CSS */
+.custom-card {
+  background-color: #C4BCE5;
+  margin-left: 50px;
+}
+
+
+.custom-img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin-top: 10px;
+}

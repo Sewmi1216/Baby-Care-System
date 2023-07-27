@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="mb-3">
+    <h3>Baby details</h3>
+
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+      Add Baby Details
+    </button><!--click this button -> popup-->
+
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Baby Details</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body align-content-center d-flex align-items-center">
+
+            <!--               add photo icon-->
+            <i class="fa sharp fa-light fa-camera fa-7x mx-auto"></i>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <!-- Left Side: First Name and Birthday -->
+              <div class="col-sm-6">
+                <p class="font-weight-bold">First Name</p>
+                <input type="text" class="form-control" placeholder="Enter the first name" required>
+                <p class="font-weight-bold">Birth Day</p>
+                <input type="text" class="form-control" placeholder="dd/mm/yyyy">
+              </div>
+
+              <!-- Right Side: Last Name and Gender -->
+              <div class="col-sm-6">
+                <p class="font-weight-bold">Last Name</p>
+                <input type="text" class="form-control" placeholder="Enter the last name" required>
+                <!--                radio button-->
+                <p class="font-weight-bold">Gender</p>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" id="male" name="optradio" value="male">
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" id="female" name="optradio" value="female">
+                  <label class="form-check-label" for="female">Female</label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer" style="margin-top: 20px">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Add Baby</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="card custom-card" style="width: 15rem;">
+  <div class="d-flex justify-content-center">
+    <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+  </div>
+  <div class="card-body bg-custom">
+    <h4 class="card-title">Sewmi Thimaya</h4>
+    <p class="card-text">25 years</p>
+    <a routerLink="view_baby_details" class="btn btn-primary">View Profile</a>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
