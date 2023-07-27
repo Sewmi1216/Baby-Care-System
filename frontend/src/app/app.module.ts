@@ -19,6 +19,30 @@ import { ParentDashboardComponent } from './main/content/parent/parent-dashboard
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
+import { TaskListComponent } from './main/content/parent/task-list/task-list.component';
+import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
+import { SearchBabysittersComponent } from './main/content/parent/search-babysitters/search-babysitters.component';
+import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
+import { CommunityComponent } from './main/content/parent/community/community.component';
+import {FormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  /* import form module */
+import { NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import { ParentdashLeftContentComponent } from './main/content/parent/parent-dashboard/parentdash-left-content/parentdash-left-content.component';
+import { ParentdashRightContentComponent } from './main/content/parent/parent-dashboard/parentdash-right-content/parentdash-right-content.component';
+import { ParentdashTopContentComponent } from './main/content/parent/parent-dashboard/parentdash-top-content/parentdash-top-content.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faLocation } from '@fortawesome/free-solid-svg-icons';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { DashboardComponent } from './main/content/dashboard/dashboard.component';
+//import { ParentdashboardComponent } from './main/content/parentdashboard/parentdashboard.component';
+library.add(faLocation); /*import the faLocation icon*/
 
 @NgModule({
   declarations: [
@@ -39,12 +63,28 @@ import { SignupComponent } from './signup/signup.component';
     BabysitterDashboardComponent,
     DomainExpertDashboardComponent,
     SignupComponent,
+    TaskListComponent,
+    BabyDetailsComponent,
+    SearchBabysittersComponent,
+    LiveStreamComponent,
+    CommunityComponent,
+    ParentdashLeftContentComponent,
+    ParentdashRightContentComponent,
+    ParentdashTopContentComponent,
+    DashboardComponent,
+    //ParentdashboardComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
-  ],
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxMaterialTimepickerModule, /*Time picker module*/
+    FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule /*FontAwesome Module*/
+],
   providers: [],
   bootstrap: [AppComponent]
 })

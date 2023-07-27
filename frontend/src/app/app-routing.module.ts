@@ -7,6 +7,7 @@ import {MainComponent} from "./main/main.component";
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
         component: ParentDashboardComponent
 
       },
+      {
+        path:'parent_task_list',
+        component: TaskListComponent
+      }
+
     ]
   }
   ]
