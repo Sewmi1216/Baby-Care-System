@@ -20,6 +20,11 @@ import { BabysitterDashboardComponent } from './main/content/babysitter/babysitt
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 
+import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
+import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
+import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
+import { SitterPersonalInformationComponent } from './main/content/parent/sitter-personal-information/sitter-personal-information.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +44,12 @@ import { SignupComponent } from './signup/signup.component';
     BabysitterDashboardComponent,
     DomainExpertDashboardComponent,
     SignupComponent,
+
+    BabyDetailsComponent,
+     ViewBabyDetailsComponent,
+     ViewBabySittersComponent,
+     SitterPersonalInformationComponent,
+
   ],
   imports: [
     BrowserModule,
