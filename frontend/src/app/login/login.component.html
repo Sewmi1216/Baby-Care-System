@@ -14,41 +14,40 @@
         <img alt=""  src="../../assets/loginbackground.svg" width="1100px" height="660px">
       </div>
       <div class="container p-2 "
-           style="margin-left:100px;margin-top:80px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;" >
-        <form style="padding: 30px;">
-          <h3 style="text-align: center;" class="h1">
+           style="margin-left:100px;margin-top:80px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif" >
+        <form>
+          <h3 style="text-align: center;font-weight: bold" class="h1 mb-4">
             Login
           </h3>
-          <div class="row mb-3" style="margin-top: 50px;">
-            <label for="inputEmail3" class="col-sm-2 col-form-label-lg">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="inputEmail3">
+          <div class="row mb-4" style="margin-left:12%;text-align: center">
+            <div class="col-sm-10" style="text-align: center">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
             </div>
           </div>
-          <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label-lg">Password</label>
+          <div class="row mb-4" style="margin-left:12%;text-align: center">
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword3">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
             </div>
           </div>
-          <div class="row mb-3">
-            <div class="col-sm-10 offset-sm-2">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <div class="row mb-5">
+            <div class="col-sm-10 d-flex" style="margin-left:13%;font-family: 'Sofia Sans', sans-serif">
+              <div class="form-check d-flex">
+                <input class="form-check-input me-2" type="checkbox" id="gridCheck1">
                 <label>
-                  Example checkbox
+                  Remember Me
                 </label>
               </div>
+              <a routerLink="/signup" style="text-align: end;margin-left:39%;text-decoration: none;color:#7E57C2;font-weight: bold">Forget password?</a>
             </div>
           </div>
-          <button type="submit" class="btn btn-dark">Sign in</button>
-          <div style="margin-top: 5px;">Don't have an account?
-            <div style="font-weight: bold;display:inline;cursor: pointer" routerLink="/signup">Signup</div>
+          <button type="submit" class="btn btn-dark mb-3">Login</button>
+          <div style="margin-top: 5px;font-family: 'Sofia Sans', sans-serif">Don't have an account?
+            <div style="font-weight: bold;display:inline;cursor: pointer;color:#7E57C2" routerLink="/signup">Sign up</div>
           </div>
         </form>
       </div>
     </div>
-    <div class="image p-2">
+    <div class="image p-2 ms-5">
       <img src="assets/loginimage.svg" style="height: 620px;width: 620px;" alt="">
     </div>
   </div>
