@@ -1,39 +1,55 @@
-<div class="form d-flex justify-content-center" style="text-align: center">
-  <div class="container p-2 "
-       style="margin-left:100px;margin-top: 145px;background: linear-gradient(#BCC0E5,#E5BCDC);border-radius: 20px;">
-    <form style="padding: 30px;">
-      <h3 style="text-align: center;" class="h1">
-        Login
-      </h3>
-      <div class="row mb-3" style="margin-top: 50px;">
-        <label for="inputEmail3" class="col-sm-2 col-form-label-lg">Email</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3">
-        </div>
+<header>
+  <!--  link google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,200&family=Sofia+Sans:wght@1;200;300;400&family=Stylish&family=Sunshiney&display=swap" rel="stylesheet">
+</header>
+
+
+  <div class="form d-flex justify-content-center" style="text-align: center;font-family: 'Sofia Sans', sans-serif">
+    <div class="main-container">
+      <div class="image-container">
+        <img alt=""  src="../../assets/loginbackground.svg" width="1100px" height="660px">
       </div>
-      <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label-lg">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-sm-10 offset-sm-2">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck1">
-            <label>
-              Example checkbox
-            </label>
+      <div class="container p-2 "
+           style="margin-left:100px;margin-top:80px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;" >
+        <form style="padding: 30px;">
+          <h3 style="text-align: center;" class="h1">
+            Login
+          </h3>
+          <div class="row mb-3" style="margin-top: 50px;">
+            <label for="inputEmail3" class="col-sm-2 col-form-label-lg">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
           </div>
-        </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label-lg">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label>
+                  Example checkbox
+                </label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark">Sign in</button>
+          <div style="margin-top: 5px;">Don't have an account?
+            <div style="font-weight: bold;display:inline;cursor: pointer" routerLink="/signup">Signup</div>
+          </div>
+        </form>
       </div>
-      <button type="submit" class="btn btn-dark">Sign in</button>
-      <div style="margin-top: 5px;">Don't have an account?
-        <div style="font-weight: bold;display:inline;cursor: pointer" routerLink="/signup">Signup</div>
-      </div>
-    </form>
+    </div>
+    <div class="image p-2">
+      <img src="assets/loginimage.svg" style="height: 620px;width: 620px;" alt="">
+    </div>
   </div>
-  <div class="p-2" style="margin-top: 145px;margin-right: 100px;">
-    <img src="assets/login.png" style="height: 400px;width: 600px;">
-  </div>
-</div>
+
