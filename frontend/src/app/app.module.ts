@@ -32,6 +32,7 @@ import {BabysitterParentrequestComponent} from "./main/content/babysitter/babysi
 import {BabysitterRequestdetailsComponent} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
 import { ParentMyPlanComponent } from './main/content/parent/parent-my-plan/parent-my-plan.component';
 import { ParentProfileComponent } from './main/content/parent/parent-profile/parent-profile.component';
+import { MyBabysitterComponent } from './main/content/parent/my-babysitter/my-babysitter.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ParentProfileComponent } from './main/content/parent/parent-profile/par
     BabysitterRequestdetailsComponent,
     ParentMyPlanComponent,
     ParentProfileComponent,
+    MyBabysitterComponent,
 
   ],
   imports: [

@@ -19,6 +19,7 @@ import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-
 import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 import {ParentMyPlanComponent} from "./main/content/parent/parent-my-plan/parent-my-plan.component";
 import {ParentProfileComponent} from "./main/content/parent/parent-profile/parent-profile.component";
+import {MyBabysitterComponent} from "./main/content/parent/my-babysitter/my-babysitter.component";
 
 
 const routes: Routes = [
@@ -103,6 +104,11 @@ const routes: Routes = [
       {
         path: 'parent_profile',
         component:ParentProfileComponent
+
+      },
+      {
+        path: 'my_babysitter',
+        component:MyBabysitterComponent
 
       },
 
