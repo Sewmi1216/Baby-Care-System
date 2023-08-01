@@ -19,6 +19,7 @@ import { ParentDashboardComponent } from './main/content/parent/parent-dashboard
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
+import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
 import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
@@ -55,6 +56,17 @@ import { ModerateCommunityComponent } from './main/content/domain-expert/moderat
      DomainExpertProfileComponent,
      ModerateBlogComponent,
      ModerateCommunityComponent,
+
+
+    HomeHeaderComponent,
+
+
+    //babysitter
+    NavBabysitterComponent,
+    BabysitterDashboardComponent,
+    BabysitterTasklistComponent,
+    BabysitterParentrequestComponent,
+    BabysitterRequestdetailsComponent,
 
   ],
   imports: [
