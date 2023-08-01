@@ -17,6 +17,7 @@ import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domai
 import {ModerateBlogComponent} from "./main/content/domain-expert/moderate-blog/moderate-blog.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
 import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+import {ParentMyPlanComponent} from "./main/content/parent/parent-my-plan/parent-my-plan.component";
 
 
 const routes: Routes = [
@@ -91,6 +92,11 @@ const routes: Routes = [
       {
         path: 'domain_expert_moderate_community',
         component: ModerateCommunityComponent
+
+      },
+      {
+        path: 'parent_my_plan',
+        component:ParentMyPlanComponent
 
       },
 
