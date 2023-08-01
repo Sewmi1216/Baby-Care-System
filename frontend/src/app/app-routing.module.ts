@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
@@ -15,6 +15,17 @@ import { BabysitterParentrequestComponent } from './main/content/babysitter/baby
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
+import {HomeHeaderComponent} from "./home/home-header/home-header.component";
+import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-details.component";
+import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
+import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
+import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
+import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component";
+import {ModerateBlogComponent} from "./main/content/domain-expert/moderate-blog/moderate-blog.component";
+import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
+import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+
+
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +35,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    children: [
+      {
+        path: 'home-header',
+        component: HomeHeaderComponent,
+      },
+    ]
   },
   {
     path: 'login',
@@ -44,29 +61,51 @@ const routes: Routes = [
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
-      },
 
-      //babysitter
-      {
-        path: 'babysitter_dashboard',
-        component: BabysitterDashboardComponent
       },
       {
-        path: 'babysitter_tasklist',
-        component: BabysitterTasklistComponent,
+        path: 'baby_details',
+        component: BabyDetailsComponent
+
       },
       {
-        path: 'babysitter_parentrequest',
-        component: BabysitterParentrequestComponent,
+        path: 'view_baby_details',
+        component: ViewBabyDetailsComponent
       },
       {
-        path: 'babysitter_requestdetails',
-        component: BabysitterRequestdetailsComponent,
+        path: 'view_baby_sitters',
+        component: ViewBabySittersComponent
       },
       {
+        path: 'sitter_personal_information',
+        component: SitterPersonalInformationComponent
+      },
+      {
+        path: 'domain_expert_dashboard',
+        component: DomainExpertDashboardComponent
+
+      },
+      {
+        path: 'domain_expert_moderate_blogs',
+        component: ModerateBlogComponent
+
+      },
+      {
+        path: 'domain_expert_profile',
+        component: DomainExpertProfileComponent
+
+      },
+      {
+
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
       },
+
+        path: 'domain_expert_moderate_community',
+        component: ModerateCommunityComponent
+
+      },
+
     ]
   }
   ]
