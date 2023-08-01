@@ -8,6 +8,13 @@ import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admi
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
 
+//babysitter
+import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
+import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
+import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
+
 import {HomeHeaderComponent} from "./home/home-header/home-header.component";
 import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-details.component";
 import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
@@ -89,6 +96,11 @@ const routes: Routes = [
 
       },
       {
+
+        path: 'babysitter_chat',
+        component: BabysitterChatComponent,
+      },
+
         path: 'domain_expert_moderate_community',
         component: ModerateCommunityComponent
 
