@@ -7,6 +7,8 @@ import {MainComponent} from "./main/main.component";
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+
+import {HomeHeaderComponent} from "./home/home-header/home-header.component";
 import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-details.component";
 import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
 import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
@@ -15,6 +17,7 @@ import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domai
 import {ModerateBlogComponent} from "./main/content/domain-expert/moderate-blog/moderate-blog.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
 import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+
 
 const routes: Routes = [
   {
@@ -25,6 +28,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    children: [
+      {
+        path: 'home-header',
+        component: HomeHeaderComponent,
+      },
+    ]
   },
   {
     path: 'login',
