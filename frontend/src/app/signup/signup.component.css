@@ -44,6 +44,7 @@ form{
 
 .form-control::placeholder{
   font-family: 'Sofia Sans', sans-serif;
+  font-size: 14px;
 }
 
 .btn-dark{
