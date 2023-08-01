@@ -20,7 +20,6 @@ import { BabysitterDashboardComponent } from './main/content/babysitter/babysitt
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
-
 import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
 import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
 import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
@@ -28,6 +27,11 @@ import { SitterPersonalInformationComponent } from './main/content/parent/sitter
 import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
 import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import {BabysitterParentrequestComponent} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
+import {BabysitterRequestdetailsComponent} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
+import { ParentMyPlanComponent } from './main/content/parent/parent-my-plan/parent-my-plan.component';
+import { ParentProfileComponent } from './main/content/parent/parent-profile/parent-profile.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +71,8 @@ import { ModerateCommunityComponent } from './main/content/domain-expert/moderat
     BabysitterTasklistComponent,
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
+    ParentMyPlanComponent,
+    ParentProfileComponent,
 
   ],
   imports: [
