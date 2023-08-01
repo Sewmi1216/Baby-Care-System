@@ -18,5 +18,24 @@ body{
 
 .brand-name h1{
   font-family: 'Sunshiney', cursive;
-  font-size: 60px;
+  font-size: 70px;
 }
+
+
+.card-2,
+.card-3,
+.card-4{
+  margin: 100px 0px;
+}
+
+.content{
+  padding: 50px 70px;
+  font-size: 18px;
+  border-radius: 50px;
+}
+
+.content p{
+  margin-top: 20px;
+}
+
+

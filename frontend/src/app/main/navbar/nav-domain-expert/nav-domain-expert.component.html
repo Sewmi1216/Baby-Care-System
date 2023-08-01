@@ -1,1 +1,39 @@
-<p>nav-domain-expert works!</p>
+<div style="margin-left: 30px;" xmlns="http://www.w3.org/1999/html">
+  <img src="../../assets/sewmi.jpg" alt="profile" width="200" height="200" class="img-fluid rounded-circle">
+</div>
+<div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
+
+  <div
+    routerLink="/main/domain_expert_dashboard"
+    #dashboard="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    <i class="fas fa-th"></i>
+    <label>Dashboard</label>
+  </div>
+<!--  <div-->
+<!--    routerLink="/main/domain_expert_profile"-->
+<!--    #dashboard="routerLinkActive"-->
+<!--    routerLinkActive-->
+<!--    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">-->
+<!--    <i class="fas fa-user"></i>-->
+<!--    <label>My Profile</label>-->
+<!--  </div>-->
+  <div
+    routerLink="/main/domain_expert_moderate_blogs"
+    #dashboard="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    <i class="fas fa-list"></i>
+    <label>Moderate Blogs</label>
+  </div>
+  <div
+    routerLink="/main/domain_expert_moderate_community"
+    #dashboard="routerLinkActive"
+    routerLinkActive
+    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    <i class="fas fa-users"></i>
+    <label>Moderate Community</label>
+  </div>
+
+</div>

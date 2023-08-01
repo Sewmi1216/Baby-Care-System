@@ -1,26 +1,96 @@
 /*.body{*/
 /*  background-image: #DFDDFF;*/
 /*}*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,200&family=Sofia+Sans:wght@1;200;300;400&family=Stylish&family=Sunshiney&display=swap');
+
+body{
+  font-family: 'Sofia Sans', sans-serif;
+}
+.main-container{
+  position: relative;
+  flex:5;
+}
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 80%;
+  z-index:20;
+  position: absolute;
+  width: 90%;
+  box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+  background-color:rgba(255, 255, 255, 0.42);
+  margin-left:100px;
+
 }
-.form-control{
-  margin-left: 50px;
-  width: 80%;
-  padding: 10px;
+.image{
+  flex: 5;
+  z-index:20;
 }
+
+.image-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+form{
+  width: 100%;
+  text-align: center;
+  height: 80%;
+}
+
+.form-control
+{
+  width: 100%;
+  height: 50px;
+  border: black solid 1.4px;
+  background-color:rgba(255, 255, 255, 0.2);
+  padding-left: 50px;
+
+}
+
+.form-check-input{
+  border: black solid 1px;
+  background-color:rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+}
+
+
 .btn-dark{
-  width: 180px;
+  width: 70%;
+  height: 12%;
 }
 label{
   text-align: left;
 }
+
+
+
+
+
 @media (max-width: 991px){
   .form{
     background-color: rgba(255, 255, 255, 0.57);
     backdrop-filter: blur(10px);
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    z-index:20;
+    position: absolute;
+    width: 80%;
+    box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+    margin-right: 20px;
+    background-image: linear-gradient(rgba(147, 128, 255, 0.46), rgba(255, 128, 236, 0.1));
+  }
+
+
+  .image-container,
+  .image{
+    display: none;
   }
 }
