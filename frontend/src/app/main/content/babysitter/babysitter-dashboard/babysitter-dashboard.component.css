@@ -1,0 +1,10 @@
+.babysitter-dashboard{
+    margin: 2rem;
+}
+
+.card{
+    flex-direction: row;
+    background-color: #f6f6ff83;
+    width: 200px;
+    
+}
