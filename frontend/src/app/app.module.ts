@@ -24,6 +24,7 @@ import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-de
 import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
 import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
 import { SitterPersonalInformationComponent } from './main/content/parent/sitter-personal-information/sitter-personal-information.component';
+import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SitterPersonalInformationComponent } from './main/content/parent/sitter
      ViewBabyDetailsComponent,
      ViewBabySittersComponent,
      SitterPersonalInformationComponent,
+     DomainExpertProfileComponent,
 
   ],
   imports: [
