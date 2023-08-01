@@ -7,6 +7,9 @@ import {MainComponent} from "./main/main.component";
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+import {PasswordComponent} from "./password/password.component";
+import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
+
 
 import {HomeHeaderComponent} from "./home/home-header/home-header.component";
 import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-details.component";
@@ -19,6 +22,8 @@ import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitt
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
+
 
 
 
@@ -46,6 +51,17 @@ const routes: Routes = [
     path: 'signup',
     component:SignupComponent,
   },
+  {
+    path: 'password',
+    component:PasswordComponent,
+    children: [
+      {
+        path: 'forget-password',
+        component: ForgetPasswordComponent,
+      },
+    ]
+  },
+
   {
     path: 'main',
     component: MainComponent,

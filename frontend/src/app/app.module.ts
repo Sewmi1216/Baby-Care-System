@@ -30,6 +30,8 @@ import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysit
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+import { PasswordComponent } from './password/password.component';
+import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -63,6 +65,8 @@ import { BabysitterRequestdetailsComponent } from './main/content/babysitter/bab
     BabysitterTasklistComponent,
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
+    PasswordComponent,
+    ForgetPasswordComponent,
 
   ],
   imports: [
