@@ -12,6 +12,9 @@ import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/
 import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
 import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component";
+import {ModerateBlogComponent} from "./main/content/domain-expert/moderate-blog/moderate-blog.component";
+import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
+import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 
 const routes: Routes = [
   {
@@ -64,6 +67,21 @@ const routes: Routes = [
       {
         path: 'domain_expert_dashboard',
         component: DomainExpertDashboardComponent
+
+      },
+      {
+        path: 'domain_expert_moderate_blogs',
+        component: ModerateBlogComponent
+
+      },
+      {
+        path: 'domain_expert_profile',
+        component: DomainExpertProfileComponent
+
+      },
+      {
+        path: 'domain_expert_moderate_community',
+        component: ModerateCommunityComponent
 
       },
 
