@@ -4,9 +4,11 @@
 
     <div class="container">
       <div class="left">
-        <div style="background-color: #E0E0E0; height: 130px; width: 412px; margin: 10px 10px 10px 15px; padding: 10px;">
+        <div
+          style="background-color: #E0E0E0; height: 130px; width: 412px; margin: 10px 10px 10px 15px; padding: 10px;">
           <h4>Sewmi Thimaya</h4>
-          <p>I have followed a first aid course at NHSL in 2015. And also, I have 5 years of working experience as a babysitter.</p>
+          <p>I have followed a first aid course at NHSL in 2015. And also, I have 5 years of working experience as a
+            babysitter.</p>
         </div>
         <ul style="background-color: #D0F2F6; margin: 10px 10px 10px 15px; height: 200px; width: 412px;">
           <h4>Qualification List</h4>
@@ -24,9 +26,107 @@
           <div class="d-flex justify-content-center">
             <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
           </div>
-          <div>
-            <a routerLink="view_baby_details" class="btn btn-primary" style="margin-top: 15px">Request</a>
+
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Request
+          </button><!--click this button -> popup-->
+
+
+          <!-- The Modal -->
+          <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Request Baby Sitter</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="container">
+                  <div class="row">
+
+                    <!-- Left Side -->
+                    <p class="font-weight-bold">Work Expectation - Time Duration per day</p>
+                    <div class="col-sm-4">
+                    
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Sunday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Monday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Tuesday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Wednesday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Thursday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Friday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Saturday
+                          </label>
+                        </li>
+                      </ul>
+
+                    </div>
+                    <!-- Middle -->
+                    <div class="col-sm-4">
+
+                      <input type="text" class="form-control" placeholder="From" required>
+                      <input type="text" class="form-control" placeholder="From" required>
+                      <input type="text" class="form-control" placeholder="From" required>
+                      <input type="text" class="form-control" placeholder="From" required>
+                      <input type="text" class="form-control" placeholder="From" required>
+                      <input type="text" class="form-control" placeholder="From" required>
+                      <input type="text" class="form-control" placeholder="From" required>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="col-sm-4">
+
+                      <input type="text" class="form-control" placeholder="To" required>
+                      <input type="text" class="form-control" placeholder="To" required>
+                      <input type="text" class="form-control" placeholder="To" required>
+                      <input type="text" class="form-control" placeholder="To" required>
+                      <input type="text" class="form-control" placeholder="To" required>
+                      <input type="text" class="form-control" placeholder="To" required>
+                      <input type="text" class="form-control" placeholder="To" required>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer" style="margin-top: 20px">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Add Baby</button>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
