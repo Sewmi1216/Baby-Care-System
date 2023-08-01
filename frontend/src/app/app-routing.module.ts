@@ -11,6 +11,7 @@ import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-deta
 import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
 import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
+import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,11 @@ const routes: Routes = [
       {
         path: 'sitter_personal_information',
         component: SitterPersonalInformationComponent
+      },
+      {
+        path: 'domain_expert_dashboard',
+        component: DomainExpertDashboardComponent
+
       },
 
     ]
