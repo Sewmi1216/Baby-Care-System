@@ -1,6 +1,22 @@
 <div class="container-fluid">
-  <div class="mb-3">
-    <h3>Dashboard</h3>
+
+  <div class="row">
+    <div class="col-11" id="live">
+      <h3>Live Stream</h3>
+    </div>
+    <div class="col-1">
+      <button type="submit" class="btn btn-dark mb-3" (click)="getOrcreateConversation()" title="Start Live Stream">
+        Start
+      </button>
+    </div>
   </div>
-  <video id="video" autoplay></video>
+  <!--    <div id="remote-container">-->
+  <!--    </div>-->
+  <div id="local-container">
+  </div>
+
+
+  <!--  <video id="video" autoplay></video>-->
+
 </div>
+
