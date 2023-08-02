@@ -96,19 +96,35 @@ const routes: Routes = [
 
       },
       {
+        path: 'domain_expert_moderate_community',
+        component: ModerateCommunityComponent,
+      },
 
+      //babysitter
+      {
+        path: 'babysitter_dashboard',
+        component: BabysitterDashboardComponent,
+      },
+      {
+        path: 'babysitter_parentrequest',
+        component: BabysitterParentrequestComponent,
+      },
+      {
+        path: 'babysitter_tasklist',
+        component:  BabysitterTasklistComponent,
+      },
+      {
+        path: 'babysitter_requestdetails',
+        component: BabysitterRequestdetailsComponent,
+      },
+      {
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
       },
 
-        path: 'domain_expert_moderate_community',
-        component: ModerateCommunityComponent
-
-      },
-
     ]
   }
-  ]
+]
 
 @NgModule({
   declarations: [],
