@@ -11,27 +11,19 @@
     <i class="fas fa-th"></i>
     <label>Dashboard</label>
   </div>
-<!--  <div-->
-<!--    routerLink="/main/domain_expert_profile"-->
-<!--    #dashboard="routerLinkActive"-->
-<!--    routerLinkActive-->
-<!--    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">-->
-<!--    <i class="fas fa-user"></i>-->
-<!--    <label>My Profile</label>-->
-<!--  </div>-->
   <div
     routerLink="/main/domain_expert_moderate_blogs"
-    #dashboard="routerLinkActive"
+    #moderateBlog="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
-    <i class="fas fa-list"></i>
+    [ngStyle]="{'background-color': moderateBlog.isActive ? '#7E57C2' : '', 'color': moderateBlog.isActive ? '#fff' : ''}">
+    <i class="fas fa-blog"></i>
     <label>Moderate Blogs</label>
   </div>
   <div
     routerLink="/main/domain_expert_moderate_community"
-    #dashboard="routerLinkActive"
+    #moderateCommunity="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': moderateCommunity.isActive ? '#7E57C2' : '', 'color': moderateCommunity.isActive ? '#fff' : ''}">
     <i class="fas fa-users"></i>
     <label>Moderate Community</label>
   </div>

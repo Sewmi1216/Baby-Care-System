@@ -20,10 +20,12 @@ import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-deta
 import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
 import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
-import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component";
-import {ModerateBlogComponent} from "./main/content/domain-expert/moderate-blog/moderate-blog.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
-import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+
+//domain-expert
+import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
+import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
+import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
 
 
 const routes: Routes = [
@@ -81,23 +83,9 @@ const routes: Routes = [
         component: SitterPersonalInformationComponent
       },
       {
-        path: 'domain_expert_dashboard',
-        component: DomainExpertDashboardComponent
-
-      },
-      {
-        path: 'domain_expert_moderate_blogs',
-        component: ModerateBlogComponent
-
-      },
-      {
         path: 'domain_expert_profile',
         component: DomainExpertProfileComponent
 
-      },
-      {
-        path: 'domain_expert_moderate_community',
-        component: ModerateCommunityComponent,
       },
 
       //babysitter
@@ -122,6 +110,20 @@ const routes: Routes = [
         component: BabysitterChatComponent,
       },
 
+
+      //domain-expert
+      {
+        path: 'domain_expert_dashboard',
+        component: DomainExpertDashboardComponent,
+      },
+      {
+        path: 'domain_expert_moderate_blogs',
+        component: DomainExpertModerateBlogComponent,
+      },
+      {
+        path: 'domain_expert_moderate_community',
+        component: DomainExpertModerateCommunityComponent,
+      },
     ]
   }
 ]
