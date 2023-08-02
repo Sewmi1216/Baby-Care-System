@@ -24,6 +24,7 @@ import {DomainExpertDashboardComponent} from "./main/content/domain-expert/domai
 import {ModerateBlogComponent} from "./main/content/domain-expert/moderate-blog/moderate-blog.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
 import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
 
 
 const routes: Routes = [
@@ -66,6 +67,11 @@ const routes: Routes = [
       {
         path: 'baby_details',
         component: BabyDetailsComponent
+
+      },
+      {
+        path: 'live_stream',
+        component: LiveStreamComponent
 
       },
       {
@@ -121,6 +127,13 @@ const routes: Routes = [
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
       },
+
+      {
+        path: 'domain_expert_moderate_community',
+        component: ModerateCommunityComponent
+
+      },
+
 
     ]
   }

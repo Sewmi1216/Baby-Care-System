@@ -34,6 +34,7 @@ import { SitterPersonalInformationComponent } from './main/content/parent/sitter
 import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
 import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
+import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { ModerateCommunityComponent } from './main/content/domain-expert/moderat
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
     BabysitterChatComponent,
+    LiveStreamComponent,
 
 
   ],
