@@ -44,10 +44,10 @@
     <label>Community</label>
   </div>
   <div
-    routerLink="/main/parent_dashboard"
-    #dashboard="routerLinkActive"
+    routerLink="/main/live_stream"
+    #live="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': live.isActive ? '#7E57C2' : '', 'color': live.isActive ? '#fff' : ''}">
     <i class="fas fa-tv"></i>
     <label>Live Stream</label>
   </div>

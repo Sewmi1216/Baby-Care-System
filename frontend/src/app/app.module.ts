@@ -12,11 +12,9 @@ import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
 import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { AdminDashboardComponent } from './main/content/admin/admin-dashboard/admin-dashboard.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
-import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
@@ -36,6 +34,7 @@ import { SitterPersonalInformationComponent } from './main/content/parent/sitter
 import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
 import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
+import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 
 
 @NgModule({
@@ -77,6 +76,7 @@ import { ModerateCommunityComponent } from './main/content/domain-expert/moderat
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
     BabysitterChatComponent,
+    LiveStreamComponent,
 
 
   ],
