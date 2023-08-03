@@ -22,10 +22,15 @@ import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
 
+
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
 import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
+import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
+
 
 
 const routes: Routes = [
@@ -71,6 +76,11 @@ const routes: Routes = [
 
       },
       {
+        path: 'live_stream',
+        component: LiveStreamComponent
+
+      },
+      {
         path: 'view_baby_details',
         component: ViewBabyDetailsComponent
       },
@@ -106,10 +116,35 @@ const routes: Routes = [
         component: BabysitterRequestdetailsComponent,
       },
       {
+        path: 'domain_expert_moderate_community',
+        component: ModerateCommunityComponent,
+      },
+
+      //babysitter
+      {
+        path: 'babysitter_dashboard',
+        component: BabysitterDashboardComponent,
+      },
+      {
+        path: 'babysitter_parentrequest',
+        component: BabysitterParentrequestComponent,
+      },
+      {
+        path: 'babysitter_tasklist',
+        component:  BabysitterTasklistComponent,
+      },
+      {
+        path: 'babysitter_requestdetails',
+        component: BabysitterRequestdetailsComponent,
+      },
+      {
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
       },
-
+      {
+        path: 'domain_expert_moderate_community',
+        component: ModerateCommunityComponent
+      }
 
       //domain-expert
       {
@@ -124,6 +159,7 @@ const routes: Routes = [
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
       },
+
     ]
   }
 ]
