@@ -1,23 +1,467 @@
 <div class="container-fluid">
   <div class="mb-3">
     <h3>Personal Information</h3>
-    <div
-      style="background-color: #E0E0E0; height: 130px; width: 412px; border-radius: 5px; margin : 10px 10px 10px 15px; padding: 10px 10px 10px 10px;">
 
-      <h4>Sewmi Thimaya</h4>
+    <div class="container">
+      <div class="left">
+        <div
+          style="background-color: #E0E0E0; height: 130px; width: 412px; margin: 10px 10px 10px 15px; padding: 10px;">
+          <h4>Sewmi Thimaya</h4>
+          <p>I have followed a first aid course at NHSL in 2015. And also, I have 5 years of working experience as a
+            babysitter.</p>
+        </div>
+        <ul style="background-color: #D0F2F6; margin: 10px 10px 10px 15px; height: 200px; width: 412px;">
+          <h4>Qualification List</h4>
+          <li class="list-group-item">(01)Copy of BC</li>
+          <li class="list-group-item">(02)Copy of ID</li>
+          <li class="list-group-item">(03)Police clearance CF</li>
+          <li class="list-group-item">(04)Dependence CF</li>
+          <li class="list-group-item">(05)Extra</li>
+        </ul>
+      </div>
+      <div class="right">
+        <div class="card custom-card" style="width: 15rem; background-color: #BCE3E5;">
+          <h4>Sewmi Thimaya</h4>
+          <h6>Location :</h6>
+          <div class="d-flex justify-content-center">
+            <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+          </div>
 
-      <p>I have followed a first aid course at NHSL in 2015.
-        And also i have 5 years working experiance as a babysitter.</p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Request
+          </button><!--click this button -> popup-->
 
 
+          <!-- The Modal -->
+          <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Request Baby Sitter</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="container">
+                  <div class="row">
+
+                    <!-- Left Side -->
+                    <p class="font-weight-bold">Work Expectation - Time Duration per day</p>
+                    <div class="col-sm-4">
+
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Sunday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Monday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Tuesday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Wednesday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Thursday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Friday
+                          </label>
+                        </li>
+                        <li class="list-group-item">
+                          <label>
+                            <input type="checkbox"> Saturday
+                          </label>
+                        </li>
+                      </ul>
+
+                    </div>
+                    <!-- Middle -->
+
+
+                      <div class="col-sm-4">
+
+
+                        <!-- Select for From Time -->
+                        <div class="d-flex">
+                          <select class="form-control">
+                            <option value="12:00">12:00</option>
+                            <option value="01:00">01:00</option>
+                            <option value="02:00">02:00</option>
+                            <option value="03:00">03:00</option>
+                            <option value="04:00">04:00</option>
+                            <option value="05:00">05:00</option>
+                            <option value="06:00">06:00</option>
+                            <option value="07:00">07:00</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                          </select>
+
+                          <!-- Select for AM/PM -->
+                          <select class="form-control">
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                          </select>
+
+                        </div>
+                        <div class="d-flex">
+                          <select class="form-control">
+                            <option value="12:00">12:00</option>
+                            <option value="01:00">01:00</option>
+                            <option value="02:00">02:00</option>
+                            <option value="03:00">03:00</option>
+                            <option value="04:00">04:00</option>
+                            <option value="05:00">05:00</option>
+                            <option value="06:00">06:00</option>
+                            <option value="07:00">07:00</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                          </select>
+
+                          <!-- Select for AM/PM -->
+                          <select class="form-control">
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                          </select>
+
+                        </div>
+                        <div class="d-flex">
+                          <select class="form-control">
+                            <option value="12:00">12:00</option>
+                            <option value="01:00">01:00</option>
+                            <option value="02:00">02:00</option>
+                            <option value="03:00">03:00</option>
+                            <option value="04:00">04:00</option>
+                            <option value="05:00">05:00</option>
+                            <option value="06:00">06:00</option>
+                            <option value="07:00">07:00</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                          </select>
+
+                          <!-- Select for AM/PM -->
+                          <select class="form-control">
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                          </select>
+
+                        </div> <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div> <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div> <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div> <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div>
+                      </div>
+
+
+
+                    <!-- Right -->
+                    <div class="col-sm-4">
+
+                      <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div>
+                      <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div>
+                      <div class="d-flex">
+                        <select class="form-control">
+                          <option value="12:00">12:00</option>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                        </select>
+
+                        <!-- Select for AM/PM -->
+                        <select class="form-control">
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+
+                      </div> <div class="d-flex">
+                      <select class="form-control">
+                        <option value="12:00">12:00</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                        <option value="03:00">03:00</option>
+                        <option value="04:00">04:00</option>
+                        <option value="05:00">05:00</option>
+                        <option value="06:00">06:00</option>
+                        <option value="07:00">07:00</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                      </select>
+
+                      <!-- Select for AM/PM -->
+                      <select class="form-control">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                      </select>
+
+                    </div> <div class="d-flex">
+                      <select class="form-control">
+                        <option value="12:00">12:00</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                        <option value="03:00">03:00</option>
+                        <option value="04:00">04:00</option>
+                        <option value="05:00">05:00</option>
+                        <option value="06:00">06:00</option>
+                        <option value="07:00">07:00</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                      </select>
+
+                      <!-- Select for AM/PM -->
+                      <select class="form-control">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                      </select>
+
+                    </div> <div class="d-flex">
+                      <select class="form-control">
+                        <option value="12:00">12:00</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                        <option value="03:00">03:00</option>
+                        <option value="04:00">04:00</option>
+                        <option value="05:00">05:00</option>
+                        <option value="06:00">06:00</option>
+                        <option value="07:00">07:00</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                      </select>
+
+                      <!-- Select for AM/PM -->
+                      <select class="form-control">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                      </select>
+
+                    </div> <div class="d-flex">
+                      <select class="form-control">
+                        <option value="12:00">12:00</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                        <option value="03:00">03:00</option>
+                        <option value="04:00">04:00</option>
+                        <option value="05:00">05:00</option>
+                        <option value="06:00">06:00</option>
+                        <option value="07:00">07:00</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                      </select>
+
+                      <!-- Select for AM/PM -->
+                      <select class="form-control">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                      </select>
+
+                    </div>
+
+
+                  </div>
+                    <p class="font-weight-bold">Number of Babies</p>
+                    <input type="text" class="form-control" placeholder="Enter the Number of Babies" required>
+                    <!--                auto-incremental part. By getting the number of babies (count) as input,
+                    it should dynamically increase this bellow part and allow the parent to add baby details as she wants.-->
+                    <p>Baby (count..1..2)</p>
+                    <!-- left Side - Age -->
+                    <div class="col-sm-6">
+                      <p class="font-weight-bold">Age</p>
+                      <input type="text" class="form-control" placeholder="Enter the Age" required>
+                    </div>
+                    <!-- right Side - Gender -->
+                    <div class="col-sm-6">
+                      <p class="font-weight-bold">Gender</p>
+                      <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="male" name="optradio" value="male">
+                        <label class="form-check-label" for="male">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="female" name="optradio" value="female">
+                        <label class="form-check-label" for="female">Female</label>
+                      </div>
+
+                    </div>
+                    <p class="font-weight-bold">If there are any special needs..</p>
+                    <textarea class="form-control" rows="3" placeholder="Enter here" ></textarea>
+
+
+                </div>
+                </div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer" style="margin-top: 20px">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <ul  style="background-color: #D0F2F6; border-radius: 5px; margin: 10px 10px 10px 15px;height: 230px; width: 412px">
-      <h4>Qualification List</h4>
-      <li class="list-group-item">(01)Copy of BC </li>
-      <li class="list-group-item">(02)Copy of ID</li>
-      <li class="list-group-item">(03)Police clearance CF</li>
-      <li class="list-group-item">(04)Dependance CF</li>
-      <li class="list-group-item">(05)Extra </li>
-    </ul>
   </div>
 </div>

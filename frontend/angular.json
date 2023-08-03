@@ -30,7 +30,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@apizee/apirtc/apiRTC.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -106,7 +108,6 @@
     }
   },
   "cli": {
-    "analytics": "ca51a7b5-b912-4024-8a39-5b89ab40a24c"
-    "analytics": "4fa37b67-92af-4e58-a257-00357c3f0345"
+    "analytics": "0d242fa9-e7e0-4d11-9742-ba295305973a"
   }
 }

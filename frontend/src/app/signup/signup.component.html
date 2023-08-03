@@ -1,6 +1,11 @@
-<div class="form d-flex justify-content-center" style="text-align: center">
-  <div class="container p-2 "
-       style="margin-left:100px;margin-top: 50px;background: linear-gradient(#BCC0E5,#E5BCDC);border-radius: 20px;">
+<header>
+  <!--  link google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,200&family=Sofia+Sans:wght@1;200;300;400&family=Stylish&family=Sunshiney&display=swap" rel="stylesheet">
+</header>
 
     <form class="row g-3 needs-validation" novalidate>
       <h3 style="text-align: center;" class="h1">
@@ -8,14 +13,14 @@
       </h3>
       <div class="col-md-6">
         <label for="validationCustom01" class="form-label">First name</label>
-        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+        <input type="text" class="form-control" id="validationCustom01" value="" required>
         <div class="valid-feedback">
           Looks good!
         </div>
       </div>
       <div class="col-md-6">
         <label for="validationCustom02" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+        <input type="text" class="form-control" id="validationCustom02" value="" required>
         <div class="valid-feedback">
           Looks good!
         </div>
@@ -78,21 +83,118 @@
       </div>
       <div class="col-12">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <input class="" type="checkbox" value="" id="invalidCheck" required>
           <label class="form-check-label" for="invalidCheck">
             Agree to terms and conditions
           </label>
           <div class="invalid-feedback">
             You must agree before submitting.
+
+<div class="form d-flex justify-content-center" style="text-align: center;font-family: 'Sofia Sans', sans-serif">
+  <div class="main-container">
+    <div class="image-container">
+      <img alt=""  src="../../assets/loginbackground.svg" width="1100px" height="660px">
+    </div>
+    <div class="container p-2 py-4"
+         style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif" >
+      <form class="row g-3 needs-validation" novalidate>
+        <h3 style="text-align: center;margin-top: 40px" class="h1">
+          Signup
+        </h3>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="validationCustom01"  placeholder="First Name" required>
+          <div class="valid-feedback">
+            Looks good!
+
           </div>
         </div>
-      </div>
-      <div class="col-12">
-        <button class="btn btn-dark" type="submit">Signup</button>
-      </div>
-    </form>
+        <div class="col-md-6">
+<!--          <label for="validationCustom02" class="form-label">Last name</label>-->
+          <input type="text" class="form-control" id="validationCustom02" placeholder="Last Name" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-6">
+<!--          <label for="validationCustom03" class="form-label">Email</label>-->
+          <input type="text" class="form-control" id="validationCustom04" placeholder="Email"required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6">
+<!--          <label for="validationCustom03" class="form-label">Contact Number</label>-->
+          <input type="text" class="form-control" id="validationCustom05" placeholder="Contact Number" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6">
+<!--          <label for="validationCustom03" class="form-label">Password</label>-->
+          <input type="text" class="form-control" placeholder="Password" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6">
+<!--          <label for="validationCustom03" class="form-label">Confirm Password</label>-->
+          <input type="text" class="form-control" placeholder="Confirm Password" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-12">
+          <!--          <label for="validationCustom03" class="form-label">Home Address</label>-->
+          <input type="text" class="form-control" id="validationCustom03" style="width: 98%;" placeholder="Home Address"required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-12">
+<!--          <label for="validationCustom03" class="form-label">NIC</label>-->
+          <input type="text" class="form-control" placeholder="NIC Number" style="width: 98%;" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-12">
+<!--          <label for="validationCustom03" class="form-label">User Role</label>-->
+          <div class="col-md-12 d-flex">
+            <div class="col-md-6" style="text-align: left">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-right:15px" >
+              <label class="" for="flexRadioDefault1" style="font-family: 'Sofia Sans', sans-serif;font-size: 18px">
+                Parent
+              </label>
+            </div>
+            <div class="col-md-6" style="text-align: left">
+              <input class="form-check-input" style="margin-right:15px" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label" for="flexRadioDefault2" style="font-family: 'Sofia Sans', sans-serif;font-size: 18px">
+                Babysitter
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck" style="padding-left: 0px;text-align: left;font-family: 'Sofia Sans', sans-serif">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-dark mb-3" type="submit">Signup</button>
+        </div>
+        <div  class="mb-4" style="margin-top: 5px;font-family: 'Sofia Sans', sans-serif">Already have an account?
+          <div style="font-weight: bold;display:inline;cursor: pointer;color:#7E57C2;font-family: 'Sofia Sans', sans-serif" routerLink="/login">Login</div>
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="p-2" style="margin-top: 250px;margin-right: 100px;">
-    <img src="assets/signup.png" style="height: 400px;width: 600px;">
+  <div class="image p-2 ms-5 ">
+    <img src="assets/signupimage.svg" style="height: 620px;width: 620px;" alt="">
   </div>
 </div>
