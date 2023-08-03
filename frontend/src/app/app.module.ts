@@ -15,7 +15,9 @@ import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { AdminDashboardComponent } from './main/content/admin/admin-dashboard/admin-dashboard.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
+
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
+
 import { SignupComponent } from './signup/signup.component';
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
@@ -32,9 +34,16 @@ import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-detail
 import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
 import { SitterPersonalInformationComponent } from './main/content/parent/sitter-personal-information/sitter-personal-information.component';
 import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
+
+//domain-expert
+import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
+import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
+import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
 import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
+
 
 
 @NgModule({
@@ -53,8 +62,6 @@ import { LiveStreamComponent } from './main/content/parent/live-stream/live-stre
     NavDomainExpertComponent,
     AdminDashboardComponent,
     ParentDashboardComponent,
-    BabysitterDashboardComponent,
-    DomainExpertDashboardComponent,
     SignupComponent,
 
     BabyDetailsComponent,
@@ -62,9 +69,6 @@ import { LiveStreamComponent } from './main/content/parent/live-stream/live-stre
      ViewBabySittersComponent,
      SitterPersonalInformationComponent,
      DomainExpertProfileComponent,
-     ModerateBlogComponent,
-     ModerateCommunityComponent,
-
 
     HomeHeaderComponent,
 
@@ -77,6 +81,11 @@ import { LiveStreamComponent } from './main/content/parent/live-stream/live-stre
     BabysitterRequestdetailsComponent,
     BabysitterChatComponent,
     LiveStreamComponent,
+
+    //domain-expert
+    DomainExpertDashboardComponent,
+    DomainExpertModerateCommunityComponent,
+    DomainExpertModerateBlogComponent,
 
 
   ],
