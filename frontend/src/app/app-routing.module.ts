@@ -7,6 +7,9 @@ import {MainComponent} from "./main/main.component";
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+import {PasswordComponent} from "./password/password.component";
+import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
+
 
 //babysitter
 import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
@@ -30,6 +33,8 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 
 import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
+
+
 
 
 
@@ -57,6 +62,17 @@ const routes: Routes = [
     path: 'signup',
     component:SignupComponent,
   },
+  {
+    path: 'password',
+    component:PasswordComponent,
+    children: [
+      {
+        path: 'forget-password',
+        component: ForgetPasswordComponent,
+      },
+    ]
+  },
+
   {
     path: 'main',
     component: MainComponent,
