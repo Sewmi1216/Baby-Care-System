@@ -21,6 +21,8 @@ const addBabysitter = async (req, res) => {
     const password = req.body.password;
     const email = req.body.email;
     const contactNumber = req.body.contactNumber;
+    const qualifications = req.body.qualifications;
+    const verificationDetails = req.body.verificationDetails;
 
     const newBabysitter = new Babysitter({
         fname,
@@ -32,6 +34,8 @@ const addBabysitter = async (req, res) => {
         password,
         email,
         contactNumber,
+        qualifications,
+        verificationDetails,
     });
 
     await newBabysitter.save()
@@ -60,7 +64,7 @@ const getBabysitter = async (req, res) => {
 const updateBabysitter = async (req, res) => {
     let userId = req.params.id; //fetch the id
   
-    const {fname, lname, age, address, nic, gender, password, email, contactNumber} = req.body; // new value
+    const {fname, lname, age, address, nic, gender, password, email, contactNumber, qualifications, verificationDetails} = req.body; // new value
 
     const updateBabysitter = {
         fname,
@@ -72,6 +76,8 @@ const updateBabysitter = async (req, res) => {
         password,
         email,
         contactNumber,
+        qualifications,
+        verificationDetails
     };
 
     await Babysitter.findByIdAndUpdate(userId, updateBabysitter)
