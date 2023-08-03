@@ -13,18 +13,16 @@ import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
 import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
-import { AdminDashboardComponent } from './main/content/admin/admin-dashboard/admin-dashboard.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './main/content/parent/task-list/task-list.component';
-//import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
 import { SearchBabysittersComponent } from './main/content/parent/search-babysitters/search-babysitters.component';
 import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 import { CommunityComponent } from './main/content/parent/community/community.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  /* import form module */
 import { NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import { ParentdashLeftContentComponent } from './main/content/parent/parent-dashboard/parentdash-left-content/parentdash-left-content.component';
@@ -40,8 +38,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { DashboardComponent } from './main/content/dashboard/dashboard.component';
-//import { ParentdashboardComponent } from './main/content/parentdashboard/parentdashboard.component';
+
 library.add(faLocation); /*import the faLocation icon*/
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
@@ -54,6 +51,13 @@ import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysit
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
+/*Admin Components*/
+import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
+import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
+
 
 
 @NgModule({
@@ -69,12 +73,11 @@ import { BabysitterRequestdetailsComponent } from './main/content/babysitter/bab
     NavParentComponent,
     NavAdminComponent,
     NavDomainExpertComponent,
-    AdminDashboardComponent,
     ParentDashboardComponent,
     BabyDetailsComponent,
-     ViewBabyDetailsComponent,
-     ViewBabySittersComponent,
-     SitterPersonalInformationComponent,
+    ViewBabyDetailsComponent,
+    ViewBabySittersComponent,
+    SitterPersonalInformationComponent,
     DomainExpertDashboardComponent,
     SignupComponent,
     TaskListComponent,
@@ -85,20 +88,18 @@ import { BabysitterRequestdetailsComponent } from './main/content/babysitter/bab
     ParentdashLeftContentComponent,
     ParentdashRightContentComponent,
     ParentdashTopContentComponent,
-    DashboardComponent,
-    //ParentdashboardComponent,
-
-
-
     HomeHeaderComponent,
-
-
-    //babysitter
+    /*babysitter*/
     NavBabysitterComponent,
     BabysitterDashboardComponent,
     BabysitterTasklistComponent,
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
+
+    /*Admin*/
+    AdminDashboardComponent,
+    ManageUserAccountsComponent,
+    VerifyBabysittersComponent,
 
   ],
   imports: [
@@ -108,8 +109,11 @@ import { BabysitterRequestdetailsComponent } from './main/content/babysitter/bab
     FormsModule,
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule, /*Time picker module*/
-    FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule /*FontAwesome Module*/
-],
+    FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, /*FontAwesome Module*/
+
+    /* import Flex Layout module */
+    FlexLayoutModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
