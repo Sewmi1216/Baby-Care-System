@@ -27,6 +27,10 @@ mongoose.connect(URL,{
 
 const connection = mongoose.connection;
 
+//babysitter
+const babysitterRouter = require("./routes/babysitters.js");
+app.use("/babysitter", babysitterRouter);
+
 connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
