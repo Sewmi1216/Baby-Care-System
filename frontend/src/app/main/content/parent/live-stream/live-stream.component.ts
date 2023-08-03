@@ -1,11 +1,13 @@
 import {Component, } from '@angular/core';
 
 declare var apiRTC: any;
+
 @Component({
   selector: 'app-live-stream',
   templateUrl: './live-stream.component.html',
   styleUrls: ['./live-stream.component.css']
 })
+
 export class LiveStreamComponent{
 
 //webcam

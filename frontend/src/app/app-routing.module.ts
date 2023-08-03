@@ -4,11 +4,13 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
-import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
+import {PasswordComponent} from "./password/password.component";
+import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
 
-//babysitter
+/* babysitter */
 import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
@@ -30,6 +32,14 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 
 import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
+
+
+
+/* Admin */
+import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
+import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
+import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+
 
 
 
@@ -58,19 +68,32 @@ const routes: Routes = [
     component:SignupComponent,
   },
   {
+    path: 'password',
+    component:PasswordComponent,
+    children: [
+      {
+        path: 'forget-password',
+        component: ForgetPasswordComponent,
+      },
+    ]
+  },
+
+  {
     path: 'main',
     component: MainComponent,
     children: [
-      {
-        path: 'dashboard',
-        component: AdminDashboardComponent
-      },
+
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
 
       },
       {
+        path:'parent_task_list',
+        component: TaskListComponent
+      },
+      {
+
         path: 'baby_details',
         component: BabyDetailsComponent
 
@@ -137,6 +160,19 @@ const routes: Routes = [
         path: 'babysitter_requestdetails',
         component: BabysitterRequestdetailsComponent,
       },
+      /* Admin */
+      {
+        path: 'admin_dashboard',
+        component: AdminDashboardComponent
+      },
+      {
+        path: 'manage_user_accounts',
+        component: ManageUserAccountsComponent
+      },
+      {
+        path: 'verify_babysitter',
+        component: VerifyBabysittersComponent
+
       {
         path: 'babysitter_chat',
         component: BabysitterChatComponent,

@@ -1,4 +1,4 @@
-let Babysitter = require("../modules/babysitter");
+let Babysitter = require("../models/babysitter");
 
 const getAllbabysitters = async (req, res) => {
     await Babysitter.find()
