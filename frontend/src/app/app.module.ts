@@ -15,12 +15,12 @@ import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
-import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
+//import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 
 import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './main/content/parent/task-list/task-list.component';
 import { SearchBabysittersComponent } from './main/content/parent/search-babysitters/search-babysitters.component';
-import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
+//import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 import { CommunityComponent } from './main/content/parent/community/community.component';
 import { FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  /* import form module */
@@ -43,11 +43,11 @@ library.add(faLocation); /*import the faLocation icon*/
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 //babysitter
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
+//import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+//import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
+//import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+//import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
@@ -61,8 +61,8 @@ import { DomainExpertDashboardComponent } from './main/content/domain-expert/dom
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
 import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
 
-import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
-import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
+//import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
+//import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
 import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 
 
