@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@apizee/apirtc": "^4.6.5",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@syncfusion/ej2-angular-calendars": "^22.1.38",
     "bootstrap": "^5.2.3",

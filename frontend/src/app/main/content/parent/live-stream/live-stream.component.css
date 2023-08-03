@@ -1,0 +1,25 @@
+#local-container{
+  margin-left: 50px;
+  width: 1250px;
+  height: 600px;
+}
+
+
+
+@media (max-width:768px) {
+  #live{
+    width:80%;
+  }
+  h3{
+    font-size:15px;
+  }
+  button{
+    font-size:12px;
+  }
+  #local-container{
+    margin-left: 5px;
+    width: 100px;
+    height: 50px;
+  }
+
+}
