@@ -13,7 +13,7 @@
             </div>
 
             <!--Add new task form-->
-            <div class="container">
+            <div class="container" fxLayout="column" fxLayoutGap="16px">
             <form (ngSubmit)="onSubmit(taskForm)"  #taskForm="ngForm">
               <div class="form-group">
               <label for="task">New Task</label>
@@ -26,37 +26,35 @@
             <hr>
 
               <!--Task list content -->
-            <table class="table text-white mb-0">
+            <table class="table text-white mb-0" fxLayout="column">
             <thead>
-            <tr>
-              <th scope="col">Task</th>
-              <th scope="col">Time</th>
-              <th scope="col">Get Reminders</th>
-              <th scope="col">Any special Note</th>
-              <th scope="col">Action</th>
+            <tr fxLayout="row">
+              <th fxFlex="25%" scope="col">Task</th>
+              <th fxFlex="25%" scope="col">Time</th>
+              <th fxFlex="20%" scope="col">Get Reminders</th>
+              <th fxFlex="20%" scope="col">Any special Note</th>
+              <th fxFlex="10%" scope="col">Action</th>
               </tr>
             </thead>
 
             <tbody>
 
-            <tr *ngFor="let t of taskArray" class="fw-normal">
-              <td class="align-middle">{{t.taskName}}</td>
-              <td class="align-middle">
+            <tr *ngFor="let t of taskArray" class="fw-normal" fxLayout="row">
+              <td fxFlex="25%" class="align-middle">{{t.taskName}}</td>
+              <td fxFlex="25%" class="align-middle">
               <input class="time" placeholder="Time"[ngxTimepicker]="picker">
               <ngx-material-timepicker #picker></ngx-material-timepicker>
               </td>
-              <td>
+              <td fxFlex="20%" class="align-middle">
                 <input id="myCheckbox" type="checkbox" >
               </td>
-              <td class="align-middle">Note</td>
-              <td>
-
-              <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
+              <td fxFlex="20%" class="align-middle">Note</td>
+              <td fxFlex="10%">
+               <a href="#" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
                   class="fas fa-pencil-alt me-3"></i></a>
-               <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo">
+               <a href="#" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo">
                  <i class="fas fa-trash-alt"></i>
                </a>
-
                </td>
             </tr>
             </tbody>
