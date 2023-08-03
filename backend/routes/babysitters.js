@@ -8,7 +8,7 @@ router.route("/add").post(babysitterController.addBabysitter);
 
 router.route("/get/:id").get(babysitterController.getBabysitter);
 
-router.route("/update/:id").put(babysitterController.updateBabysitter);
+router.route("/update/:id").put(babysitterController.updateBabysitter) ;
 
 router.route("/delete/:id").delete(babysitterController.deleteBabysitter);
 
