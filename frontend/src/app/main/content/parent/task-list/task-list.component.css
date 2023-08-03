@@ -1,0 +1,81 @@
+/* Add task  button */
+#submitButton {
+  margin-top: 20px;
+
+}
+
+/* checkbox */
+#myCheckbox {
+  margin-left: 30px;
+}
+
+.time{
+   padding: 5px;
+
+}
+
+/* Custom styles for  input field */
+input.form-control {
+  font-size: 15px;
+  color: #0000;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+/* Custom styles for Task List header */
+.my-4{
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+}
+
+/* Custom styles for Task List table content */
+.container{
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Custom styles for label => New Task */
+label[for="task"] {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+
+/* Custom styles for table */
+.table {
+  background-color: #333;
+  color: #ffffff;
+  border: none;
+}
+
+/* Custom styles for table header */
+.table thead th {
+  background-color: #BCB8E8;
+}
+
+/* Custom styles for table body */
+.table tbody td {
+  background-color: #ffffff;
+}
+
+/* Custom styles for  action column */
+.table tbody td:last-child {
+  width: 100px;
+  text-align: center;
+}
+
+/* Custom styles for  edit and delete icons */
+.text-info, .text-danger {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* Custom styles for  tooltip */
+.tooltip-inner {
+  background-color: #555;
+  color: #ffffff;
+}

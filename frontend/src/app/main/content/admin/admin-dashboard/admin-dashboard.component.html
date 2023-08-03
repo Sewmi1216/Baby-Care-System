@@ -1,1 +1,100 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="2" rowHeight="250px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
 
+
+        <mat-card-content class="dashboard-card-content" >
+          <!-- For Card 1 content -->
+          <div *ngIf="card.title === 'Card 1'" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+
+            <div fxFlex="25%" fxFlex.lt-sm="100%">
+              <div class="card l-bg-cherry">
+                <!-- Card 1 content -->
+                  <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                      <div class="mb-4">
+                          <h5 class="card-title mb-0">New Babysitter Requests</h5>
+                      </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                      <div class="col-8">
+                           <h2 class="d-flex align-items-center mb-0"> 160 </h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div fxFlex="25%" fxFlex.lt-sm="100%">
+              <div class="card l-bg-blue-dark">
+                <!-- Card 2 content -->
+                  <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                      <div class="mb-4">
+                           <h5 class="card-title mb-0">New Parents</h5>
+                      </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                      <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0"> 120 </h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div fxFlex="25%" fxFlex.lt-sm="100%">
+              <div class="card l-bg-green-dark">
+                <!-- Card 3 content -->
+                  <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                      <div class="mb-4">
+                          <h5 class="card-title mb-0">New Complaints</h5>
+                      </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                      <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0">
+                          12
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div fxFlex="25%" fxFlex.lt-sm="100%">
+              <div class="card l-bg-orange-dark">
+                <!-- Card 4 content -->
+                <div class="card-statistic-3 p-4">
+                  <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">Revenue Today</h5>
+                    </div>
+                  <div class="row align-items-center mb-2 d-flex">
+                    <div class="col-8">
+                      <h2 class="d-flex align-items-center mb-0"> Rs.156,000 </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- For Card 2 content -->
+          <div *ngIf="card.title === 'Card 2'" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+            <h2>Monthly Total Revenue</h2>
+          </div>
+
+          <!-- For Card 3 content -->
+          <div *ngIf="card.title === 'Card 3'" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+            <h2>All users</h2>
+
+          </div>
+
+
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
