@@ -2,6 +2,42 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema;
 
+const qualificationsSchema = new schema ({
+    filename: {
+        type: String,
+        required: true,
+    },
+    filetype: {
+        type: String,
+        required: true,
+    },
+    size: {
+        type: Number,
+    },
+    data: { 
+        type: String, //binary_data_or_file_url_here
+        required: true,
+    }
+})
+
+const verificationDetailsSchema = new schema ({
+    filename: {
+        type: String,
+        required: true,
+    },
+    filetype: {
+        type: String,
+        required: true,
+    },
+    size: {
+        type: Number,
+    },
+    data: {
+        type: String,
+        required: true,
+    }
+})
+
 const babysitterSchema = new schema ({
     fname: {
         type: String,
@@ -37,6 +73,14 @@ const babysitterSchema = new schema ({
     },
     contactNumber: {
         type: String,
+        required: true,
+    },
+    qualifications:{
+        type: [qualificationsSchema],
+        required: true,
+    },
+    verificationDetails: {
+        type: [verificationDetailsSchema],
         required: true,
     },
 })
