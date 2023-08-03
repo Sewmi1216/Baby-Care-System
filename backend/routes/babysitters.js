@@ -1,5 +1,5 @@
 const router = require("express").Router(); //import router of express package
-let Babysitter = require("../modules/babysitter"); //import babysitter module
+let Babysitter = require("../models/babysitter"); //import babysitter module
 const babysitterController = require("../controllers/babysitters"); //import babysitter controller
 
 router.route("/").get(babysitterController.getAllbabysitters);
