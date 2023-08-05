@@ -75,8 +75,22 @@ const updateTask = async (req, res) => {
         });
 };
 
+const deleteTask = async (req, res) => {
+    let taskId = req.params.id;
+
+    await Task.findByIdAndDelete(taskId)
+        .then((task) => {
+            res.status(200).send({ status: "Task Deleted", task });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete task", error: err.message });
+        });
+};
+
 module.exports={
     addParent,
     addTask,
-    updateTask
+    updateTask,
+    deleteTask
 };

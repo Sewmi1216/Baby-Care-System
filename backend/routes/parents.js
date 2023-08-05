@@ -12,6 +12,7 @@ router.route('/addTask').post(parentController.addTask);
 router.route("/updateTask/:id").put(parentController.updateTask);
 
 //delete
+router.route("/deleteTask/:id").delete(parentController.deleteTask);
 
 //getOne
 
