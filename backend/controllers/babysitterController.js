@@ -1,4 +1,5 @@
 let Babysitter = require("../models/babysitter");
+let Task = require("../models/task");
 
 const getAllbabysitters = async (req, res) => {
     await Babysitter.find()
@@ -104,10 +105,23 @@ const deleteBabysitter = async (req, res) => {
 };
 
 
+const getAllTasks = async (req, res) => {
+    await Task.find()
+    .then((tasks) => {
+        res.status(200).send({status: "All tasks", tasks});
+    })
+    .catch((err) => {
+        console.log(err.message);
+        res.status(500).send({status: "Error with get all tasks", error: err.message});
+    })
+}
+    
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
     getBabysitter,
     updateBabysitter,
     deleteBabysitter,
+    getAllTasks,
 };
