@@ -16,11 +16,11 @@ const taskSchema = new schema({
         required: true
     },
     taskCompletedStatus: {
-        type: String,
+        type: Boolean,
         required: true
     },
     remainderStatus: {
-        type: String,
+        type: Boolean,
         required: true
     },
 })
