@@ -17,7 +17,7 @@ const taskSchema = new schema({
     },
     taskCompletedStatus: {
         type: Boolean,
-        // required: true
+        required: true
     },
     remainderStatus: {
         type: Boolean,

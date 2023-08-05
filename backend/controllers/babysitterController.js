@@ -116,6 +116,24 @@ const getAllTasks = async (req, res) => {
     })
 }
     
+const updateTask = async (req, res) => {
+    let taskId = req.params.id; //fetch the id
+  
+    const {taskCompletedStatus} = req.body; // new value
+
+    const updateTask = {
+        taskCompletedStatus
+    };
+
+    await Task.findByIdAndUpdate(taskId, updateTask)
+        .then((task) => {
+            res.status(200).send({ status: "Task updated", task });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+};
 
 module.exports = {
     getAllbabysitters,
@@ -124,4 +142,5 @@ module.exports = {
     updateBabysitter,
     deleteBabysitter,
     getAllTasks,
+    updateTask,
 };

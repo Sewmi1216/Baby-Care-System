@@ -31,14 +31,14 @@ const addTask = async (req, res) =>{
     const status = req.body.status;
     const time = req.body.time;
     const name = req.body.name;
-    // const taskCompletedStatus = req.body.taskCompletedStatus;
+    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
     const remainderStatus = Boolean(req.body.remainderStatus);
 
     const newTask = new Task({
         status,
         time,
         name,
-        //taskCompletedStatus,
+        taskCompletedStatus,
         remainderStatus,
     });
 
