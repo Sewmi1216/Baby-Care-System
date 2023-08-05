@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const tasksController = require("../controllers/tasks");
 
-router.route("/add").post(tasksController.addTask);
+router.route("/").get(tasksController.getAllTasks);
+
 
 module.exports = router;

@@ -1,30 +1,17 @@
 let Task = require("../models/task");
 
-const addTask = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    // const taskCompletedStatus = req.body.taskCompletedStatus;
-    const remainderStatus = Boolean(req.body.remainderStatus);
-
-    const newTask = new Task({
-        status,
-        time,
-        name,
-        //taskCompletedStatus,
-        remainderStatus,
-    });
-
-    await newTask.save()
-    .then((task) => {
-        res.status(200).send({status: "Task is added", task});
+const getAllTasks = async (req, res) => {
+    await Task.find()
+    .then((tasks) => {
+        res.status(200).send({status: "All tasks", tasks});
     })
     .catch((err) => {
         console.log(err.message);
-        res.status(500).send({status: "Error with the task", error: err.message})
-    });
-};
+        res.status(500).send({status: "Error with get all tasks", error: err.message});
+    })
+}
+
 
 module.exports = {
-    addTask
+    getAllTasks
 }
