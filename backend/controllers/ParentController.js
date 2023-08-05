@@ -52,7 +52,31 @@ const addTask = async (req, res) =>{
     });
 };
 
+const updateTask = async (req, res) => {
+    let taskId = req.params.id; //fetch the id
+  
+    const {status, time, name, taskCompletedStatus, remainderStatus} = req.body; // new value
+
+    const updateTask = {
+        status,
+        time,
+        name,
+        taskCompletedStatus,
+        remainderStatus
+    };
+
+    await Task.findByIdAndUpdate(taskId, updateTask)
+        .then((task) => {
+            res.status(200).send({ status: "Task updated", task });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+};
+
 module.exports={
     addParent,
     addTask,
+    updateTask
 };
