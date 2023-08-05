@@ -38,3 +38,7 @@ app.use("/babysitter", babysitterRouter);
 const parentRouter = require("./routes/parents");
 app.use("/parent", parentRouter);
 
+//task
+const taskRouter = require("./routes/tasks.js");
+app.use("/task",taskRouter);
+
