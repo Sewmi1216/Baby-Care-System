@@ -56,13 +56,13 @@ module.exports = RequestForm;
           toTime: '4:00 PM',
         },
       ],
-      NumberofBabies: 1,
+      numberofBabies: 1,
       babyDetails: [
         {
             age: 1,
             gender: 'male',
         }
       ],
-      SpecialNeeds: 'None',
+      specialNeeds: 'None',
     };
 */
