@@ -57,10 +57,12 @@ module.exports = RequestForm;
         },
       ],
       NumberofBabies: 1,
-      babyDetails: {
-        age: 1,
-        gender: 'male',
-      },
+      babyDetails: [
+        {
+            age: 1,
+            gender: 'male',
+        }
+      ],
       SpecialNeeds: 'None',
     };
 */
