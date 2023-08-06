@@ -61,7 +61,7 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 
 //import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 //import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
-import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
+
 
 import { PasswordComponent } from './password/password.component';
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
