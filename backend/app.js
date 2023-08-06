@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express()
-require("dotenv").config();
+require("dotenv").config(); 
 
 const port = process.env.PORT || 8070
 
@@ -37,4 +37,8 @@ app.use("/babysitter", babysitterRouter);
 //parent
 const parentRouter = require("./routes/parents");
 app.use("/parent", parentRouter);
+
+//admin
+const adminRouter = require("./routes/admins.js");
+app.use("/admin",adminRouter);
 
