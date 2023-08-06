@@ -13,6 +13,7 @@ router.route("/viewTask").get(babysitterController.getAllTasks);
 //update
 router.route("/updateBabysitter/:id").put(babysitterController.updateBabysitter);
 router.route("/updateTask/:id").put(babysitterController.updateTask);
+router.route("/updateRequestForm/:id").put(babysitterController.updateRequestForm);
 
 //delete
 router.route("/delete/:id").delete(babysitterController.deleteBabysitter);

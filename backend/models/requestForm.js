@@ -5,7 +5,7 @@ const schema = mongoose.Schema;
 const requestFormSchema = new schema({
     isAccept: {
         type: Boolean,
-        required: false
+        default: false,
     },
     workExpectation: [{
         date: {
