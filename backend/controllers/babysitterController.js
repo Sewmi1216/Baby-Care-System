@@ -136,6 +136,16 @@ const updateTask = async (req, res) => {
         });
 };
 
+const getAllRequestForm = async (req, res) => {
+    await RequestForm.find()
+        .then((requestForm) => {
+            res.status(200).send({status: "All request form", requestForm})
+        })
+        .catch((err) => {
+            res.status(500).send({status: "Error with get all request form", error: err.message})
+        })
+}
+
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
 
@@ -163,5 +173,6 @@ module.exports = {
     deleteBabysitter,
     getAllTasks,
     updateTask,
+    getAllRequestForm,
     updateRequestForm,
 };
