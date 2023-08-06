@@ -17,11 +17,11 @@ const requestFormSchema = new schema({
             required: true
         }
     }],
-    NumberofBabies: {
+    numberofBabies: {
         type: Number,
         required: true
     },
-    babyDetails: {
+    babyDetails: [{
         age: {
             type: Number,
             required: true
@@ -31,8 +31,8 @@ const requestFormSchema = new schema({
             // enum: ['male', 'female'],
             required: true
         }
-    },
-    SpecialNeeds: {
+    }],
+    specialNeeds: {
         type: String,
         required: true,
     }

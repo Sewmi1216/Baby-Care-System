@@ -1,5 +1,6 @@
 let Parent = require("../models/Parent");
 let Task = require("../models/task");
+let RequestForm = require("../models/requestForm")
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -88,9 +89,32 @@ const deleteTask = async (req, res) => {
         });
 };
 
+const addRequestForm = async (req, res) => {
+    const workExpectation = req.body.workExpectation;
+    const numberofBabies = req.body.numberofBabies;
+    const babyDetails = req.body.babyDetails;
+    const specialNeeds = req.body.specialNeeds;
+
+    const newRequestFormData = new RequestForm ({
+        workExpectation,
+        numberofBabies,
+        babyDetails,
+        specialNeeds,
+    })
+
+    await newRequestFormData.save()
+    .then((requestForm) => {
+        res.status(200).send({status: "Request form added", requestForm});
+    })
+    .catch((err) => {
+        res.status(500).send({status: "Error with add request form", error: err.message})
+    })
+}
+
 module.exports={
     addParent,
     addTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    addRequestForm
 };
