@@ -15,8 +15,6 @@ import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
-import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
-
 import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './main/content/parent/task-list/task-list.component';
 import { SearchBabysittersComponent } from './main/content/parent/search-babysitters/search-babysitters.component';
@@ -61,15 +59,10 @@ import { DomainExpertDashboardComponent } from './main/content/domain-expert/dom
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
 import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
 
-import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
-import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
+//import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
+//import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
 import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 
-
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { PasswordComponent } from './password/password.component';
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 

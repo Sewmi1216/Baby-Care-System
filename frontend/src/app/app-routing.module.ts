@@ -30,7 +30,7 @@ import { DomainExpertDashboardComponent } from './main/content/domain-expert/dom
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
 import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
 
-import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+//import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
 
 
@@ -138,10 +138,10 @@ const routes: Routes = [
         path: 'babysitter_requestdetails',
         component: BabysitterRequestdetailsComponent,
       },
-      {
-        path: 'domain_expert_moderate_community',
-        component: ModerateCommunityComponent,
-      },
+      // {
+      //   path: 'domain_expert_moderate_community',
+      //   component: ModerateCommunityComponent,
+      // },
 
       //babysitter
       {
@@ -177,10 +177,10 @@ const routes: Routes = [
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
       },
-      {
-        path: 'domain_expert_moderate_community',
-        component: ModerateCommunityComponent
-      }
+      // {
+      //   path: 'domain_expert_moderate_community',
+      //   component: ModerateCommunityComponent
+      // },
 
       //domain-expert
       {
