@@ -172,7 +172,7 @@ const routes: Routes = [
       {
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
-
+      },
       {
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
