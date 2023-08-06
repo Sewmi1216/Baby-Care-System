@@ -133,11 +133,24 @@ const updateRequestForm = async (req, res) => {
         });
 };
 
+const deleteRequestForm = async (req, res) => {
+    let requestFormId = req.params.id;
+
+    await RequestForm.findByIdAndDelete(requestFormId)
+        .then((requestForm) => {
+            res.status(200).send({status: "Request form deleted", requestForm});
+        })
+        .catch((err) => {
+            res.status(500).save({status: "Error with delete form", error: err.message})
+        })
+}
+
 module.exports={
     addParent,
     addTask,
     updateTask,
     deleteTask,
     addRequestForm,
-    updateRequestForm
+    updateRequestForm,
+    deleteRequestForm
 };

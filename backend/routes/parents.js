@@ -15,6 +15,7 @@ router.route("/updateRequestForm/:id").put(parentController.updateRequestForm);
 
 //delete
 router.route("/deleteTask/:id").delete(parentController.deleteTask);
+router.route("/deleteRequestForm/:id").delete(parentController.deleteRequestForm);
 
 //getOne
 

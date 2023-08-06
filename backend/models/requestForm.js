@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const requestFormSchema = new schema({
+    isAccept: {
+        type: Boolean,
+        required: false
+    },
     workExpectation: [{
         date: {
             type: Date,
