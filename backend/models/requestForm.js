@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const requestFormSchema = new schema({
+    isAccept: {
+        type: Boolean,
+        default: false,
+    },
     workExpectation: [{
         date: {
             type: Date,
@@ -17,11 +21,11 @@ const requestFormSchema = new schema({
             required: true
         }
     }],
-    NumberofBabies: {
+    numberofBabies: {
         type: Number,
         required: true
     },
-    babyDetails: {
+    babyDetails: [{
         age: {
             type: Number,
             required: true
@@ -31,8 +35,8 @@ const requestFormSchema = new schema({
             // enum: ['male', 'female'],
             required: true
         }
-    },
-    SpecialNeeds: {
+    }],
+    specialNeeds: {
         type: String,
         required: true,
     }
@@ -56,11 +60,13 @@ module.exports = RequestForm;
           toTime: '4:00 PM',
         },
       ],
-      NumberofBabies: 1,
-      babyDetails: {
-        age: 1,
-        gender: 'male',
-      },
-      SpecialNeeds: 'None',
+      numberofBabies: 1,
+      babyDetails: [
+        {
+            age: 1,
+            gender: 'male',
+        }
+      ],
+      specialNeeds: 'None',
     };
 */

@@ -9,10 +9,12 @@ router.route("/addBabysitter").post(babysitterController.addBabysitter);
 //retrive
 router.route("/viewBabysitter").get(babysitterController.getAllbabysitters);
 router.route("/viewTask").get(babysitterController.getAllTasks);
+router.route("/viewRequestForm").get(babysitterController.getAllRequestForm);
 
 //update
 router.route("/updateBabysitter/:id").put(babysitterController.updateBabysitter);
 router.route("/updateTask/:id").put(babysitterController.updateTask);
+router.route("/updateRequestForm/:id").put(babysitterController.updateRequestForm);
 
 //delete
 router.route("/delete/:id").delete(babysitterController.deleteBabysitter);

@@ -1,5 +1,6 @@
 let Parent = require("../models/Parent");
 let Task = require("../models/task");
+let RequestForm = require("../models/requestForm")
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -88,9 +89,68 @@ const deleteTask = async (req, res) => {
         });
 };
 
+const addRequestForm = async (req, res) => {
+    const workExpectation = req.body.workExpectation;
+    const numberofBabies = req.body.numberofBabies;
+    const babyDetails = req.body.babyDetails;
+    const specialNeeds = req.body.specialNeeds;
+
+    const newRequestFormData = new RequestForm ({
+        workExpectation,
+        numberofBabies,
+        babyDetails,
+        specialNeeds,
+    })
+
+    await newRequestFormData.save()
+    .then((requestForm) => {
+        res.status(200).send({status: "Request form added", requestForm});
+    })
+    .catch((err) => {
+        res.status(500).send({status: "Error with add request form", error: err.message})
+    })
+}
+
+const updateRequestForm = async (req, res) => {
+    let requestFormId = req.params.id; //fetch the id
+  
+    const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
+
+    const updateRequestForm = {
+        workExpectation,
+        numberofBabies,
+        babyDetails,
+        specialNeeds
+    };
+
+    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
+        .then((requestForm) => {
+            res.status(200).send({ status: "Request form updated", requestForm });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+};
+
+const deleteRequestForm = async (req, res) => {
+    let requestFormId = req.params.id;
+
+    await RequestForm.findByIdAndDelete(requestFormId)
+        .then((requestForm) => {
+            res.status(200).send({status: "Request form deleted", requestForm});
+        })
+        .catch((err) => {
+            res.status(500).save({status: "Error with delete form", error: err.message})
+        })
+}
+
 module.exports={
     addParent,
     addTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    addRequestForm,
+    updateRequestForm,
+    deleteRequestForm
 };

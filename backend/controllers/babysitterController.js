@@ -1,5 +1,6 @@
 let Babysitter = require("../models/babysitter");
 let Task = require("../models/task");
+let RequestForm = require("../models/requestForm");
 
 const getAllbabysitters = async (req, res) => {
     await Babysitter.find()
@@ -135,6 +136,35 @@ const updateTask = async (req, res) => {
         });
 };
 
+const getAllRequestForm = async (req, res) => {
+    await RequestForm.find()
+        .then((requestForm) => {
+            res.status(200).send({status: "All request form", requestForm})
+        })
+        .catch((err) => {
+            res.status(500).send({status: "Error with get all request form", error: err.message})
+        })
+}
+
+const updateRequestForm = async (req, res) => {
+    let requestFormId = req.params.id;
+
+    const {isAccept} = req.body;
+
+    const updateRequestForm = {
+        isAccept
+    };
+
+    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
+        .then((requestForm) => {
+            res.status(200).send({ status: "Request form updated", requestForm });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+}
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
@@ -143,4 +173,6 @@ module.exports = {
     deleteBabysitter,
     getAllTasks,
     updateTask,
+    getAllRequestForm,
+    updateRequestForm,
 };
