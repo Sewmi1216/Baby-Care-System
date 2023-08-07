@@ -7,7 +7,6 @@ import {MainComponent} from "./main/main.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
 import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
-import {PasswordComponent} from "./password/password.component";
 import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
 
 /* babysitter */
@@ -70,14 +69,8 @@ const routes: Routes = [
     component:SignupComponent,
   },
   {
-    path: 'password',
-    component:PasswordComponent,
-    children: [
-      {
-        path: 'forget-password',
-        component: ForgetPasswordComponent,
-      },
-    ]
+    path: 'forget-password',
+    component: ForgetPasswordComponent,
   },
 
   {

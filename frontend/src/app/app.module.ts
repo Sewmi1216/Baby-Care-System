@@ -63,7 +63,6 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 //import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
 
 
-import { PasswordComponent } from './password/password.component';
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 
 
@@ -121,7 +120,6 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
     AdminDashboardComponent,
     ManageUserAccountsComponent,
     VerifyBabysittersComponent,
-    PasswordComponent,
     ForgetPasswordComponent,
 
     BabysitterChatComponent,
