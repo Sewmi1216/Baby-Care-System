@@ -1,4 +1,6 @@
-let Parent = require("../models/Parent")
+let Parent = require("../models/Parent");
+let Task = require("../models/task");
+let RequestForm = require("../models/requestForm")
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -26,7 +28,129 @@ const addParent = (req, res) => {
     })
 }
 
+const addTask = async (req, res) =>{
+    const status = req.body.status;
+    const time = req.body.time;
+    const name = req.body.name;
+    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
+    const remainderStatus = Boolean(req.body.remainderStatus);
+
+    const newTask = new Task({
+        status,
+        time,
+        name,
+        taskCompletedStatus,
+        remainderStatus,
+    });
+
+    await newTask.save()
+    .then((task) => {
+        res.status(200).send({status: "Task is added", task});
+    })
+    .catch((err) => {
+        console.log(err.message);
+        res.status(500).send({status: "Error with the task", error: err.message});
+    });
+};
+
+const updateTask = async (req, res) => {
+    let taskId = req.params.id; //fetch the id
+  
+    const {status, time, name, taskCompletedStatus, remainderStatus} = req.body; // new value
+
+    const updateTask = {
+        status,
+        time,
+        name,
+        taskCompletedStatus,
+        remainderStatus
+    };
+
+    await Task.findByIdAndUpdate(taskId, updateTask)
+        .then((task) => {
+            res.status(200).send({ status: "Task updated", task });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+};
+
+const deleteTask = async (req, res) => {
+    let taskId = req.params.id;
+
+    await Task.findByIdAndDelete(taskId)
+        .then((task) => {
+            res.status(200).send({ status: "Task Deleted", task });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete task", error: err.message });
+        });
+};
+
+const addRequestForm = async (req, res) => {
+    const workExpectation = req.body.workExpectation;
+    const numberofBabies = req.body.numberofBabies;
+    const babyDetails = req.body.babyDetails;
+    const specialNeeds = req.body.specialNeeds;
+
+    const newRequestFormData = new RequestForm ({
+        workExpectation,
+        numberofBabies,
+        babyDetails,
+        specialNeeds,
+    })
+
+    await newRequestFormData.save()
+    .then((requestForm) => {
+        res.status(200).send({status: "Request form added", requestForm});
+    })
+    .catch((err) => {
+        res.status(500).send({status: "Error with add request form", error: err.message})
+    })
+}
+
+const updateRequestForm = async (req, res) => {
+    let requestFormId = req.params.id; //fetch the id
+  
+    const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
+
+    const updateRequestForm = {
+        workExpectation,
+        numberofBabies,
+        babyDetails,
+        specialNeeds
+    };
+
+    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
+        .then((requestForm) => {
+            res.status(200).send({ status: "Request form updated", requestForm });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+};
+
+const deleteRequestForm = async (req, res) => {
+    let requestFormId = req.params.id;
+
+    await RequestForm.findByIdAndDelete(requestFormId)
+        .then((requestForm) => {
+            res.status(200).send({status: "Request form deleted", requestForm});
+        })
+        .catch((err) => {
+            res.status(500).save({status: "Error with delete form", error: err.message})
+        })
+}
 
 module.exports={
-    addParent
+    addParent,
+    addTask,
+    updateTask,
+    deleteTask,
+    addRequestForm,
+    updateRequestForm,
+    deleteRequestForm
 };
