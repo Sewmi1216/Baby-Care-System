@@ -32,11 +32,35 @@ const viewAdmin = async (req, res) => {
 
     await Admin.findById(userId)
         .then((admin) => {
-            res.status(200).send({ status: "Babysitter fetched", admin });
+            res.status(200).send({ status: "Admin fetched", admin });
         })
         .catch((err) => {
             console.log(err.message);
-            res.status(500).send({ status: "Error with get user", error: err.message });
+            res.status(500).send({ status: "Error with get admin", error: err.message });
+        });
+};
+const updateAdmin = async (req, res) => {
+    let userId = req.params.id; //fetch the id
+  
+    const {firstName, lastName, email, phone_no, address, password, nic} = req.body; // new value
+    //create a object
+    const updateAdmin = {
+        firstName,
+        lastName,
+        email,
+        phone_no,
+        address,
+        password,
+        nic
+    };
+
+    await Admin.findByIdAndUpdate(userId, updateAdmin)
+        .then((admin) => {
+            res.status(200).send({ status: "Admin updated", admin });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
         });
 };
 
@@ -55,5 +79,6 @@ const getAllbabysitters = async (req, res) => {
 module.exports={
     addAdmin,
     viewAdmin,
+    updateAdmin,
     getAllbabysitters,
 };
