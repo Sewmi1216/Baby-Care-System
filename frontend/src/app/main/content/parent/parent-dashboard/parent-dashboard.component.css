@@ -1,0 +1,78 @@
+h1{
+  text-align: left;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+/* Media queries for .top-section */
+@media only screen and (max-width: 1600px) {
+  .top-section {
+    width: 1280px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .top-section {
+    width: 1180px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .top-section {
+    width: 1080px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .top-section {
+    width: 980px;
+  }
+}
+
+/* Styles for .middle-section */
+.middle-section {
+  display: flex;
+  gap: 160px;
+}
+
+/* Styles for .widget */
+.widget {
+  height: 350px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  box-shadow: 5px 5px 5px 5px #939393;
+}
+
+/* Media queries for .widget.left */
+@media only screen and (max-width: 1600px) {
+  .widget.left {
+    width: 790px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .widget.left {
+    width: 690px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .widget.left {
+    width: 590px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .widget.left {
+    width: 490px;
+  }
+}
+
+/* Styles for .widget.right */
+.widget.right {
+  width: 450px;
+
+}
