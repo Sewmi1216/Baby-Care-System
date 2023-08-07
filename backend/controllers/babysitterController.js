@@ -165,6 +165,18 @@ const updateRequestForm = async (req, res) => {
         });
 }
 
+const getRequestForm = async (req, res) => {
+    let requestFormId = req.params.id;
+
+    await RequestForm.findById(requestFormId)
+        .then((requestForm) => {
+            res.status(200).send({ status: "Request form fetched", requestForm})
+        })
+        .catch((err) => {
+            res.status(500).send({status: "Error with get request form", error: err.message})
+        })
+}
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
@@ -175,4 +187,5 @@ module.exports = {
     updateTask,
     getAllRequestForm,
     updateRequestForm,
+    getRequestForm,
 };
