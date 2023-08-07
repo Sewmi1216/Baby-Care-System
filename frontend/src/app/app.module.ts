@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -71,6 +72,8 @@ import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admi
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
 import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
+import {NotifierService} from "angular-notifier";
+
 
 
 
@@ -134,6 +137,7 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterOutlet,
     FormsModule,
@@ -144,7 +148,7 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
     /* import Flex Layout module */
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [NotifierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
