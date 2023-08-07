@@ -7,9 +7,9 @@ const babysitterController = require("../controllers/babysitterController"); //i
 router.route("/addBabysitter").post(babysitterController.addBabysitter);
 
 //retrive
-router.route("/viewBabysitter").get(babysitterController.getAllbabysitters);
-router.route("/viewTask").get(babysitterController.getAllTasks);
-router.route("/viewRequestForm").get(babysitterController.getAllRequestForm);
+router.route("/viewBabysitters").get(babysitterController.getAllbabysitters);
+router.route("/viewTasks").get(babysitterController.getAllTasks);
+router.route("/viewRequestForms").get(babysitterController.getAllRequestForm);
 
 //update
 router.route("/updateBabysitter/:id").put(babysitterController.updateBabysitter);
@@ -21,5 +21,7 @@ router.route("/delete/:id").delete(babysitterController.deleteBabysitter);
 
 //getOne
 router.route("/get/:id").get(babysitterController.getBabysitter);
+router.route("/getRequestForm/:id").get(babysitterController.getRequestForm);
+
 
 module.exports = router;
