@@ -1,22 +1,19 @@
-
 <div class="container-fluid">
 
   <div class="row">
-    <div class="col-11" id="live">
-      <h3>Live Stream</h3>
+    <div class="col-10" id="live">
+      <h1>Live Stream</h1>
     </div>
-    <div class="col-1">
-      <button type="submit" class="btn btn-dark mb-3" (click)="getOrcreateConversation()" title="Start Live Stream">
-        Start
+    <div class="col-2">
+      <button type="submit" class="btn btn-dark mb-3" (click)="setupCamera()" title="Start Live Stream">
+        Enable webcam
       </button>
     </div>
   </div>
-  <!--    <div id="remote-container">-->
-  <!--    </div>-->
-  <div id="local-container">
+<!--  <video #videoElement id="webcam" ></video>-->
+  <div class="video-container">
+    <video #videoElement></video>
+    <canvas #canvasElement></canvas>
   </div>
-
-
-  <!--  <video id="video" autoplay></video>-->
 
 </div>

@@ -1,7 +1,8 @@
-#local-container{
-  margin-left: 50px;
-  width: 1250px;
-  height: 600px;
+video {
+  display: block;
+}
+button{
+  margin-left:55px;
 }
 
 
