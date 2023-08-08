@@ -64,7 +64,6 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 //import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
 
 
-import { PasswordComponent } from './password/password.component';
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 
 
@@ -124,7 +123,6 @@ import {NotifierService} from "angular-notifier";
     AdminDashboardComponent,
     ManageUserAccountsComponent,
     VerifyBabysittersComponent,
-    PasswordComponent,
     ForgetPasswordComponent,
 
     BabysitterChatComponent,

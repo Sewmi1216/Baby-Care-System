@@ -1,62 +1,83 @@
-import {Component, } from '@angular/core';
+import {Component, ElementRef, AfterViewInit, ViewChild, Renderer2} from '@angular/core';
+import * as cocoSsd from '@tensorflow-models/coco-ssd';
+import '@tensorflow/tfjs';
 
-declare var apiRTC: any;
+interface ObjectPrediction {
+  class: string;
+  bbox: number[];
+  score: number;
+}
 
 @Component({
   selector: 'app-live-stream',
   templateUrl: './live-stream.component.html',
   styleUrls: ['./live-stream.component.css']
 })
+export class LiveStreamComponent implements AfterViewInit {
+  @ViewChild('liveView', {static: true}) liveView!: ElementRef;
+  @ViewChild('videoElement') videoElement!: ElementRef;
+  @ViewChild('canvasElement') canvasElement!: ElementRef;
 
-export class LiveStreamComponent{
+  // private socket!:Socket;
+  private model: any; // Store the COCO-SSD model
+  private stream!: MediaStream;
+  private children: any[] = [];
 
-//webcam
-  // constructor() {
-  // }
-  // videoRef: any;
-  // ngOnInit():void{
-  //   this.videoRef =document.getElementById('video');
-  //   console.log(this.videoRef);
-  //   this.setupCamera();
-  // }
-  // setupCamera(){
-  //   navigator.mediaDevices.getUserMedia({
-  //     video:{width:1100, height:500},
-  //     audio:true
-  //   }).then(stram=>{
-  //     console.log(stram);
-  //     this.videoRef.srcObject=stram;
-  //   })
-  // }
-  constructor() {}
 
-  //apiRTC
-  getOrcreateConversation() {
-    var localStream:any = null;
+  constructor(private renderer: Renderer2) {
 
-    var ua = new apiRTC.UserAgent({
-      uri: 'apzkey:'
-    });
-    ua.register().then((session:any) => {
+    let lastAlertTime = 0;
+    const alertInterval = 10 * 60 * 1000;
+  }
 
-      var conversation :any;
+  async ngAfterViewInit(): Promise<void> {
+    await this.loadModel();
+    this.analyzeCameraFrames();
+    // this.socket = io('http://localhost:3000');
+  }
 
-      ua.createStream({
-        constraints: {
-          audio: true,
-          video: {width:1250, height:600}
-        }
-      })
-        .then((stream: any) => {
-          console.log('createStream :', stream);
-          // Save local stream
-          localStream = stream;
-          stream.removeFromDiv('local-container', 'local-media');
-          stream.addInDiv('local-container', 'local-media', {}, true);
+  async loadModel() {
+    this.model = await cocoSsd.load();
+  }
 
-        }).catch((err:any) => {
-        console.error('create stream error', err);
+  async setupCamera() {
+    try {
+      this.stream = await navigator.mediaDevices.getUserMedia({
+        video: {width: 1250, height: 600},
+        audio: true
       });
+
+      this.videoElement.nativeElement.srcObject = this.stream;
+
+      // Play the video once the stream is set
+      this.videoElement.nativeElement.play();
+    } catch (error) {
+      console.error('Error accessing camera:', error);
+    }
+  }
+
+
+  async analyzeCameraFrames() {
+    const video = this.videoElement.nativeElement;
+
+    if (video.readyState === 4 && video.videoWidth > 0 && video.videoHeight > 0) {
+      const predictions: ObjectPrediction[] = await this.model.detect(video);
+      const babyDetection = predictions.find(prediction => prediction.class === 'person');
+      console.log('Predictions: ');
+      console.log(predictions);
+      if (!babyDetection) {
+        // Trigger alert logic and WebSocket event here
+        // You can emit a WebSocket event to notify the backend
+      }
+    }
+
+    requestAnimationFrame(() => this.analyzeCameraFrames());
+  }
+
+  stopCamera() {
+    // @ts-ignore
+    this.videoElement.nativeElement.srcObject.getTracks().forEach(function (track) {
+      track.stop();
     });
   }
 }
