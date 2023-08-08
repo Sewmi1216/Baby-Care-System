@@ -1,5 +1,7 @@
 let Admin = require("../models/Admin");
 let Babysitter = require("../models/babysitter");
+let Parent = require("../models/Parent");
+let Complaints = require("../models/Complaint");
 
 const addAdmin = (req, res) => {
     const firstName = req.body.firstName;
@@ -64,21 +66,57 @@ const updateAdmin = async (req, res) => {
         });
 };
 
-const getAllbabysitters = async (req, res) => {
+const ViewAllBabysitters = async (req, res) => {
     await Babysitter.find()
         .then((babysitters) => {
             res.status(200).send({ status: "All babysitters", babysitters });
         })
         .catch((err) => {
             console.log(err.message);
-            res.status(500).send({ status: "Error with get all babysitters", error: err.message });
+            res.status(500).send({ status: "Error with view all babysitters", error: err.message });
+        });
+};
+const DeleteBabysitter = async (req, res) => {
+    let userId = req.params.id;
+
+    await Babysitter.findByIdAndDelete(userId)
+        .then((babysitter) => {
+            res.status(200).send({ status: "User Deleted", babysitter });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete user", error: err.message });
         });
 };
 
+const ViewAllParents = async (req, res) => {
+    await Parent.find()
+        .then((parents) => {    
+            res.status(200).send({ status: "All parents", parents });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all parents", error: err.message });
+        });
+};
+
+const ViewAllComplaints = async (req, res) => {
+    await Complaints.find()
+    .then((complaints) => {
+        res.status(200).send({status: "All complaints", complaints});
+    })
+    .catch((err) => {
+        console.log(err.message);
+        res.status(500).send({status: "Error with view all complaints", error: err.message});
+    })
+}
 
 module.exports={
     addAdmin,
     viewAdmin,
     updateAdmin,
-    getAllbabysitters,
+    ViewAllBabysitters,
+    DeleteBabysitter,
+    ViewAllComplaints,
+    ViewAllParents,
 };
