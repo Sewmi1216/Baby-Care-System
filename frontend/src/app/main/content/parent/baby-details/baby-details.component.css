@@ -29,3 +29,20 @@ h3{
   padding-left:50px ;
   padding-top: 37px;
 }
+/**, ::after, ::before {*/
+/*  !* box-sizing: border-box; *! !* This line is removed *!*/
+/*}*/
+/*!* styles.css *!*/
+
+/*!* Remove the box-sizing declaration *!*/
+/*!* *, ::after, ::before {*/
+/*    box-sizing: border-box;*/
+/*} *!*/
+
+/*!* Define other styles as needed *!*/
+
+/*!* Additional styles for the button *!*/
+/*.button-custom {*/
+/*  background-color: #7E57C2;*/
+/*  border-color: #563393;*/
+/*}*/
