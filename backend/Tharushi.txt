@@ -6,3 +6,7 @@ Babysitter - updateTask, getAllTask
 Parent - createRequestForm, updateRequestForm,deleteRequestForm
 Babysitter - viewOneRequestForm, updateRequestForm
 Tasklist - viewAllRequestForm (how get parent id?)
+
+//Feedback
+Parent - createFeedback, UpdateFeedback, deleteFeedback
+Babysitter - viewAllFeedback
