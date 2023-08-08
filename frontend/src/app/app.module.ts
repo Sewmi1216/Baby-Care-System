@@ -72,7 +72,11 @@ import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admi
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
 import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
+
 import {NotifierService} from "angular-notifier";
+
+import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+
 
 
 
@@ -95,6 +99,7 @@ import {NotifierService} from "angular-notifier";
     SignupComponent,
 
     BabyDetailsComponent,
+    BabyGrowthComponent,
     ViewBabyDetailsComponent,
     ViewBabySittersComponent,
     SitterPersonalInformationComponent,
@@ -132,6 +137,7 @@ import {NotifierService} from "angular-notifier";
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+
 
 
   ],
