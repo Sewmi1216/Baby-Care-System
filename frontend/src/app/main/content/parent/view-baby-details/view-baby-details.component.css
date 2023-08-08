@@ -8,10 +8,11 @@
 
 .custom-img {
 
-  width: 200px;
-  height: 200px;
+  width: 222px;
+  height: 198px;
   object-fit: cover;
   margin-top: 10px;
+  border-radius: 20px;
 }
 
 .topic_image{
