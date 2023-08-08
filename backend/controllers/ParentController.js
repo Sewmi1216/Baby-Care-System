@@ -1,6 +1,7 @@
 let Parent = require("../models/Parent");
 let Task = require("../models/task");
-let RequestForm = require("../models/requestForm")
+let RequestForm = require("../models/requestForm");
+let Feedback = require("../models/feedback");
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -171,6 +172,26 @@ const addComplaints = async (req, res) =>{
     });
 };
 
+const addFeedback = async (req, res) => {
+    //parent name
+    const details = req.body.details;
+    const rating = req.body.rating;
+
+    const newFeedback = new Feedback ({
+        //parentName: req.Parent.name,
+        details,
+        rating: Number(rating),
+    })
+
+    await newFeedback.save()
+        .then((feedback) => {
+            res.status(200).send({status: "Feedback is added", feedback});
+        })
+        .catch((err) => {
+            res.status(500).send({status: "Error with add feedback", error: err.message})
+        })
+};
+
 module.exports={
     addParent,
     addTask,
@@ -178,5 +199,6 @@ module.exports={
     deleteTask,
     addRequestForm,
     updateRequestForm,
-    deleteRequestForm
+    deleteRequestForm,
+    addFeedback,
 };
