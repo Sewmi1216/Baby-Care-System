@@ -1,11 +1,15 @@
 <div class="container-fluid">
-  <h3>Baby details</h3>
+  <div style="background-color: #e8e3fc; width: 365px;height: 120px;padding: 5px 0 0 5px " >
+    <img class="topic_image" src="../../assets/Happybaby.svg">
+  <h3>My Baby</h3>
+
+  </div>
   <div class="mb-3 d-flex justify-content-end">
 
+<!--    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">-->
+<!--      Add Baby Details-->
+<!--    </button>-->
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-      Add Baby Details
-    </button>
 
     <!-- The Modal -->
     <div class="modal" id="myModal">
@@ -15,7 +19,7 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Baby Details</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <button  type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
           <!-- Modal body -->
@@ -62,24 +66,29 @@
         </div>
       </div>
     </div>
-  </div>
 
-</div> <div class="row justify-content-center mt-4">
-  <div class="col-sm-6 col-md-4">
-    <div class="card custom-card" style="width: 100%;">
+</div>
+<div style="background-color: #e8e3fc;" class="row justify-content mt-5 ">
+
+  <div class="col-sm-6 col-md-4  "style="height: 360px">
+
+
+
+
+    <div class="card custom-card" style="width: 70%;height: 320px;margin-top: 20px;margin-right: 20px;margin-left: 10px;">
       <div class="d-flex justify-content-center mt-3">
         <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
       </div>
       <div class="card-body bg-custom text-center">
         <h4 class="card-title">Sewmi Thimaya</h4>
         <p class="card-text">25 years</p>
-        <a routerLink="view_baby_details" class="btn btn-primary">View Profile</a>
+        <a routerLink="/main/view_baby_details" class="btn btn-primary" style="background-color: #7E57C2;border-color: #563393">View Profile</a>
       </div>
     </div>
   </div>
 </div>
 
-
+</div>
 
 
 
