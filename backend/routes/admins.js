@@ -6,6 +6,8 @@
 // create
 
  router.route('/addAdmin').post(adminController.AddAdmin);
+ router.route('/addSystemInfo').post(adminController.AddSystemInfo);
+
 
 //  retrive
 
@@ -18,10 +20,13 @@
  router.route("/viewParent/:id").get(adminController.ViewParent);
 
  router.route("/viewComplaint").get(adminController.ViewAllComplaints);
+ router.route("/viewSystemInfo").get(adminController.ViewSystemInfo);
 
  //update
 
  router.route("/updateAdmin/:id").put(adminController.UpdateAdmin);
+ router.route("/updateSystemInfo/:id").put(adminController.UpdateSystemInfo);
+
 
 
  //delete

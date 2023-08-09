@@ -2,6 +2,7 @@ let Admin = require("../models/Admin");
 let Babysitter = require("../models/babysitter");
 let Parent = require("../models/Parent");
 let Complaints = require("../models/Complaint");
+let SystemInfo = require("../models/SystemInfo");
 
 const AddAdmin = (req, res) => {
     const firstName = req.body.firstName;
@@ -164,6 +165,67 @@ const ViewAllComplaints = async (req, res) => {
     })
 };
 
+const AddSystemInfo = (req, res) => {
+    const about = req.body.about;
+    const goals = req.body.goals;
+    const service = req.body.service;
+    const vision = req.body.vision;
+    const team = req.body.team;
+    
+    
+
+    const newInfo = new SystemInfo({
+        about,
+        goals,
+        service,
+        vision,
+        team
+       
+        
+    })
+    //then->js promise||like if else condition
+    newInfo.save().then(() => {
+        res.json("Informations Added");
+    }).catch((err) => {
+        console.log(err);
+    })
+};
+
+const UpdateSystemInfo = async (req, res) => {
+    let userId = req.params.id; //fetch the id
+  
+    const {about, goals, service,vision, team} = req.body; // new value
+    //create a object
+    const updateInfo = {
+       about,
+       goals,
+       service,
+       vision,
+       team
+       
+    };
+
+    await SystemInfo.findByIdAndUpdate(userId, updateInfo)
+        .then((info) => {
+            res.status(200).send({ status: "Info are updated", info });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating info", error: err.message });
+        });
+};
+
+const ViewSystemInfo = async (req, res) => {
+    await SystemInfo.find()
+        .then((information) => {
+            res.status(200).send({ status: "All informations", information });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all informations", error: err.message });
+        });
+};
+
 
 
 module.exports={
@@ -178,5 +240,8 @@ module.exports={
     ViewParent,
     DeleteParent,
     ViewAllComplaints,
+    AddSystemInfo,
+    UpdateSystemInfo,
+    ViewSystemInfo
     
 };

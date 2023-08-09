@@ -158,6 +158,7 @@ const addComplaint = async (req, res) =>{
         type,
         description,
         status,
+        date,
        
     });
 
@@ -174,12 +175,13 @@ const addComplaint = async (req, res) =>{
 const updateComplaint = async (req, res) => {
     let complaintid = req.params.id; //fetch the id
   
-    const {type,description,status,} = req.body; // new value
+    const {type,description,status,date} = req.body; // new value
 
     const updateComplaint = {
         type,
         description,
-        status
+        status,
+        date
     };
 
     await Complaint.findByIdAndUpdate(complaintid, updateComplaint)

@@ -5,15 +5,19 @@ const schema = mongoose.Schema;
 const complaintSchema = new schema({
    type: {
         type: String,
-        required: false
+        required: true
     },
     description: {
         type: String,
-        required: false
+        required: true
     },
     status: {
         type: String,
-        required: false
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true
     },
 })
 
