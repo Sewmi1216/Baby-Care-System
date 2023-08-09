@@ -7,7 +7,7 @@ const addAdmin = (req, res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
-    const phone = req.body.phone;
+    const phone_no = req.body.phone;
     const address = req.body.address;
     const password = req.body.password;
     const nic = req.body.nic;
@@ -16,10 +16,10 @@ const addAdmin = (req, res) => {
         firstName,
         lastName,
         email,
-        phone,
+        phone_no,
         address,
         password,
-        nic
+        nic,
     })
     //then->js promise||like if else condition
     newAdmin.save().then(() => {
@@ -66,6 +66,19 @@ const updateAdmin = async (req, res) => {
         });
 };
 
+const DeleteAdmin = async (req, res) => {
+    let userId = req.params.id;
+
+    await Admin.findByIdAndDelete(userId)
+        .then((admin) => {
+            res.status(200).send({ status: "User Deleted", admin });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete user", error: err.message });
+        });
+};
+
 const ViewAllBabysitters = async (req, res) => {
     await Babysitter.find()
         .then((babysitters) => {
@@ -100,6 +113,19 @@ const ViewAllParents = async (req, res) => {
         });
 };
 
+const DeleteParent= async (req, res) => {
+    let userId = req.params.id;
+
+    await Parent.findByIdAndDelete(userId)
+        .then((parent) => {
+            res.status(200).send({ status: "User Deleted", parent });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete user", error: err.message });
+        });
+};
+
 const ViewAllComplaints = async (req, res) => {
     await Complaints.find()
     .then((complaints) => {
@@ -109,14 +135,19 @@ const ViewAllComplaints = async (req, res) => {
         console.log(err.message);
         res.status(500).send({status: "Error with view all complaints", error: err.message});
     })
-}
+};
+
+
 
 module.exports={
     addAdmin,
     viewAdmin,
     updateAdmin,
+    DeleteAdmin,
     ViewAllBabysitters,
     DeleteBabysitter,
-    ViewAllComplaints,
     ViewAllParents,
+    DeleteParent,
+    ViewAllComplaints,
+    
 };

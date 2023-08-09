@@ -1,27 +1,19 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const schema = mongoose.Schema;
 
 const complaintSchema = new schema({
+   type: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
     status: {
         type: String,
-        required: true
-    },
-    type: {
-        type: Boolean,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    taskCompletedStatus: {
-        type: Boolean,
-        required: true
-    },
-    remainderStatus: {
-        type: Boolean,
-        required: true
+        required: false
     },
 })
 

@@ -9,11 +9,13 @@
 
 //  retrive
 
- router.route('/viewAdmin').get(adminController.viewAdmin);
+ router.route('/viewAdmin/:id').get(adminController.viewAdmin);
 
  router.route("/viewBabysitter").get(adminController.ViewAllBabysitters);
 
  router.route("/viewParent").get(adminController.ViewAllParents);
+
+ router.route("/viewComplaint").get(adminController.ViewAllComplaints);
 
  //update
 
@@ -22,7 +24,9 @@
 
  //delete
 
+ router.route("/deleteAdmin/:id").delete(adminController.DeleteAdmin);
  router.route("/deleteBabysitter/:id").delete(adminController.DeleteBabysitter);
+ router.route("/deleteParent/:id").delete(adminController.DeleteParent);
 
 
 
