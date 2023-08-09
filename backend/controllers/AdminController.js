@@ -3,7 +3,7 @@ let Babysitter = require("../models/babysitter");
 let Parent = require("../models/Parent");
 let Complaints = require("../models/Complaint");
 
-const addAdmin = (req, res) => {
+const AddAdmin = (req, res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
@@ -29,7 +29,7 @@ const addAdmin = (req, res) => {
     })
 };
 
-const viewAdmin = async (req, res) => {
+const ViewAdmin = async (req, res) => {
     let userId = req.params.id;
 
     await Admin.findById(userId)
@@ -41,7 +41,7 @@ const viewAdmin = async (req, res) => {
             res.status(500).send({ status: "Error with get admin", error: err.message });
         });
 };
-const updateAdmin = async (req, res) => {
+const UpdateAdmin = async (req, res) => {
     let userId = req.params.id; //fetch the id
   
     const {firstName, lastName, email, phone_no, address, password, nic} = req.body; // new value
@@ -89,6 +89,20 @@ const ViewAllBabysitters = async (req, res) => {
             res.status(500).send({ status: "Error with view all babysitters", error: err.message });
         });
 };
+const ViewBabysitter = async (req, res) => {
+    let userId = req.params.id;
+
+    await Babysitter.findById(userId)
+        .then((babysitter) => {
+            res.status(200).send({ status: "Babysitter fetched", babysitter });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get sitter", error: err.message });
+        });
+};
+
+
 const DeleteBabysitter = async (req, res) => {
     let userId = req.params.id;
 
@@ -110,6 +124,19 @@ const ViewAllParents = async (req, res) => {
         .catch((err) => {
             console.log(err.message);
             res.status(500).send({ status: "Error with view all parents", error: err.message });
+        });
+};
+
+const ViewParent = async (req, res) => {
+    let userId = req.params.id;
+
+    await Parent.findById(userId)
+        .then((parent) => {
+            res.status(200).send({ status: "Parent fetched", parent });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get parent", error: err.message });
         });
 };
 
@@ -140,13 +167,15 @@ const ViewAllComplaints = async (req, res) => {
 
 
 module.exports={
-    addAdmin,
-    viewAdmin,
-    updateAdmin,
+    AddAdmin,
+    ViewAdmin,
+    UpdateAdmin,
     DeleteAdmin,
     ViewAllBabysitters,
+    ViewBabysitter,
     DeleteBabysitter,
     ViewAllParents,
+    ViewParent,
     DeleteParent,
     ViewAllComplaints,
     

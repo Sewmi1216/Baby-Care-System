@@ -5,21 +5,23 @@
 
 // create
 
- router.route('/addAdmin').post(adminController.addAdmin);
+ router.route('/addAdmin').post(adminController.AddAdmin);
 
 //  retrive
 
- router.route('/viewAdmin/:id').get(adminController.viewAdmin);
+ router.route('/viewAdmin/:id').get(adminController.ViewAdmin);
 
- router.route("/viewBabysitter").get(adminController.ViewAllBabysitters);
+ router.route("/viewBabysitters").get(adminController.ViewAllBabysitters);
+ router.route("/viewParent/:id").get(adminController.ViewBabysitter);
 
- router.route("/viewParent").get(adminController.ViewAllParents);
+ router.route("/viewParents").get(adminController.ViewAllParents);
+ router.route("/viewParent/:id").get(adminController.ViewParent);
 
  router.route("/viewComplaint").get(adminController.ViewAllComplaints);
 
  //update
 
- router.route("/updateAdmin/:id").put(adminController.updateAdmin);
+ router.route("/updateAdmin/:id").put(adminController.UpdateAdmin);
 
 
  //delete
