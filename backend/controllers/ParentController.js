@@ -145,32 +145,6 @@ const deleteRequestForm = async (req, res) => {
             res.status(500).save({status: "Error with delete form", error: err.message})
         })
 }
-//complaint handling
-
-const addComplaints = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-    const remainderStatus = Boolean(req.body.remainderStatus);
-
-    const newTask = new Task({
-        status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus,
-    });
-
-    await newTask.save()
-    .then((task) => {
-        res.status(200).send({status: "Task is added", task});
-    })
-    .catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "Error with the task", error: err.message});
-    });
-};
 
 const addFeedback = async (req, res) => {
     //parent name
@@ -191,6 +165,7 @@ const addFeedback = async (req, res) => {
             res.status(500).send({status: "Error with add feedback", error: err.message})
         })
 };
+
 
 module.exports={
     addParent,
