@@ -48,6 +48,7 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
 import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
 
 
 
@@ -110,6 +111,10 @@ const routes: Routes = [
       {
         path: 'view_baby_details',
         component: ViewBabyDetailsComponent
+      },
+      {
+        path: 'baby_growth',
+        component: BabyGrowthComponent
       },
       {
         path: 'view_baby_sitters',
