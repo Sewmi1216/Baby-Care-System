@@ -2,6 +2,27 @@ let Parent = require("../models/Parent");
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm")
 
+const login = (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // Assuming you have a Parent model
+    Parent.findOne({ email: email, password: password })
+        .then(parent => {
+            if (parent) {
+                // Successful login
+                res.json("Login successful");
+            } else {
+                // Invalid credentials
+                res.status(401).json("Invalid credentials");
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json("An error occurred");
+        });
+};
+
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
@@ -146,6 +167,7 @@ const deleteRequestForm = async (req, res) => {
 }
 
 module.exports={
+    login,
     addParent,
     addTask,
     updateTask,
