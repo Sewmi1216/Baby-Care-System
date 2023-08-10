@@ -1,7 +1,11 @@
 let Parent = require("../models/Parent");
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm");
+
 let Complaint = require("../models/Complaint");
+
+let Feedback = require("../models/feedback");
+
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -172,6 +176,7 @@ const addComplaint = async (req, res) =>{
     });
 };
 
+
 const updateComplaint = async (req, res) => {
     let complaintid = req.params.id; //fetch the id
   
@@ -205,6 +210,26 @@ const deleteComplaint = async (req, res) => {
             console.log(err.message);
             res.status(500).send({ status: "Error with delete complaint", error: err.message });
         });
+
+const addFeedback = async (req, res) => {
+    //parent name
+    const details = req.body.details;
+    const rating = req.body.rating;
+
+    const newFeedback = new Feedback ({
+        //parentName: req.Parent.name,
+        details,
+        rating: Number(rating),
+    })
+
+    await newFeedback.save()
+        .then((feedback) => {
+            res.status(200).send({status: "Feedback is added", feedback});
+        })
+        .catch((err) => {
+            res.status(500).send({status: "Error with add feedback", error: err.message})
+        })
+
 };
 
 module.exports={
@@ -215,8 +240,8 @@ module.exports={
     addRequestForm,
     updateRequestForm,
     deleteRequestForm,
-
     addComplaint,
     updateComplaint,
     deleteComplaint,
+    addFeedback,
 };

@@ -6,6 +6,7 @@ const parentController = require("../controllers/ParentController");
 router.route('/addParent').post(parentController.addParent);
 router.route('/addTask').post(parentController.addTask);
 router.route('/addRequestForm').post(parentController.addRequestForm);
+router.route('/addFeedback').post(parentController.addFeedback);
 
 router.route('/addComplaint').post(parentController.addComplaint);
 
