@@ -1,7 +1,11 @@
 let Parent = require("../models/Parent");
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm");
+
+let Complaint = require("../models/Complaint");
+
 let Feedback = require("../models/feedback");
+
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -147,30 +151,65 @@ const deleteRequestForm = async (req, res) => {
 }
 //complaint handling
 
-const addComplaints = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-    const remainderStatus = Boolean(req.body.remainderStatus);
+const addComplaint = async (req, res) =>{
 
-    const newTask = new Task({
+    const type = req.body.type;
+    const description = req.body.description;
+    const status = req.body.status;
+
+
+    const newComplaint = new Complaint({
+        type,
+        description,
         status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus,
+        date,
+       
     });
 
-    await newTask.save()
-    .then((task) => {
-        res.status(200).send({status: "Task is added", task});
+    await newComplaint.save()
+    .then(() => {
+        res.status(200).send({status: "Complaint is added"});
     })
     .catch((err) => {
         console.log(err.message);
-        res.status(500).send({status: "Error with the task", error: err.message});
+        res.status(500).send({status: "Error with the complaint", error: err.message});
     });
 };
+
+
+const updateComplaint = async (req, res) => {
+    let complaintid = req.params.id; //fetch the id
+  
+    const {type,description,status,date} = req.body; // new value
+
+    const updateComplaint = {
+        type,
+        description,
+        status,
+        date
+    };
+
+    await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
+        .then((complaint) => {
+            res.status(200).send({ status: "Complaint is updated", complaint });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
+};
+
+const deleteComplaint = async (req, res) => {
+    let complaintid = req.params.id;
+
+    await Complaint.findByIdAndDelete(complaintid)
+        .then((complaint) => {
+            res.status(200).send({ status: "Complaint is Deleted", complaint });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete complaint", error: err.message });
+        });
 
 const addFeedback = async (req, res) => {
     //parent name
@@ -190,6 +229,7 @@ const addFeedback = async (req, res) => {
         .catch((err) => {
             res.status(500).send({status: "Error with add feedback", error: err.message})
         })
+
 };
 
 module.exports={
@@ -200,5 +240,8 @@ module.exports={
     addRequestForm,
     updateRequestForm,
     deleteRequestForm,
+    addComplaint,
+    updateComplaint,
+    deleteComplaint,
     addFeedback,
 };
