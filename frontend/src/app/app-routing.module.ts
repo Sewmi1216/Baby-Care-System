@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+
 import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
 import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
 
@@ -16,12 +17,19 @@ import { BabysitterParentrequestComponent } from './main/content/babysitter/baby
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
+
 import {HomeHeaderComponent} from "./home/home-header/home-header.component";
 import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-details.component";
 import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
 import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
+
+import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
+import {ParentMyPlanComponent} from "./main/content/parent/parent-my-plan/parent-my-plan.component";
+import {ParentProfileComponent} from "./main/content/parent/parent-profile/parent-profile.component";
+import {MyBabysitterComponent} from "./main/content/parent/my-babysitter/my-babysitter.component";
+
 
 
 //domain-expert
@@ -40,6 +48,7 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
 import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+
 
 
 
@@ -191,6 +200,21 @@ const routes: Routes = [
       {
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
+      },
+      {
+        path: 'parent_my_plan',
+        component:ParentMyPlanComponent
+
+      },
+      {
+        path: 'parent_profile',
+        component:ParentProfileComponent
+
+      },
+      {
+        path: 'my_babysitter',
+        component:MyBabysitterComponent
+
       },
 
     ]
