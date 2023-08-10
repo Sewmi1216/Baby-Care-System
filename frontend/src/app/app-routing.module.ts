@@ -39,9 +39,11 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
 import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+import {EditSysInfoComponent} from "./main/content/admin/edit-sys-info/edit-sys-info.component";
+import {HandleComplaintsComponent} from "./main/content/admin/handle-complaints/handle-complaints.component";
+import {HandlePaymentComponent} from "./main/content/admin/handle-payment/handle-payment.component";
 
-
-
+import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-list-home.component";
 
 const routes: Routes = [
   {
@@ -86,6 +88,11 @@ const routes: Routes = [
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
+
+      },
+      {
+        path: 'task_list_home',
+        component: TaskListHomeComponent
 
       },
       {
@@ -174,6 +181,18 @@ const routes: Routes = [
       {
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
+      },
+      {
+        path: 'edit_sys_info',
+        component: EditSysInfoComponent
+      },
+      {
+        path: 'handle_payments',
+        component: HandlePaymentComponent
+      },
+      {
+        path: 'handle_complaints',
+        component: HandleComplaintsComponent
       },
 
 

@@ -11,7 +11,8 @@ import { MainComponent } from './main/main.component';
 import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
-import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
+//import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
+import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
@@ -25,9 +26,6 @@ import { CommunityComponent } from './main/content/parent/community/community.co
 import { FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  /* import form module */
 import { NgxMaterialTimepickerModule} from "ngx-material-timepicker";
-import { ParentdashLeftContentComponent } from './main/content/parent/parent-dashboard/parentdash-left-content/parentdash-left-content.component';
-import { ParentdashRightContentComponent } from './main/content/parent/parent-dashboard/parentdash-right-content/parentdash-right-content.component';
-import { ParentdashTopContentComponent } from './main/content/parent/parent-dashboard/parentdash-top-content/parentdash-top-content.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLocation } from '@fortawesome/free-solid-svg-icons';
@@ -79,8 +77,28 @@ import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admi
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
 import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
+import { AdminDashboardUserChartsComponent } from './main/content/admin/admin-dashboard/admin-dashboard-user-charts/admin-dashboard-user-charts.component';
+import { HandlePaymentComponent } from './main/content/admin/handle-payment/handle-payment.component';
+import { HandleComplaintsComponent } from './main/content/admin/handle-complaints/handle-complaints.component';
+import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sys-info.component';
 
 
+
+/*Add API reference for Angular Material Components */
+
+import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
+import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
+
+
+import {ChartModule, HIGHCHARTS_MODULES} from "angular-highcharts";
+import { AdminDasboardIncomeChartsComponent } from './main/content/admin/admin-dashboard/admin-dasboard-income-charts/admin-dasboard-income-charts.component';
+/* ngx-charts modules */
+import {NgxChartsModule} from "@swimlane/ngx-charts";
+
+//import { AdminDashboardUserPieChartComponent } from './main/content/admin/admin-dashboard/admin-dashboard-user-pie-chart/admin-dashboard-user-pie-chart.component';
+
+
+import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
 
 @NgModule({
   declarations: [
@@ -110,9 +128,7 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
     SearchBabysittersComponent,
     LiveStreamComponent,
     CommunityComponent,
-    ParentdashLeftContentComponent,
-    ParentdashRightContentComponent,
-    ParentdashTopContentComponent,
+
      DomainExpertProfileComponent,
 
     HomeHeaderComponent,
@@ -138,7 +154,13 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
-
+    AdminDasboardIncomeChartsComponent,
+   // AdminDashboardUserPieChartComponent,
+    AdminDashboardUserChartsComponent,
+   HandlePaymentComponent,
+   HandleComplaintsComponent,
+   EditSysInfoComponent,
+   TaskListHomeComponent,
 
   ],
   imports: [
@@ -152,6 +174,15 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
 
     /* import Flex Layout module */
     FlexLayoutModule,
+    /*imports modules for angular calender */
+    MatDatepickerModule,
+    MatNativeDateModule,
+    /*chats module*/
+    ChartModule,
+    /* ngx-chart module*/
+    NgxChartsModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

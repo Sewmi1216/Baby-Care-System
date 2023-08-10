@@ -139,6 +139,6 @@ a.sidebar-link {
 
 }
 @media (max-width:768px) {
-.dropdown-menu[data-bs-popper] {
-  left: -100px;
-}}
+  .dropdown-menu[data-bs-popper] {
+    left: -100px;
+  }}
