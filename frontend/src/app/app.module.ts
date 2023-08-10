@@ -120,7 +120,7 @@ import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-grow
     ParentdashLeftContentComponent,
     ParentdashRightContentComponent,
     ParentdashTopContentComponent,
-     DomainExpertProfileComponent,
+    DomainExpertProfileComponent,
 
     HomeHeaderComponent,
     /*babysitter*/

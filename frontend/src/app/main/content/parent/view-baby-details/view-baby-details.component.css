@@ -6,29 +6,45 @@
 }
 
 
+/* Shared styles */
 .custom-img {
-
-  width: 222px;
-  height: 198px;
+  width: 100%; /* Take full width of the container */
+  height: 235px; /* Maintain aspect ratio */
   object-fit: cover;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   border-radius: 20px;
 }
 
-.topic_image{
+.topic_image {
   float: right;
-  width: 135px;
-  height: 117px;
-  /*padding: 0 10px 10px 10px;*/
-  /*padding-right: 10px;*/
-  /*padding-top: 10px;*/
-  /*border-radius: 50%;*/
+  width: 100px; /* Adjust size for smaller screens */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 10px; /* Add margin to separate from text */
 }
-.topic{
+
+.topic {
   font-family: "Sofia Sans";
   font-weight: bold;
-  font-size:30px ;
+  font-size: 24px; /* Adjust font size for smaller screens */
   color: #39315d;
-  padding-left:50px ;
-  padding-top: 37px;
+  padding-left: 20px; /* Adjust padding for smaller screens */
+  padding-top: 20px; /* Adjust padding for smaller screens */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) { /* Adjust the breakpoint as needed */
+  .custom-img {
+    border-radius: 10px; /* Reduce border radius for smaller screens */
+  }
+
+  .topic_image {
+    width: 80px; /* Adjust size for smaller screens */
+    margin-top: 10px;
+  }
+
+  .topic {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+  }
 }
