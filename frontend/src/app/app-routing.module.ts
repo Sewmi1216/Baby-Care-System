@@ -25,7 +25,6 @@ import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
 
-import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 import {ParentMyPlanComponent} from "./main/content/parent/parent-my-plan/parent-my-plan.component";
 import {ParentProfileComponent} from "./main/content/parent/parent-profile/parent-profile.component";
 import {MyBabysitterComponent} from "./main/content/parent/my-babysitter/my-babysitter.component";
