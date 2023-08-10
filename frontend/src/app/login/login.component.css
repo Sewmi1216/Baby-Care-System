@@ -19,6 +19,8 @@ body{
   position: absolute;
   width: 90%;
   box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+  background-color:rgba(255, 255, 255, 0.42);
+  margin-left:100px;
 
 }
 .image{
@@ -62,9 +64,33 @@ form{
 label{
   text-align: left;
 }
+
+
+
+
+
 @media (max-width: 991px){
   .form{
     background-color: rgba(255, 255, 255, 0.57);
     backdrop-filter: blur(10px);
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    z-index:20;
+    position: absolute;
+    width: 80%;
+    box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+    margin-right: 20px;
+    background-image: linear-gradient(rgba(147, 128, 255, 0.46), rgba(255, 128, 236, 0.1));
+  }
+
+
+  .image-container,
+  .image{
+    display: none;
   }
 }

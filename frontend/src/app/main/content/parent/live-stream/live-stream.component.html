@@ -1,0 +1,22 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-8" id="live">
+      <h1>Live Stream</h1>
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-dark mb-3" (click)="setupCamera()" title="Start Live Stream">
+        Enable webcam
+      </button>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-dark mb-3" (click)="stopCamera()">Stop Stream</button>
+    </div>
+  </div>
+  <!--  <video #videoElement id="webcam" ></video>-->
+  <div class="video-container">
+    <video #videoElement></video>
+
+  </div>
+
+</div>

@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express()
-require("dotenv").config();
+require("dotenv").config(); 
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8070
 
 app.use(cors());    //use cors()
 app.use(bodyParser.json());     //json format
@@ -26,7 +26,23 @@ mongoose.connect(URL,{
 })
 
 const connection = mongoose.connection;
-
 connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
+
+//babysitter
+const babysitterRouter = require("./routes/babysitters.js");
+app.use("/babysitter", babysitterRouter);
+
+//parent
+const parentRouter = require("./routes/parents");
+app.use("/parent", parentRouter);
+
+
+//admin
+const adminRouter = require("./routes/admins.js");
+app.use("/admin",adminRouter);
+
+
+
+

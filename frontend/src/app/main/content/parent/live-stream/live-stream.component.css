@@ -1,0 +1,26 @@
+video {
+  display: block;
+}
+button{
+  margin-left:55px;
+}
+
+
+
+@media (max-width:768px) {
+  #live{
+    width:80%;
+  }
+  h3{
+    font-size:15px;
+  }
+  button{
+    font-size:12px;
+  }
+  #local-container{
+    margin-left: 5px;
+    width: 100px;
+    height: 50px;
+  }
+
+}
