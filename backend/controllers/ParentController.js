@@ -1,7 +1,32 @@
 let Parent = require("../models/Parent");
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm");
+
+let Complaint = require("../models/Complaint");
+
 let Feedback = require("../models/feedback");
+
+
+const login = (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // Assuming you have a Parent model
+    Parent.findOne({ email: email, password: password })
+        .then(parent => {
+            if (parent) {
+                // Successful login
+                res.json("Login successful");
+            } else {
+                // Invalid credentials
+                res.status(401).json("Invalid credentials");
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json("An error occurred");
+        });
+};
 
 const addParent = (req, res) => {
     const firstName = req.body.firstName;
@@ -148,53 +173,93 @@ const deleteRequestForm = async (req, res) => {
 
 //complaint handling
 
-const addComplaints = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-    const remainderStatus = Boolean(req.body.remainderStatus);
+const addComplaint = async (req, res) =>{
 
-    const newTask = new Task({
+    const type = req.body.type;
+    const description = req.body.description;
+    const status = req.body.status;
+
+
+    const newComplaint = new Complaint({
+        type,
+        description,
         status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus,
+        date,
+       
     });
 
-    await newTask.save()
-    .then((task) => {
-        res.status(200).send({status: "Task is added", task});
+    await newComplaint.save()
+    .then(() => {
+        res.status(200).send({status: "Complaint is added"});
     })
     .catch((err) => {
         console.log(err.message);
-        res.status(500).send({status: "Error with the task", error: err.message});
+        res.status(500).send({status: "Error with the complaint", error: err.message});
     });
 };
 
-const addFeedback = async (req, res) => {
-    //parent name
-    const details = req.body.details;
-    const rating = req.body.rating;
 
-    const newFeedback = new Feedback ({
-        //parentName: req.Parent.name,
-        details,
-        rating: Number(rating),
-    })
+const updateComplaint = async (req, res) => {
+    let complaintid = req.params.id; //fetch the id
+  
+    const {type,description,status,date} = req.body; // new value
 
-    await newFeedback.save()
-        .then((feedback) => {
-            res.status(200).send({status: "Feedback is added", feedback});
+    const updateComplaint = {
+        type,
+        description,
+        status,
+        date
+    };
+
+    await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
+        .then((complaint) => {
+            res.status(200).send({ status: "Complaint is updated", complaint });
         })
         .catch((err) => {
-            res.status(500).send({status: "Error with add feedback", error: err.message})
-        })
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        });
 };
 
+<<<<<<< HEAD
 
+=======
+const deleteComplaint = async (req, res) => {
+    let complaintid = req.params.id;
+
+    await Complaint.findByIdAndDelete(complaintid)
+        .then((complaint) => {
+            res.status(200).send({status: "Complaint is Deleted", complaint});
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({status: "Error with delete complaint", error: err.message});
+        });
+
+    const addFeedback = async (req, res) => {
+        //parent name
+        const details = req.body.details;
+        const rating = req.body.rating;
+
+        const newFeedback = new Feedback({
+            //parentName: req.Parent.name,
+            details,
+            rating: Number(rating),
+        })
+
+        await newFeedback.save()
+            .then((feedback) => {
+                res.status(200).send({status: "Feedback is added", feedback});
+            })
+            .catch((err) => {
+                res.status(500).send({status: "Error with add feedback", error: err.message})
+            })
+
+    };
+}
+>>>>>>> dda2325ad1830ec53d61f8522a963d2035784307
 module.exports={
+    login,
     addParent,
     addTask,
     updateTask,
@@ -202,5 +267,8 @@ module.exports={
     addRequestForm,
     updateRequestForm,
     deleteRequestForm,
+    addComplaint,
+    updateComplaint,
+    deleteComplaint,
     addFeedback,
 };

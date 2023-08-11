@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const schema = mongoose.Schema;
 
-const adminSchema = new Schema({
+const adminSchema = new schema({
     firstName:{
         type :String,
         required:true
@@ -15,9 +15,9 @@ const adminSchema = new Schema({
         type:String,
         required: true
     },
-    phone:{
+    phone_no:{
         type:String,
-        required:true
+        required:false
     },
     address:{
         type:String,
@@ -27,7 +27,7 @@ const adminSchema = new Schema({
         type:String,
         required:true
     },
-    nic :{
+    nic:{
         type:String,
         required:true
     }
@@ -35,4 +35,4 @@ const adminSchema = new Schema({
 })
 
 const Admin = mongoose.model("Admin",adminSchema);
-module.export = Admin;
+module.exports = Admin;
