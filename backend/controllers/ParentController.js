@@ -221,9 +221,7 @@ const updateComplaint = async (req, res) => {
         });
 };
 
-<<<<<<< HEAD
 
-=======
 const deleteComplaint = async (req, res) => {
     let complaintid = req.params.id;
 
@@ -257,7 +255,7 @@ const deleteComplaint = async (req, res) => {
 
     };
 }
->>>>>>> dda2325ad1830ec53d61f8522a963d2035784307
+
 module.exports={
     login,
     addParent,
