@@ -1,39 +1,43 @@
 <div class="container-fluid">
-  <div class="mb-3">
-    <h3>My Baby  Sitter</h3>
+  <div style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;">    <img class="topic_image" src="../../assets/Happybaby.svg">
+    <h3 style="font-family: 'Sofia Sans', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #39315d;
+    padding-left: 50px;
+    padding-top: 37px;">My Baby Sitter</h3>
 
-
-    <div style="width: 100%;">
-      <div class="header" style="width: 100%; height: 39px; background-color: #FFFFFF; border-radius: 5px; margin: 35px 10px 50px 10px;">
-        <div class="header bg-white rounded p-3 shadow-sm d-flex justify-content-around">
+  </div>
+      <div class="header" style="width: 100%; height: 71x; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;">
+        <div style="" class="header bg-#e8e3fc rounded p-3 shadow-sm d-flex justify-content-around">
           <a href="details" class="btn btn-link text-dark">Current BabySitter</a>
           <a href="details" class="btn btn-link text-dark">Past BabySitters</a>
         </div>
       </div>
-    </div>
 
 
-    <div class="card custom-card" style="width: 100%; height: auto;">
+
+    <div class="card custom-card" style="width: 100%; height: auto;background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;">
       <div class="d-flex">
 
         <!-- Left Side - Image -->
-        <div class="card custom-card" style="width: 51%; height: 370px; background-color: #FFFFFF; margin: 10px 10px 30px 10px;">
+        <div class="card custom-card" style="width: 45%; height: auto; background-color: #FFFFFF; margin: 40px 10px 30px 40px;border: none">
           <div class="d-flex justify-content-center">
             <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
           </div>
             <div class="form-group">
-                          <label for="workStartedDate">Work Started Date</label>
-                          <input type="date" class="form-control" id="workStartedDate">
-              <label for="workEndDate">Work End Date</label>
-              <input type="date" class="form-control" id="workEndDate">
-              <label for="workExtendDate">Extend Until </label>
-              <input type="date" class="form-control" id="workExtendDate">
+              <label style="padding: 10px 10px 10px 20px;" for="workStartedDate">Work Started Date</label>
+              <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workStartedDate">
+              <label style="padding: 10px 10px 10px 20px" for="workEndDate">Work End Date</label>
+              <input style="padding: 10px 10px 10px 20px ;width: 90%;" type="date" class="form-control" id="workEndDate">
+              <label style="padding: 10px 10px 10px 20px" for="workExtendDate">Extend Until </label>
+              <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workExtendDate">
                         </div>
           </div>
 
 
 
-          <div class="card custom-card" style="width: 60%; background-color: #FFFFFF; margin: 0 10px 30px 10px;">
+          <div class="card custom-card" style="width: 60%; background-color: #FFFFFF; margin: 40px 40px 30px 50px; padding: 20px 20px 40px 20px">
 
             <p class="font-weight-bold">Name</p>
             <input type="text" class="form-control">
@@ -50,28 +54,31 @@
           </div>
       </div>
 
-<!--          feedback-->
 
 
 
         </div>
-      <div >
 
-        <div style="width: 100%" >
-          <div class="card">
+        <div>
+          <div  style="width: 100%;margin-top: 50px; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;" >
 
             <div class="card-body">
               <form>
 
 
-                <div class="mb-3">
-                  <label for="feedback" class="form-label">Feedback</label>
+                <div style="" class="mb-3">
+<!--                  <label for="feedback" class="form-label">Feedback</label>-->
+                  <h2>Feedback</h2>
                   <textarea class="form-control" id="feedback" rows="4" placeholder="Enter your feedback"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="rating">
+                  <span style="color: gray; font-size: 30px; margin-bottom: 20px">★ ★ ★ ★ ★</span>
+                </div>
+
+                <button style="background-color: #563393;border-color: #563393" type="submit" class="btn btn-primary">Submit</button>
               </form>
               <div class="feedback-section">
-                <h2>Feedback from Parents</h2>
+
                 <div  class="feedback-cards">
                   <div *ngFor="let feedback of feedbackData" class="feedback-card">
                     <div  class="feedback-header">
@@ -99,9 +106,9 @@
         </div>
       </div>
 
-      </div>
-    </div>
-<!--  </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
 
 
 
