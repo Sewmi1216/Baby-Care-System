@@ -77,7 +77,7 @@ import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admi
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
 import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
-import { AdminDashboardUserChartsComponent } from './main/content/admin/admin-dashboard/admin-dashboard-user-charts/admin-dashboard-user-charts.component';
+//import { AdminDashboardUserChartsComponent } from './main/content/admin/admin-dashboard/admin-dashboard-user-charts/admin-dashboard-user-charts.component';
 import { HandlePaymentComponent } from './main/content/admin/handle-payment/handle-payment.component';
 import { HandleComplaintsComponent } from './main/content/admin/handle-complaints/handle-complaints.component';
 import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sys-info.component';
@@ -90,10 +90,10 @@ import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePicker
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
 
 
-import {ChartModule, HIGHCHARTS_MODULES} from "angular-highcharts";
-import { AdminDasboardIncomeChartsComponent } from './main/content/admin/admin-dashboard/admin-dasboard-income-charts/admin-dasboard-income-charts.component';
+//import {ChartModule, HIGHCHARTS_MODULES} from "angular-highcharts";
+//import { AdminDasboardIncomeChartsComponent } from './main/content/admin/admin-dashboard/admin-dasboard-income-charts/admin-dasboard-income-charts.component';
 /* ngx-charts modules */
-import {NgxChartsModule} from "@swimlane/ngx-charts";
+//import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 //import { AdminDashboardUserPieChartComponent } from './main/content/admin/admin-dashboard/admin-dashboard-user-pie-chart/admin-dashboard-user-pie-chart.component';
 
@@ -154,9 +154,9 @@ import { TaskListHomeComponent } from './main/content/parent/task-list-home/task
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
-    AdminDasboardIncomeChartsComponent,
+   // AdminDasboardIncomeChartsComponent,
    // AdminDashboardUserPieChartComponent,
-    AdminDashboardUserChartsComponent,
+   // AdminDashboardUserChartsComponent,
    HandlePaymentComponent,
    HandleComplaintsComponent,
    EditSysInfoComponent,
@@ -178,9 +178,9 @@ import { TaskListHomeComponent } from './main/content/parent/task-list-home/task
     MatDatepickerModule,
     MatNativeDateModule,
     /*chats module*/
-    ChartModule,
+   // ChartModule,
     /* ngx-chart module*/
-    NgxChartsModule
+    //NgxChartsModule
 
 
   ],
