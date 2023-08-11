@@ -1,7 +1,7 @@
 /* Custom CSS */
 .custom-card {
   background-color: #DFDDFF;
-  margin: 30px 5px ;
+  margin: 30px 5px;
   padding: 20px 20px 20px 20px;
 }
 
@@ -32,7 +32,8 @@
 }
 
 /* Media queries for responsiveness */
-@media (max-width: 768px) { /* Adjust the breakpoint as needed */
+@media (max-width: 768px) {
+  /* Adjust the breakpoint as needed */
   .custom-img {
     border-radius: 10px; /* Reduce border radius for smaller screens */
   }

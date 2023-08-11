@@ -1,8 +1,8 @@
-/* Custom CSS */
-.custom-card {
-  background-color: #e8e3fc;
-  margin-left: 50px;
-}
+/*!* Custom CSS *!*/
+/*.custom-card {*/
+/*  background-color: #e8e3fc;*/
+/*  margin-left: 50px;*/
+/*}*/
 
 
 .custom-img {
@@ -10,7 +10,7 @@
   width: 140px;
   height: 140px;
   object-fit: cover;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .topic_image {
@@ -28,10 +28,10 @@
   padding-left: 71px; /* Adjust padding for smaller screens */
   padding-top: 39px; /* Adjust padding for smaller screens */
 }
+
 /* Media queries for responsiveness */
-@media (max-width: 768px) { /* Adjust the breakpoint as needed */
-
-
+@media (max-width: 768px) {
+  /* Adjust the breakpoint as needed */
   .topic_image {
     width: 80px; /* Adjust size for smaller screens */
     margin-top: 10px;
