@@ -41,6 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
 library.add(faLocation); /*import the faLocation icon*/
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
+
+
 //babysitter
 import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
@@ -49,11 +51,16 @@ import { BabysitterParentrequestComponent } from './main/content/babysitter/baby
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
+
 import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
 import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
 import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
 import { SitterPersonalInformationComponent } from './main/content/parent/sitter-personal-information/sitter-personal-information.component';
 import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
+import { ParentMyPlanComponent } from './main/content/parent/parent-my-plan/parent-my-plan.component';
+import { ParentProfileComponent } from './main/content/parent/parent-profile/parent-profile.component';
+import { MyBabysitterComponent } from './main/content/parent/my-babysitter/my-babysitter.component';
+
 
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
@@ -72,7 +79,11 @@ import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admi
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
 import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
+
 import {NotifierService} from "angular-notifier";
+
+import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+
 
 
 
@@ -95,6 +106,7 @@ import {NotifierService} from "angular-notifier";
     SignupComponent,
 
     BabyDetailsComponent,
+    BabyGrowthComponent,
     ViewBabyDetailsComponent,
     ViewBabySittersComponent,
     SitterPersonalInformationComponent,
@@ -117,6 +129,9 @@ import {NotifierService} from "angular-notifier";
     BabysitterTasklistComponent,
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
+    ParentMyPlanComponent,
+    ParentProfileComponent,
+    MyBabysitterComponent,
 
 
     /*Admin*/
@@ -132,6 +147,7 @@ import {NotifierService} from "angular-notifier";
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+
 
 
   ],
