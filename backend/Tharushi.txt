@@ -1,3 +1,6 @@
+//Babysitter
+Babysitter - create, delete, update, viewAll
+
 //Task
 Parent - createTask, deleteTask, updateTask
 Babysitter - updateTask, getAllTask

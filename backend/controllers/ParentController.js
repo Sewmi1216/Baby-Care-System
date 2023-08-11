@@ -55,18 +55,18 @@ const addParent = (req, res) => {
 }
 
 const addTask = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-    const remainderStatus = Boolean(req.body.remainderStatus);
+    // const status = req.body.status;
+    // const time = req.body.time;
+    const taskName = req.body.taskName;
+    // const isCompleted = Boolean(req.body.isCompleted);
+    // const remainderStatus = Boolean(req.body.remainderStatus);
 
     const newTask = new Task({
-        status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus,
+        // status,
+        // time,
+        taskName,
+        // isCompleted,
+        // remainderStatus,
     });
 
     await newTask.save()
@@ -170,6 +170,7 @@ const deleteRequestForm = async (req, res) => {
             res.status(500).save({status: "Error with delete form", error: err.message})
         })
 }
+
 //complaint handling
 
 const addComplaint = async (req, res) =>{
@@ -253,6 +254,7 @@ const deleteComplaint = async (req, res) => {
 
     };
 }
+
 module.exports={
     login,
     addParent,
