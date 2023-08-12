@@ -1,9 +1,11 @@
 const express = require('express')
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express()
+const session =require("express-session");
 require("dotenv").config(); 
 
 const port = process.env.PORT || 8070
@@ -11,6 +13,10 @@ const port = process.env.PORT || 8070
 app.use(cors());    //use cors()
 app.use(bodyParser.json());     //json format
 
+//sid.signature
+app.use(session({
+    secret : "mysecret",
+}));
 // app.get('/', (req, res) => {
 //     res.send('Hello World!')
 // })
@@ -29,6 +35,8 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
+const userRouter = require("./routes/users");
+app.use("/user", userRouter);
 
 //babysitter
 const babysitterRouter = require("./routes/babysitters.js");

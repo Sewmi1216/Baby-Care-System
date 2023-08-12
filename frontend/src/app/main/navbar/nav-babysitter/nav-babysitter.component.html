@@ -3,7 +3,7 @@
   </div>
   <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
     <div
-        routerLink="/main/babysitter_dashboard"
+        routerLink="/babysitter/babysitter_dashboard"
         #dashboard="routerLinkActive"
         routerLinkActive
         [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
@@ -11,7 +11,7 @@
         <label>Dashboard</label>
     </div>
     <div
-        routerLink="/main/babysitter_parentrequest"
+        routerLink="/babysitter/babysitter_parentrequest"
         #parentrequest="routerLinkActive"
         routerLinkActive
         [ngStyle]="{'background-color': parentrequest.isActive ? '#7E57C2' : '', 'color': parentrequest.isActive ? '#fff' : ''}">
@@ -19,7 +19,7 @@
         <label>Parent Requests</label>
     </div>
     <div
-      routerLink="/main/babysitter_tasklist"
+      routerLink="/babysitter/babysitter_tasklist"
       #tasklist="routerLinkActive"
       routerLinkActive
       [ngStyle]="{'background-color': tasklist.isActive ? '#7E57C2' : '', 'color': tasklist.isActive ? '#fff' : ''}">
