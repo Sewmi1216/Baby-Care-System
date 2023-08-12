@@ -83,7 +83,7 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
 import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -160,7 +160,7 @@ import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-grow
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule, /*Time picker module*/
     FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, /*FontAwesome Module*/
-
+    MatTabsModule,
     /* import Flex Layout module */
     FlexLayoutModule,
   ],
