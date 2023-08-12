@@ -68,7 +68,13 @@
 
       <div style="" class="mb-3">
 
-        <div style="width: 106%; height: 79px; background-color: white; margin-bottom: 10px; margin-left: -50px;" class="text-center">
+        <div style="    width: 106%;
+    height: 79px;
+    background-color: white;
+    margin-bottom: 82px;
+    margin-left: -50px;
+    margin-top: 20px;
+}" class="text-center">
           <h2 style="padding-top: 20px;font-size: 30px;font-family: 'Sofia Sans';font-weight: bold">Feedback</h2>
         </div>
 
@@ -112,10 +118,32 @@
     </mat-tab>
     <mat-tab label="Previous BabySitters">
       <div class="d-md-flex" style="padding: 10px 10px 10px 10px;">
+<!--        <div style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;" class="row justify-content mt-5 ">-->
+
+          <div class="col-sm-6 col-md-4  " style="height: 390px;border-radius: 10px">
+
+            <div class="card custom-card" style="width: 70%;height: 342px;margin-top: 20px;margin-right: 20px;margin-left: 10px;border-width: 0px;">
+              <div  class="d-flex justify-content-center mt-3">
+                <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+              </div>
+              <div  class="card-body bg-custom text-center">
+                <h4 style="font-weight: bold" class="card-title">Sewmi Thimaya</h4>
+                <p>Location : Kandy</p>
+                <p>Rate:
+                  <ng-container *ngFor="let _ of [1, 2, 3, 4]; let i = index">
+                    <i style="color: #fad103" class="fas fa-star"></i>
+                  </ng-container>
+                </p>
+
+                <a routerLink="/main/sitter_personal_information" class="btn btn-primary"
+                   style="background-color: #39315d;border-color:  #221d38">View Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
-      </div>
     </mat-tab>
 
   </mat-tab-group>
@@ -125,3 +153,4 @@
 
 
 
+</div>
