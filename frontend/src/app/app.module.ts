@@ -84,6 +84,7 @@ import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { RequestedBabysittersComponent } from './main/content/parent/requested-babysitters/requested-babysitters.component';
 
 
 
@@ -147,6 +148,14 @@ import { MatTabsModule } from '@angular/material/tabs';
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+
+
+    RequestedBabysittersComponent,
+
+
+
+
+
 
 
 

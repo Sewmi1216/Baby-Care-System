@@ -6,7 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
-
+import {RequestedBabysittersComponent} from "./main/content/parent/requested-babysitters/requested-babysitters.component";
 import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
 import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
 
@@ -126,6 +126,11 @@ const routes: Routes = [
       {
         path: 'domain_expert_profile',
         component: DomainExpertProfileComponent
+
+      },
+      {
+        path: 'requested_babysitters',
+        component: RequestedBabysittersComponent
 
       },
 
