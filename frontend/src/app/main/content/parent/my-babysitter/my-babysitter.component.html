@@ -9,23 +9,24 @@
     padding-top: 37px;">My Baby Sitter</h3>
 
   </div>
-      <div class="header" style="width: 100%; height: 71x; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;">
-        <div style="" class="header bg-#e8e3fc rounded p-3 shadow-sm d-flex justify-content-around">
-          <a href="details" class="btn btn-link text-dark">Current BabySitter</a>
-          <a href="details" class="btn btn-link text-dark">Past BabySitters</a>
-        </div>
-      </div>
 
 
 
-    <div class="card custom-card" style="width: 100%; height: auto;background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;">
-      <div class="d-flex">
 
-        <!-- Left Side - Image -->
-        <div class="card custom-card" style="width: 45%; height: auto; background-color: #FFFFFF; margin: 40px 10px 30px 40px;border: none">
-          <div class="d-flex justify-content-center">
-            <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
-          </div>
+
+
+<div class="card custom-card" style="width: 100%;  height: auto;background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
+  <!--      <div class="header" style="height: 39px; background-color: #FFFFFF; border-radius: 5px; margin: 10px;">-->
+
+  <mat-tab-group>
+    <mat-tab label="Current BabySitter" >
+        <div class="d-flex">
+
+          <!-- Left Side - Image -->
+          <div class="card custom-card" style="width: 45%; height: auto; background-color: #FFFFFF; margin: 40px 10px 30px 40px;border: none">
+            <div class="d-flex justify-content-center">
+              <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+            </div>
             <div class="form-group">
               <label style="padding: 10px 10px 10px 20px;" for="workStartedDate">Work Started Date</label>
               <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workStartedDate">
@@ -33,7 +34,9 @@
               <input style="padding: 10px 10px 10px 20px ;width: 90%;" type="date" class="form-control" id="workEndDate">
               <label style="padding: 10px 10px 10px 20px" for="workExtendDate">Extend Until </label>
               <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workExtendDate">
-                        </div>
+              <button style="background-color: #563393;border-color: #563393;margin: 14px 0px 10px 177px;
+" type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </div>
 
 
@@ -53,62 +56,71 @@
             <p class="font-weight-bold">Email</p>
             <input type="text" class="form-control">
           </div>
-      </div>
-
-
-
-
         </div>
 
-        <div>
-          <div  style="width: 100%;margin-top: 50px; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;" >
-
-            <div class="card-body">
-              <form>
 
 
-                <div style="" class="mb-3">
-<!--                  <label for="feedback" class="form-label">Feedback</label>-->
-                  <h2>Feedback</h2>
-                  <textarea style="width: 95%" class="form-control" id="feedback" rows="4" placeholder="Enter your feedback"></textarea>
-                </div>
-                <div class="rating">
-                  <span style="color: gray; font-size: 30px; margin-bottom: 20px">★ ★ ★ ★ ★</span>
-                </div>
 
-                <button style="background-color: #563393;border-color: #563393" type="submit" class="btn btn-primary">Submit</button>
-              </form>
-              <div class="feedback-section">
+<!--<div  style="width: 100%;margin-top: 50px; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;" >-->
 
-                <div  class="feedback-cards">
-                  <div *ngFor="let feedback of feedbackData" class="feedback-card">
-                    <div  class="feedback-header">
-                      <div class="profile-info">
-                        <img src="assets/sewmi.jpg" alt="Profile Picture" class="profile-image">
-                        <h3>{{ feedback.name }}</h3>
-                      </div>
-                      <div class="rating">
-                        <span class="rating-stars">★ ★ ★ ★ ★</span>
-                        <span>{{ feedback.rating }}</span>
-                      </div>
-                    </div>
-                    <p class="feedback-comment" [ngClass]="{ 'expanded': feedback.expanded }">
-                      {{ feedback.comment }}
-                    </p>
-                    <button class="view-more-button" *ngIf="feedback.comment.length > 50" (click)="toggleExpand(feedback)">
-                      {{ feedback.expanded ? 'View Less' : 'View More' }}
-                    </button>
-                  </div>
-                </div>
-              </div>
+  <div class="card-body">
+    <form>
+
+      <div style="" class="mb-3">
+
+        <div style="width: 106%; height: 79px; background-color: white; margin-bottom: 10px; margin-left: -50px;" class="text-center">
+          <h2 style="padding-top: 20px;font-size: 30px;font-family: 'Sofia Sans';font-weight: bold">Feedback</h2>
+        </div>
+
+
+        <textarea style="width: 95%" class="form-control" id="feedback" rows="4" placeholder="Enter your feedback"></textarea>
+      </div>
+      <div class="rating">
+        <span style="color: gray; font-size: 30px; margin-bottom: 20px">★ ★ ★ ★ ★</span>
+      </div>
+
+      <button style="background-color: #563393;border-color: #563393" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="feedback-section">
+
+      <div  class="feedback-cards">
+        <div *ngFor="let feedback of feedbackData" class="feedback-card">
+          <div  class="feedback-header">
+            <div class="profile-info">
+              <img src="assets/sewmi.jpg" alt="Profile Picture" class="profile-image">
+              <h3>{{ feedback.name }}</h3>
+            </div>
+            <div class="rating">
+              <span class="rating-stars">★ ★ ★ ★ ★</span>
+              <span>{{ feedback.rating }}</span>
             </div>
           </div>
-
+          <p class="feedback-comment" [ngClass]="{ 'expanded': feedback.expanded }">
+            {{ feedback.comment }}
+          </p>
+          <button class="view-more-button" *ngIf="feedback.comment.length > 50" (click)="toggleExpand(feedback)">
+            {{ feedback.expanded ? 'View Less' : 'View More' }}
+          </button>
         </div>
       </div>
+    </div>
+  </div>
 
-<!--      </div>-->
-<!--    </div>-->
+
+
+
+    </mat-tab>
+    <mat-tab label="Previous BabySitters">
+      <div class="d-md-flex" style="padding: 10px 10px 10px 10px;">
+
+
+
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+
 
 
 
