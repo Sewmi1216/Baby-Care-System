@@ -16,6 +16,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
   margin-top: 20px;
+
 }
 .card-01 {/*final*/
   display: flex;
@@ -156,7 +157,7 @@ body {
   padding: 25px;
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+  box-shadow: 0 4px 8px 0 #BFBBF1, 0 6px 20px 0 #BFBBF1;
 }
 .charts__left__title {
   display: flex;
@@ -187,7 +188,7 @@ body {
   padding: 25px;
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+  box-shadow: 0 4px 8px 0 #BFBBF1, 0 6px 20px 0 #BFBBF1;
 }
 .charts__right__title {
   display: flex;

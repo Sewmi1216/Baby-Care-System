@@ -156,14 +156,6 @@ const routes: Routes = [
         path: 'babysitter_parentrequest',
         component: BabysitterParentrequestComponent,
       },
-      {
-        path: 'babysitter_tasklist',
-        component:  BabysitterTasklistComponent,
-      },
-      {
-        path: 'babysitter_requestdetails',
-        component: BabysitterRequestdetailsComponent,
-      },
       /* Admin */
       {
         path: 'admin_dashboard',

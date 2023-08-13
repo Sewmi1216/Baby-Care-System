@@ -99,6 +99,7 @@ import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule
 
 
 import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -177,6 +178,7 @@ import { TaskListHomeComponent } from './main/content/parent/task-list-home/task
     /*imports modules for angular calender */
     MatDatepickerModule,
     MatNativeDateModule,
+   MatTabsModule,
     /*chats module*/
    // ChartModule,
     /* ngx-chart module*/

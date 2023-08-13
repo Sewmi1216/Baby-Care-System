@@ -1,0 +1,72 @@
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+  gap: 10px; /* Spacing between cards */
+  margin-top: 50px;
+
+}
+
+.card {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+}
+
+/* Customize the size of individual cards */
+.card.one {
+  width: 500px;
+  height: 750px;
+  margin-left: 40px;
+}
+
+.card.two {
+  width: 610px;
+  height: 750px;
+  margin-right: 40px;
+}
+
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .card.one, .card.two{
+    width: 100%; /* Adjust as needed for smaller screens */
+    height: auto; /* Let the content dictate the height */
+  }
+}
+
+
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+.table-container-x {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table-container-y {
+  max-height: 400px; /* Adjust this value as needed */
+  overflow-y: auto;
+}

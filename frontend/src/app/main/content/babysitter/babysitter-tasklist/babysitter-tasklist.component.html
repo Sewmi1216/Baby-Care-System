@@ -1,5 +1,68 @@
-<div class="container-fluid">
-    <div class="mb-3">
-      <h3>Task List</h3>
+<div class="cards" fxLayout="row" fxLayout.lt-md="column">
+  <div class="card one" fxFlex="25%">ONE</div>
+
+  <!-- Add feedbacks from parents -->
+  <div class="card two" fxFlex="75%" fxLayout="column" fxLayoutAlign="center center">
+
+    <div class="feedback-section">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card" id="list1" style="border-radius: .75rem; background-color: #BFBBF1 ;">
+              <div class="card-body py-4 px-4 px-md-5">
+
+                <!-- Header of task list -->
+                <div class="text-center pt-3 pb-2">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                       alt="Check" width="60">
+                  <h2 class="my-4">Task List</h2>
+                </div>
+
+                <!-- Add new task form -->
+                <div class="container" fxLayout="column" fxLayoutGap="16px">
+
+                  <!-- Display "not added yet" if no tasks -->
+                  <div *ngIf="taskArray.length === 0" class="not-added-yet">Tasks not added yet.</div>
+
+                  <!--Task list content -->
+                  <div class="table-responsive" *ngIf="taskArray.length > 0">
+                    <div class="table-container-x">
+                      <div class="table-container-y">
+                        <table class="table text-white mb-0">
+                          <!-- ... table content ... -->
+
+                          <thead>
+                          <tr>
+                            <th fxFlex="25%">Task Name</th>
+                            <th fxFlex="25%">Time</th>
+                            <th fxFlex="20%">Reminders</th>
+                            <th fxFlex="20%">Special Note</th>
+                            <th fxFlex="10%">Completed</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let t of taskArray" class="fw-normal" fxLayout="row">
+                            <td fxFlex="25%" class="align-middle">{{t.taskName}}</td>
+                            <td fxFlex="25%" class="align-middle">{{t.time}}</td>
+                            <td fxFlex="20%" class="align-middle">{{t.get_reminders}}</td>
+                            <td fxFlex="20%" class="align-middle">{{t.any_special_note}}</td>
+                            <td fxFlex="10%" class="align-middle">{{t.completed_status}}</td>
+                          </tr>
+                          </tbody>
+
+
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>
