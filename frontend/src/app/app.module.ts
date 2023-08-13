@@ -101,6 +101,7 @@ import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule
 import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
+import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
 
 @NgModule({
   declarations: [
@@ -164,6 +165,7 @@ import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/v
    EditSysInfoComponent,
    TaskListHomeComponent,
    ViewNewParentsComponent,
+   ViewNewBabysittersComponent,
 
   ],
   imports: [
