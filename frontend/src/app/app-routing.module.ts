@@ -61,7 +61,11 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
 import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
-import {parentGuardGuard} from "./guard/parent-guard.guard";
+import {parentGuard} from "./guard/parent.guard";
+import {babysitterGuard} from "./guard/babysitter.guard";
+import {adminGuard} from "./guard/admin.guard";
+import {domainExpertGuard} from "./guard/domain-expert.guard";
+
 
 
 const routes: Routes = [
@@ -96,6 +100,7 @@ const routes: Routes = [
   {
     path: 'parent',
     component: MainComponent,
+    canActivate: [parentGuard],
     children: [
 
       {
@@ -140,6 +145,7 @@ const routes: Routes = [
   {
     path: 'babysitter',
     component: MainComponent,
+    canActivate: [babysitterGuard],
     children: [
 
       //babysitter
@@ -182,7 +188,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: MainComponent,
-    canActivate: [parentGuardGuard],
+    canActivate: [adminGuard],
     children: [
 
       /* Admin */
@@ -211,6 +217,7 @@ const routes: Routes = [
   {
     path: 'domain-expert',
     component: MainComponent,
+    canActivate: [domainExpertGuard],
     children: [
 
       //domain-expert
