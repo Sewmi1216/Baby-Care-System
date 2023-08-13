@@ -24,7 +24,6 @@ import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/
 import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
 import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
 
-
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
@@ -166,6 +165,11 @@ const routes: Routes = [
         component: ManageUserAccountsComponent
       },
       {
+        path: 'handle_complaints',
+        component: HandleComplaintsComponent
+
+      },
+      {
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
 
@@ -186,7 +190,10 @@ const routes: Routes = [
         path: 'handle_complaints',
         component: HandleComplaintsComponent
       },
-
+      {
+        path: 'edit_sys_info',
+        component: EditSysInfoComponent
+      },
 
       //domain-expert
       {
