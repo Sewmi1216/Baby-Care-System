@@ -42,11 +42,11 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 
 //babysitter
-//import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
+import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-//import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-//import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-//import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
+import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -90,7 +90,6 @@ import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sy
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
-=======
 import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
