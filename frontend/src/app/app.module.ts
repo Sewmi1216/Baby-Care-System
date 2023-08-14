@@ -90,7 +90,6 @@ import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sy
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
-=======
 import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
@@ -109,6 +108,7 @@ import { TaskListHomeComponent } from './main/content/parent/task-list-home/task
 import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
+import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
 
 @NgModule({
   declarations: [
@@ -144,11 +144,11 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
 
     HomeHeaderComponent,
     /*babysitter*/
-    NavBabysitterComponent,
+    //NavBabysitterComponent,
     BabysitterDashboardComponent,
-    BabysitterTasklistComponent,
-    BabysitterParentrequestComponent,
-    BabysitterRequestdetailsComponent,
+    //BabysitterTasklistComponent,
+    //BabysitterParentrequestComponent,
+    //BabysitterRequestdetailsComponent,
     ParentMyPlanComponent,
     ParentProfileComponent,
     MyBabysitterComponent,
