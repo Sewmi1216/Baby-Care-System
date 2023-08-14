@@ -1,11 +1,4 @@
-
-<app-nav-parent></app-nav-parent>
-<!--<app-nav-domain-expert></app-nav-domain-expert>-->
-
-
-
-
-<!--<app-nav-babysitter></app-nav-babysitter>-->
-
-<!--<app-nav-admin></app-nav-admin> -->
-
+<app-nav-parent *ngIf="getUser()['role']==='Parent'"></app-nav-parent>
+<app-nav-babysitter *ngIf="getUser()['role']==='Babysitter'"></app-nav-babysitter>
+<app-nav-admin *ngIf="getUser()['role']==='Admin'"></app-nav-admin>
+<app-nav-domain-expert *ngIf="getUser()['role']==='Domain-expert'"></app-nav-domain-expert>

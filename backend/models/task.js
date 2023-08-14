@@ -3,26 +3,26 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const taskSchema = new schema({
-    status: {
+    // status: {
+    //     type: String,
+    //     required: true
+    // },
+    // time: {
+    //     type: Date,
+    //     required: true
+    // },
+    taskName: {
         type: String,
         required: true
     },
-    time: {
-        type: Date,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    taskCompletedStatus: {
+    isCompleted: {
         type: Boolean,
-        required: true
+        default: false,
     },
-    remainderStatus: {
-        type: Boolean,
-        required: true
-    },
+    // remainderStatus: {
+    //     type: Boolean,
+    //     required: true
+    // },
 })
 
 const Task = mongoose.model("Task", taskSchema);
