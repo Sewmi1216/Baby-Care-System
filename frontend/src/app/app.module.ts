@@ -80,11 +80,16 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { ManageUserAccountsComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts.component';
 import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitters/verify-babysitters.component';
 
-import {NotifierService} from "angular-notifier";
+import {NotifierModule, NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
-
-
+import { ParentSignupComponent } from './signup/parent-signup/parent-signup.component';
+import { BabysitterSignupComponent } from './signup/babysitter-signup/babysitter-signup.component';
+import {NgToastModule} from "ng-angular-popup";
+import { EmailValidatorDirective } from './validator/email-validator.directive';
+import { TextValidatorDirective } from './validator/text-validator.directive';
+import { NicValidatorDirective } from './validator/nic-validator.directive';
+import { PhoneValidatorDirective } from './validator/phone-validator.directive';
 
 
 
@@ -104,7 +109,8 @@ import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-grow
     NavDomainExpertComponent,
     ParentDashboardComponent,
     SignupComponent,
-
+    ParentSignupComponent,
+    BabysitterSignupComponent,
     BabyDetailsComponent,
     BabyGrowthComponent,
     ViewBabyDetailsComponent,
@@ -147,6 +153,12 @@ import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-grow
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+    ParentSignupComponent,
+    BabysitterSignupComponent,
+    EmailValidatorDirective,
+    TextValidatorDirective,
+    NicValidatorDirective,
+    PhoneValidatorDirective,
 
 
 
@@ -158,9 +170,9 @@ import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-grow
     RouterOutlet,
     FormsModule,
     BrowserAnimationsModule,
+    NgToastModule,
     NgxMaterialTimepickerModule, /*Time picker module*/
     FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, /*FontAwesome Module*/
-
     /* import Flex Layout module */
     FlexLayoutModule,
   ],

@@ -1,0 +1,89 @@
+<div class="form d-flex justify-content-center" style="text-align: center;font-family: 'Sofia Sans', sans-serif">
+  <div class="main-container">
+    <div class="image-container">
+      <img alt="" src="../../assets/loginbackground.svg" width="1100px" height="660px">
+    </div>
+    <div class="container p-2 py-4"
+         style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
+      <form class="row g-3 needs-validation" #userAccountForm="ngForm"
+            (ngSubmit)="userAccountForm.form.valid && onSubmit()" id="signUpForm" novalidate>
+        <!-- start step indicators -->
+        <div class="form-header d-flex mb-4">
+          <i class="fas fa-arrow-alt-circle-left" routerLink="/signup"></i>
+          <span class="stepIndicator finish">Select User Role</span>
+          <span class="stepIndicator finish">Account Setup</span>
+        </div>
+        <!-- end step indicators -->
+        <h1 style="text-align: center;" class="h1">
+          Signup
+        </h1>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="useraccount.firstName" #firstName="ngModel" name="firstName" class="form-control" id="validationCustom01"  placeholder="First Name" required>
+          <div class="valid-feedback">
+            Looks good!
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom02" class="form-label">Last name</label>-->
+          <input type="text" [(ngModel)]="useraccount.lastName" #lastName="ngModel" name="lastName" class="form-control" id="validationCustom02" placeholder="Last Name" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-12">
+          <!--          <label for="validationCustom03" class="form-label">NIC</label>-->
+          <input type="text" [(ngModel)]="useraccount.nic" #nic="ngModel" name="nic" class="form-control" placeholder="NIC Number" style="width: 98%;" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-12">
+          <!--          <label for="validationCustom03" class="form-label">Home Address</label>-->
+          <input type="text" [(ngModel)]="useraccount.address" #address="ngModel" name="address" class="form-control" id="validationCustom03" style="width: 98%;" placeholder="Home Address"required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Contact Number</label>-->
+          <input type="text" [(ngModel)]="useraccount.phone" #phone="ngModel" name="phone" class="form-control" id="validationCustom05" placeholder="Contact Number" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Email</label>-->
+          <input type="text" [(ngModel)]="useraccount.email" #email="ngModel" name="email" class="form-control" id="validationCustom04" placeholder="Email"required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Password</label>-->
+          <input type="text" class="form-control" placeholder="Password" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Confirm Password</label>-->
+          <input type="text" [(ngModel)]="useraccount.password" #password="ngModel" name="password" class="form-control" placeholder="Confirm Password" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+
+        <div class="form-footer d-flex mb-4">
+          <button type="submit">Signup</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <div class="image p-2 ms-5 ">
+    <img src="assets/signupimage.svg" style="height: 620px;width: 620px;" alt="">
+  </div>
+</div>
