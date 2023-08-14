@@ -72,6 +72,9 @@ import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
 
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
+import {
+  PendingBabysitterListComponent
+} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 
 
 
@@ -249,6 +252,10 @@ const routes: Routes = [
       {
         path: 'edit_sys_info',
         component: EditSysInfoComponent
+      },
+      {
+        path: 'pending_babysitter_list',
+        component:PendingBabysitterListComponent
       },
       // {
       // path: 'domain_expert_moderate_community',

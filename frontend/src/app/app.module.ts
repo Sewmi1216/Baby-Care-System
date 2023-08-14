@@ -107,10 +107,17 @@ import { RequestedBabysittersComponent } from './main/content/parent/requested-b
 
 
 import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
-import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
-
+import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import {
+  BabysitterParentrequestComponent
+} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
+import {
+  BabysitterRequestdetailsComponent
+} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
+import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -140,9 +147,6 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     SearchBabysittersComponent,
     LiveStreamComponent,
     CommunityComponent,
-    ParentdashLeftContentComponent,
-    ParentdashRightContentComponent,
-    ParentdashTopContentComponent,
     DomainExpertProfileComponent,
      DomainExpertProfileComponent,
 
@@ -182,6 +186,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
    ViewNewBabysittersComponent,
 
     RequestedBabysittersComponent,
+      PendingBabysitterListComponent,
 
 
 
