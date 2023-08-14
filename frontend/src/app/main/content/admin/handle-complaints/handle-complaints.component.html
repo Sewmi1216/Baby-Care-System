@@ -28,7 +28,7 @@
                 <th scope="col">Date</th>
                 <th scope="col">User Name</th>
                 <th scope="col">Email Address</th>
-                <th scope="col">Subject</th>
+                <th scope="col">Status</th>
                 <th scope="col"></th>
               </tr>
               </thead>
@@ -52,12 +52,12 @@
                 </td>
                 <td>
                   <div class="media-body">
-                    <span class="mb-0 text-sm">Complaint-01</span>
+                    <button (click)="toggleStatus()" class="status-button">{{ isSolved ? 'Solved' : 'Unsolved' }}</button>
                   </div>
                 </td>
                 <td class="text-right">
                   <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-sm btn-icon-only text-light" routerLink = "/admin/handle_complaints_view_more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                   </div>

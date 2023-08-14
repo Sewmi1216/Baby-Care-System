@@ -74,6 +74,9 @@ import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
 
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
+import {
+  HandleComplaintsViewMoreComponent
+} from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
 
 
 
@@ -252,9 +255,14 @@ const routes: Routes = [
         component: HandleComplaintsComponent
       },
       {
+        path: 'handle_complaints_view_more',
+        component: HandleComplaintsViewMoreComponent
+      },
+      {
         path: 'edit_sys_info',
         component: EditSysInfoComponent
       },
+
       // {
       // path: 'domain_expert_moderate_community',
       // component: ModerateCommunityComponent
