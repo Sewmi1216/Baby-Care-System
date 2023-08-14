@@ -1,37 +1,59 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {ParentDashboardComponent} from "./main/content/parent/parent-dashboard/parent-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+
 import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
-import {PasswordComponent} from "./password/password.component";
 import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
 
 /* babysitter */
-import { BabysitterDashboardComponent } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
-import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
+import {
+  BabysitterDashboardComponent
+} from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
+import {BabysitterTasklistComponent} from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
+import {
+  BabysitterParentrequestComponent
+} from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+import {
+  BabysitterRequestdetailsComponent
+} from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+import {BabysitterChatComponent} from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
+
 
 import {HomeHeaderComponent} from "./home/home-header/home-header.component";
 import {BabyDetailsComponent} from "./main/content/parent/baby-details/baby-details.component";
 import {ViewBabyDetailsComponent} from "./main/content/parent/view-baby-details/view-baby-details.component";
 import {ViewBabySittersComponent} from "./main/content/parent/view-baby-sitters/view-baby-sitters.component";
-import {SitterPersonalInformationComponent} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
-import {DomainExpertProfileComponent} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
+import {
+  SitterPersonalInformationComponent
+} from "./main/content/parent/sitter-personal-information/sitter-personal-information.component";
+import {
+  DomainExpertProfileComponent
+} from "./main/content/domain-expert/domain-expert-profile/domain-expert-profile.component";
+
+import {ParentMyPlanComponent} from "./main/content/parent/parent-my-plan/parent-my-plan.component";
+import {ParentProfileComponent} from "./main/content/parent/parent-profile/parent-profile.component";
+import {MyBabysitterComponent} from "./main/content/parent/my-babysitter/my-babysitter.component";
 
 //domain-expert
-import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
-import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+import {
+  DomainExpertDashboardComponent
+} from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
+import {
+  DomainExpertModerateCommunityComponent
+} from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
+import {
+  DomainExpertModerateBlogComponent
+} from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 //import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
-import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
 
+import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
 
 
 /* Admin */
@@ -43,6 +65,15 @@ import {HandleComplaintsComponent} from "./main/content/admin/handle-complaints/
 import {HandlePaymentComponent} from "./main/content/admin/handle-payment/handle-payment.component";
 
 import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-list-home.component";
+
+import {parentGuard} from "./guard/parent.guard";
+import {babysitterGuard} from "./guard/babysitter.guard";
+import {adminGuard} from "./guard/admin.guard";
+import {domainExpertGuard} from "./guard/domain-expert.guard";
+
+import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
+
+
 
 const routes: Routes = [
   {
@@ -62,26 +93,21 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component:LoginComponent,
+    component: LoginComponent,
   },
   {
     path: 'signup',
-    component:SignupComponent,
+    component: SignupComponent,
   },
   {
-    path: 'password',
-    component:PasswordComponent,
-    children: [
-      {
-        path: 'forget-password',
-        component: ForgetPasswordComponent,
-      },
-    ]
+    path: 'forget-password',
+    component: ForgetPasswordComponent,
   },
 
   {
-    path: 'main',
+    path: 'parent',
     component: MainComponent,
+    canActivate: [parentGuard],
     children: [
 
       {
@@ -95,7 +121,7 @@ const routes: Routes = [
 
       },
       {
-        path:'parent_task_list',
+        path: 'parent_task_list',
         component: TaskListComponent
       },
       {
@@ -114,6 +140,10 @@ const routes: Routes = [
         component: ViewBabyDetailsComponent
       },
       {
+        path: 'baby_growth',
+        component: BabyGrowthComponent
+      },
+      {
         path: 'view_baby_sitters',
         component: ViewBabySittersComponent
       },
@@ -125,7 +155,14 @@ const routes: Routes = [
         path: 'domain_expert_profile',
         component: DomainExpertProfileComponent
 
-      },
+      }
+    ]
+  },
+  {
+    path: 'babysitter',
+    component: MainComponent,
+    canActivate: [babysitterGuard],
+    children: [
 
       //babysitter
       {
@@ -138,7 +175,7 @@ const routes: Routes = [
       },
       {
         path: 'babysitter_tasklist',
-        component:  BabysitterTasklistComponent,
+        component: BabysitterTasklistComponent,
       },
       {
         path: 'babysitter_requestdetails',
@@ -146,15 +183,30 @@ const routes: Routes = [
       },
 
 
-      //babysitter
-      {
-        path: 'babysitter_dashboard',
-        component: BabysitterDashboardComponent,
-      },
+      // {
+      //   path: 'domain_expert_moderate_community',
+      //   component: ModerateCommunityComponent,
+      // },
+
       {
         path: 'babysitter_parentrequest',
         component: BabysitterParentrequestComponent,
       },
+      {
+        path: 'babysitter_tasklist',
+        component: BabysitterTasklistComponent,
+      },
+      {
+        path: 'babysitter_requestdetails',
+        component: BabysitterRequestdetailsComponent,
+      },
+    ]
+  },
+  {
+    path: 'admin',
+    component: MainComponent,
+    canActivate: [adminGuard],
+    children: [
       /* Admin */
       {
         path: 'admin_dashboard',
@@ -172,7 +224,6 @@ const routes: Routes = [
       {
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
-
       },
       {
         path: 'babysitter_chat',
@@ -194,6 +245,17 @@ const routes: Routes = [
         path: 'edit_sys_info',
         component: EditSysInfoComponent
       },
+      // {
+      // path: 'domain_expert_moderate_community',
+      // component: ModerateCommunityComponent
+      // }
+    ]
+  },
+  {
+    path: 'domain-expert',
+    component: MainComponent,
+    canActivate: [domainExpertGuard],
+    children: [
 
       //domain-expert
       {
@@ -208,6 +270,21 @@ const routes: Routes = [
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
       },
+      {
+        path: 'parent_my_plan',
+        component: ParentMyPlanComponent
+
+      },
+      {
+        path: 'parent_profile',
+        component: ParentProfileComponent
+
+      },
+      {
+        path: 'my_babysitter',
+        component: MyBabysitterComponent
+
+      },
 
     ]
   }
@@ -218,4 +295,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

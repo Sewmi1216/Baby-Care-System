@@ -1,0 +1,15 @@
+//Babysitter
+Babysitter - create, delete, update, viewAll
+
+//Task
+Parent - createTask, deleteTask, updateTask
+Babysitter - updateTask, getAllTask
+
+//RequestForm
+Parent - createRequestForm, updateRequestForm,deleteRequestForm
+Babysitter - viewOneRequestForm, updateRequestForm
+Tasklist - viewAllRequestForm (how get parent id?)
+
+//Feedback
+Parent - createFeedback, UpdateFeedback, deleteFeedback
+Babysitter - viewAllFeedback

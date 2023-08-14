@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -15,8 +16,6 @@ import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.componen
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
-
-//import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 
 import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './main/content/parent/task-list/task-list.component';
@@ -40,6 +39,8 @@ import { MatButtonModule } from '@angular/material/button';
 library.add(faLocation); /*import the faLocation icon*/
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
+
+
 //babysitter
 //import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
@@ -48,11 +49,16 @@ import { BabysitterDashboardComponent } from './main/content/babysitter/babysitt
 //import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
+
 import { BabyDetailsComponent } from './main/content/parent/baby-details/baby-details.component';
 import { ViewBabyDetailsComponent } from './main/content/parent/view-baby-details/view-baby-details.component';
 import { ViewBabySittersComponent } from './main/content/parent/view-baby-sitters/view-baby-sitters.component';
 import { SitterPersonalInformationComponent } from './main/content/parent/sitter-personal-information/sitter-personal-information.component';
 import { DomainExpertProfileComponent } from './main/content/domain-expert/domain-expert-profile/domain-expert-profile.component';
+import { ParentMyPlanComponent } from './main/content/parent/parent-my-plan/parent-my-plan.component';
+import { ParentProfileComponent } from './main/content/parent/parent-profile/parent-profile.component';
+import { MyBabysitterComponent } from './main/content/parent/my-babysitter/my-babysitter.component';
+
 
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
@@ -64,11 +70,7 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 import { LiveStreamComponent } from './main/content/parent/live-stream/live-stream.component';
 
 
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
-import { PasswordComponent } from './password/password.component';
+
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 
 
@@ -88,6 +90,11 @@ import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sy
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
+=======
+import {NotifierService} from "angular-notifier";
+
+import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+
 
 
 //import {ChartModule, HIGHCHARTS_MODULES} from "angular-highcharts";
@@ -121,6 +128,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     SignupComponent,
 
     BabyDetailsComponent,
+    BabyGrowthComponent,
     ViewBabyDetailsComponent,
     ViewBabySittersComponent,
     SitterPersonalInformationComponent,
@@ -141,13 +149,15 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     BabysitterTasklistComponent,
     BabysitterParentrequestComponent,
     BabysitterRequestdetailsComponent,
+    ParentMyPlanComponent,
+    ParentProfileComponent,
+    MyBabysitterComponent,
 
 
     /*Admin*/
     AdminDashboardComponent,
     ManageUserAccountsComponent,
     VerifyBabysittersComponent,
-    PasswordComponent,
     ForgetPasswordComponent,
 
     BabysitterChatComponent,
@@ -167,9 +177,11 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
    ViewNewParentsComponent,
    ViewNewBabysittersComponent,
 
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterOutlet,
     FormsModule,
@@ -190,7 +202,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
 
 
   ],
-  providers: [],
+  providers: [NotifierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
