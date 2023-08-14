@@ -75,6 +75,9 @@ import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth
 import {
   PendingBabysitterListComponent
 } from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
+import {
+  CommunityDiscussionForumComponent
+} from "./main/content/parent/community-discussion-forum/community-discussion-forum.component";
 
 
 
@@ -162,6 +165,11 @@ const routes: Routes = [
       {
         path: 'requested_babysitters',
         component: RequestedBabysittersComponent
+
+      },
+      {
+        path: 'community_discussion_forum',
+        component: CommunityDiscussionForumComponent
 
       },
     ]

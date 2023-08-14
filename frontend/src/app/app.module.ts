@@ -118,6 +118,7 @@ import {
   BabysitterRequestdetailsComponent
 } from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
+import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -187,6 +188,7 @@ import { PendingBabysitterListComponent } from './main/content/admin/pending-bab
 
     RequestedBabysittersComponent,
       PendingBabysitterListComponent,
+      CommunityDiscussionForumComponent,
 
 
 
