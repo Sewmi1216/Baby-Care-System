@@ -32,8 +32,6 @@ import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/
 //import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
 import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream.component";
 
-
-
 /* Admin */
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
@@ -43,6 +41,8 @@ import {HandleComplaintsComponent} from "./main/content/admin/handle-complaints/
 import {HandlePaymentComponent} from "./main/content/admin/handle-payment/handle-payment.component";
 
 import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-list-home.component";
+import {ViewNewParentsComponent} from "./main/content/admin/view-new-parents/view-new-parents.component";
+import {ViewNewBabysittersComponent} from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
 
 const routes: Routes = [
   {
@@ -88,6 +88,14 @@ const routes: Routes = [
         path: 'parent_dashboard',
         component: ParentDashboardComponent
 
+      },
+      {
+        path: 'view_new_parents',
+        component: ViewNewParentsComponent
+      },
+      {
+        path: 'view_new_babysitters',
+        component: ViewNewBabysittersComponent
       },
       {
         path: 'task_list_home',
