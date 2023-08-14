@@ -73,6 +73,8 @@ import {domainExpertGuard} from "./guard/domain-expert.guard";
 
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
 
+import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
+import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
 
 
 const routes: Routes = [
@@ -99,6 +101,15 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
   },
+  {
+    path: 'parent_signup',
+    component: ParentSignupComponent
+  },
+  {
+    path: 'babysitter_signup',
+    component: BabysitterSignupComponent
+  },
+
   {
     path: 'forget-password',
     component: ForgetPasswordComponent,
