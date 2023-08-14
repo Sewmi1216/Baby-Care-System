@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./handle-complaints-view-more.component.css']
 })
 export class HandleComplaintsViewMoreComponent {
+  isSolved = false;
+
+  showSolvedDetails() {
+    // Implement logic to fetch admin details
+    // For demonstration, we're just setting isSolved to true
+    this.isSolved = true;
+  }
+
 
 }
