@@ -16,6 +16,51 @@ body { padding: 1rem; }
   .cards { grid-template-columns: repeat(3, 1fr); }
 }*/
 
+.mat-h1{
+  font-size: 27px;
+  font-family: 'Poppins', sans-serif;
+}
+.grid-container {
+  margin: 50px;
+}
+
+
+.icon-background-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #BFBBF1; /* Background color */
+  z-index: -1;
+}
+
+
+a {
+  text-decoration: none; /* Remove underline */
+}
+
+.d-flex {
+  display: flex;
+  align-items: flex-start; /* Align content to the top of the container */
+}
+
+
+.btn-download {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 36px;
+  background: rgba(111, 90, 158, 1);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  font-weight: 500;
+}
+
+
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
