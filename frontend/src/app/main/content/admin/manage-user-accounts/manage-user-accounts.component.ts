@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ManageUserAccountsComponent {
 
+  isActive: boolean = false;
+
+  toggleActive(): void {
+    this.isActive = !this.isActive;
+  }
+
 }

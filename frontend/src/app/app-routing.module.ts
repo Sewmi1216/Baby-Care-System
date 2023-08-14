@@ -39,7 +39,6 @@ import {ParentMyPlanComponent} from "./main/content/parent/parent-my-plan/parent
 import {ParentProfileComponent} from "./main/content/parent/parent-profile/parent-profile.component";
 import {MyBabysitterComponent} from "./main/content/parent/my-babysitter/my-babysitter.component";
 
-
 //domain-expert
 import {
   DomainExpertDashboardComponent
@@ -61,6 +60,11 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
 import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+import {EditSysInfoComponent} from "./main/content/admin/edit-sys-info/edit-sys-info.component";
+import {HandleComplaintsComponent} from "./main/content/admin/handle-complaints/handle-complaints.component";
+import {HandlePaymentComponent} from "./main/content/admin/handle-payment/handle-payment.component";
+
+import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-list-home.component";
 
 import {parentGuard} from "./guard/parent.guard";
 import {babysitterGuard} from "./guard/babysitter.guard";
@@ -68,8 +72,10 @@ import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
 
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
+
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
+
 
 const routes: Routes = [
   {
@@ -118,6 +124,11 @@ const routes: Routes = [
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
+
+      },
+      {
+        path: 'task_list_home',
+        component: TaskListHomeComponent
 
       },
       {
@@ -182,6 +193,7 @@ const routes: Routes = [
         component: BabysitterRequestdetailsComponent,
       },
 
+
       // {
       //   path: 'domain_expert_moderate_community',
       //   component: ModerateCommunityComponent,
@@ -206,7 +218,6 @@ const routes: Routes = [
     component: MainComponent,
     canActivate: [adminGuard],
     children: [
-
       /* Admin */
       {
         path: 'admin_dashboard',
@@ -217,12 +228,33 @@ const routes: Routes = [
         component: ManageUserAccountsComponent
       },
       {
+        path: 'handle_complaints',
+        component: HandleComplaintsComponent
+
+      },
+      {
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
       },
       {
         path: 'babysitter_chat',
         component: BabysitterChatComponent,
+      },
+      {
+        path: 'edit_sys_info',
+        component: EditSysInfoComponent
+      },
+      {
+        path: 'handle_payments',
+        component: HandlePaymentComponent
+      },
+      {
+        path: 'handle_complaints',
+        component: HandleComplaintsComponent
+      },
+      {
+        path: 'edit_sys_info',
+        component: EditSysInfoComponent
       },
       // {
       // path: 'domain_expert_moderate_community',
