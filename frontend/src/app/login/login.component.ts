@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../service/login.service";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   };
   logged = true;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router,  private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -37,12 +38,14 @@ export class LoginComponent {
         } else {
           this.router.navigate(['/domain-expert/domain_expert_dashboard'])
         }
+        this.toast.success({detail:"SUCCESS",summary:user.msg, position:'topCenter'});
       } else {
         console.log("Login unsuccessful");
       }
     }, (err) => {
       this.logged = false;
-      console.log("Error during login");
+      this.toast.error({detail:"ERROR",summary:err.error.msg, position:'topCenter', sticky:true});
+      console.log("Error during login", err);
     });
   }
 }

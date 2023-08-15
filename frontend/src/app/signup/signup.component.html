@@ -4,102 +4,29 @@
       <img alt="" src="../../assets/loginbackground.svg" width="1100px" height="660px">
     </div>
     <div class="container p-2 py-4"
-         style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif" >
-      <form class="row g-3 needs-validation" #userAccountForm="ngForm" (ngSubmit)="userAccountForm.form.valid && onSubmit()" id="signUpForm" novalidate>
+         style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
+      <form class="row g-3 needs-validation" id="signUpForm" novalidate>
         <!-- start step indicators -->
         <div class="form-header d-flex mb-4">
-          <span [ngClass]="getStepClass(0)">Select User Role</span>
-          <span [ngClass]="getStepClass(1)">Account Setup</span>
-          <span [ngClass]="getStepClass(2)">Personal Details</span>
+          <span class="stepIndicator finish">Select User Role</span>
+          <span class="stepIndicator before">Account Setup</span>
         </div>
         <!-- end step indicators -->
         <h1 style="text-align: center;" class="h1">
           Signup
         </h1>
         <!-- step one -->
-        <div class="step mb-1">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select your user role</option>
-            <option value="1">Parent</option>
-            <option value="2">Baby Sitter</option>
-          </select>
-        </div>
-
-        <!-- step two -->
-        <div class="step">
-          <div class="mb-2">
-            <!--          <label for="validationCustom03" class="form-label">Email</label>-->
-            <input type="text" [(ngModel)]="useraccount.email" #email="ngModel" name="email" class="form-control" id="validationCustom04" placeholder="Email"required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="mb-2">
-            <!--          <label for="validationCustom03" class="form-label">Password</label>-->
-            <input type="password" class="form-control" placeholder="Password" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="mb-2">
-            <!--          <label for="validationCustom03" class="form-label">Confirm Password</label>-->
-            <input type="password" [(ngModel)]="useraccount.password" #password="ngModel" name="password" class="form-control" placeholder="Confirm Password" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-        </div>
-
-        <!-- step three-->
-        <div class="step">
-          <div class="mb-2">
-            <input type="text" [(ngModel)]="useraccount.firstName" #firstName="ngModel" name="firstName" class="form-control" id="validationCustom01"  placeholder="First Name" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-          <div class="mb-2">
-            <!--          <label for="validationCustom02" class="form-label">Last name</label>-->
-            <input type="text" [(ngModel)]="useraccount.lastName" #lastName="ngModel" name="lastName" class="form-control" id="validationCustom02" placeholder="Last Name" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-          <div class="mb-2">
-            <!--          <label for="validationCustom03" class="form-label">Contact Number</label>-->
-            <input type="text" [(ngModel)]="useraccount.phone" #phone="ngModel" name="phone" class="form-control" id="validationCustom05" placeholder="Contact Number" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="mb-2">
-            <!--          <label for="validationCustom03" class="form-label">Home Address</label>-->
-            <input type="text" [(ngModel)]="useraccount.address" #address="ngModel" name="address" class="form-control" id="validationCustom03" placeholder="Home Address" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="mb-2">
-            <!--          <label for="validationCustom03" class="form-label">NIC</label>-->
-            <input type="text" [(ngModel)]="useraccount.nic" #nic="ngModel" name="nic" class="form-control" placeholder="NIC Number"  required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-          </div>
-          <div class="mb-2">
-            <input class="form-control" type="file" id="formFileMultiple" multiple>
-          </div>
-        </div>
-
-
-        <!-- start previous / next buttons -->
         <div class="form-footer d-flex mb-4">
-          <button type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
-          <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+          <button type="button" routerLink="/parent_signup">Parent</button>
+          <button type="button" routerLink="/babysitter_signup">Babysitter</button>
         </div>
+
         <!-- end previous / next buttons -->
-        <div  class="mb-4" style="margin-top: 5px;font-family: 'Sofia Sans', sans-serif">Already have an account?
-          <div style="font-weight: bold;display:inline;cursor: pointer;color:#7E57C2;font-family: 'Sofia Sans', sans-serif" routerLink="/login">Login</div>
+        <div class="mb-4" style="margin-top: 5px;font-family: 'Sofia Sans', sans-serif">Already have an account?
+          <div
+            style="font-weight: bold;display:inline;cursor: pointer;color:#7E57C2;font-family: 'Sofia Sans', sans-serif"
+            routerLink="/login">Login
+          </div>
         </div>
       </form>
 

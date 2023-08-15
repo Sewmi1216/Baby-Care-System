@@ -1,4 +1,4 @@
-<section class="vh-100">
+<!-- <section class="vh-100"> -->
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
@@ -13,18 +13,20 @@
 
             <!--Add new task form-->
             <div class="container" fxLayout="column" fxLayoutGap="16px">
-            <form (ngSubmit)="onSubmit(taskForm)"  #taskForm="ngForm">
+            <form #tasklistForm="ngForm" (ngSubmit)="tasklistForm.form.valid && onSubmit()"  #taskForm="ngForm" id="tasklistForm" novalid>
               <div class="form-group">
               <label for="task">New Task</label>
                 <input type="text" class="form-control" id="task" placeholder="Add New task..." [(ngModel)]="newTask.taskName" name="task" required>
               <button id="submitButton" type="submit" style="background-color: #7E57C2;border-color: #563393" class="btn btn-primary">Add Task</button>
+                <input type="text" class="form-control" id="task" placeholder="Add New task..." [(ngModel)]="tasklist.taskName" name="task" required>
+              <button id="submitButton" type="submit" class="btn btn-primary">Add</button>
 
               </div>
             </form>
 
             <hr>
 
-            <table class="table text-white mb-0" fxLayout="column">
+            <!-- <table class="table text-white mb-0" fxLayout="column">
             <thead>
             <tr fxLayout="row">
               <th fxFlex="25%" scope="col">Task</th>
@@ -49,7 +51,7 @@
                   <input type="text" [(ngModel)]="t.specialNote" class="form-control" [disabled]="t.verified && !t.editMode" />
                 </td>
                 <td fxFlex="10%">
-                  <!-- Display buttons based on task verification and edit mode status -->
+                   Display buttons based on task verification and edit mode status 
                   <ng-container *ngIf="!t.verified">
                     <button (click)="verifyTask(t)" class="btn btn-primary">Okay</button>
                   </ng-container>
@@ -63,27 +65,7 @@
             </table>
             </div>
 
-            <hr>
-
-            <!--today list-->
-            <table>
-              <tbody>
-              <tr *ngFor="let t of unconfirmedTasks" class="fw-normal" fxLayout="row">
-              </tr>
-              </tbody>
-            </table>
-
-
-            <table>
-              <tbody>
-              <tr *ngFor="let t of confirmedTasks" class="fw-normal" fxLayout="row">
-              </tr>
-              </tbody>
-            </table>
-
-
-
-
+            <hr> -->
 
 
 
@@ -92,5 +74,4 @@
         </div>
       </div>
 </div>
-</section>
-
+<!-- </section> -->

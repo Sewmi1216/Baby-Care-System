@@ -65,7 +65,17 @@ label{
   text-align: left;
 }
 
+.validErr{
+  color:red;
+  font-weight: bold;
+  text-align: right;
+}
+i{
+  font-size: 30px;
+  margin-left: 20px;
+  cursor:pointer;
 
+}
 
 
 
