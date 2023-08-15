@@ -158,4 +158,7 @@
   #tick{
    display: flex;
    justify-content: right;
+   margin-right: 10rem;
+   font-size: xx-large;
+   color: green;
   }
