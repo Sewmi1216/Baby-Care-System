@@ -16,6 +16,8 @@ app.use(bodyParser.json());     //json format
 //sid.signature
 app.use(session({
     secret : "mysecret",
+    resave: false,             // Add this line to specify the resave option
+    saveUninitialized: false    // Add this line to specify the saveUninitialized option
 }));
 // app.get('/', (req, res) => {
 //     res.send('Hello World!')
