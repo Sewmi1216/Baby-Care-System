@@ -10,11 +10,12 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   accLogin(user:any): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/parent/login", user);
+    return this.http.post<any>(environment.backend_url + "/user/login", user);
   }
 
-  accLogout() {
-    // this.navBarService.logged = false;
+  logout(){
     localStorage.clear();
+   //return this.http.post<any>(environment.backend_url + "/user/logout", user);
   }
+
 }

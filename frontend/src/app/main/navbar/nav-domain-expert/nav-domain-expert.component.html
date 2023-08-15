@@ -4,7 +4,7 @@
 <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/main/domain_expert_dashboard"
+    routerLink="/domain-expert/domain_expert_dashboard"
     #dashboard="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
@@ -12,7 +12,7 @@
     <label>Dashboard</label>
   </div>
   <div
-    routerLink="/main/domain_expert_moderate_blogs"
+    routerLink="/domain-expert/domain_expert_moderate_blogs"
     #moderateBlog="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateBlog.isActive ? '#7E57C2' : '', 'color': moderateBlog.isActive ? '#fff' : ''}">
@@ -20,7 +20,7 @@
     <label>Moderate Blogs</label>
   </div>
   <div
-    routerLink="/main/domain_expert_moderate_community"
+    routerLink="/domain-expert/domain_expert_moderate_community"
     #moderateCommunity="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateCommunity.isActive ? '#7E57C2' : '', 'color': moderateCommunity.isActive ? '#fff' : ''}">
