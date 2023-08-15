@@ -13,7 +13,11 @@ const babySchema = new schema({
     },
     gender: {
         trpe: String,
-        required: true
+        required: true,
+    },
+    birthDate: {
+        type: date,
+        required: true,
     }
 })
 

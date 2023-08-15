@@ -21,7 +21,10 @@
   </div>
   <div
     routerLink="/parent/task_list_home"
+
     #task="routerLinkActive"
+
+    #dashboard="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': task.isActive ? '#7E57C2' : '', 'color': task.isActive ? '#fff' : ''}">
     <i class="fas fa-clipboard-list"></i>

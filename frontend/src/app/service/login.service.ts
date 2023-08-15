@@ -13,10 +13,9 @@ export class LoginService {
     return this.http.post<any>(environment.backend_url + "/user/login", user);
   }
 
-  logout(user:any):Observable<any> {
-    // this.navBarService.logged = false;
+  logout(){
     localStorage.clear();
-    return this.http.post<any>(environment.backend_url + "/user/logout", user);
+   //return this.http.post<any>(environment.backend_url + "/user/logout", user);
   }
 
 }
