@@ -15,6 +15,7 @@ import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.componen
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
+import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
 import { SignupComponent } from './signup/signup.component';
@@ -42,7 +43,6 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 
 //babysitter
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
 import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
 import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
@@ -88,13 +88,22 @@ import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sy
 
 /*Add API reference for Angular Material Components */
 
+
+import {NotifierModule} from "angular-notifier";
+
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
 import {NotifierService} from "angular-notifier";
 
+
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
-
-
+import { ParentSignupComponent } from './signup/parent-signup/parent-signup.component';
+import { BabysitterSignupComponent } from './signup/babysitter-signup/babysitter-signup.component';
+import {NgToastModule} from "ng-angular-popup";
+import { EmailValidatorDirective } from './validator/email-validator.directive';
+import { TextValidatorDirective } from './validator/text-validator.directive';
+import { NicValidatorDirective } from './validator/nic-validator.directive';
+import { PhoneValidatorDirective } from './validator/phone-validator.directive';
 
 //import {ChartModule, HIGHCHARTS_MODULES} from "angular-highcharts";
 //import { AdminDasboardIncomeChartsComponent } from './main/content/admin/admin-dashboard/admin-dasboard-income-charts/admin-dasboard-income-charts.component';
@@ -125,7 +134,8 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     NavDomainExpertComponent,
     ParentDashboardComponent,
     SignupComponent,
-
+    ParentSignupComponent,
+    BabysitterSignupComponent,
     BabyDetailsComponent,
     BabyGrowthComponent,
     ViewBabyDetailsComponent,
@@ -166,6 +176,13 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+    ParentSignupComponent,
+    BabysitterSignupComponent,
+    EmailValidatorDirective,
+    TextValidatorDirective,
+    NicValidatorDirective,
+    PhoneValidatorDirective,
+
    // AdminDasboardIncomeChartsComponent,
    // AdminDashboardUserPieChartComponent,
    // AdminDashboardUserChartsComponent,
@@ -177,6 +194,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
    ViewNewBabysittersComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -185,9 +203,9 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     RouterOutlet,
     FormsModule,
     BrowserAnimationsModule,
+    NgToastModule,
     NgxMaterialTimepickerModule, /*Time picker module*/
     FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, /*FontAwesome Module*/
-
     /* import Flex Layout module */
     FlexLayoutModule,
     /*imports modules for angular calender */

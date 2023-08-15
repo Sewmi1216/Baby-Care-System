@@ -1,0 +1,117 @@
+<div class="form d-flex justify-content-center" style="text-align: center;font-family: 'Sofia Sans', sans-serif">
+  <div class="main-container">
+    <div class="image-container">
+      <img alt="" src="../../assets/loginbackground.svg" width="1100px" height="660px">
+    </div>
+    <div class="container p-2 py-4"
+         style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
+      <form class="row g-3 needs-validation" #userAccountForm="ngForm"
+            (ngSubmit)="userAccountForm.form.valid && onSubmit()" id="signUpForm" novalidate>
+        <!-- start step indicators -->
+
+        <div class="form-header d-flex mb-4">
+          <i class="fas fa-arrow-alt-circle-left" routerLink="/signup"></i>
+          <span class="stepIndicator finish">Select User Role</span>
+          <span class="stepIndicator finish">Account Setup</span>
+        </div>
+        <!-- end step indicators -->
+        <h1 style="text-align: center;" class="h1">
+          Signup
+        </h1>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="useraccount.firstName" #firstName="ngModel" name="firstName" class="form-control" placeholder="First Name" required appTextValidator="">
+          <div *ngIf="(firstName.touched || userAccountForm.submitted) && firstName.errors?.['required']"
+               class="validErr">
+            First Name is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom02" class="form-label">Last name</label>-->
+          <input type="text" [(ngModel)]="useraccount.lastName" #lastName="ngModel" name="lastName" class="form-control" placeholder="Last Name" required appTextValidator="">
+          <div *ngIf="(lastName.touched || userAccountForm.submitted) && lastName.errors?.['required']"
+               class="validErr">
+            Last Name is required
+          </div>
+        </div>
+        <div class="col-md-12">
+          <input type="text" [(ngModel)]="useraccount.nic" #nic="ngModel" name="nic" class="form-control" placeholder="NIC Number" style="width: 98%;" required appNicValidator>
+          <div *ngIf="(nic.touched || userAccountForm.submitted) && nic.errors?.['required']"
+               class="validErr">
+            NIC is required
+          </div>
+          <div *ngIf="(nic.dirty) && nic.errors?.['nicInvalid']"
+               class="validErr">
+            Invalid NIC
+          </div>
+        </div>
+        <div class="col-md-12">
+          <!--          <label for="validationCustom03" class="form-label">Home Address</label>-->
+          <input type="text" [(ngModel)]="useraccount.address" #address="ngModel" name="address" class="form-control" style="width: 98%;" placeholder="Home Address" required appTextValidator="">
+          <div *ngIf="(address.touched || userAccountForm.submitted) && address.errors?.['required']"
+               class="validErr">
+            Address is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Contact Number</label>-->
+          <input type="text" [(ngModel)]="useraccount.phone" #phone="ngModel" name="phone" class="form-control" placeholder="Contact Number" required appPhoneValidator>
+          <div *ngIf="(phone.touched || userAccountForm.submitted) && phone.errors?.['required']"
+               class="validErr">
+            Contact Number is required
+          </div>
+          <div *ngIf="(phone.dirty) && phone.errors?.['phoneInvalid']"
+               class="validErr">
+            Invalid Contact Number
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Email</label>-->
+          <input type="email" [(ngModel)]="useraccount.email" #email="ngModel" name="email" class="form-control" placeholder="Email" required appEmailValidator>
+          <div *ngIf="(email.touched || userAccountForm.submitted) && email.errors?.['required']"
+               class="validErr">
+            Email is required
+          </div>
+          <div *ngIf="(email.dirty) && email.errors?.['emailInvalid']"
+               class="validErr">
+            Invalid Email
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Password</label>-->
+          <input type="password" [(ngModel)]="useraccount.cpassword" #cpassword="ngModel" name="cpassword" class="form-control" placeholder="Password" required>
+          <div *ngIf="(cpassword.touched || userAccountForm.submitted) && cpassword.errors?.['required']"
+               class="validErr">
+            Password is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--          <label for="validationCustom03" class="form-label">Confirm Password</label>-->
+          <input type="password" [(ngModel)]="useraccount.password" #password="ngModel" name="password" class="form-control" placeholder="Confirm Password" required>
+          <div *ngIf="(password.touched || userAccountForm.submitted) && password.errors?.['required']"
+               class="validErr">
+            Password is required
+          </div>
+          <div *ngIf="password.touched && cpassword.touched && useraccount.password !== useraccount.cpassword"
+               class="validErr">
+            Passwords do not match
+          </div>
+        </div>
+
+        <div class="form-footer d-flex mb-4">
+          <button type="submit">Signup</button>
+        </div>
+        <div class="mb-4" style="margin-top: 5px;font-family: 'Sofia Sans', sans-serif">Already have an account?
+          <div
+            style="font-weight: bold;display:inline;cursor: pointer;color:#7E57C2;font-family: 'Sofia Sans', sans-serif"
+            routerLink="/login">Login
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="image p-2 ms-5 ">
+    <img src="assets/signupimage.svg" style="height: 620px;width: 620px;" alt="">
+  </div>
+</div>
