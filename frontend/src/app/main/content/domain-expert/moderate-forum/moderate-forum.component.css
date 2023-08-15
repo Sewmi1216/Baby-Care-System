@@ -1,0 +1,25 @@
+.topic {
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 20px;
+  color: #39315d;
+  /*padding-left: 55px;*/
+  /*padding-top: 39px;*/
+}
+.topic_image {
+  float: right;
+  width: 217px;
+  height: auto;
+  margin-top: -51px;
+}
+
+@media (max-width: 768px) {
+
+
+
+  .topic {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+  }
+}
