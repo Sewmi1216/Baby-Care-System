@@ -160,3 +160,4 @@ import { VaccinationDetailsComponent } from './main/content/parent/vaccination-d
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class YourModule { }
