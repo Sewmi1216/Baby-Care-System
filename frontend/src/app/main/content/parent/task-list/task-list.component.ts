@@ -59,10 +59,12 @@ export class TaskListComponent implements OnInit {
 
   // }
 
+}
   // unconfirmedTasks: any[] = []; // Initialize with unconfirmed tasks
   // confirmedTasks: any[] = [];   // Initialize with confirmed tasks
 
   // // ... Other methods ...
+
 
   // verifyTask(task: any): void {
   //   task.verified = true;

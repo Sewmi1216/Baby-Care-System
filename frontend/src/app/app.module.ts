@@ -93,8 +93,13 @@ import {NotifierModule} from "angular-notifier";
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
+
 import {NotifierService} from "angular-notifier";
 
+import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RequestedBabysittersComponent } from './main/content/parent/requested-babysitters/requested-babysitters.component';
+import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
 import { ParentSignupComponent } from './signup/parent-signup/parent-signup.component';
@@ -114,10 +119,18 @@ import { PhoneValidatorDirective } from './validator/phone-validator.directive';
 
 
 import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
-import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
-
+import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import {
+  BabysitterParentrequestComponent
+} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
+import {
+  BabysitterRequestdetailsComponent
+} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
+import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
+import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -148,7 +161,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     SearchBabysittersComponent,
     LiveStreamComponent,
     CommunityComponent,
-
+    DomainExpertProfileComponent,
      DomainExpertProfileComponent,
 
     HomeHeaderComponent,
@@ -193,6 +206,16 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
    ViewNewParentsComponent,
    ViewNewBabysittersComponent,
 
+    RequestedBabysittersComponent,
+      PendingBabysitterListComponent,
+      CommunityDiscussionForumComponent,
+
+
+
+
+
+
+
 
 
   ],
@@ -206,6 +229,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     NgToastModule,
     NgxMaterialTimepickerModule, /*Time picker module*/
     FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, /*FontAwesome Module*/
+    MatTabsModule,
     /* import Flex Layout module */
     FlexLayoutModule,
     /*imports modules for angular calender */
