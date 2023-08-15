@@ -28,7 +28,7 @@ export class ParentSignupComponent implements OnInit{
 
 
   constructor(
-    private authService: AuthService,   private toast: NgToastService, private router:Router
+    private authService: AuthService, private toast: NgToastService, private router:Router
   ) {}
 
   ngOnInit(): void {

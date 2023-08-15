@@ -13,33 +13,36 @@
   </div>
   <div
     routerLink="/parent/baby_details"
-    #dashboard="routerLinkActive"
+    #baby="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': baby.isActive ? '#7E57C2' : '', 'color': baby.isActive ? '#fff' : ''}">
     <i class="fas fa-baby"></i>
     <label>Baby Details</label>
   </div>
   <div
     routerLink="/parent/task_list_home"
+
+    #task="routerLinkActive"
+
     #dashboard="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': task.isActive ? '#7E57C2' : '', 'color': task.isActive ? '#fff' : ''}">
     <i class="fas fa-clipboard-list"></i>
     <label>Task List</label>
   </div>
   <div
     routerLink="/parent/view_baby_sitters"
-    #dashboard="routerLinkActive"
+    #search="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': search.isActive ? '#7E57C2' : '', 'color': search.isActive ? '#fff' : ''}">
     <i class="fas fa-search"></i>
     <label>Search Babysitters</label>
   </div>
   <div
-    routerLink="/parent/parent_dashboard"
-    #dashboard="routerLinkActive"
+    routerLink="/parent/community_discussion_forum"
+    #community="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': community.isActive ? '#7E57C2' : '', 'color': community.isActive ? '#fff' : ''}">
     <i class="fas fa-users"></i>
     <label>Community</label>
   </div>

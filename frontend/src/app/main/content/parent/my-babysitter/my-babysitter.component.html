@@ -1,164 +1,149 @@
-<div class="container mt-5">
-  <h3>My Baby Sitter</h3>
-  <div class="card" style="background-color: #F4F9FA">
-    <div class="row">
-      <div class="col-md-5">
-        <div class="card-body">
-          <img class="custom-img" src="../../assets/sewmi.jpg" alt="Profile Picture">
-          <h4 class="mt-3">Sewmi Thimaya</h4>
-          <h5>Address</h5>
-          <p>No 50, Katugastota Road, Kandy</p>
-        </div>
-      </div>
-      <div class="col-md-7">
-        <div class="card-body">
-          <h5>Personal Details</h5>
-          <hr>
+<div class="container-fluid">
+  <div style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;">
+    <img class="topic_image" src="../../assets/sitter.svg">
+    <h3 style="font-family: 'Sofia Sans', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #39315d;
+    padding-left: 10px;
+    padding-top: 37px;">My Baby Sitter</h3>
+  </div>
 
-          <h6 class="mr-2"><b>Gender:</b></h6>
-          <p>Female</p>
+<div class="card custom-card" style="width: 100%;  height: auto;background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
+  <!--      <div class="header" style="height: 39px; background-color: #FFFFFF; border-radius: 5px; margin: 10px;">-->
 
+  <mat-tab-group>
+    <mat-tab label="Current BabySitter" >
+        <div class="d-flex">
 
-          <h6 class="mr-2"><b>NIC:</b></h6>
-          <p>99554684454V</p>
-
-          <h6 class="mr-2"><b>Contact:</b></h6>
-          <p>0815745896</p>
-
-          <h6 class="mr-2"><b>Email:</b></h6>
-          <p>abc@gmail.com</p>
-
-        </div>
-      </div>
-      <div class="col-md-7">
-        <div class="card-body">
-          <div class="form-group">
-            <label for="workStartedDate">Work Started Date</label>
-            <input type="date" class="form-control" id="workStartedDate">
-          </div>
-
-          <div class="container mt-4">
-            <div class="row">
-              <div class="col-md-12">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal1">
-                  Add Feedback
-                </button><!--click this button -> popup-->
-
-
-                <!-- The Modal -->
-                <div class="modal" id="myModal1">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h4 class="modal-title">Add your Feedback Here</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                      </div>
-
-                      <!-- Modal body -->
-                      <div class="modal-body align-content-center d-flex align-items-center">
-                      </div>
-                      <div class="form-group">
-
-                        <textarea class="form-control" id="exampleTextarea1" rows="5"
-                                  placeholder="Type Here"></textarea>
-                      </div>
-
-                      <!-- Modal footer -->
-                      <div class="modal-footer" style="margin-top: 20px">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Send</button>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-12 mt-2">
-                  <div class="col-md-12">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">
-                      Recommend
-                    </button><!--click this button -> popup-->
-
-
-                    <!-- The Modal -->
-                    <div class="modal" id="myModal2">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-
-                          <!-- Modal Header -->
-                          <div class="modal-header">
-                            <h4 class="modal-title">Recommend Baby Sitter</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                          </div>
-
-                          <!-- Modal body -->
-                          <div class="modal-body align-content-center d-flex align-items-center">
-                            <p>Can you recommend a trusted babysitter for others?</p>
-
-                          </div>
-
-
-                          <div class="modal-footer" style="margin-top: 20px">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 mt-2">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal3">
-                        Remove
-                      </button><!--click this button -> popup-->
-
-
-                      <!-- The Modal -->
-                      <div class="modal" id="myModal3">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                              <h4 class="modal-title">Remove Baby Sitter</h4>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <!-- Modal body -->
-
-
-                            <div class="container">
-                              <div class="row">
-
-                                <div>
-                                  <p class="font-weight-bold">Are you sure to remove the baby sitter?</p>
-
-                                  <textarea class="form-control" placeholder="Enter the reason" required></textarea>
-                                </div>
-
-
-                              </div>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer" style="margin-top: 20px">
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
+          <!-- Left Side - Image -->
+          <div class="card custom-card" style="width: 45%; height: auto; background-color: #FFFFFF; margin: 40px 10px 30px 40px;border: none">
+            <div class="d-flex justify-content-center">
+              <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+            </div>
+            <div class="form-group">
+              <label style="padding: 10px 10px 10px 20px;" for="workStartedDate">Work Started Date</label>
+              <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workStartedDate">
+              <label style="padding: 10px 10px 10px 20px" for="workEndDate">Work End Date</label>
+              <input style="padding: 10px 10px 10px 20px ;width: 90%;" type="date" class="form-control" id="workEndDate">
+              <label style="padding: 10px 10px 10px 20px" for="workExtendDate">Extend Until </label>
+              <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workExtendDate">
+              <button style="background-color: #563393;border-color: #563393;margin: 14px 0px 10px 177px;
+" type="submit" class="btn btn-primary">Submit</button>
             </div>
           </div>
+
+
+
+          <div class="card custom-card" style="width: 60%; background-color: #FFFFFF; margin: 40px 40px 30px 50px; padding: 20px 20px 40px 20px">
+
+            <p class="font-weight-bold">Name</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">Address</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">Gender</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">NIC</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">Contact Number</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">Email</p>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+
+
+
+<!--<div  style="width: 100%;margin-top: 50px; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;" >-->
+
+  <div class="card-body">
+    <form>
+
+      <div style="" class="mb-3">
+
+        <div style="    width: 106%;
+    height: 79px;
+    background-color: white;
+    margin-bottom: 82px;
+    margin-left: -50px;
+    margin-top: 20px;" class="text-center">
+          <h2 style="padding-top: 20px;font-size: 30px;font-family: 'Sofia Sans';font-weight: bold">Feedback</h2>
+        </div>
+
+
+        <textarea style="width: 95%" class="form-control" id="feedback" rows="4" placeholder="Enter your feedback"></textarea>
+      </div>
+      <div class="rating">
+        <span style="color: gray; font-size: 30px; margin-bottom: 20px">★ ★ ★ ★ ★</span>
+      </div>
+
+      <button style="background-color: #563393;border-color: #563393" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="feedback-section">
+
+      <div  class="feedback-cards">
+        <div *ngFor="let feedback of feedbackData" class="feedback-card">
+          <div  class="feedback-header">
+            <div class="profile-info">
+              <img src="assets/sewmi.jpg" alt="Profile Picture" class="profile-image">
+              <h3>{{ feedback.name }}</h3>
+            </div>
+            <div class="rating">
+              <span class="rating-stars">★ ★ ★ ★ ★</span>
+              <span>{{ feedback.rating }}</span>
+            </div>
+          </div>
+          <p class="feedback-comment" [ngClass]="{ 'expanded': feedback.expanded }">
+            {{ feedback.comment }}
+          </p>
+          <button class="view-more-button" *ngIf="feedback.comment.length > 50" (click)="toggleExpand(feedback)">
+            {{ feedback.expanded ? 'View Less' : 'View More' }}
+          </button>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+    </mat-tab>
+    <mat-tab label="Previous BabySitters">
+      <div class="d-md-flex" style="padding: 10px 10px 10px 10px;">
+<!--        <div style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;" class="row justify-content mt-5 ">-->
+
+          <div class="col-sm-6 col-md-4  " style="height: 390px;border-radius: 10px">
+
+            <div class="card custom-card" style="width: 70%;height: 342px;margin-top: 20px;margin-right: 20px;margin-left: 10px;border-width: 0px;">
+              <div  class="d-flex justify-content-center mt-3">
+                <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+              </div>
+              <div  class="card-body bg-custom text-center">
+                <h4 style="font-weight: bold" class="card-title">Sewmi Thimaya</h4>
+                <p>Location : Kandy</p>
+                <p>Rate:
+                  <ng-container *ngFor="let _ of [1, 2, 3, 4]; let i = index">
+                    <i style="color: #fad103" class="fas fa-star"></i>
+                  </ng-container>
+                </p>
+
+                <a routerLink="/main/sitter_personal_information" class="btn btn-primary"
+                   style="background-color: #39315d;border-color:  #221d38">View Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+
+
+
+
+
 </div>
