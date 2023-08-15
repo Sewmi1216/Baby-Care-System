@@ -1,0 +1,67 @@
+.topic {
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 20px;
+  color: #39315d;
+  /*padding-left: 55px;*/
+  /*padding-top: 39px;*/
+}
+.topic_image {
+  float: right;
+  width: 217px;
+  height: auto;
+  margin-top: -51px;
+}
+
+@media (max-width: 768px) {
+
+
+
+  .topic {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,200&family=Sofia+Sans:wght@1;200;300;400&family=Stylish&family=Sunshiney&display=swap');
+
+
+
+body{
+  padding-top: 0px;
+}
+
+.body-content{
+  height: 85vh;
+}
+
+.brand-name{
+  padding-left: 20px;
+}
+
+.brand-name h1{
+  font-family: 'Sunshiney', cursive;
+  font-size: 70px;
+}
+
+
+.card-2,
+.card-3,
+.card-4{
+  margin: 100px 0px;
+}
+
+.content{
+  padding: 50px 70px;
+  font-size: 18px;
+  border-radius: 50px;
+}
+
+.content p{
+  margin-top: 20px;
+}
+
+
+
