@@ -1,15 +1,52 @@
 <!--https://www.bootdey.com/snippets/view/bs5-forum-list-->
 <!--https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts-->
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
+      xmlns="http://www.w3.org/1999/html">
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div id="content" class="content content-full-width">
 
         <div class="profile-content">
+
           <!-- begin tab-content -->
           <div class="tab-content p-0">
+            <button style="background-color: #7E57C2;border-color: #563393" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add new Discussion</button>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Add New Discussion</h4>
+                    <button  type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="topic">Topic:</label>
+                      <input type="text" class="form-control" id="topic" placeholder="Enter topic">
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Description:</label>
+                      <textarea class="form-control" id="description" rows="4" placeholder="Enter description"></textarea>
+                    </div>
+                  </div>
+
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Add</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
             <!-- begin #profile-post tab -->
             <div class="tab-pane fade active show" id="profile-post">
               <!-- begin timeline -->
