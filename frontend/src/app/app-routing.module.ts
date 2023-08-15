@@ -122,6 +122,11 @@ const routes: Routes = [
 
       },
       {
+        path: 'my_babysitter',
+        component: MyBabysitterComponent
+
+      },
+      {
         path: 'task_list_home',
         component: TaskListHomeComponent
 
@@ -172,6 +177,11 @@ const routes: Routes = [
         component: CommunityDiscussionForumComponent
 
       },
+      {
+        path: 'parent_my_plan',
+        component: ParentMyPlanComponent
+
+      },
     ]
   },
   {
@@ -216,6 +226,7 @@ const routes: Routes = [
         path: 'babysitter_requestdetails',
         component: BabysitterRequestdetailsComponent,
       },
+
     ]
   },
   {
@@ -290,21 +301,13 @@ const routes: Routes = [
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
       },
-      {
-        path: 'parent_my_plan',
-        component: ParentMyPlanComponent
 
-      },
       {
         path: 'parent_profile',
         component: ParentProfileComponent
 
       },
-      {
-        path: 'my_babysitter',
-        component: MyBabysitterComponent
 
-      },
 
     ]
   }
