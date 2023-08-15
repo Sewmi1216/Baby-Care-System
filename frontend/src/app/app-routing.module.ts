@@ -213,6 +213,7 @@ const routes: Routes = [
         path: 'babysitter_requestdetails',
         component: BabysitterRequestdetailsComponent,
       },
+
     ]
   },
   {
@@ -270,7 +271,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'domain-expert',
+    path: 'domain_expert',
     component: MainComponent,
     canActivate: [domainExpertGuard],
     children: [

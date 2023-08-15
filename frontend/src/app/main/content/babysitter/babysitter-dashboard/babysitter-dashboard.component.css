@@ -293,3 +293,50 @@ margin-bottom: 30px;
     gap: 10px; /* Adjust spacing for smaller screens */
   }
 }
+
+
+/* calender card*/
+.calender-card {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-direction: column; /* Arrange items vertically within the container */
+  align-items: center; /* Center items horizontally within the container */
+  text-align: center; /* Center the button text */
+}
+
+
+.calender-card .card-body {
+  padding: 5px;
+}
+
+.calender-card section {
+  width: 350px;
+  margin: 0 auto;
+}
+
+/*custom calender content*/
+.custom-calendar-content {
+  background-color: mediumpurple;
+  padding: 20px;
+
+} /**/
+
+.custom-calendar-content{
+
+  border-radius: 20px;
+  background-color: ghostwhite;
+  width: 300px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+}
+
+
+.custom-addevent-btn-color{
+  background-color: #7E57C2;
+  color: #fff;
+  border: #7E57C2;
+  border-radius: 18px;
+}

@@ -110,6 +110,9 @@ import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/v
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
 import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
 import { HandleComplaintsViewMoreComponent } from './main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component';
+import {StatusFilterPipe} from "./main/content/admin/manage-user-accounts/manage-user-accounts.pipe";
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+//import { ParentCalenderComponent } from './main/content/parent/parent-dashboard/parent-calender/parent-calender.component';
 
 @NgModule({
   declarations: [
@@ -179,6 +182,10 @@ import { HandleComplaintsViewMoreComponent } from './main/content/admin/handle-c
    ViewNewBabysittersComponent,
    HandleComplaintsViewMoreComponent,
 
+    /*for filter*/
+    StatusFilterPipe,
+    BabysitterTasklistComponent,
+
 
   ],
   imports: [
@@ -196,7 +203,8 @@ import { HandleComplaintsViewMoreComponent } from './main/content/admin/handle-c
     /*imports modules for angular calender */
     MatDatepickerModule,
     MatNativeDateModule,
-   MatTabsModule,
+
+    MatTabsModule,
     /*chats module*/
    // ChartModule,
     /* ngx-chart module*/
