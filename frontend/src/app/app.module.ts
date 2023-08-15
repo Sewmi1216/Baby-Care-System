@@ -15,6 +15,7 @@ import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.componen
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
+import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
 import { SignupComponent } from './signup/signup.component';
@@ -42,11 +43,10 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 
 //babysitter
-//import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-//import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-//import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-//import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
+import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -93,7 +93,6 @@ import {NotifierModule} from "angular-notifier";
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
-
 import {NotifierService} from "angular-notifier";
 
 
@@ -118,14 +117,6 @@ import { TaskListHomeComponent } from './main/content/parent/task-list-home/task
 import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
-import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
-import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
-import {
-  BabysitterParentrequestComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
-import {
-  BabysitterRequestdetailsComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
 
 @NgModule({
   declarations: [
