@@ -49,18 +49,11 @@ const addParent = async (req, res) => {
 
 
     const addTask = async (req, res) => {
-        const status = req.body.status;
-        const time = req.body.time;
-        const name = req.body.name;
-        const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-        const remainderStatus = Boolean(req.body.remainderStatus);
+        const taskName = req.body.taskName;
+        const parentId = req.body.parentId;
 
         const newTask = new Task({
-            status,
-            time,
-            name,
-            taskCompletedStatus,
-            remainderStatus,
+            taskName,
         });
 
         await newTask.save()
@@ -76,14 +69,13 @@ const addParent = async (req, res) => {
     const updateTask = async (req, res) => {
         let taskId = req.params.id; //fetch the id
 
-        const {status, time, name, taskCompletedStatus, remainderStatus} = req.body; // new value
+        const {taskName, time, isRemainder, specialNote} = req.body; // new value
 
         const updateTask = {
-            status,
+            taskName,
             time,
-            name,
-            taskCompletedStatus,
-            remainderStatus
+            isRemainder,
+            specialNote,
         };
 
         await Task.findByIdAndUpdate(taskId, updateTask)
