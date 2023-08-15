@@ -161,6 +161,7 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     ParentMyPlanComponent,
     ParentProfileComponent,
     MyBabysitterComponent,
+    BabysitterChatComponent,
 
 
     /*Admin*/

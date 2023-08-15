@@ -25,6 +25,7 @@
 
 .card{
     background-color: rgb(216, 230, 235);
+    box-shadow: 0rem 1rem 1rem 1rem rgb(132 139 200 / 40%);
     width: 100%;
     margin-left: 3rem;
     border-radius: 5%;
