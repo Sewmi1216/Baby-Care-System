@@ -305,7 +305,7 @@ const routes: Routes = [
       {
         path: 'pending_babysitter_list',
         component:PendingBabysitterListComponent
-      },
+      }, 
 
       // {
       // path: 'domain_expert_moderate_community',

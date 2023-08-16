@@ -125,8 +125,8 @@ import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-l
 import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
-import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
+//import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
+//import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
 
 
@@ -212,8 +212,8 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     StatusFilterPipe,
     BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
-    BabysitterViewParentRequestsComponent,
-    BabysitterViewMoreParentRequestsComponent,
+    // BabysitterViewParentRequestsComponent,
+    // BabysitterViewMoreParentRequestsComponent,
 
 
     RequestedBabysittersComponent,
