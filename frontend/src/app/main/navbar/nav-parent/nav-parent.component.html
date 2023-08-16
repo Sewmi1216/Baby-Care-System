@@ -16,27 +16,34 @@
     #babyDetails="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': babyDetails.isActive ? '#7E57C2' : '', 'color': babyDetails.isActive ? '#fff' : ''}">
+
     <i class="fas fa-baby"></i>
     <label>Baby Details</label>
   </div>
   <div
     routerLink="/parent/task_list_home"
+
     #taskListHome="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': taskListHome.isActive ? '#7E57C2' : '', 'color': taskListHome.isActive ? '#fff' : ''}">
+
     <i class="fas fa-clipboard-list"></i>
     <label>Task List</label>
   </div>
   <div
     routerLink="/parent/view_baby_sitters"
+
     #searchBabysitters="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': searchBabysitters.isActive ? '#7E57C2' : '', 'color': searchBabysitters.isActive ? '#fff' : ''}">
+
     <i class="fas fa-search"></i>
     <label>Search Babysitters</label>
   </div>
   <div
+
     routerLink="#"
+
     #community="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': community.isActive ? '#7E57C2' : '', 'color': community.isActive ? '#fff' : ''}">
