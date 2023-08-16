@@ -146,12 +146,15 @@ import { CompliantsComponent } from './main/content/parent/compliants/compliants
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
 import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+
 import {
   BabysitterViewParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+
+
 
 @NgModule({
   declarations: [
@@ -232,10 +235,10 @@ CompliantsComponent,
 
     /*for filter*/
     StatusFilterPipe,
-    BabysitterTasklistComponent,
+    // BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
-    BabysitterViewParentRequestsComponent,
-    BabysitterViewMoreParentRequestsComponent,
+    // BabysitterViewParentRequestsComponent,
+    // BabysitterViewMoreParentRequestsComponent,
 
 
     RequestedBabysittersComponent,
@@ -244,7 +247,7 @@ CompliantsComponent,
       CompliantsComponent,
       AboutUsComponent,
       ModerateForumComponent,
-
+      BabysitterTasklistComponent
 
 
 
