@@ -18,9 +18,7 @@ import {BabysitterTasklistComponent} from './main/content/babysitter/babysitter-
 import {
   BabysitterParentrequestComponent
 } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import {
-  BabysitterRequestdetailsComponent
-} from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+import {BabysitterRequestdetailsComponent} from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import {BabysitterChatComponent} from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -211,6 +209,10 @@ const routes: Routes = [
         path: 'babysitter_requestdetails',
         component: BabysitterRequestdetailsComponent,
       },
+      {
+        path: 'babysitter_chat',
+        component: BabysitterChatComponent,
+      },
     ]
   },
   {
@@ -235,10 +237,6 @@ const routes: Routes = [
       {
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
-      },
-      {
-        path: 'babysitter_chat',
-        component: BabysitterChatComponent,
       },
       {
         path: 'edit_sys_info',

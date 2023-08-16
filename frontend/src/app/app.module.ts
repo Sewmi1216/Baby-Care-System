@@ -169,8 +169,6 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     ManageUserAccountsComponent,
     VerifyBabysittersComponent,
     ForgetPasswordComponent,
-
-    BabysitterChatComponent,
     LiveStreamComponent,
 
     //domain-expert
