@@ -3,25 +3,50 @@ let User = require('../models/User')
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm");
 const bcrypt = require("bcryptjs");
+const {request} = require("express");
+const multer = require("multer");
+const path = require('path');
+
+// Define the multer storage and fileFilter outside the function
+const fileStorage = multer.diskStorage({
+    destination: 'uploads',
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const uploadImage = multer({
+    storage: fileStorage,
+    limits: {
+        fileSize: 1000000 // Adjust as needed
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(png|jpg)$/)) {
+            return cb(new Error('Please upload an image file with .png or .jpg extension!'));
+        }
+        cb(null, true);
+    }
+});
 
 const addBabysitter = async (req, res) => {
     try {
-        const role = req.body.role;
-        const firstName = req.body.firstName;
-        const lastName = req.body.lastName;
-        const email = req.body.email;
-        const phone = req.body.phone;
-        const address = req.body.address;
-        const password = req.body.password;
-        const nic = req.body.nic;
-        const age = Number(req.body.age);
-        const gender = req.body.gender;
-        const qualifications = req.body.qualifications;
-        const verificationDetails = req.body.verificationDetails;
+        const {
+            role,
+            firstName,
+            lastName,
+            email,
+            phone,
+            address,
+            password,
+            nic,
+            age,
+            gender,
+            image
+        } = req.body;
 
         const userExists = await User.findOne({email: email});
         if (userExists) {
-            return res.status(400).json({message: "User already exist"});
+            return res.status(400).json({message: "User already exists"});
         }
 
         const newUser = new User({
@@ -33,26 +58,43 @@ const addBabysitter = async (req, res) => {
             address,
             nic
         });
-
         const saltRounds = 12;
+        console.log("Password:", password);
+        console.log("Salt Rounds:", saltRounds);
+
         const hashPassword = await bcrypt.hash(password, saltRounds);
         newUser.password = hashPassword;
+
         const createdUser = await newUser.save();
+
+        // Upload image using multer
+        uploadImage.single('image')(req, res, async function (err) {
+            if (err instanceof multer.MulterError) {
+                return res.status(400).json({message: "Image upload error: " + err.message});
+            } else if (err) {
+                return res.status(400).json({message: err.message});
+            }
+            console.log('success img')
+            // Image successfully uploaded
+            const image = req.file.filename; // Store this filename in the Babysitter model
+        });
 
         const newBabysitter = new Babysitter({
             userId: createdUser._id,
             age,
             gender,
-            qualifications,
-            verificationDetails,
+            image // Store the filename here
         });
+
         await newBabysitter.save();
+
         res.status(201).json({message: "Babysitter added successfully"});
     } catch (err) {
         console.log(err);
-        res.status(500).json({message: "Error adding babysitter"});
+        res.status(500).json({message: "Error adding babysitter" + err.message});
     }
 };
+
 
 const getAllbabysitters = async (req, res) => {
     await Babysitter.find()

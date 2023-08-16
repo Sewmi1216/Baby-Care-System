@@ -1,12 +1,15 @@
 <p>baby-details works!</p>
 <div class="container-fluid">
-  <div style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;">    <img class="topic_image" src="../../assets/Happybaby.svg">
-  <h3>My Baby</h3>
+  <div
+    style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;">
+    <img class="topic_image" src="../../assets/Happybaby.svg">
+    <h3>My Baby</h3>
 
   </div>
   <div class="d-flex justify-content-end">
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary ml-auto" data-bs-toggle="modal" data-bs-target="#myModal" style="background-color: #7E57C2; border-color: #563393;">
+      <button type="button" class="btn btn-primary ml-auto" data-bs-toggle="modal" data-bs-target="#myModal"
+              style="background-color: #7E57C2; border-color: #563393;">
         Add Baby Details
       </button>
     </div>
@@ -16,84 +19,86 @@
   <div class="mb-3 d-flex ">
 
 
+    <form class="row g-3 needs-validation" #addBabyForm="ngForm"
+          (ngSubmit)="addBabyForm.form.valid && onSubmit()" id="signUpForm" novalidate>
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Baby Details</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
 
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body align-content-center d-flex align-items-center">
 
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Baby Details</h4>
-            <button  type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
+              <!--               add photo icon-->
+              <i class="fa sharp fa-light fa-camera fa-7x mx-auto"></i>
+            </div>
 
-          <!-- Modal body -->
-          <div class="modal-body align-content-center d-flex align-items-center">
-
-            <!--               add photo icon-->
-            <i class="fa sharp fa-light fa-camera fa-7x mx-auto"></i>
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <!-- Left Side: First Name and Birthday -->
-              <div class="col-sm-6">
-                <p class="font-weight-bold">First Name</p>
-                <input type="text" class="form-control" placeholder="Enter the first name" required>
-                <p class="font-weight-bold">Birth Day</p>
-                <input type="text" class="form-control" placeholder="dd/mm/yyyy">
-              </div>
-
-              <!-- Right Side: Last Name and Gender -->
-              <div class="col-sm-6">
-                <p class="font-weight-bold">Last Name</p>
-                <input type="text" class="form-control" placeholder="Enter the last name" required>
-                <!--                radio button-->
-                <p class="font-weight-bold">Gender</p>
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="form-check-input" id="male" name="optradio" value="male">
-                  <label class="form-check-label" for="male">Male</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="form-check-input" id="female" name="optradio" value="female">
-                  <label class="form-check-label" for="female">Female</label>
+            <div class="container">
+              <div class="row">
+                <!-- Left Side: First Name and Birthday -->
+                <div class="col-sm-6">
+                  <p class="font-weight-bold">First Name</p>
+                  <input type="text" class="form-control" placeholder="Enter the first name" [(ngModel)]="baby.firstName" #firstName="ngModel" name="firstName" required>
+                  <input type="number" class="form-control" placeholder="age" [(ngModel)]="baby.age" #age="ngModel" name="age" required>
+                  <p class="font-weight-bold">Birth Day</p>
+                  <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="baby.birthDate" #birthDate="ngModel" name="birthDate" >
                 </div>
 
+                <!-- Right Side: Last Name and Gender -->
+                <div class="col-sm-6">
+                  <p class="font-weight-bold">Last Name</p>
+                  <input type="text" class="form-control" placeholder="Enter the last name" [(ngModel)]="baby.lastName" #lastName="ngModel" name="lastName" required>
+                  <!--                radio button-->
+                  <p class="font-weight-bold">Gender</p>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="male" [(ngModel)]="baby.gender" #gender="ngModel" name="gender" name="optradio" value="male">
+                    <label class="form-check-label" for="male">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="female" name="optradio" value="female" [(ngModel)]="baby.gender" #gender="ngModel" name="gender" name="optradio">
+                    <label class="form-check-label" for="female">Female</label>
+                  </div>
+
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Modal footer -->
-          <div class="modal-footer" style="margin-top: 20px">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Add Baby</button>
-          </div>
+            <!-- Modal footer -->
+            <div class="modal-footer" style="margin-top: 20px">
+              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Add Baby</button>
+            </div>
 
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 2px 2px 0px #563393;"
+       class="row justify-content mt-5 ">
+
+    <div class="col-sm-6 col-md-4  " style="height: 360px;">
+
+
+      <div class="card custom-card"
+           style="width: 70%;height: 320px;margin-top: 20px;margin-right: 20px;margin-left: 10px;">
+        <div class="d-flex justify-content-center mt-3">
+          <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+        </div>
+        <div class="card-body bg-custom text-center">
+          <h4 class="card-title">Sewmi Thimaya</h4>
+          <p class="card-text">25 years</p>
+          <a routerLink="/main/view_baby_details" class="btn btn-primary"
+             style="background-color: #7E57C2;border-color: #563393">View Profile</a>
         </div>
       </div>
     </div>
-
-</div>
-<div style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 2px 2px 0px #563393;" class="row justify-content mt-5 ">
-
-  <div class="col-sm-6 col-md-4  "style="height: 360px;">
-
-
-
-
-    <div class="card custom-card" style="width: 70%;height: 320px;margin-top: 20px;margin-right: 20px;margin-left: 10px;">
-      <div class="d-flex justify-content-center mt-3">
-        <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
-      </div>
-      <div class="card-body bg-custom text-center">
-        <h4 class="card-title">Sewmi Thimaya</h4>
-        <p class="card-text">25 years</p>
-        <a routerLink="/main/view_baby_details" class="btn btn-primary" style="background-color: #7E57C2;border-color: #563393">View Profile</a>
-      </div>
-    </div>
   </div>
-</div>
 
 </div>
 
