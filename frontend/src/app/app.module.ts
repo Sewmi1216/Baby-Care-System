@@ -145,6 +145,7 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
 import { CompliantsComponent } from './main/content/parent/compliants/compliants.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
 
 @NgModule({
   declarations: [
@@ -225,10 +226,10 @@ CompliantsComponent,
 
     /*for filter*/
     StatusFilterPipe,
-    BabysitterTasklistComponent,
+    // BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
-    BabysitterViewParentRequestsComponent,
-    BabysitterViewMoreParentRequestsComponent,
+    // BabysitterViewParentRequestsComponent,
+    // BabysitterViewMoreParentRequestsComponent,
 
 
     RequestedBabysittersComponent,
@@ -237,7 +238,7 @@ CompliantsComponent,
       CompliantsComponent,
       AboutUsComponent,
       ModerateForumComponent,
-
+      BabysitterTasklistComponent
 
 
 
