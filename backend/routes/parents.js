@@ -16,7 +16,7 @@ const checkSession = (req, res, next) => {
 };
 
 //babydetails
-router.route('/addBaby').post(checkSession,parentController.addBaby);
+router.route('/addBaby').post(parentController.addBaby);
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);

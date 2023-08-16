@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../service/login.service";
 import {NgToastService} from "ng-angular-popup";
+import {ParentService} from "../service/parent.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   };
   logged = true;
 
-  constructor(private loginService: LoginService, private router: Router,  private toast: NgToastService) {
+  constructor(private loginService: LoginService, private parentService:ParentService,private router: Router,  private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class LoginComponent {
     console.log("submitting");
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
+      this.parentService.setUserId(user['id']);
       console.log(user['id']);
       console.log(user['role']);
       if (user.msg === "Logged In Successfully") {
