@@ -43,7 +43,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 //babysitter
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -125,14 +125,10 @@ import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-l
 import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
+import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
-import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
-import {
-  BabysitterParentrequestComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
-import {
-  BabysitterRequestdetailsComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
+
 
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
@@ -204,9 +200,6 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     NicValidatorDirective,
     PhoneValidatorDirective,
 
-   // AdminDasboardIncomeChartsComponent,
-   // AdminDashboardUserPieChartComponent,
-   // AdminDashboardUserChartsComponent,
    HandlePaymentComponent,
    HandleComplaintsComponent,
    EditSysInfoComponent,
@@ -219,6 +212,9 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     StatusFilterPipe,
     BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
+    BabysitterViewParentRequestsComponent,
+    BabysitterViewMoreParentRequestsComponent,
+
 
     RequestedBabysittersComponent,
       PendingBabysitterListComponent,

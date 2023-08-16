@@ -1,0 +1,67 @@
+.custom-card {
+  width: 800px;
+}
+
+.custom-card .card {
+  padding: 25px;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px 0 #BFBBF1, 0 6px 20px 0 #BFBBF1;
+}
+
+
+.btn-custom {
+  padding: 0.3rem 1rem; /* Adjust padding as needed */
+  font-size: 1rem; /* Adjust font size as needed */
+  line-height: 1.5;
+  border-radius: 10px;
+  border: 1px solid #7E57C2; /* Add border style */
+  align-items: center;
+  width: 100px;
+}
+
+.custom-data{
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+/*search bar*/
+.form-input {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 300px;
+}
+
+.form-input:hover{
+  transform: translateY(-2px);
+}
+
+.form-input input {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  flex-grow: 1;
+  padding: 0 16px;
+  height: 100%;
+  border: none;
+  background:#FFFFFF;
+  border-radius: 36px 0 0 36px;
+  outline: none;
+  width: 100%;
+  color: #000000;
+}
+.form-input button {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  width: 36px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(111, 90, 158, 1);
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+}
