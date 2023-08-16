@@ -1,77 +1,78 @@
-<!-- <section class="vh-100"> -->
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card" id="list1" style="border-radius: .75rem; background-color: #e8e3fc ;">
-          <div class="card-body py-4 px-4 px-md-5">
+<!--&lt;!&ndash; <section class="vh-100"> &ndash;&gt;-->
+<!--  <div class="container py-5 h-100">-->
+<!--    <div class="row d-flex justify-content-center align-items-center h-100">-->
+<!--      <div class="col">-->
+<!--        <div class="card" id="list1" style="border-radius: .75rem; background-color: #e8e3fc ;">-->
+<!--          <div class="card-body py-4 px-4 px-md-5">-->
 
-            <div class="text-center pt-3 pb-2">
-             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
-                alt="Check" width="60">
-             <h2 class="my-4">Task List</h2>
-            </div>
+<!--            <div class="text-center pt-3 pb-2">-->
+<!--             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"-->
+<!--                alt="Check" width="60">-->
+<!--             <h2 class="my-4">Task List</h2>-->
+<!--            </div>-->
 
-            <!--Add new task form-->
-            <div class="container" fxLayout="column" fxLayoutGap="16px">
-            <form #tasklistForm="ngForm" (ngSubmit)="tasklistForm.form.valid && onSubmit()"  #taskForm="ngForm" id="tasklistForm" novalid>
-              <div class="form-group">
-              <label for="task">New Task</label>
-                <input type="text" class="form-control" id="task" placeholder="Add New task..." [(ngModel)]="newTask.taskName" name="task" required>
-              <button id="submitButton" type="submit" style="background-color: #7E57C2;border-color: #563393" class="btn btn-primary">Add Task</button>
-                <input type="text" class="form-control" id="task" placeholder="Add New task..." [(ngModel)]="tasklist.taskName" name="task" required>
-              <button id="submitButton" type="submit" class="btn btn-primary">Add</button>
+<!--            &lt;!&ndash;Add new task form&ndash;&gt;-->
+<!--            <div class="container" fxLayout="column" fxLayoutGap="16px">-->
+<!--            <form #tasklistForm="ngForm" (ngSubmit)="tasklistForm.form.valid && onSubmit()"  #taskForm="ngForm" id="tasklistForm" novalid>-->
+<!--              <div class="form-group">-->
+<!--&lt;!&ndash;              <label for="task">New Task</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" id="task" placeholder="Add New task..." [(ngModel)]="newTask.taskName" name="task" required>&ndash;&gt;-->
+<!--              <button id="submitButton" type="submit" style="background-color: #7E57C2;border-color: #563393" class="btn btn-primary">Add Task</button>-->
+<!--                <input type="text" class="form-control" id="task1" placeholder="Add New task..." [(ngModel)]="tasklist.taskName" name="task" required>-->
+<!--              <button id="submitButton1" type="submit" class="btn btn-primary">Add</button>-->
 
-              </div>
-            </form>
+<!--              </div>-->
+<!--            </form>-->
 
-            <hr>
+<!--            <hr>-->
 
-            <!-- <table class="table text-white mb-0" fxLayout="column">
-            <thead>
-            <tr fxLayout="row">
-              <th fxFlex="25%" scope="col">Task</th>
-              <th fxFlex="25%" scope="col">Time</th>
-              <th fxFlex="20%" scope="col">Get Reminders</th>
-              <th fxFlex="20%" scope="col">Any special Note</th>
-              <th fxFlex="10%" scope="col">Action</th>
-              </tr>
-            </thead>
+<!--            &lt;!&ndash; <table class="table text-white mb-0" fxLayout="column">-->
+<!--            <thead>-->
+<!--            <tr fxLayout="row">-->
+<!--              <th fxFlex="25%" scope="col">Task</th>-->
+<!--&lt;!&ndash;              <th fxFlex="25%" scope="col">Time</th>&ndash;&gt;-->
+<!--              <th fxFlex="20%" scope="col">Get Reminders</th>-->
+<!--              <th fxFlex="20%" scope="col">Any special Note</th>-->
+<!--              <th fxFlex="10%" scope="col">Action</th>-->
+<!--              </tr>-->
+<!--            </thead>-->
 
-              <tbody>
-              <tr *ngFor="let t of taskArray" class="fw-normal" fxLayout="row">
-                <td fxFlex="25%" class="align-middle">{{ t.taskName }}</td>
-                <td fxFlex="25%" class="align-middle">
-                  <input class="time" placeholder="Time" [ngxTimepicker]="picker" [disabled]="t.verified && !t.editMode" />
-                  <ngx-material-timepicker #picker></ngx-material-timepicker>
-                </td>
-                <td fxFlex="20%" class="align-middle">
-                  <input id="myCheckbox" type="checkbox" [disabled]="t.verified && !t.editMode" />
-                </td>
-                <td fxFlex="25%" class="align-middle">
-                  <input type="text" [(ngModel)]="t.specialNote" class="form-control" [disabled]="t.verified && !t.editMode" />
-                </td>
-                <td fxFlex="10%">
-                   Display buttons based on task verification and edit mode status 
-                  <ng-container *ngIf="!t.verified">
-                    <button (click)="verifyTask(t)" class="btn btn-primary">Okay</button>
-                  </ng-container>
-                  <ng-container *ngIf="t.verified">
-                    <button (click)="toggleEditMode(t)" class="btn btn-success">{{ t.editMode ? 'Save' : 'Edit' }}</button>
-                    <button (click)="deleteTask(t)" class="btn btn-danger" [disabled]="t.editMode">Delete</button>
-                  </ng-container>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            </div>
+<!--              <tbody>-->
+<!--              <tr *ngFor="let t of taskArray" class="fw-normal" fxLayout="row">-->
+<!--                <td fxFlex="25%" class="align-middle">{{ t.taskName }}</td>-->
+<!--                <td fxFlex="25%" class="align-middle">-->
+<!--                  <input class="time" placeholder="Time" [ngxTimepicker]="picker" [disabled]="t.verified && !t.editMode" />-->
+<!--                  <ngx-material-timepicker #picker></ngx-material-timepicker>-->
+<!--                </td>-->
+<!--                <td fxFlex="20%" class="align-middle">-->
+<!--                  <input id="myCheckbox" type="checkbox" [disabled]="t.verified && !t.editMode" />-->
+<!--                </td>-->
+<!--                <td fxFlex="25%" class="align-middle">-->
+<!--                  <input type="text" [(ngModel)]="t.specialNote" class="form-control" [disabled]="t.verified && !t.editMode" />-->
+<!--                </td>-->
+<!--                <td fxFlex="10%">-->
+<!--                   Display buttons based on task verification and edit mode status-->
+<!--                  <ng-container *ngIf="!t.verified">-->
+<!--                    <button (click)="verifyTask(t)" class="btn btn-primary">Okay</button>-->
+<!--                  </ng-container>-->
+<!--                  <ng-container *ngIf="t.verified">-->
+<!--                    <button (click)="toggleEditMode(t)" class="btn btn-success">{{ t.editMode ? 'Save' : 'Edit' }}</button>-->
+<!--                    <button (click)="deleteTask(t)" class="btn btn-danger" [disabled]="t.editMode">Delete</button>-->
+<!--                  </ng-container>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--            </div>-->
 
-            <hr> -->
+<!--            <hr> &ndash;&gt;-->
 
 
 
-          </div>
-          </div>
-        </div>
-      </div>
-</div>
-<!-- </section> -->
+<!--          </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; </section> &ndash;&gt;-->
+<!--  </div>-->
