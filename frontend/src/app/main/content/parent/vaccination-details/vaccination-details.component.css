@@ -1,0 +1,287 @@
+.path{
+  color: #4B4389;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: bold;
+}
+
+.title img{
+  height:25%;
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  transform: translateX(-50%);
+}
+
+.title{
+  width: 60%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.title h1 {
+  flex: 5;
+  margin-left: 10%;
+  color: rgba(59, 31, 131, 0.55);
+  font-weight: bold;
+  margin-top: 1%;
+  font-size: 30px;
+}
+
+.card-body{
+  background-color: rgba(216, 213, 239, 0.96);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+
+
+}
+
+.container{
+  padding:0px 150px 40px 300px;
+  position:relative;
+  z-index: 1;
+
+}
+
+.main-container{
+  background-color: rgba(223, 219, 231, 0.42);
+  margin-top: 50px;
+  padding:50px;
+}
+
+.topic h1{
+  padding:60px 60px 0px 200px;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #4B4389;
+
+}
+
+ul{
+  list-style: none;
+  margin:0;
+  padding:0;
+  position:relative;
+}
+
+ul:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:0px;
+  height:100%;
+  border:1px dashed #4B4389;
+}
+
+
+ul .main {
+  margin: 60px 60px;
+  position: relative;
+  background-color: #fdfdfd;
+  padding: 5px 40px 40px 40px;
+  height: 250px;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  font-weight: bold;
+  z-index: 100; /* Increase the z-index value */
+}
+
+
+ul .sub-steps li{
+  margin:20px 60px;
+  position:relative;
+  background-color: #fdfdfd;
+  padding: 0px 40px;
+  width:400px;
+}
+
+.sub-steps li .vaccination{
+  top:-10px;
+  position:relative;
+}
+
+ul li > span{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-60px;
+  width:0px;
+  height:100%;
+  border:1px solid #4B4389;
+
+}
+
+ul li .main_step:before{
+  content:'';
+  width:30px;
+  height:30px;
+  border:4px solid #4B4389;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ffffff;
+  left:-15px;
+
+}
+ul li .main_step_active:before{
+  content:'';
+  width:30px;
+  height:30px;
+  border:4px solid #4B4389;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #4B4389;
+  left:-15px;
+
+}
+
+ul li .main_step:after{
+  content:'';
+  width:30px;
+  height:30px;
+  border:4px solid #4B4389;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ffffff;
+  left:-15px;
+
+}
+
+ul li .main_step_active:after{
+  content:'';
+  width:30px;
+  height:30px;
+  border:4px solid #4B4389;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #4B4389;
+  left:-15px;
+
+}
+
+ul li > span:before{
+  top:-12px;
+}
+
+ul li > span:after{
+  top:100%;
+}
+
+.container ul li .year .year_content{
+  position:absolute;
+  left:-200px;
+  background-color: rgba(0, 0, 0, 0.96);
+  border-radius: 10px;
+  padding:10px 30px;
+  top:-5%;
+  color:white;
+}
+
+.container ul li .year .year_content-start{
+  position:absolute;
+  left:-200px;
+  background-color: rgba(0, 0, 0, 0.96);
+  border-radius: 10px;
+  padding:10px 30px;
+  top:-5%;
+  color:white;
+}
+
+.sub-steps li .year_content_sub{
+  position:absolute;
+  left:-200px;
+  border-radius: 10px;
+  padding:10px 40px;
+  top:-100%;
+  font-weight: bolder;
+}
+
+.sub-steps{
+  position:relative;
+  left:-100px;
+  width: 10px;
+  margin-top:0px;
+}
+
+.sub-steps li{
+  margin-top:0px;
+}
+
+ul li .sub-steps li > span:before{
+  content:'';
+  width:20px;
+  height:20px;
+  border:4px solid #4B4389;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #4B4389;
+  left:-10px;
+
+}
+
+.vaccination {
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  display:flex;
+}
+
+.vaccination p{
+  flex:3;
+}
+.vaccine-checkbox {
+  margin-left: 10px;
+  width:17px
+}
+
+.display{
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.outer_frame_1 span {
+  padding: 140px 400px;
+  background-color: rgba(188, 169, 222, 0.2);
+  left: -270px;
+  position: absolute;
+  top: -8%;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgba(188, 169, 222, 0.4), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  z-index: 100; /* Decrease the z-index value */
+  cursor: pointer;
+}
+
+.outer_frame_1 span:hover{
+  background-color: rgba(188, 169, 222, 0.5);
+}
+
+.outer_frame span {
+  padding: 140px 400px;
+  left: -270px;
+  position: absolute;
+  top: -8%;
+  border-radius: 20px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(225, 224, 224, 0.2);
+}
+
+.modal-content{
+  z-index: 1050;
+}
+
+.modal-backdrop {
+  /* Ensure that pointer events are allowed on the modal overlay */
+  pointer-events: auto;
+}
+
+

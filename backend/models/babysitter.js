@@ -18,6 +18,10 @@ const qualificationsSchema = new schema ({
     data: {
         type: String, //binary_data_or_file_url_here
         required: true,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false,
     }
 })
 

@@ -36,6 +36,7 @@
 
  router.route("/updateAdmin/:id").put(checkSession,adminController.UpdateAdmin);
  router.route("/updateSystemInfo/:id").put(checkSession,adminController.UpdateSystemInfo);
+ router.route("/verifyBabysitter").put(checkSession, adminController.verifyBabysitter);
 
 
 

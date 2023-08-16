@@ -955,3 +955,10 @@ p {
     margin-bottom: 10px;
   }
 }
+
+.custom-addevent-btn-color{
+  background-color: #7E57C2;
+  color: #fff;
+  border: #7E57C2;
+  border-radius: 18px;
+}

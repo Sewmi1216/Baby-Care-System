@@ -16,6 +16,51 @@ body { padding: 1rem; }
   .cards { grid-template-columns: repeat(3, 1fr); }
 }*/
 
+.mat-h1{
+  font-size: 27px;
+  font-family: 'Poppins', sans-serif;
+}
+.grid-container {
+  margin: 50px;
+}
+
+
+.icon-background-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #BFBBF1; /* Background color */
+  z-index: -1;
+}
+
+
+a {
+  text-decoration: none; /* Remove underline */
+}
+
+.d-flex {
+  display: flex;
+  align-items: flex-start; /* Align content to the top of the container */
+}
+
+
+.btn-download {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 36px;
+  background: rgba(111, 90, 158, 1);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  font-weight: 500;
+}
+
+
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
@@ -247,4 +292,51 @@ margin-bottom: 30px;
   .cards-container {
     gap: 10px; /* Adjust spacing for smaller screens */
   }
+}
+
+
+/* calender card*/
+.calender-card {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-direction: column; /* Arrange items vertically within the container */
+  align-items: center; /* Center items horizontally within the container */
+  text-align: center; /* Center the button text */
+}
+
+
+.calender-card .card-body {
+  padding: 5px;
+}
+
+.calender-card section {
+  width: 350px;
+  margin: 0 auto;
+}
+
+/*custom calender content*/
+.custom-calendar-content {
+  background-color: mediumpurple;
+  padding: 20px;
+
+} /**/
+
+.custom-calendar-content{
+
+  border-radius: 20px;
+  background-color: ghostwhite;
+  width: 300px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+}
+
+
+.custom-addevent-btn-color{
+  background-color: #7E57C2;
+  color: #fff;
+  border: #7E57C2;
+  border-radius: 18px;
 }
