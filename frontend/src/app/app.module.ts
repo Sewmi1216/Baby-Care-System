@@ -132,7 +132,7 @@ import {
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
 import { CompliantsComponent } from './main/content/parent/compliants/compliants.component';
-import { AboutUsComponent } from './main/content/admin/about-us/about-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
 
 @NgModule({
