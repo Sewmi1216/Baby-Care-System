@@ -95,6 +95,8 @@ import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule
 // import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+import { VaccinationDetailsComponent } from './main/content/parent/vaccination-details/vaccination-details.component';
+import { GrowthParametersComponent } from './main/content/parent/growth-parameters/growth-parameters.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { RequestedBabysittersComponent } from './main/content/parent/requested-babysitters/requested-babysitters.component';
@@ -204,6 +206,8 @@ CompliantsComponent,
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+    VaccinationDetailsComponent,
+    GrowthParametersComponent,
     ParentSignupComponent,
     BabysitterSignupComponent,
     EmailValidatorDirective,
@@ -233,12 +237,6 @@ CompliantsComponent,
       CompliantsComponent,
       AboutUsComponent,
       ModerateForumComponent,
-
-
-
-
-
-
 
 
 
@@ -275,3 +273,4 @@ CompliantsComponent,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class YourModule { }
