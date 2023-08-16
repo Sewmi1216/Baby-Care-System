@@ -15,12 +15,7 @@ import {
   BabysitterDashboardComponent
 } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
 import {BabysitterTasklistComponent} from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import {
-  BabysitterParentrequestComponent
-} from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import {
-  BabysitterRequestdetailsComponent
-} from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
 import {BabysitterChatComponent} from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -79,6 +74,7 @@ import {
 } from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
 
  import{PendingBabysitterListComponent
+
 } from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 import {
   CommunityDiscussionForumComponent
@@ -95,6 +91,10 @@ import {ModerateForumComponent} from "./main/content/domain-expert/moderate-foru
 import {
   CreateNewTaskListTemplateComponent
 } from "./main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component";
+import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
+import {
+  BabysitterViewMoreParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
 
 
 
@@ -151,6 +151,7 @@ const routes: Routes = [
         component: ParentDashboardComponent
 
       },
+
       {
 
         path: 'parent_profile',
@@ -220,6 +221,7 @@ const routes: Routes = [
         component: DomainExpertProfileComponent
 
       },
+
       {
         path: 'requested_babysitters',
         component: RequestedBabysittersComponent
@@ -248,37 +250,31 @@ const routes: Routes = [
         path: 'babysitter_dashboard',
         component: BabysitterDashboardComponent,
       },
-      {
-        path: 'babysitter_parentrequest',
-        component: BabysitterParentrequestComponent,
-      },
+
       {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
       {
-        path: 'babysitter_requestdetails',
-        component: BabysitterRequestdetailsComponent,
+        path: 'view_parents_requests',
+        component: BabysitterViewParentRequestsComponent
       },
-
+      {
+        path: 'view_more_parents_requests',
+        component: BabysitterViewMoreParentRequestsComponent
+      },
 
       // {
       //   path: 'domain_expert_moderate_community',
       //   component: ModerateCommunityComponent,
       // },
 
-      {
-        path: 'babysitter_parentrequest',
-        component: BabysitterParentrequestComponent,
-      },
+
       {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
-      {
-        path: 'babysitter_requestdetails',
-        component: BabysitterRequestdetailsComponent,
-      },
+
 
     ]
   },
