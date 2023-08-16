@@ -19,24 +19,24 @@ export class BabyDetailsComponent {
     age:'',
     gender:'',
     birthDate:'',
-    parent:{
-      parentId:''
-    },
   };
+  private userId: any;
+
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router
   ) {}
 
   ngOnInit(): void {
-
+    this.userId = this.parentService.getUserId();
   }
 
 
   onSubmit() {
     console.log("Submitting form...");
-    this.parentService.addBaby(this.baby).subscribe(
+    this.parentService.addBaby(this.baby, this.userId).subscribe(
       (data) => {
+
         this.router.navigate(['/view_baby_details'])
         this.toast.success({detail:"SUCCESS",summary:data.message, position:'topCenter'});
         console.log("Baby added successful:", data);

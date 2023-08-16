@@ -10,11 +10,24 @@ export class ParentService {
   tasklist: any;
   baby:any;
 
+  private userId: any;
+
+  setUserId(userId: any) {
+    this.userId = userId;
+  }
+  getUserId() {
+    return this.userId;
+  }
   constructor(private http: HttpClient) { }
   addTask(tasklist:any): Observable<any>{
     return this.http.post<any>(environment.backend_url + "/parent/addTask", tasklist)
   }
-  addBaby(baby:any): Observable<any>{
-    return this.http.post<any>(environment.backend_url + "/parent/addBaby", baby)
+  addBaby(baby: any, userID: any): Observable<any> {
+    const requestBody = {
+      baby: baby,
+      userID: userID
+    };
+
+    return this.http.post<any>(environment.backend_url + "/parent/addBaby", requestBody);
   }
 }
