@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <h1 class="profile-name">Kumari</h1>
                             <p class="card-text">Address: 300/8B,Nugegoda</p>
-                            <h4 class="card-main-title">Medical Details <i class="fa-solid fa-file" id="icon-1"></i></h4>
+                            
                         </div>
                 </div>
             
@@ -51,47 +51,26 @@
                     
                     
                 </div>
+
+                <div class="qualification">
+                    <div>
+                  <h3 class="card-main-title">Medical Details</h3>
+                  <i class="fa-solid fa-file" id="icon-1"></i></div>
+
+                  <div>
+                  <h3 class="card-main-title">Qualification Details</h3>
+                  <i class="fa-solid fa-file" id="icon-1"></i></div>
+
+                </div>
         </div>
 
         </div>
     
  
-        
-  
-        <!-- Qualifications Card -->
-        <div class="card-1">
-          <div class="card-body-1">
-            <h3 class="card-title-1">Qualification List</h3>
-            <ul class="list-group">
-              <li class="list-group-item">Copy of Birth Certificate <i id ="tick" class="fa-solid fa-list-check"></i></li>
-              <li class="list-group-item">Copy of ID <i id ="tick" class="fa-solid fa-list-check"></i></li>
-              <li class="list-group-item">Police Clearance <i id ="tick" class="fa-solid fa-list-check"></i></li>
-              <li class="list-group-item">Dependence Certificate <i id ="tick" class="fa-solid fa-list-check"></i></li>
-              <li class="list-group-item">Other Qualifications <i id ="tick" class="fa-solid fa-list-check"></i></li>
-            </ul>
-            <h3 class="card-title-1">Qualifications File  <i class="fa-solid fa-file" id="icon-1"></i></h3>
-          </div>
-        </div>
+</div>
 
+<i class="fa-solid fa-list-check" id="tick"></i>
 
-        
-          
-      
-    
-  </div>
-
-  <div class="container mt-5">
-    <!-- <h2>User Deactivation</h2> -->
-    <button class="btn btn-danger" (click)="deactivateUser()">Deactivate</button>
-    
-    <div *ngIf="showReasonInput">
-      <div class="mt">
-        <label for="reason">Reason for Deactivation:</label>
-        <textarea class="form-control" id="reason" [(ngModel)]="deactivationReason"></textarea>
-      </div>
-      <button class="btn btn-primary mt-3" (click)="submitDeactivation()">Submit</button>
-    </div>
-  </div>
   
 
   
