@@ -147,6 +147,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
 import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
 import { ManageBlogsComponent } from './main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component';
+import { CreateBlogComponent } from './main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component';
 
 @NgModule({
   declarations: [
@@ -239,7 +240,8 @@ CompliantsComponent,
       AboutUsComponent,
       ModerateForumComponent,
       BabysitterTasklistComponent,
-      ManageBlogsComponent
+      ManageBlogsComponent,
+      CreateBlogComponent
 
 
 

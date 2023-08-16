@@ -99,6 +99,7 @@ import {
 import {
   ManageBlogsComponent
 } from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
+import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component";
 
 
 
@@ -368,6 +369,10 @@ const routes: Routes = [
       {
         path: 'manage_blogs',
         component: ManageBlogsComponent,
+      },
+      {
+        path: 'create_blog',
+        component: CreateBlogComponent,
       },
 
 
