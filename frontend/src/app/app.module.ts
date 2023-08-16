@@ -153,6 +153,7 @@ import {
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import { AddModeratorComponent } from './main/content/admin/add-moderator/add-moderator.component';
 
 
 
@@ -247,7 +248,8 @@ CompliantsComponent,
       CompliantsComponent,
       AboutUsComponent,
       ModerateForumComponent,
-      BabysitterTasklistComponent
+      BabysitterTasklistComponent,
+      AddModeratorComponent
 
 
 
