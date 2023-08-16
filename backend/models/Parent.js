@@ -7,6 +7,10 @@ const parentSchema = new schema({
         type: mongoose.Schema.Types.ObjectId, // Data type: Object ID
         ref: 'User' // Reference to the 'User' model
     },
+    // taskLists: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'tasklist',
+    // }],
 
 })
 

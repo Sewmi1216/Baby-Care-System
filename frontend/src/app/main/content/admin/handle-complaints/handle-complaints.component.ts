@@ -13,4 +13,11 @@ export class HandleComplaintsComponent {
     this.isActive = !this.isActive;
   }
 
+
+  isSolved = false;
+
+  toggleStatus() {
+    this.isSolved = !this.isSolved;
+  }
+
 }

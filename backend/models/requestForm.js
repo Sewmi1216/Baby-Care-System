@@ -3,12 +3,10 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const requestFormSchema = new schema({
-    // parent: {
-    //     type: schema.Types.ObjectId,
-    //     ref: 'Parent', 
-    //     // This should match the name of your Parent model
-    //     required: true
-    // },
+    parent: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Parent', 
+    },
     isAccept: {
         type: Boolean,
         default: false,
@@ -16,7 +14,7 @@ const requestFormSchema = new schema({
     workExpectation: [{
         date: {
             type: Date,
-            required: true
+            required: true,
         },
         fromTime: {
             type: String,
