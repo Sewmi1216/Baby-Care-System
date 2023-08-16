@@ -15,7 +15,6 @@ import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.componen
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
 import { SignupComponent } from './signup/signup.component';
@@ -44,9 +43,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 //babysitter
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -93,10 +90,19 @@ import {NotifierModule} from "angular-notifier";
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
-import {NotifierService} from "angular-notifier";
 
+
+// import {NotifierService} from "angular-notifier";
 
 import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+import { VaccinationDetailsComponent } from './main/content/parent/vaccination-details/vaccination-details.component';
+import { GrowthParametersComponent } from './main/content/parent/growth-parameters/growth-parameters.component';
+
+import { MatTabsModule } from '@angular/material/tabs';
+import { RequestedBabysittersComponent } from './main/content/parent/requested-babysitters/requested-babysitters.component';
+import {NotifierService} from "angular-notifier";
+
+// import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
 import { ParentSignupComponent } from './signup/parent-signup/parent-signup.component';
 import { BabysitterSignupComponent } from './signup/babysitter-signup/babysitter-signup.component';
 import {NgToastModule} from "ng-angular-popup";
@@ -114,12 +120,36 @@ import { PhoneValidatorDirective } from './validator/phone-validator.directive';
 
 
 import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
-import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
 
+// import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
+
+import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
+
+import { HandleComplaintsViewMoreComponent } from './main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component';
+import {StatusFilterPipe} from "./main/content/admin/manage-user-accounts/manage-user-accounts.pipe";
+
+import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component';
+//import { ParentCalenderComponent } from './main/content/parent/parent-dashboard/parent-calender/parent-calender.component';
+
+import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
+//import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+
+
+
+
+import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
+import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
+
+import { CompliantsComponent } from './main/content/parent/compliants/compliants.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+
 @NgModule({
   declarations: [
+
     AppComponent,
     HeaderComponent,
     HomeComponent,
@@ -148,19 +178,20 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     SearchBabysittersComponent,
     LiveStreamComponent,
     CommunityComponent,
-
+    DomainExpertProfileComponent,
      DomainExpertProfileComponent,
-
+CompliantsComponent,
     HomeHeaderComponent,
     /*babysitter*/
-    NavBabysitterComponent,
+    //NavBabysitterComponent,
     BabysitterDashboardComponent,
-    BabysitterTasklistComponent,
-    BabysitterParentrequestComponent,
-    BabysitterRequestdetailsComponent,
+    //BabysitterTasklistComponent,
+    //BabysitterParentrequestComponent,
+    //BabysitterRequestdetailsComponent,
     ParentMyPlanComponent,
     ParentProfileComponent,
     MyBabysitterComponent,
+    BabysitterChatComponent,
 
 
     /*Admin*/
@@ -176,6 +207,8 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
     DomainExpertModerateBlogComponent,
+    VaccinationDetailsComponent,
+    GrowthParametersComponent,
     ParentSignupComponent,
     BabysitterSignupComponent,
     EmailValidatorDirective,
@@ -183,15 +216,29 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     NicValidatorDirective,
     PhoneValidatorDirective,
 
-   // AdminDasboardIncomeChartsComponent,
-   // AdminDashboardUserPieChartComponent,
-   // AdminDashboardUserChartsComponent,
    HandlePaymentComponent,
    HandleComplaintsComponent,
    EditSysInfoComponent,
    TaskListHomeComponent,
    ViewNewParentsComponent,
    ViewNewBabysittersComponent,
+   HandleComplaintsViewMoreComponent,
+
+    /*for filter*/
+    StatusFilterPipe,
+    // BabysitterTasklistComponent,
+    CreateNewTaskListTemplateComponent,
+    // BabysitterViewParentRequestsComponent,
+    // BabysitterViewMoreParentRequestsComponent,
+
+
+    RequestedBabysittersComponent,
+      PendingBabysitterListComponent,
+      CommunityDiscussionForumComponent,
+      CompliantsComponent,
+      AboutUsComponent,
+      ModerateForumComponent,
+      BabysitterTasklistComponent
 
 
 
@@ -206,16 +253,20 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
     NgToastModule,
     NgxMaterialTimepickerModule, /*Time picker module*/
     FontAwesomeModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, /*FontAwesome Module*/
+    MatTabsModule,
     /* import Flex Layout module */
     FlexLayoutModule,
     /*imports modules for angular calender */
     MatDatepickerModule,
     MatNativeDateModule,
-   MatTabsModule,
+
+    MatTabsModule,
     /*chats module*/
    // ChartModule,
     /* ngx-chart module*/
     //NgxChartsModule
+    BsDatepickerModule.forRoot(),
+
 
 
   ],
@@ -223,3 +274,4 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class YourModule { }

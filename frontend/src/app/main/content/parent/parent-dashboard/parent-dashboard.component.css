@@ -100,8 +100,8 @@ body {
 /**/
 /* calender card*/
 .calender-card {
-  background-color: mediumpurple;
-  border: 1px solid #CCCCCC;
+  background-color: #ffffff;
+  border: 1px solid #000000;
   border-radius: 10px;
   padding: 10px;
   box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
@@ -124,8 +124,24 @@ body {
 
 } /**/
 
+.custom-calendar-content{
 
-/**/
+  border-radius: 20px;
+  background-color: ghostwhite;
+  width: 300px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+}
+
+.event-details-card{
+  margin-top: 15px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+  width: 200px;
+  border-radius: 20px;
+  background-color: ghostwhite;
+  height: 335px;
+
+}
+
 /* Change icon background colors */
 .icon-background-1 {
   color: #BFBBF1;
@@ -323,18 +339,21 @@ body {
   }
 }
 
-
 .icon-background-square {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  color: #BFBBF1; /* Background color */
   z-index: -1;
+  color: #BFBBF1;
+  border: none; /* Remove the border */
 }
 
-
+/* Add this class to your icon */
+.white-icon {
+  color: white;
+}
 a {
   text-decoration: none; /* Remove underline */
 }
@@ -360,4 +379,12 @@ a {
   grid-gap: 10px;
   font-weight: 500;
 }
+
+.custom-addevent-btn-color{
+  background-color: #7E57C2;
+  color: #fff;
+  border: #7E57C2;
+  border-radius: 18px;
+}
+
 

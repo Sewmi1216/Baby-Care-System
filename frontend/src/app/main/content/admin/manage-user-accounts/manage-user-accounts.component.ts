@@ -7,10 +7,24 @@ import { Component } from '@angular/core';
 })
 export class ManageUserAccountsComponent {
 
-  isActive: boolean = false;
+  items: any[] = [
+    { name: 'Sewmi Thimaya', email: 'sewmithimaya@gmail.com', status: 'Active' },
+    // ... Add more items ...
+  ];
 
-  toggleActive(): void {
-    this.isActive = !this.isActive;
+  filterActiveStatus = false;
+  filteredItems: any[] = [];
+
+  toggleFilter() {
+    this.filterActiveStatus = !this.filterActiveStatus;
+    this.updateFilteredItems();
   }
 
+  updateFilteredItems() {
+    if (this.filterActiveStatus) {
+      this.filteredItems = this.items.filter(item => item.status === 'Active');
+    } else {
+      this.filteredItems = this.items;
+    }
+  }
 }

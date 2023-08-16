@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="custom-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="list-group list-group-flush">
+          <!-- List group items here -->
+          <div class="list-group">
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" >Date - 2023/08/09</p>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">User Name - Sewmi Thimaya</p>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">Email Address - sewmithimaya@gmail.com</p>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">Subject - complaint about babysitters</p>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">Complaints - complaint about babysitters</p>
+            <div class="d-flex justify-content-center">
+            <button class="bbtn btn-custom btn-primary" *ngIf="!isSolved" (click)="showSolvedDetails()">Solve</button>
+            </div>
+            <ng-container *ngIf="isSolved">
+              <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">Admin Name - Rusith Siriwardhana</p>
+              <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">Admin Email - admin@gmail.com</p>
+              <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data">Admin Email - admin@gmail.com</p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
