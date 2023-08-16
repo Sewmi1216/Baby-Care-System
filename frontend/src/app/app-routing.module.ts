@@ -42,6 +42,7 @@ import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-acco
 import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
 import {VaccinationDetailsComponent} from "./main/content/parent/vaccination-details/vaccination-details.component";
+import {GrowthParametersComponent} from "./main/content/parent/growth-parameters/growth-parameters.component";
 
 
 
@@ -110,6 +111,10 @@ const routes: Routes = [
       {
         path: 'vaccination_details',
         component: VaccinationDetailsComponent
+      },
+      {
+        path: 'growth_parameters',
+        component: GrowthParametersComponent
       },
       {
         path: 'view_baby_sitters',
