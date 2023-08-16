@@ -3,18 +3,40 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const taskListSchema = new schema({
-    addedState:{
+    tasklistName: {
         type: String,
-        required: true
+        required: true,
     },
-    addedDateTime:{
+    parent: { 
+        type: mongoose.schema.Types.ObjectId,
+        ref: 'Parent',
+    },
+    date: {
         type: Date,
-        required: true
+        required:false
     },
-    completedStatus:{
-        type: String,
-        required: true
-    }
+    task: [{
+        taskName: {
+            type: String,
+            required: true
+        },
+        isCompleted: {
+            type: Boolean,
+            default: false,
+        },
+        time: {
+            type: Date,
+            required: false,
+        },
+        isRemainder: {
+            type: Boolean,
+            default: false,
+        },
+        specialNote: {
+            type: String,
+            required: false,
+        },
+    }],
 })
 
 const TaskList = mongoose.model("TaskList", taskListSchema);
