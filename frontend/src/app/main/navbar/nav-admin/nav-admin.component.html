@@ -16,7 +16,7 @@
     #manageUserAccounts="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': manageUserAccounts.isActive ? '#7E57C2' : '', 'color': manageUserAccounts.isActive ? '#fff' : ''}">
-    <i class="fas fa-baby"></i>
+    <i class="fas fa-users"></i>
     <label>Manage user accounts</label>
   </div>
   <div
@@ -24,7 +24,7 @@
     #verifyBabysitters="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': verifyBabysitters.isActive ? '#7E57C2' : '', 'color': verifyBabysitters.isActive ? '#fff' : ''}">
-    <i class="fas fa-clipboard-list"></i>
+    <i class="fas fa-clipboard-check"></i>
     <label>Verify Baby Sitters</label>
   </div>
   <div
@@ -32,23 +32,23 @@
     #handleComplaints="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': handleComplaints.isActive ? '#7E57C2' : '', 'color': handleComplaints.isActive ? '#fff' : ''}">
-    <i class="fas fa-search"></i>
-    <label>Complaints Handle</label>
+    <i class="fas fa-clipboard-list"></i>
+    <label>Complaints Handling</label>
   </div>
   <div
     routerLink="/admin/handle_payments"
     #handlePayments="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': handlePayments.isActive ? '#7E57C2' : '', 'color': handlePayments.isActive ? '#fff' : ''}">
-    <i class="fas fa-users"></i>
-    <label>Payments Handle</label>
+    <i class="fas fa-credit-card"></i>
+    <label>Payments Handling</label>
   </div>
   <div
     routerLink="/admin/edit_sys_info"
     #editSysInfo="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': editSysInfo.isActive ? '#7E57C2' : '', 'color': editSysInfo.isActive ? '#fff' : ''}">
-    <i class="fas fa-tv"></i>
+    <i class="far fa-pen-to-square"></i>
     <label>Edit system Info</label>
   </div>
 

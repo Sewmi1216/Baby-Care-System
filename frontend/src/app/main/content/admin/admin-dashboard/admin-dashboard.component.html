@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
       <span class="fa-stack fa-2x">
         <i class="fa fa-square fa-stack-2x icon-background-square"></i>
-        <i class="fas fa-chart-bar fa-stack-1x"></i>
+        <i class="fas fa-th fa-stack-1x white-icon"></i>
       </span>
         <h1 class="mat-h1 ml-3">Dashboard</h1>
       </div>
@@ -21,6 +21,7 @@
 <!--top cards-->
 <div class="main__cards">
   <!-- Card - 01 -->
+  <a routerLink = "/main/view_new_parents" class="card-link">
   <div class="card-01">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -39,10 +40,11 @@
       <span class="text-nowrap">Since last month</span>
     </p>
   </div>
-
+</a>
 
 
   <!-- Card - 02 -->
+  <a routerLink = "/main/view_new_babysitters" class="card-link">
   <div class="card-02">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -61,10 +63,12 @@
       <span class="text-nowrap">Since last month</span>
     </p>
   </div>
+  </a>
 
 
 
   <!-- Card - 03 -->
+  <a routerLink = "/main/handle_complaints" class="card-link">
   <div class="card-03">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -83,7 +87,7 @@
       <span class="text-nowrap">Since last month</span>
     </p>
   </div>
-
+  </a>
 
 
 
@@ -91,8 +95,8 @@
   <div class="card-04">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
-        <h4 class="card-title text-uppercase text-muted mb-0">New parents</h4>
-        <span class="h4 font-weight-bold mb-0 text-muted">350</span>
+        <h4 class="card-title text-uppercase text-muted mb-0">Today's Revenue</h4>
+        <span class="h4 font-weight-bold mb-0 text-muted">LKR.10,000</span>
       </div>
       <div class="col-auto">
       <span class="fa-stack fa-2x">
@@ -102,8 +106,8 @@
       </div>
     </div>
     <p class="mt-3 mb-0 text-muted text-sm">
-      <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-      <span class="text-nowrap">Since last month</span>
+      <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 10.48%</span>
+      <span class="text-nowrap">Since yesterday</span>
     </p>
   </div>
 
@@ -132,12 +136,7 @@
       <h2>Users</h2>
     </div>
     <div class="charts__right__cards">
-
-    <!--  <div class="calender-card mb-4 mb-xl-0">
-        <section >
-          <mat-calendar class="custom-calendar-content"></mat-calendar>
-        </section>
-      </div> -->
+      <img src="assets/admin-chart/user%20management.PNG" class="card-image">
     </div>
   </div>
 </div>
