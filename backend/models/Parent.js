@@ -1,36 +1,16 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs'); // Password hashing
 const schema = mongoose.Schema;
 
 const parentSchema = new schema({
-    firstName:{
-        type :String,
-        required:true
+    userId: { 
+        type: mongoose.Schema.Types.ObjectId, // Data type: Object ID
+        ref: 'User' // Reference to the 'User' model
     },
-    lastName:{
-        type: String,
-        required: true
-    },
-    email:{
-        type:String,
-        required: true
-    },
-    phone:{
-        type:String,
-        required:true
-    },
-    address:{
-        type:String,
-        required:false
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    nic :{
-        type:String,
-        required:true
-    }
+    // taskLists: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'tasklist',
+    // }],
 
 })
 

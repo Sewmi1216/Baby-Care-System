@@ -1,8 +1,8 @@
 /* Custom CSS */
-.custom-card {
-  background-color: #C4BCE5;
-  margin-left: 50px;
-}
+/*.custom-card {*/
+/*  background-color: #C4BCE5;*/
+/*  margin-left: 50px;*/
+/*}*/
 
 
 .custom-img {
@@ -12,3 +12,37 @@
   object-fit: cover;
   margin-top: 10px;
 }
+.topic_image{
+  float: right;
+  width: 135px;
+height: 117px;
+  /*padding: 0 10px 10px 10px;*/
+  /*padding-right: 10px;*/
+  /*padding-top: 10px;*/
+  /*border-radius: 50%;*/
+}
+h3{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size:30px ;
+  color: #39315d;
+  padding-left:50px ;
+  padding-top: 37px;
+}
+/**, ::after, ::before {*/
+/*  !* box-sizing: border-box; *! !* This line is removed *!*/
+/*}*/
+/*!* styles.css *!*/
+
+/*!* Remove the box-sizing declaration *!*/
+/*!* *, ::after, ::before {*/
+/*    box-sizing: border-box;*/
+/*} *!*/
+
+/*!* Define other styles as needed *!*/
+
+/*!* Additional styles for the button *!*/
+/*.button-custom {*/
+/*  background-color: #7E57C2;*/
+/*  border-color: #563393;*/
+/*}*/

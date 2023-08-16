@@ -1,0 +1,104 @@
+.custom-img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+@media (max-width: 767.98px) {
+
+  .col-md-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.card-body{
+  padding-left: 50px;
+}
+
+element.style {
+}
+@media (min-width: 768px){
+  .col-md-5 {
+    flex: 0 0 auto;
+    width: 31.666667%;
+  }}
+@media (min-width: 768px){
+.col-md-7 {
+  flex: 0 0 auto;
+  width: 28.333333%;
+}
+}
+
+
+
+.feedback-section {
+  margin-top: 20px;
+}
+
+.feedback-cards {
+  /*display: grid;*/
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .feedback-cards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+
+.feedback-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+  margin:20px 0 0 10px;
+  width: 95%;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.feedback-card h3 {
+  margin-top: 0;
+}
+
+.feedback-card p {
+  margin: 10px 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating-stars {
+  color: gold;
+  margin-right: 5px;
+}
+
+
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.topic_image {
+  float: right;
+  width: 159px;
+  height: 198px;
+  margin-top: -59px;
+}

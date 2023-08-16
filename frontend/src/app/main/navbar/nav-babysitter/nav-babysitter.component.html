@@ -1,9 +1,9 @@
 <div style="margin-left: 30px;" xmlns="http://www.w3.org/1999/html">
-    <img src="../../assets/Tharushi.jpg" alt="profile" width="200" height="200" class="img-fluid rounded-circle">
+    <img src="../../assets/Tharushi.jpg" alt="profile" width="200" height="150" class="img-fluid rounded-circle">
   </div>
   <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
     <div
-        routerLink="/main/babysitter_dashboard"
+        routerLink="/babysitter/babysitter_dashboard"
         #dashboard="routerLinkActive"
         routerLinkActive
         [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
@@ -11,7 +11,7 @@
         <label>Dashboard</label>
     </div>
     <div
-        routerLink="/main/babysitter_parentrequest"
+        routerLink="/babysitter/view_parents_requests"
         #parentrequest="routerLinkActive"
         routerLinkActive
         [ngStyle]="{'background-color': parentrequest.isActive ? '#7E57C2' : '', 'color': parentrequest.isActive ? '#fff' : ''}">
@@ -19,11 +19,12 @@
         <label>Parent Requests</label>
     </div>
     <div
-      routerLink="/main/babysitter_tasklist"
+      routerLink="/babysitter/babysitter_tasklist"
       #tasklist="routerLinkActive"
       routerLinkActive
       [ngStyle]="{'background-color': tasklist.isActive ? '#7E57C2' : '', 'color': tasklist.isActive ? '#fff' : ''}">
       <i class="fas fa-clipboard-list" ></i>
       <label>Task List</label>
     </div>
+
   </div>

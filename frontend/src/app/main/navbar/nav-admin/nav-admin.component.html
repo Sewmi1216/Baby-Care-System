@@ -4,7 +4,7 @@
 <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/main/admin_dashboard"
+    routerLink="/admin/admin_dashboard"
     #dashboard="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
@@ -12,43 +12,58 @@
     <label>Dashboard</label>
   </div>
   <div
-    routerLink="/main/manage_user_accounts"
-    #dashboard="routerLinkActive"
+    routerLink="/admin/manage_user_accounts"
+    #manageUserAccounts="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': manageUserAccounts.isActive ? '#7E57C2' : '', 'color': manageUserAccounts.isActive ? '#fff' : ''}">
+
     <i class="fas fa-baby"></i>
+    <label>Manage user Accounts</label>
+
+    <i class="fas fa-users"></i>
     <label>Manage user accounts</label>
+
   </div>
   <div
-    routerLink="/main/verify_babysitter"
-    #dashboard="routerLinkActive"
+    routerLink="/admin/pending_babysitter_list"
+
+
+    #verifyBabysitters="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
-    <i class="fas fa-clipboard-list"></i>
+    [ngStyle]="{'background-color': verifyBabysitters.isActive ? '#7E57C2' : '', 'color': verifyBabysitters.isActive ? '#fff' : ''}">
+    <i class="fas fa-clipboard-check"></i>
     <label>Verify Baby Sitters</label>
   </div>
   <div
-    routerLink="/main/parent_dashboard"
-    #dashboard="routerLinkActive"
+    routerLink="/admin/handle_complaints"
+    #handleComplaints="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': handleComplaints.isActive ? '#7E57C2' : '', 'color': handleComplaints.isActive ? '#fff' : ''}">
+
     <i class="fas fa-search"></i>
-    <label>Complaints Handle</label>
+
+    <i class="fas fa-clipboard-list"></i>
+
+    <label>Complaints Handling</label>
   </div>
   <div
-    routerLink="/main/parent_dashboard"
-    #dashboard="routerLinkActive"
+    routerLink="/admin/handle_payments"
+    #handlePayments="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': handlePayments.isActive ? '#7E57C2' : '', 'color': handlePayments.isActive ? '#fff' : ''}">
+
     <i class="fas fa-users"></i>
-    <label>Payments Handle</label>
+
+    <i class="fas fa-credit-card"></i>
+
+    <label>Payments Handling</label>
   </div>
   <div
-    routerLink="/main/parent_dashboard"
-    #dashboard="routerLinkActive"
+    routerLink="/admin/edit_sys_info"
+    #editSysInfo="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
-    <i class="fas fa-tv"></i>
+    [ngStyle]="{'background-color': editSysInfo.isActive ? '#7E57C2' : '', 'color': editSysInfo.isActive ? '#fff' : ''}">
+    <i class="far fa-pen-to-square"></i>
     <label>Edit system Info</label>
   </div>
 

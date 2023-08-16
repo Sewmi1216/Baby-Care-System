@@ -1,10 +1,342 @@
-.babysitter-dashboard{
-    margin: 2rem;
+/*html { font-size: 22px; }
+body { padding: 1rem; }
+
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
 }
 
-.card{
-    flex-direction: row;
-    background-color: #f6f6ff83;
-    width: 200px;
-    
+
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}*/
+
+.mat-h1{
+  font-size: 27px;
+  font-family: 'Poppins', sans-serif;
+}
+.grid-container {
+  margin: 50px;
+}
+
+
+.icon-background-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #BFBBF1; /* Background color */
+  z-index: -1;
+}
+
+
+a {
+  text-decoration: none; /* Remove underline */
+}
+
+.d-flex {
+  display: flex;
+  align-items: flex-start; /* Align content to the top of the container */
+}
+
+
+.btn-download {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 36px;
+  background: rgba(111, 90, 158, 1);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  font-weight: 500;
+}
+
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+  gap: 20px; /* Spacing between cards */
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.card {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+}
+
+/* Customize the size of individual cards */
+.card.one {
+  width: 390px;
+  height: 750px;
+}
+
+.card.two {
+  width: 390px;
+  height: 750px;
+}
+
+.card.three {
+  width: 390px;
+  height: 750px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .card.one, .card.two, .card.three {
+    width: 100%; /* Adjust as needed for smaller screens */
+    height: auto; /* Let the content dictate the height */
+  }
+}
+
+
+.feedback-section {
+  margin-top: 20px;
+}
+
+.feedback-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .feedback-cards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+
+.feedback-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+  margin-left: 10px;
+  width: 350px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*display: flex;
+flex-direction: column;
+justify-content: space-around;
+height: 150px;
+margin-left: 10px;
+width: 350px;
+padding: 25px;
+border-radius: 10px;
+border: none;
+margin-bottom: 30px;
+
+ */
+.feedback-card h3 {
+  margin-top: 0;
+}
+
+.feedback-card p {
+  margin: 10px 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating-stars {
+  color: gold;
+  margin-right: 5px;
+}
+
+
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+/*Cards*/
+
+.main__cards {/*final*/
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+  align-content: center;
+}
+.card-01 {/*final*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
+  margin-left: 10px;
+  width: 350px;
+  padding: 25px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #BFBBF1, #FFFFFF);/*final*/
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset; /**/
+}
+
+.card-02 {/*final*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
+  margin-left: 10px;
+  width: 350px;
+  padding: 25px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #FFDDFC, #FFFFFF);/*final*/
+  box-shadow:  #FFDDFC 0px 2px 4px,  #FFDDFC 0px 7px 13px -3px, #FFDDFC 0px -3px 0px inset; /**/
+}
+
+
+.card-03 {/*final*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
+  margin-left: 10px;
+  width: 350px;
+  padding: 25px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 30px;
+  background: linear-gradient(to right,  #DDFFFF, #FFFFFF);/*final*/
+  box-shadow:  #DDFFFF 0px 2px 4px,   #DDFFFF 0px 7px 13px -3px,  #DDFFFF 0px -3px 0px inset; /**/
+}
+
+
+
+
+/**/
+
+/*card hovers finale*/
+.card-01:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Change shadow on hover */
+  transform: translateY(-2px); /* Lift the card slightly */
+  background: linear-gradient(to right, rgba(111, 90, 158, 1), #FFFFFF);
+
+}
+.card-02:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Change shadow on hover */
+  transform: translateY(-2px); /* Lift the card slightly */
+  background: linear-gradient(to right, rgba(111, 90, 158, 1), #FFFFFF);
+}
+.card-03:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Change shadow on hover */
+  transform: translateY(-2px); /* Lift the card slightly */
+  background: linear-gradient(to right, rgba(111, 90, 158, 1), #FFFFFF);
+}
+.card-04:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Change shadow on hover */
+  transform: translateY(-2px); /* Lift the card slightly */
+  background: linear-gradient(to right, rgba(111, 90, 158, 1), #FFFFFF);
+
+}
+
+.icon-background-1 {
+  color: #BFBBF1;
+}
+.icon-background-2 {
+  color: #FFDDFC;
+}
+.icon-background-3 {
+  color: #DDFFFF ;
+}
+.icon-background-4 {
+  color: #F6DDFF;
+}
+/**/
+
+
+/* Default styles for the cards container */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spacing between cards */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .cards-container {
+    gap: 10px; /* Adjust spacing for smaller screens */
+  }
+}
+
+
+/* calender card*/
+.calender-card {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-direction: column; /* Arrange items vertically within the container */
+  align-items: center; /* Center items horizontally within the container */
+  text-align: center; /* Center the button text */
+}
+
+
+.calender-card .card-body {
+  padding: 5px;
+}
+
+.calender-card section {
+  width: 350px;
+  margin: 0 auto;
+}
+
+/*custom calender content*/
+.custom-calendar-content {
+  background-color: mediumpurple;
+  padding: 20px;
+
+} /**/
+
+.custom-calendar-content{
+
+  border-radius: 20px;
+  background-color: ghostwhite;
+  width: 300px;
+  box-shadow:  #BFBBF1 0px 2px 4px,  #BFBBF1 0px 7px 13px -3px,  #BFBBF1 0px -3px 0px inset;
+}
+
+
+.custom-addevent-btn-color{
+  background-color: #7E57C2;
+  color: #fff;
+  border: #7E57C2;
+  border-radius: 18px;
 }

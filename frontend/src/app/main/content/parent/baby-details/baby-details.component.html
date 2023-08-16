@@ -1,13 +1,19 @@
-<p>baby-details works!</p>
+
 <div class="container-fluid">
-  <div class="mb-3">
-    <h3>Baby details</h3>
+  <div style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;">    <img class="topic_image" src="../../assets/Happybaby.svg">
+  <h3>My Baby</h3>
 
+  </div>
+  <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-primary ml-auto" data-bs-toggle="modal" data-bs-target="#myModal" style="background-color: #7E57C2; border-color: #563393;">
+        Add Baby Details
+      </button>
+    </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-      Add Baby Details
-    </button><!--click this button -> popup-->
+  </div>
 
+  <div class="mb-3 d-flex ">
 
     <!-- The Modal -->
     <div class="modal" id="myModal">
@@ -17,7 +23,7 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Baby Details</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <button  type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
           <!-- Modal body -->
@@ -58,29 +64,35 @@
 
           <!-- Modal footer -->
           <div class="modal-footer" style="margin-top: 20px">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Add Baby</button>
+            <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Add Baby</button>
           </div>
 
         </div>
       </div>
     </div>
-  </div>
 
 </div>
-<div class="card custom-card" style="width: 15rem;">
-  <div class="d-flex justify-content-center">
-    <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
-  </div>
-  <div class="card-body bg-custom">
-    <h4 class="card-title">Sewmi Thimaya</h4>
-    <p class="card-text">25 years</p>
-    <a routerLink="view_baby_details" class="btn btn-primary">View Profile</a>
+<div style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 2px 2px 0px #563393;" class="row justify-content mt-5 ">
 
+  <div class="col-sm-6 col-md-4  "style="height: 360px;">
+
+
+
+
+    <div class="card custom-card" style="width: 70%;height: 320px;margin-top: 20px;margin-right: 20px;margin-left: 10px;">
+      <div class="d-flex justify-content-center mt-3">
+        <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+      </div>
+      <div class="card-body bg-custom text-center">
+        <h4 class="card-title">Sewmi Thimaya</h4>
+        <p class="card-text">25 years</p>
+        <a routerLink="/parent/view_baby_details" class="btn btn-primary" style="background-color: #7E57C2;border-color: #563393">View Profile</a>
+      </div>
+    </div>
   </div>
 </div>
 
-
-
+</div>
 
 
 

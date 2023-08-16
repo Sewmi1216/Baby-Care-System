@@ -1,36 +1,43 @@
 <div class="container-fluid">
   <div class="mb-3">
-    <h3>Personal Information</h3>
 
-    <div class="container">
-      <div class="left">
-        <div
-          style="background-color: #E0E0E0; height: 130px; width: 412px; margin: 10px 10px 10px 15px; padding: 10px;">
-          <h4>Sewmi Thimaya</h4>
-          <p>I have followed a first aid course at NHSL in 2015. And also, I have 5 years of working experience as a
-            babysitter.</p>
-        </div>
-        <ul style="background-color: #D0F2F6; margin: 10px 10px 10px 15px; height: 200px; width: 412px;">
-          <h4>Qualification List</h4>
-          <li class="list-group-item">(01)Copy of BC</li>
-          <li class="list-group-item">(02)Copy of ID</li>
-          <li class="list-group-item">(03)Police clearance CF</li>
-          <li class="list-group-item">(04)Dependence CF</li>
-          <li class="list-group-item">(05)Extra</li>
-        </ul>
+      <div style="background-color:  #e8e3fc; width: 486px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0  #563393">
+        <img class="topic_image" src="../../assets/ProfileInterface.svg">
+        <h3 style="color: #39315d;">Personal Information</h3>
+
       </div>
-      <div class="right">
-        <div class="card custom-card" style="width: 15rem; background-color: #BCE3E5;">
-          <h4>Sewmi Thimaya</h4>
-          <h6>Location :</h6>
-          <div class="d-flex justify-content-center">
-            <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+
+    <div class="container" style="background-color:  #e8e3fc; display: flex; justify-content: center; align-items: center;">
+      <div >
+        <div class="left" >
+          <div class="info-box" style="background-color: white; width: 486px; height: 82px; padding: 8px 2px 0 8px; margin-top: 10px; border-radius: 10px; ">
+<!--            <h3 style="padding-top: 0">Sewmi Thimaya</h3>-->
+            <p style=" font-family: 'Sofia Sans';font-size: 15px;">I have followed a first aid course at NHSL in 2015. And also, I have 5 years of working experience as a babysitter.</p>
           </div>
 
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-            Request
-          </button><!--click this button -> popup-->
+          <ul class="qualification-list" style="font-family: 'Sofia Sans';" >
+            <h3 style="padding-top: 0;font-size: 20px;">Qualification List</h3>
+            <li style="font-size: 15px;" class="list-group-item">(01)Copy of BC</li>
+            <li style="font-size: 15px;" class="list-group-item">(02)Copy of ID</li>
+            <li style="font-size: 15px;" class="list-group-item">(03)Police clearance CF</li>
+            <li style="font-size: 15px;" class="list-group-item">(04)Dependence CF</li>
+            <li style="font-size: 15px;" class="list-group-item">(05)Extra</li>
+          </ul>
+        </div>
 
+      </div>
+
+      <div class="right" >
+        <div class="card custom-card" >
+          <h4 style="padding-top: 0;font-family: 'Sofia Sans';font-weight: bold ;font-size: 20px;">Sewmi Thimaya</h4>
+          <h4>Location :</h4>
+          <div class="d-flex justify-content-center">
+            <img class="card-img-top custom-img" src="../../assets/sewmi.jpg " style="border-radius: 50%">
+          </div>
+
+          <button type="button" style="background-color: #39315d ; border-radius: 15px ; margin-top: 10px;border-color: #2d2746" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Request
+          </button>
 
           <!-- The Modal -->
           <div class="modal" id="myModal">
@@ -40,7 +47,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                   <h4 class="modal-title">Request Baby Sitter</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <!-- Modal body -->
@@ -454,7 +461,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer" style="margin-top: 20px">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+                  <button style="background-color: #563393;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
                 </div>
 
               </div>

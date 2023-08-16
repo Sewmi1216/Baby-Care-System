@@ -1,0 +1,164 @@
+.card-img-top{
+    border-radius: 25px;
+    width: 200px;
+    height: 250px;
+    margin-top: 2rem;
+}
+
+.card-main-title{
+    color: lightskyblue;
+    font-size: large;
+    font-weight: 500;
+}
+
+
+.personal-data h4{
+    color: grey;
+    font-size:large;
+    font-weight: 300;
+}
+.personal-data h5{
+    color:black;
+    font-weight: 600;
+    font-size: small;
+}
+
+.card{
+    background-color: rgb(216, 230, 235);
+    box-shadow: 0rem 1rem 1rem 1rem rgb(132 139 200 / 40%);
+    width: 150%;
+    height: auto;
+    margin-left: 10rem;
+    border-radius: 3%;
+    
+}
+.card-body{
+  margin-left: 0rem;
+}
+.card-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+
+.mt-5{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.mb-3{
+    width: 250px;
+    margin-left: 3rem;
+    margin-top: 1rem;
+    border-radius: 10%;
+}
+
+.profile-name{
+    font-size: xx-large;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+}
+
+.babysitter-data{
+   margin-left: 3rem;
+}
+
+.card-title-1 { 
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    color:lightskyblue;
+    font-size: large;
+    font-weight: 500;
+}
+
+.card-body-1{
+    background-color: rgb(216, 230, 235);
+    width: 350px;
+    height: 325px;
+    margin-top: 2rem;
+    border-radius: 5%;
+
+}
+.list-group{
+    width: 300px;
+    height: 200px;
+    margin-left: 1.5rem;
+    margin-top: -1rem;
+    
+
+}
+
+
+
+
+
+/* user-deactivation.component.css */
+
+
+  
+  .btn {
+    margin-right: 10px;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    width: 110px;
+    margin-left: 55rem;
+    margin-top: -10rem;
+    height: 40px;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+  }
+
+  .mt{
+   margin-top: -11rem;
+  }
+  
+  #icon-1{
+    margin-left: 0.5rem;
+    color: green;
+    font-size:80px;
+  }
+
+  .qualification{
+    margin-top: 5rem;
+    margin-left: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #tick{
+   display: flex;
+   justify-content: right;
+   margin-right: 10rem;
+   font-size: xx-large;
+   color: green;
+  }

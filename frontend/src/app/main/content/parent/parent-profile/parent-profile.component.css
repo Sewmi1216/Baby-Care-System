@@ -1,0 +1,66 @@
+/* Custom CSS */
+/*.custom-card {*/
+/*  background-color: #DFDDFF;*/
+/*  margin: 50px 10px ;*/
+/*  padding: 20px 20px 20px 20px;*/
+/*}*/
+
+
+/*.custom-img {*/
+
+/*  width: 200px;*/
+/*  height: 200px;*/
+/*  object-fit: cover;*/
+/*  margin-top: 10px;*/
+
+/*}*/
+
+.topic_image {
+  float: right;
+  width: 217px;
+  height: auto;
+  margin-top: -51px;
+}
+
+.topic {
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 20px;
+  color: #39315d;
+  padding-left: 55px;
+  padding-top: 39px;
+}
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  /* Adjust the breakpoint as needed */
+  .custom-img {
+    border-radius: 10px; /* Reduce border radius for smaller screens */
+  }
+
+
+
+  .topic {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+  }
+}
+.custom-card {
+  margin: 10px;
+}
+.custom-img {
+  max-width: 65%;
+  margin: 38px 0 0 0;
+  border-radius: 50%;
+}
+
+.custom-button {
+  color: white;
+  padding: 12px 20px; /* Adjust padding for better spacing */
+  transition: background-color 0.3s, border-color 0.3s; /* Add smooth transition */
+}
+
+.custom-button:hover {
+  background-color: #27183f; /* Darken the background color on hover */
+}
+

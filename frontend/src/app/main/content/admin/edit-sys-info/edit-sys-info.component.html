@@ -1,0 +1,660 @@
+<div class="container-fluid">
+  <div style="background-color: #e8e3fc;
+    width: 544px;
+    height: 120px;
+    padding: 5px 0 0 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #563393;
+">
+    <img class="topic_image" src="../../assets/sitter.svg">
+    <h3 style="font-family: 'Sofia Sans', sans-serif;
+    font-weight: bold;
+    font-size: 29px;
+    color: #39315d;
+    padding-left: 10px;
+    padding-top: 37px;">Edit System Information</h3>
+  </div>
+
+
+  <body>
+
+  <div class="description mt-5 p-5">
+
+    <div class="container m-5">
+      <div class="cards me-lg-5 pe-5">
+
+
+        <div class="card-2 d-flex align-items-stretch">
+
+          <div class="content col-md-6 ms-lg-5"
+               style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+            <div class="d-flex align-items-center mb-3">
+              <h3 style="color:#4B4389">
+                About Cuddle Care
+                <button  type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                        data-bs-target="#editAboutModal">
+                  <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                </button>
+              </h3>
+            </div>
+            <p>
+              Stay on top of your baby's well-being by tracking vital signs, sleep patterns, and feeding schedules
+              effortlessly.
+            </p>
+          </div>
+
+          <div class="image col-md-6 text-center">
+            <img id="selectedImage" alt="" src="../../assets/home-content-2.svg" width="320px">
+            <button  type="button" class="btn btn-link edit-button mt-2" data-bs-toggle="modal"
+                    data-bs-target="#editImageModal">
+              <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+            </button>
+          </div>
+
+          <!-- Edit Image Modal -->
+          <div class="modal fade" id="editImageModal1" tabindex="-1" aria-labelledby="editImageModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editImageModalLabel1">Edit Image</h5>
+                  <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Input for selecting an image file -->
+                  <label for="imageInput" class="form-label">Select Image:</label>
+                  <input type="file" class="form-control" id="imageInput1">
+
+                  <!-- Display selected image -->
+                  <img id="selectedPreview1" alt="" src="" width="100%" class="mt-3">
+
+                  <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary mt-3" id="updateImageBtn1">Update Image</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--          <script>-->
+          <!--            // Update image when the selected file changes-->
+          <!--            document.getElementById('imageInput').addEventListener('change', function(event) {-->
+          <!--              const selectedFile = event.target.files[0];-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.getElementById('selectedImage');-->
+
+          <!--              // Display a preview of the selected image-->
+          <!--              selectedPreview.src = URL.createObjectURL(selectedFile);-->
+
+          <!--              // Hide the current image-->
+          <!--              selectedImage.style.display = 'none';-->
+          <!--            });-->
+
+          <!--            // Update the image source when the user clicks "Update Image"-->
+          <!--            document.getElementById('updateImageBtn').addEventListener('click', function() {-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.getElementById('selectedImage');-->
+
+          <!--              // Update the source of the displayed image-->
+          <!--              selectedImage.src = selectedPreview.src;-->
+
+          <!--              // Show the updated image and hide the preview-->
+          <!--              selectedImage.style.display = 'block';-->
+          <!--              selectedPreview.src = '';-->
+          <!--            });-->
+          <!--          </script>-->
+
+
+        </div>
+
+        <!-- Edit About Modal -->
+        <div class="modal fade" id="editAboutModal" tabindex="-1" aria-labelledby="editAboutModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editAboutModalLabel">Edit About Cuddle Care</h5>
+                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Place your editing form or content here -->
+                <!-- For example, text input for updating the content -->
+                <input type="text" class="form-control mb-3" id="editedAboutContent" placeholder="Edit content here">
+                <button type="button" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="card-3 d-flex align-items-stretch">
+
+          <div class="image col-md-6 text-center">
+            <img alt="" src="../../assets/home-content-3.svg" width="350px">
+            <button  type="button" class="btn btn-link edit-button mt-2" data-bs-toggle="modal"
+                    data-bs-target="#editImageModal">
+              <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+            </button>
+          </div>
+
+          <!-- Edit Image Modal -->
+          <div class="modal fade" id="editImageModal2" tabindex="-1" aria-labelledby="editImageModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editImageModalLabel2">Edit Image</h5>
+                  <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Input for selecting an image file -->
+                  <label for="imageInput" class="form-label">Select Image:</label>
+                  <input type="file" class="form-control" id="imageInput2">
+
+                  <!-- Display selected image -->
+                  <img id="selectedPreview2" alt="" src="" width="100%" class="mt-3">
+
+                  <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary mt-3" id="updateImageBtn2">Update Image</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--          <script>-->
+          <!--            // Update image when the selected file changes-->
+          <!--            document.getElementById('imageInput').addEventListener('change', function(event) {-->
+          <!--              const selectedFile = event.target.files[0];-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Display a preview of the selected image-->
+          <!--              selectedPreview.src = URL.createObjectURL(selectedFile);-->
+
+          <!--              // Hide the current image-->
+          <!--              selectedImage.style.display = 'none';-->
+          <!--            });-->
+
+          <!--            // Update the image source when the user clicks "Update Image"-->
+          <!--            document.getElementById('updateImageBtn').addEventListener('click', function() {-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Update the source of the displayed image-->
+          <!--              selectedImage.src = selectedPreview.src;-->
+
+          <!--              // Show the updated image and hide the preview-->
+          <!--              selectedImage.style.display = 'block';-->
+          <!--              selectedPreview.src = '';-->
+          <!--            });-->
+          <!--          </script>-->
+
+
+          <div class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+            <div class="d-flex align-items-center mb-3">
+              <h3 style="color:#4B4389">
+                Goals of Cuddle Care
+                <button  type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                        data-bs-target="#editGoalsModal">
+                  <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                </button>
+              </h3>
+            </div>
+            <p>
+              Ensure the safety and security of your baby with our state-of-the-art baby camera. Watch over them with
+              high-resolution video streaming, night vision, and the ability to interact through two-way audio.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Edit Goals Modal -->
+        <div class="modal fade" id="editGoalsModal" tabindex="-1" aria-labelledby="editGoalsModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editGoalsModalLabel">Edit Goals of Cuddle Care</h5>
+                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Place your editing form or content here -->
+                <!-- For example, text input for updating the content -->
+                <textarea class="form-control mb-3" id="editedGoalsContent" rows="4"
+                          placeholder="Edit content here"></textarea>
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="card-4 d-flex align-items-stretch">
+
+          <div class="content col-md-6 ms-lg-5"
+               style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+            <div class="d-flex align-items-center mb-3">
+              <h3 style="color:#4B4389">
+                Services from Cuddle Care
+                <button  type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                        data-bs-target="#editServicesModal">
+                  <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                </button>
+              </h3>
+            </div>
+            <p>
+              Receive timely alerts and reminders tailored to your baby's needs, empowering you to provide the best care
+              possible.
+            </p>
+          </div>
+
+          <div class="image col-md-6 text-center">
+            <img alt="" src="../../assets/home-content-4.png" width="350px">
+            <button  type="button" class="btn btn-link edit-button mt-2" data-bs-toggle="modal"
+                    data-bs-target="#editImageModal">
+              <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+            </button>
+          </div>
+
+          <!-- Edit Image Modal -->
+          <div class="modal fade" id="editImageModal3" tabindex="-1" aria-labelledby="editImageModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editImageModalLabel3">Edit Image</h5>
+                  <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Input for selecting an image file -->
+                  <label for="imageInput" class="form-label">Select Image:</label>
+                  <input type="file" class="form-control" id="imageInput3">
+
+                  <!-- Display selected image -->
+                  <img id="selectedPreview3" alt="" src="" width="100%" class="mt-3">
+
+                  <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary mt-3" id="updateImageBtn3">Update Image</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--          <script>-->
+          <!--            // Update image when the selected file changes-->
+          <!--            document.getElementById('imageInput').addEventListener('change', function(event) {-->
+          <!--              const selectedFile = event.target.files[0];-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Display a preview of the selected image-->
+          <!--              selectedPreview.src = URL.createObjectURL(selectedFile);-->
+
+          <!--              // Hide the current image-->
+          <!--              selectedImage.style.display = 'none';-->
+          <!--            });-->
+
+          <!--            // Update the image source when the user clicks "Update Image"-->
+          <!--            document.getElementById('updateImageBtn').addEventListener('click', function() {-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Update the source of the displayed image-->
+          <!--              selectedImage.src = selectedPreview.src;-->
+
+          <!--              // Show the updated image and hide the preview-->
+          <!--              selectedImage.style.display = 'block';-->
+          <!--              selectedPreview.src = '';-->
+          <!--            });-->
+          <!--          </script>-->
+
+
+        </div>
+
+        <!-- Edit Services Modal -->
+        <div class="modal fade" id="editServicesModal" tabindex="-1" aria-labelledby="editServicesModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editServicesModalLabel">Edit Services from Cuddle Care</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Place your editing form or content here -->
+                <!-- For example, text input for updating the content -->
+                <textarea class="form-control mb-3" id="editedServicesContent" rows="4"
+                          placeholder="Edit content here"></textarea>
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="card-3 d-flex align-items-stretch">
+
+          <div class="image col-md-6 text-center">
+            <img alt="" src="../../assets/home-content-3.svg" width="350px">
+            <button  type="button" class="btn btn-link edit-button mt-2" data-bs-toggle="modal"
+                    data-bs-target="#editImageModal">
+              <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+            </button>
+          </div>
+
+          <!-- Edit Image Modal -->
+          <div class="modal fade" id="editImageModal4" tabindex="-1" aria-labelledby="editImageModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editImageModalLabel4">Edit Image</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Input for selecting an image file -->
+                  <label for="imageInput" class="form-label">Select Image:</label>
+                  <input type="file" class="form-control" id="imageInput4">
+
+                  <!-- Display selected image -->
+                  <img id="selectedPreview4" alt="" src="" width="100%" class="mt-3">
+
+                  <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary mt-3" id="updateImageBtn4">Update Image</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--          <script>-->
+          <!--            // Update image when the selected file changes-->
+          <!--            document.getElementById('imageInput').addEventListener('change', function(event) {-->
+          <!--              const selectedFile = event.target.files[0];-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Display a preview of the selected image-->
+          <!--              selectedPreview.src = URL.createObjectURL(selectedFile);-->
+
+          <!--              // Hide the current image-->
+          <!--              selectedImage.style.display = 'none';-->
+          <!--            });-->
+
+          <!--            // Update the image source when the user clicks "Update Image"-->
+          <!--            document.getElementById('updateImageBtn').addEventListener('click', function() {-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Update the source of the displayed image-->
+          <!--              selectedImage.src = selectedPreview.src;-->
+
+          <!--              // Show the updated image and hide the preview-->
+          <!--              selectedImage.style.display = 'block';-->
+          <!--              selectedPreview.src = '';-->
+          <!--            });-->
+          <!--          </script>-->
+
+
+          <div class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+            <div class="d-flex align-items-center mb-3">
+              <h3 style="color:#4B4389">
+                Vision of Cuddle Care
+                <button  type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                        data-bs-target="#editVisionModal">
+                  <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                </button>
+              </h3>
+            </div>
+            <p>
+              Ensure the safety and security of your baby with our state-of-the-art baby camera. Watch over them with
+              high-resolution video streaming, night vision, and the ability to interact through two-way audio.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Edit Vision Modal -->
+        <div class="modal fade" id="editVisionModal" tabindex="-1" aria-labelledby="editVisionModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editVisionModalLabel">Edit Vision of Cuddle Care</h5>
+                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Place your editing form or content here -->
+                <!-- For example, text input for updating the content -->
+                <textarea class="form-control mb-3" id="editedVisionContent" rows="4"
+                          placeholder="Edit content here"></textarea>
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="card-4 d-flex align-items-stretch">
+
+          <div class="content col-md-6 ms-lg-5"
+               style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+            <div class="d-flex align-items-center mb-3">
+              <h3 style="color:#4B4389">
+                Our team at Cuddle Care
+                <button  type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                        data-bs-target="#editTeamModal">
+                  <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                </button>
+              </h3>
+            </div>
+            <p>
+              Receive timely alerts and reminders tailored to your baby's needs, empowering you to provide the best care
+              possible.
+            </p>
+          </div>
+
+          <div class="image col-md-6 text-center">
+            <img alt="" src="../../assets/home-content-4.png" width="350px">
+            <button type="button" class="btn btn-link edit-button mt-2" data-bs-toggle="modal"
+                    data-bs-target="#editImageModal">
+              <i class="fas fa-edit" style="font-size: 24px; color: black;"></i></button>
+          </div>
+
+          <!-- Edit Image Modal -->
+          <div class="modal fade" id="editImageModal5" tabindex="-1" aria-labelledby="editImageModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editImageModalLabel5">Edit Image</h5>
+                  <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Input for selecting an image file -->
+                  <label for="imageInput" class="form-label">Select Image:</label>
+                  <input type="file" class="form-control" id="imageInput5">
+
+                  <!-- Display selected image -->
+                  <img id="selectedPreview5" alt="" src="" width="100%" class="mt-3">
+
+                  <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary mt-3" id="updateImageBtn5">Update Image</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--          <script>-->
+          <!--            // Update image when the selected file changes-->
+          <!--            document.getElementById('imageInput').addEventListener('change', function(event) {-->
+          <!--              const selectedFile = event.target.files[0];-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Display a preview of the selected image-->
+          <!--              selectedPreview.src = URL.createObjectURL(selectedFile);-->
+
+          <!--              // Hide the current image-->
+          <!--              selectedImage.style.display = 'none';-->
+          <!--            });-->
+
+          <!--            // Update the image source when the user clicks "Update Image"-->
+          <!--            document.getElementById('updateImageBtn').addEventListener('click', function() {-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Update the source of the displayed image-->
+          <!--              selectedImage.src = selectedPreview.src;-->
+
+          <!--              // Show the updated image and hide the preview-->
+          <!--              selectedImage.style.display = 'block';-->
+          <!--              selectedPreview.src = '';-->
+          <!--            });-->
+          <!--          </script>-->
+
+
+        </div>
+
+        <!-- Edit Team Modal -->
+        <div class="modal fade" id="editTeamModal" tabindex="-1" aria-labelledby="editTeamModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editTeamModalLabel">Edit Our Team at Cuddle Care</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Place your editing form or content here -->
+                <!-- For example, text input for updating the content -->
+                <textarea class="form-control mb-3" id="editedTeamContent" rows="4"
+                          placeholder="Edit content here"></textarea>
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="card-3 d-flex align-items-stretch">
+
+          <div class="image col-md-6 text-center">
+            <img alt="" src="../../assets/home-content-3.svg" width="350px">
+            <button  type="button" class="btn btn-link edit-button mt-2" data-bs-toggle="modal"
+                    data-bs-target="#editImageModal">
+              <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+            </button>
+          </div>
+
+          <!-- Edit Image Modal -->
+          <div class="modal fade" id="editImageModal" tabindex="-1" aria-labelledby="editImageModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editImageModalLabel">Edit Image</h5>
+                  <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Input for selecting an image file -->
+                  <label for="imageInput" class="form-label">Select Image:</label>
+                  <input type="file" class="form-control" id="imageInput">
+
+                  <!-- Display selected image -->
+                  <img id="selectedPreview" alt="" src="" width="100%" class="mt-3">
+
+                  <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary mt-3" id="updateImageBtn">Update Image</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--          <script>-->
+          <!--            // Update image when the selected file changes-->
+          <!--            document.getElementById('imageInput').addEventListener('change', function(event) {-->
+          <!--              const selectedFile = event.target.files[0];-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Display a preview of the selected image-->
+          <!--              selectedPreview.src = URL.createObjectURL(selectedFile);-->
+
+          <!--              // Hide the current image-->
+          <!--              selectedImage.style.display = 'none';-->
+          <!--            });-->
+
+          <!--            // Update the image source when the user clicks "Update Image"-->
+          <!--            document.getElementById('updateImageBtn').addEventListener('click', function() {-->
+          <!--              const selectedPreview = document.getElementById('selectedPreview');-->
+          <!--              const selectedImage = document.querySelector('.image img');-->
+
+          <!--              // Update the source of the displayed image-->
+          <!--              selectedImage.src = selectedPreview.src;-->
+
+          <!--              // Show the updated image and hide the preview-->
+          <!--              selectedImage.style.display = 'block';-->
+          <!--              selectedPreview.src = '';-->
+          <!--            });-->
+          <!--          </script>-->
+
+
+          <div class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+            <div class="d-flex align-items-center mb-3">
+              <h3 style="color:#4B4389">
+                Thank you
+                <button type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                        data-bs-target="#editThankYouModal">
+                  <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                </button>
+              </h3>
+            </div>
+            <p>
+              Ensure the safety and security of your baby with our state-of-the-art baby camera. Watch over them with
+              high-resolution video streaming, night vision, and the ability to interact through two-way audio.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Edit Thank You Modal -->
+        <div class="modal fade" id="editThankYouModal" tabindex="-1" aria-labelledby="editThankYouModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editThankYouModalLabel">Edit Thank You Section</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Place your editing form or content here -->
+                <!-- For example, text input for updating the content -->
+                <textarea class="form-control mb-3" id="editedThankYouContent" rows="4"
+                          placeholder="Edit content here"></textarea>
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  </body>
+
+
+  <!-- adding footer-->
+  <app-footer></app-footer>
+
+
+</div>

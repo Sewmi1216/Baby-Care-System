@@ -1,204 +1,291 @@
 let Parent = require("../models/Parent");
+let User = require("../models/User");
 let Task = require("../models/task");
+// let TaskList = require("../models/tasklist");
 let RequestForm = require("../models/requestForm");
+const bcrypt = require("bcryptjs");
+let Complaint = require("../models/Complaint");
+
 let Feedback = require("../models/feedback");
 
-const addParent = (req, res) => {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
-    const phone = req.body.phone;
-    const address = req.body.address;
-    const password = req.body.password;
-    const nic = req.body.nic;
 
-    const newParent = new Parent({
-        firstName,
-        lastName,
-        email,
-        phone,
-        address,
-        password,
-        nic
-    })
-    //then->js promise||like if else condition
-    newParent.save().then(() => {
-        res.json("Parent Added");
-    }).catch((err) => {
-        console.log(err);
-    })
-}
+const addParent = async (req, res) => {
+    try {
+        const { role, firstName, lastName, email, phone, address, password, nic } = req.body;
 
-const addTask = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-    const remainderStatus = Boolean(req.body.remainderStatus);
+        const userExists = await User.findOne({ email: email });
+        if (userExists) {
+            return res.status(400).json({ message: "User already exists" });
+        }
 
-    const newTask = new Task({
-        status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus,
-    });
+        const newUser = new User({
+            role,
+            firstName,
+            lastName,
+            email,
+            phone,
+            address,
+            nic
+        });
 
-    await newTask.save()
-    .then((task) => {
-        res.status(200).send({status: "Task is added", task});
-    })
-    .catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "Error with the task", error: err.message});
-    });
+        const saltRounds = 12;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        newUser.password = hashedPassword;
+
+        const createdUser = await newUser.save();
+
+        const newParent = new Parent({
+            userId: createdUser._id,
+        });
+
+        await newParent.save();
+
+        res.status(201).json({ message: "Parent added successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "An error occurred" });
+    }
 };
 
-const updateTask = async (req, res) => {
-    let taskId = req.params.id; //fetch the id
-  
-    const {status, time, name, taskCompletedStatus, remainderStatus} = req.body; // new value
 
-    const updateTask = {
-        status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus
+    const addTask = async (req, res) => {
+        const taskName = req.body.taskName;
+        const parentId = req.body.parentId;
+
+        const newTask = new Task({
+            taskName,
+        });
+
+        await newTask.save()
+            .then((task) => {
+                res.status(200).send({status: "Task is added", task});
+            })
+            .catch((err) => {
+                console.log(err.message);
+                res.status(500).send({status: "Error with the task", error: err.message});
+            });
     };
 
-    await Task.findByIdAndUpdate(taskId, updateTask)
-        .then((task) => {
-            res.status(200).send({ status: "Task updated", task });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send({ status: "Error with updating data", error: err.message });
-        });
+    
+    // const addTask = async (req, res) => {
+    //     const { tasklistName, task } = req.body;
+    //     const parentId = req.body.parentId;
+    
+    //     const newTaskList = new TaskList({
+    //         tasklistName,
+    //         parent: parentId,
+    //         task,
+    //     });
+    
+    //     await newTaskList.save()
+    //         .then(async (taskList) => {
+    //             // Add the task list to the parent's taskLists array
+    //             await Parent.findByIdAndUpdate(parentId, {
+    //                 $push: { taskLists: taskList._id },
+    //             });
+    
+    //             res.status(200).send({ status: "Task list is added", taskList });
+    //         })
+    //         .catch((err) => {
+    //             console.log(err.message);
+    //             res.status(500).send({ status: "Error with the task list", error: err.message });
+    //         });
+    // };
+    
+    module.exports = {
+        addTask,
+    };
+    
+
+module.exports = {
+    addTask,
 };
 
-const deleteTask = async (req, res) => {
-    let taskId = req.params.id;
 
-    await Task.findByIdAndDelete(taskId)
-        .then((task) => {
-            res.status(200).send({ status: "Task Deleted", task });
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({ status: "Error with delete task", error: err.message });
-        });
-};
+    const updateTask = async (req, res) => {
+        let taskId = req.params.id; //fetch the id
 
-const addRequestForm = async (req, res) => {
-    const workExpectation = req.body.workExpectation;
-    const numberofBabies = req.body.numberofBabies;
-    const babyDetails = req.body.babyDetails;
-    const specialNeeds = req.body.specialNeeds;
+        const {taskName, time, isRemainder, specialNote} = req.body; // new value
 
-    const newRequestFormData = new RequestForm ({
-        workExpectation,
-        numberofBabies,
-        babyDetails,
-        specialNeeds,
-    })
+        const updateTask = {
+            taskName,
+            time,
+            isRemainder,
+            specialNote,
+        };
 
-    await newRequestFormData.save()
-    .then((requestForm) => {
-        res.status(200).send({status: "Request form added", requestForm});
-    })
-    .catch((err) => {
-        res.status(500).send({status: "Error with add request form", error: err.message})
-    })
-}
-
-const updateRequestForm = async (req, res) => {
-    let requestFormId = req.params.id; //fetch the id
-  
-    const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
-
-    const updateRequestForm = {
-        workExpectation,
-        numberofBabies,
-        babyDetails,
-        specialNeeds
+        await Task.findByIdAndUpdate(taskId, updateTask)
+            .then((task) => {
+                res.status(200).send({status: "Task updated", task});
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).send({status: "Error with updating data", error: err.message});
+            });
     };
 
-    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
-        .then((requestForm) => {
-            res.status(200).send({ status: "Request form updated", requestForm });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send({ status: "Error with updating data", error: err.message });
-        });
-};
+    const deleteTask = async (req, res) => {
+        let taskId = req.params.id;
 
-const deleteRequestForm = async (req, res) => {
-    let requestFormId = req.params.id;
+        await Task.findByIdAndDelete(taskId)
+            .then((task) => {
+                res.status(200).send({status: "Task Deleted", task});
+            })
+            .catch((err) => {
+                console.log(err.message);
+                res.status(500).send({status: "Error with delete task", error: err.message});
+            });
+    };
 
-    await RequestForm.findByIdAndDelete(requestFormId)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form deleted", requestForm});
+    const addRequestForm = async (req, res) => {
+        const workExpectation = req.body.workExpectation;
+        const numberofBabies = req.body.numberofBabies;
+        const babyDetails = req.body.babyDetails;
+        const specialNeeds = req.body.specialNeeds;
+
+        const newRequestFormData = new RequestForm({
+            workExpectation,
+            numberofBabies,
+            babyDetails,
+            specialNeeds,
         })
-        .catch((err) => {
-            res.status(500).save({status: "Error with delete form", error: err.message})
-        })
-}
+
+        await newRequestFormData.save()
+            .then((requestForm) => {
+                res.status(200).send({status: "Request form added", requestForm});
+            })
+            .catch((err) => {
+                res.status(500).send({status: "Error with add request form", error: err.message})
+            })
+    }
+
+    const updateRequestForm = async (req, res) => {
+        let requestFormId = req.params.id; //fetch the id
+
+        const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
+
+        const updateRequestForm = {
+            workExpectation,
+            numberofBabies,
+            babyDetails,
+            specialNeeds
+        };
+
+        await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
+            .then((requestForm) => {
+                res.status(200).send({status: "Request form updated", requestForm});
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).send({status: "Error with updating data", error: err.message});
+            });
+    };
+
+    const deleteRequestForm = async (req, res) => {
+        let requestFormId = req.params.id;
+
+        await RequestForm.findByIdAndDelete(requestFormId)
+            .then((requestForm) => {
+                res.status(200).send({status: "Request form deleted", requestForm});
+            })
+            .catch((err) => {
+                res.status(500).save({status: "Error with delete form", error: err.message})
+            })
+    }
 //complaint handling
 
-const addComplaints = async (req, res) =>{
-    const status = req.body.status;
-    const time = req.body.time;
-    const name = req.body.name;
-    const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
-    const remainderStatus = Boolean(req.body.remainderStatus);
+    const addComplaint = async (req, res) => {
 
-    const newTask = new Task({
-        status,
-        time,
-        name,
-        taskCompletedStatus,
-        remainderStatus,
-    });
+        const type = req.body.type;
+        const description = req.body.description;
+        const status = req.body.status;
 
-    await newTask.save()
-    .then((task) => {
-        res.status(200).send({status: "Task is added", task});
-    })
-    .catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "Error with the task", error: err.message});
-    });
-};
 
-const addFeedback = async (req, res) => {
-    //parent name
-    const details = req.body.details;
-    const rating = req.body.rating;
+        const newComplaint = new Complaint({
+            type,
+            description,
+            status,
+            date,
 
-    const newFeedback = new Feedback ({
-        //parentName: req.Parent.name,
-        details,
-        rating: Number(rating),
-    })
+        });
 
-    await newFeedback.save()
-        .then((feedback) => {
-            res.status(200).send({status: "Feedback is added", feedback});
-        })
-        .catch((err) => {
-            res.status(500).send({status: "Error with add feedback", error: err.message})
-        })
-};
+        await newComplaint.save()
+            .then(() => {
+                res.status(200).send({status: "Complaint is added"});
+            })
+            .catch((err) => {
+                console.log(err.message);
+                res.status(500).send({status: "Error with the complaint", error: err.message});
+            });
+    };
 
-module.exports={
-    addParent,
-    addTask,
-    updateTask,
-    deleteTask,
-    addRequestForm,
-    updateRequestForm,
-    deleteRequestForm,
-    addFeedback,
-};
+
+    const updateComplaint = async (req, res) => {
+        let complaintid = req.params.id; //fetch the id
+
+        const {type, description, status, date} = req.body; // new value
+
+        const updateComplaint = {
+            type,
+            description,
+            status,
+            date
+        };
+
+        await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
+            .then((complaint) => {
+                res.status(200).send({status: "Complaint is updated", complaint});
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).send({status: "Error with updating data", error: err.message});
+            });
+    };
+
+    const deleteComplaint = async (req, res) => {
+        let complaintid = req.params.id;
+
+        await Complaint.findByIdAndDelete(complaintid)
+            .then((complaint) => {
+                res.status(200).send({status: "Complaint is Deleted", complaint});
+            })
+            .catch((err) => {
+                console.log(err.message);
+                res.status(500).send({status: "Error with delete complaint", error: err.message});
+            });
+    }
+
+        const addFeedback = async (req, res) => {
+            //parent name
+            const details = req.body.details;
+            const rating = req.body.rating;
+
+            const newFeedback = new Feedback({
+                //parentName: req.Parent.name,
+                details,
+                rating: Number(rating),
+            })
+
+            await newFeedback.save()
+                .then((feedback) => {
+                    res.status(200).send({status: "Feedback is added", feedback});
+                })
+                .catch((err) => {
+                    res.status(500).send({status: "Error with add feedback", error: err.message})
+                })
+
+        };
+    module.exports = {
+        addParent,
+        addTask,
+        updateTask,
+        deleteTask,
+        addRequestForm,
+        updateRequestForm,
+        deleteRequestForm,
+        addComplaint,
+        updateComplaint,
+        deleteComplaint,
+        addFeedback,
+    };
