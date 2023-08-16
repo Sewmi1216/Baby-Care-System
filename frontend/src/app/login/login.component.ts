@@ -37,8 +37,10 @@ export class LoginComponent {
           this.router.navigate(['/babysitter/babysitter_dashboard'])
         } else if (user['role'] === 'Admin') {
           this.router.navigate(['/admin/admin_dashboard'])
+        } else if (user['role'] === 'domain-expert') {
+          this.router.navigate(['/domain_expert/domain_expert_dashboard'])
         } else {
-          this.router.navigate(['/domain-expert/domain_expert_dashboard'])
+          console.log("unknown user");
         }
         this.toast.success({detail:"SUCCESS",summary:user.msg, position:'topCenter'});
       } else {
