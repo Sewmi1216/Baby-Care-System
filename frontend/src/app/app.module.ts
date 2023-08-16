@@ -177,6 +177,7 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     ParentMyPlanComponent,
     ParentProfileComponent,
     MyBabysitterComponent,
+    BabysitterChatComponent,
 
 
     /*Admin*/
