@@ -1,6 +1,7 @@
 let Parent = require("../models/Parent");
 let User = require("../models/User");
 let Task = require("../models/task");
+// let TaskList = require("../models/tasklist");
 let RequestForm = require("../models/requestForm");
 const bcrypt = require("bcryptjs");
 let Complaint = require("../models/Complaint");
@@ -65,6 +66,42 @@ const addParent = async (req, res) => {
                 res.status(500).send({status: "Error with the task", error: err.message});
             });
     };
+
+    
+    // const addTask = async (req, res) => {
+    //     const { tasklistName, task } = req.body;
+    //     const parentId = req.body.parentId;
+    
+    //     const newTaskList = new TaskList({
+    //         tasklistName,
+    //         parent: parentId,
+    //         task,
+    //     });
+    
+    //     await newTaskList.save()
+    //         .then(async (taskList) => {
+    //             // Add the task list to the parent's taskLists array
+    //             await Parent.findByIdAndUpdate(parentId, {
+    //                 $push: { taskLists: taskList._id },
+    //             });
+    
+    //             res.status(200).send({ status: "Task list is added", taskList });
+    //         })
+    //         .catch((err) => {
+    //             console.log(err.message);
+    //             res.status(500).send({ status: "Error with the task list", error: err.message });
+    //         });
+    // };
+    
+    module.exports = {
+        addTask,
+    };
+    
+
+module.exports = {
+    addTask,
+};
+
 
     const updateTask = async (req, res) => {
         let taskId = req.params.id; //fetch the id
@@ -217,6 +254,7 @@ const addParent = async (req, res) => {
                 console.log(err.message);
                 res.status(500).send({status: "Error with delete complaint", error: err.message});
             });
+    }
 
         const addFeedback = async (req, res) => {
             //parent name
@@ -238,7 +276,6 @@ const addParent = async (req, res) => {
                 })
 
         };
-    }
     module.exports = {
         addParent,
         addTask,
@@ -250,5 +287,5 @@ const addParent = async (req, res) => {
         addComplaint,
         updateComplaint,
         deleteComplaint,
-
+        addFeedback,
     };
