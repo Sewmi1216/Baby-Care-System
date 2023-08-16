@@ -71,4 +71,3 @@ export class TaskListComponent implements OnInit {
   //   this.unconfirmedTasks.splice(this.unconfirmedTasks.indexOf(task), 1); // Remove from unconfirmed
   //   this.confirmedTasks.push(task); // Add to confirmed
   // }
-}
