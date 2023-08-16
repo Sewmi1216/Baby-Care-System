@@ -129,13 +129,6 @@ import { BabysitterViewParentRequestsComponent } from './main/content/babysitter
 import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
 
-import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
-import {
-  BabysitterParentrequestComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
-import {
-  BabysitterRequestdetailsComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
 
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
@@ -206,9 +199,6 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     NicValidatorDirective,
     PhoneValidatorDirective,
 
-   // AdminDasboardIncomeChartsComponent,
-   // AdminDashboardUserPieChartComponent,
-   // AdminDashboardUserChartsComponent,
    HandlePaymentComponent,
    HandleComplaintsComponent,
    EditSysInfoComponent,
