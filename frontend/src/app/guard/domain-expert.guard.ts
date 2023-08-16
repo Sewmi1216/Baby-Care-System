@@ -6,12 +6,12 @@ export const domainExpertGuard: CanActivateFn = (route, state) => {
   const loginService = inject(LoginService);
   const router = inject(Router);
 
-  console.log('ParentGuard: canActivate called');
+  console.log('domainGuard: canActivate called');
 
   // @ts-ignore
   const user = JSON.parse(localStorage.getItem('user'));
 
-  if (user && user.role === 'Domain-expert') {
+  if (user && user.role === 'domain-expert') {
     console.log(user);
     return true; // Allow access
   } else {
