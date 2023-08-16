@@ -19,6 +19,114 @@ a:hover {
   color: #c56edc;
 }
 
+
+/*search bar*/
+/* Global styles */
+.grid-container {
+  /* Your grid container styles */
+}
+
+.responsive-container {
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Title and Search bar */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+/* Title */
+.mat-h1 {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.search-bar input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .mat-h1 {
+    font-size: 18px;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .search-bar {
+    margin: 15px auto 0;
+    justify-content: center;
+  }
+}
+
+
+
+/*search bar*/
+.form-input {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 300px;
+}
+
+.form-input:hover{
+  transform: translateY(-2px);
+}
+
+.form-input input {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  flex-grow: 1;
+  padding: 0 16px;
+  height: 100%;
+  border: none;
+  background:#FFFFFF;
+  border-radius: 36px 0 0 36px;
+  outline: none;
+  width: 100%;
+  color: #000000;
+}
+.form-input button {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  width: 36px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(111, 90, 158, 1);
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+}
+
 /*custom styles of checkbox*/
 .toggle-button {
   width: 60px;

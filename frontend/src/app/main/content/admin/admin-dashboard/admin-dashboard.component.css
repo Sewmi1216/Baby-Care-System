@@ -6,6 +6,11 @@
   margin: 50px;
 }
 
+.card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 body {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -232,6 +237,15 @@ body {
   box-sizing: border-box;
 }
 
+.card-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; /* Allow images to expand within container */
+  height: 700px;
+  width: auto; /* Reset the width property if it was set previously */
+  box-sizing: border-box;
+}
+
 /* For screens up to 768px width */
 @media (max-width: 768px) {
   .charts__right__cards img,
@@ -323,19 +337,21 @@ body {
     display: none;
   }
 }
-
-
 .icon-background-square {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  color: #BFBBF1; /* Background color */
   z-index: -1;
+  color: #BFBBF1;
+  border: none; /* Remove the border */
 }
 
-
+/* Add this class to your icon */
+.white-icon {
+  color: white;
+}
 a {
   text-decoration: none; /* Remove underline */
 }
@@ -345,9 +361,6 @@ a {
   align-items: flex-start; /* Align content to the top of the container */
 }
 
-.icon-background-square {
-  /* Your icon background styles here */
-}
 
 .btn-download {
   height: 36px;
