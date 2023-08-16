@@ -43,7 +43,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 //babysitter
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -124,6 +124,9 @@ import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-l
 import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
+import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
+
 
 @NgModule({
   declarations: [
@@ -206,6 +209,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     StatusFilterPipe,
     BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
+    BabysitterViewParentRequestsComponent,
+    BabysitterViewMoreParentRequestsComponent,
+
 
 
 
