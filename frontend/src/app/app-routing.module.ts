@@ -77,7 +77,7 @@ import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth
 import {
   HandleComplaintsViewMoreComponent
 } from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
-
+import{
   PendingBabysitterListComponent
 } from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 import {
@@ -148,7 +148,8 @@ const routes: Routes = [
       {
         path: 'view_new_babysitters',
         component: ViewNewBabysittersComponent
-        {
+      },
+      {
         path: 'my_babysitter',
         component: MyBabysitterComponent
       },
@@ -337,11 +338,11 @@ const routes: Routes = [
         component: DomainExpertModerateCommunityComponent,
       },
 
-      {
-        path: 'parent_profile',
-        component: ParentProfileComponent
+      // {
+      //   path: 'parent_profile',
+      //   component: ParentProfileComponent
 
-      },
+      // },
 
 
     ]

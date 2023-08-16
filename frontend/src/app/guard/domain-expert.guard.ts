@@ -11,7 +11,7 @@ export const domainExpertGuard: CanActivateFn = (route, state) => {
   // @ts-ignore
   const user = JSON.parse(localStorage.getItem('user'));
 
-  if (user && user.role === 'Domain-expert') {
+  if (user && user.role === 'domain-expert') {
     console.log(user);
     return true; // Allow access
   } else {

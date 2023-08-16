@@ -9,7 +9,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class ParentService {
   tasklist: any;
   constructor(private http: HttpClient) { }
-  addTask(tasklist:any): Observable<any>{
-    return this.http.post<any>(environment.backend_url + "/parent/addTask", tasklist)
+  addTaskList(tasklist:any): Observable<any>{
+    return this.http.post<any>(environment.backend_url + "/parent/addTaskList", tasklist)
   }
 }

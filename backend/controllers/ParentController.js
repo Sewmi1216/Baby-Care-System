@@ -1,7 +1,7 @@
 let Parent = require("../models/Parent");
 let User = require("../models/User");
-let Task = require("../models/task");
-// let TaskList = require("../models/tasklist");
+// let Task = require("../models/task");
+let TaskList = require("../models/tasklist");
 let RequestForm = require("../models/requestForm");
 const bcrypt = require("bcryptjs");
 let Complaint = require("../models/Complaint");
@@ -49,59 +49,51 @@ const addParent = async (req, res) => {
 };
 
 
-    const addTask = async (req, res) => {
-        const taskName = req.body.taskName;
-        const parentId = req.body.parentId;
-
-        const newTask = new Task({
-            taskName,
-        });
-
-        await newTask.save()
-            .then((task) => {
-                res.status(200).send({status: "Task is added", task});
-            })
-            .catch((err) => {
-                console.log(err.message);
-                res.status(500).send({status: "Error with the task", error: err.message});
-            });
-    };
-
-    
     // const addTask = async (req, res) => {
-    //     const { tasklistName, task } = req.body;
+    //     const taskName = req.body.taskName;
     //     const parentId = req.body.parentId;
-    
-    //     const newTaskList = new TaskList({
-    //         tasklistName,
-    //         parent: parentId,
-    //         task,
+
+    //     const newTask = new Task({
+    //         taskName,
     //     });
-    
-    //     await newTaskList.save()
-    //         .then(async (taskList) => {
-    //             // Add the task list to the parent's taskLists array
-    //             await Parent.findByIdAndUpdate(parentId, {
-    //                 $push: { taskLists: taskList._id },
-    //             });
-    
-    //             res.status(200).send({ status: "Task list is added", taskList });
+
+    //     await newTask.save()
+    //         .then((task) => {
+    //             res.status(200).send({status: "Task is added", task});
     //         })
     //         .catch((err) => {
     //             console.log(err.message);
-    //             res.status(500).send({ status: "Error with the task list", error: err.message });
+    //             res.status(500).send({status: "Error with the task", error: err.message});
     //         });
     // };
+
     
-    module.exports = {
-        addTask,
+    const addTask = async (req, res) => {
+        const { tasklistName, task } = req.body;
+        const parentId = req.session.user.id;
+        {console.log(parentId)}
+    
+        const newTaskList = new TaskList({
+            tasklistName,
+            parent: parentId,
+            task,
+        });
+        
+
+        await newTaskList.save()
+            .then(async (taskList) => {
+                // Add the task list to the parent's taskLists array
+                await Parent.findByIdAndUpdate(parentId, {
+                    $push: { taskLists: taskList._id },
+                });
+    
+                res.status(200).send({ status: "Task list is added", taskList });
+            })
+            .catch((err) => {
+                console.log(err.message);
+                res.status(500).send({ status: "Error with the task list", error: err.message });
+            });
     };
-    
-
-module.exports = {
-    addTask,
-};
-
 
     const updateTask = async (req, res) => {
         let taskId = req.params.id; //fetch the id

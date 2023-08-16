@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Output} from "@angular/core";
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+// import {AuthService} from "../../service/auth.service";
+import {ParentService} from "../../../../../service/parent.service"
+import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
+import {NgToastService} from "ng-angular-popup";
 
 
 @Component({
@@ -10,57 +12,91 @@ import { Output} from "@angular/core";
   styleUrls: ['./create-new-task-list-template.component.css']
 })
 export class CreateNewTaskListTemplateComponent {
+  @ViewChild('tasklistForm', {static:true}) public tasklistForm!: NgForm;
+  
+  tasklist = {
+    tasklistName: '',
+    // parent: 
+    task: [{
+      taskName: '',
+      time: '',
+    }]
+  };
 
+  constructor(
+    private parentService: ParentService, private toast: NgToastService, private router: Router
+  ){}
 
+  ngOnInit():void{
 
-  taskListName: string = ''; // task List Name
-  tasks: { name: string, time: string }[] = [{ name: '', time: '' }]; // tasks array
+  }
+  
+
+  onSubmit() {
+    console.log("Submitting form...");
+    this.parentService.addTaskList(this.tasklist).subscribe(
+      (data) => {
+        this.router.navigate(['/login'])
+        this.toast.success({detail:"SUCCESS",summary:data.message, position:'topCenter'});
+        console.log("Registration successful:", data);
+        console.log("Successfully");
+
+      },
+      (err) => {
+        this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter', sticky:true});
+        console.log('Registration failed:', err);
+      }
+    );
+  }
+
+//   taskListName: string = ''; // task List Name
+//   tasks: { name: string, time: string }[] = [{ name: '', time: '' }]; // tasks array
 
   tableData: { name: string, time: string }[] = [];
-  submittedTaskLists: any[] = [];
+//   submittedTaskLists: any[] = [];
 
   insertRow() {
     this.tableData.push({ name: '', time: '' });
   }
 
-
-
-  addTaskList() {
-    const newTaskList = {
-      name: this.taskListName,
-      tasks: this.tableData
-    };
-    this.submittedTaskLists.push(newTaskList);
-
-    // Reset the form
-    this.taskListName = '';
-    this.tableData = [];
-  }
-
-
-
-  addDate(index: number) {
-    // Implement logic to add date to the specified task list
-  }
-
-  updateTaskList(index: number) {
-    // Implement logic to update the specified task list
-  }
-
-  saveDate(){
-
-  }
-
-  updateData()
-  {
-
-  }
-
-  saveDetails()
-  {
-
-  }
-
-
 }
+
+//   addTaskList() {
+//     const newTaskList = {
+//       name: this.taskListName,
+//       tasks: this.tableData
+//     };
+//     this.submittedTaskLists.push(newTaskList);
+
+//     // Reset the form
+//     this.taskListName = '';
+//     this.tableData = [];
+//   }
+
+
+
+//   addDate(index: number) {
+//     // Implement logic to add date to the specified task list
+//   }
+
+//   updateTaskList(index: number) {
+//     // Implement logic to update the specified task list
+//   }
+
+//   saveDate(){
+
+//   }
+
+//   updateData()
+//   {
+
+//   }
+
+//   saveDetails()
+//   {
+
+//   }
+
+
+// }
 

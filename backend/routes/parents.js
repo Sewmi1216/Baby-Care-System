@@ -20,7 +20,7 @@ router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);
 router.route('/addRequestForm').post(checkSession,parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
-router.route('/addTask').post(parentController.addTask);
+router.route('/addTaskList').post(parentController.addTask);
 router.route('/addComplaint').post(checkSession,parentController.addComplaint);
 
 //retrive

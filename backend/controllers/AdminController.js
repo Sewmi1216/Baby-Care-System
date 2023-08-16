@@ -1,8 +1,10 @@
 let Admin = require("../models/Admin");
+let User = require("../models/User")
 let Babysitter = require("../models/babysitter");
 let Parent = require("../models/Parent");
 let Complaints = require("../models/Complaint");
 let SystemInfo = require("../models/SystemInfo");
+const bcrypt = require("bcryptjs");
 
 const AddAdmin = (req, res) => {
     const firstName = req.body.firstName;
@@ -29,6 +31,39 @@ const AddAdmin = (req, res) => {
         console.log(err);
     })
 };
+
+const addDomainExpert =async (req, res) => {
+        const {firstName, lastName, email, phone, address, password, nic } = req.body;
+
+        // const userExists = await User.findOne({ email: email });
+        // if (userExists) {
+        //     return res.status(400).json({ message: "User already exists" });
+        // }
+
+        const newDomainexpert = new User({
+            role: "domain-expert",
+            firstName,
+            lastName,
+            email,
+            phone,
+            address,
+            password,
+            nic
+        });
+
+        
+        const saltRounds = 12;
+        const hashPassword = await bcrypt.hash(password, saltRounds);
+        newDomainexpert.password = hashPassword;
+        const creatednewDomainexpert = await newDomainexpert.save();
+
+        await newDomainexpert.save().then(() => {
+            res.json("Admin Added");
+        }).catch((err) => {
+            console.log(err);
+        })
+};
+
 
 const ViewAdmin = async (req, res) => {
     let userId = req.params.id;
@@ -188,6 +223,7 @@ const AddSystemInfo = (req, res) => {
         res.json("Informations Added");
     }).catch((err) => {
         console.log(err);
+        res.status(500).send({status: "Error with updating data", error: err.message});
     })
 };
 
@@ -262,4 +298,5 @@ module.exports={
     UpdateSystemInfo,
     ViewSystemInfo,
     verifyBabysitter,
+    addDomainExpert
 };
