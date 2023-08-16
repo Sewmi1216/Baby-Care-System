@@ -41,9 +41,7 @@ import {
 import {
   DomainExpertModerateCommunityComponent
 } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import {
-  DomainExpertModerateBlogComponent
-} from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 
 //import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
@@ -86,7 +84,7 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
- 
+
 import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
@@ -98,6 +96,9 @@ import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import {
+  ManageBlogsComponent
+} from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
 
 
 
@@ -361,12 +362,12 @@ const routes: Routes = [
         component: DomainExpertDashboardComponent,
       },
       {
-        path: 'domain_expert_moderate_blogs',
-        component: DomainExpertModerateBlogComponent,
-      },
-      {
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
+      },
+      {
+        path: 'manage_blogs',
+        component: ManageBlogsComponent,
       },
 
 
