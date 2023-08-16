@@ -117,6 +117,8 @@ import { TaskListHomeComponent } from './main/content/parent/task-list-home/task
 import {MatTabsModule} from "@angular/material/tabs";
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
+import { ViewUserProfileComponent } from './main/content/admin/view-user-profile/view-user-profile.component';
+import { ViewBabysitterVerifyComponent } from './main/content/admin/view-babysitter-verify/view-babysitter-verify.component';
 
 @NgModule({
   declarations: [
@@ -191,6 +193,8 @@ import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babys
    TaskListHomeComponent,
    ViewNewParentsComponent,
    ViewNewBabysittersComponent,
+   ViewUserProfileComponent,
+   ViewBabysitterVerifyComponent,
 
 
 

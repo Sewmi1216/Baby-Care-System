@@ -74,6 +74,9 @@ import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
 
+import {ViewUserProfileComponent} from "./main/content/admin/view-user-profile/view-user-profile.component";
+import {ViewBabysitterVerifyComponent} from "./main/content/admin/view-babysitter-verify/view-babysitter-verify.component";
+
 
 const routes: Routes = [
   {
@@ -230,6 +233,10 @@ const routes: Routes = [
         component: ManageUserAccountsComponent
       },
       {
+        path: 'view_user_profile',
+        component: ViewUserProfileComponent
+      },
+      {
         path: 'handle_complaints',
         component: HandleComplaintsComponent
 
@@ -237,6 +244,10 @@ const routes: Routes = [
       {
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
+      },
+      {
+        path: 'view_verify_profile',
+        component: ViewBabysitterVerifyComponent
       },
       {
         path: 'edit_sys_info',
