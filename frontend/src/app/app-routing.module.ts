@@ -81,7 +81,9 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
-
+import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
+import {AboutUsComponent} from "./main/content/admin/about-us/about-us.component";
+import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
 
 const routes: Routes = [
   {
@@ -130,6 +132,11 @@ const routes: Routes = [
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
+
+      },
+      {
+        path: 'complaints',
+        component: CompliantsComponent
 
       },
       {
@@ -255,6 +262,10 @@ const routes: Routes = [
         component: ManageUserAccountsComponent
       },
       {
+        path: 'about_us',
+        component:AboutUsComponent
+      },
+      {
         path: 'handle_complaints',
         component: HandleComplaintsComponent
 
@@ -317,6 +328,10 @@ const routes: Routes = [
         path: 'parent_profile',
         component: ParentProfileComponent
 
+      },
+      {
+        path: 'moderate_forum',
+        component: ModerateForumComponent
       },
 
 
