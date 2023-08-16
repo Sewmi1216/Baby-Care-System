@@ -80,6 +80,9 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
+import {
+  CreateNewTaskListTemplateComponent
+} from "./main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component";
 
 
 const routes: Routes = [
@@ -147,6 +150,10 @@ const routes: Routes = [
       {
         path: 'parent_task_list',
         component: TaskListComponent
+      },
+      {
+        path: 'create_new_task_list',
+        component: CreateNewTaskListTemplateComponent
       },
       {
 

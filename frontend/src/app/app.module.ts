@@ -15,7 +15,6 @@ import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.componen
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
-import { NavBabysitterComponent } from './main/navbar/nav-babysitter/nav-babysitter.component';
 import { ParentDashboardComponent } from './main/content/parent/parent-dashboard/parent-dashboard.component';
 
 import { SignupComponent } from './signup/signup.component';
@@ -44,8 +43,6 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 //babysitter
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterTasklistComponent } from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import { BabysitterParentrequestComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
 import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
@@ -121,10 +118,16 @@ import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitte
 import { HandleComplaintsViewMoreComponent } from './main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component';
 import {StatusFilterPipe} from "./main/content/admin/manage-user-accounts/manage-user-accounts.pipe";
 import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component';
 //import { ParentCalenderComponent } from './main/content/parent/parent-dashboard/parent-calender/parent-calender.component';
+
+import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
+//import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HeaderComponent,
     HomeComponent,
@@ -202,6 +205,7 @@ import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-
     /*for filter*/
     StatusFilterPipe,
     BabysitterTasklistComponent,
+    CreateNewTaskListTemplateComponent,
 
 
 
@@ -227,6 +231,8 @@ import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-
    // ChartModule,
     /* ngx-chart module*/
     //NgxChartsModule
+    BsDatepickerModule.forRoot(),
+
 
 
   ],
