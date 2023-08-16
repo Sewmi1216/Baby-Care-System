@@ -226,6 +226,24 @@ const ViewSystemInfo = async (req, res) => {
         });
 };
 
+const verifyBabysitter = async (req, res) => {
+    const userId = req.params.userId; // Assuming you're getting the userId from the request
+
+    try {
+        const verify = { isVerified: true };
+
+        const updatedBabysitter = await Babysitter.findByIdAndUpdate(userId, verify, { new: true });
+
+        if (!updatedBabysitter) {
+            return res.status(404).send({ status: "Babysitter not found" });
+        }
+
+        res.status(200).send({ status: "Babysitter updated", babysitter: updatedBabysitter });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
 
 
 module.exports={
@@ -242,6 +260,6 @@ module.exports={
     ViewAllComplaints,
     AddSystemInfo,
     UpdateSystemInfo,
-    ViewSystemInfo
-    
+    ViewSystemInfo,
+    verifyBabysitter,
 };

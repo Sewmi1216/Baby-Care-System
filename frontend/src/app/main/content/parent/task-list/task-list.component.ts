@@ -43,14 +43,17 @@ export class TaskListComponent implements OnInit {
 
   // ... Other methods ...
 
+
   verifyTask(task: any): void {
     task.verified = true;
     this.unconfirmedTasks.splice(this.unconfirmedTasks.indexOf(task), 1); // Remove from unconfirmed
     this.confirmedTasks.push(task); // Add to confirmed
   }
 
+
   constructor() {
   }
+
 
   ngOnInit(): void {
 
@@ -59,3 +62,4 @@ export class TaskListComponent implements OnInit {
 
 
 }
+
