@@ -1,0 +1,156 @@
+*{
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+.title img{
+  height:22%;
+  position: absolute;
+  top: 20%;
+  left: 58%;
+  transform: translateX(-50%);
+}
+
+.title{
+  width: 62%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sofia Sans', sans-serif;
+
+}
+
+.title h1{
+  flex: 5;
+  margin-left: 10%;
+  color: rgb(18, 33, 121);
+  font-weight: bold;
+  margin-top: 1%;
+  font-size: 30px;
+}
+
+.card-body{
+  background-color: rgba(193, 205, 245, 0.42);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+
+}
+.main-container{
+  background-color: rgba(220, 232, 253, 0.42);
+  padding: 2%;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.age-group{
+  display:flex;
+  background-color: rgba(176, 197, 241, 0.42);
+  padding:7px 40px;
+  border-radius:5px;
+}
+
+.age-group p{
+  flex:3;
+  padding-left:0px;
+  padding-top: 10px;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.age-group select{
+  flex:7;
+  margin-right: 300px;
+}
+.growth_development,
+.communication{
+  margin: 2% 0%;
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+.growth_development h1,
+.communication h1
+{
+ font-weight: bold;
+}
+
+.list{
+  flex:8;
+  background-color: rgba(208, 215, 252, 0.66);
+  padding:30px;
+  box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+  border-radius: 10px;
+}
+
+.communication_list{
+  flex:8;
+  background-color: rgb(185, 171, 218,0.5);
+  padding:30px;
+  box-shadow: 0px 3px 3px 0px rgba(11, 11, 11, 0.2);
+  border-radius: 10px;
+}
+
+.side_image{
+  text-align: center;
+  margin-top: 7%;
+}
+
+.form-check {
+  display: flex ; /* Displayflex the container inline to maintain label-checkbox order */
+  margin-right: 10px; /* Optional: Add spacing between label and input */
+}
+
+.form-check p{
+  flex: 5;
+  margin-right:50px;
+  width:500px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+ input{
+  width:25px;
+   height:25px;
+   margin-left: 100px;
+}
+
+
+.tables h1{
+  font-weight: bold;
+  margin-top: 1%;
+  margin-bottom:2%;
+  font-size: 30px;
+  color: rgb(18, 33, 121);
+}
+
+.growth_content{
+  width: 100%;
+  background-color: rgba(206, 220, 248, 0.4);
+  display:flex;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.communication_content{
+  width: 100%;
+  background-color: rgb(185, 171, 218,0.2);
+  display:flex;
+  border-radius: 5px;
+  padding: 20px;
+
+}
+
+
+.path{
+  font-family: 'Sofia Sans', sans-serif;
+  color: rgba(18, 33, 121, 0.65);
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}

@@ -1,0 +1,17 @@
+.topic_image{
+  float: right;
+  width: 135px;
+  height: 117px;
+  /*padding: 0 10px 10px 10px;*/
+  /*padding-right: 10px;*/
+  /*padding-top: 10px;*/
+  /*border-radius: 50%;*/
+}
+h3{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size:30px ;
+  color: #39315d;
+  padding-left:50px ;
+  padding-top: 37px;
+}

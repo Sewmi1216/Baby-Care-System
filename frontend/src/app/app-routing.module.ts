@@ -69,11 +69,15 @@ import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
 
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
+
+import {VaccinationDetailsComponent} from "./main/content/parent/vaccination-details/vaccination-details.component";
+import {GrowthParametersComponent} from "./main/content/parent/growth-parameters/growth-parameters.component";
 import {
   HandleComplaintsViewMoreComponent
 } from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
 
-  import{PendingBabysitterListComponent
+ import{PendingBabysitterListComponent
+
 } from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 import {
   CommunityDiscussionForumComponent
@@ -82,6 +86,11 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
+ 
+import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
+import {AboutUsComponent} from "./about-us/about-us.component";
+import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
+
 import {
   CreateNewTaskListTemplateComponent
 } from "./main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component";
@@ -89,6 +98,8 @@ import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+
+
 
 
 const routes: Routes = [
@@ -106,6 +117,10 @@ const routes: Routes = [
         component: HomeHeaderComponent,
       },
     ]
+  },
+  {
+    path: 'about_us',
+    component:AboutUsComponent
   },
   {
     path: 'login',
@@ -142,6 +157,17 @@ const routes: Routes = [
       },
 
       {
+
+        path: 'parent_profile',
+        component: ParentProfileComponent
+
+      },
+      {
+        path: 'complaints',
+        component: CompliantsComponent
+
+      },
+      {
         path: 'view_new_parents',
         component: ViewNewParentsComponent
       },
@@ -150,6 +176,7 @@ const routes: Routes = [
         component: ViewNewBabysittersComponent
       },
         {
+
         path: 'my_babysitter',
         component: MyBabysitterComponent
       },
@@ -184,6 +211,14 @@ const routes: Routes = [
       {
         path: 'baby_growth',
         component: BabyGrowthComponent
+      },
+      {
+        path: 'vaccination_details',
+        component: VaccinationDetailsComponent
+      },
+      {
+        path: 'growth_parameters',
+        component: GrowthParametersComponent
       },
       {
         path: 'view_baby_sitters',
@@ -269,6 +304,7 @@ const routes: Routes = [
         path: 'manage_user_accounts',
         component: ManageUserAccountsComponent
       },
+
       {
         path: 'handle_complaints',
         component: HandleComplaintsComponent
@@ -333,10 +369,10 @@ const routes: Routes = [
         component: DomainExpertModerateCommunityComponent,
       },
 
-      {
-        path: 'parent_profile',
-        component: ParentProfileComponent
 
+      {
+        path: 'moderate_forum',
+        component: ModerateForumComponent
       },
 
 

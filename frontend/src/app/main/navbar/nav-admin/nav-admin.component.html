@@ -16,8 +16,13 @@
     #manageUserAccounts="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': manageUserAccounts.isActive ? '#7E57C2' : '', 'color': manageUserAccounts.isActive ? '#fff' : ''}">
+
+    <i class="fas fa-baby"></i>
+    <label>Manage user Accounts</label>
+
     <i class="fas fa-users"></i>
     <label>Manage user accounts</label>
+
   </div>
   <div
     routerLink="/admin/pending_babysitter_list"
@@ -32,7 +37,11 @@
     #handleComplaints="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': handleComplaints.isActive ? '#7E57C2' : '', 'color': handleComplaints.isActive ? '#fff' : ''}">
+
+    <i class="fas fa-search"></i>
+
     <i class="fas fa-clipboard-list"></i>
+
     <label>Complaints Handling</label>
   </div>
   <div
@@ -40,7 +49,11 @@
     #handlePayments="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': handlePayments.isActive ? '#7E57C2' : '', 'color': handlePayments.isActive ? '#fff' : ''}">
+
+    <i class="fas fa-users"></i>
+
     <i class="fas fa-credit-card"></i>
+
     <label>Payments Handling</label>
   </div>
   <div

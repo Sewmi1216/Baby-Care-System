@@ -80,7 +80,7 @@ label{
   gap: 5px;
   text-align: center;
   font-size: .9em;
-  
+
 }
 #signUpForm .form-header .stepIndicator {
   position: relative;
@@ -143,6 +143,7 @@ label{
   font-size: 1em;
   border: 1px solid #e3e3e3;
   border-radius: 5px;
+  font-family: 'Sofia Sans', sans-serif;
 }
 #signUpForm input:focus {
   border: 1px solid #009688;
@@ -169,6 +170,7 @@ label{
   border-radius: 5px;
   flex: 1;
   margin-top: 5px;
+  font-family: 'Sofia Sans', sans-serif;
 }
 #signUpForm .form-footer button:hover {
   opacity: 0.8;
@@ -177,4 +179,5 @@ label{
 #signUpForm .form-footer #prevBtn {
   background-color: #fff;
   color: #000000;
+  font-family: 'Sofia Sans', sans-serif;
 }

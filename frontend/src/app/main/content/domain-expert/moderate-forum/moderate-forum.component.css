@@ -1,5 +1,31 @@
 
 
+.topic {
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 20px;
+  color: #39315d;
+  /*padding-left: 55px;*/
+  /*padding-top: 39px;*/
+}
+.topic_image {
+  float: right;
+  width: 217px;
+  height: auto;
+  margin-top: -51px;
+}
+
+@media (max-width: 768px) {
+
+
+
+  .topic {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
 body{
   margin-top:20px;
   background:#eee;
@@ -644,3 +670,29 @@ select.form-control:not([size]):not([multiple]) {
   color: #ff5b57!important;
 }
 
+/*icons*/
+.timeline-content {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+}
+
+.delete-icon {
+  right: 10px;
+}
+
+.ok-icon {
+  right: 30px;
+}
+.delete-icon {
+  color: red; /* Change delete icon color to red */
+  font-size: 20px; /* Increase delete icon size */
+}
+
+.ok-icon {
+  color: green; /* Change OK icon color to green */
+  font-size: 20px; /* Increase OK icon size */
+}
