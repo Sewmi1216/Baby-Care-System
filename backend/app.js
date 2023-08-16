@@ -6,6 +6,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express()
 const session =require("express-session");
+const multer = require('multer')
 require("dotenv").config(); 
 
 const port = process.env.PORT || 8070
@@ -17,11 +18,20 @@ app.use(bodyParser.json());     //json format
 app.use(session({
     secret : "mysecret",
     resave: false,             // Add this line to specify the resave option
-    saveUninitialized: false    // Add this line to specify the saveUninitialized option
+    saveUninitialized: false ,
+    name: 'express-session',
+    cookie: {
+        httpOnly: false
+    }// Add this line to specify the saveUninitialized option
 }));
 // app.get('/', (req, res) => {
 //     res.send('Hello World!')
 // })
+
+app.use((req, res, next) => {
+    console.log(req.session)
+    next()
+})
 
 app.listen(port, () => {
     console.log(`app is listening on port ${port}`)
@@ -51,7 +61,9 @@ app.use("/parent", parentRouter);
 
 //admin
 const adminRouter = require("./routes/admins.js");
+const {request} = require("express");
 app.use("/admin",adminRouter);
+
 
 
 

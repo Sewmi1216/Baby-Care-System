@@ -13,4 +13,7 @@ export class AuthService {
   register(useraccount:any): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
   }
+  registerBabysitter(useraccount:any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter", useraccount);
+  }
 }

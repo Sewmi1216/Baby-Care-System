@@ -53,14 +53,20 @@ const babysitterSchema = new schema ({
         type: String,
         required: true,
     },
-    qualifications:{
-        type: [qualificationsSchema],
-        required: true,
-    },
-    verificationDetails: {
-        type: [verificationDetailsSchema],
-        required: true,
-    },
+    // qualifications:{
+    //     type: [qualificationsSchema],
+    //     required: true,
+    // },
+    // verificationDetails: {
+    //     type: [verificationDetailsSchema],
+    //     required: true,
+    // },
+    image:{
+        type:String,
+        required:true
+    }
+
+
 })
 
 

@@ -5,6 +5,7 @@ const parentController = require("../controllers/ParentController");
 
 // Define a middleware function to check for an active session
 const checkSession = (req, res, next) => {
+    console.log(req.session.user)
     if (req.session && req.session.user) {
         // Session exists, proceed to the next middleware or route handler
         next();
@@ -14,7 +15,8 @@ const checkSession = (req, res, next) => {
     }
 };
 
-
+//babydetails
+router.route('/addBaby').post(checkSession,parentController.addBaby);
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);

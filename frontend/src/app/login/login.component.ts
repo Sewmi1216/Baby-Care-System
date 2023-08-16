@@ -26,7 +26,7 @@ export class LoginComponent {
     console.log("submitting");
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
-      console.log(user.msg);
+      console.log(user['id']);
       console.log(user['role']);
       if (user.msg === "Logged In Successfully") {
         if (user['role'] === 'Parent') {
