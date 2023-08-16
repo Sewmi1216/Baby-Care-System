@@ -86,7 +86,7 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
- 
+
 import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
@@ -266,6 +266,10 @@ const routes: Routes = [
       {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
+      },
+      {
+        path: 'babysitter_view_parent_request',
+        component: BabysitterViewParentRequestsComponent,
       },
       {
         path: 'view_parents_requests',
