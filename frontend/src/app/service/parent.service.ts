@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class ParentService {
   tasklist: any;
   baby:any;
+  babyProfile:any;
 
   private userId: any;
 
@@ -18,6 +19,7 @@ export class ParentService {
   getUserId() {
     return this.userId;
   }
+
   constructor(private http: HttpClient) { }
   addTask(tasklist:any): Observable<any>{
     return this.http.post<any>(environment.backend_url + "/parent/addTask", tasklist)
@@ -29,5 +31,8 @@ export class ParentService {
     };
 
     return this.http.post<any>(environment.backend_url + "/parent/addBaby", requestBody);
+  }
+  getBabies(): Observable<any> {
+    return this.http.get<any>(environment.backend_url + "/parent/getBabies");
   }
 }

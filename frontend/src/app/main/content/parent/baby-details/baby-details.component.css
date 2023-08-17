@@ -4,7 +4,10 @@
 /*  margin-left: 50px;*/
 /*}*/
 
-
+.validErr{
+  color:red;
+  text-align: right;
+}
 .custom-img {
   border-radius: 50%;
   width: 140px;
