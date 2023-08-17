@@ -12,17 +12,17 @@
     <label>Dashboard</label>
   </div>
   <div
-    routerLink="/domain_expert/domain_expert_moderate_blogs"
+    routerLink="/domain_expert/manage_blogs"
 
     #moderateBlog="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': moderateBlogs.isActive ? '#7E57C2' : '', 'color': moderateBlogs.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': moderateBlog.isActive ? '#7E57C2' : '', 'color': moderateBlog.isActive ? '#fff' : ''}">
     <i class="fas fa-blog"></i>
     <label>Moderate Blogs</label>
   </div>
   <div
 
-    routerLink="/domain_expert/domain_expert_moderate_community"
+    routerLink="/domain_expert/moderate_forum"
 
     #moderateCommunity="routerLinkActive"
     routerLinkActive

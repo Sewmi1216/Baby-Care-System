@@ -139,10 +139,6 @@ import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 // import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
-import {
-  BabysitterParentrequestComponent
-} from "./main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component";
 // import {
 //   BabysitterRequestdetailsComponent
 // } from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
@@ -165,10 +161,6 @@ import { ManageBlogsComponent } from './main/content/domain-expert/domain-expert
 import { CreateBlogComponent } from './main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component';
 import { BlogViewComponent } from './blog/blog-view/blog-view.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
-
-import {
-  BabysitterViewParentRequestsComponent
-} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
@@ -305,7 +297,7 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
       ManageBlogsComponent,
       CreateBlogComponent,
       BlogViewComponent,
-      BlogListComponent
+      BlogListComponent,
       AddModeratorComponent
 
 
