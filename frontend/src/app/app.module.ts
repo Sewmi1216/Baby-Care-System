@@ -62,7 +62,7 @@ import { MyBabysitterComponent } from './main/content/parent/my-babysitter/my-ba
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 //import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 //import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
@@ -151,6 +151,10 @@ import { CompliantsComponent } from './main/content/parent/compliants/compliants
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
 import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import { ManageBlogsComponent } from './main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component';
+import { CreateBlogComponent } from './main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component';
+import { BlogViewComponent } from './blog/blog-view/blog-view.component';
+import { BlogListComponent } from './blog/blog-list/blog-list.component';
 
 import {
   BabysitterViewParentRequestsComponent
@@ -235,7 +239,6 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
     //domain-expert
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
-    DomainExpertModerateBlogComponent,
     VaccinationDetailsComponent,
     GrowthParametersComponent,
     ParentSignupComponent,
@@ -284,6 +287,11 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
       AboutUsComponent,
       ModerateForumComponent,
       BabysitterTasklistComponent,
+
+      ManageBlogsComponent,
+      CreateBlogComponent,
+      BlogViewComponent,
+      BlogListComponent
       AddModeratorComponent
 
 

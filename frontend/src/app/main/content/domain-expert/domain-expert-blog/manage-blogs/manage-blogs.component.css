@@ -1,0 +1,83 @@
+*{
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+.path{
+  font-family: 'Sofia Sans', sans-serif;
+  color: rgba(66, 66, 66, 0.37);
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.main_content{
+}
+
+.title h1{
+  color: black;
+  font-weight: bold;
+  margin: 2% 0%;
+  font-size: 30px;
+  font-family: 'Sofia Sans', sans-serif;
+  margin-left: 10px;
+}
+
+.container{
+  background-color: rgba(196, 188, 229, 0.16);
+  padding: 30px 40px;
+  border-radius: 10px;
+  min-height:60vh;
+}
+
+.table{
+  padding:20px;
+}
+
+.table tbody tr{
+  height: 50px; /* Adjust the height as needed */
+}
+
+/* Optional: Adjust the padding and line-height to vertically center content */
+.table tbody td {
+  padding: 10px; /* Adjust padding as needed */
+  line-height: 2; /* Adjust line-height as needed */
+}
+
+body{
+  margin-top:20px;
+  background:#dcdcdc;
+}
+.card-box {
+  padding: 20px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+.search-result-box .tab-content {
+  padding: 30px 30px 10px 30px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -moz-box-shadow: none
+}
+
+.search-result-box .search-item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e3eaef;
+  margin-bottom: 20px
+}
+.text-success {
+  color: #0acf97!important;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+.btn-custom {
+  background-color: rgba(81, 56, 152, 0.55);
+  border-color: #ffffff;
+}
+
+.btn-custom, .btn-danger, .btn-info, .btn-inverse, .btn-pink, .btn-primary, .btn-purple, .btn-success, .btn-warning {
+  color: #fff!important;
+}
+

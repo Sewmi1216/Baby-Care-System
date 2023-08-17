@@ -41,9 +41,7 @@ import {
 import {
   DomainExpertModerateCommunityComponent
 } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import {
-  DomainExpertModerateBlogComponent
-} from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 
 //import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
@@ -98,6 +96,12 @@ import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import {
+  ManageBlogsComponent
+} from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
+import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component";
+import {BlogViewComponent} from "./blog/blog-view/blog-view.component";
+import {BlogListComponent} from "./blog/blog-list/blog-list.component";
 
 import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
 
@@ -136,6 +140,14 @@ const routes: Routes = [
   {
     path: 'about_us',
     component:AboutUsComponent
+  },
+  {
+    path: 'blog_view',
+    component:BlogViewComponent
+  },
+  {
+    path: 'blog_list',
+    component:BlogListComponent
   },
   {
     path: 'login',
@@ -400,12 +412,16 @@ const routes: Routes = [
         component: DomainExpertDashboardComponent,
       },
       {
-        path: 'domain_expert_moderate_blogs',
-        component: DomainExpertModerateBlogComponent,
-      },
-      {
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
+      },
+      {
+        path: 'manage_blogs',
+        component: ManageBlogsComponent,
+      },
+      {
+        path: 'create_blog',
+        component: CreateBlogComponent,
       },
 
 
@@ -417,6 +433,7 @@ const routes: Routes = [
 
     ]
   }
+
 ]
 
 @NgModule({
