@@ -37,10 +37,8 @@ export class LoginComponent {
           this.router.navigate(['/babysitter/babysitter_dashboard'])
         } else if (user['role'] === 'Admin') {
           this.router.navigate(['/admin/admin_dashboard'])
-        } else if (user['role'] === 'domain-expert') {
-          this.router.navigate(['/domain_expert/domain_expert_dashboard'])
         } else {
-          console.log("unknown user");
+          this.router.navigate(['/domain_expert/domain_expert_dashboard'])
         }
         this.toast.success({detail:"SUCCESS",summary:user.msg, position:'topCenter'});
       } else {
@@ -48,7 +46,7 @@ export class LoginComponent {
       }
     }, (err) => {
       this.logged = false;
-      this.toast.error({detail:"ERROR",summary:err.error.msg, position:'topCenter', sticky:true});
+      this.toast.error({detail:"ERROR",summary:err.error.msg, position:'topCenter'});
       console.log("Error during login", err);
     });
   }
