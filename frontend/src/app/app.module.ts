@@ -56,6 +56,8 @@ import { ParentMyPlanComponent } from './main/content/parent/parent-my-plan/pare
 import { ParentProfileComponent } from './main/content/parent/parent-profile/parent-profile.component';
 import { MyBabysitterComponent } from './main/content/parent/my-babysitter/my-babysitter.component';
 
+//import { Next } from './main/content/parent/task-list-home/next-task-lists.component'
+
 
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
@@ -148,6 +150,20 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
 import { CompliantsComponent } from './main/content/parent/compliants/compliants.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
+//import {NextTaskListstComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-listst.component";
+import { NextTaskListsComponent } from './main/content/parent/task-list-home/next-task-lists/next-task-lists.component';
+import { TodayTaskListComponent } from './main/content/babysitter/babysitter-tasklist/today-task-list/today-task-list.component';
+//import { PreviousTaskListComponent } from './main/content/babysitter/previous-babysitter-task-list/previous-babysitter-task-list.component';
+import { PreviousTaskListComponent} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-task-list.component";
+import {
+  BabysitterViewParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
+import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
+import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
+import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
+
 
 @NgModule({
   declarations: [
@@ -181,8 +197,8 @@ import { ModerateForumComponent } from './main/content/domain-expert/moderate-fo
     LiveStreamComponent,
     CommunityComponent,
     DomainExpertProfileComponent,
-     DomainExpertProfileComponent,
-CompliantsComponent,
+    DomainExpertProfileComponent,
+    CompliantsComponent,
     HomeHeaderComponent,
     /*babysitter*/
     //NavBabysitterComponent,
@@ -218,13 +234,13 @@ CompliantsComponent,
     NicValidatorDirective,
     PhoneValidatorDirective,
 
-   HandlePaymentComponent,
-   HandleComplaintsComponent,
-   EditSysInfoComponent,
-   TaskListHomeComponent,
-   ViewNewParentsComponent,
-   ViewNewBabysittersComponent,
-   HandleComplaintsViewMoreComponent,
+    HandlePaymentComponent,
+    HandleComplaintsComponent,
+    EditSysInfoComponent,
+    TaskListHomeComponent,
+    ViewNewParentsComponent,
+    ViewNewBabysittersComponent,
+    HandleComplaintsViewMoreComponent,
 
     /*for filter*/
     StatusFilterPipe,
@@ -235,13 +251,21 @@ CompliantsComponent,
 
 
     RequestedBabysittersComponent,
-      PendingBabysitterListComponent,
-      CommunityDiscussionForumComponent,
-      CompliantsComponent,
-      AboutUsComponent,
-      ModerateForumComponent,
-
-
+    PendingBabysitterListComponent,
+    CommunityDiscussionForumComponent,
+    CompliantsComponent,
+    AboutUsComponent,
+    ModerateForumComponent,
+    PreviosTaskListsComponent,
+    NextTaskListsComponent,
+    TodayTaskListComponent,
+    //PreviousTaskListComponent,
+    PreviosTaskListsComponent,
+    PreviousTaskListComponent,
+    BabysitterViewParentRequestsComponent,
+    PreviousBabysitterTaskListMoreComponent,
+    ManageUserAccountsMoreComponent,
+    RequestedBabysittersMoreComponent
 
 
   ],
@@ -264,11 +288,10 @@ CompliantsComponent,
 
     MatTabsModule,
     /*chats module*/
-   // ChartModule,
+    // ChartModule,
     /* ngx-chart module*/
     //NgxChartsModule
-    BsDatepickerModule.forRoot(),
-
+    BsDatepickerModule.forRoot(), FormsModule,
 
 
   ],
