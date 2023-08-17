@@ -1,0 +1,247 @@
+<div class="container-fluid">
+  <div style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;">
+    <img class="topic_image" src="../../assets/sitter.svg">
+    <h3 style="font-family: 'Sofia Sans', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #39315d;
+    padding-left: 10px;
+    padding-top: 37px;">Moderator</h3>
+  </div>
+
+  <div class="card custom-card" style="width: 100%;  height: auto;background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
+    <!--      <div class="header" style="height: 39px; background-color: #FFFFFF; border-radius: 5px; margin: 10px;">-->
+
+    <mat-tab-group>
+      <mat-tab label="Add Moderator" >
+        <div class="d-flex">
+
+          <!-- Left Side - Image -->
+<!--          <div class="card custom-card" style="width: 45%; height: auto; background-color: #FFFFFF; margin: 40px 10px 30px 40px;border: none">-->
+<!--            <div class="modal-body align-content-center d-flex align-items-center">-->
+
+<!--              &lt;!&ndash;               add photo icon&ndash;&gt;-->
+<!--              <i class="fa sharp fa-light fa-camera fa-7x mx-auto"></i>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label style="padding: 10px 10px 10px 20px;" for="workStartedDate">Work Started Date</label>-->
+<!--              <input style="padding: 10px 10px 10px 20px; width: 90%;" type="date" class="form-control" id="workStartedDate" >-->
+<!--&lt;!&ndash;              <label style="padding: 10px 10px 10px 20px" for="workEndDate">Work End Date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input style="padding: 10px 10px 10px 20px; width: 90%;" type="date" class="form-control" id="workEndDate" value="2021-12-12">&ndash;&gt;-->
+
+<!--&lt;!&ndash;              <label style="padding: 10px 10px 10px 20px" for="workExtendDate">Extend Until </label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input style="padding: 10px 10px 10px 20px;width: 90%;" type="date" class="form-control" id="workExtendDate">&ndash;&gt;-->
+<!--              -->
+<!--            </div>-->
+<!--          </div>-->
+
+
+          <div class="card custom-card" style="width: 100%; background-color: #FFFFFF; margin: 40px 40px 30px 50px; padding: 20px 20px 40px 20px">
+
+            <p class="font-weight-bold">Name</p>
+            <input type="text" class="form-control" >
+            <p class="font-weight-bold">NIC</p>
+            <input type="text" class="form-control" >
+            <p class="font-weight-bold">Address</p>
+            <input type="text" class="form-control" >
+
+            <p class="font-weight-bold">Contact Number</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">Email</p>
+            <input type="text" class="form-control">
+            <p class="font-weight-bold">Password</p>
+            <input type="text" class="form-control" >
+            <button style="background-color: #563393;border-color: #563393;margin: 20px 10px 0 10px;
+" type="submit" class="btn btn-primary">Register</button>
+          </div>
+
+        </div>
+
+
+<!--        &lt;!&ndash;<div  style="width: 100%;margin-top: 50px; background-color: #e8e3fc; border-radius: 5px; margin: 35px 10px 50px 10px;box-shadow: 0 2px 2px 0 #563393;" >&ndash;&gt;-->
+
+<!--        <div class="card-body">-->
+<!--          <form>-->
+
+<!--            <div style="" class="mb-3">-->
+
+<!--              <div style="    width: 106%;-->
+<!--    height: 79px;-->
+<!--    background-color: white;-->
+<!--    margin-bottom: 82px;-->
+<!--    margin-left: -50px;-->
+<!--    margin-top: 20px;" class="text-center">-->
+<!--                <h2 style="padding-top: 20px;font-size: 30px;font-family: 'Sofia Sans';font-weight: bold">Feedback</h2>-->
+<!--              </div>-->
+
+
+<!--              <textarea style="width: 95%" class="form-control" id="feedback" rows="4" placeholder="Enter your feedback"></textarea>-->
+<!--            </div>-->
+<!--            <div class="rating">-->
+<!--              <span style="color: gray; font-size: 30px; margin-bottom: 20px">★ ★ ★ ★ ★</span>-->
+<!--            </div>-->
+
+<!--            <button style="background-color: #563393;border-color: #563393" type="submit" class="btn btn-primary">Submit</button>-->
+<!--          </form>-->
+<!--          <div class="feedback-section">-->
+
+<!--            <div  class="feedback-cards">-->
+<!--              <div *ngFor="let feedback of feedbackData" class="feedback-card">-->
+<!--                <div  class="feedback-header">-->
+<!--                  <div class="profile-info">-->
+<!--                    <img src="assets/sewmi.jpg" alt="Profile Picture" class="profile-image">-->
+<!--                    <h3>{{ feedback.name }}</h3>-->
+<!--                  </div>-->
+<!--                  <div class="rating">-->
+<!--                    <span class="rating-stars">★ ★ ★ ★ ★</span>-->
+<!--                    <span>{{ feedback.rating }}</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <p class="feedback-comment" [ngClass]="{ 'expanded': feedback.expanded }">-->
+<!--                  {{ feedback.comment }}-->
+<!--                </p>-->
+<!--                <button class="view-more-button" *ngIf="feedback.comment.length > 50" (click)="toggleExpand(feedback)">-->
+<!--                  {{ feedback.expanded ? 'View Less' : 'View More' }}-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+      </mat-tab>
+      <mat-tab label=" Moderators">
+
+        <div class="main-content">
+          <div class="container mt-7">
+            <!-- Table -->
+            <div class="row">
+              <div class="col">
+                <div class="card shadow">
+                  <div class="table-responsive">
+                    <table style="border-radius: 50% ;margin-bottom: 30px" class="table align-items-center table-flush">
+                      <thead  class="thead-light">
+                      <tr>
+
+                        <th style="font-weight: bold;color: black" scope="col">Added Date</th>
+
+                        <th style="font-weight: bold;color: black" scope="col">Name</th>
+                        <th style="font-weight: bold;color: black" scope="col">NIC</th>
+                        <th style="font-weight: bold;color: black" scope="col">Address</th>
+                        <th style="font-weight: bold;color: black" scope="col">Mobile No</th>
+                        <th style="font-weight: bold;color: black" scope="col">Email</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+
+                        <td>20.02.2022</td>
+                        <td>
+                          <div class="media align-items-center">
+                            <a href="#" class="avatar rounded-circle mr-3">
+                              <img alt="Image placeholder" src="assets/sewmi.jpg">
+                            </a>
+                            <div class="media-body">
+                              <span class="mb-0 text-sm">Sewmi Thimaya</span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>995569847V</td>
+                        <td>No 50, Kandy Road, Katugastota</td>
+
+                        <td>0814569654</td>
+                        <td>ishini2@gmail.com</td>
+
+                      </tr>
+                      <tr>
+
+                        <td>25.02.2023</td>
+                        <td>
+                          <div class="media align-items-center">
+                            <a href="#" class="avatar rounded-circle mr-3">
+                              <img alt="Image placeholder" src="assets/sewmi.jpg">
+                            </a>
+                            <div class="media-body">
+                              <span class="mb-0 text-sm">Sewmi Thimaya</span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>995569847V</td>
+                        <td>No 50, Kandy Road, Katugastota</td>
+
+                        <td>0814569654</td>
+                        <td>ishini2@gmail.com</td>
+
+                      </tr>
+                      <tr>
+
+                        <td>20.04.2023</td>
+                        <td>
+                          <div class="media align-items-center">
+                            <a href="#" class="avatar rounded-circle mr-3">
+                              <img alt="Image placeholder" src="assets/sewmi.jpg">
+                            </a>
+                            <div class="media-body">
+                              <span class="mb-0 text-sm">Sewmi Thimaya</span>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>995569847V</td>
+                        <td>No 50, Kandy Road, Katugastota</td>
+
+                        <td>0814569654</td>
+                        <td>ishini2@gmail.com</td>
+
+                      </tr>
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+<!--                  <div class="card-footer py-4">-->
+<!--                    <nav aria-label="...">-->
+<!--                      <ul class="pagination justify-content-end mb-0">-->
+<!--                        <li class="page-item disabled">-->
+<!--                          <a class="page-link" href="#" tabindex="-1">-->
+<!--                            <i class="fas fa-angle-left"></i>-->
+<!--                            <span class="sr-only">Previous</span>-->
+<!--                          </a>-->
+<!--                        </li>-->
+<!--                        <li class="page-item active">-->
+<!--                          <a class="page-link" href="#">1</a>-->
+<!--                        </li>-->
+<!--                        <li class="page-item">-->
+<!--                          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
+<!--                        </li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                        <li class="page-item">-->
+<!--                          <a class="page-link" href="#">-->
+<!--                            <i  class="fas fa-angle-right"></i>-->
+<!--                            <span class="sr-only">Next</span>-->
+<!--                          </a>-->
+<!--                        </li>-->
+<!--                      </ul>-->
+<!--                    </nav>-->
+<!--                  </div>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+
+</div>
+

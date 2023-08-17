@@ -1,8 +1,24 @@
 <div class="grid-container">
   <div class="responsive-container">
     <div class="d-flex justify-content-between align-items-center custom-margin" >
-      <div class="d-flex align-items-center">
-        <h1 class="mat-h1 ml-3">Task List</h1>
+
+      <div style="background-color: #e8e3fc;
+    width: 544px;
+    height: 120px;
+    padding: 5px 0 0 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 #563393;
+    margin-bottom: 20px;
+">
+        <img class="topic_image" src="../../assets/sitter.svg">
+        <h3 style="font-family: 'Sofia Sans', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #39315d;
+    padding-left: 10px;
+    padding-top: 37px;">Task List</h3>
+
       </div>
     </div>
   </div>
@@ -11,7 +27,88 @@
 
 <mat-tab-group>
   <mat-tab label="Today Task List">
-    <button routerLink="/parent/create_new_task_list" type="button" class="btn btn-info btn-rounded mt-3 custom-addevent-btn-color">Create new Tasklist</button>
+
+    <button routerLink="/parent/create_new_task_list" type="button" class="btn btn-info btn-rounded mt-3 custom-addevent-btn-color">Create Task List</button>
+
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="card rounded-0 border-0 shadow">
+            <div class="card-body p-5">
+              <!--  Bootstrap table-->
+              <div class="table-responsive">
+                <h1>Today's Task List</h1>
+
+
+                <p><strong>Date : </strong>2023/08/17</p>
+                <p><strong>Task List Name : </strong>Monday Task List</p>
+
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Task Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Send reminders</th>
+                    <th scope="col">Any special Note</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr >
+                    <td>1</td>
+                    <td>Feeding</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr >
+                    <td>2</td>
+                    <td>Preapare meal</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr >
+                    <td>3</td>
+                    <td>Give medicine</td>
+                    <td>8.00AM</td>
+                    <td>
+                        <i style="color: #0c4548" class="fa fa-check-circle finished-icon"></i>
+                    </td>
+
+                    <td>Any note</td>
+                  </tr>
+                  <tr >
+                    <td>4</td>
+                    <td>Washing clothes</td>
+                    <td></td>
+                    <td></td>
+                    <td>Any note</td>
+                  </tr>
+                  <tr >
+                    <td>5</td>
+                    <td>Dressing up</td>
+                    <td></td>
+                    <td></td>
+                    <td>Any note</td>
+                  </tr>
+                  <tr >
+                    <td>6</td>
+                    <td>Give medicine</td>
+                    <td>12.00PM</td>
+                    <td></td>
+                    <td>Any note</td>
+                  </tr>
+                  </tbody>
+                </table>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </mat-tab>
 
 
@@ -28,7 +125,7 @@
               <div class="col-md-12">
 
                 <div class="input-group md-form form-sm form-2 pl-0">
-                  <input class="form-control my-0 py-1 pl-3 purple-border" type="text" placeholder="Search something here..." aria-label="Search">
+                  <input class="form-control my-0 py-1 pl-3 purple-border" type="text" placeholder="Search by Date ..." aria-label="Search">
                   <span class="input-group-addon waves-effect purple lighten-2" id="basic-addon1"><a><i class="fa fa-search white-text" aria-hidden="true"></i></a></span>
                 </div>
               </div>
@@ -50,37 +147,59 @@
               <tbody>
               <tr>
                 <th>2023/07/10</th>
-                <td>Completed</td>
+                <td>
+                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
+                </td>
                 <td >
-                  <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
                 </td>
 
               </tr>
 
               <tr>
                 <th>2023/07/10</th>
-                <td>Completed</td>
-                <td></td>
+                <td>
+                  <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Incompleted</span>
+                </td>
+                <td >
+                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
+                </td>
               </tr>
               <tr>
                 <th>2023/07/10</th>
-                <td>Completed</td>
-                <td></td>
+                <td>
+                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
+                </td>
+                <td >
+                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
+                </td>
               </tr>
               <tr>
                 <th>2023/07/10</th>
-                <td>Completed</td>
-                <td></td>
+                <td>
+                  <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Incompleted</span>
+                </td>
+                <td >
+                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
+                </td>
               </tr>
               <tr>
                 <th>2023/07/10</th>
-                <td>Completed</td>
-                <td></td>
+                <td>
+                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
+                </td>
+                <td >
+                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
+                </td>
               </tr>
               <tr>
                 <th>2023/07/10</th>
-                <td>Completed</td>
-                <td></td>
+                <td>
+                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
+                </td>
+                <td >
+                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
+                </td>
               </tr>
               </tbody>
               <!--Table body-->
@@ -142,6 +261,8 @@
 
 
   <mat-tab label="Next 7 days Task list">
+
+   <app-next-task-lists></app-next-task-lists>
 
   </mat-tab>
 </mat-tab-group>

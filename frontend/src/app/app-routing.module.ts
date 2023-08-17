@@ -103,6 +103,21 @@ import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-bl
 import {BlogViewComponent} from "./blog/blog-view/blog-view.component";
 import {BlogListComponent} from "./blog/blog-list/blog-list.component";
 
+import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
+
+import {
+  PreviosTaskListsComponent
+} from "./main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component";
+import {
+  PreviousBabysitterTaskListMoreComponent
+} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component";
+import {
+  ManageUserAccountsMoreComponent
+} from "./main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component";
+import {
+  RequestedBabysittersMoreComponent
+} from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
+
 
 
 
@@ -252,6 +267,10 @@ const routes: Routes = [
 
       },
       {
+        path: 'requested_babysitters_more',
+        component: RequestedBabysittersMoreComponent
+      },
+      {
         path: 'community_discussion_forum',
         component: CommunityDiscussionForumComponent
 
@@ -261,6 +280,10 @@ const routes: Routes = [
         component: ParentMyPlanComponent
 
       },
+      {
+        path: 'view_previous_task_list',
+        component: PreviosTaskListsComponent
+      }
     ]
   },
   {
@@ -280,11 +303,15 @@ const routes: Routes = [
         component: BabysitterTasklistComponent,
       },
       {
+        path: 'babysitter_view_parent_request',
+        component: BabysitterViewParentRequestsComponent,
+      },
+      {
         path: 'view_parents_requests',
         component: BabysitterViewParentRequestsComponent
       },
       {
-        path: 'view_more_parents_requests',
+        path: 'view_more_parent_requests',
         component: BabysitterViewMoreParentRequestsComponent
       },
 
@@ -297,6 +324,10 @@ const routes: Routes = [
       {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
+      },
+      {
+        path: 'view_previous_task_list_more',
+        component: PreviousBabysitterTaskListMoreComponent
       },
 
 
@@ -311,6 +342,10 @@ const routes: Routes = [
       {
         path: 'admin_dashboard',
         component: AdminDashboardComponent
+      },
+      {
+        path: 'add_moderator',
+        component: AddModeratorComponent,
       },
       {
         path: 'manage_user_accounts',
@@ -353,6 +388,10 @@ const routes: Routes = [
       {
         path: 'pending_babysitter_list',
         component:PendingBabysitterListComponent
+      },
+      {
+        path: 'manage_user_accounts_more',
+        component: ManageUserAccountsMoreComponent
       },
 
       // {
