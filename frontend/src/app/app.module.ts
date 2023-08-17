@@ -241,8 +241,6 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
     ManageUserAccountsComponent,
     VerifyBabysittersComponent,
     ForgetPasswordComponent,
-
-    BabysitterChatComponent,
     LiveStreamComponent,
 
     //domain-expert
@@ -256,6 +254,13 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
     TextValidatorDirective,
     NicValidatorDirective,
     PhoneValidatorDirective,
+
+   HandlePaymentComponent,
+   HandleComplaintsComponent,
+   EditSysInfoComponent,
+   TaskListHomeComponent,
+   ViewNewParentsComponent,
+   ViewNewBabysittersComponent,
 
     HandlePaymentComponent,
     HandleComplaintsComponent,
