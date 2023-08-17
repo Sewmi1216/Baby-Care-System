@@ -266,7 +266,7 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
     BabysitterViewParentRequestsComponent,
     PreviousBabysitterTaskListMoreComponent,
     ManageUserAccountsMoreComponent,
-    RequestedBabysittersMoreComponent
+    RequestedBabysittersMoreComponent,
      // PendingBabysitterListComponent,
       CommunityDiscussionForumComponent,
       CompliantsComponent,
