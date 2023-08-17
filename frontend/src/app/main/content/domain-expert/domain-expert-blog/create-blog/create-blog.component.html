@@ -1,0 +1,52 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/home">Moderate Blog</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Create Blog</li>
+  </ol>
+</nav>
+
+<div class="main-container shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="title">
+    <h1>Create Blog</h1>
+  </div>
+  <div class="container">
+    <form>
+      <div class="mb-3">
+        <label for="topic" class="form-label">Blog Topic</label>
+        <select id="topic" class="form-select py-2 mb-3" aria-label="Default select example">
+          <option value="agronomy">Agronomy</option>
+          <option value="horticulture">Horticulture</option>
+          <option value="soil science">Soil Science</option>
+          <option value="plant pathology">Plant Pathology</option>
+          <option value="entomology">Entomology</option>
+          <option value="agricultural engineering">Agricultural Engineering</option>
+          <option value="agricultural economics">Agricultural Economics</option>
+          <option value="agricultural extension">Agricultural Extension</option>
+          <option value="agroforestry">Agroforestry</option>
+        </select>
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control py-2" id="title" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea type="text" class="form-control py-3" id="description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <input type="text" class="form-control py-3" id="content">
+      </div>
+      <div class="mb-3">
+        <div class="images">
+          <label for="formFile" >Image for the cover page of course</label><br><br>
+          <input class="form-control mb-3 py-2" type="file" id="formFile" accept="image/jpg, image/jpeg, image/png">
+          <img src="../../assets/placeholde.png" class="title-img-top" alt="..." style="width:400px">
+        </div>
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-dark py-2" >Submit</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+

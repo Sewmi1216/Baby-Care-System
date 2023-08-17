@@ -13,6 +13,7 @@ export class ParentSignupComponent implements OnInit{
   @ViewChild('userAccountForm', { static: true }) public userAccountForm!: NgForm;
 
   useraccount = {
+    role:'Parent',
     firstName: '',
     lastName: '',
     email: '',

@@ -1,0 +1,170 @@
+<div class="page-wrapper">
+  <div class="page-slider">
+    <h1 class="slider-title">Trending Posts</h1>
+    <i class="fa-solid fa-chevron-left prev"></i>
+    <i class="fa-solid fa-chevron-right next "></i>
+    <div class="post-wrapper">
+      <a href="">
+        <div class="post">
+          <img src="assets/teeth.jpg" class="slider-image">
+          <h4>Easing Teething Troubles</h4>
+          <div class="post-info">
+            <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha </i> &nbsp; &nbsp;
+            <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>20.02.2023</i>
+          </div>
+        </div>
+      </a>
+      <a href="">
+        <div class="post">
+          <img src="assets/dev.jpg" class="slider-image">
+          <h4> Enhancing Cognitive Development </h4>
+          <div class="post-info">
+            <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha </i> &nbsp; &nbsp;
+            <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>20.02.2023</i>
+          </div>
+        </div>
+      </a>
+      <div class="post">
+        <img src="assets/commu.jpg" class="slider-image">
+        <h4> Art of Baby Communication</h4>
+        <div class="post-info">
+          <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha </i> &nbsp; &nbsp;
+          <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>20.02.2023</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--content-->
+  <div class="content clearfix">
+    <div class="main-content">
+      <h1 class="recent-post-title">Recent Blog</h1>
+      <div class="post">
+        <img src="assets/skin.jpg" class="post-image">
+        <div class="post-review">
+          <h3>The Complete Guide to Baby Skin Care</h3>
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha</i> &nbsp; &nbsp;
+            <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>08.11.2022</i>
+          </div>
+          <p class="preview-text">Caring for your baby's delicate skin is a top priority as a new parent. Discover the essential steps and tips to ensure your little one's skin remains soft, healthy, and well-nourished.</p><br>
+          <a href="userblog.php?view_blog=<?=$post['blog_id'];?>" class="btn read-more">Read More</a>
+
+        </div>
+      </div>
+      <div class="post">
+        <img src="assets/stand.jpg" class="post-image">
+        <div class="post-review">
+          <h3> Introducing Solids to Your Baby</h3>
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha</i> &nbsp; &nbsp;
+            <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>08.11.2022</i>
+          </div>
+          <p class="preview-text">Caring for your baby's delicate skin is a top priority as a new parent. Discover the essential steps and tips to ensure your little one's skin remains soft, healthy, and well-nourished.</p><br>
+          <a href="userblog.php?view_blog=<?=$post['blog_id'];?>" class="btn read-more">Read More</a>
+
+        </div>
+      </div>
+      <div class="post">
+        <img src="assets/skin2.jpg" class="post-image">
+        <div class="post-review">
+          <h3>Navigating Common Baby Skin Concerns</h3>
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha</i> &nbsp; &nbsp;
+            <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>08.11.2022</i>
+          </div>
+          <p class="preview-text">Caring for your baby's delicate skin is a top priority as a new parent. Discover the essential steps and tips to ensure your little one's skin remains soft, healthy, and well-nourished.</p><br>
+          <a href="userblog.php?view_blog=<?=$post['blog_id'];?>" class="btn read-more">Read More</a>
+
+        </div>
+      </div>
+      <div class="post">
+        <img src="assets/play.jpg" class="post-image">
+        <div class="post-review">
+          <h3> Enhancing Cognitive Development Through Playtime</h3>
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>&nbsp;<i>Nadeesha Rajapaksha</i> &nbsp; &nbsp;
+            <i class="fa-sharp fa-regular fa-calendar-days"></i>&nbsp;<i>08.11.2022</i>
+          </div>
+          <p class="preview-text">Caring for your baby's delicate skin is a top priority as a new parent. Discover the essential steps and tips to ensure your little one's skin remains soft, healthy, and well-nourished.</p><br>
+          <a href="userblog.php?view_blog=<?=$post['blog_id'];?>" class="btn read-more">Read More</a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="slidbar">
+      <div class="section-search">
+        <h2 class="section-title">search</h2>
+        <form action="theBlog.php" method="post">
+          <input type="text" name="search-term" class="text-input" placeholder="search...">
+        </form>
+      </div>
+      <div class="section-topics">
+        <h2 class="section-title">Topics</h2>
+        <ul>
+          <li><a href="">Newborn Care</a></li>
+          <li><a href="">Feeding and Nutrition</a></li>
+          <li><a href="">Baby Health and Wellness</a></li>
+          <li><a href="">Sleep and Routines</a></li>
+          <li><a href="">Baby Development and Milestones</a></li>
+          <li><a href="">Safety and Babyproofing</a></li>
+          <li><a href="">Parenting Tips and Advice</a></li>
+          <li><a href="">Baby Gear and Products</a></li>
+          <li><a href="">motional Well-Being</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--jQuery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--Slick Carousel -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<!--fontawesome-->
+<script src="https://kit.fontawesome.com/e32c8f0742.js" crossorigin="anonymous"></script>
+
+<script>
+  $(document).ready(function() {
+    $('.post-wrapper').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      nextArrow: $('.next'),
+      prevArrow: $('.prev'),
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+  });
+</script>
+

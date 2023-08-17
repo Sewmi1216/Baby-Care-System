@@ -44,9 +44,7 @@ import {
 import {
   DomainExpertModerateCommunityComponent
 } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import {
-  DomainExpertModerateBlogComponent
-} from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 
 //import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
@@ -79,9 +77,7 @@ import {
   HandleComplaintsViewMoreComponent
 } from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
 
- import{PendingBabysitterListComponent
-
-} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
+ import{PendingBabysitterListComponent} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 import {
   CommunityDiscussionForumComponent
 } from "./main/content/parent/community-discussion-forum/community-discussion-forum.component";
@@ -89,7 +85,7 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
- 
+
 import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
@@ -101,6 +97,27 @@ import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import {
+  ManageBlogsComponent
+} from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
+import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component";
+import {BlogViewComponent} from "./blog/blog-view/blog-view.component";
+import {BlogListComponent} from "./blog/blog-list/blog-list.component";
+
+import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
+
+import {
+  PreviosTaskListsComponent
+} from "./main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component";
+import {
+  PreviousBabysitterTaskListMoreComponent
+} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component";
+import {
+  ManageUserAccountsMoreComponent
+} from "./main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component";
+import {
+  RequestedBabysittersMoreComponent
+} from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
 
 
 
@@ -124,6 +141,14 @@ const routes: Routes = [
   {
     path: 'about_us',
     component:AboutUsComponent
+  },
+  {
+    path: 'blog_view',
+    component:BlogViewComponent
+  },
+  {
+    path: 'blog_list',
+    component:BlogListComponent
   },
   {
     path: 'login',
@@ -178,8 +203,7 @@ const routes: Routes = [
         path: 'view_new_babysitters',
         component: ViewNewBabysittersComponent
       },
-        {
-
+      {
         path: 'my_babysitter',
         component: MyBabysitterComponent
       },
@@ -243,6 +267,10 @@ const routes: Routes = [
 
       },
       {
+        path: 'requested_babysitters_more',
+        component: RequestedBabysittersMoreComponent
+      },
+      {
         path: 'community_discussion_forum',
         component: CommunityDiscussionForumComponent
 
@@ -252,6 +280,10 @@ const routes: Routes = [
         component: ParentMyPlanComponent
 
       },
+      {
+        path: 'view_previous_task_list',
+        component: PreviosTaskListsComponent
+      }
     ]
   },
   {
@@ -271,11 +303,15 @@ const routes: Routes = [
         component: BabysitterTasklistComponent,
       },
       {
+        path: 'babysitter_view_parent_request',
+        component: BabysitterViewParentRequestsComponent,
+      },
+      {
         path: 'view_parents_requests',
         component: BabysitterViewParentRequestsComponent
       },
       {
-        path: 'view_more_parents_requests',
+        path: 'view_more_parent_requests',
         component: BabysitterViewMoreParentRequestsComponent
       },
 
@@ -289,10 +325,12 @@ const routes: Routes = [
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
-      // {
-      //   path: 'babysitter_requestdetails',
-      //   component: BabysitterRequestdetailsComponent,
-      // },
+
+      {
+        path: 'view_previous_task_list_more',
+        component: PreviousBabysitterTaskListMoreComponent
+      },
+
     ]
   },
   {
@@ -304,6 +342,10 @@ const routes: Routes = [
       {
         path: 'admin_dashboard',
         component: AdminDashboardComponent
+      },
+      {
+        path: 'add_moderator',
+        component: AddModeratorComponent,
       },
       {
         path: 'manage_user_accounts',
@@ -347,6 +389,10 @@ const routes: Routes = [
         path: 'pending_babysitter_list',
         component:PendingBabysitterListComponent
       },
+      {
+        path: 'manage_user_accounts_more',
+        component: ManageUserAccountsMoreComponent
+      },
 
       // {
       // path: 'domain_expert_moderate_community',
@@ -366,12 +412,17 @@ const routes: Routes = [
         component: DomainExpertDashboardComponent,
       },
       {
-        path: 'domain_expert_moderate_blogs',
-        component: DomainExpertModerateBlogComponent,
-      },
-      {
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
+      },
+
+      {
+        path: 'manage_blogs',
+        component: ManageBlogsComponent,
+      },
+      {
+        path: 'create_blog',
+        component: CreateBlogComponent,
       },
 
 
@@ -383,6 +434,7 @@ const routes: Routes = [
 
     ]
   }
+
 ]
 
 @NgModule({

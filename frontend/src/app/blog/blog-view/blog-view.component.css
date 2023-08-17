@@ -1,0 +1,171 @@
+*{
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container{
+  width: 96%;
+  max-width:117rem;
+  margin:0 auto;
+}
+
+.begin{
+  max-width: 114rem;
+  height: 50vh;
+  margin: 2rem auto;
+
+}
+
+.main{
+  width:100%;
+  max-width:80rem;
+  background-color: rgba(217, 215, 246, 0.29);
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  margin-top:-12rem;
+}
+
+.main h2{
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+
+.main .profile-container{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.main .profile-container .profile{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0%;
+}
+
+.main .profile-container .profile .img-container{
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.5rem;
+
+}
+
+.main .profile-container .profile .text{
+  margin: 0 1rem;
+  color:black;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.btn{
+  display: inline-block;
+  text-decoration: capitalize;
+  font-size: 1.2rem;
+  padding:0.3rem 1.5rem;
+  background-color: rgba(255, 60, 0, 0.426);
+  border-radius: 0.2rem;
+  color: aliceblue;
+}
+
+.btn:hover{
+  background-color: rgba(255, 60, 0, 0.749);
+}
+
+
+.tags{
+  display:flex;
+  align-items: center;
+}
+
+.tags p{
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}
+
+.tags a{
+  display: inline-block;
+  padding: 0.3rem 1.5rem;
+  background-color: beige;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin: 0 0.5rem;
+}
+
+.articles{
+  width: 100%;
+  background-color:rgba(228, 232, 232, 0.305);
+  margin-top: 5rem ;
+  padding-top: 5rem 0;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+
+}
+
+.articles .articles-heading{
+  text-transform: capitalize;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.articles .articles-heading h5{
+  font-size: 10rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  position: relative;
+  color: rgba(99, 98, 98, 0.136);
+  text-transform: capitalize;
+}
+
+.articles-heading h6{
+  font-size: 4rem;
+  font-weight: 400;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  color:#4a4a4e;
+}
+
+.cards{
+  display: block;
+  justify-content: space-between;
+  margin: 4rem auto;
+  gap: 5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  position:relative;
+  z-index: 1;
+  padding: 0px 10px;
+}
+
+.image{
+  text-align: center;
+}
+
+h1{
+  font-weight: bold;
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+p{
+  font-size: 18px;
+}
+
+.content_para{
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.content_para_body{
+  display: flex;
+}

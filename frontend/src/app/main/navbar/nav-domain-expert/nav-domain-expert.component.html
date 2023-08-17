@@ -4,7 +4,7 @@
 <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/domain-expert/domain_expert_dashboard"
+    routerLink="/domain_expert/domain_expert_dashboard"
     #dashboard="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
@@ -12,15 +12,18 @@
     <label>Dashboard</label>
   </div>
   <div
-    routerLink="/domain-expert/domain_expert_moderate_blogs"
+    routerLink="/domain_expert/domain_expert_moderate_blogs"
+
     #moderateBlog="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': moderateBlog.isActive ? '#7E57C2' : '', 'color': moderateBlog.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': moderateBlogs.isActive ? '#7E57C2' : '', 'color': moderateBlogs.isActive ? '#fff' : ''}">
     <i class="fas fa-blog"></i>
     <label>Moderate Blogs</label>
   </div>
   <div
-    routerLink="/domain-expert/domain_expert_moderate_community"
+
+    routerLink="/domain_expert/domain_expert_moderate_community"
+
     #moderateCommunity="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateCommunity.isActive ? '#7E57C2' : '', 'color': moderateCommunity.isActive ? '#fff' : ''}">

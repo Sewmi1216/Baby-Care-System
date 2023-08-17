@@ -21,7 +21,7 @@
 <!--top cards-->
 <div class="main__cards">
   <!-- Card - 01 -->
-  <a routerLink = "/main/view_new_parents" class="card-link">
+  <a routerLink = "/admin/manage_user_accounts" class="card-link">
   <div class="card-01">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -44,7 +44,7 @@
 
 
   <!-- Card - 02 -->
-  <a routerLink = "/main/view_new_babysitters" class="card-link">
+  <a routerLink = "/admin/pending_babysitter_list" class="card-link">
   <div class="card-02">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -68,7 +68,8 @@
 
 
   <!-- Card - 03 -->
-  <a routerLink = "/main/handle_complaints" class="card-link">
+
+  <a routerLink = "/admin/handle_complaints" class="card-link">
   <div class="card-03">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -92,6 +93,7 @@
 
 
   <!-- Card - 04 -->
+  <a routerLink="/admin/handle_payments">
   <div class="card-04">
     <div class="d-flex justify-content-between align-items-center card_header">
       <div class="card_header_text d-flex flex-column align-items-center">
@@ -109,7 +111,7 @@
       <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 10.48%</span>
       <span class="text-nowrap">Since yesterday</span>
     </p>
-  </div>
+  </div> </a>
 
 </div>
 <!-- MAIN CARDS ENDS HERE -->
@@ -118,19 +120,23 @@
 
 <!-- CHARTS STARTS HERE -->
 <div class="charts">
+  <a routerLink="/admin/handle_payments">
   <div class="charts__left">
 
     <div class="charts__left__title">
         <h2>Annual Income</h2>
     </div>
     <div class="charts__left__cards">
-      <img src="assets/admin-chart/income%20chart%20annual.PNG" class="chart-image" >
+
+        <img src="assets/admin-chart/income%20chart%20annual.PNG" class="chart-image" >
    <!--   <div class="chart-card mb-4 mb-xl-0 ">
         <app-admin-dasboard-income-charts></app-admin-dasboard-income-charts>
       </div>-->
     </div>
-  </div>
+  </div> </a>
 
+
+  <a routerLink="/admin/manage_user_accounts">
   <div class="charts__right">
     <div class="charts__right__title">
       <h2>Users</h2>
@@ -139,6 +145,8 @@
       <img src="assets/admin-chart/user%20management.PNG" class="card-image">
     </div>
   </div>
+  </a>
 </div>
+
 <!-- CHARTS ENDS HERE -->
 

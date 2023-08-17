@@ -1,0 +1,39 @@
+*{
+  font-family: 'Sofia Sans', sans-serif;
+}
+.breadcrumb-item,
+a{
+  text-decoration: none;
+  color: rgba(80, 47, 161, 0.55);
+  font-weight: bold;
+}
+
+.main-container{
+  background-color: white;
+  padding:20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.title h1{
+  color: black;
+  font-weight: bold;
+  margin: 2% 0%;
+  font-size: 35px;
+  font-family: 'Sofia Sans', sans-serif;
+  text-align: center;
+}
+
+form{
+  background-color: rgba(217, 202, 238, 0.28);
+  padding:30px;
+}
+
+button{
+  padding:5px 50px;
+}
+
+label{
+  font-weight: bold;
+  font-size: 15px;
+}
