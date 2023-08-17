@@ -15,11 +15,11 @@ const babySchema = new schema({
 
     age: {
         type: Number,
-        required: false,
+        required: true,
     },
     gender: {
         type: String,
-        required: false,
+        required: true,
     },
     birthDate: {
         type: Date,
