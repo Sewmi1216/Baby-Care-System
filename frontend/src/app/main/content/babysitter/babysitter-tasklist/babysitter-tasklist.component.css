@@ -70,3 +70,72 @@
   max-height: 400px; /* Adjust this value as needed */
   overflow-y: auto;
 }
+
+
+.topic {
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 20px;
+  color: #39315d;
+  /*padding-left: 55px;*/
+  /*padding-top: 39px;*/
+}
+.topic_image {
+  float: right;
+  width: 217px;
+  height: auto;
+  margin-top: -51px;
+}
+
+@media (max-width: 768px) {
+
+
+
+  .topic {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+
+
+/*search bar*/
+.form-input {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 300px;
+}
+
+.form-input:hover{
+  transform: translateY(-2px);
+}
+
+.form-input input {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  flex-grow: 1;
+  padding: 0 16px;
+  height: 100%;
+  border: none;
+  background:#FFFFFF;
+  border-radius: 36px 0 0 36px;
+  outline: none;
+  width: 100%;
+  color: #000000;
+}
+.form-input button {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  width: 36px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(111, 90, 158, 1);
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+}

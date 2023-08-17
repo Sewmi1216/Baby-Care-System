@@ -14,13 +14,13 @@ export class CreateNewTaskListTemplateComponent {
 
 
   taskListName: string = ''; // task List Name
-  tasks: { name: string, time: string }[] = [{ name: '', time: '' }]; // tasks array
+  tasks: { name: string, time: string , reminders: string, anynote: string}[] = [{ name: '', time: '', reminders:'', anynote:'' }]; // tasks array
 
-  tableData: { name: string, time: string }[] = [];
+  tableData: { name: string, time: string, reminders:string, anynote: string }[] = [];
   submittedTaskLists: any[] = [];
 
   insertRow() {
-    this.tableData.push({ name: '', time: '' });
+    this.tableData.push({ name: '', time: '' ,reminders:'', anynote:''});
   }
 
 
@@ -29,6 +29,7 @@ export class CreateNewTaskListTemplateComponent {
     const newTaskList = {
       name: this.taskListName,
       tasks: this.tableData
+
     };
     this.submittedTaskLists.push(newTaskList);
 

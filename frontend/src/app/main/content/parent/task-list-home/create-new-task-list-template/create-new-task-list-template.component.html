@@ -66,7 +66,7 @@
           <div class="card-body p-5">
             <!--  Bootstrap table-->
             <div class="table-responsive">
-  <h2>Submitted Task List</h2>
+  <h2>Task List Template</h2>
   <p><strong>Task List Name:</strong> {{ submittedTask.name }}</p>
 
   <table class="table">
@@ -75,6 +75,9 @@
       <th scope="col">#</th>
       <th scope="col">Task Name</th>
       <th scope="col">Time</th>
+      <th scope="col">Send Reminders</th>
+      <th scope="col">Any special Note</th>
+
     </tr>
     </thead>
     <tbody>
@@ -82,6 +85,8 @@
       <td>{{ j + 1 }}</td>
       <td>{{ row.name }}</td>
       <td>{{ row.time }}</td>
+      <td>{{ row.reminders }}</td>
+      <td>{{ row.anynote }}</td>
     </tr>
     </tbody>
   </table>
@@ -124,10 +129,83 @@
 
 
               <!-- Update Modal -->
-              <div class="modal" id="updateModal">
-                <!-- ... (modal structure) -->
+              <!-- Add Date Modal -->
+              <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Use 'modal-lg' for larger width -->
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="updateModalModalLabel">Update Task List</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                      <table class="table">
+                      <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Task Name</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Send Reminders</th>
+                        <th scope="col">Any special Note</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td><input type="text" value="task"></td>
+                        <td><input type="text" value="12.00AM"></td>
+                        <td>
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </td>
+                        <td>
+                          <input type="text">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td><input type="text" value="task"></td>
+                        <td><input type="text" value="12.00AM"></td>
+                        <td>
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </td>
+                        <td>
+                          <input type="text">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><input type="text" value="task"></td>
+                        <td><input type="text" value="12.00AM"></td>
+                        <td>
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </td>
+                        <td>
+                          <input type="text">
+                        </td>
+                      </tr>
 
 
+
+                      </tbody>
+                      </table>
+
+
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Update</button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
 </div>
