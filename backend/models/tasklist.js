@@ -8,17 +8,17 @@ const taskListSchema = new schema({
         required: true,
     },
     parent: { 
-        type: mongoose.schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Parent',
     },
-    date: {
+    date: { 
         type: Date,
         required:false
     },
     task: [{
         taskName: {
             type: String,
-            required: true
+            required: false,
         },
         isCompleted: {
             type: Boolean,

@@ -1,5 +1,6 @@
 <div class="container py-5">
   <div class="row">
+    <form #tasklistForm="ngForm" (ngSubmit)="tasklistForm.form.valid && onSubmit()" id="tasklistForm" novalid>
     <div class="col-lg-7 mx-auto">
       <div class="card rounded-0 border-0 shadow">
         <div class="card-body p-5">
@@ -7,7 +8,7 @@
           <div class="table-responsive">
             <h2>Create Task list</h2>
             <label for="listName">Task List Name:</label>
-            <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="taskListName" required>
+            <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="tasklist.tasklistName" #tasklistName="ngModel" required>
 
             <table class="table">
               <thead>
@@ -19,14 +20,17 @@
               </thead>
               <tbody>
               <tbody>
+
               <tr *ngFor="let row of tableData; let i = index">
                 <td>{{ i + 1 }}</td>
-                <td><input class="form-control rounded-0" type="text" [(ngModel)]="row.name" required></td>
-                <td>
-                  <input class="form-control rounded-0"  [(ngModel)]="row.time" [ngxTimepicker]="picker" />
-                  <!--[disabled]="row.verified && !row.editMode" -->
-                  <ngx-material-timepicker #picker></ngx-material-timepicker>
-                </td>
+                <!-- <div *ngFor="let task of tasklist.task; let j = index"> -->
+                  <td><input class="form-control rounded-0" type="text" [(ngModel)]="tasklist.task[i].taskName"  [ngModelOptions]="{standalone: true}" required></td>
+                  <td>
+                    <input class="form-control rounded-0"  [(ngModel)]="tasklist.task[i].time" [ngxTimepicker]="picker" [ngModelOptions]="{standalone: true}"/>
+                    <!--[disabled]="row.verified && !row.editMode" -->
+                    <ngx-material-timepicker #picker></ngx-material-timepicker>
+                  </td>
+                <!-- </div> -->
              <!--   <td><button class="btn btn-danger rounded-0" (click)="deleteRow(i)"><i class="fa fa-trash"></i></button></td> -->
               </tr>
               </tbody>
@@ -40,9 +44,11 @@
               <i class="fas fa-solid fa-plus" aria-hidden="true"></i>
             </button>
 
+
             <button style="background-color: #7E57C2;border-color: #563393" (click)="addTaskList()" type="button" class="btn btn-secondary px-3">
+
               Submit
-            </button>
+            </button> -->
           </div>
 
 
@@ -50,8 +56,10 @@
         </div>
       </div>
     </div>
+    </form>
   </div>
 </div>
+
 
 
 <!-- Existing form code... -->

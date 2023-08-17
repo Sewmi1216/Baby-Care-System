@@ -17,6 +17,7 @@
 
  router.route('/addAdmin').post(adminController.AddAdmin);
  router.route('/addSystemInfo').post(checkSession,adminController.AddSystemInfo);
+ router.route('/addDomainexpert').post(adminController.addDomainExpert);
 
 
 //  retrive
