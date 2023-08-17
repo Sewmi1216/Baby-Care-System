@@ -3,21 +3,32 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const babySchema = new schema({
-    name: {
+
+    firstName: {
         type: String,
         required: true,
     },
+    lastName: {
+        type: String,
+        required: true,
+    },
+
     age: {
         type: Number,
-        required: true,
+        required: false,
     },
     gender: {
-        trpe: String,
-        required: true,
+        type: String,
+        required: false,
     },
     birthDate: {
-        type: date,
+        type: Date,
         required: true,
+    },
+
+    parent: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Parent' // Reference to the 'Parent' model
     }
 })
 

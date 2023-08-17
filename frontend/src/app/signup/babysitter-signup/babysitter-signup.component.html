@@ -5,7 +5,7 @@
     </div>
     <div class="container p-2 py-4"
          style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
-      <form class="row g-3 needs-validation" #userAccountForm="ngForm"
+      <form class="row g-3 needs-validation" #userAccountForm="ngForm" enctype="multipart/form-data"
             (ngSubmit)="userAccountForm.form.valid && onSubmit()" id="signUpForm" novalidate>
         <!-- start step indicators -->
 
@@ -43,16 +43,17 @@
           </div>
         </div>
         <div class="col-md-6">
+
           <label>
-            <input type="radio" name="color" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="red"> Male
+            <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="male" selected> Male
           </label>
           <label>
-            <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="blue"> Female
+            <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="female"> Female
           </label>
-<!--          <div *ngIf="()-->
-<!--               class="validErr">-->
-<!--            Age is required-->
-<!--          </div>-->
+          <div *ngIf="gender.errors?.['required']" class="validErr">
+            Gender is required
+          </div>
+
         </div>
         <div class="col-md-12">
           <input type="text" [(ngModel)]="useraccount.nic" #nic="ngModel" name="nic" class="form-control"
@@ -104,7 +105,7 @@
 
         <div class="col-md-6">
           <!--          <label for="validationCustom03" class="form-label">Password</label>-->
-          <input type="password" [(ngModel)]="useraccount.cpassword" #cpassword="ngModel" name="cpassword"
+          <input type="password" [(ngModel)]="useraccount.cpassword" #cpassword="ngModel" [ngModelOptions]="{standalone: true}"
                  class="form-control" placeholder="Password" required>
           <div *ngIf="(cpassword.touched || userAccountForm.submitted) && cpassword.errors?.['required']"
                class="validErr">
@@ -123,6 +124,9 @@
                class="validErr">
             Passwords do not match
           </div>
+        </div>
+        <div class="mb-2">
+          <input class="form-control" type="file" name="images" accept="image/*" multiple required>
         </div>
 
         <div class="form-footer d-flex mb-4">

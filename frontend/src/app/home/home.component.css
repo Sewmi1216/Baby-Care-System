@@ -38,4 +38,14 @@ body{
   margin-top: 20px;
 }
 
+.body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.description{
+  flex: 1;
+}
+
 

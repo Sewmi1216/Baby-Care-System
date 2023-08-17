@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../service/login.service";
 import {NgToastService} from "ng-angular-popup";
+import {ParentService} from "../service/parent.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   };
   logged = true;
 
-  constructor(private loginService: LoginService, private router: Router,  private toast: NgToastService) {
+  constructor(private loginService: LoginService, private parentService:ParentService,private router: Router,  private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -26,7 +27,8 @@ export class LoginComponent {
     console.log("submitting");
     this.loginService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
-      console.log(user.msg);
+      this.parentService.setUserId(user['id']);
+      console.log(user['id']);
       console.log(user['role']);
       if (user.msg === "Logged In Successfully") {
         if (user['role'] === 'Parent') {
@@ -35,8 +37,10 @@ export class LoginComponent {
           this.router.navigate(['/babysitter/babysitter_dashboard'])
         } else if (user['role'] === 'Admin') {
           this.router.navigate(['/admin/admin_dashboard'])
+        } else if (user['role'] === 'domain-expert') {
+          this.router.navigate(['/domain_expert/domain_expert_dashboard'])
         } else {
-          this.router.navigate(['/domain-expert/domain_expert_dashboard'])
+          console.log("unknown user");
         }
         this.toast.success({detail:"SUCCESS",summary:user.msg, position:'topCenter'});
       } else {

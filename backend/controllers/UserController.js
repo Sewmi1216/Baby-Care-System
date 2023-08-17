@@ -15,7 +15,8 @@ const login = (req, res) => {
              const session = { id: user._id,email: user.email };
              req.session.user = session; // Auto saves session data in mongo store
             console.log(req.session.user);
-            return res.json({msg: "Logged In Successfully", role: user.role}); // sends cookie with sessionID automatically in response
+            console.log(req.session.user.email);
+            return res.json({msg: "Logged In Successfully", role: user.role, id:user._id}); // sends cookie with sessionID automatically in response
         });
     });
 }

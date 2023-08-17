@@ -151,7 +151,8 @@ import { CompliantsComponent } from './main/content/parent/compliants/compliants
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
 import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
-import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
+
+//import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
 //import {NextTaskListstComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-listst.component";
 import { NextTaskListsComponent } from './main/content/parent/task-list-home/next-task-lists/next-task-lists.component';
 import { TodayTaskListComponent } from './main/content/babysitter/babysitter-tasklist/today-task-list/today-task-list.component';
@@ -163,7 +164,6 @@ import {
 import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
-
 
 @NgModule({
   declarations: [
@@ -244,28 +244,37 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
 
     /*for filter*/
     StatusFilterPipe,
-    BabysitterTasklistComponent,
+    // BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
     // BabysitterViewParentRequestsComponent,
     // BabysitterViewMoreParentRequestsComponent,
 
 
     RequestedBabysittersComponent,
+
     PendingBabysitterListComponent,
-    CommunityDiscussionForumComponent,
-    CompliantsComponent,
-    AboutUsComponent,
-    ModerateForumComponent,
-    PreviosTaskListsComponent,
+    //CommunityDiscussionForumComponent,
+    //CompliantsComponent,
+    //AboutUsComponent,
+    //ModerateForumComponent,
+    //PreviosTaskListsComponent,
     NextTaskListsComponent,
     TodayTaskListComponent,
     //PreviousTaskListComponent,
-    PreviosTaskListsComponent,
+    //PreviosTaskListsComponent,
     PreviousTaskListComponent,
     BabysitterViewParentRequestsComponent,
     PreviousBabysitterTaskListMoreComponent,
     ManageUserAccountsMoreComponent,
     RequestedBabysittersMoreComponent
+     // PendingBabysitterListComponent,
+      CommunityDiscussionForumComponent,
+      CompliantsComponent,
+      AboutUsComponent,
+      ModerateForumComponent,
+      BabysitterTasklistComponent
+
+
 
 
   ],

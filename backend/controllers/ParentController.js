@@ -1,6 +1,8 @@
 let Parent = require("../models/Parent");
 let User = require("../models/User");
 let Task = require("../models/task");
+
+let Baby = require("../models/baby");
 // let TaskList = require("../models/tasklist");
 let RequestForm = require("../models/requestForm");
 const bcrypt = require("bcryptjs");
@@ -29,6 +31,8 @@ const addParent = async (req, res) => {
         });
 
         const saltRounds = 12;
+        console.log("Password:", password);
+        console.log("Salt Rounds:", saltRounds);
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         newUser.password = hashedPassword;
@@ -46,13 +50,60 @@ const addParent = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: "An error occurred" });
     }
+
 };
 
+const addBaby = async (req, res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const age = req.body.age;
+    const gender = req.body.gender;
+    const birthDate = req.body.birthDate;
+    const parentID = req.body.userID; // Add this line to retrieve parentID from the request body
+
+    console.log(parentID)
+    if (!parentID) {
+        return res.status(400).send({ status: "Bad Request", error: "Incomplete or invalid data" });
+    }
+
+    const newBaby = new Baby({
+        firstName,
+        lastName,
+        age,
+        gender,
+        birthDate,
+        parent: parentID
+    });
+
+    try {
+        const savedBaby = await newBaby.save();
+        res.status(201).send({ status: "Baby is added", baby: savedBaby });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error adding baby", error: err.message });
+    }
+};
+
+module.exports = {
+    addBaby
+};
 
     const addTask = async (req, res) => {
+
+        console.log('addTask handler:', req.session.user.email);
+        console.log('adddddddddd:', req.session.user.id);
+
+        const status = req.body.status;
+        const time = req.body.time;
+        const name = req.body.name;
+        const taskCompletedStatus = Boolean(req.body.taskCompletedStatus);
+        const remainderStatus = Boolean(req.body.remainderStatus);
+
         const taskName = req.body.taskName;
         const parentId = req.body.parentId;
 
+
+        console.log(req.session.user);
         const newTask = new Task({
             taskName,
         });
@@ -287,5 +338,6 @@ module.exports = {
         addComplaint,
         updateComplaint,
         deleteComplaint,
-        addFeedback,
+        addBaby,
+        addFeedback
     };
