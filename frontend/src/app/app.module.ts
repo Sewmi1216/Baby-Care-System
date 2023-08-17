@@ -152,6 +152,16 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
 import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
 
+import {
+  BabysitterViewParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
+import {
+  BabysitterViewMoreParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import { AddModeratorComponent } from './main/content/admin/add-moderator/add-moderator.component';
+
+
+=======
 //import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
 //import {NextTaskListstComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-listst.component";
 import { NextTaskListsComponent } from './main/content/parent/task-list-home/next-task-lists/next-task-lists.component';
@@ -164,6 +174,7 @@ import {
 import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
+
 
 @NgModule({
   declarations: [
@@ -272,7 +283,8 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
       CompliantsComponent,
       AboutUsComponent,
       ModerateForumComponent,
-      BabysitterTasklistComponent
+      BabysitterTasklistComponent,
+      AddModeratorComponent
 
 
 

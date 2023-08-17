@@ -98,6 +98,9 @@ import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+
+import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
+
 import {
   PreviosTaskListsComponent
 } from "./main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component";
@@ -288,6 +291,10 @@ const routes: Routes = [
         component: BabysitterTasklistComponent,
       },
       {
+        path: 'babysitter_view_parent_request',
+        component: BabysitterViewParentRequestsComponent,
+      },
+      {
         path: 'view_parents_requests',
         component: BabysitterViewParentRequestsComponent
       },
@@ -323,6 +330,10 @@ const routes: Routes = [
       {
         path: 'admin_dashboard',
         component: AdminDashboardComponent
+      },
+      {
+        path: 'add_moderator',
+        component: AddModeratorComponent,
       },
       {
         path: 'manage_user_accounts',
