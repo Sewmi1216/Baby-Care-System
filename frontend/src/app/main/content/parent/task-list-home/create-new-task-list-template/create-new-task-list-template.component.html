@@ -1,6 +1,5 @@
 <div class="container py-5">
   <div class="row">
-    <form #tasklistForm="ngForm" (ngSubmit)="tasklistForm.form.valid && onSubmit()" id="tasklistForm" novalid>
     <div class="col-lg-7 mx-auto">
       <div class="card rounded-0 border-0 shadow">
         <div class="card-body p-5">
@@ -8,7 +7,7 @@
           <div class="table-responsive">
             <h2>Create Task list</h2>
             <label for="listName">Task List Name:</label>
-            <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="tasklist.tasklistName" #tasklistName="ngModel" required>
+            <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="taskListName" required>
 
             <table class="table">
               <thead>
@@ -20,18 +19,15 @@
               </thead>
               <tbody>
               <tbody>
-
               <tr *ngFor="let row of tableData; let i = index">
                 <td>{{ i + 1 }}</td>
-                <!-- <div *ngFor="let task of tasklist.task; let j = index"> -->
-                  <td><input class="form-control rounded-0" type="text" [(ngModel)]="tasklist.task[i].taskName"  [ngModelOptions]="{standalone: true}" required></td>
-                  <td>
-                    <input class="form-control rounded-0"  [(ngModel)]="tasklist.task[i].time" [ngxTimepicker]="picker" [ngModelOptions]="{standalone: true}"/>
-                    <!--[disabled]="row.verified && !row.editMode" -->
-                    <ngx-material-timepicker #picker></ngx-material-timepicker>
-                  </td>
-                <!-- </div> -->
-             <!--   <td><button class="btn btn-danger rounded-0" (click)="deleteRow(i)"><i class="fa fa-trash"></i></button></td> -->
+                <td><input class="form-control rounded-0" type="text" [(ngModel)]="row.name" required></td>
+                <td>
+                  <input class="form-control rounded-0"  [(ngModel)]="row.time" [ngxTimepicker]="picker" />
+                  <!--[disabled]="row.verified && !row.editMode" -->
+                  <ngx-material-timepicker #picker></ngx-material-timepicker>
+                </td>
+                <!--   <td><button class="btn btn-danger rounded-0" (click)="deleteRow(i)"><i class="fa fa-trash"></i></button></td> -->
               </tr>
               </tbody>
 
@@ -40,15 +36,13 @@
 
           <!-- Add rows button-->
           <div class="d-flex justify-content-between">
-            <button style="background-color: #7E57C2;border-color: #563393" (click)="insertRow()" type="button" class="btn btn-secondary px-3">
+            <button (click)="insertRow()" type="button" class="btn btn-secondary px-3">
               <i class="fas fa-solid fa-plus" aria-hidden="true"></i>
             </button>
 
-
-            <button style="background-color: #7E57C2;border-color: #563393" (click)="addTaskList()" type="button" class="btn btn-secondary px-3">
-
+            <button (click)="addTaskList()" type="button" class="btn btn-secondary px-3">
               Submit
-            </button> -->
+            </button>
           </div>
 
 
@@ -56,10 +50,8 @@
         </div>
       </div>
     </div>
-    </form>
   </div>
 </div>
-
 
 
 <!-- Existing form code... -->
@@ -74,65 +66,65 @@
           <div class="card-body p-5">
             <!--  Bootstrap table-->
             <div class="table-responsive">
-  <h2>Task List Template</h2>
-  <p><strong>Task List Name:</strong> {{ submittedTask.name }}</p>
+              <h2>Task List Template</h2>
+              <p><strong>Task List Name:</strong> {{ submittedTask.name }}</p>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Task Name</th>
-      <th scope="col">Time</th>
-      <th scope="col">Send Reminders</th>
-      <th scope="col">Any special Note</th>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Task Name</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Send Reminders</th>
+                  <th scope="col">Any special Note</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let row of submittedTask.tasks; let j = index">
-      <td>{{ j + 1 }}</td>
-      <td>{{ row.name }}</td>
-      <td>{{ row.time }}</td>
-      <td>{{ row.reminders }}</td>
-      <td>{{ row.anynote }}</td>
-    </tr>
-    </tbody>
-  </table>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let row of submittedTask.tasks; let j = index">
+                  <td>{{ j + 1 }}</td>
+                  <td>{{ row.name }}</td>
+                  <td>{{ row.time }}</td>
+                  <td>{{ row.reminders }}</td>
+                  <td>{{ row.anynote }}</td>
+                </tr>
+                </tbody>
+              </table>
 
               <div class="d-flex justify-content-between">
                 <!-- Add Date Button -->
-                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDateModal">Add Date</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDateModal">Add Date</button>
 
                 <!-- Update Button -->
-                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
               </div>
 
               <!-- Add Date Modal -->
-                <div class="modal fade" id="addDateModal" tabindex="-1" aria-labelledby="addDateModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="addDateModalLabel">Add Date</h5>
-                        <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <!-- Modal Body -->
-                      <div class="modal-body">
-                        <form>
-                          <div class="mb-3">
-                            <label for="dateInput" class="form-label">Select a Date:</label>
-                            <input type="date" class="form-control" id="dateInput" name="dateInput">
-                          </div>
-                        </form>
-                      </div>
-                      <!-- Modal Footer -->
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Save</button>
-                      </div>
+              <div class="modal fade" id="addDateModal" tabindex="-1" aria-labelledby="addDateModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addDateModalLabel">Add Date</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="dateInput" class="form-label">Select a Date:</label>
+                          <input type="date" class="form-control" id="dateInput" name="dateInput">
+                        </div>
+                      </form>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Save</button>
                     </div>
                   </div>
                 </div>
+              </div>
 
 
 
@@ -149,60 +141,60 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                       <table class="table">
-                      <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Task Name</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Send Reminders</th>
-                        <th scope="col">Any special Note</th>
+                        <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Task Name</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Send Reminders</th>
+                          <th scope="col">Any special Note</th>
 
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td><input type="text" value="task"></td>
-                        <td><input type="text" value="12.00AM"></td>
-                        <td>
-                          <label>
-                            <input type="checkbox">
-                          </label>
-                        </td>
-                        <td>
-                          <input type="text">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td><input type="text" value="task"></td>
-                        <td><input type="text" value="12.00AM"></td>
-                        <td>
-                          <label>
-                            <input type="checkbox">
-                          </label>
-                        </td>
-                        <td>
-                          <input type="text">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td><input type="text" value="task"></td>
-                        <td><input type="text" value="12.00AM"></td>
-                        <td>
-                          <label>
-                            <input type="checkbox">
-                          </label>
-                        </td>
-                        <td>
-                          <input type="text">
-                        </td>
-                      </tr>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td><input type="text" value="task"></td>
+                          <td><input type="text" value="12.00AM"></td>
+                          <td>
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </td>
+                          <td>
+                            <input type="text">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td><input type="text" value="task"></td>
+                          <td><input type="text" value="12.00AM"></td>
+                          <td>
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </td>
+                          <td>
+                            <input type="text">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td><input type="text" value="task"></td>
+                          <td><input type="text" value="12.00AM"></td>
+                          <td>
+                            <label>
+                              <input type="checkbox">
+                            </label>
+                          </td>
+                          <td>
+                            <input type="text">
+                          </td>
+                        </tr>
 
 
 
-                      </tbody>
+                        </tbody>
                       </table>
 
 
@@ -216,7 +208,7 @@
                 </div>
               </div>
 
-</div>
+            </div>
           </div>
         </div>
       </div>
@@ -225,4 +217,3 @@
 </div>
 
 <!-- Existing form code... -->
-
