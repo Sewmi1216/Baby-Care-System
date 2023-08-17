@@ -89,7 +89,7 @@ div ,ul {
   margin: 5px 0;
 }
 .custom-img {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
 }
 
@@ -122,3 +122,4 @@ h3{
   padding-left:50px ;
   padding-top: 37px;
 }
+

@@ -40,13 +40,13 @@
 
           <!-- Add rows button-->
           <div class="d-flex justify-content-between">
-            <button (click)="insertRow()" type="button" class="btn btn-secondary px-3">
+            <button style="background-color: #7E57C2;border-color: #563393" (click)="insertRow()" type="button" class="btn btn-secondary px-3">
               <i class="fas fa-solid fa-plus" aria-hidden="true"></i>
             </button>
 
-            <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
 
-            <!-- <button (click)="addTaskList()" type="button" class="btn btn-secondary px-3">
+            <button style="background-color: #7E57C2;border-color: #563393" (click)="addTaskList()" type="button" class="btn btn-secondary px-3">
+
               Submit
             </button> -->
           </div>
@@ -59,3 +59,170 @@
     </form>
   </div>
 </div>
+
+
+
+<!-- Existing form code... -->
+
+
+<!-- Display submitted task lists -->
+<div *ngFor="let submittedTask of submittedTaskLists; let i = index">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <div class="card rounded-0 border-0 shadow">
+          <div class="card-body p-5">
+            <!--  Bootstrap table-->
+            <div class="table-responsive">
+  <h2>Task List Template</h2>
+  <p><strong>Task List Name:</strong> {{ submittedTask.name }}</p>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task Name</th>
+      <th scope="col">Time</th>
+      <th scope="col">Send Reminders</th>
+      <th scope="col">Any special Note</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of submittedTask.tasks; let j = index">
+      <td>{{ j + 1 }}</td>
+      <td>{{ row.name }}</td>
+      <td>{{ row.time }}</td>
+      <td>{{ row.reminders }}</td>
+      <td>{{ row.anynote }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+              <div class="d-flex justify-content-between">
+                <!-- Add Date Button -->
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDateModal">Add Date</button>
+
+                <!-- Update Button -->
+                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
+              </div>
+
+              <!-- Add Date Modal -->
+                <div class="modal fade" id="addDateModal" tabindex="-1" aria-labelledby="addDateModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="addDateModalLabel">Add Date</h5>
+                        <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <!-- Modal Body -->
+                      <div class="modal-body">
+                        <form>
+                          <div class="mb-3">
+                            <label for="dateInput" class="form-label">Select a Date:</label>
+                            <input type="date" class="form-control" id="dateInput" name="dateInput">
+                          </div>
+                        </form>
+                      </div>
+                      <!-- Modal Footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              <!-- Update Modal -->
+              <!-- Add Date Modal -->
+              <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Use 'modal-lg' for larger width -->
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="updateModalModalLabel">Update Task List</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                      <table class="table">
+                      <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Task Name</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Send Reminders</th>
+                        <th scope="col">Any special Note</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td><input type="text" value="task"></td>
+                        <td><input type="text" value="12.00AM"></td>
+                        <td>
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </td>
+                        <td>
+                          <input type="text">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td><input type="text" value="task"></td>
+                        <td><input type="text" value="12.00AM"></td>
+                        <td>
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </td>
+                        <td>
+                          <input type="text">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><input type="text" value="task"></td>
+                        <td><input type="text" value="12.00AM"></td>
+                        <td>
+                          <label>
+                            <input type="checkbox">
+                          </label>
+                        </td>
+                        <td>
+                          <input type="text">
+                        </td>
+                      </tr>
+
+
+
+                      </tbody>
+                      </table>
+
+
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Update</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Existing form code... -->
+

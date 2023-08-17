@@ -43,7 +43,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 //babysitter
 import { BabysitterDashboardComponent } from './main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component';
-import { BabysitterRequestdetailsComponent } from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
 import { BabysitterChatComponent } from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -56,11 +56,13 @@ import { ParentMyPlanComponent } from './main/content/parent/parent-my-plan/pare
 import { ParentProfileComponent } from './main/content/parent/parent-profile/parent-profile.component';
 import { MyBabysitterComponent } from './main/content/parent/my-babysitter/my-babysitter.component';
 
+//import { Next } from './main/content/parent/task-list-home/next-task-lists.component'
+
 
 //domain-expert
 import { DomainExpertDashboardComponent } from './main/content/domain-expert/domain-expert-dashboard/domain-expert-dashboard.component';
 import { DomainExpertModerateCommunityComponent } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import { DomainExpertModerateBlogComponent } from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 //import { ModerateBlogComponent } from './main/content/domain-expert/moderate-blog/moderate-blog.component';
 //import { ModerateCommunityComponent } from './main/content/domain-expert/moderate-community/moderate-community.component';
@@ -90,11 +92,19 @@ import {NotifierModule} from "angular-notifier";
 
 import {MatDatepickerModule} from "@angular/material/datepicker";/*MatDatePickerModule-Date Picker*/
 import {MatNativeDateModule} from "@angular/material/core";/*MatNativeDateModule-Date picker*/
+
+
+// import {NotifierService} from "angular-notifier";
+
+import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+import { VaccinationDetailsComponent } from './main/content/parent/vaccination-details/vaccination-details.component';
+import { GrowthParametersComponent } from './main/content/parent/growth-parameters/growth-parameters.component';
+
 import { MatTabsModule } from '@angular/material/tabs';
 import { RequestedBabysittersComponent } from './main/content/parent/requested-babysitters/requested-babysitters.component';
 import {NotifierService} from "angular-notifier";
 
-import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
+// import { BabyGrowthComponent } from './main/content/parent/baby-growth/baby-growth.component';
 import { ParentSignupComponent } from './signup/parent-signup/parent-signup.component';
 import { BabysitterSignupComponent } from './signup/babysitter-signup/babysitter-signup.component';
 import {NgToastModule} from "ng-angular-popup";
@@ -114,16 +124,20 @@ import { PhoneValidatorDirective } from './validator/phone-validator.directive';
 import { TaskListHomeComponent } from './main/content/parent/task-list-home/task-list-home.component';
 import { ViewNewParentsComponent } from './main/content/admin/view-new-parents/view-new-parents.component';
 import { ViewNewBabysittersComponent } from './main/content/admin/view-new-babysitters/view-new-babysitters.component';
+
+// import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
+
 import {NavBabysitterComponent} from "./main/navbar/nav-babysitter/nav-babysitter.component";
 
 import { HandleComplaintsViewMoreComponent } from './main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component';
 import {StatusFilterPipe} from "./main/content/admin/manage-user-accounts/manage-user-accounts.pipe";
-import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+
 import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component';
 //import { ParentCalenderComponent } from './main/content/parent/parent-dashboard/parent-calender/parent-calender.component';
 
 import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+
 // import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import {
@@ -133,8 +147,47 @@ import {
 //   BabysitterRequestdetailsComponent
 // } from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
 
+
+//import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+//import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
+//import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
+
+
+
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
+
+import { CompliantsComponent } from './main/content/parent/compliants/compliants.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ModerateForumComponent } from './main/content/domain-expert/moderate-forum/moderate-forum.component';
+import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component";
+import { ManageBlogsComponent } from './main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component';
+import { CreateBlogComponent } from './main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component';
+import { BlogViewComponent } from './blog/blog-view/blog-view.component';
+import { BlogListComponent } from './blog/blog-list/blog-list.component';
+
+import {
+  BabysitterViewParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
+import {
+  BabysitterViewMoreParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import { AddModeratorComponent } from './main/content/admin/add-moderator/add-moderator.component';
+
+//import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
+//import {NextTaskListstComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-listst.component";
+import { NextTaskListsComponent } from './main/content/parent/task-list-home/next-task-lists/next-task-lists.component';
+import { TodayTaskListComponent } from './main/content/babysitter/babysitter-tasklist/today-task-list/today-task-list.component';
+//import { PreviousTaskListComponent } from './main/content/babysitter/previous-babysitter-task-list/previous-babysitter-task-list.component';
+import { PreviousTaskListComponent} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-task-list.component";
+import {
+  BabysitterViewParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
+import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
+import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
+import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
+
+
 
 @NgModule({
   declarations: [
@@ -168,8 +221,8 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     LiveStreamComponent,
     CommunityComponent,
     DomainExpertProfileComponent,
-     DomainExpertProfileComponent,
-
+    DomainExpertProfileComponent,
+    CompliantsComponent,
     HomeHeaderComponent,
     /*babysitter*/
     //NavBabysitterComponent,
@@ -180,6 +233,7 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     ParentMyPlanComponent,
     ParentProfileComponent,
     MyBabysitterComponent,
+    BabysitterChatComponent,
 
 
     /*Admin*/
@@ -194,7 +248,8 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     //domain-expert
     DomainExpertDashboardComponent,
     DomainExpertModerateCommunityComponent,
-    DomainExpertModerateBlogComponent,
+    VaccinationDetailsComponent,
+    GrowthParametersComponent,
     ParentSignupComponent,
     BabysitterSignupComponent,
     EmailValidatorDirective,
@@ -202,30 +257,51 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
     NicValidatorDirective,
     PhoneValidatorDirective,
 
-   // AdminDasboardIncomeChartsComponent,
-   // AdminDashboardUserPieChartComponent,
-   // AdminDashboardUserChartsComponent,
-   HandlePaymentComponent,
-   HandleComplaintsComponent,
-   EditSysInfoComponent,
-   TaskListHomeComponent,
-   ViewNewParentsComponent,
-   ViewNewBabysittersComponent,
-   HandleComplaintsViewMoreComponent,
+    HandlePaymentComponent,
+    HandleComplaintsComponent,
+    EditSysInfoComponent,
+    TaskListHomeComponent,
+    ViewNewParentsComponent,
+    ViewNewBabysittersComponent,
+    HandleComplaintsViewMoreComponent,
 
     /*for filter*/
     StatusFilterPipe,
-    BabysitterTasklistComponent,
+    // BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
+    // BabysitterViewParentRequestsComponent,
+    // BabysitterViewMoreParentRequestsComponent,
+
 
     RequestedBabysittersComponent,
-      PendingBabysitterListComponent,
+
+    PendingBabysitterListComponent,
+    //CommunityDiscussionForumComponent,
+    //CompliantsComponent,
+    //AboutUsComponent,
+    //ModerateForumComponent,
+    //PreviosTaskListsComponent,
+    NextTaskListsComponent,
+    TodayTaskListComponent,
+    //PreviousTaskListComponent,
+    //PreviosTaskListsComponent,
+    PreviousTaskListComponent,
+    BabysitterViewParentRequestsComponent,
+    PreviousBabysitterTaskListMoreComponent,
+    ManageUserAccountsMoreComponent,
+    RequestedBabysittersMoreComponent,
+     // PendingBabysitterListComponent,
       CommunityDiscussionForumComponent,
+      CompliantsComponent,
+      AboutUsComponent,
+      ModerateForumComponent,
+      BabysitterTasklistComponent,
 
-
-
-
-
+      ManageBlogsComponent,
+      CreateBlogComponent,
+      BlogViewComponent,
+      BlogListComponent
+      AddModeratorComponent
 
 
 
@@ -250,11 +326,10 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
 
     MatTabsModule,
     /*chats module*/
-   // ChartModule,
+    // ChartModule,
     /* ngx-chart module*/
     //NgxChartsModule
-    BsDatepickerModule.forRoot(),
-
+    BsDatepickerModule.forRoot(), FormsModule,
 
 
   ],
@@ -262,3 +337,4 @@ import { CommunityDiscussionForumComponent } from './main/content/parent/communi
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class YourModule { }

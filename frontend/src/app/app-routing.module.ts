@@ -15,12 +15,7 @@ import {
   BabysitterDashboardComponent
 } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
 import {BabysitterTasklistComponent} from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-import {
-  BabysitterParentrequestComponent
-} from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
-import {
-  BabysitterRequestdetailsComponent
-} from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
+
 import {BabysitterChatComponent} from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -46,9 +41,7 @@ import {
 import {
   DomainExpertModerateCommunityComponent
 } from './main/content/domain-expert/domain-expert-moderate-community/domain-expert-moderate-community.component';
-import {
-  DomainExpertModerateBlogComponent
-} from './main/content/domain-expert/domain-expert-moderate-blog/domain-expert-moderate-blog.component';
+
 
 
 //import {ModerateCommunityComponent} from "./main/content/domain-expert/moderate-community/moderate-community.component";
@@ -74,12 +67,14 @@ import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
 
 import {BabyGrowthComponent} from "./main/content/parent/baby-growth/baby-growth.component";
+
+import {VaccinationDetailsComponent} from "./main/content/parent/vaccination-details/vaccination-details.component";
+import {GrowthParametersComponent} from "./main/content/parent/growth-parameters/growth-parameters.component";
 import {
   HandleComplaintsViewMoreComponent
 } from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
-import{
-  PendingBabysitterListComponent
-} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
+
+ import{PendingBabysitterListComponent} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 import {
   CommunityDiscussionForumComponent
 } from "./main/content/parent/community-discussion-forum/community-discussion-forum.component";
@@ -87,9 +82,41 @@ import {
 
 import {ParentSignupComponent} from "./signup/parent-signup/parent-signup.component";
 import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-signup.component";
+
+import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
+import {AboutUsComponent} from "./about-us/about-us.component";
+import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
+
 import {
   CreateNewTaskListTemplateComponent
 } from "./main/content/parent/task-list-home/create-new-task-list-template/create-new-task-list-template.component";
+import { BabysitterViewParentRequestsComponent } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
+import {
+  BabysitterViewMoreParentRequestsComponent
+} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
+import {
+  ManageBlogsComponent
+} from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
+import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component";
+import {BlogViewComponent} from "./blog/blog-view/blog-view.component";
+import {BlogListComponent} from "./blog/blog-list/blog-list.component";
+
+import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
+
+import {
+  PreviosTaskListsComponent
+} from "./main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component";
+import {
+  PreviousBabysitterTaskListMoreComponent
+} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component";
+import {
+  ManageUserAccountsMoreComponent
+} from "./main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component";
+import {
+  RequestedBabysittersMoreComponent
+} from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
+
+
 
 
 const routes: Routes = [
@@ -107,6 +134,18 @@ const routes: Routes = [
         component: HomeHeaderComponent,
       },
     ]
+  },
+  {
+    path: 'about_us',
+    component:AboutUsComponent
+  },
+  {
+    path: 'blog_view',
+    component:BlogViewComponent
+  },
+  {
+    path: 'blog_list',
+    component:BlogListComponent
   },
   {
     path: 'login',
@@ -139,6 +178,18 @@ const routes: Routes = [
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
+
+      },
+
+      {
+
+        path: 'parent_profile',
+        component: ParentProfileComponent
+
+      },
+      {
+        path: 'complaints',
+        component: CompliantsComponent
 
       },
       {
@@ -186,6 +237,14 @@ const routes: Routes = [
         component: BabyGrowthComponent
       },
       {
+        path: 'vaccination_details',
+        component: VaccinationDetailsComponent
+      },
+      {
+        path: 'growth_parameters',
+        component: GrowthParametersComponent
+      },
+      {
         path: 'view_baby_sitters',
         component: ViewBabySittersComponent
       },
@@ -198,10 +257,15 @@ const routes: Routes = [
         component: DomainExpertProfileComponent
 
       },
+
       {
         path: 'requested_babysitters',
         component: RequestedBabysittersComponent
 
+      },
+      {
+        path: 'requested_babysitters_more',
+        component: RequestedBabysittersMoreComponent
       },
       {
         path: 'community_discussion_forum',
@@ -213,6 +277,10 @@ const routes: Routes = [
         component: ParentMyPlanComponent
 
       },
+      {
+        path: 'view_previous_task_list',
+        component: PreviosTaskListsComponent
+      }
     ]
   },
   {
@@ -226,37 +294,39 @@ const routes: Routes = [
         path: 'babysitter_dashboard',
         component: BabysitterDashboardComponent,
       },
-      {
-        path: 'babysitter_parentrequest',
-        component: BabysitterParentrequestComponent,
-      },
+
       {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
       {
-        path: 'babysitter_requestdetails',
-        component: BabysitterRequestdetailsComponent,
+        path: 'babysitter_view_parent_request',
+        component: BabysitterViewParentRequestsComponent,
       },
-
+      {
+        path: 'view_parents_requests',
+        component: BabysitterViewParentRequestsComponent
+      },
+      {
+        path: 'view_more_parent_requests',
+        component: BabysitterViewMoreParentRequestsComponent
+      },
 
       // {
       //   path: 'domain_expert_moderate_community',
       //   component: ModerateCommunityComponent,
       // },
 
-      {
-        path: 'babysitter_parentrequest',
-        component: BabysitterParentrequestComponent,
-      },
+
       {
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
       {
-        path: 'babysitter_requestdetails',
-        component: BabysitterRequestdetailsComponent,
+        path: 'view_previous_task_list_more',
+        component: PreviousBabysitterTaskListMoreComponent
       },
+
 
     ]
   },
@@ -271,9 +341,14 @@ const routes: Routes = [
         component: AdminDashboardComponent
       },
       {
+        path: 'add_moderator',
+        component: AddModeratorComponent,
+      },
+      {
         path: 'manage_user_accounts',
         component: ManageUserAccountsComponent
       },
+
       {
         path: 'handle_complaints',
         component: HandleComplaintsComponent
@@ -311,6 +386,10 @@ const routes: Routes = [
         path: 'pending_babysitter_list',
         component:PendingBabysitterListComponent
       },
+      {
+        path: 'manage_user_accounts_more',
+        component: ManageUserAccountsMoreComponent
+      },
 
       // {
       // path: 'domain_expert_moderate_community',
@@ -330,23 +409,29 @@ const routes: Routes = [
         component: DomainExpertDashboardComponent,
       },
       {
-        path: 'domain_expert_moderate_blogs',
-        component: DomainExpertModerateBlogComponent,
-      },
-      {
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
       },
 
-      // {
-      //   path: 'parent_profile',
-      //   component: ParentProfileComponent
+      {
+        path: 'manage_blogs',
+        component: ManageBlogsComponent,
+      },
+      {
+        path: 'create_blog',
+        component: CreateBlogComponent,
+      },
 
-      // },
+
+      {
+        path: 'moderate_forum',
+        component: ModerateForumComponent
+      },
 
 
     ]
   }
+
 ]
 
 @NgModule({

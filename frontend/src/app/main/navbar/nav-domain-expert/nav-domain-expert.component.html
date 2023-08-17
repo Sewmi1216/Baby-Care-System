@@ -13,14 +13,17 @@
   </div>
   <div
     routerLink="/domain_expert/domain_expert_moderate_blogs"
-    #moderateBlogs="routerLinkActive"
+
+    #moderateBlog="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateBlogs.isActive ? '#7E57C2' : '', 'color': moderateBlogs.isActive ? '#fff' : ''}">
     <i class="fas fa-blog"></i>
     <label>Moderate Blogs</label>
   </div>
   <div
+
     routerLink="/domain_expert/domain_expert_moderate_community"
+
     #moderateCommunity="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateCommunity.isActive ? '#7E57C2' : '', 'color': moderateCommunity.isActive ? '#fff' : ''}">
