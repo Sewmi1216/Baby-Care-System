@@ -101,6 +101,7 @@ import {
 } from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
 import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component";
 import {BlogViewComponent} from "./blog/blog-view/blog-view.component";
+import {BlogListComponent} from "./blog/blog-list/blog-list.component";
 
 
 
@@ -128,6 +129,10 @@ const routes: Routes = [
   {
     path: 'blog_view',
     component:BlogViewComponent
+  },
+  {
+    path: 'blog_list',
+    component:BlogListComponent
   },
   {
     path: 'login',

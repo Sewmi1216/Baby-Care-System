@@ -149,6 +149,7 @@ import {BabysitterTasklistComponent} from "./main/content/babysitter/babysitter-
 import { ManageBlogsComponent } from './main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component';
 import { CreateBlogComponent } from './main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component';
 import { BlogViewComponent } from './blog/blog-view/blog-view.component';
+import { BlogListComponent } from './blog/blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -243,7 +244,8 @@ CompliantsComponent,
       BabysitterTasklistComponent,
       ManageBlogsComponent,
       CreateBlogComponent,
-      BlogViewComponent
+      BlogViewComponent,
+      BlogListComponent
 
 
 
