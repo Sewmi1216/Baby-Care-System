@@ -100,6 +100,7 @@ import {
   ManageBlogsComponent
 } from "./main/content/domain-expert/domain-expert-blog/manage-blogs/manage-blogs.component";
 import {CreateBlogComponent} from "./main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component";
+import {BlogViewComponent} from "./blog/blog-view/blog-view.component";
 
 
 
@@ -123,6 +124,10 @@ const routes: Routes = [
   {
     path: 'about_us',
     component:AboutUsComponent
+  },
+  {
+    path: 'blog_view',
+    component:BlogViewComponent
   },
   {
     path: 'login',
@@ -384,6 +389,7 @@ const routes: Routes = [
 
     ]
   }
+
 ]
 
 @NgModule({
