@@ -15,7 +15,10 @@ import {
   BabysitterDashboardComponent
 } from "./main/content/babysitter/babysitter-dashboard/babysitter-dashboard.component";
 import {BabysitterTasklistComponent} from './main/content/babysitter/babysitter-tasklist/babysitter-tasklist.component';
-
+// import {
+//   BabysitterParentrequestComponent
+// } from './main/content/babysitter/babysitter-parentrequest/babysitter-parentrequest.component';
+// import {BabysitterRequestdetailsComponent} from './main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component';
 import {BabysitterChatComponent} from './main/content/babysitter/babysitter-chat/babysitter-chat.component';
 
 
@@ -74,9 +77,7 @@ import {
   HandleComplaintsViewMoreComponent
 } from "./main/content/admin/handle-complaints/handle-complaints-view-more/handle-complaints-view-more.component";
 
- import{PendingBabysitterListComponent
-
-} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
+ import{PendingBabysitterListComponent} from "./main/content/admin/pending-babysitter-list/pending-babysitter-list.component";
 import {
   CommunityDiscussionForumComponent
 } from "./main/content/parent/community-discussion-forum/community-discussion-forum.component";
@@ -202,8 +203,7 @@ const routes: Routes = [
         path: 'view_new_babysitters',
         component: ViewNewBabysittersComponent
       },
-        {
-
+      {
         path: 'my_babysitter',
         component: MyBabysitterComponent
       },
@@ -325,11 +325,11 @@ const routes: Routes = [
         path: 'babysitter_tasklist',
         component: BabysitterTasklistComponent,
       },
+
       {
         path: 'view_previous_task_list_more',
         component: PreviousBabysitterTaskListMoreComponent
       },
-
 
     ]
   },
@@ -361,10 +361,10 @@ const routes: Routes = [
         path: 'verify_babysitter',
         component: VerifyBabysittersComponent
       },
-      {
-        path: 'babysitter_chat',
-        component: BabysitterChatComponent,
-      },
+      // {
+      //   path: 'view_verify_profile',
+      //   component: ViewBabysitterVerifyComponent
+      // },
       {
         path: 'edit_sys_info',
         component: EditSysInfoComponent
@@ -415,6 +415,7 @@ const routes: Routes = [
         path: 'domain_expert_moderate_community',
         component: DomainExpertModerateCommunityComponent,
       },
+
       {
         path: 'manage_blogs',
         component: ManageBlogsComponent,

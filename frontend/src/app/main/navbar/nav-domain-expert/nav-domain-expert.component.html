@@ -12,7 +12,8 @@
     <label>Dashboard</label>
   </div>
   <div
-    routerLink="/domain_expert/domain_expert_moderate_blogs"
+    routerLink="/domain_expert/manage_blogs"
+
     #moderateBlog="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateBlog.isActive ? '#7E57C2' : '', 'color': moderateBlog.isActive ? '#fff' : ''}">
@@ -20,7 +21,9 @@
     <label>Moderate Blogs</label>
   </div>
   <div
+
     routerLink="/domain_expert/moderate_forum"
+
     #moderateCommunity="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': moderateCommunity.isActive ? '#7E57C2' : '', 'color': moderateCommunity.isActive ? '#fff' : ''}">

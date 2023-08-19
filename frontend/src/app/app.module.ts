@@ -138,6 +138,12 @@ import { CreateNewTaskListTemplateComponent } from './main/content/parent/task-l
 import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import {
+//   BabysitterRequestdetailsComponent
+// } from "./main/content/babysitter/babysitter-parentrequest/babysitter-requestdetails/babysitter-requestdetails.component";
+
+
 //import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 //import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
 //import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
@@ -155,17 +161,11 @@ import { ManageBlogsComponent } from './main/content/domain-expert/domain-expert
 import { CreateBlogComponent } from './main/content/domain-expert/domain-expert-blog/create-blog/create-blog.component';
 import { BlogViewComponent } from './blog/blog-view/blog-view.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
-
-import {
-  BabysitterViewParentRequestsComponent
-} from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
 import {
   BabysitterViewMoreParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
 import { AddModeratorComponent } from './main/content/admin/add-moderator/add-moderator.component';
 
-
-=======
 //import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
 //import {NextTaskListstComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-listst.component";
 import { NextTaskListsComponent } from './main/content/parent/task-list-home/next-task-lists/next-task-lists.component';
@@ -178,6 +178,7 @@ import {
 import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
+
 
 
 @NgModule({
@@ -232,8 +233,6 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
     ManageUserAccountsComponent,
     VerifyBabysittersComponent,
     ForgetPasswordComponent,
-
-    BabysitterChatComponent,
     LiveStreamComponent,
 
     //domain-expert
@@ -247,6 +246,13 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
     TextValidatorDirective,
     NicValidatorDirective,
     PhoneValidatorDirective,
+
+   HandlePaymentComponent,
+   HandleComplaintsComponent,
+   EditSysInfoComponent,
+   TaskListHomeComponent,
+   ViewNewParentsComponent,
+   ViewNewBabysittersComponent,
 
     HandlePaymentComponent,
     HandleComplaintsComponent,
@@ -291,7 +297,7 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
       ManageBlogsComponent,
       CreateBlogComponent,
       BlogViewComponent,
-      BlogListComponent
+      BlogListComponent,
       AddModeratorComponent
 
 
