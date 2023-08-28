@@ -1,3 +1,4 @@
+<!-- sitter-personal-information.component.html -->
 <div class="container-fluid">
   <div class="mb-3">
 
@@ -38,7 +39,7 @@
             Request
           </button>
 
-          <form #requestFormForm="ngForm" (ngSubmit)="requestFormForm.form.valid && onSubmit()" #requestForm="ngForm" id="requestForm">
+          <form #requestFormForm="ngForm" (ngSubmit)="requestFormForm.form.valid && onSubmit()" id="requestForm">
             <!-- The Modal -->
             <div class="modal" id="myModal">
               <div class="modal-dialog">
@@ -57,27 +58,26 @@
                       <p class="font-weight-bold title">Work Expectation - Time Duration per day</p>
                       <ul *ngFor="let day of days; let j = index" class="list-group list-group-horizontal">
                         <li class="list-group-item">
-                          <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" name="date"
-                                 [(ngModel)]="requestForm.workExpectation[j].date">
+                          <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" name="date" [(ngModel)]="requestForm.workExpectation[j].date" #workExpectation[j].date="ngModel">
                           <label class="form-check-label" for="firstCheckbox">{{ day }}</label>
                         </li>
                         <li class="list-group-item">
-                          <select [(ngModel)]="requestForm.workExpectation[j].fromTime">
+                          <select [(ngModel)]="requestForm.workExpectation[j].fromTime" #workExpectation[j].fromTime="ngModel">
                             <option *ngFor="let time of times">{{ time }}</option>
                           </select>
-                          <select>
+                          <!-- <select>
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
-                          </select>
+                          </select> -->
                         </li>
                         <li class="list-group-item">
-                          <select [(ngModel)]="requestForm.workExpectation[j].toTime">
+                          <select [(ngModel)]="requestForm.workExpectation[j].toTime" #workExpectation[j].toTime="ngModel">
                             <option *ngFor="let time of times">{{ time }}</option>
                           </select>
-                          <select>
+                          <!-- <select>
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
-                          </select>
+                          </select> -->
                         </li>
                       </ul>
                       

@@ -1,6 +1,26 @@
+// sitter-personal-information.component.ts
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ParentService } from 'src/app/service/parent.service';
+
+interface WorkExpectation {
+  date: string; // Change the type if needed
+  fromTime: string;
+  toTime: string;
+}
+
+interface BabyDetail {
+  age: number | null;
+  gender: string;
+}
+
+interface RequestForm {
+  parent: string;
+  isAccept: string;
+  workExpectation: WorkExpectation[];
+  babyDetails: BabyDetail[];
+  specialNeeds: string;
+}
 
 @Component({
   selector: 'app-sitter-personal-information',
@@ -11,25 +31,13 @@ import { ParentService } from 'src/app/service/parent.service';
 export class SitterPersonalInformationComponent {
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
-  requestForm = {
+  requestForm: RequestForm = {
     parent: '',
     isAccept: '',
-    workExpectation: [
-      {
-        date: '',
-        fromTime: '',
-        toTime: '',
-      }
-    ],
-    numberofBabies: '',
-    babyDetails: [
-      {
-        age: Number( ),
-        gender: '',
-      }
-    ],
-    specialNeeds: '',
-  }
+    workExpectation: [],
+    babyDetails: [],
+    specialNeeds: ''
+  };
 
   constructor(
     private parentService: ParentService
@@ -66,4 +74,3 @@ export class SitterPersonalInformationComponent {
     this.babyDetails.splice(1);
   } 
 }
-
