@@ -166,14 +166,18 @@ const deleteTask = async (req, res) => {
 };
 
 const addRequestForm = async (req, res) => {
+    const parentId = req.session.user.id;
     const workExpectation = req.body.workExpectation;
-    const numberofBabies = req.body.numberofBabies;
+    // const numberofBabies = req.body.numberofBabies;
     const babyDetails = req.body.babyDetails;
     const specialNeeds = req.body.specialNeeds;
+    // const babysitterId = req.body.babysitterId;
 
     const newRequestFormData = new RequestForm({
+        parent: parentId,
+        // babysitter: babysitterId,
         workExpectation,
-        numberofBabies,
+        // numberofBabies,
         babyDetails,
         specialNeeds,
     })

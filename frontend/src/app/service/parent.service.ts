@@ -32,6 +32,11 @@ export class ParentService {
 
     return this.http.post<any>(environment.backend_url + "/parent/addBaby", requestBody);
   }
+
+  addRequestForm(requstForm:any): Observable<any>{
+    return this.http.post<any>(environment.backend_url + "/parent/addRequestForm", requstForm)
+  }
+
   getBabies(): Observable<any> {
     return this.http.get<any>(environment.backend_url + "/parent/getBabies");
   }

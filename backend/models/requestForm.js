@@ -4,16 +4,20 @@ const schema = mongoose.Schema;
 
 const requestFormSchema = new schema({
     parent: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: schema.Types.ObjectId,
         ref: 'Parent', 
     },
+    // babysitter: {
+    //     type: String,
+    //     required: false
+    // },
     isAccept: {
         type: Boolean,
         default: false,
     },
     workExpectation: [{
         date: {
-            type: Date,
+            type: String,
             required: true,
         },
         fromTime: {
@@ -25,10 +29,10 @@ const requestFormSchema = new schema({
             required: true
         }
     }],
-    numberofBabies: {
-        type: Number,
-        required: true
-    },
+    // numberofBabies: {
+    //     type: Number,
+    //     required: false,
+    // },
     babyDetails: [{
         age: {
             type: Number,
@@ -36,13 +40,12 @@ const requestFormSchema = new schema({
         },
         gender: {
             type: String,
-            // enum: ['male', 'female'],
             required: true
         }
     }],
     specialNeeds: {
         type: String,
-        required: true,
+        required: false,
     }
 })
 
