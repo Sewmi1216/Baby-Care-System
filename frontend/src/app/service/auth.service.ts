@@ -10,6 +10,10 @@ export class AuthService {
 
   useraccount :any;
   constructor(private http: HttpClient) { }
+
+  accLogin(user:any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/login", user);
+  }
   register(useraccount:any): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
   }

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {LoginService} from "../service/login.service";
+import {AuthService} from "../service/auth.service";
 import {NgToastService} from "ng-angular-popup";
 import {ParentService} from "../service/parent.service";
 
@@ -17,7 +17,7 @@ export class LoginComponent {
   };
   logged = true;
 
-  constructor(private loginService: LoginService, private parentService:ParentService,private router: Router,  private toast: NgToastService) {
+  constructor(private authService: AuthService, private parentService:ParentService,private router: Router,  private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -25,12 +25,12 @@ export class LoginComponent {
 
   onSubmit() {
     console.log("submitting");
-    this.loginService.accLogin(this.user).subscribe((user) => {
+    this.authService.accLogin(this.user).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
       this.parentService.setUserId(user['id']);
       console.log(user['id']);
       console.log(user['role']);
-      if (user.msg === "Logged In Successfully") {
+      if (user.msg === "login") {
         if (user['role'] === 'Parent') {
           this.router.navigate(['/parent/parent_dashboard'])
         } else if (user['role'] === 'Babysitter') {

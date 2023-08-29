@@ -13,7 +13,18 @@ let Complaint = require("../models/Complaint");
 let Feedback = require("../models/feedback");
 const Babysitter = require("../models/babysitter");
 
-
+const viewParentProfile = async (req, res) => {
+   let token = req.cookies.access_token;
+    console.log('access-token:',token);
+    let userId = req.params.id;
+    const user = await User.findById(userId)
+        .then((parent) => {
+            res.status(200).send({status: "Parent fetched", parent});
+        }).catch((err) => {
+            console.log(err.message);
+            res.status(500).send({status: "Error with getting parent", error: err.message});
+        })
+}
 const addParent = async (req, res) => {
     try {
         const {role, firstName, lastName, email, phone, address, password, nic} = req.body;
@@ -316,5 +327,6 @@ module.exports = {
     deleteComplaint,
     addBaby,
     addFeedback,
-    getBabies
+    getBabies,
+    viewParentProfile
 };
