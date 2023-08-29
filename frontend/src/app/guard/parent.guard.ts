@@ -1,9 +1,9 @@
 import {CanActivateFn, Router} from '@angular/router';
-import {LoginService} from "../service/login.service";
 import {inject} from "@angular/core";
+import {AuthService} from "../service/auth.service";
 
 export const parentGuard: CanActivateFn = (route, state) => {
-  const loginService = inject(LoginService);
+  const authService = inject(AuthService);
   const router = inject(Router);
 
   console.log('ParentGuard: canActivate called');

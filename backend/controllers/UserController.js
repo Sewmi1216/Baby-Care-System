@@ -1,6 +1,8 @@
+const config = require("../config/auth.config");
 let User = require("../models/User")
 const bcrypt = require("bcryptjs");
-const constants = require("constants");
+const jwt = require("jsonwebtoken");
+
 const login = (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -12,11 +14,24 @@ const login = (req, res) => {
         bcrypt.compare(password, user.password).then((isMatch) => {
             if (!isMatch) return res.status(400).json({msg: "Invalid password credentials"});
 
-             const session = { id: user._id,email: user.email };
-             req.session.user = session; // Auto saves session data in mongo store
-            console.log(req.session.user);
-            console.log(req.session.user.email);
-            return res.json({msg: "Logged In Successfully", role: user.role, id:user._id}); // sends cookie with sessionID automatically in response
+            const token = jwt.sign({id: user.id, role: user.role},
+                config.secret,
+                {
+                    algorithm: 'HS256',
+                    allowInsecureKeySizes: true,
+                    expiresIn: 86400, // 24 hours
+                });
+            // req.session.token = token;
+
+            // console.log(user.role)
+            res.cookie("access_token", token, {httpOnly: true}).status(200).send({
+                id: user._id,
+                email: user.email,
+                role: user.role,
+                msg: "login"
+            });
+            //req.cookies.token = token
+            console.log("Access-token", token)
         });
     });
 }
