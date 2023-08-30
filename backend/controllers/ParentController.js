@@ -90,6 +90,42 @@ const addBaby = async (req, res) => {
 /* Create task list*/
 const addTask = async (req, res) => {
 
+    //const {taskListName, date,tasks} = req.body; -> extract this
+    const taskListName = req.body.taskListName;
+    const date = req.body.date;
+    const tasks = req.body.tasks;
+
+    try {
+        // create a new task list
+        const newTaskList = new TaskList({
+            taskListName: taskListName,
+            date: date,
+            tasks: [],// initialize tasks array
+
+        });
+
+        //iterate karanwa tasks array from the request
+        for (const task of tasks) {
+            // then push task details to the tasks array of newTaskList
+            newTaskList.tasks.push({
+                taskName: task.taskName,
+                time: task.time,
+                isRemainder: task.isRemainder,
+                isCompleted: task.isCompleted,
+                specialNote: task.specialNote,
+            });
+        }
+
+        // save the newTaskList
+        const savedTaskList = await newTaskList.save();
+
+        // return a success response
+        return res.status(201).json({message: 'Task list create successfully', taskList: savedTaskList});
+    } catch (error) {
+        // send an error response
+        console.error(error);
+        return res.status(500).json({message: 'An error occurred'});
+    }
 
 };
 
