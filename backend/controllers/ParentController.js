@@ -87,35 +87,20 @@ const addBaby = async (req, res) => {
 };
 
 
-    
-    const addTask = async (req, res) => {
-        const { tasklistName, task } = req.body;
-        const parentId = req.session.user.id;
-        {console.log(parentId)}
-    
-        const newTaskList = new TaskList({
-            tasklistName,
-            parent: parentId,
-            task,
-        });
-        
+/* Create task list*/
+const addTask = async (req, res) => {
 
-        await newTaskList.save()
-            .then(async (taskList) => {
-                // Add the task list to the parent's taskLists array
-                await Parent.findByIdAndUpdate(parentId, {
-                    $push: { taskLists: taskList._id },
-                });
-    
-                res.status(200).send({ status: "Task list is added", taskList });
-            })
-            .catch((err) => {
-                console.log(err.message);
-                res.status(500).send({ status: "Error with the task list", error: err.message });
-            });
-    };
 
-   
+};
+
+/*Get task list*/
+const  getTaskList = async (req,res)=>{
+
+
+}
+
+
+
 const getBabies = async (req, res) => {
     await Baby.find()
         .then((babies) => {
@@ -306,6 +291,7 @@ const addFeedback = async (req, res) => {
 module.exports = {
     addParent,
     addTask,
+    getTaskList,
     updateTask,
     deleteTask,
     addRequestForm,

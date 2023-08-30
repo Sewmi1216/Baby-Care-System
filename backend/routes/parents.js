@@ -26,6 +26,8 @@ router.route('/addRequestForm').post(parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
 
 router.route('/addTaskList').post(parentController.addTask);
+router.route('/getTaskList').post(parentController.getTaskList);
+
 router.route('/addComplaint').post(checkSession,parentController.addComplaint);
 
 

@@ -1,44 +1,58 @@
-const mongoose = require('mongoose');
+// 1.import mongoose package and assign to a constant variable
+const mongoose = require("mongoose");
+// 2.Schema ,
+const Schema = mongoose.Schema; // mongoose wala schema kiyana eka variable ekkta assign karagannwa
 
-const schema = mongoose.Schema;
+// this is nested schema declaration, we should first declare taskSchema before trying to use it
+//
+const taskSchema = new mongoose.Schema({
 
-const taskListSchema = new schema({
-    tasklistName: {
-        type: String,
-        required: true,
+    taskName:{
+        type:String,
+        required: false,//?????????
     },
-    parent: { 
+    time:{
+        type:Date,
+        required:false,
+    },
+    isRemainder:{
+        type:Boolean,
+        default:false,
+    },
+    isCompleted:{
+        type:Boolean,
+        default: false,
+    },
+    specialNote:{
+        type:String,
+        required: false,
+    },
+});
+
+
+
+//3.java wala object ekk wage
+const taskListSchema = new Schema({
+    // 4. give attributes of task list
+    parentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Parent',
     },
-    date: { 
-        type: Date,
-        required:false
+
+    taskListName: {
+        type:String,
+        required: true
     },
-    task: [{
-        taskName: {
-            type: String,
-            required: false,
-        },
-        isCompleted: {
-            type: Boolean,
-            default: false,
-        },
-        time: {
-            type: Date,
-            required: false,
-        },
-        isRemainder: {
-            type: Boolean,
-            default: false,
-        },
-        specialNote: {
-            type: String,
-            required: false,
-        },
-    }],
-})
 
-const TaskList = mongoose.model("TaskList", taskListSchema);
+    date:{
+        type:Date,
+        required: false // ?????????????????
+    },
 
-module.exports = TaskList;
+    tasks:[taskSchema] ,
+
+});
+
+
+const Tasklist = mongoose.model('taskList', taskListSchema);
+module.exports = Tasklist;
