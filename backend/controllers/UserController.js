@@ -28,7 +28,8 @@ const login = (req, res) => {
                 id: user._id,
                 email: user.email,
                 role: user.role,
-                msg: "login"
+                msg: "login",
+                token:token
             });
             //req.cookies.token = token
             console.log("Access-token", token)

@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
     const token = req.cookies.access_token;
 
     if (!token) {
-        return res.status(403).send({ message: "No token provided!" });
+        return res.status(403).send({ message: "Sewmi No token provided!" });
     }
 
     jwt.verify(token,
@@ -25,7 +25,7 @@ const verifyToken = (req, res, next) => {
 const verifyParent = (req, res, next) => {
     verifyToken(req, res, () => {
          console.log("userId:",req.user.id)
-        if (req.user.id === req.params.id && req.user.role === 'Parent') {
+        if (req.user.id === req.params.id || req.user.role === 'Parent') {
             next();
         } else {
             return res.status(401).send({ message: "Unauthorized user!" });

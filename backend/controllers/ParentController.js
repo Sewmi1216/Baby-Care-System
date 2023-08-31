@@ -128,6 +128,9 @@ const addBaby = async (req, res) => {
 
    
 const getBabies = async (req, res) => {
+    let token = req.cookies.access_token;
+    console.log('access-token:',token);
+    let userId = req.params.id;
     await Baby.find()
         .then((babies) => {
             res.status(200).send({status: "All babies", babies});
