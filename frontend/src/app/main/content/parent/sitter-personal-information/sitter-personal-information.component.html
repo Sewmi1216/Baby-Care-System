@@ -56,30 +56,131 @@
                     <div class="row">
                       <!-- Left Side -->
                       <p class="font-weight-bold title">Work Expectation - Time Duration per day</p>
-                      <ul *ngFor="let day of days; let j = index" class="list-group list-group-horizontal">
+                      <div *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i" [(ngModel)]="selectedDays[i]">
+                            <label [for]="day + i">{{ day }}</label>
+                          </li>
+                          <li class="list-group-item">
+                            <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime">
+                          </li>
+                          <li class="list-group-item">
+                            <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime">
+                          </li>
+                        </ul>
+                      </div>
+
+                       <!-- <ul class="list-group list-group-horizontal">
                         <li class="list-group-item">
-                          <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" name="date" [(ngModel)]="requestForm.workExpectation[j].date" #workExpectation[j].date="ngModel">
+                          <input class="form-check-input me-1" type="checkbox" value="monday" id="monday" name="monday" [(ngModel)]="dateFieldValue">
+                          <label for="monday">Monday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue"  name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue"  name="totime">
+                        </li>
+                      </ul>
+                      <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="tuesday" id="tuesday" name="tuesday" [(ngModel)]="dateFieldValue">
+                          <label for="tuesday">Tuesday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue"  name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue"  name="totime">
+                        </li>
+                      </ul>
+                      <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="wednesday" id="wednesday" name="wednesday" [(ngModel)]="dateFieldValue">
+                          <label for="wednesday">Wednesday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue"  name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue"  name="totime">
+                        </li>
+                      </ul>
+                      <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="thursday" id="thursday" name="thursday" [(ngModel)]="dateFieldValue">
+                          <label for="thursday">Thursday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue"  name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue"  name="totime">
+                        </li>
+                      </ul>
+                      <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="friday" id="friday" name="friday" [(ngModel)]="dateFieldValue">
+                          <label for="friday">Friday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue"  name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue"  name="totime">
+                        </li>
+                      </ul>
+                      <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="saturday" id="saturday" name="saturday" [(ngModel)]="dateFieldValue">
+                          <label for="saturday">Saturday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue"  name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue"  name="totime">
+                        </li>
+                      </ul>
+                      <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="sunday" id="sunday" name="sunday" [(ngModel)]="dateFieldValue">
+                          <label for="sunday">Sunday</label>
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="fromTimeFieldValue" name="fromtime">
+                        </li>
+                        <li class="list-group-item">
+                          <input type="time"  [(ngModel)]="toTimeFieldValue" name="totime">
+                        </li>
+                      </ul> -->
+                      <!-- <ul *ngFor="let day of days; let j = index" class="list-group list-group-horizontal">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" name="requestForm.workExpectation[j].date" >
                           <label class="form-check-label" for="firstCheckbox">{{ day }}</label>
                         </li>
                         <li class="list-group-item">
-                          <select [(ngModel)]="requestForm.workExpectation[j].fromTime" #workExpectation[j].fromTime="ngModel">
+                          <select>
                             <option *ngFor="let time of times">{{ time }}</option>
                           </select>
-                          <!-- <select>
+                          <input type="time" [(ngModel)]="requestForm.workExpectation[j]." >
+                          <select>
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
-                          </select> -->
+                          </select>
                         </li>
                         <li class="list-group-item">
-                          <select [(ngModel)]="requestForm.workExpectation[j].toTime" #workExpectation[j].toTime="ngModel">
+                          <select >
                             <option *ngFor="let time of times">{{ time }}</option>
                           </select>
-                          <!-- <select>
+                          <input type="time">
+                          <select>
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
-                          </select> -->
+                          </select>
                         </li>
-                      </ul>
+                      </ul> -->
                       
                       
                       <p class="font-weight-bold title">Baby details</p>
@@ -88,38 +189,66 @@
                       <table class="table" >
                         <thead>
                           <tr>
+                            <!-- <th scope="col">#</th> -->
+                            <th scope="col">Age</th>
+                            <th scope="col">Gender</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input class="form-control rounded-0" type="number" [(ngModel)]="ageFieldValue" name="age">
+                            </td>
+                            <td>
+                              <select class="form-control rounded-0" id="" [(ngModel)]="genderFieldValue" name="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            </td>
+                          </tr>   
+                          <!-- <tr *ngFor="let babydetail of requestForm.babyDetails; let i = index">
+                            <th scope="babydetail">{{ i + 1 }}</th>
+                            <td>
+                              <input class="form-control rounded-0" type="text" [(ngModel)]="ageFieldValue" name="age">
+                            </td>
+                            <td>
+                              <select class="form-control rounded-0" id="" [(ngModel)]="genderFieldValue" name="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            </td>
+                          </tr>                         -->
+                        </tbody>
+                      </table>
+                      
+                      <table class="tabel">
+                        <thead>
+                          <tr>
                             <th scope="col">#</th>
                             <th scope="col">Age</th>
                             <th scope="col">Gender</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let row of requestForm.babyDetails; let i = index">
-                            <th scope="row">{{ i + 1 }}</th>
-                            <td>
-                              <input class="form-control rounded-0" type="text" [(ngModel)]="requestForm.babyDetails[i].age">
-                            </td>
-                            <td>
-                              <select class="form-control rounded-0" name="" id="" [(ngModel)]="requestForm.babyDetails[i].gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                              </select>
-                            </td>
-                          </tr>                          
+                          <tr *ngFor="let babydetail of babydetail; let i = index">
+                            <th scope="babydetail">{{ i + 1 }}</th>
+                            <td>{{babydetail.age}}</td>
+                            <td>{{babydetail.gender}}</td>
+                            <button (click)="deleteRow(i)" type="button" class="btn btn-secondary px-1 btn-sm">
+                              <i class="fas fa-solid fa-minus" aria-hidden="true"></i>
+                            </button> 
+                          </tr>
                         </tbody>
                       </table>
-  
+
                       <div class="d-flex justify-content-between table">
-                        <button (click)="insertRow()" type="button" class="btn btn-secondary px-3">
+                        <button (click)="insertRow()" type="button" class="btn btn-secondary px-1 btn-sm">
                           <i class="fas fa-solid fa-plus" aria-hidden="true"></i>
-                        </button>
-                        <button (click)="deleteRow()" type="button" class="btn btn-secondary px-3">
-                          <i class="fas fa-solid fa-minus" aria-hidden="true"></i>
                         </button>
                       </div>
   
                       <p class="font-weight-bold title ">If there are any special needs..</p>
-                      <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="requestForm.specialNeeds"></textarea>
+                      <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds"></textarea>
                       
                     </div>
                   </div>
@@ -127,7 +256,7 @@
   
                   <!-- Modal footer -->
                   <div class="modal-footer" style="margin-top: 20px">
-                    <button style="background-color: #563393;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+                    <button (click)="onSubmit()" style="background-color: #563393;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
                   </div>
   
                 </div>

@@ -5,7 +5,7 @@ const schema = mongoose.Schema;
 const requestFormSchema = new schema({
     parent: {
         type: schema.Types.ObjectId,
-        ref: 'Parent', 
+        ref: 'Parent',
     },
     // babysitter: {
     //     type: String,
@@ -17,7 +17,7 @@ const requestFormSchema = new schema({
     },
     workExpectation: [{
         date: {
-            type: String,
+            type: Boolean,
             required: true,
         },
         fromTime: {
@@ -26,7 +26,7 @@ const requestFormSchema = new schema({
         },
         toTime: {
             type: String,
-            required: true
+            required: true,
         }
     }],
     // numberofBabies: {
@@ -40,7 +40,7 @@ const requestFormSchema = new schema({
         },
         gender: {
             type: String,
-            required: true
+            required: true,
         }
     }],
     specialNeeds: {

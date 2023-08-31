@@ -144,3 +144,10 @@ h3{
   width: 85%;
   margin-left: 2.25rem;
 }
+
+.btn-sm {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 12px; 
+}
