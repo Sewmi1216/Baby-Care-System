@@ -131,7 +131,7 @@ const addTask = async (req, res) => {
 const getBabies = async (req, res) => {
     try {
         let userId = req.params.id;
-        console.log("parentID of login:", userId);
+        console.log("parentID:", userId);
 
         const babies = await Baby.find({ parent: userId });
 
