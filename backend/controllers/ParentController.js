@@ -126,28 +126,32 @@ const addTask = async (req, res) => {
         console.error(error);
         return res.status(500).json({message: 'An error occurred'});
     }
-
 };
 
-/*Get task list*/
-const  getTaskList = async (req,res)=>{
 
+/* Get task list function */
+const  getTaskList = async (req,res)=>{ //get today task list
+    try {
+        // 1.
+        const currentDate = new Date(); // variable that holds current date
+        const formattedCurrentDate = currentDate.toISOString().split('T')[0];
+        // then convert date and time to ISO 8601 date string format?
+        // then Retrieve all task lists from the database using current date
+        const taskLists = await TaskList.find({ date: formattedCurrentDate});
+        console.log(`${formattedCurrentDate}: `, taskLists); // print it
 
-}
-
-
-
-const getBabies = async (req, res) => {
-    await Baby.find()
-        .then((babies) => {
-            res.status(200).send({status: "All babies", babies});
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with get all babies", error: err.message});
-        });
+        // check if any task list were found ,if no
+        if (taskLists.length === 0) {
+            return res.status(404).json({ message: 'No task lists found' });
+        }else{ // if yes
+            console.log(`${formattedCurrentDate}: `, taskLists);
+            return  res.status(200).json(taskLists);
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'An error occurred' });
+    }
 };
-
 
 
 
@@ -173,6 +177,8 @@ const updateTask = async (req, res) => {
         });
 };
 
+
+
 const deleteTask = async (req, res) => {
     let taskId = req.params.id;
 
@@ -185,6 +191,22 @@ const deleteTask = async (req, res) => {
             res.status(500).send({status: "Error with delete task", error: err.message});
         });
 };
+
+
+
+const getBabies = async (req, res) => {
+    await Baby.find()
+        .then((babies) => {
+            res.status(200).send({status: "All babies", babies});
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({status: "Error with get all babies", error: err.message});
+        });
+};
+
+
+
 
 const addRequestForm = async (req, res) => {
     const workExpectation = req.body.workExpectation;

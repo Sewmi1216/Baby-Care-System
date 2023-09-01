@@ -10,15 +10,17 @@ import{ MatTabsModule} from "@angular/material/tabs";
 })
 export class TaskListHomeComponent implements OnInit {
 
-  taskList: any; // fetched task list data
-  todayDate :Date = new Date(); //today's date
+  taskList : any; // for store task list data
+
+  //taskList: any; // fetched task list data
+ // todayDate :Date = new Date(); //today's date
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.fetchTaskListData();
+   // this.fetchTaskListData();
 
-    this.todayDate = new Date();
+    //this.todayDate = new Date();
   }
 
  // isActive: boolean = false;
