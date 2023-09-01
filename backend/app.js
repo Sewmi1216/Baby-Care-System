@@ -14,7 +14,13 @@ const port = process.env.PORT || 8070
 app.use(cookieParser());
 app.use(cors());    //use cors()
 app.use(bodyParser.json());     //json format
-
+app.use(function(req, res, next) {
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, Content-Type, Accept"
+    );
+    next();
+});
 //sid.signature
 // app.use(session({
 //     secret : "mysecret",

@@ -24,13 +24,15 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log("submitting");
     this.authService.accLogin(this.user).subscribe((user) => {
+      this.authService.storeToken(user.token)
       localStorage.setItem('user', JSON.stringify(user));
-      this.parentService.setUserId(user['id']);
-      console.log(user['id']);
-      console.log(user['role']);
-      if (user.msg === "login") {
+      // const token = user.token;
+      // const expirationDate = new Date();
+      // expirationDate.setDate(expirationDate.getDate() + 7); // Cookie will expire in 7 days
+      // document.cookie = `access_token=${token}; expires=${expirationDate.toUTCString()}; path=/;`;
+      console.log(user['role'])
+      if (user['msg'] === "login") {
         if (user['role'] === 'Parent') {
           this.router.navigate(['/parent/parent_dashboard'])
         } else if (user['role'] === 'Babysitter') {
