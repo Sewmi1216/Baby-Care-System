@@ -12,9 +12,9 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   accLogin(user: any): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<any>(`${environment.backend_url}/user/login`, user, { headers });
- //   return this.http.post<any>(environment.backend_url + "/user/login", user);
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // return this.http.post<any>(`${environment.backend_url}/user/login`, user, { headers });
+    return this.http.post<any>(environment.backend_url + "/user/login", user);
   }
   register(useraccount:any): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
@@ -24,12 +24,9 @@ export class AuthService {
   }
   storeToken(tokenValue:string){
     localStorage.setItem('token', tokenValue)
-    console.log('Token stored: ',tokenValue)
   }
 
   getToken(){
-    console.log('no gettoken')
-   // console.log(localStorage.getItem('token'))
     return localStorage.getItem('token')
   }
 

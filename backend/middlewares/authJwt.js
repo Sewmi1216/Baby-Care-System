@@ -4,11 +4,10 @@ const config = require("../config/auth.config.js");
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
-    console.log("authHeader: ", authHeader)
+    console.log("authHeader: ", req.headers)
     if (!authHeader) {
         return res.status(403).send({ message: "No token provided!" });
     }
-
     const token = authHeader.split(' ')[1]; // Extract the token from the "Bearer <token>" format
 
     jwt.verify(token, config.secret, (err, user) => {
@@ -17,15 +16,12 @@ const verifyToken = (req, res, next) => {
                 message: "Unauthorized token!",
             });
         }
-        // console.log(user)
         req.user = user;
         next();
     });
 };
 
 const verifyParent = (req, res, next) => {
-    console.log("verify parent")
-
     verifyToken(req, res, () => {
         console.log("userId:", req.user.id)
         if (req.user.id === req.params.id || req.user.role === 'Parent') {

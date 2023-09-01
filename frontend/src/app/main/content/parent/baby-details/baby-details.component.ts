@@ -35,16 +35,20 @@ export class BabyDetailsComponent implements OnInit{
     this.getBabies();
   }
   getBabies() {
-    this.parentService.getBabies().subscribe(
+    // @ts-ignore
+    this.parentService.getBabies(JSON.parse(localStorage.getItem('user'))).subscribe(
       (response) => {
         this.babies = response.babies; // Assign fetched data to the babies array
         console.log(this.babies);
       },
       (error) => {
+        console.log(localStorage.getItem('user'))
         console.error('Error fetching babies:', error);
       }
     );
   }
+
+
 
 
   onSubmit() {

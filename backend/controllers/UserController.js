@@ -21,9 +21,7 @@ const login = (req, res) => {
                     allowInsecureKeySizes: true,
                     expiresIn: 86400, // 24 hours
                 });
-            // req.session.token = token;
 
-            // console.log(user.role)
             res.cookie("access_token", token, {httpOnly: true}).status(200).send({
                 id: user._id,
                 email: user.email,
@@ -31,7 +29,6 @@ const login = (req, res) => {
                 msg: "login",
                 token:token
             });
-            //req.cookies.token = token
             console.log("Access-token", token)
         });
     });

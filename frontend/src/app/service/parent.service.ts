@@ -39,29 +39,25 @@ export class ParentService {
     return this.http.post<any>(environment.backend_url + "/parent/addBaby", requestBody);
   }
 
-  // getBabies(): Observable<any> {
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   return this.http.get<any>(environment.backend_url + "/parent/getBabies",{headers:headers}).map(res =>res.json());
-  // }
-  getBabies(): Observable<any> {
+  // @ts-ignore
+  getBabies(user): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access_token': `Bearer ${this.getAccessTokenFromCookie()}`
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
+    const userId = user.id;
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/parent/getBabies`, { headers});
+    return this.http.get<any>(`${environment.backend_url}/parent/getBabies/${userId}`, { headers });
   }
 
   private getAccessTokenFromCookie(): string {
     const accessToken = this.cookieService.get('access_token');
-    console.log("ac_token: ", accessToken)
     return accessToken;
   }
 
-  loadToken() {
-    const token = localStorage.getItem('token');
-    this.authToken = token;
-  }
+  // loadToken() {
+  //   const token = localStorage.getItem('token');
+  //   this.authToken = token;
+  // }
 
 }
