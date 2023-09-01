@@ -8,7 +8,7 @@ router.get('/getParent/:id', authJwt.verifyParent, parentController.viewParentPr
 );
 
 router.route('/addBaby').post(parentController.addBaby);
-router.route("/getBabies").get(parentController.getBabies);
+router.route("/getBabies").get(authJwt.verifyToken, parentController.getBabies);
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);

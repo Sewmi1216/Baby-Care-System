@@ -128,8 +128,8 @@ const addBaby = async (req, res) => {
 
    
 const getBabies = async (req, res) => {
-    let token = req.cookies.access_token;
-    console.log('access-token:',token);
+    let token = req.headers.authorization;
+    console.log('access-token get babies:',token);
     let userId = req.params.id;
     await Baby.find()
         .then((babies) => {
