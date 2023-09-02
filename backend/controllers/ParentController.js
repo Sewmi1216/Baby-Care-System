@@ -13,7 +13,18 @@ let Complaint = require("../models/Complaint");
 let Feedback = require("../models/feedback");
 const Babysitter = require("../models/babysitter");
 
-
+const viewParentProfile = async (req, res) => {
+    let token = req.cookies.access_token;
+    console.log('access-token:', token);
+    let userId = req.params.id;
+    const user = await User.findById(userId)
+        .then((parent) => {
+            res.status(200).send({status: "Parent fetched", parent});
+        }).catch((err) => {
+            console.log(err.message);
+            res.status(500).send({status: "Error with getting parent", error: err.message});
+        })
+}
 const addParent = async (req, res) => {
     try {
         const {role, firstName, lastName, email, phone, address, password, nic} = req.body;
@@ -68,7 +79,7 @@ const addBaby = async (req, res) => {
     if (!parentID) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
     }
-   const newBaby = new Baby({
+    const newBaby = new Baby({
         firstName,
         lastName,
         age,
@@ -87,46 +98,53 @@ const addBaby = async (req, res) => {
 };
 
 
-    
-    const addTask = async (req, res) => {
-        const { tasklistName, task } = req.body;
-        const parentId = req.session.user.id;
-        {console.log(parentId)}
-    
-        const newTaskList = new TaskList({
-            tasklistName,
-            parent: parentId,
-            task,
-        });
-        
+const addTask = async (req, res) => {
+    const {tasklistName, task} = req.body;
+    const parentId = req.session.user.id;
+    {
+        console.log(parentId)
+    }
 
-        await newTaskList.save()
-            .then(async (taskList) => {
-                // Add the task list to the parent's taskLists array
-                await Parent.findByIdAndUpdate(parentId, {
-                    $push: { taskLists: taskList._id },
-                });
-    
-                res.status(200).send({ status: "Task list is added", taskList });
-            })
-            .catch((err) => {
-                console.log(err.message);
-                res.status(500).send({ status: "Error with the task list", error: err.message });
+    const newTaskList = new TaskList({
+        tasklistName,
+        parent: parentId,
+        task,
+    });
+
+
+    await newTaskList.save()
+        .then(async (taskList) => {
+            // Add the task list to the parent's taskLists array
+            await Parent.findByIdAndUpdate(parentId, {
+                $push: {taskLists: taskList._id},
             });
-    };
 
-   
-const getBabies = async (req, res) => {
-    await Baby.find()
-        .then((babies) => {
-            res.status(200).send({status: "All babies", babies});
+            res.status(200).send({status: "Task list is added", taskList});
         })
         .catch((err) => {
             console.log(err.message);
-            res.status(500).send({status: "Error with get all babies", error: err.message});
+            res.status(500).send({status: "Error with the task list", error: err.message});
         });
 };
 
+
+const getBabies = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+
+        const babies = await Baby.find({ parent: userId });
+
+        if (!babies || babies.length === 0) {
+            res.status(404).send({ status: "No babies found for this parent" });
+        } else {
+            res.status(200).send({ status: "All babies", babies });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all babies", error: err.message });
+    }
+};
 
 
 
@@ -327,5 +345,6 @@ module.exports = {
     deleteComplaint,
     addBaby,
     addFeedback,
-    getBabies
+    getBabies,
+    viewParentProfile
 };
