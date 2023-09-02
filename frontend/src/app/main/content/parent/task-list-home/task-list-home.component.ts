@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import{ MatTabsModule} from "@angular/material/tabs";
+// import{ MatTabsModule} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-task-list-home',
@@ -10,32 +10,12 @@ import{ MatTabsModule} from "@angular/material/tabs";
 })
 export class TaskListHomeComponent implements OnInit {
 
-  taskList : any; // for store task list data
+  constructor() { // when app is booting this will create
+    // when we call component at first time then it will run (only that time)
 
-  //taskList: any; // fetched task list data
- // todayDate :Date = new Date(); //today's date
-
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-   // this.fetchTaskListData();
-
-    //this.todayDate = new Date();
   }
-
- // isActive: boolean = false;
-
- /* toggleActive(): void {
-    this.isActive = !this.isActive;
-  } */
-  fetchTaskListData(){
-    const url = 'http://localhost:8070/parent/addTaskList';
-    this.http.get(url).subscribe((response:any)=>{
-      this.taskList = response.taskList;
-    })
+  ngOnInit() { // when loading content page ngOnInit() will run  initially
   }
-
-
 
 }
 

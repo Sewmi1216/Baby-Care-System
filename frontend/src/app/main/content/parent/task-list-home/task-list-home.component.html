@@ -63,49 +63,9 @@
                   </tbody>
                 </table>
 
-                <!--
-
-
-
-               <div *ngIf="(taskList.date | date: 'yyyy-MM-dd') === (todayDate | date: 'yyyy-MM-dd')">
-               <p><strong>Date:</strong> {{ taskList.date | date }}</p>
-               <p><strong>Task List Name:</strong> {{ taskList.taskListName}}</p>
-
-               <table class="table">
-                 <thead>
-                 <tr>
-                   <th scope="col">#</th>
-                   <th scope="col">Task Name</th>
-                   <th scope="col">Time</th>
-                   <th scope="col">Send reminders</th>
-                   <th scope="col">Any special Note</th>
-                 </tr>
-                 </thead>
-                 <tbody>
-
-
-                 <tr *ngFor="let task of taskList.tasks; let i =index">
-                   <td>{{i+1}}</td>
-                   <td>{{task.taskName}}</td>
-                   <td>{{task.time}}</td>
-                   <td>
-                     <i *ngIf="task.isRemainder" class="fa fa-check-circle finished-icon"></i>
-                   </td>
-                   <td>{{task.specialNote}}</td>
-                 </tr>
-
-                 </tbody>
-               </table>
-               </div>
-
-               <p *ngIf="(taskList.date | date: 'yyyy-MM-dd') !== (todayDate | date: 'yyyy-MM-dd')">No task list added yet</p>
-
- -->
              </div>
 
-
-
-              </div>
+            </div>
             </div>
           </div>
         </div>

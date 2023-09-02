@@ -53,16 +53,16 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 
 
 /* Admin */
-import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
-import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
-import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
-import {EditSysInfoComponent} from "./main/content/admin/edit-sys-info/edit-sys-info.component";
-import {HandleComplaintsComponent} from "./main/content/admin/handle-complaints/handle-complaints.component";
-import {HandlePaymentComponent} from "./main/content/admin/handle-payment/handle-payment.component";
+import { AdminDashboardComponent } from "./main/content/admin/admin-dashboard/admin-dashboard.component";
+import { ManageUserAccountsComponent } from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
+import { VerifyBabysittersComponent } from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+import { EditSysInfoComponent } from "./main/content/admin/edit-sys-info/edit-sys-info.component";
+import { HandleComplaintsComponent } from "./main/content/admin/handle-complaints/handle-complaints.component";
+import { HandlePaymentComponent } from "./main/content/admin/handle-payment/handle-payment.component";
 
-import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-list-home.component";
-import {ViewNewParentsComponent} from "./main/content/admin/view-new-parents/view-new-parents.component";
-import {ViewNewBabysittersComponent} from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
+import { TaskListHomeComponent } from "./main/content/parent/task-list-home/task-list-home.component";
+import { ViewNewParentsComponent  } from "./main/content/admin/view-new-parents/view-new-parents.component";
+import { ViewNewBabysittersComponent } from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
 
 import {parentGuard} from "./guard/parent.guard";
 import {babysitterGuard} from "./guard/babysitter.guard";
