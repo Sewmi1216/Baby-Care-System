@@ -16,7 +16,7 @@ router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabi
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);
-router.route('/addRequestForm').post(parentController.addRequestForm);
+router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
 
 router.route('/addTaskList').post(parentController.addTask);

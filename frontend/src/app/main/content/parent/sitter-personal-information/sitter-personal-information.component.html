@@ -58,70 +58,73 @@
                       <p class="font-weight-bold title">Work Expectation - Time Duration per day</p>
                       <div *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
                         <ul class="list-group list-group-horizontal">
-                          <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i" [(ngModel)]="selectedDays[i]" #selectedDays[i]="ngModel" required>
+                          <li class="list-group-item" *ngIf="selectedDays[i] !== null">
+                            <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i"
+                              [(ngModel)]="selectedDays[i]" (change)="onCheckboxChange(day, i)">
                             <label [for]="day + i">{{ day }}</label>
                           </li>
-                          <li class="list-group-item">
-                            <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime" #fromTimeFieldValues[i]="ngModel">
+                          <li class="list-group-item" *ngIf="selectedDays[i] !== ''">
+                            <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime"  #fromTimeFieldInput="ngModel">
                           </li>
-                          <li class="list-group-item">
-                            <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime" #toTimeFieldValues[i]="ngModel">
+                          <li class="list-group-item" *ngIf="selectedDays[i] !== ''">
+                            <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime"  #toTimeFieldInput="ngModel">
                           </li>
                         </ul>
                       </div>
 
                       
                       <p class="font-weight-bold title">Baby details</p>
-                      <table class="table" >
-                        <thead>
-                          <tr>
-                            <!-- <th scope="col">#</th> -->
-                            <th scope="col">Age</th>
-                            <th scope="col">Gender</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <input class="form-control rounded-0" type="number" [(ngModel)]="ageFieldValue" name="age">
-                            </td>
-                            <td>
-                              <select class="form-control rounded-0" id="" [(ngModel)]="genderFieldValue" name="gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                              </select>
-                            </td>
-                          </tr>   
-                        </tbody>
-                      </table>
-                      
-                      <table class="tabel">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Gender</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let babydetail of babydetail; let i = index">
-                            <th scope="babydetail">{{ i + 1 }}</th>
-                            <td>{{babydetail.age}}</td>
-                            <td>{{babydetail.gender}}</td>
-                            <button (click)="deleteRow(i)" type="button" class="btn btn-secondary px-1 btn-sm">
-                              <i class="fas fa-solid fa-minus" aria-hidden="true"></i>
-                            </button> 
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      <div class="d-flex justify-content-between table">
-                        <button (click)="insertRow()" type="button" class="btn btn-secondary px-1 btn-sm">
-                          <i class="fas fa-solid fa-plus" aria-hidden="true"></i>
-                        </button>
+                      <div class="tables-container">
+                        <div class="table-wrapper">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <input class="form-control rounded-0" type="number" [(ngModel)]="ageFieldValue" name="age" >
+                                </td>
+                                <td>
+                                  <select id="" [(ngModel)]="genderFieldValue" name="genderField" aria-label="Gender Selection" style="height: 38px; width:100px">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <button type="button" class="btn btn-primary" (click)="saveBabyDetails()">Add</button>
+                                </td>
+                              </tr>   
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="table-wrapper">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let babydetail of babydetail; let i = index">
+                                <!-- <td>{{ i + 1 }}</td> -->
+                                <td>{{babydetail.age}}</td>
+                                <td>{{babydetail.gender}}</td>
+                                <td><button type="button" class="btn btn-danger btn-delete" (click)="deleteBabyDetail(i)">Delete</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-  
+
                       <p class="font-weight-bold title ">If there are any special needs..</p>
                       <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds"></textarea>
                       
