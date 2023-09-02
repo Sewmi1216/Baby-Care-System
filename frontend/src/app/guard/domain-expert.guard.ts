@@ -1,9 +1,9 @@
 import {CanActivateFn, Router} from '@angular/router';
 import {inject} from "@angular/core";
-import {LoginService} from "../service/login.service";
+import {AuthService} from "../service/auth.service";
 
 export const domainExpertGuard: CanActivateFn = (route, state) => {
-  const loginService = inject(LoginService);
+  const authService = inject(AuthService);
   const router = inject(Router);
 
   console.log('domainGuard: canActivate called');

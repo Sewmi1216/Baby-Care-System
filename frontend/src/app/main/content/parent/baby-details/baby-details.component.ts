@@ -4,7 +4,7 @@ import {AuthService} from "../../../../service/auth.service";
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
 import {ParentService} from "../../../../service/parent.service";
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-baby-details',
   templateUrl: './baby-details.component.html',
@@ -13,9 +13,7 @@ import {ParentService} from "../../../../service/parent.service";
 export class BabyDetailsComponent implements OnInit{
   @ViewChild('addBabyForm', { static: true }) public addBabyForm!: NgForm;
 
-  babies=[
-
-  ]
+  babies: any[] = [];
   baby = {
     firstName: '',
     lastName: '',
@@ -27,21 +25,30 @@ export class BabyDetailsComponent implements OnInit{
 
 
   constructor(
-    private parentService: ParentService, private toast: NgToastService, private router:Router
+    private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
 
+ // const accessToken = this.cookieService.get('access_token');
   ngOnInit(): void {
-    this.userId = this.parentService.getUserId();
+   // this.userId = this.parentService.getUserId();
    // this.babyProfile = this.parentService.babyProfile;
     this.getBabies();
   }
   getBabies() {
     // @ts-ignore
-    this.parentService.getBabies().subscribe((babies) => {
-      this.babies= babies;
-      console.log(this.babies)
-    })
+    this.parentService.getBabies(JSON.parse(localStorage.getItem('user'))).subscribe(
+      (response) => {
+        this.babies = response.babies; // Assign fetched data to the babies array
+        console.log(this.babies);
+      },
+      (error) => {
+        console.log(localStorage.getItem('user'))
+        console.error('Error fetching babies:', error);
+      }
+    );
   }
+
+
 
 
   onSubmit() {
