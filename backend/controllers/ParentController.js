@@ -184,35 +184,30 @@ const deleteTask = async (req, res) => {
 };
 
 const addRequestForm = async (req, res) => {
-    // const parentId = req.body.
-    const workExpectation = req.body.workExpectation;
-    // const numberofBabies = req.body.numberofBabies;
-    const babyDetails = req.body.babyDetails;
-    const specialNeeds = req.body.specialNeeds;
-    // const babysitterId = req.body.babysitterId;
+    const workExpectation = req.body.requestForm.workExpectation;
+    const babyDetails = req.body.requestForm.babyDetails;
+    const specialNeeds = req.body.requestForm.specialNeeds;
     const parentID = req.body.userID;
-
-    console.log(specialNeeds)
+    // console.log(parentID)
+    // console.log(specialNeeds)
     if (!parentID) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
     }
 
     const newRequestFormData = new RequestForm({
         parent: parentID,
-        // babysitter: babysitterId,
         workExpectation,
-        // numberofBabies,
         babyDetails,
         specialNeeds,
     })
 
     try{
         const savedRequestForm = await newRequestFormData.save();
-        res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});       
+        return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});       
     }
-    catch{
+    catch(err){
         console.log(err.message);
-        res.status(500).send({status: "Error adding requestForm", error: err.message});
+        return res.status(500).send({status: "Error adding requestForm", error: err.message});
     }
 }
 

@@ -17,16 +17,16 @@ const requestFormSchema = new schema({
     },
     workExpectation: [{
         date: {
-            type: Boolean,
-            required: true,
+            type: String,
+            required: false,
         },
         fromTime: {
             type: String,
-            required: true
+            required: false
         },
         toTime: {
             type: String,
-            required: true,
+            required:false,
         }
     }],
     // numberofBabies: {

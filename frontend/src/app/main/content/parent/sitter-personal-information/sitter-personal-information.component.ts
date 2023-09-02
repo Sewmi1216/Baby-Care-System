@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 
 interface WorkExpectation {
-  date: boolean; // Change the type if needed
+  date: string; // Change the type if needed
   fromTime: string;
   toTime: string;
 }
@@ -18,7 +18,6 @@ interface BabyDetail {
 }
 
 interface RequestForm {
-  // parent: string;
   isAccept: string;
   workExpectation: WorkExpectation[];
   babyDetails: BabyDetail[];
@@ -44,8 +43,8 @@ export class SitterPersonalInformationComponent {
   private userId: any;
 
   ageFieldValue: number | null = null; // Initialize here
-  genderFieldValue: string = '';
-  selectedDays: boolean[] = [false, false, false, false, false, false, false];  
+  genderFieldValue: string | null = null;
+  selectedDays: string[] = [];
   fromTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
   toTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
   ageValues: (number | null)[] = []; // Allow null values
@@ -60,38 +59,50 @@ export class SitterPersonalInformationComponent {
   ngOnInit():void{
   }
 
-  insertRow() {
-  if (this.ageFieldValue !== null && this.genderFieldValue !== '') {
-    const newBabyDetail: BabyDetail = {
-      age: this.ageFieldValue,
-      gender: this.genderFieldValue
-    };
-
-    console.log(newBabyDetail);
-
-    this.babydetail.push(newBabyDetail);
-
-    this.ageValues.push(this.ageFieldValue);
-    this.genderValues.push(this.genderFieldValue);
-
-    // Clear the form fields after adding the details
-    this.ageFieldValue = null;
-    this.genderFieldValue = '';
+  onCheckboxChange(day: string, index: number) {
+    if (this.selectedDays[index] === day) {
+      this.selectedDays[index] = '';
+    } else {
+      this.selectedDays[index] = day;
+    }
   }
-}
 
-  deleteRow(index: number) {
-    this.requestForm.babyDetails.splice(index, 1);
+  saveBabyDetail() {
+    if (this.ageFieldValue !== null && this.genderFieldValue !== null) {
+      const newBabyDetail: BabyDetail = {
+        age: this.ageFieldValue,
+        gender: this.genderFieldValue,
+      };
+
+      this.requestForm.babyDetails.push(newBabyDetail);
+
+      // Clear the form fields after adding the details
+      this.ageFieldValue = null;
+      this.genderFieldValue = null;
+    }
+  }
+
+  deleteBabyDetail(index: number) {
+    if (index >= 0 && index < this.requestForm.babyDetails.length) {
+      this.requestForm.babyDetails.splice(index, 1);
+      this.babydetail.splice(index, 1); // Remove from the local array as well
+    }
   }
 
   saveWorkExpectations() {
-    this.requestForm.workExpectation = this.selectedDays.map((selected, i) => {
-      return {
-        date: selected,
-        fromTime: this.fromTimeFieldValues[i],
-        toTime: this.toTimeFieldValues[i]
-      };
-    });  
+    // Initialize as an empty array of WorkExpectation objects
+    this.requestForm.workExpectation = [];
+    // Filter out entries with null values and convert to objects
+    this.selectedDays.forEach((selected, i) => {
+      if (selected !== null && this.fromTimeFieldValues[i] !== null && this.toTimeFieldValues[i] !== null) {
+        const workExpectation: WorkExpectation = {
+          date: selected,
+          fromTime: this.fromTimeFieldValues[i],
+          toTime: this.toTimeFieldValues[i]
+        };
+        this.requestForm.workExpectation.push(workExpectation);
+      }
+    });
   }
 
   saveSpecialNeeds(){
@@ -99,19 +110,26 @@ export class SitterPersonalInformationComponent {
   }
 
   saveBabyDetails() {
-    for (let i = 0; i < this.ageValues.length; i++) {
-      const babyDetails = {
-        age: this.ageValues[i],
-        gender: this.genderValues[i]
+    if (this.ageFieldValue !== null && this.genderFieldValue !== null) {
+      const newBabyDetail: BabyDetail = {
+        age: this.ageFieldValue,
+        gender: this.genderFieldValue,
       };
-      this.requestForm.babyDetails[i] = babyDetails;
+
+      this.requestForm.babyDetails.push(newBabyDetail);
+
+      // Clear the form fields after adding the details
+      this.ageFieldValue = null;
+      this.genderFieldValue = null;
+
+      this.babydetail.push(newBabyDetail);
     }
   }
 
   onSubmit() {
     this.saveWorkExpectations();
     this.saveSpecialNeeds();
-    this.saveBabyDetails();
+    this.saveBabyDetail();
 
     const userJSON = localStorage.getItem('user');
 
