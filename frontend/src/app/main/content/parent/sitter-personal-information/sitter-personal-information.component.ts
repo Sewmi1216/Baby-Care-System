@@ -2,6 +2,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ParentService } from '../../../../service/parent.service'
+import {NgToastService} from "ng-angular-popup";
+import {Router} from "@angular/router";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface WorkExpectation {
   date: boolean; // Change the type if needed
@@ -39,13 +42,13 @@ export class SitterPersonalInformationComponent {
     babyDetails: [],
     specialNeeds: ''
   };
-  
+  private userId: any;
   // date = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
   ageFieldValue: number | null = null; // Initialize here
   // Initialize here
   genderFieldValue: string = ''; // Initialize here 
-  selectedDays: boolean[] = [false, false, false, false, false, false, false];
+  selectedDays: boolean[] = [false, false, false, false, false, false, false];  
   fromTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
   toTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
   ageValues: (number | null)[] = []; // Allow null values
@@ -54,11 +57,11 @@ export class SitterPersonalInformationComponent {
   specialNeeds: string = '';
 
   constructor(
-    private parentService: ParentService
+    private parentService: ParentService, private toast: NgToastService, private router:Router
   ){}
 
   ngOnInit():void{
-
+    this.userId = this.parentService.getUserId();
   }
 
   // insertRow() {
@@ -117,23 +120,9 @@ export class SitterPersonalInformationComponent {
     
   }
 
-  // saveSpecialNeeds(){
-  //   const newBabyDetail: BabyDetail = {
-  //     age: this.ageFieldValue,
-  //     gender: this.genderFieldValue
-  //   };
-  //   const specialNeeds = {
-  //     specialNeeds: this.specialNeeds,
-  //   }
-  //   // this.requestForm.specialNeeds= specialNeeds; 
-  // }
-
   saveSpecialNeeds(){
-    const specialNeeds = {
-      specialNeeds: this.specialNeeds,
-    };
-    this.requestForm.specialNeeds = specialNeeds.specialNeeds; // Assign the value
-  }  
+    this.requestForm.specialNeeds = this.specialNeeds;
+  }
 
   saveBabyDetails() {
     for (let i = 0; i < this.ageValues.length; i++) {
@@ -150,24 +139,27 @@ export class SitterPersonalInformationComponent {
 
   onSubmit() {
     this.saveWorkExpectations();
-    // this.saveSpecialNeeds();
+    this.saveSpecialNeeds();
     // this.requestForm.specialNeeds=this.specialNeeds;
-    // console.log(this.requestForm.specialNeeds)
+    console.log(this.requestForm.specialNeeds)
     console.log(this.requestForm.workExpectation)
     console.log(this.requestForm.babyDetails)
-
+    console.log(this.userId);
     this.saveBabyDetails();
     console.log("Submitting form...");
     console.log(this.requestForm);
-    this.parentService.addRequestForm(this.requestForm).subscribe(
+    this.parentService.addRequestForm(this.requestForm, this.userId).subscribe(
       (data) => {
         console.log("Registration successful:", data);
+        this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
         console.log("Successfully");
       },
       (err) => {
-        console.log('Registration failed:', err);
-        console.log('Unsuccess');
-        console.log(err.message);
+        this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+        console.log(`unsuccessful requestForm:${err}`, err);
+        // console.log('Registration failed:', err);
+        // console.log('Unsuccess');
+        // console.log(err.message);
       }
     )
   }

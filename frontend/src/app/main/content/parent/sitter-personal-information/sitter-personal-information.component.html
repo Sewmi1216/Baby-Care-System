@@ -39,7 +39,7 @@
             Request
           </button>
 
-          <form #requestFormForm="ngForm" (ngSubmit)="requestFormForm.form.valid && onSubmit()" id="requestForm">
+          <form #requestFormForm="ngForm" (ngSubmit)="onSubmit()" id="requestForm" >
             <!-- The Modal -->
             <div class="modal" id="myModal">
               <div class="modal-dialog">
@@ -59,14 +59,14 @@
                       <div *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
                         <ul class="list-group list-group-horizontal">
                           <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i" [(ngModel)]="selectedDays[i]">
+                            <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i" [(ngModel)]="selectedDays[i]" #selectedDays[i]="ngModel" required>
                             <label [for]="day + i">{{ day }}</label>
                           </li>
                           <li class="list-group-item">
-                            <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime">
+                            <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime" #fromTimeFieldValues[i]="ngModel">
                           </li>
                           <li class="list-group-item">
-                            <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime">
+                            <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime" #toTimeFieldValues[i]="ngModel">
                           </li>
                         </ul>
                       </div>
@@ -256,7 +256,7 @@
   
                   <!-- Modal footer -->
                   <div class="modal-footer" style="margin-top: 20px">
-                    <button (click)="onSubmit()" style="background-color: #563393;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+                    <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
                   </div>
   
                 </div>

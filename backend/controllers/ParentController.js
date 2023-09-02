@@ -166,29 +166,36 @@ const deleteTask = async (req, res) => {
 };
 
 const addRequestForm = async (req, res) => {
-    const parentId = req.session.user.id;
+    // const parentId = req.body.
     const workExpectation = req.body.workExpectation;
     // const numberofBabies = req.body.numberofBabies;
     const babyDetails = req.body.babyDetails;
     const specialNeeds = req.body.specialNeeds;
     // const babysitterId = req.body.babysitterId;
+    const parentID = req.body.userID;
+
+    console.log(specialNeeds)
+    if (!parentID) {
+        return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
+    }
 
     const newRequestFormData = new RequestForm({
-        parent: parentId,
+        parent: parentID,
         // babysitter: babysitterId,
         workExpectation,
         // numberofBabies,
         babyDetails,
-        specialNeeds, 
+        specialNeeds,
     })
 
-    await newRequestFormData.save()
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form added", requestForm});
-        })
-        .catch((err) => { 
-            res.status(500).send({status: "Error with add request form", error: err.message})
-        })
+    try{
+        const savedRequestForm = await newRequestFormData.save();
+        res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});       
+    }
+    catch{
+        console.log(err.message);
+        res.status(500).send({status: "Error adding requestForm", error: err.message});
+    }
 }
 
 const updateRequestForm = async (req, res) => {
@@ -207,7 +214,7 @@ const updateRequestForm = async (req, res) => {
         .then((requestForm) => {
             res.status(200).send({status: "Request form updated", requestForm});
         })
-        .catch((err) => {
+        .catch((err) => { 
             console.log(err);
             res.status(500).send({status: "Error with updating data", error: err.message});
         });
