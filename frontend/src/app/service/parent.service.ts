@@ -60,4 +60,19 @@ export class ParentService {
   //   this.authToken = token;
   // }
 
+  addRequestForm(requestForm: any, userString: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' // Set the content type to JSON
+    });
+
+    const requestBody = {
+      requestForm: requestForm,
+      userID: userString.id,
+    };
+    console.log("Tharushi")
+    console.log(requestBody)
+    console.log("CHethana")
+
+    return this.http.post<any>(`${environment.backend_url}/parent/addRequestForm`, JSON.stringify(requestBody), { headers });
+  }
 }
