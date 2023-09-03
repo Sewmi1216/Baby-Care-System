@@ -1,3 +1,4 @@
+//parent service
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
@@ -82,9 +83,21 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log("Tharushi");
     console.log(userId);
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters`, { headers });
+  }
+
+  getBabysitter(babysitterID: any): Observable<any> {
+    const babysitterId = babysitterID
+    console.log(babysitterId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters/${babysitterId}`, { headers });
   }
 }

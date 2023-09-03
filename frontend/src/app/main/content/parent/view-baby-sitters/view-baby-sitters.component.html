@@ -39,8 +39,8 @@
               </ng-container>
             </p>
 
-            <a routerLink="/parent/sitter_personal_information" class="btn btn-primary"
-               style="background-color: #7E57C2;border-color: #563393">View Profile</a>
+            <a [routerLink]="['/parent/sitter_personal_information', babysitter._id]" class="btn btn-primary" 
+              style="background-color: #7E57C2; border-color: #563393">View Profile</a>
           </div>
         </div>
       </div>

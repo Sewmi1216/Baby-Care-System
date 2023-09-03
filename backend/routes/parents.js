@@ -1,3 +1,4 @@
+//parent routes
 const router = require("express").Router();
 let Parent = require("../models/Parent");
 const authJwt = require("../middlewares/authJwt");
@@ -13,6 +14,7 @@ router.route('/addBaby').post(parentController.addBaby);
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
 router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
+router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
 
 
 //create

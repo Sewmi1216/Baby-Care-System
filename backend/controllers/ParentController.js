@@ -338,7 +338,7 @@ const getBabysitters = async (req, res) => {
 
         const babysitterData = babysitters.map((babysitter) => {
             return {
-            //   _id: babysitter._id,
+              _id: babysitter._id,
               age: babysitter.age,
               gender: babysitter.gender,
               image: babysitter.image,
@@ -359,6 +359,38 @@ const getBabysitters = async (req, res) => {
     }
 };
 
+const getBabysitter = async (req, res) => {
+    let babysitterId = req.params.id;
+    console.log("babysitterID:", babysitterId);
+    await Babysitter.findById(babysitterId)
+    try {
+        const babysitter = await Babysitter.findById(babysitterId)
+            .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+            .exec();
+
+        if (!babysitter) {
+            return res.status(404).send({ status: "Babysitter not found" });
+        }
+
+        const babysitterData = {
+            age: babysitter.age,
+            gender: babysitter.gender,
+            image: babysitter.image,
+            firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+            lastName: babysitter.userId.lastName, 
+            email: babysitter.userId.email,
+            phone: babysitter.userId.phone,
+            address: babysitter.userId.address,
+            nic: babysitter.userId.nic
+        };
+
+        res.status(200).send({ status: "babysitter", babysitter: babysitterData });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get babysitter", error: err.message });
+    }
+};
+
 module.exports = {
     addParent,
     addTask,
@@ -374,5 +406,6 @@ module.exports = {
     addFeedback,
     getBabies,
     viewParentProfile,
-    getBabysitters
+    getBabysitters,
+    getBabysitter,
 };

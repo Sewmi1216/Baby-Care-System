@@ -249,7 +249,7 @@ const routes: Routes = [
         component: ViewBabySittersComponent
       },
       {
-        path: 'sitter_personal_information',
+        path: 'sitter_personal_information/:babysitter_id',
         component: SitterPersonalInformationComponent
       },
       {
