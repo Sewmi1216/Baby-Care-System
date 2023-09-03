@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ParentService } from '../../../../service/parent.service'
 import {NgToastService} from "ng-angular-popup";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 
 interface WorkExpectation {
@@ -31,7 +31,31 @@ interface RequestForm {
 })
 
 export class SitterPersonalInformationComponent {
+
+  babysitterProfile = {
+    age: '',
+    gender: '',
+    image:'',
+    firstName: '',
+    lastName: '', 
+    email: '',
+    phone: '',
+    address: '',
+    nic: ''
+  };
+
+  babysitterFullName: string | null = null;
+
+  babysitter = {
+    age: '',
+    gender: '',
+    image: '',
+  };
+
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
+
+  babysitterId: string | null = null; // Initialize the babysitterId variable
+
 
   requestForm: RequestForm = {
     // parent: '',
@@ -41,6 +65,8 @@ export class SitterPersonalInformationComponent {
     specialNeeds: ''
   };
   private userId: any;
+
+  
 
   ageFieldValue: number | null = null; // Initialize here
   genderFieldValue: string | null = null;
@@ -53,10 +79,16 @@ export class SitterPersonalInformationComponent {
   specialNeeds: string = '';
 
   constructor(
-    private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService
+    private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
+    // Get the babysitter_id parameter from the route
+    this.route.params.subscribe(params => {
+      this.babysitterId = params['babysitter_id'];
+      console.log(this.babysitterId);
+      this.getBabysitter();
+    });
   }
 
   onCheckboxChange(day: string, index: number) {
@@ -123,6 +155,25 @@ export class SitterPersonalInformationComponent {
       this.genderFieldValue = null;
 
       this.babydetail.push(newBabyDetail);
+    }
+  }
+ 
+  getBabysitter(){
+    const userJSON = localStorage.getItem('user');
+    console.log(this.babysitterId);
+    if(userJSON!==null){
+      this.parentService.getBabysitter(this.babysitterId).subscribe(
+        (response) => {
+          this.babysitterProfile = response.babysitter;
+          console.log(this.babysitterProfile)
+          this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
+          console.log(this.babysitterProfile);
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
     }
   }
 
