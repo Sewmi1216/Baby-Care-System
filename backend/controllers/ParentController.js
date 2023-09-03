@@ -189,6 +189,7 @@ const addRequestForm = async (req, res) => {
     const babyDetails = req.body.requestForm.babyDetails;
     const specialNeeds = req.body.requestForm.specialNeeds;
     const parentID = req.body.userID;
+    const Babysitter = req.body.requestForm.Babysitter;
     // console.log(parentID)
     // console.log(specialNeeds)
     if (!parentID) {
@@ -200,6 +201,7 @@ const addRequestForm = async (req, res) => {
         workExpectation,
         babyDetails,
         specialNeeds,
+        Babysitter
     })
 
     try{
@@ -373,6 +375,7 @@ const getBabysitter = async (req, res) => {
         }
 
         const babysitterData = {
+            _id: babysitter._id,
             age: babysitter.age,
             gender: babysitter.gender,
             image: babysitter.image,

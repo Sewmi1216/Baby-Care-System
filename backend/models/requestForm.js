@@ -7,10 +7,10 @@ const requestFormSchema = new schema({
         type: schema.Types.ObjectId,
         ref: 'Parent',
     },
-    // babysitter: {
-    //     type: String,
-    //     required: false
-    // },
+    Babysitter: {
+        type: schema.Types.ObjectId,
+        required: true,
+    },
     isAccept: {
         type: Boolean,
         default: false,
@@ -46,6 +46,10 @@ const requestFormSchema = new schema({
     specialNeeds: {
         type: String,
         required: false,
+    },
+    date: {
+        type: Date,
+        default: Date.now // Automatically set the current date when the document is saved
     }
 })
 

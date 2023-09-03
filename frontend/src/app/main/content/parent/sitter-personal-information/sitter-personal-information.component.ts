@@ -22,6 +22,7 @@ interface RequestForm {
   workExpectation: WorkExpectation[];
   babyDetails: BabyDetail[];
   specialNeeds: string;
+  Babysitter: string
 }
 
 @Component({
@@ -33,6 +34,7 @@ interface RequestForm {
 export class SitterPersonalInformationComponent {
 
   babysitterProfile = {
+    _id: '',
     age: '',
     gender: '',
     image:'',
@@ -62,7 +64,8 @@ export class SitterPersonalInformationComponent {
     isAccept: '',
     workExpectation: [],
     babyDetails: [],
-    specialNeeds: ''
+    specialNeeds: '',
+    Babysitter: ''
   };
   private userId: any;
 
@@ -181,7 +184,8 @@ export class SitterPersonalInformationComponent {
     this.saveWorkExpectations();
     this.saveSpecialNeeds();
     this.saveBabyDetail();
-
+    this.requestForm.Babysitter = this.babysitterProfile._id;
+    
     const userJSON = localStorage.getItem('user');
 
     if(userJSON !== null){
