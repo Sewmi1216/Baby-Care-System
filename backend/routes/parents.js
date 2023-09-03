@@ -11,12 +11,14 @@ router.route('/addBaby').post(parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
+router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
+router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
 
 
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);
-router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
+// router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
 
 router.route('/addTaskList').post(parentController.addTask);

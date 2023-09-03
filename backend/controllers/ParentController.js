@@ -1,3 +1,4 @@
+//parent controller
 let Parent = require("../models/Parent");
 let User = require("../models/User");
 
@@ -327,6 +328,37 @@ const addFeedback = async (req, res) => {
         })
 
 };
+
+const getBabysitters = async (req, res) => {
+    await Babysitter.find()
+    try{
+        const babysitters = await Babysitter.find()
+        .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+        .exec();
+
+        const babysitterData = babysitters.map((babysitter) => {
+            return {
+            //   _id: babysitter._id,
+              age: babysitter.age,
+              gender: babysitter.gender,
+              image: babysitter.image,
+              firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+              lastName: babysitter.userId.lastName, 
+              email: babysitter.userId.email,
+              phone: babysitter.userId.phone,
+              address: babysitter.userId.address,
+              nic: babysitter.userId.nic
+            };
+          });
+          res.status(200).send({ status: "All babysitters", babysitters: babysitterData 
+        });
+  
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get all babysitters", error: err.message });
+    }
+};
+
 module.exports = {
     addParent,
     addTask,
@@ -341,5 +373,6 @@ module.exports = {
     addBaby,
     addFeedback,
     getBabies,
-    viewParentProfile
+    viewParentProfile,
+    getBabysitters
 };

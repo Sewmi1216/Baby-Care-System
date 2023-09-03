@@ -24,15 +24,15 @@
 
     <div style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 2px 2px 0 #563393;" class="row justify-content mt-5 ">
 
-      <div class="col-sm-6 col-md-4  " style="height: 390px;border-radius: 10px">
+      <div *ngFor="let babysitter of babysitters"  class="col-sm-6 col-md-4  " style="height: 390px;border-radius: 10px">
 
         <div class="card custom-card" style="width: 70%;height: 342px;margin-top: 20px;margin-right: 20px;margin-left: 10px;border-width: 0px;">
           <div  class="d-flex justify-content-center mt-3">
             <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
           </div>
-          <div  class="card-body bg-custom text-center">
-            <h4 style="font-weight: bold" class="card-title">Sewmi Thimaya</h4>
-            <p>Location : Kandy</p>
+          <div class="card-body bg-custom text-center">
+            <h4 style="font-weight: bold" class="card-title">{{babysitter.firstName}} {{babysitter.lastName}}</h4>
+            <p>Location : {{babysitter.address}}</p>
             <p>Rate:
               <ng-container *ngFor="let _ of [1, 2, 3, 4]; let i = index">
                 <i style="color: #fad103" class="fas fa-star"></i>
@@ -77,7 +77,7 @@
     margin-left: 50px;
     background-color: white;
     border-width: 0px;
-}">
+">
         <div class="d-flex justify-content-center mt-3">
           <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
         </div>
