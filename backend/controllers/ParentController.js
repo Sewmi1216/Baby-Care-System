@@ -189,6 +189,7 @@ const addRequestForm = async (req, res) => {
     const babyDetails = req.body.requestForm.babyDetails;
     const specialNeeds = req.body.requestForm.specialNeeds;
     const parentID = req.body.userID;
+    const Babysitter = req.body.requestForm.Babysitter;
     // console.log(parentID)
     // console.log(specialNeeds)
     if (!parentID) {
@@ -200,6 +201,7 @@ const addRequestForm = async (req, res) => {
         workExpectation,
         babyDetails,
         specialNeeds,
+        Babysitter
     })
 
     try{
@@ -373,6 +375,7 @@ const getBabysitter = async (req, res) => {
         }
 
         const babysitterData = {
+            _id: babysitter._id,
             age: babysitter.age,
             gender: babysitter.gender,
             image: babysitter.image,
@@ -391,6 +394,22 @@ const getBabysitter = async (req, res) => {
     }
 };
 
+const getRequestForms = async(req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+        const requestForms = await RequestForm.find({ parent: userId });
+
+        if (!requestForms || requestForms.length === 0) {
+            res.status(404).send({ status: "No requestForms found for this parent" });
+        } else {
+            res.status(200).send({ status: "All requestForms", requestForms });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all requestForms", error: err.message });
+    }
+}
 module.exports = {
     addParent,
     addTask,
@@ -408,4 +427,5 @@ module.exports = {
     viewParentProfile,
     getBabysitters,
     getBabysitter,
+    getRequestForms
 };

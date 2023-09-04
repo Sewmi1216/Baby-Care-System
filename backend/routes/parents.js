@@ -15,6 +15,7 @@ router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabi
 router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
+router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 
 
 //create
