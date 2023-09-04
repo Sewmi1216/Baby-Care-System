@@ -105,6 +105,7 @@ const addTask = async (req, res) => {
     const taskListName = req.body.taskListName;
     const date = req.body.date;
     const tasks = req.body.tasks;
+    const parentID = req.body.userID;
 
     try {
         // create a new task list
@@ -112,6 +113,7 @@ const addTask = async (req, res) => {
             taskListName: taskListName,
             date: date,
             tasks: [],// initialize tasks array
+            parentID: parentID
 
         });
 
@@ -209,7 +211,6 @@ const getBabies = async (req, res) => {
     } catch (err) {
         console.log(err.message);
         res.status(500).send({ status: "Error with get all babies", error: err.message });
-
     }
 };
 

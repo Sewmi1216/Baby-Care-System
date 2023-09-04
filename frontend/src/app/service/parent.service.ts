@@ -50,6 +50,29 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getBabies/${userId}`, { headers });
   }
 
+
+  // getTaskList(user): Observable<any>
+  // {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+  //   });
+  //   const userId = user.id;
+  //   console.log('Request headers:', headers);
+  //   return this.http.get<any>(`${environment.backend_url}/parent/getTaskList/${userId}`, { headers });
+  // }
+
+  // getTaskList(): Observable<any> {
+  //   const url = `${this.baseUrl}/parent/getTaskList`; // Replace with the actual endpoint URL
+  //
+  //   return this.http.get(url);
+  // }
+
+
+
+
+
+
   private getAccessTokenFromCookie(): string {
     const accessToken = this.cookieService.get('access_token');
     return accessToken;

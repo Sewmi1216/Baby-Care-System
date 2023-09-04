@@ -34,9 +34,9 @@ const taskSchema = new mongoose.Schema({
 //3.java wala object ekk wage
 const taskListSchema = new Schema({
     // 4. give attributes of task list
-    parentId: {
+    parent: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Parent',
+        ref: 'Parent' // Reference to the 'Parent' model
     },
 
     taskListName: {

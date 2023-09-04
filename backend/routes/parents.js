@@ -19,22 +19,27 @@ router.route('/addParent').post(parentController.addParent);
 router.route('/addRequestForm').post(parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
 
+/*Task lists related routes...*/
 router.route('/addTaskList').post(parentController.addTask);
-router.route('/getTaskList').post(parentController.getTaskList);
+router.route('/getTaskList').get(parentController.getTaskList);
+//router.route('/updateTaskList/:id').put(parentController.updateTaskList);
+//router.route('/deleteTaskList/:id').delete(parentController.deleteTaskList);
 
-router.route('/addComplaint').post(checkSession,parentController.addComplaint);
+
+
+router.route('/addComplaint').post(parentController.addComplaint);
 //router.route('/addComplaint').post(parentController.addComplaint);
 
 
 //retrive
 
 //update
-router.route("/updateTask/:id").put(parentController.updateTask);
+//router.route("/updateTask/:id").put(parentController.updateTask);
 router.route("/updateRequestForm/:id").put(parentController.updateRequestForm);
 router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
 //delete
-router.route("/deleteTask/:id").delete(parentController.deleteTask);
+//router.route("/deleteTask/:id").delete(parentController.deleteTask);
 router.route("/deleteRequestForm/:id").delete(parentController.deleteRequestForm);
 router.route("/deleteComplaint/:id").delete(parentController.deleteComplaint);
 

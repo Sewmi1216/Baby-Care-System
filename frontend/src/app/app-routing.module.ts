@@ -137,6 +137,7 @@ const routes: Routes = [
         component: HomeHeaderComponent,
       },
     ]
+
   },
   {
     path: 'about_us',
