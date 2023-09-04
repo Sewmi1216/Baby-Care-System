@@ -19,6 +19,9 @@ export class RequestedBabysittersComponent {
   formattedDates: string[] = [];
   babysitterName: string | null = null;
   babysitterNames: string[] = []
+  babysitterId: string | null = null
+  reqbabysitterId: string | null = null
+  requestedBabysitters: string[] =[]
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router: Router, private CookieService: CookieService, private route: ActivatedRoute
@@ -36,12 +39,14 @@ export class RequestedBabysittersComponent {
         (response) => {
           this.babysitters = response.babysitters;
           this.babysitterNames = [];
+          console.log(this.babysitters)
           for (const babysitter of this.babysitters) {
-            const firstName = babysitter.firstName;
+            const firstName = babysitter.firstName
+            this.babysitterId = babysitter.userId
             const lastName = babysitter.lastName;
             this.babysitterName = `${firstName} ${lastName}`;
             this.babysitterNames.push(this.babysitterName);
-            console.log('Date:', this.babysitterNames);
+            console.log('Name:', this.babysitterNames);
           }
         },
         (error)=>{
@@ -64,6 +69,8 @@ export class RequestedBabysittersComponent {
             this.formattedDate=`${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
             this.formattedDates.push(this.formattedDate);
             this.isAccept = requestForm.isAccept;
+            this.reqbabysitterId = requestForm.Babysitter;
+            console.log(this.reqbabysitterId)
             // console.log('Date:', this.formattedDate);
             // console.log('isAccept:', this.isAccept);
             // You can perform any operations you need with the date and isAccept here

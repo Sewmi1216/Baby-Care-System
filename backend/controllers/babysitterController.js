@@ -235,16 +235,21 @@ const updateRequestForm = async (req, res) => {
         });
 }
 
-const getRequestForm = async (req, res) => {
-    let requestFormId = req.params.id;
+const getRequestForms = async(req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("babysitterID:", userId);
+        const requestForms = await RequestForm.find({ Babysitter: userId });
 
-    await RequestForm.findById(requestFormId)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form fetched", requestForm})
-        })
-        .catch((err) => {
-            res.status(500).send({status: "Error with get request form", error: err.message})
-        })
+        if (!requestForms || requestForms.length === 0) {
+            res.status(404).send({ status: "No requestForms found for this babysitter" });
+        } else {
+            res.status(200).send({ status: "All requestForms", requestForms });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all requestForms", error: err.message });
+    }
 }
 
 module.exports = {
@@ -257,5 +262,5 @@ module.exports = {
     updateTask,
     getAllRequestForm,
     updateRequestForm,
-    getRequestForm,
+    getRequestForms,
 };

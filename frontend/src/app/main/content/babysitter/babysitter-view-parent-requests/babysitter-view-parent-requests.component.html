@@ -50,11 +50,9 @@
               </tr>
               </thead>
               <tbody>
-
-              <tr>
-
+              <tr *ngFor="let requestForm of requestForms let i = index">
                 <td>
-                  <span class="mb-0 text-sm">2023/08/14</span>
+                  <span class="mb-0 text-sm">{{formattedDates[i]}}</span>
                 </td>
                 <td scope="row">
                   <div class="media align-items-center">
