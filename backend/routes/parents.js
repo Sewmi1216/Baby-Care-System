@@ -1,3 +1,4 @@
+//parent routes
 const router = require("express").Router();
 let Parent = require("../models/Parent");
 const authJwt = require("../middlewares/authJwt");
@@ -11,12 +12,15 @@ router.route('/addBaby').post(parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
+router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
+router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
+router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
 
 
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);
-router.route('/addRequestForm').post(parentController.addRequestForm);
+// router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
 
 /*Task lists related routes...*/

@@ -1,3 +1,4 @@
+//parent controller
 let Parent = require("../models/Parent");
 let User = require("../models/User");
 
@@ -260,25 +261,31 @@ const deleteTask = async (req, res) => {
 
 
 const addRequestForm = async (req, res) => {
-    const workExpectation = req.body.workExpectation;
-    const numberofBabies = req.body.numberofBabies;
-    const babyDetails = req.body.babyDetails;
-    const specialNeeds = req.body.specialNeeds;
+    const workExpectation = req.body.requestForm.workExpectation;
+    const babyDetails = req.body.requestForm.babyDetails;
+    const specialNeeds = req.body.requestForm.specialNeeds;
+    const parentID = req.body.userID;
+    // console.log(parentID)
+    // console.log(specialNeeds)
+    if (!parentID) {
+        return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
+    }
 
     const newRequestFormData = new RequestForm({
+        parent: parentID,
         workExpectation,
-        numberofBabies,
         babyDetails,
         specialNeeds,
     })
 
-    await newRequestFormData.save()
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form added", requestForm});
-        })
-        .catch((err) => {
-            res.status(500).send({status: "Error with add request form", error: err.message})
-        })
+    try{
+        const savedRequestForm = await newRequestFormData.save();
+        return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});       
+    }
+    catch(err){
+        console.log(err.message);
+        return res.status(500).send({status: "Error adding requestForm", error: err.message});
+    }
 }
 
 const updateRequestForm = async (req, res) => {
@@ -297,7 +304,7 @@ const updateRequestForm = async (req, res) => {
         .then((requestForm) => {
             res.status(200).send({status: "Request form updated", requestForm});
         })
-        .catch((err) => {
+        .catch((err) => { 
             console.log(err);
             res.status(500).send({status: "Error with updating data", error: err.message});
         });
@@ -397,6 +404,69 @@ const addFeedback = async (req, res) => {
         })
 
 };
+
+const getBabysitters = async (req, res) => {
+    await Babysitter.find()
+    try{
+        const babysitters = await Babysitter.find()
+        .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+        .exec();
+
+        const babysitterData = babysitters.map((babysitter) => {
+            return {
+              _id: babysitter._id,
+              age: babysitter.age,
+              gender: babysitter.gender,
+              image: babysitter.image,
+              firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+              lastName: babysitter.userId.lastName, 
+              email: babysitter.userId.email,
+              phone: babysitter.userId.phone,
+              address: babysitter.userId.address,
+              nic: babysitter.userId.nic
+            };
+          });
+          res.status(200).send({ status: "All babysitters", babysitters: babysitterData 
+        });
+  
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get all babysitters", error: err.message });
+    }
+};
+
+const getBabysitter = async (req, res) => {
+    let babysitterId = req.params.id;
+    console.log("babysitterID:", babysitterId);
+    await Babysitter.findById(babysitterId)
+    try {
+        const babysitter = await Babysitter.findById(babysitterId)
+            .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+            .exec();
+
+        if (!babysitter) {
+            return res.status(404).send({ status: "Babysitter not found" });
+        }
+
+        const babysitterData = {
+            age: babysitter.age,
+            gender: babysitter.gender,
+            image: babysitter.image,
+            firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+            lastName: babysitter.userId.lastName, 
+            email: babysitter.userId.email,
+            phone: babysitter.userId.phone,
+            address: babysitter.userId.address,
+            nic: babysitter.userId.nic
+        };
+
+        res.status(200).send({ status: "babysitter", babysitter: babysitterData });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get babysitter", error: err.message });
+    }
+};
+
 module.exports = {
     addParent,
     addTask,
@@ -412,5 +482,7 @@ module.exports = {
     addBaby,
     addFeedback,
     getBabies,
-    viewParentProfile
+    viewParentProfile,
+    getBabysitters,
+    getBabysitter,
 };

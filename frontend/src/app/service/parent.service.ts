@@ -1,3 +1,4 @@
+//parent service
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
@@ -83,4 +84,43 @@ export class ParentService {
   //   this.authToken = token;
   // }
 
+  addRequestForm(requestForm: any, userString: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' // Set the content type to JSON
+    });
+
+    const requestBody = {
+      requestForm: requestForm,
+      userID: userString.id,
+    };
+    console.log("Tharushi")
+    console.log(requestBody)
+    console.log("CHethana")
+
+    return this.http.post<any>(`${environment.backend_url}/parent/addRequestForm`, JSON.stringify(requestBody), { headers });
+  }
+
+  getBabysitters(user:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters`, { headers });
+  }
+
+  getBabysitter(babysitterID: any): Observable<any> {
+    const babysitterId = babysitterID
+    console.log(babysitterId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters/${babysitterId}`, { headers });
+  }
 }

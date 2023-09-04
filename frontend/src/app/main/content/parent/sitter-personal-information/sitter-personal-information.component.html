@@ -1,3 +1,4 @@
+<!-- sitter-personal-information.component.html -->
 <div class="container-fluid">
   <div class="mb-3">
 
@@ -11,25 +12,25 @@
         <div class="left" >
           <div class="card custom-card" style="width: 100%; background-color: #FFFFFF; margin: 40px 40px 30px 50px; padding: 20px 20px 40px 20px">
             <p class="font-weight-bold">Name</p>
-            <input type="text" class="form-control" value="Nayomi Ekanayake">
+            <input type="text" class="form-control" [(ngModel)]="babysitterFullName">
             <p class="font-weight-bold">Address</p>
-            <input type="text" class="form-control" value="50,Kandy road,Mathale">
+            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.address">
             <p class="font-weight-bold">Gender</p>
-            <input type="text" class="form-control" value="Female">
+            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.gender">
             <p class="font-weight-bold">NIC</p>
-            <input type="text" class="form-control" value="995568741V">
+            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.nic">
             <p class="font-weight-bold">Contact Number</p>
-            <input type="text" class="form-control"value="0815123698">
+            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.phone">
             <p class="font-weight-bold">Email</p>
-            <input type="text" class="form-control"value="nayomi@gmail.com">
+            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.email">
           </div>
         </div>
       </div>
 
       <div class="right" >
         <div class="card custom-card" >
-          <h4 style="padding-top: 0;font-family: 'Sofia Sans';font-weight: bold ;font-size: 20px;">Sewmi Thimaya</h4>
-          <h4>Location :</h4>
+          <h4 style="padding-top: 0;font-family: 'Sofia Sans';font-weight: bold ;font-size: 20px;">{{babysitterFullName}}</h4>
+          <h4>Location: {{babysitterProfile.address}}</h4>
           <div class="d-flex justify-content-center">
             <img class="card-img-top custom-img" src="../../assets/sewmi.jpg " style="border-radius: 50%">
           </div>
@@ -38,98 +39,108 @@
             Request
           </button>
 
-          <!-- The Modal -->
-          <div class="modal" id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Request Baby Sitter</h4>
-                  <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="container">
-                  <div class="row">
-                    <!-- Left Side -->
-                    <p class="font-weight-bold title">Work Expectation - Time Duration per day</p>
-                    <ul *ngFor="let day of days"  class="list-group list-group-horizontal">
-                      <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                        <label class="form-check-label" for="firstCheckbox">{{day}}</label>
-                      </li>
-                      <li class="list-group-item">
-                        <select>
-                          <option *ngFor="let time of times">{{ time }}</option>
-                        </select>
-                        <select>
-                          <option value="AM">AM</option>
-                          <option value="PM">PM</option>
-                        </select>                        
-                      </li>
-                      <li class="list-group-item">
-                        <select>
-                          <option *ngFor="let time of times">{{ time }}</option>
-                        </select>
-                        <select>
-                          <option value="AM">AM</option>
-                          <option value="PM">PM</option>
-                        </select>                        
-                      </li>
-                    </ul>
-                    
-                    <p class="font-weight-bold title">Baby details</p>
-                    
-
-                    <table class="table" >
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Age</th>
-                          <th scope="col">Gender</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let row of babyDetails; let i = index">
-                          <th scope="row">{{ i + 1 }}</th>
-                          <td>
-                            <input class="form-control rounded-0" type="text">
-                          </td>
-                          <td>
-                            <select class="form-control rounded-0" name="" id="">
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                            </select>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                    <div class="d-flex justify-content-between table">
-                      <button (click)="insertRow()" type="button" class="btn btn-secondary px-3">
-                        <i class="fas fa-solid fa-plus" aria-hidden="true"></i>
-                      </button>
-                      <button (click)="deleteRow()" type="button" class="btn btn-secondary px-3">
-                        <i class="fas fa-solid fa-minus" aria-hidden="true"></i>
-                      </button>
-                    </div>
-
-                    <p class="font-weight-bold title ">If there are any special needs..</p>
-                    <textarea class="form-control table" rows="3" placeholder="Enter here" ></textarea>
-                    
+          <form #requestFormForm="ngForm" (ngSubmit)="onSubmit()" id="requestForm" >
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+  
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Request Baby Sitter</h4>
+                    <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
+  
+                  <!-- Modal body -->
+                  <div class="container">
+                    <div class="row">
+                      <!-- Left Side -->
+                      <p class="font-weight-bold title">Work Expectation - Time Duration per day</p>
+                      <div *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
+                        <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item" *ngIf="selectedDays[i] !== null">
+                            <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i"
+                              [(ngModel)]="selectedDays[i]" (change)="onCheckboxChange(day, i)">
+                            <label [for]="day + i">{{ day }}</label>
+                          </li>
+                          <li class="list-group-item" *ngIf="selectedDays[i] !== ''">
+                            <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime"  #fromTimeFieldInput="ngModel">
+                          </li>
+                          <li class="list-group-item" *ngIf="selectedDays[i] !== ''">
+                            <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime"  #toTimeFieldInput="ngModel">
+                          </li>
+                        </ul>
+                      </div>
+
+                      
+                      <p class="font-weight-bold title">Baby details</p>
+                      <div class="tables-container">
+                        <div class="table-wrapper">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <input class="form-control rounded-0" type="number" [(ngModel)]="ageFieldValue" name="age" >
+                                </td>
+                                <td>
+                                  <select id="" [(ngModel)]="genderFieldValue" name="genderField" aria-label="Gender Selection" style="height: 38px; width:100px">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <button type="button" class="btn btn-primary" (click)="saveBabyDetails()">Add</button>
+                                </td>
+                              </tr>   
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="table-wrapper">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let babydetail of babydetail; let i = index">
+                                <!-- <td>{{ i + 1 }}</td> -->
+                                <td>{{babydetail.age}}</td>
+                                <td>{{babydetail.gender}}</td>
+                                <td><button type="button" class="btn btn-danger btn-delete" (click)="deleteBabyDetail(i)">Delete</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <p class="font-weight-bold title ">If there are any special needs..</p>
+                      <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds"></textarea>
+                      
+                    </div>
+                  </div>
+  
+  
+                  <!-- Modal footer -->
+                  <div class="modal-footer" style="margin-top: 20px">
+                    <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+                  </div>
+  
                 </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer" style="margin-top: 20px">
-                  <button style="background-color: #563393;border-color: #563393" type="button" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
-                </div>
-
               </div>
-            </div>
-          </div>
+            </div>              
+          </form>
         </div>
       </div>
     </div>

@@ -124,7 +124,6 @@ h3{
   padding-top: 37px;
 }
 
-
 .list-group-item label{
   width: 7rem;
 }
@@ -143,4 +142,22 @@ h3{
 .table{
   width: 85%;
   margin-left: 2.25rem;
+}
+
+.tables-container {
+  /* display: flex;  */
+  justify-content: space-between; 
+}
+
+.table-wrapper {
+  width: 100%; 
+  margin-right: 1%;
+}
+
+.btn-delete{
+  height: 30px;
+  width: 80px;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
 }

@@ -1,3 +1,4 @@
+//babysitter model
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema;
@@ -44,7 +45,11 @@ const verificationDetailsSchema = new schema ({
 })
 
 const babysitterSchema = new schema ({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    userId: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User' 
+    },
+
     age: {
         type: Number, 
         required: true
@@ -65,8 +70,6 @@ const babysitterSchema = new schema ({
         type:String,
         required:true
     }
-
-
 })
 
 
