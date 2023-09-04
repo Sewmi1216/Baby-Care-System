@@ -99,6 +99,7 @@ const addBaby = async (req, res) => {
 };
 
 
+
 /* Create task list*/
 const addTask = async (req, res) => {
 
@@ -106,7 +107,7 @@ const addTask = async (req, res) => {
     const taskListName = req.body.taskListName;
     const date = req.body.date;
     const tasks = req.body.tasks;
-    const parentID = req.body.userID;
+    // const parentID = '64d7934aeb8b8905034db8e0';
 
     try {
         // create a new task list
@@ -114,7 +115,7 @@ const addTask = async (req, res) => {
             taskListName: taskListName,
             date: date,
             tasks: [],// initialize tasks array
-            parentID: parentID
+            // parentID: parentID
 
         });
 

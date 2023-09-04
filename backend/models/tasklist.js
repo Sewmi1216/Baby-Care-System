@@ -35,8 +35,10 @@ const taskSchema = new mongoose.Schema({
 const taskListSchema = new Schema({
     // 4. give attributes of task list
     parent: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Parent' // Reference to the 'Parent' model
+        type: String,
+        default: '64d7934aeb8b8905034db8e0'
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'Parent' // Reference to the 'Parent' model
     },
 
     taskListName: {
