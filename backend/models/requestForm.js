@@ -12,8 +12,8 @@ const requestFormSchema = new schema({
         required: true,
     },
     isAccept: {
-        type: Boolean,
-        default: false,
+        type: Number,
+        default: -1,
     },
     workExpectation: [{
         date: {
