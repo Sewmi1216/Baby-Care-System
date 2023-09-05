@@ -35,6 +35,7 @@ export class SitterPersonalInformationComponent {
 
   babysitterProfile = {
     _id: '',
+    userId: '',
     age: '',
     gender: '',
     image:'',
@@ -180,6 +181,7 @@ export class SitterPersonalInformationComponent {
     }
   }
 
+  
   onSubmit() {
     this.saveWorkExpectations();
     this.saveSpecialNeeds();
@@ -197,7 +199,7 @@ export class SitterPersonalInformationComponent {
       this.parentService.addRequestForm(this.requestForm, userString).subscribe(
         (data) => {
           console.log("Registration successful:", data);
-          this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
+          this.toast.success({detail:"SUCCESS",summary:'Request form added successfully', position:'topCenter'});
           console.log("Successfully");
         },
         (err) => {
