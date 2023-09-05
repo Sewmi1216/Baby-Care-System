@@ -35,10 +35,20 @@ export class BabysitterViewParentRequestsComponent {
         (response) => {
           this.requestForms = response.requestForms;
           console.log(this.requestForms)
+          this.formattedDates = [];
           for (const requestForm of this.requestForms) {
+            console.log(requestForm.date);
             const date = new Date(requestForm.date);
-            this.formattedDate=`${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
-            this.formattedDates.push(this.formattedDate);
+
+            const year = date.getFullYear();
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            console.log(day)
+            const formattedDate = `${year}.${month}.${day}`;
+
+            console.log(formattedDate)
+            this.formattedDates.push(formattedDate);
+            console.log(this.formattedDates);
             this.isAccept = requestForm.isAccept;
           }
         },
