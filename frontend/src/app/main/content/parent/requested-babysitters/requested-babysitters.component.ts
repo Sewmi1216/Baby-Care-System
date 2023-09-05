@@ -61,8 +61,8 @@ export class RequestedBabysittersComponent {
               // If there's a match, assign the name to the corresponding index in babysitterNames
               this.babysitterNames[matchingIndex] = this.babysitterName;
             }
-        }
-        console.log(this.babysitterNames)
+          }
+          console.log(this.babysitterNames)
         },
         (error) => {
           console.log(localStorage.getItem('user'))

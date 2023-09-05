@@ -1,4 +1,4 @@
-let Babysitter = require("../models/babysitter");
+let Parent = require("../models/Parent");
 let User = require('../models/User')
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm");
@@ -252,6 +252,30 @@ const getRequestForms = async(req, res) => {
     }
 }
 
+const getParents = async (req,res) => {
+    await Parent.find()
+    try{
+        const parents = await Parent.find()
+        .populate('userId', 'firstName lastName email ') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+        .exec();
+        console.log(parents)
+        const parentData = parents.map((parent) => {
+            return {
+              userId: parent.userId._id,
+              firstName: parent.userId.firstName, // Access the first name from the populated 'userId' field
+              lastName: parent.userId.lastName, 
+              email: parent.userId.email,
+            };
+          });
+          res.status(200).send({ status: "All parents", parents: parentData 
+        });
+  
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get all parents", error: err.message });
+    }
+}
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
@@ -263,4 +287,5 @@ module.exports = {
     getAllRequestForm,
     updateRequestForm,
     getRequestForms,
+    getParents,
 };

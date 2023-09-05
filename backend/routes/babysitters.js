@@ -17,6 +17,7 @@ const checkSession = (req, res, next) => {
 
 //completed
 router.route("/getRequestForms/:id").get(babysitterController.getRequestForms); 
+router.route("/getParents").get(babysitterController.getParents); 
 
 
 //create
