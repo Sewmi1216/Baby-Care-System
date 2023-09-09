@@ -219,15 +219,15 @@ const getAllRequestForm = async (req, res) => {
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
 
-    const {isAccept} = req.body;
+    const isAccept = 1
 
     const updateRequestForm = {
         isAccept
     };
 
     await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form updated", requestForm});
+        .then((updateRequestForm) => {
+            res.status(200).send({status: "Request form updated", updateRequestForm});
         })
         .catch((err) => {
             console.log(err);

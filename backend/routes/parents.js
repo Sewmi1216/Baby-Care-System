@@ -32,7 +32,6 @@ router.route('/addComplaint').post(parentController.addComplaint);
 
 //update
 router.route("/updateTask/:id").put(parentController.updateTask);
-router.route("/updateRequestForm/:id").put(parentController.updateRequestForm);
 router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
 //delete

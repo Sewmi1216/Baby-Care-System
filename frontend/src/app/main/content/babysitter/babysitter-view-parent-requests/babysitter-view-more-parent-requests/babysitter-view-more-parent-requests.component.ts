@@ -93,7 +93,19 @@ export class BabysitterViewMoreParentRequestsComponent {
   }
 
   acceptrequest(){
-
+    const userJSON = localStorage.getItem('user');
+    console.log(userJSON)
+    if(userJSON!==null){
+      this.babysitterService.updateRequestForm(JSON.parse(userJSON), this.requestFormId).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching requestForm:', error);
+        }
+      )
+    }
   }
   rejectRequest(){
 
