@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BabysitterService } from '../../../../../service/babysitter.service'
+import { Location } from '@angular/common'; // Import Location service
 import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
@@ -21,7 +22,7 @@ export class BabysitterViewMoreParentRequestsComponent {
       age: null,
       gender: ''
     }],
-    isAccept: null,
+    isAccept: null as number | null,
     parent: '',
     date: '',
     specialNeeds: '',
@@ -41,7 +42,9 @@ export class BabysitterViewMoreParentRequestsComponent {
   specialNeeds: string = ''
 
   constructor(
-    private babysitterService: BabysitterService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
+    private babysitterService: BabysitterService, 
+    private location: Location,
+    private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
@@ -94,11 +97,13 @@ export class BabysitterViewMoreParentRequestsComponent {
 
   acceptrequest(){
     const userJSON = localStorage.getItem('user');
+    this.requestForm.isAccept = 1
     console.log(userJSON)
     if(userJSON!==null){
-      this.babysitterService.updateRequestForm(JSON.parse(userJSON), this.requestFormId).subscribe(
+      this.babysitterService.updateRequestForm(this.requestForm, this.requestFormId).subscribe(
         (response) => {
           console.log(response);
+          this.location.back();
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -107,8 +112,23 @@ export class BabysitterViewMoreParentRequestsComponent {
       )
     }
   }
-  rejectRequest(){
 
+  rejectRequest(){
+    const userJSON = localStorage.getItem('user');
+    this.requestForm.isAccept = 0
+    console.log(userJSON)
+    if(userJSON!==null){
+      this.babysitterService.updateRequestForm(this.requestForm, this.requestFormId).subscribe(
+        (response) => {
+          console.log(response);
+          this.location.back();
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching requestForm:', error);
+        }
+      )
+    }
   }
 
 }

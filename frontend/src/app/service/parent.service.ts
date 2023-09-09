@@ -70,9 +70,7 @@ export class ParentService {
       requestForm: requestForm,
       userID: userString.id,
     };
-    console.log("Tharushi")
     console.log(requestBody)
-    console.log("CHethana")
 
     return this.http.post<any>(`${environment.backend_url}/parent/addRequestForm`, JSON.stringify(requestBody), { headers });
   }

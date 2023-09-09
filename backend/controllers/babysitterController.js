@@ -218,8 +218,10 @@ const getAllRequestForm = async (req, res) => {
 
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
+    console.log("Tharushi")
+    console.log(req.body.requestForm.isAccept);
 
-    const isAccept = 1
+    const isAccept = req.body.requestForm.isAccept === 1 ? 1 : 0;
 
     const updateRequestForm = {
         isAccept

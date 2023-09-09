@@ -64,12 +64,17 @@ export class BabysitterService {
     return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
   }
 
-  updateRequestForm(user: any, requestFormId: any): Observable<any>{
+  updateRequestForm(requestForm: any, requestFormId: any): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
-    console.log(requestFormId); 
-    return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm/${requestFormId}`, { headers });      
+
+    const requestBody = {
+      requestForm: requestForm,
+    };
+
+    console.log(requestBody); 
+    return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm/${requestFormId}`, JSON.stringify(requestBody),{ headers });      
   }
 }
