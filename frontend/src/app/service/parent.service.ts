@@ -109,4 +109,16 @@ export class ParentService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestForms/${userId}`, { headers });
   }
+
+  deleteRequestForm(user:any, requestFormId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
+  }
+
 }

@@ -226,7 +226,7 @@ const addRequestForm = async (req, res) => {
 
 const deleteRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
-
+    console.log(requestFormId);
     await RequestForm.findByIdAndDelete(requestFormId)
         .then((requestForm) => {
             res.status(200).send({status: "Request form deleted", requestForm});
