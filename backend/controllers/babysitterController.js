@@ -276,6 +276,24 @@ const getParents = async (req,res) => {
     }
 }
 
+const getRequestForm = async(req,res) => {
+    try {
+        let requestFormId = req.params.id;
+        console.log("requestFormID:", requestFormId);
+
+        const requestForm = await RequestForm.findById(requestFormId);
+
+        if (!requestForm) {
+            res.status(404).send({ status: "No request form found for this parent" });
+        } else {
+            res.status(200).send({ status: "request form : ", requestForm });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all babies", error: err.message });
+    }
+}
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
@@ -288,4 +306,5 @@ module.exports = {
     updateRequestForm,
     getRequestForms,
     getParents,
+    getRequestForm
 };

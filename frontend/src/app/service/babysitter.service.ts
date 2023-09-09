@@ -52,4 +52,16 @@ export class BabysitterService {
     return this.http.get<any>(`${environment.backend_url}/babysitter/getParents`, { headers });
   }
 
+  getRequestForm(user:any, requestFormId: any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log(requestFormId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
+  }
+
 }
