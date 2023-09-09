@@ -30,127 +30,52 @@
   <div class="main-content">
     <div class="container mt-7">
       <!-- Table -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col">
-          <div class="card shadow">
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light" >
-                <tr >
-
-                  <th style="font-size: 15px; font-weight: bolder; color: black" scope="col">Date</th>
-                  <th style="font-size: 15px; font-weight: bolder; color: black" scope="col">Name</th>
-                  <th style="font-size: 15px; font-weight: bolder; color: black" scope="col">Status</th>
-
-
-                </tr>
+          <div class="card shadow"> -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr style="font-size: 12px; font-weight: bold; color: black">
-
-                  <td>20.02.2022</td>
-                  <td>
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="assets/sewmi.jpg">
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Accepted</span>&nbsp;&nbsp;
-                    <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button></td>
-
-                  <!--                  <td><button class="btn btn-primary">Accept</button></td>-->
-
-
-                </tr>
-
-                <tr style="font-size: 12px; font-weight: bold; color: black">
-
-                  <td>20.02.2022</td>
-                  <td>
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="assets/sewmi.jpg">
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td> <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Accepted</span> &nbsp;&nbsp;
-              <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button></td>
-
-
-                </tr>
-
-
-                <tr style="font-size: 12px; font-weight: bold; color: black">
-
-
-                  <td>20.02.2022</td>
-                  <td>
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="assets/sewmi.jpg">
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Rejected</span>
-                  </td>
-
-
-                </tr>
-
-                <tr style="font-size: 12px; font-weight: bold; color: black">
-
-                  <td>20.02.2022</td>
-                  <td>
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="assets/sewmi.jpg">
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Pending</span>
-                  </td>
-
-
-                </tr>
-
-                <tr style="font-size: 12px; font-weight: bold; color: black">
-
-                  <td>20.02.2022</td>
-                  <td>
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="assets/sewmi.jpg">
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Pending</span>
-                  </td>
-
-
-                </tr>
+                  <tr *ngFor="let requestForm of requestForms let i = index">
+                      <td>
+                        {{formattedDates[i]}}
+                      </td>
+                      <td>
+                        <div class="media align-items-center">
+                          <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="assets/sewmi.jpg">
+                          </a>
+                          <div class="media-body">
+                            <span class="mb-0 text-sm">{{babysitterNames[i]}}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="requestForm.isAccept === -1">
+                          <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Pending</span>&nbsp;&nbsp;
+                        </div>
+                        <div *ngIf="requestForm.isAccept === 1">
+                          <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Accepted</span>&nbsp;&nbsp;
+                        </div>
+                        <div *ngIf="requestForm.isAccept === 0">
+                          <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Rejected</span>&nbsp;&nbsp;
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="requestForm.isAccept === 1">
+                          <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button>
+                        </div>
+                      </td>
+                  </tr>
                 </tbody>
               </table>
-            </div>
 
             <div class="card-footer py-4">
               <nav aria-label="...">
@@ -179,9 +104,9 @@
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div>
     </div>
-  </div>
+  </div> -->
 
 
 

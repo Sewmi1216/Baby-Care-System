@@ -1,4 +1,4 @@
-let Babysitter = require("../models/babysitter");
+let Parent = require("../models/Parent");
 let User = require('../models/User')
 let Task = require("../models/task");
 let RequestForm = require("../models/requestForm");
@@ -235,16 +235,63 @@ const updateRequestForm = async (req, res) => {
         });
 }
 
-const getRequestForm = async (req, res) => {
-    let requestFormId = req.params.id;
+const getRequestForms = async(req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("babysitterID:", userId);
+        const requestForms = await RequestForm.find({ Babysitter: userId });
 
-    await RequestForm.findById(requestFormId)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form fetched", requestForm})
-        })
-        .catch((err) => {
-            res.status(500).send({status: "Error with get request form", error: err.message})
-        })
+        if (!requestForms || requestForms.length === 0) {
+            res.status(404).send({ status: "No requestForms found for this babysitter" });
+        } else {
+            res.status(200).send({ status: "All requestForms", requestForms });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all requestForms", error: err.message });
+    }
+}
+
+const getParents = async (req,res) => {
+    await Parent.find()
+    try{
+        const parents = await Parent.find()
+        .populate('userId', 'firstName lastName email ') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+        .exec();
+        console.log(parents)
+        const parentData = parents.map((parent) => {
+            return {
+              userId: parent.userId._id,
+              firstName: parent.userId.firstName, // Access the first name from the populated 'userId' field
+              lastName: parent.userId.lastName, 
+              email: parent.userId.email,
+            };
+          });
+          res.status(200).send({ status: "All parents", parents: parentData 
+        });
+  
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get all parents", error: err.message });
+    }
+}
+
+const getRequestForm = async(req,res) => {
+    try {
+        let requestFormId = req.params.id;
+        console.log("requestFormID:", requestFormId);
+
+        const requestForm = await RequestForm.findById(requestFormId);
+
+        if (!requestForm) {
+            res.status(404).send({ status: "No request form found for this parent" });
+        } else {
+            res.status(200).send({ status: "request form : ", requestForm });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all babies", error: err.message });
+    }
 }
 
 module.exports = {
@@ -257,5 +304,7 @@ module.exports = {
     updateTask,
     getAllRequestForm,
     updateRequestForm,
-    getRequestForm,
+    getRequestForms,
+    getParents,
+    getRequestForm
 };

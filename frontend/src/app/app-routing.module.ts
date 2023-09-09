@@ -64,7 +64,6 @@ import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-l
 import {ViewNewParentsComponent} from "./main/content/admin/view-new-parents/view-new-parents.component";
 import {ViewNewBabysittersComponent} from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
 
-import {parentGuard} from "./guard/parent.guard";
 import {babysitterGuard} from "./guard/babysitter.guard";
 import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
@@ -118,6 +117,7 @@ import {
 import {
   RequestedBabysittersMoreComponent
 } from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
+import {parentGuard} from "./guard/parent.guard";
 
 
 
@@ -177,15 +177,12 @@ const routes: Routes = [
     component: MainComponent,
     canActivate: [parentGuard],
     children: [
-
       {
         path: 'parent_dashboard',
         component: ParentDashboardComponent
 
       },
-
       {
-
         path: 'parent_profile',
         component: ParentProfileComponent
 
@@ -252,7 +249,7 @@ const routes: Routes = [
         component: ViewBabySittersComponent
       },
       {
-        path: 'sitter_personal_information',
+        path: 'sitter_personal_information/:babysitter_id',
         component: SitterPersonalInformationComponent
       },
       {
@@ -311,7 +308,7 @@ const routes: Routes = [
         component: BabysitterViewParentRequestsComponent
       },
       {
-        path: 'view_more_parent_requests',
+        path: 'view_more_parent_requests/:requestForm_id/:parentName',
         component: BabysitterViewMoreParentRequestsComponent
       },
 
