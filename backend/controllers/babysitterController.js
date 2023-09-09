@@ -218,16 +218,18 @@ const getAllRequestForm = async (req, res) => {
 
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
+    console.log("Tharushi")
+    console.log(req.body.requestForm.isAccept);
 
-    const {isAccept} = req.body;
+    const isAccept = req.body.requestForm.isAccept === 1 ? 1 : 0;
 
     const updateRequestForm = {
         isAccept
     };
 
     await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form updated", requestForm});
+        .then((updateRequestForm) => {
+            res.status(200).send({status: "Request form updated", updateRequestForm});
         })
         .catch((err) => {
             console.log(err);

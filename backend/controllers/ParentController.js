@@ -224,31 +224,9 @@ const addRequestForm = async (req, res) => {
 
 }
 
-const updateRequestForm = async (req, res) => {
-    let requestFormId = req.params.id; //fetch the id
-
-    const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
-
-    const updateRequestForm = {
-        workExpectation,
-        numberofBabies,
-        babyDetails,
-        specialNeeds
-    };
-
-    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form updated", requestForm});
-        })
-        .catch((err) => { 
-            console.log(err);
-            res.status(500).send({status: "Error with updating data", error: err.message});
-        });
-};
-
 const deleteRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
-
+    console.log(requestFormId);
     await RequestForm.findByIdAndDelete(requestFormId)
         .then((requestForm) => {
             res.status(200).send({status: "Request form deleted", requestForm});
@@ -431,7 +409,6 @@ module.exports = {
     updateTask,
     deleteTask,
     addRequestForm,
-    updateRequestForm,
     deleteRequestForm,
     addComplaint,
     updateComplaint,

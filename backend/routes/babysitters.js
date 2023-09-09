@@ -19,6 +19,7 @@ const checkSession = (req, res, next) => {
 router.route("/getRequestForms/:id").get(babysitterController.getRequestForms); 
 router.route("/getParents").get(babysitterController.getParents); 
 router.route("/getRequestForm/:id").get(babysitterController.getRequestForm); 
+router.route("/updateRequestForm/:id").put(babysitterController.updateRequestForm); 
 
 //create
 router.route("/addBabysitter").post(babysitterController.addBabysitter);

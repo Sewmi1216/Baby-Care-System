@@ -16,6 +16,7 @@ router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRe
 router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
+router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentController.deleteRequestForm);
 
 
 //create
@@ -32,7 +33,6 @@ router.route('/addComplaint').post(parentController.addComplaint);
 
 //update
 router.route("/updateTask/:id").put(parentController.updateTask);
-router.route("/updateRequestForm/:id").put(parentController.updateRequestForm);
 router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
 //delete
