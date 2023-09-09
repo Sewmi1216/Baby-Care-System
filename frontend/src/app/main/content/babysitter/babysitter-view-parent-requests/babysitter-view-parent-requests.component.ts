@@ -16,7 +16,9 @@ export class BabysitterViewParentRequestsComponent {
   formattedDate: string = '';
   isAccept: string = '';
   formattedDates: string[] = [];
-  requestedParentId: string = ''
+  requestedParentId: string = '';
+  requestFormId: string = ''
+  requestFormsId: string[] = []
 
   //in parents
   parents: any [] =[]
@@ -53,8 +55,11 @@ export class BabysitterViewParentRequestsComponent {
 
             this.isAccept = requestForm.isAccept;
             this.requestedParentId = requestForm.parent;
+            this.requestFormId = requestForm._id;
             this.requestedParentsId.push(this.requestedParentId);  
+            this.requestFormsId.push(this.requestFormId)
           }
+          console.log(this.requestFormsId);
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -75,6 +80,7 @@ export class BabysitterViewParentRequestsComponent {
           for (const parent of this.parents){
             const firstName = parent.firstName
             const lastName = parent.lastName;
+
             this.parentName = `${firstName} ${lastName}`;
 
             this.parentEmail = parent.email;
