@@ -20,6 +20,7 @@ export class RequestedBabysittersComponent {
   formattedDate: string = '';
   formattedDates: string[] = [];
   requestFormBabysitterId: string = ''
+  requestFormId: string = ''
 
   //in the babysitters
   babysitterName: string = ''
@@ -61,8 +62,8 @@ export class RequestedBabysittersComponent {
               // If there's a match, assign the name to the corresponding index in babysitterNames
               this.babysitterNames[matchingIndex] = this.babysitterName;
             }
-        }
-        console.log(this.babysitterNames)
+          }
+          console.log(this.babysitterNames)
         },
         (error) => {
           console.log(localStorage.getItem('user'))
@@ -86,6 +87,9 @@ export class RequestedBabysittersComponent {
             this.formattedDates.push(this.formattedDate); // get dates of the request forms
 
             this.isAccept = requestForm.isAccept;
+            this.requestFormId = requestForm._id;
+            console.log(this.requestFormId)
+
             if (this.isAccept !== null) {
               this.isAccepts.push(this.isAccept);
             }
@@ -103,5 +107,21 @@ export class RequestedBabysittersComponent {
     }
   }
 
+  deleteRequest(requestFormId: string){
+    const userJSON = localStorage.getItem('user');
+    console.log(requestFormId)
+    if (userJSON !== null) {
+      this.parentService.deleteRequestForm(JSON.parse(userJSON), requestFormId).subscribe(
+        (response) => {
+          console.log(response);
+          window.location.reload();
+        },
+        (error) => {
+          console.log(localStorage.getItem('user'))
+          console.error('Error with delete requestForm:', error);
+        }
+      )
+    }    
+  }
 
 }

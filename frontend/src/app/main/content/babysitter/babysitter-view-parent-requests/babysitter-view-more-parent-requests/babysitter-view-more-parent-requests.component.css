@@ -1,5 +1,5 @@
 .custom-card {
-  width: 800px;
+  width: 600px;
 }
 
 .custom-card .card {
@@ -26,3 +26,21 @@
 
 }
 
+.topic{
+  text-align: center;
+  font-size: x-large;
+  margin-bottom: 3rem;
+}
+
+.title{
+  margin-top: 2rem;
+  font-size:medium;
+  font-weight:bold;
+
+}
+
+.my-table{
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  margin-right: 5rem;
+}

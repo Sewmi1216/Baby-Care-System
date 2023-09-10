@@ -1,31 +1,63 @@
 <div class="d-flex justify-content-center align-items-center" style="margin-top: 80px">
-<div class="custom-card">
-  <div class="card">
-    <div class="card-body">
-      <div class="list-group list-group-flush">          <!-- List group items here -->
-          <div class="list-group">
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue"  >Requested Date - 2023/08/14</p>
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue" >Name - Piyumini Thalawadane</p>
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue" >Email Address - piyuminithalawadane@gmail.com</p>
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue" >Work Expection(Time duration per day) - Sunday 08.00AM 05.00PM </p>
-            <div class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue" >
-              No of Babies - 01
-            </div>
+  <div class="custom-card">
+    <div class="card">
+      <div class="card-body">
+        <p class="topic"><span class="mb-0 text-sm" style="font-weight: bold;">{{parentName}}</span>'s Request Form<p>
 
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue"  >Age - 2 years Old</p>
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue"  >Gender - female</p>
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue" >If there are any special need - no</p>
-
-            <div class="d-flex justify-content-between">
-              <button type="button" class="btn btn-primary px-3" (click)="acceptrequest()">Accept</button>
-              <button type="button" class="btn btn-danger px-3" (click)="rejectRequest()">Reject</button>
-            </div>
-
-
-
-
-          </div>
+        <div class="container">
+          <p class="title">Work Expectation</p>
+          <table class="table align-items-center my-table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">From Time</th>
+                <th scope="col">To Time</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr *ngFor="let day of workDays; let i = index" >
+                <td>
+                  <span class="mb-0 text-sm">{{ day }}</span>
+                </td>
+                <td>
+                  <span class="mb-0 text-sm">{{ fromTimes[i] }}</span>
+                </td>
+                <td>
+                  <span class="mb-0 text-sm">{{ toTimes[i] }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="title">Baby details</p>
+          <table class="table align-items-center my-table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr *ngFor="let age of ages; let i = index" >
+                <td>
+                  <span class="mb-0 text-sm">{{ age }}</span>
+                </td>
+                <td>
+                  <span class="mb-0 text-sm">{{ genders[i] }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="font-weight-bold title">Special Needs</p>
+          <span style="margin-left: 2rem;">{{specialNeeds}}</span>
         </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary px-3" (click)="acceptrequest()">Accept</button>
+        <button type="button" class="btn btn-danger px-3" (click)="rejectRequest()">Reject</button>
       </div>
     </div>
   </div>

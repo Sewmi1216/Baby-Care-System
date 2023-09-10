@@ -308,7 +308,7 @@ const routes: Routes = [
         component: BabysitterViewParentRequestsComponent
       },
       {
-        path: 'view_more_parent_requests',
+        path: 'view_more_parent_requests/:requestForm_id/:parentName',
         component: BabysitterViewMoreParentRequestsComponent
       },
 

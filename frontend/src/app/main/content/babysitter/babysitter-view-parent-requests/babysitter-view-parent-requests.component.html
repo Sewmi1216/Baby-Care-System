@@ -46,201 +46,40 @@
                 <th scope="col">Email Address</th>
                 <th scope="col">Status</th>
                 <th scope="col"></th>
-                <th scope="col"></th>
               </tr>
               </thead>
+
               <tbody>
-              <tr *ngFor="let requestForm of requestForms let i = index">
-                <td>
-                  <span class="mb-0 text-sm">{{formattedDates[i]}}</span>
-                </td>
-                <td scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="assets/sewmi.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Piyumini Thalawadane</span>
+                <tr *ngFor="let requestForm of requestForms let i = index" >
+                  <td>
+                    <span class="mb-0 text-sm">{{formattedDates[i]}}</span>
+                  </td>
+                  <td scope="row">
+                    <div class="media align-items-center">
+                      <a href="#" class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="assets/sewmi.jpg">
+                      </a>
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{parentNames[i]}}</span>
+                      </div>
                     </div>
-                  </div>
-                </td>
-
-                <td>
-                  <a href="#">piyuminithalawadane@gmail.com</a>
-                </td>
-                <td>
-                  <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Pending</span>
-                </td>
-                <td>
-
-                </td>
-
-
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" routerLink="/babysitter/view_more_parent_requests"
-                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                  </div>
-                </td>
-
-              </tr>
-
-              <tr>
-
-                <td>
-                  <span class="mb-0 text-sm">2023/08/14</span>
-                </td>
-                <td scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="assets/sewmi.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Piyumini Thalawadane</span>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <a href="#">piyuminithalawadane@gmail.com</a>
-                </td>
-                <td>
-                  <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Pending</span>
-                </td>
-
-                <td>
-
-                </td>
-
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" routerLink="/babysitter/view_more_parent_requests"
-                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                  </div>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td>
-                  <span class="mb-0 text-sm">2023/08/14</span>
-                </td>
-                <td scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="assets/sewmi.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Piyumini Thalawadane</span>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <a href="#">piyuminithalawadane@gmail.com</a>
-                </td>
-                <td>
-                  <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Rejected</span>
-                </td>
-
-                <td>
-
-                </td>
-
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" routerLink="/babysitter/view_more_parent_requests"
-                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-
-
-              <tr>
-
-                <td>
-                  <span class="mb-0 text-sm">2023/08/14</span>
-                </td>
-                <td scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="assets/sewmi.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Piyumini Thalawadane</span>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <a href="#">piyuminithalawadane@gmail.com</a>
-                </td>
-                <td>
-                  <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Pending</span>
-                </td>
-
-
-                <td>
-
-                </td>
-
-
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" routerLink="/babysitter/view_more_parent_requests"
-                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-
-
-              <tr>
-
-                <td>
-                  <span class="mb-0 text-sm">2023/08/14</span>
-                </td>
-                <td scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="assets/sewmi.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Piyumini Thalawadane</span>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <a href="#">piyuminithalawadane@gmail.com</a>
-                </td>
-                <td>
-                  <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Accepted</span>
-                </td>
-                <td>
-
-                </td>
-
-
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" routerLink="/babysitter/view_more_parent_requests"
-                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-
+                  </td>
+                  <td>
+                    <a href="#">{{parentEmails[i]}}</a>
+                  </td>
+                  <td *ngIf="requestForm.isAccept === -1">
+                    <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Pending</span>
+                  </td>
+                  <td *ngIf="requestForm.isAccept === 0">
+                    <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Rejected</span>
+                  </td>
+                  <td *ngIf="requestForm.isAccept === 1">
+                    <span class="mb-0 text-sm" style="color: purple; font-weight: bold;">Acccpected</span>
+                  </td>              
+                  <td scope="row">
+                    <a [routerLink]="['/babysitter/view_more_parent_requests', requestFormsId[i], parentNames[i]]" class="btn btn-success">View</a>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
