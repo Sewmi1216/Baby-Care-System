@@ -12,7 +12,7 @@ const bcrypt = require("bcryptjs");
 let Complaint = require("../models/Complaint");
 
 let Feedback = require("../models/feedback");
-const Babysitter = require("../models/babysitter");
+const Babysitter  = require("../models/babysitter");
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
