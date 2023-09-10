@@ -104,44 +104,76 @@ const addBaby = async (req, res) => {
 const addTask = async (req, res) => {
 
     //const {taskListName, date,tasks} = req.body; -> extract this
-    const taskListName = req.body.taskListName;
-    const date = req.body.date;
-    const tasks = req.body.tasks;
-    // const parentID = '64d7934aeb8b8905034db8e0';
+    // model eke thiyena name tikamai
+    const taskListName = req.body.taskListForm.taskListName;
+    const date = req.body.taskListForm.date;
+    const tasks = req.body.taskListForm.tasks;
+    const parentID = req.body.userID;
+    const Babysitter = req.body.taskListForm.Babysitter;
 
-    try {
-        // create a new task list
-        const newTaskList = new TaskList({
-            taskListName: taskListName,
-            date: date,
-            tasks: [],// initialize tasks array
-            // parentID: parentID
-
-        });
-
-        //iterate karanwa tasks array from the request
-        for (const task of tasks) {
-            // then push task details to the tasks array of newTaskList
-            newTaskList.tasks.push({
-                taskName: task.taskName,
-                time: task.time,
-                isRemainder: task.isRemainder,
-                isCompleted: task.isCompleted,
-                specialNote: task.specialNote,
-            });
-        }
-
-        // save the newTaskList
-        const savedTaskList = await newTaskList.save();
-
-        // return a success response
-        return res.status(201).json({message: 'Task list create successfully', taskList: savedTaskList});
-    } catch (error) {
-        // send an error response
-        console.error(error);
-        return res.status(500).json({message: 'An error occurred'});
+    if(!parentID){
+        return res.status(400).send({status:"Bad Request", error:"Invalid"});
     }
+
+    const newTaskListFormData = new TaskListForm ({
+
+        parent:parentID,
+
+        taskListName,
+        tasks,
+        date,
+        Babysitter
+    })
+
+    //const parentID = '64d7934aeb8b8905034db8e0';
+
+    // try {
+    //     // create a new task list
+    //     const newTaskList = new TaskList({
+    //         taskListName: taskListName,
+    //         date: date,
+    //         tasks: [],// initialize tasks array
+    //         parent: parentID
+    //
+    //     });
+    //
+    //     //iterate karanwa tasks array from the request
+    //     for (const task of tasks) {
+    //         // then push task details to the tasks array of newTaskList
+    //         newTaskList.tasks.push({
+    //             taskName: task.taskName,
+    //             time: task.time,
+    //             isRemainder: task.isRemainder,
+    //             isCompleted: task.isCompleted,
+    //             specialNote: task.specialNote,
+    //         });
+    //     }
+    //
+    //     // save the newTaskList
+    //     const savedTaskList = await newTaskList.save();
+    //
+    //     // return a success response
+    //     return res.status(201).json({message: 'Task list create successfully', taskList: savedTaskList});
+    // } catch (error) {
+    //     // send an error response
+    //     console.error(error);
+    //     return res.status(500).json({message: 'An error occurred'});
+    // }
+
+
+
+    try{
+        const savedTaskListForm = await newTaskListFormData.save();
+        return res.status(201).send({status: "RequestForm is added", taskListForm: savedTaskListForm});
+    }
+    catch(err){
+        console.log(err.message);
+        return res.status(500).send({status: "Error adding requestForm", error: err.message});
+    }
+
 };
+
+
 
 
 /* Get task list function */
@@ -489,6 +521,7 @@ const getRequestForms = async(req, res) => {
 }
 module.exports = {
     addParent,
+    //addTask,
     addTask,
     getTaskList,
     updateTask,

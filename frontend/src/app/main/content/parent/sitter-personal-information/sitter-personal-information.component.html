@@ -44,13 +44,13 @@
             <div class="modal" id="myModal">
               <div class="modal-dialog">
                 <div class="modal-content">
-  
+
                   <!-- Modal Header -->
                   <div class="modal-header">
                     <h4 class="modal-title">Request BabySitter</h4>
                     <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
-  
+
                   <!-- Modal body -->
                   <div class="container">
                     <div class="row">
@@ -72,7 +72,7 @@
                         </ul>
                       </div>
 
-                      
+
                       <p class="font-weight-bold title">Baby details</p>
                       <div class="tables-container">
                         <div class="table-wrapper">
@@ -99,10 +99,13 @@
                                 <td>
                                   <button type="button" class="btn btn-primary" (click)="saveBabyDetails()">Add</button>
                                 </td>
-                              </tr>   
+                              </tr>
                             </tbody>
                           </table>
                         </div>
+
+
+
                         <div class="table-wrapper">
                           <table class="table">
                             <thead>
@@ -127,19 +130,19 @@
 
                       <p class="font-weight-bold title ">If there are any special needs..</p>
                       <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds"></textarea>
-                      
+
                     </div>
                   </div>
-  
-  
+
+
                   <!-- Modal footer -->
                   <div class="modal-footer" style="margin-top: 20px">
                     <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
                   </div>
-  
+
                 </div>
               </div>
-            </div>              
+            </div>
           </form>
         </div>
       </div>
