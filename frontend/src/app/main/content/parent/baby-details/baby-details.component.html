@@ -18,8 +18,7 @@
   <div class="mb-3 d-flex ">
 
 
-    <form class="row g-3 needs-validation" #addBabyForm="ngForm"
-          (ngSubmit)="addBabyForm.form.valid && onSubmit()" id="signUpForm" novalidate>
+    <form class="row g-3 needs-validation">
       <!-- The Modal -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -45,47 +44,34 @@
                 <div class="col-sm-6">
                   <p class="font-weight-bold">First Name</p>
                   <input type="text" class="form-control" placeholder="Enter the first name"
-                         [(ngModel)]="baby.firstName" #firstName="ngModel" name="firstName" required
-                         appTextValidator="">
-                  <div *ngIf="(firstName.touched || addBabyForm.submitted) && firstName.errors?.['required']"
-                       class="validErr">
-                    First Name is required
-                  </div>
+                         [(ngModel)]="firstName" >
+
                   <p class="font-weight-bold">Age</p>
-                  <input type="number" class="form-control" placeholder="age" [(ngModel)]="baby.age" #age="ngModel"
-                         name="age" required>
-                  <div *ngIf="(age.touched || addBabyForm.submitted) && age.errors?.['required']"
-                       class="validErr">
-                    Age is required
-                  </div>
+                  <input type="number" class="form-control" placeholder="age" [(ngModel)]="age" >
+
                   <p class="font-weight-bold">Date of birth</p>
-                  <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="baby.birthDate"
-                         #birthDate="ngModel" name="birthDate">
-                  <div *ngIf="(birthDate.touched || addBabyForm.submitted) && birthDate.errors?.['required']"
-                       class="validErr">
-                    Date of birth is required
-                  </div>
+                  <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="birthDate"
+                       >
+
                 </div>
 
                 <!-- Right Side: Last Name and Gender -->
                 <div class="col-sm-6">
                   <p class="font-weight-bold">Last Name</p>
-                  <input type="text" class="form-control" placeholder="Enter the last name" [(ngModel)]="baby.lastName"
-                         #lastName="ngModel" name="lastName" required appTextValidator="">
-                  <div *ngIf="(lastName.touched || addBabyForm.submitted) && lastName.errors?.['required']"
-                       class="validErr">
-                    Last Name is required
-                  </div>
+                  <input type="text" class="form-control" placeholder="Enter the last name" [(ngModel)]="lastName">
+<!--                  <div *ngIf="(lastName.touched || addBabyForm.submitted) && lastName.errors?.['required']"-->
+<!--                       class="validErr">-->
+<!--                    Last Name is required-->
+<!--                  </div>-->
                   <!--                radio button-->
                   <p class="font-weight-bold">Gender</p>
                   <div class="form-check form-check-inline">
-                    <input type="radio" class="form-check-input" id="male" [(ngModel)]="baby.gender" #gender="ngModel"
-                           name="gender" name="optradio" value="male" required>
+                    <input type="radio" class="form-check-input" id="male" [(ngModel)]="gender" >
                     <label class="form-check-label" for="male">Male</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input type="radio" class="form-check-input" id="female" name="optradio" value="female"
-                           [(ngModel)]="baby.gender" #gender="ngModel" name="gender" name="optradio">
+                    <input type="radio" class="form-check-input" id="female" name="opt-radio" value="female">
+
                     <label class="form-check-label" for="female">Female</label>
                   </div>
 
@@ -96,8 +82,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer" style="margin-top: 20px">
-              <button style="background-color: #7E57C2; border-color: #563393; " type="submit" class="btn btn-danger"
-                      data-bs-dismiss="modal">Add Baby
+              <button style="background-color: #7E57C2; border-color: #563393; "  class="btn btn-danger"
+                     >Add Baby
               </button>
             </div>
 
