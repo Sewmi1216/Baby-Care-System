@@ -8,25 +8,25 @@ const multer = require("multer");
 const path = require('path');
 
 // Define the multer storage and fileFilter outside the function
-const fileStorage = multer.diskStorage({
-    destination: 'uploads',
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname));
-    }
-});
-
-const uploadImage = multer({
-    storage: fileStorage,
-    limits: {
-        fileSize: 1000000 // Adjust as needed
-    },
-    fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(png|jpg)$/)) {
-            return cb(new Error('Please upload an image file with .png or .jpg extension!'));
-        }
-        cb(null, true);
-    }
-});
+// const fileStorage = multer.diskStorage({
+//     destination: 'uploads',
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname));
+//     }
+// });
+//
+// const uploadImage = multer({
+//     storage: fileStorage,
+//     limits: {
+//         fileSize: 1000000 // Adjust as needed
+//     },
+//     fileFilter(req, file, cb) {
+//         if (!file.originalname.match(/\.(png|jpg)$/)) {
+//             return cb(new Error('Please upload an image file with .png or .jpg extension!'));
+//         }
+//         cb(null, true);
+//     }
+// });
 
 const addBabysitter = async (req, res) => {
     try {
