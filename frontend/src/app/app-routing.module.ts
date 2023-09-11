@@ -9,6 +9,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {RequestedBabysittersComponent} from "./main/content/parent/requested-babysitters/requested-babysitters.component";
 import {TaskListComponent} from "./main/content/parent/task-list/task-list.component";
 import {ForgetPasswordComponent} from "./password/forget-password/forget-password.component";
+import {ResetPasswordComponent} from "./password/reset-password/reset-password.component";
 
 /* babysitter */
 import {
@@ -170,6 +171,10 @@ const routes: Routes = [
   {
     path: 'forget-password',
     component: ForgetPasswordComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
   },
 
   {

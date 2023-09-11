@@ -73,6 +73,7 @@ import { LiveStreamComponent } from './main/content/parent/live-stream/live-stre
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 
 
+
 /*Admin Components*/
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -179,6 +180,7 @@ import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitt
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
 import {TokenInterceptor} from "./interceptor/token.interceptor";
+import { ResetPasswordComponent } from './password/reset-password/reset-password.component';
 
 
 
@@ -227,6 +229,7 @@ import {TokenInterceptor} from "./interceptor/token.interceptor";
     ParentProfileComponent,
     MyBabysitterComponent,
     BabysitterChatComponent,
+    ResetPasswordComponent,
 
 
     /*Admin*/
@@ -299,7 +302,8 @@ import {TokenInterceptor} from "./interceptor/token.interceptor";
       CreateBlogComponent,
       BlogViewComponent,
       BlogListComponent,
-      AddModeratorComponent
+      AddModeratorComponent,
+
 
 
 
