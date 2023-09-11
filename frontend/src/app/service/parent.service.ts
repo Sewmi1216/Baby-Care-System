@@ -100,7 +100,8 @@ export class ParentService {
     return this.http.post<any>(`${environment.backend_url}/parent/addRequestForm`, JSON.stringify(requestBody), { headers });
   }
 
-  addTaskListForm(taskListForm:any, userString:any):Observable<any>{
+
+  addTaskListForm(taskListForm:any, userString:any): Observable<any>{
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -112,8 +113,10 @@ export class ParentService {
     };
     console.log(requestBody);
 
-    return this.http.post<any>( `${environment.backend_url}/parent/addTask`, JSON.stringify(requestBody), {headers});
+
+    return this.http.post<any>( `${environment.backend_url}/parent/addTaskList`, JSON.stringify(requestBody), {headers});
   }
+
 
   getBabysitters(user:any): Observable<any> {
     const headers = new HttpHeaders({

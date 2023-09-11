@@ -330,6 +330,7 @@ import {TokenInterceptor} from "./interceptor/token.interceptor";
     BsDatepickerModule.forRoot(), FormsModule,
 
 
+
   ],
   providers: [{
     provide :HTTP_INTERCEPTORS,

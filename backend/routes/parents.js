@@ -26,7 +26,7 @@ router.route('/addParent').post(parentController.addParent);
 
 /*Task lists related routes...*/
 
-router.route('/addTaskList').post(authJwt.verifyParent, parentController.addTask);//id=parentID
+router.route('/addTaskList').post(authJwt.verifyParent, parentController.addTaskList);
 
 router.route('/getTaskList').get(parentController.getTaskList);
 //router.route('/updateTaskList/:id').put(parentController.updateTaskList);

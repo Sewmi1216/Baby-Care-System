@@ -15,6 +15,10 @@
             <label for="listName">Task List Name:</label>
             <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="nameOfTaskList" required>
 
+<!--            <label for="date">Date:</label>-->
+<!--            <input class="form-control rounded-0" type="text" id="date" name="date" [(ngModel)]="date" >-->
+
+
             <table class="table">
               <thead>
               <tr>
@@ -27,7 +31,7 @@
               <tbody>
               <tr>
 
-                <td><input class="form-control rounded-0" type="text" [(ngModel)]="taskName"  name="task" required></td>
+                <td><input class="form-control rounded-0" type="text" [(ngModel)]="taskName"  name="task" ></td>
                 <td>
                   <input class="form-control rounded-0"  [(ngModel)]="time" [ngxTimepicker]="picker" name="time">
                   <!--[disabled]="row.verified && !row.editMode" -->
@@ -56,21 +60,12 @@
                   <th scope="col"></th>
                 </tr>
                 </thead>
-<!--                <tbody>-->
-<!--                <tr *ngFor="let task of tasks; let i = index">-->
-<!--                  <td>{{i+1}}</td>-->
-<!--                  <td>{{task.taskName}}</td>-->
-<!--                  <td>{{task.time}}</td>-->
-<!--                  <td>-->
-<!--                    <button type="button" class="btn btn-danger btn-delete" (click)="deleteTaskDetails()">Delete</button>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
                 <tbody>
                 <tr *ngFor="let task of taskListForm.tasks; let i = index">
                   <td>{{i+1}}</td>
                   <td>{{task.taskName}}</td>
                   <td>{{task.time}}</td>
+
                   <td>
                     <button type="button" class="btn btn-danger btn-delete" (click)="deleteTaskDetails(i)">Delete</button>
                   </td>
@@ -80,13 +75,9 @@
               </table>
             </div>
 
-
             <div>
-              <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Submit</button>
+              <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger">Submit</button>
             </div>
-
-
-
 
           </form>
 
@@ -96,167 +87,3 @@
   </div>
 </div>
 
-
-<!-- Existing form code... -->
-
-
-<!-- Display submitted task lists -->
-<!--<div *ngFor="let submittedTask of submittedTaskLists; let i = index">-->
-<!--  <div class="container py-5">-->
-<!--    <div class="row">-->
-<!--      <div class="col-lg-7 mx-auto">-->
-<!--        <div class="card rounded-0 border-0 shadow">-->
-<!--          <div class="card-body p-5">-->
-<!--            &lt;!&ndash;  Bootstrap table&ndash;&gt;-->
-<!--            <div class="table-responsive">-->
-<!--              <h2>Task List Template</h2>-->
-<!--              <p><strong>Task List Name:</strong> {{ submittedTask.name }}</p>-->
-
-<!--              <table class="table">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                  <th scope="col">#</th>-->
-<!--                  <th scope="col">Task Name</th>-->
-<!--                  <th scope="col">Time</th>-->
-<!--                  <th scope="col">Send Reminders</th>-->
-<!--                  <th scope="col">Any special Note</th>-->
-
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr *ngFor="let row of submittedTask.tasks; let j = index">-->
-<!--                  <td>{{ j + 1 }}</td>-->
-<!--                  <td>{{ row.name }}</td>-->
-<!--                  <td>{{ row.time }}</td>-->
-<!--                  <td>{{ row.reminders }}</td>-->
-<!--                  <td>{{ row.anynote }}</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--              </table>-->
-
-<!--              <div class="d-flex justify-content-between">-->
-<!--                &lt;!&ndash; Add Date Button &ndash;&gt;-->
-<!--                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDateModal">Add Date</button>-->
-
-<!--                &lt;!&ndash; Update Button &ndash;&gt;-->
-<!--                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>-->
-<!--              </div>-->
-
-<!--              &lt;!&ndash; Add Date Modal &ndash;&gt;-->
-<!--              <div class="modal fade" id="addDateModal" tabindex="-1" aria-labelledby="addDateModalLabel" aria-hidden="true">-->
-<!--                <div class="modal-dialog">-->
-<!--                  <div class="modal-content">-->
-<!--                    &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--                    <div class="modal-header">-->
-<!--                      <h5 class="modal-title" id="addDateModalLabel">Add Date</h5>-->
-<!--                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Modal Body &ndash;&gt;-->
-<!--                    <div class="modal-body">-->
-<!--                      <form>-->
-<!--                        <div class="mb-3">-->
-<!--                          <label for="dateInput" class="form-label">Select a Date:</label>-->
-<!--                          <input type="date" class="form-control" id="dateInput" name="dateInput">-->
-<!--                        </div>-->
-<!--                      </form>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Modal Footer &ndash;&gt;-->
-<!--                    <div class="modal-footer">-->
-<!--                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>-->
-<!--                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Save</button>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-
-
-
-<!--              &lt;!&ndash; Update Modal &ndash;&gt;-->
-<!--              &lt;!&ndash; Add Date Modal &ndash;&gt;-->
-<!--              <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalModalLabel" aria-hidden="true">-->
-<!--                <div class="modal-dialog modal-dialog-centered modal-lg"> &lt;!&ndash; Use 'modal-lg' for larger width &ndash;&gt;-->
-<!--                  <div class="modal-content">-->
-<!--                    &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--                    <div class="modal-header">-->
-<!--                      <h5 class="modal-title" id="updateModalModalLabel">Update Task List</h5>-->
-<!--                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Modal Body &ndash;&gt;-->
-<!--                    <div class="modal-body">-->
-<!--                      <table class="table">-->
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                          <th scope="col">#</th>-->
-<!--                          <th scope="col">Task Name</th>-->
-<!--                          <th scope="col">Time</th>-->
-<!--                          <th scope="col">Send Reminders</th>-->
-<!--                          <th scope="col">Any special Note</th>-->
-
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                          <td>1</td>-->
-<!--                          <td><input type="text" value="task"></td>-->
-<!--                          <td><input type="text" value="12.00AM"></td>-->
-<!--                          <td>-->
-<!--                            <label>-->
-<!--                              <input type="checkbox">-->
-<!--                            </label>-->
-<!--                          </td>-->
-<!--                          <td>-->
-<!--                            <input type="text">-->
-<!--                          </td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                          <td>2</td>-->
-<!--                          <td><input type="text" value="task"></td>-->
-<!--                          <td><input type="text" value="12.00AM"></td>-->
-<!--                          <td>-->
-<!--                            <label>-->
-<!--                              <input type="checkbox">-->
-<!--                            </label>-->
-<!--                          </td>-->
-<!--                          <td>-->
-<!--                            <input type="text">-->
-<!--                          </td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                          <td>3</td>-->
-<!--                          <td><input type="text" value="task"></td>-->
-<!--                          <td><input type="text" value="12.00AM"></td>-->
-<!--                          <td>-->
-<!--                            <label>-->
-<!--                              <input type="checkbox">-->
-<!--                            </label>-->
-<!--                          </td>-->
-<!--                          <td>-->
-<!--                            <input type="text">-->
-<!--                          </td>-->
-<!--                        </tr>-->
-
-
-
-<!--                        </tbody>-->
-<!--                      </table>-->
-
-
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Modal Footer &ndash;&gt;-->
-<!--                    <div class="modal-footer">-->
-<!--                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>-->
-<!--                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Update</button>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!-- Existing form code... -->

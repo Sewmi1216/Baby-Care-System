@@ -45,6 +45,7 @@
     "ng-angular-popup": "^0.4.7",
     "ngx-bootstrap": "^11.0.2",
     "ngx-cookie-service": "^16.0.1",
+    "ngx-datepicker": "^0.0.0",
     "ngx-material-timepicker": "^13.1.1",
     "randombytes": "^2.1.0",
     "rxjs": "~7.8.0",
