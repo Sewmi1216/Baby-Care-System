@@ -5,5 +5,7 @@ const userController =require("../controllers/UserController")
 
 router.route('/login').post(userController.login);
 router.route('/logout').get(userController.logout);
-router.route('forgotPassword/:token').patch(userController.forgotPassword);
+router.route('/forgotPassword/:token').post(userController.forgotPassword);
+router.route('/resetPassword').post(userController.resetPassword);
+
 module.exports = router;

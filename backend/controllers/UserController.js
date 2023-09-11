@@ -57,12 +57,24 @@ const transporter = nodemailer.createTransport({
         pass: 'ucsc@2023', // your email password
     },
 });
+
+// Generate a unique reset token
+function generateResetToken() {
+    const crypto = require('crypto');
+    return crypto.randomBytes(20).toString('hex');
+
+}
+
+
+
 const sendResetPasswordEmail = (userEmail, resetToken) => {
     const mailOptions = {
         from: '3rdyeargroupproject2023@gmail.com', // your email address
         to: userEmail, // recipient's email address
         subject: 'Password Reset',
-        text: `Click the following link to reset your password: http://example.com/reset-password?token=${resetToken}`,
+        html: `<p>We have received a password reset request. Please use the following link to reset your password:</p>
+              <p><a href="http://example.com/reset-password?token=${resetToken}">Reset Password</a></p>
+              <p>This Reset Password link will be valid only for a limited time.</p>`,
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -81,12 +93,10 @@ const forgotPassword = (req,res) =>{
 
         // Generate a unique reset token (you can implement this as needed)
         const resetToken = generateResetToken();
-const messege =`We have Recieved a password reset reqest.please use the below link to reset your password
-
-
- ${resetURL}\n\n.This Reset Password link will be valid only for limited time`
-        // In a real application, you would save the reset token and expiration time to a database
-        // and associate it with the user's account for later verification.
+        // Save the reset token and expiration time to the user document in the database
+        user.resetToken = resetToken;
+        user.resetTokenExpiration = Date.now() + 3600000; // Token valid for 1 hour (adjust as needed)
+        user.save();
 
         // Send the reset password email to the user
         sendResetPasswordEmail(email, resetToken);
@@ -96,28 +106,56 @@ const messege =`We have Recieved a password reset reqest.please use the below li
     });
 };
 
+// Endpoint to handle password reset
+const resetPassword = (req, res) => {
+    const resetToken = req.params.token; // Extract the token from the URL
+    const password1 = req.body.password1;
+    const password2 = req.body.password2;
 
-// Generate a unique reset token
-function generateResetToken() {
-    const crypto = require('crypto');
-    return crypto.randomBytes(20).toString('hex');
+    if (password1 !== password2) {
+        return res.status(400).json({ msg: 'Passwords do not match' });
+    }
+
+    User.findOne({
+        resetToken: resetToken,
+        resetTokenExpiration: { $gt: Date.now() }, // Token should be valid (not expired)
+    }).then((user) => {
+        if (!user) return res.status(400).json({ msg: 'Invalid or expired reset token' });
+
+        // Hash the new password
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(password1, salt, (err, hash) => {
+                if (err) throw err;
+
+                // Update the user's password in the database
+                user.password = hash;
+                user.resetToken = undefined; // Clear the reset token and expiration
+                user.resetTokenExpiration = undefined;
+                user.save();
+
+                // Respond to the client with a success message
+                res.status(200).json({ message: 'Password reset successful.' });
+            });
+        });
+    });
+};
 
 
 
-}
 
 
 
 
+            module.exports = {
+                login,
+                logout,
+                forgotPassword,
+                transporter,
+                sendResetPasswordEmail,
+                resetPassword,
 
 
 
-module.exports = {
-    login,
-    logout,
-    forgotPassword,
-    transporter,
-    sendResetPasswordEmail,
+        }
 
-}
 
