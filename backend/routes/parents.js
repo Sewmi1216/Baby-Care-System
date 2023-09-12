@@ -17,13 +17,14 @@ router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBab
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentController.deleteRequestForm);
-
+router.route("/viewParameters/:ageGroup").get(authJwt.verifyParent,parentController.viewParameters);
 
 //create
 router.route('/addParent').post(parentController.addParent);
 //router.route('/addTask').post(parentController.addTask);
 // router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
+//  router.route('/fillGrowthParameters').post(parentController.completeParameter);
 
 router.route('/addTaskList').post(parentController.addTask);
 router.route('/addComplaint').post(parentController.addComplaint);

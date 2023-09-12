@@ -14,6 +14,8 @@ let Complaint = require("../models/Complaint");
 let Feedback = require("../models/feedback");
 const Babysitter = require("../models/babysitter");
 
+let GrowthParameters = require("../models/GrowthParameters");
+
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
     console.log('access-token:', token);
@@ -403,6 +405,21 @@ const getRequestForms = async(req, res) => {
     }
 }
 
+// fetching parameters, according to user choose age Group
+const viewParameters = async (req, res) => {
+    try {
+        const ageGroup = req.params.ageGroup; // Use req.params, not req.param
+        console.log(ageGroup);
+
+        const parameters = await GrowthParameters.find({ ageGroup: ageGroup });
+
+        res.json(parameters);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 module.exports = {
     addParent,
     addTask,
@@ -419,5 +436,6 @@ module.exports = {
     viewParentProfile,
     getBabysitters,
     getBabysitter,
-    getRequestForms
+    getRequestForms,
+    viewParameters
 };
