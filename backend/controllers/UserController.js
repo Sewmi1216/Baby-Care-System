@@ -73,8 +73,7 @@ const sendResetPasswordEmail = (userEmail, resetToken) => {
         to: userEmail, // recipient's email address
         subject: 'Password Reset',
         html: `<p>We have received a password reset request. Please use the following link to reset your password:</p>
-              <p><a href="http://example.com/reset-password?token=${resetToken}">Reset Password</a></p>
-              <p>This Reset Password link will be valid only for a limited time.</p>`,
+              <p><a href="http://example.com/reset-password?token=${resetToken}">Reset Password</a></p>`,
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
