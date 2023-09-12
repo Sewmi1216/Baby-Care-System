@@ -27,8 +27,9 @@ router.route('/addParent').post(parentController.addParent);
 /*Task lists related routes...*/
 
 router.route('/addTaskList').post(authJwt.verifyParent, parentController.addTaskList);
+router.route('/getAllTaskListTemplates/:id').get(authJwt.verifyParent, parentController.getAllTaskListTemplates);
 
-router.route('/getTaskList').get(parentController.getTaskList);
+//router.route('/getTaskList').get(parentController.getTaskList);
 //router.route('/updateTaskList/:id').put(parentController.updateTaskList);
 //router.route('/deleteTaskList/:id').delete(parentController.deleteTaskList);
 

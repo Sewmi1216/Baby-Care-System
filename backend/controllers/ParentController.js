@@ -135,59 +135,29 @@ const addTaskList = async (req, res) => {
 };
 
 
+const getAllTaskListTemplates = async(req,res)=>{
+    try{
+        let userId = req.params.id;
+        // console.log(userId);
 
+        const taskListForms = await TaskListForm.find({parent: userId});
+        // console.log(taskListAllTemplates);
 
-/* Get task list function */
-const  getTaskList = async (req,res)=>{ //get today task list
-    try {
-        // 1.
-        const currentDate = new Date(); // variable that holds current date
-        const formattedCurrentDate = currentDate.toISOString().split('T')[0];
-        // then convert date and time to ISO 8601 date string format?
-        // then Retrieve all task lists from the database using current date
-        const taskLists = await TaskList.find({ date: formattedCurrentDate});
-        console.log(`${formattedCurrentDate}: `, taskLists); // print it
-
-        // check if any task list were found ,if no
-        if (taskLists.length === 0) {
-            return res.status(404).json({ message: 'No task lists found' });
-        }else{ // if yes
-            console.log(`${formattedCurrentDate}: `, taskLists);
-            return  res.status(200).json(taskLists);
+        if(!taskListForms || taskListForms.length === 0)
+        {
+            res.status(404).send({status: "No task list added previously."});
         }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'An error occurred' }); }
-
-    };
-/*
-const addTask = async (req, res) => {
-    const {tasklistName, task} = req.body;
-    const parentId = req.session.user.id;
-    {
-        console.log(parentId)
+        else{
+            res.status(200).send({status: "All templates", taskListForms});
+        }
     }
+    catch(err){
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all templates", error: err.message });
+    }
+}
 
-    const newTaskList = new TaskList({
-        tasklistName,
-        parent: parentId,
-        task,
-    });
 
-
-    await newTaskList.save()
-        .then(async (taskList) => {
-            // Add the task list to the parent's taskLists array
-            await Parent.findByIdAndUpdate(parentId, {
-                $push: {taskLists: taskList._id},
-            });
-
-            res.status(200).send({status: "Task list is added", taskList});
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with the task list", error: err.message});
-        });*/
 
 
 
@@ -482,9 +452,9 @@ const getRequestForms = async(req, res) => {
 }
 module.exports = {
     addParent,
-    //addTask,
+    //addTask,f
     addTaskList,
-    getTaskList,
+    getAllTaskListTemplates,
     updateTask,
     deleteTask,
     addRequestForm,

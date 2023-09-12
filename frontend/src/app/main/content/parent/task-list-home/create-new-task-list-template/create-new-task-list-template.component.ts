@@ -5,6 +5,7 @@ import { NgToastService } from "ng-angular-popup";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
 
+
 interface TaskListItems {
   taskName: string;
   time: string;
@@ -20,6 +21,9 @@ interface TaskListForm {
   //Babysitter: string;
 }
 
+
+
+
 @Component({
   selector: 'app-create-new-task-list-template',
   templateUrl: './create-new-task-list-template.component.html',
@@ -27,6 +31,16 @@ interface TaskListForm {
 })
 
 export class CreateNewTaskListTemplateComponent {
+
+  // fetch data initialise
+  //templates:any[] = [];
+  taskListForms:any[] = [];
+  date:string|null = null;
+  taskListName:string = '';
+  taskDetails:any[] = [];
+
+
+
   // babysitterProfile = {
   //   _id: '',
   //   age: '',
@@ -50,6 +64,23 @@ export class CreateNewTaskListTemplateComponent {
 
   @ViewChild('taskListFormForm', { static: true }) public taskListFormForm!: NgForm;
 
+  //display task list templates
+  // taskListTemplates: any[] = [];
+  // selectedTaskList: string = '';
+  // name : string = '';
+  // tasksdetails:any[] = [];
+  // date : string | null = null;
+
+  // taskListTemplates: TaskListTemplate[] = [];
+  // selectedTaskList: TaskListTemplate | null = null;
+
+
+  // templates= {
+  //   taskListName:'',
+  //   tasks:[],
+  //   date:''
+  // };
+
   //babysitterId: string | null = null;
   taskListForm: TaskListForm = {
     taskListName: '',
@@ -60,10 +91,19 @@ export class CreateNewTaskListTemplateComponent {
 
   private userId: any;
   nameOfTaskList: string = '';
-  date: string | null = null;
+  //date: string | null = null;
   tasks: any[] = [];
   taskName: string | null = null;
   time: string | null = null;
+
+  // task list templates as an empty array
+  //taskListTemplates:any[] = [];
+
+
+
+
+
+  // taskListTemplates: TaskListTemplate[] = [];
 
 
   // submissionStatus: string | null = null; // To track submission status
@@ -79,31 +119,9 @@ export class CreateNewTaskListTemplateComponent {
   ) { }
 
   ngOnInit(): void {
-    // this.route.params.subscribe(params => {
-    //   this.babysitterId = params['babysitter_id'];
-    //   console.log(this.babysitterId);
-    //   this.getBabysitter();
-    // });
-  }
 
-  // getBabysitter() {
-  //   const userJSON = localStorage.getItem('user');
-  //   console.log(this.babysitterId);
-  //   if (userJSON !== null) {
-  //     this.parentService.getBabysitter(this.babysitterId).subscribe(
-  //       (response) => {
-  //         this.babysitterProfile = response.babysitter;
-  //         console.log(this.babysitterProfile)
-  //         this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
-  //         console.log(this.babysitterProfile);
-  //       },
-  //       (error) => {
-  //         console.log(localStorage.getItem('user'))
-  //         console.error('Error fetching babysitters:', error);
-  //       }
-  //     )
-  //   }
-  // }
+    this.getTaskListTemplate();
+  }
 
   deleteTaskDetails(index: number) {
     if (index >= 0 && index < this.taskListForm.tasks.length) {
@@ -130,8 +148,10 @@ export class CreateNewTaskListTemplateComponent {
         (data) => {
           console.log(data);
           console.log("Registration successful:", data);
-          this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
+          this.toast.success({detail:"SUCCESS",summary:'Task List added successfully', position:'topCenter'});
           console.log("Successfully");
+
+
         },
         (err) => {
           this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
@@ -174,5 +194,43 @@ export class CreateNewTaskListTemplateComponent {
       alert("Error: Task name and time are required.");
     }
   }
+
+  getTaskListTemplate() {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getTaskListTemplates(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          console.log(response); //- this is working
+           //this.templates = response.templates;
+          this.taskListForms = response.taskListForms;
+           console.log(response.taskListForms);
+          for(const taskListForm of this.taskListForms){
+            this.date = taskListForm.date;
+            this.taskListName = taskListForm.taskListName;
+            console.log(this.taskListName);
+            this.taskDetails = taskListForm.tasks;
+            console.log(this.taskDetails);
+          }
+        },
+        (error) => {
+          console.error('Error fetching task list templates:', error);
+        }
+      )
+    }
+  }
+
+  addDate(){
+
+  }
+
+  deleteTemplate(){
+
+  }
+
+
+  updateTemplate(){
+
+  }
+
 
 }
