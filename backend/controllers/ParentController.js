@@ -408,10 +408,11 @@ const getRequestForms = async(req, res) => {
 // fetching parameters, according to user choose age Group
 const viewParameters = async (req, res) => {
     try {
-        const ageGroup = req.params.ageGroup; // Use req.params, not req.param
-        console.log(ageGroup);
+        let ageGroupId = req.params.ageGroup;
 
-        const parameters = await GrowthParameters.find({ ageGroup: ageGroup });
+        console.log("ageGroup:",ageGroupId);
+
+        const parameters = await GrowthParameters.find({ ageGroup : ageGroupId});
 
         res.json(parameters);
     } catch (err) {

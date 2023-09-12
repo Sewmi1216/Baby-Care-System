@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const {stringify} = require("nodemon/lib/utils"); //connect the database
+// const {stringify} = require("nodemon/lib/utils"); //connect the database
 const schema = mongoose.Schema; //create schema
 
 //generate GrowthParameterSchema
 const GrowthParameterSchema = new schema({
     ageGroup: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'AgeGroup' // Reference to the 'Parent' model
     },
 
     activity: {
