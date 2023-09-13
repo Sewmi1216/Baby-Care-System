@@ -1,0 +1,14 @@
+
+ul > li{
+  font-weight: bold;font-size: 20px;margin-left: 75px;color: #e0ddd8;
+}
+/*.btn{*/
+/*  background-color: #877DCB;*/
+/*  color: white;*/
+/*}*/
+@media (max-width: 991px){
+  .sidebar{
+    background-color: rgba(255, 255, 255, 0.57);
+    backdrop-filter: blur(10px);
+  }
+}

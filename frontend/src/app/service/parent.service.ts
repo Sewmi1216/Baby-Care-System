@@ -44,7 +44,7 @@ export class ParentService {
   getBabies(user): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+      'Authorization': `${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
     console.log('Request headers:', headers);
