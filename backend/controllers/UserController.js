@@ -42,19 +42,45 @@ const logout = (req, res) => {
         res.send("Logged out successfully");
     });
 }
-
-const forgotPassword = (req, res) => {
-    const email = req.body.email;
-
-    User.findOne({ email: email }).then((user) => {
-        if (!user) return res.status(400).json({ msg: "User does not exist" });
-
-
-        // Respond to the client with a success message
-        res.status(200).json({ message: 'Password reset email sent successfully.' });
-    });
-};
-
+//
+// const forgotPassword = (req, res) => {
+//     const email = req.body.email;
+//
+//     User.findOne({ email: email }).then((user) => {
+//         if (!user) return res.status(400).json({ msg: "User does not exist" });
+//
+//
+//         // Respond to the client with a success message
+//         res.status(200).json({ message: 'Password reset email sent successfully.' });
+//     });
+// };
+//
+// // Nodemailer setup
+// const transporter = nodemailer.createTransport({
+//     service: 'Gmail',
+//     auth: {
+//         user: '3rdyeargroupproject2023@gmail.com',
+//         pass: 'ucsc@2023',
+//     },
+// });
+//
+// const sendResetPasswordEmail = (userEmail, resetToken) => {
+//     const mailOptions = {
+//         from: '3rdyeargroupproject2023@gmail.com',
+//         to: userEmail,
+//         subject: 'Password Reset',
+//         html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
+//               <p><a href="http://localhost:8070/reset-password">Reset Password</a></p>`,
+//     };
+//
+//     transporter.sendMail(mailOptions, (error, info) => {
+//         if (error) {
+//             console.error('Error sending password reset email:', error);
+//         } else {
+//             console.log('Password reset email sent:', info.response);
+//         }
+//     });
+// };
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -64,7 +90,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const sendResetPasswordEmail = (userEmail, resetToken) => {
+const sendResetPasswordEmail = (userEmail) => {
     const mailOptions = {
         from: '3rdyeargroupproject2023@gmail.com',
         to: userEmail,
@@ -82,6 +108,22 @@ const sendResetPasswordEmail = (userEmail, resetToken) => {
     });
 };
 
+const forgotPassword = (req, res) => {
+    const email = req.body.email;
+
+    // Check if the user exists
+    User.findOne({ email: email }).then((user) => {
+        if (!user) {
+            return res.status(400).json({ msg: "User does not exist" });
+        }
+
+        // Send the reset password email to the user
+        sendResetPasswordEmail(email);
+
+        // Respond to the client with a success message
+        res.status(200).json({ message: 'Password reset email sent successfully.' });
+    });
+};
 
 
 module.exports = {
