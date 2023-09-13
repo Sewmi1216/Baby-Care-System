@@ -43,38 +43,36 @@ const logout = (req, res) => {
     });
 }
 
+const forgotPassword = (req, res) => {
+    const email = req.body.email;
+
+    User.findOne({ email: email }).then((user) => {
+        if (!user) return res.status(400).json({ msg: "User does not exist" });
 
 
+        // Respond to the client with a success message
+        res.status(200).json({ message: 'Password reset email sent successfully.' });
+    });
+};
 
-
-
-//forgot password
-
+// Nodemailer setup
 const transporter = nodemailer.createTransport({
-    host: 'Gmail',
+    service: 'Gmail',
     auth: {
-        user: '3rdyeargroupproject2023@gmail.com', // your email address
-        pass: 'ucsc@2023', // your email password
+        user: '3rdyeargroupproject2023@gmail.com',
+        pass: 'ucsc@2023',
     },
 });
 
-// Generate a unique reset token
-function generateResetToken() {
-    const crypto = require('crypto');
-    return crypto.randomBytes(20).toString('hex');
-
-}
-
-
-
 const sendResetPasswordEmail = (userEmail, resetToken) => {
     const mailOptions = {
-        from: '3rdyeargroupproject2023@gmail.com', // your email address
-        to: userEmail, // recipient's email address
+        from: '3rdyeargroupproject2023@gmail.com',
+        to: userEmail,
         subject: 'Password Reset',
-        html: `<p>We have received a password reset request. Please use the following link to reset your password:</p>
-              <p><a href="http://example.com/reset-password?token=${resetToken}">Reset Password</a></p>`,
+        html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
+              <p><a href="http://localhost:8070/reset-password">Reset Password</a></p>`,
     };
+
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.error('Error sending password reset email:', error);
@@ -83,78 +81,13 @@ const sendResetPasswordEmail = (userEmail, resetToken) => {
         }
     });
 };
-const forgotPassword = (req,res) =>{
-    const email = req.body.email;
 
 
-    User.findOne({email: email}).then((user) => {
-        if (!user) return res.status(400).json({msg: "User does not exist"});
 
-        // Generate a unique reset token (you can implement this as needed)
-        const resetToken = generateResetToken();
-        // Save the reset token and expiration time to the user document in the database
-        user.resetToken = resetToken;
-        user.resetTokenExpiration = Date.now() + 3600000; // Token valid for 1 hour (adjust as needed)
-        user.save();
-
-        // Send the reset password email to the user
-        sendResetPasswordEmail(email, resetToken);
-
-        // Respond to the client with a success message
-        res.status(200).json({ message: 'Password reset email sent successfully.' });
-    });
+module.exports = {
+    login,
+    logout,
+    forgotPassword,
+    transporter,
+    sendResetPasswordEmail,
 };
-
-// Endpoint to handle password reset
-const resetPassword = (req, res) => {
-    const resetToken = req.params.token; // Extract the token from the URL
-    const password1 = req.body.password1;
-    const password2 = req.body.password2;
-
-    if (password1 !== password2) {
-        return res.status(400).json({ msg: 'Passwords do not match' });
-    }
-
-    User.findOne({
-        resetToken: resetToken,
-        resetTokenExpiration: { $gt: Date.now() }, // Token should be valid (not expired)
-    }).then((user) => {
-        if (!user) return res.status(400).json({ msg: 'Invalid or expired reset token' });
-
-        // Hash the new password
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(password1, salt, (err, hash) => {
-                if (err) throw err;
-
-                // Update the user's password in the database
-                user.password = hash;
-                user.resetToken = undefined; // Clear the reset token and expiration
-                user.resetTokenExpiration = undefined;
-                user.save();
-
-                // Respond to the client with a success message
-                res.status(200).json({ message: 'Password reset successful.' });
-            });
-        });
-    });
-};
-
-
-
-
-
-
-
-            module.exports = {
-                login,
-                logout,
-                forgotPassword,
-                transporter,
-                sendResetPasswordEmail,
-                resetPassword,
-
-
-
-        }
-
-
