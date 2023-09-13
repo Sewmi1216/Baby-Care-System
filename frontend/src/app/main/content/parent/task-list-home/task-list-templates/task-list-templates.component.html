@@ -1,0 +1,62 @@
+
+<div class="container py-5" *ngFor="let taskList of taskListForms; let i = index">
+  <div class="row" >
+    <div class="col-lg-7 mx-auto">
+      <!--      <div class="col-lg-7 mx-auto" *ngFor="let taskList of taskListForms; let i = index">-->
+      <div class="card rounded-0 border-0 shadow">
+        <!--        <div class="card rounded-0 border-0 shadow" *ngFor="let taskList of taskListForms; let i = index">-->
+        <div class="card-body p-5">
+
+          <!--          <h2>Task List Name: {{ taskList.listName | json }}</h2>-->
+          <h2>Task List Name:{{taskList.listName}}</h2>
+
+
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th>#</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Time</th>
+                <th scope="col">Send remainders</th>
+                <th scope="col">Any note</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let task of taskList.tasks;let k=index">
+                <td>{{k+1}}</td>
+                <td>
+                  <input [ngModel]="task.taskName" [disabled]="true" />
+                </td>
+                <td>
+                  <input [ngModel]="task.time" [disabled]="true" />
+                </td>
+                <td>
+                  <input type="checkbox" [ngModel]="task.isRemainder" [disabled]="true" />
+                </td>
+                <td>
+                  <input type="text" [ngModel]="task.specialNote" [disabled]="true" />
+                </td>
+              </tr>
+              </tbody>
+
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-danger" (click)="deleteTemplate()">Delete</button>
+            <button class="btn btn-primary" (click)="updateTemplate()">Update</button>
+            <button class="btn btn-success" (click)="addDate()">Add Date</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

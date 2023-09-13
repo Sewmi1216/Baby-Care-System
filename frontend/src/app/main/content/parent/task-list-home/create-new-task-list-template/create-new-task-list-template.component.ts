@@ -123,6 +123,15 @@ export class CreateNewTaskListTemplateComponent {
     this.getTaskListTemplate();
   }
 
+
+  isDropdownOpen = false;
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+
+
   deleteTaskDetails(index: number) {
     if (index >= 0 && index < this.taskListForm.tasks.length) {
       this.taskListForm.tasks.splice(index, 1);
@@ -130,7 +139,15 @@ export class CreateNewTaskListTemplateComponent {
     }
   }
 
-  onSubmit() {
+  navigateToTaskList() {
+    this.router.navigate(['/parent/task_list_templates']);
+  }
+
+  navigateToTemplatesPage(){
+    this.router.navigate(['parent/task_list_templates']);
+  }
+
+  saveAsTemplate() {
 
     this.saveTaskListName();
     this.saveTaskListDate();
@@ -219,18 +236,19 @@ export class CreateNewTaskListTemplateComponent {
     }
   }
 
-  addDate(){
+
+
+  saveAsTaskList(){
+
 
   }
 
-  deleteTemplate(){
-
-  }
+  openTaskListModal(){}
 
 
-  updateTemplate(){
 
-  }
+
+
 
 
 }

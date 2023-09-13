@@ -118,6 +118,9 @@ import {
   RequestedBabysittersMoreComponent
 } from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
 import {parentGuard} from "./guard/parent.guard";
+import {
+  TaskListTemplatesComponent
+} from "./main/content/parent/task-list-home/task-list-templates/task-list-templates.component";
 
 
 
@@ -217,6 +220,10 @@ const routes: Routes = [
       {
         path: 'create_new_task_list',
         component: CreateNewTaskListTemplateComponent
+      },
+      {
+        path:'task_list_templates',
+        component: TaskListTemplatesComponent
       },
       {
 

@@ -1,10 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {ParentService} from "../../../../service/parent.service";
-
-
-import { HttpClient } from "@angular/common/http";
-// import{ MatTabsModule} from "@angular/material/tabs";
+import{ MatTabsModule} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-task-list-home',
@@ -14,21 +9,18 @@ import { HttpClient } from "@angular/common/http";
 })
 export class TaskListHomeComponent implements OnInit {
 
-  // taskList[];
+
+  constructor() { }
+
+  ngOnInit() {}
 
 
-  constructor() { // when app is booting this will create
-    // when we call component at first time then it will run (only that time)
+  isActive: boolean = false;
 
+  toggleActive(): void {
+    this.isActive = !this.isActive;
   }
-  ngOnInit() { // when loading content page ngOnInit() will run  initially
-    this.getTaskList();
-  }
 
-  getTaskList(){
-
-  }
 
 
 }
-

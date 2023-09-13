@@ -3,19 +3,11 @@
     <div class="col-lg-7 mx-auto">
       <div class="card rounded-0 border-0 shadow">
         <div class="card-body p-5">
-          <form #taskListFormForm="ngForm" (ngSubmit)="onSubmit()" id="taskListForm" >
-          <!--  Bootstrap table-->
-
-
+          <form #taskListFormForm="ngForm"  id="taskListForm" >
           <div class="table-responsive">
-
             <h2>Create Task list</h2>
             <label for="listName">Task List Name:</label>
             <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="nameOfTaskList" required>
-
-<!--            <label for="date">Date:</label>-->
-<!--            <input class="form-control rounded-0" type="text" id="date" name="date" [(ngModel)]="date" >-->
-
 
             <table class="table">
               <thead>
@@ -32,7 +24,6 @@
                 <td><input class="form-control rounded-0" type="text" [(ngModel)]="taskName"  name="task" ></td>
                 <td>
                   <input class="form-control rounded-0"  [(ngModel)]="time" [ngxTimepicker]="picker" name="time">
-                  <!--[disabled]="row.verified && !row.editMode" -->
                   <ngx-material-timepicker #picker></ngx-material-timepicker>
                 </td>
                 <td>
@@ -42,20 +33,15 @@
                   </button>
                   </div>
                 </td>
-                <!--   <td><button class="btn btn-danger rounded-0" (click)="deleteRow(i)"><i class="fa fa-trash"></i></button></td> -->
               </tr>
               </tbody>
-
             </table>
           </div>
-
-
 
             <div class="table-wrapper">
               <table class="table">
                 <thead>
                 <tr>
-                  <!-- <th scope="col">#</th> -->
                   <th>#</th>
                   <th scope="col">Task Name</th>
                   <th scope="col">Time</th>
@@ -72,88 +58,54 @@
                     <button type="button" class="btn btn-danger btn-delete" (click)="deleteTaskDetails(i)">
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
-
                   </td>
                 </tr>
                 </tbody>
-
               </table>
             </div>
+<!--            <div class="dropdown">-->
+<!--              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger"  >-->
+<!--                Save as <i class="fa fa-caret-down" aria-hidden="true"></i>-->
+<!--              </button>-->
+<!--              <div class="dropdown-content" [ngClass]="{ 'show': isDropdownOpen }">-->
+<!--                <a (click)="saveAsTemplate(); navigateToTemplatesPage()">Template</a>-->
+<!--&lt;!&ndash;                <a (click)="saveAsTaskList()" routerLink="parent/task_list_templates" >Task List</a>&ndash;&gt;-->
+<!--                <a>Task List</a>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div>
-              <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger">Submit</button>
+            <div class="d-flex justify-content-between mt-3">
+              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger" (click)="saveAsTemplate();navigateToTemplatesPage()">
+                Save as Template
+              </button>
+              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger" (click)="saveAsTaskList();openTaskListModal()"
+                      data-bs-toggle="modal" data-bs-target="#saveTaskListModal">
+                Save as Task List
+              </button>
             </div>
-
           </form>
-
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
 
+<div class="modal" id="saveTaskListModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-
-<div class="container py-5" *ngFor="let taskList of taskListForms; let i = index">
-  <div class="row" >
-    <div class="col-lg-7 mx-auto">
-<!--      <div class="col-lg-7 mx-auto" *ngFor="let taskList of taskListForms; let i = index">-->
-      <div class="card rounded-0 border-0 shadow">
-<!--        <div class="card rounded-0 border-0 shadow" *ngFor="let taskList of taskListForms; let i = index">-->
-        <div class="card-body p-5">
-
-<!--          <h2>Task List Name: {{ taskList.listName | json }}</h2>-->
-          <h2>Task List Name:{{taskList.listName}}</h2>
-
-
-          <div class="table-wrapper">
-            <table class="table">
-              <thead>
-              <tr>
-                <!-- <th scope="col">#</th> -->
-                <th>#</th>
-                <th scope="col">Task Name</th>
-                <th scope="col">Time</th>
-                <th scope="col">Send remainders</th>
-                <th scope="col">Any note</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let task of taskList.tasks;let k=index">
-                <td>{{k+1}}</td>
-                <td>
-                  <input [ngModel]="task.taskName" [disabled]="true" />
-                </td>
-                <td>
-                  <input [ngModel]="task.time" [disabled]="true" />
-                </td>
-                <td>
-                  <input type="checkbox" [ngModel]="task.isRemainder" [disabled]="true" />
-                </td>
-                <td>
-                  <input type="text" [ngModel]="task.specialNote" [disabled]="true" />
-                </td>
-              </tr>
-              </tbody>
-
-            </table>
-          </div>
-
-          <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-danger" (click)="deleteTemplate()">Delete</button>
-            <button class="btn btn-primary" (click)="updateTemplate()">Update</button>
-            <button class="btn btn-success" (click)="addDate()">Add Date</button>
-          </div>
-
-        </div>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Task List</h4>
+        <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
+
     </div>
   </div>
 
-</div>
 
+</div>
 
 
 
