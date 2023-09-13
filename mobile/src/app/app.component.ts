@@ -32,7 +32,7 @@ export class AppComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
    // await this.loadModel();
-    //this.analyzeCameraFrames();
+   //  this.analyzeCameraFrames();
     // this.socket = io('http://localhost:3000');
   }
 
@@ -57,22 +57,22 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  // async analyzeCameraFrames() {
-  //   const video = this.videoElement.nativeElement;
-  //
-  //   if (video.readyState === 4 && video.videoWidth > 0 && video.videoHeight > 0) {
-  //     const predictions: ObjectPrediction[] = await this.model.detect(video);
-  //     const babyDetection = predictions.find(prediction => prediction.class === 'person');
-  //     console.log('Predictions: ');
-  //     console.log(predictions);
-  //     if (!babyDetection) {
-  //       // Trigger alert logic and WebSocket event here
-  //       // You can emit a WebSocket event to notify the backend
-  //     }
-  //   }
-  //
-  //   requestAnimationFrame(() => this.analyzeCameraFrames());
-  // }
+  async analyzeCameraFrames() {
+    const video = this.videoElement.nativeElement;
+
+    if (video.readyState === 4 && video.videoWidth > 0 && video.videoHeight > 0) {
+      const predictions: ObjectPrediction[] = await this.model.detect(video);
+      const babyDetection = predictions.find(prediction => prediction.class === 'person');
+      console.log('Predictions: ');
+      console.log(predictions);
+      if (!babyDetection) {
+        // Trigger alert logic and WebSocket event here
+        // You can emit a WebSocket event to notify the backend
+      }
+    }
+
+    requestAnimationFrame(() => this.analyzeCameraFrames());
+  }
 
   stopCamera() {
     // @ts-ignore
