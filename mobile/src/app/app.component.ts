@@ -57,7 +57,6 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-
   // async analyzeCameraFrames() {
   //   const video = this.videoElement.nativeElement;
   //
