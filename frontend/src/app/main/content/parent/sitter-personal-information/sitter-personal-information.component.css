@@ -5,15 +5,14 @@
 } */
 
 .custom-card {
-  width: 100%;
-  max-width: 16rem;
+  width: 400px;
+  max-width: 48rem;
   background-color: white;
-  /*background-color: #BCE3E5;*/
-  text-align: center;
-
+  /* text-align: center; */
   padding: 10px;
   border-radius: 5px;
   margin: 10px;
+  gap:3rem;
   font-family: "Sofia Sans";
   font-weight: bold;
 }
@@ -35,13 +34,13 @@ div ,ul {
  justify-content: space-between;
 } */
 
-/*.left {*/
-/*  flex: 1;*/
-/*}*/
+.left {
+  flex: 1;
+}
 
-/*.right {*/
-/*  flex: 1;*/
-/*}*/
+.right {
+ flex: 1;
+}
 
 .container {
   display: flex;
@@ -49,14 +48,8 @@ div ,ul {
   align-items: center;
   padding: 10px;
   width: 100%;
-  /*background-color: #e0fcfd;*/
+  /* background-color: #e0fcfd; */
 
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .info-box,
@@ -77,11 +70,6 @@ div ,ul {
   margin-top: 0;
 }
 
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .custom-card h4 {
   margin: 0;
 }
@@ -160,4 +148,45 @@ h3{
   display: flex; /* Use flexbox */
   align-items: center; /* Vertically center the content */
   justify-content: center; /* Horizontally center the content */
+}
+
+.babysitter{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+  color: #39315d;
+  padding-left: 71px; /* Adjust padding for smaller screens */
+  padding-top: 18px; /* Adjust padding for smaller screens */ 
+  padding-bottom: 30px;
+}
+
+.personal-information{
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  gap:4rem
+}
+
+.form-control{
+  margin-bottom: 0.75rem;
+}
+
+.btn-primary{
+  background-color: #39315d ; 
+  border-radius: 15px ; 
+  margin-top: 2px;
+  border-color: #2d2746; 
+  width:100%;
+}
+
+.font-weight-bold{
+  margin-bottom: 0.25rem;
+}
+
+.age-gender, .con-nic, .religon-language{
+  display: flex;
+  flex-direction: row;
+  gap:4rem
 }

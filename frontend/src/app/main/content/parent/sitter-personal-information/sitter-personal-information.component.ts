@@ -44,7 +44,9 @@ export class SitterPersonalInformationComponent {
     email: '',
     phone: '',
     address: '',
-    nic: ''
+    nic: '',
+    religon: '',
+    language: '',
   };
 
   babysitterFullName: string | null = null;
