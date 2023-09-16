@@ -13,7 +13,8 @@ interface WorkExpectation {
 }
 
 interface BabyDetail {
-  age: number | null;
+  years: number | null;
+  months: number | null;
   gender: string | null;
 }
 
@@ -52,8 +53,8 @@ export class SitterPersonalInformationComponent {
   babysitterFullName: string | null = null;
 
   babysitter = {
+    years: '',
     age: '',
-    gender: '',
     image: '',
   };
 
@@ -74,7 +75,8 @@ export class SitterPersonalInformationComponent {
 
   
 
-  ageFieldValue: number | null = null; // Initialize here
+  yearsFieldValue: number | null = null; // Initialize here
+  monthsFieldValue: number | null = null;
   genderFieldValue: string | null = null;
   selectedDays: string[] = [];
   fromTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
@@ -105,20 +107,22 @@ export class SitterPersonalInformationComponent {
     }
   }
 
-  saveBabyDetail() {
-    if (this.ageFieldValue !== null && this.genderFieldValue !== null) {
-      const newBabyDetail: BabyDetail = {
-        age: this.ageFieldValue,
-        gender: this.genderFieldValue,
-      };
+  // saveBabyDetail() {
+  //   if (this.yearsFieldValue !== null && this.monthsFieldValue !== null && this.genderFieldValue !== null) {
+  //     const newBabyDetail: BabyDetail = {
+  //       years: this.yearsFieldValue,
+  //       months: this.monthsFieldValue,
+  //       gender: this.genderFieldValue,
+  //     };
 
-      this.requestForm.babyDetails.push(newBabyDetail);
+  //     this.requestForm.babyDetails.push(newBabyDetail);
 
-      // Clear the form fields after adding the details
-      this.ageFieldValue = null;
-      this.genderFieldValue = null;
-    }
-  }
+  //     // Clear the form fields after adding the details
+  //     this.yearsFieldValue = null;
+  //     this.monthsFieldValue = null;
+  //     this.genderFieldValue = null;
+  //   }
+  // }
 
   deleteBabyDetail(index: number) {
     if (index >= 0 && index < this.requestForm.babyDetails.length) {
@@ -148,16 +152,18 @@ export class SitterPersonalInformationComponent {
   }
 
   saveBabyDetails() {
-    if (this.ageFieldValue !== null && this.genderFieldValue !== null) {
+    if (this.yearsFieldValue !== null && this.yearsFieldValue !== null && this.genderFieldValue !== null) {
       const newBabyDetail: BabyDetail = {
-        age: this.ageFieldValue,
+        years: this.yearsFieldValue,
+        months: this.monthsFieldValue,
         gender: this.genderFieldValue,
       };
 
       this.requestForm.babyDetails.push(newBabyDetail);
 
       // Clear the form fields after adding the details
-      this.ageFieldValue = null;
+      this.yearsFieldValue = null;
+      this.monthsFieldValue = null;
       this.genderFieldValue = null;
 
       this.babydetail.push(newBabyDetail);
@@ -187,7 +193,7 @@ export class SitterPersonalInformationComponent {
   onSubmit() {
     this.saveWorkExpectations();
     this.saveSpecialNeeds();
-    this.saveBabyDetail();
+    // this.saveBabyDetail();
     this.requestForm.Babysitter = this.babysitterProfile._id;
     
     const userJSON = localStorage.getItem('user');

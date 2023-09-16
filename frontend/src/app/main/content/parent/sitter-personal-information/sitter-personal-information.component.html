@@ -61,36 +61,44 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Request BabySitter</h4>
+          <div class="request-babysitter">Request Babysitter</div>
           <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="container">
-          <div class="row">
             <p class="font-weight-bold title">Work Expectation - Time Duration per day</p>
-            <div *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
-              <ul class="list-group list-group-horizontal">
-                <li class="list-group-item" *ngIf="selectedDays[i] !== null">
-                  <input class="form-check-input me-1" type="checkbox" [value]="day" [id]="day + i" [name]="day + i"
-                    [(ngModel)]="selectedDays[i]" (change)="onCheckboxChange(day, i)">
-                  <label [for]="day + i">{{ day }}</label>
-                </li>
-                <li class="list-group-item" *ngIf="selectedDays[i] !== ''">
-                  <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime"  #fromTimeFieldInput="ngModel">
-                </li>
-                <li class="list-group-item" *ngIf="selectedDays[i] !== ''">
-                  <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime"  #toTimeFieldInput="ngModel">
-                </li>
-              </ul>
+            <div class="row">
+              <div class="col-md-4 form-topic">
+                <label class="form-label">Day</label>
+              </div>
+              <div class="col-md-4 form-topic">
+                <label class="form-label">From Time</label>
+              </div>
+              <div class="col-md-4 form-topic">
+                <label class="form-label">To Time</label>
+              </div>
             </div>
-
-                      
+            
+            <div class="row" *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
+              <div class="col-md-4">
+                <input class="form-check-input" type="checkbox" [value]="day" [id]="day + i" [name]="day + i" [(ngModel)]="selectedDays[i]" (change)="onCheckboxChange(day, i)">
+                <label class="form-check-label" [for]="day + i">{{ day }}</label>        
+              </div>
+              <div class="col-md-4">
+                <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime" *ngIf="selectedDays[i] !== ''" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime" *ngIf="selectedDays[i] !== ''" class="form-control form-control-right">
+              </div>
+            </div>
+         
             <p class="font-weight-bold title">Baby details</p>
               <div class="tables-container">
                 <div class="table-wrapper">
                   <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Age</th>
+                        <th scope="col">Years</th>
+                        <th scope="col">Months</th>
                         <th scope="col">Gender</th>
                         <th scope="col"></th>
                       </tr>
@@ -98,7 +106,10 @@
                     <tbody>
                       <tr>
                         <td>
-                          <input class="form-control rounded-0" type="number" [(ngModel)]="ageFieldValue" name="age" >
+                          <input class="form-control rounded-0" type="number"  name="ageYears" [(ngModel)] = "yearsFieldValue">
+                        </td>
+                        <td>
+                          <input class="form-control rounded-0" type="number"  name="ageMonths" [(ngModel)] = "monthsFieldValue">
                         </td>
                         <td>
                           <select id="" [(ngModel)]="genderFieldValue" name="genderField" aria-label="Gender Selection" style="height: 38px; width:100px">
@@ -109,7 +120,7 @@
                         <td>
                           <button type="button" class="btn btn-primary" (click)="saveBabyDetails()">Add</button>
                         </td>
-                      </tr>   
+                      </tr>                      
                     </tbody>
                   </table>
                 </div>
@@ -117,14 +128,16 @@
                   <table class="table">
                      <thead>
                         <tr>
-                          <th scope="col">Age</th>
+                          <th scope="col">Years</th>
+                          <th scope="col">Months</th>
                           <th scope="col">Gender</th>
                           <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let babydetail of babydetail; let i = index">
-                          <td>{{babydetail.age}}</td>
+                          <td>{{babydetail.years}}</td>
+                          <td>{{babydetail.months}}</td>
                           <td>{{babydetail.gender}}</td>
                           <td><button type="button" class="btn btn-danger btn-delete" (click)="deleteBabyDetail(i)">Delete</button></td>
                         </tr>
@@ -133,10 +146,9 @@
                   </div>
                 </div>
 
-                <p class="font-weight-bold title ">If there are any special needs..</p>
+                <p class="font-weight-bold title ">If there are any special needs</p>
                 <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds"></textarea>
                       
-          </div>
         </div>
 
             <div class="modal-footer" style="margin-top: 20px">
