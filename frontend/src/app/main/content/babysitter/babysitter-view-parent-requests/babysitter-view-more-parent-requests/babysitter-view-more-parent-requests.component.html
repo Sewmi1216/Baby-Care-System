@@ -1,8 +1,9 @@
+<div class="view-request"><span class="mb-0 text-sm" style="font-weight: bold;">{{parentName}}</span>'s Request Form</div>
+
 <div class="d-flex justify-content-center align-items-center" style="margin-top: 80px">
   <div class="custom-card">
     <div class="card">
       <div class="card-body">
-        <p class="topic"><span class="mb-0 text-sm" style="font-weight: bold;">{{parentName}}</span>'s Request Form<p>
 
         <div class="container">
           <p class="title">Work Expectation</p>
@@ -34,15 +35,19 @@
           <table class="table align-items-center my-table">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Age</th>
+                <th scope="col">years</th>
+                <th scope="col">Months</th>
                 <th scope="col">Gender</th>
               </tr>
             </thead>
           
             <tbody>
-              <tr *ngFor="let age of ages; let i = index" >
+              <tr *ngFor="let year of years; let i = index" >
                 <td>
-                  <span class="mb-0 text-sm">{{ age }}</span>
+                  <span class="mb-0 text-sm">{{ year }}</span>
+                </td>
+                <td>
+                  <span class="mb-0 text-sm">{{ months[i] }}</span>
                 </td>
                 <td>
                   <span class="mb-0 text-sm">{{ genders[i] }}</span>
