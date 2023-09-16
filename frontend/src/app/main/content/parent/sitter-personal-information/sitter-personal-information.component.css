@@ -219,6 +219,7 @@ h3{
 .form-check-input{
   margin-left: 2.25rem;
   margin-right: 0.75rem;
+  margin-top: 0.7rem;
 }
 
 .modal-content{
@@ -231,4 +232,8 @@ h3{
 
 .col-md-4{
   width: 30%;
+}
+
+.day{
+  margin-top: 0.5rem;
 }

@@ -107,22 +107,6 @@ export class SitterPersonalInformationComponent {
     }
   }
 
-  // saveBabyDetail() {
-  //   if (this.yearsFieldValue !== null && this.monthsFieldValue !== null && this.genderFieldValue !== null) {
-  //     const newBabyDetail: BabyDetail = {
-  //       years: this.yearsFieldValue,
-  //       months: this.monthsFieldValue,
-  //       gender: this.genderFieldValue,
-  //     };
-
-  //     this.requestForm.babyDetails.push(newBabyDetail);
-
-  //     // Clear the form fields after adding the details
-  //     this.yearsFieldValue = null;
-  //     this.monthsFieldValue = null;
-  //     this.genderFieldValue = null;
-  //   }
-  // }
 
   deleteBabyDetail(index: number) {
     if (index >= 0 && index < this.requestForm.babyDetails.length) {
@@ -189,36 +173,37 @@ export class SitterPersonalInformationComponent {
     }
   }
 
-  
   onSubmit() {
-    this.saveWorkExpectations();
-    this.saveSpecialNeeds();
-    // this.saveBabyDetail();
-    this.requestForm.Babysitter = this.babysitterProfile._id;
-    
-    const userJSON = localStorage.getItem('user');
-
-    if(userJSON !== null){
-      const userString: string = JSON.parse(userJSON);
-      // console.log(this.requestForm.babyDetails)
-      // console.log(this.userId);
-      console.log("Submitting form...");
-      console.log(this.requestForm);
-      this.parentService.addRequestForm(this.requestForm, userString).subscribe(
-        (data) => {
-          console.log("Registration successful:", data);
-          this.toast.success({detail:"SUCCESS",summary:'Request form added successfully', position:'topCenter'});
-          console.log("Successfully");
-        },
-        (err) => {
-          this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
-          console.log(`unsuccessful requestForm:${err}`, err);
-        }
-      )
-    }
-    else{
-      console.log("Error")
-      console.error("User data in localStorage is null.");
+    if(this.requestFormForm.valid){
+      this.saveWorkExpectations();
+      this.saveSpecialNeeds();
+      // this.saveBabyDetail();
+      this.requestForm.Babysitter = this.babysitterProfile._id;
+      
+      const userJSON = localStorage.getItem('user');
+  
+      if(userJSON !== null){
+        const userString: string = JSON.parse(userJSON);
+        // console.log(this.requestForm.babyDetails)
+        // console.log(this.userId);
+        console.log("Submitting form...");
+        console.log(this.requestForm);
+        this.parentService.addRequestForm(this.requestForm, userString).subscribe(
+          (data) => {
+            console.log("Registration successful:", data);
+            this.toast.success({detail:"SUCCESS",summary:'Request form added successfully', position:'topCenter'});
+            console.log("Successfully");
+          },
+          (err) => {
+            this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+            console.log(`unsuccessful requestForm:${err}`, err);
+          }
+        )
+      }
+      else{
+        console.log("Error")
+        console.error("User data in localStorage is null.");
+      }
     }
   }
 }
