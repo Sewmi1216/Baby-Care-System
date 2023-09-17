@@ -12,8 +12,12 @@ const bcrypt = require("bcryptjs");
 let Complaint = require("../models/Complaint");
 
 let Feedback = require("../models/feedback");
+
 const Babysitter = require("../models/babysitter");
 const TaskListForm = require("../models/tasklist");
+
+
+
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
@@ -232,6 +236,10 @@ const addRequestForm = async (req, res) => {
     const Babysitter = req.body.requestForm.Babysitter;
     // console.log(parentID)
     // console.log(specialNeeds)
+
+    // const babysitter = await RequestForm.find({babysitter: Babysitter});
+    // console.log(babysitter);
+
     if (!parentID) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
     }
@@ -244,41 +252,25 @@ const addRequestForm = async (req, res) => {
         Babysitter
     })
 
-    try{
-        const savedRequestForm = await newRequestFormData.save();
-        return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});       
-    }
-    catch(err){
-        console.log(err.message);
-        return res.status(500).send({status: "Error adding requestForm", error: err.message});
-    }
+    // if(!babysitter){
+        try{
+            const savedRequestForm = await newRequestFormData.save();
+            return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});             
+        }
+        catch(err){
+            console.log(err.message);
+            return res.status(500).send({status: "Error adding requestForm", error: err.message});
+        }
+    // }
+    // else{
+    //     return res.status(500).send({status: "Already added", error: "Already added"});
+    // }
+
 }
-
-const updateRequestForm = async (req, res) => {
-    let requestFormId = req.params.id; //fetch the id
-
-    const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
-
-    const updateRequestForm = {
-        workExpectation,
-        numberofBabies,
-        babyDetails,
-        specialNeeds
-    };
-
-    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form updated", requestForm});
-        })
-        .catch((err) => { 
-            console.log(err);
-            res.status(500).send({status: "Error with updating data", error: err.message});
-        });
-};
 
 const deleteRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
-
+    console.log(requestFormId);
     await RequestForm.findByIdAndDelete(requestFormId)
         .then((requestForm) => {
             res.status(200).send({status: "Request form deleted", requestForm});
@@ -380,7 +372,7 @@ const getBabysitters = async (req, res) => {
 
         const babysitterData = babysitters.map((babysitter) => {
             return {
-              _id: babysitter._id,
+              userId: babysitter.userId._id,
               age: babysitter.age,
               gender: babysitter.gender,
               image: babysitter.image,
@@ -453,18 +445,21 @@ const getBabysitters = async (req, res) => {
 const getBabysitter = async (req, res) => {
     let babysitterId = req.params.id;
     console.log("babysitterID:", babysitterId);
-    await Babysitter.findById(babysitterId)
+    await Babysitter.find({userId: babysitterId})
     try {
-        const babysitter = await Babysitter.findById(babysitterId)
-            .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+        const babysitter = await Babysitter.findOne({userId: babysitterId})
+            .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
             .exec();
 
-        if (!babysitter) {
+        console.log(babysitter);
+
+        if (!babysitter.userId._id) {
             return res.status(404).send({ status: "Babysitter not found" });
         }
 
         const babysitterData = {
-            _id: babysitter._id,
+            
+            _id: babysitter.userId._id,
             age: babysitter.age,
             gender: babysitter.gender,
             image: babysitter.image,
@@ -473,8 +468,12 @@ const getBabysitter = async (req, res) => {
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
-            nic: babysitter.userId.nic
+            nic: babysitter.userId.nic,
+            religon: babysitter.religon,
+            language: babysitter.language,
+
         };
+        console.log(babysitterData)
 
         res.status(200).send({ status: "babysitter", babysitter: babysitterData });
     } catch (err) {
@@ -502,6 +501,7 @@ const getRequestForms = async(req, res) => {
         res.status(500).send({ status: "Error with get all requestForms", error: err.message });
     }
 }
+
 module.exports = {
     addParent,
     //addTask,f
@@ -510,7 +510,6 @@ module.exports = {
     updateTask,
     deleteTask,
     addRequestForm,
-    updateRequestForm,
     deleteRequestForm,
     addComplaint,
     updateComplaint,

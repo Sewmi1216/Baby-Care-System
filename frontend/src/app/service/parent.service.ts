@@ -44,7 +44,7 @@ export class ParentService {
   getBabies(user): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+      'Authorization': `${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
     console.log('Request headers:', headers);
@@ -86,9 +86,7 @@ export class ParentService {
       requestForm: requestForm,
       userID: userString.id,
     };
-    console.log("Tharushi")
     console.log(requestBody)
-    console.log("CHethana")
 
     return this.http.post<any>(`${environment.backend_url}/parent/addRequestForm`, JSON.stringify(requestBody), { headers });
   }
@@ -160,6 +158,18 @@ export class ParentService {
     console.log(userId);
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestForms/${userId}`, { headers });
+  }
+
+
+  deleteRequestForm(user:any, requestFormId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
   }
 
 

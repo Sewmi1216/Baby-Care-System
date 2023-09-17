@@ -876,3 +876,15 @@ p {
     margin-bottom: 10px;
   }
 }
+
+
+.requested-babysitter{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 36px; /* Adjust font size for smaller screens */
+  text-align: center;
+  color: #39315d;
+  padding-left: 71px; /* Adjust padding for smaller screens */
+  padding-top: 39px; /* Adjust padding for smaller screens */ 
+  padding-bottom: 2rem;
+}

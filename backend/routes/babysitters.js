@@ -1,6 +1,7 @@
 const router = require("express").Router(); //import router of express package
 let Babysitter = require("../models/babysitter"); //import babysitter module
 const babysitterController = require("../controllers/babysitterController"); //import babysitter controller
+const authJwt = require("../middlewares/authJwt");
 
 // Define a middleware function to check for an active session
 const checkSession = (req, res, next) => {
@@ -12,6 +13,13 @@ const checkSession = (req, res, next) => {
         return res.status(401).json({ msg: "Unauthorized: Session not active" });
     }
 };
+
+
+//completed
+router.route("/getRequestForms/:id").get(babysitterController.getRequestForms); 
+router.route("/getParents").get(babysitterController.getParents); 
+router.route("/getRequestForm/:id").get(babysitterController.getRequestForm); 
+router.route("/updateRequestForm/:id").put(babysitterController.updateRequestForm); 
 
 //create
 router.route("/addBabysitter").post(babysitterController.addBabysitter);
@@ -31,7 +39,5 @@ router.route("/delete/:id").delete(babysitterController.deleteBabysitter);
 
 //getOne
 router.route("/get/:id").get(babysitterController.getBabysitter);
-router.route("/getRequestForm/:id").get(babysitterController.getRequestForm);
-
 
 module.exports = router;

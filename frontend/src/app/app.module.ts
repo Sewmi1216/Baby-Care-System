@@ -146,7 +146,7 @@ import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 
 //import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 //import { BabysitterViewParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component';
-//import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
+// import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
 
 
@@ -273,7 +273,7 @@ import {MatInputModule} from "@angular/material/input";
     // BabysitterTasklistComponent,
     CreateNewTaskListTemplateComponent,
     // BabysitterViewParentRequestsComponent,
-    // BabysitterViewMoreParentRequestsComponent,
+    BabysitterViewMoreParentRequestsComponent,
 
 
     RequestedBabysittersComponent,

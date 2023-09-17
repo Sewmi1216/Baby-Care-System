@@ -5,15 +5,14 @@
 } */
 
 .custom-card {
-  width: 100%;
-  max-width: 16rem;
+  width: 400px;
+  max-width: 48rem;
   background-color: white;
-  /*background-color: #BCE3E5;*/
-  text-align: center;
-
+  /* text-align: center; */
   padding: 10px;
   border-radius: 5px;
   margin: 10px;
+  gap:3rem;
   font-family: "Sofia Sans";
   font-weight: bold;
 }
@@ -35,28 +34,22 @@ div ,ul {
  justify-content: space-between;
 } */
 
-/*.left {*/
-/*  flex: 1;*/
-/*}*/
+.left {
+  flex: 1;
+}
 
-/*.right {*/
-/*  flex: 1;*/
-/*}*/
+.right {
+ flex: 1;
+}
 
 .container {
-  display: flex;
+  /* display: flex; */
   /*justify-content: center;*/
   align-items: center;
   padding: 10px;
   width: 100%;
-  /*background-color: #e0fcfd;*/
+  /* background-color: #e0fcfd; */
 
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .info-box,
@@ -77,11 +70,6 @@ div ,ul {
   margin-top: 0;
 }
 
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .custom-card h4 {
   margin: 0;
 }
@@ -125,7 +113,7 @@ h3{
 }
 
 .list-group-item label{
-  width: 7rem;
+  width: 10rem;
 }
 
 .list-group{
@@ -134,8 +122,9 @@ h3{
 }
 
 .title{
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size:16px;
+  font-weight: bold;
   text-align: left;
 }
 
@@ -160,4 +149,91 @@ h3{
   display: flex; /* Use flexbox */
   align-items: center; /* Vertically center the content */
   justify-content: center; /* Horizontally center the content */
+}
+
+.babysitter{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+  color: #39315d;
+  padding-left: 71px; /* Adjust padding for smaller screens */
+  padding-top: 18px; /* Adjust padding for smaller screens */ 
+  padding-bottom: 30px;
+}
+
+.personal-information{
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  gap:4rem
+}
+
+.form-control{
+  margin-bottom: 0.75rem;
+}
+
+.btn-primary{
+  background-color: #39315d ; 
+  border-radius: 15px ; 
+  margin-top: 2px;
+  border-color: #2d2746; 
+  width:100%;
+}
+
+.font-weight-bold{
+  margin-bottom: 0.25rem;
+}
+
+.age-gender, .con-nic, .religon-language{
+  display: flex;
+  flex-direction: row;
+  gap:4rem
+}
+
+.request-babysitter{
+  font-family: "Sofia Sans";
+  font-size: 30px;
+  text-align: center;
+  color: #39315d;
+  margin-left: 8rem;
+}
+
+.same-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.gap-between-fields {
+  margin-right: 40px; /* Adjust the margin as needed */
+}
+
+.form-topic{
+  margin-top: .5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-check-input{
+  margin-left: 2.25rem;
+  margin-right: 0.75rem;
+  margin-top: 0.7rem;
+}
+
+.modal-content{
+  width: 120%;
+}
+
+.form-control-right{
+  margin-right: 2.25rem;
+}
+
+.col-md-4{
+  width: 30%;
+}
+
+.day{
+  margin-top: 0.5rem;
 }

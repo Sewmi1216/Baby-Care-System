@@ -1,21 +1,5 @@
 <div class="container-fluid">
-  <div class="d-flex justify-content-between align-items-center custom-margin" style="margin-top: 30px">
-    <div style="background-color: #e8e3fc;
-    width: 544px;
-    height: 120px;
-    padding: 5px 0 0 5px;
-    margin-top: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px 0 #563393;
-">
-      <img class="topic_image" src="../../assets/sitter.svg">
-      <h3 style="font-family: 'Sofia Sans', sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-    color: #39315d;
-    padding-left: 10px;
-    padding-top: 37px;">Requested babysitters</h3>
-    </div>
+  <div class="requested-babysitter">Requested Babysitters</div>
 
     <!-- Search bar -->
     <form action="#">
@@ -25,7 +9,6 @@
       </div>
     </form>
 
-  </div>
 
   <div class="main-content">
     <div class="container mt-7">
@@ -71,6 +54,9 @@
                       <td>
                         <div *ngIf="requestForm.isAccept === 1">
                           <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button>
+                        </div>
+                        <div *ngIf="requestForm.isAccept === 0">
+                          <button class="btn btn-primary" style="background-color: red; border-radius: 16px;" (click)="deleteRequest(requestForm._id)">Delete</button>
                         </div>
                       </td>
                   </tr>
