@@ -15,6 +15,7 @@ let Feedback = require("../models/feedback");
 const Babysitter  = require("../models/babysitter");
 
 let GrowthParameters = require("../models/GrowthParameters");
+let AgeGroups = require("../models/ageGroup");
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
@@ -413,13 +414,26 @@ const viewParameters = async (req, res) => {
         console.log("ageGroup:",ageGroupId);
 
         const parameters = await GrowthParameters.find({ ageGroup : ageGroupId});
+        const activities = parameters.map(parameters => parameters.activity);
 
-        res.json(parameters);
+        res.json(activities);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
+const getAgeGroup = async (req, res) =>{
+    try{
+        const groups = await AgeGroups.find();
+        const groupnames = groups.map(groups => groups.type);
+
+        res.json(groupnames);
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review age groups'})
+    }
+}
 
 module.exports = {
     addParent,
@@ -438,5 +452,6 @@ module.exports = {
     getBabysitters,
     getBabysitter,
     getRequestForms,
-    viewParameters
+    viewParameters,
+    getAgeGroup
 };

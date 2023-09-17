@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ParentService} from "../../../../service/parent.service";
+
 
 @Component({
   selector: 'app-growth-parameters',
