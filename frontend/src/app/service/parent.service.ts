@@ -135,6 +135,22 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters/${babysitterId}`, { headers });
   }
 
+
+
+  // getTaskListTemplateForAddDate(userId: any, taskListId: any): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+  //   });
+  //
+  //   const url = `${environment.backend_url}/parent/getTaskListTemplateForAddDate/${userId}/${taskListId}`; // Include userId and taskListId in the URL
+  //
+  //   console.log('Request headers:', headers);
+  //   return this.http.get<any>(url, { headers });
+  // }
+
+
+
   getRequestForms(user:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -145,4 +161,6 @@ export class ParentService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestForms/${userId}`, { headers });
   }
+
+
 }

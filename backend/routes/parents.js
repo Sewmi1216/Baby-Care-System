@@ -28,6 +28,8 @@ router.route('/addParent').post(parentController.addParent);
 
 router.route('/addTaskList').post(authJwt.verifyParent, parentController.addTaskList);
 router.route('/getAllTaskListTemplates/:id').get(authJwt.verifyParent, parentController.getAllTaskListTemplates);
+//router.route('/getTaskListTemplateForAddDate/:id/:taskListId').get(authJwt.verifyParent, parentController.getTaskListTemplateForAddDate);
+//router.route('/deleteTaskListTemplate/:id').delete(parentController.deleteTaskListTemplate);
 
 //router.route('/getTaskList').get(parentController.getTaskList);
 //router.route('/updateTaskList/:id').put(parentController.updateTaskList);

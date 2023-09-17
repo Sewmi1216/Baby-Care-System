@@ -9,6 +9,7 @@
 
           <!--          <h2>Task List Name: {{ taskList.listName | json }}</h2>-->
           <h2>Task List Name:{{taskList.listName}}</h2>
+          <h4>Task List Id :- {{taskList._id}}</h4>
 
 
           <div class="table-wrapper">
@@ -46,8 +47,9 @@
 
           <div class="d-flex justify-content-between mt-3">
             <button class="btn btn-danger" (click)="deleteTemplate()">Delete</button>
-            <button class="btn btn-primary" (click)="updateTemplate()">Update</button>
-            <button class="btn btn-success" (click)="addDate()">Add Date</button>
+            <button class="btn btn-primary" (click)="updateTemplate()" data-bs-toggle="modal" data-bs-target="#updateTaskListModal">Update</button>
+            <button class="btn btn-success" (click)="addDate(taskList._id)" data-bs-toggle="modal" data-bs-target="#addDateTaskListModal">Add Date</button>
+            <h4>{{taskList._id}}</h4>
           </div>
 
         </div>
@@ -59,4 +61,76 @@
 
 
 
+<!--<div class="modal fade" id="addDateTaskListModal" tabindex="-1" role="dialog" aria-labelledby="addDateTaskListModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <form>-->
+<!--          <mat-form-field class="custom-datepicker">-->
+<!--            <input matInput [matDatepicker]="picker" placeholder="Choose a date">-->
+<!--            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--            <mat-datepicker #picker></mat-datepicker>-->
+<!--          </mat-form-field>-->
 
+<!--          <div>-->
+<!--            <button class="btn btn-success" (click)="saveAsTaskList()">Save</button>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+<!--<div class="modal fade" id="addDateTaskListModal" tabindex="-1" role="dialog" aria-labelledby="addDateTaskListModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title">Select a Date</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        &lt;!&ndash; Datepicker component goes here &ndash;&gt;-->
+<!--        <mat-form-field>-->
+<!--          <input matInput [matDatepicker]="picker" placeholder="Choose a date">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #picker></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button class="btn btn-success" (click)="saveAsTaskList()">Save</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="modal fade" id="addDateTaskListModal" tabindex="-1" role="dialog" aria-labelledby="addDateTaskListModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add a Date</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Angular Material Datepicker component goes here -->
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-success" (click)="saveDate()">Save Date</button>
+      </div>
+    </div>
+  </div>
+</div>

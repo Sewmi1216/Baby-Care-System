@@ -182,6 +182,7 @@ import {TokenInterceptor} from "./interceptor/token.interceptor";
 //import { CreateTaskListComponent } from './main/content/parent/task-list-home/create-task-list/create-task-list.component';
 import { TaskListTemplatesComponent } from './main/content/parent/task-list-home/task-list-templates/task-list-templates.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
 //import { CreateNewTaskListComponent } from './main/content/parent/task-list-home/create-new-task-list/create-new-task-list.component';
 
 
@@ -335,8 +336,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     /* ngx-chart module*/
     //NgxChartsModule
     BsDatepickerModule.forRoot(), FormsModule,
-    MatDialogModule
-
+    MatDialogModule, MatInputModule
 
 
   ],

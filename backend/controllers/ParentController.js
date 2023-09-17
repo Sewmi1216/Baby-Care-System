@@ -401,6 +401,55 @@ const getBabysitters = async (req, res) => {
     }
 };
 
+// const deleteTaskListTemplate = async(req,res)=>{
+//     let taskListTemplatId = req.params.id;
+//
+//     await TaskListForm.findByIdAndDelete(taskListTemplatId)
+//         .then((taskListForms) => {
+//             res.status(200).send({status:'Task List Template deleted', taskListForms});
+//         })
+//         .catch((err) => {
+//             res.status(500).save({status: "Error with delete from", error:err.message})
+//         })
+// }
+
+
+// const deleteRequestForm = async (req, res) => {
+//     let requestFormId = req.params.id;
+//
+//     await RequestForm.findByIdAndDelete(requestFormId)
+//         .then((requestForm) => {
+//             res.status(200).send({status: "Request form deleted", requestForm});
+//         })
+//         .catch((err) => {
+//             res.status(500).save({status: "Error with delete form", error: err.message})
+//         })
+// }
+
+
+
+// const getTaskListTemplateForAddDate = async(req,res)=> {
+//     try {
+//         let userId = req.params.userId; // Assuming userId is in the route parameters.
+//         let taskListId = req.params.taskListId; // Assuming taskListId is in the route parameters.
+//
+//         // Use both userId and taskListId in your query to find the specific task list template.
+//         const taskListForm = await TaskListForm.findOne({ parent: userId, _id: taskListId });
+//
+//         if (!taskListForm) {
+//             res.status(404).send({ status: "Task list not found." });
+//         } else {
+//             res.status(200).send({ status: "Task list template", taskListForm });
+//         }
+//     } catch (err) {
+//         console.log(err.message);
+//         res.status(500).send({ status: "Error fetching task list template", error: err.message });
+//     }
+// }
+
+
+
+
 const getBabysitter = async (req, res) => {
     let babysitterId = req.params.id;
     console.log("babysitterID:", babysitterId);
@@ -433,6 +482,9 @@ const getBabysitter = async (req, res) => {
         res.status(500).send({ status: "Error with get babysitter", error: err.message });
     }
 };
+
+
+
 
 const getRequestForms = async(req, res) => {
     try {
