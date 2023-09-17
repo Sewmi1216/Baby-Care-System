@@ -16,6 +16,14 @@ export class AuthService {
     // return this.http.post<any>(`${environment.backend_url}/user/login`, user, { headers });
     return this.http.post<any>(environment.backend_url + "/user/login", user);
   }
+
+  forgetPassword(user: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/forget-password", user);
+  }
+  resetPassword(user: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/reset-password", user);
+  }
+
   register(useraccount:any): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
   }

@@ -326,6 +326,7 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
     MatDatepickerModule,
     MatNativeDateModule,
 
+
     MatTabsModule,
     /*chats module*/
     // ChartModule,
@@ -344,3 +345,4 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
 })
 export class AppModule { }
 export class YourModule { }
+export class ForgetPasswordModule { }

@@ -169,11 +169,11 @@ const routes: Routes = [
   },
 
   {
-    path: 'forget-password',
+    path: 'forget_password',
     component: ForgetPasswordComponent,
   },
   {
-    path: 'reset-password',
+    path: 'reset_password',
     component: ResetPasswordComponent,
   },
 

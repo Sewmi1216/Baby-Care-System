@@ -42,45 +42,7 @@ const logout = (req, res) => {
         res.send("Logged out successfully");
     });
 }
-//
-// const forgotPassword = (req, res) => {
-//     const email = req.body.email;
-//
-//     User.findOne({ email: email }).then((user) => {
-//         if (!user) return res.status(400).json({ msg: "User does not exist" });
-//
-//
-//         // Respond to the client with a success message
-//         res.status(200).json({ message: 'Password reset email sent successfully.' });
-//     });
-// };
-//
-// // Nodemailer setup
-// const transporter = nodemailer.createTransport({
-//     service: 'Gmail',
-//     auth: {
-//         user: '3rdyeargroupproject2023@gmail.com',
-//         pass: 'ucsc@2023',
-//     },
-// });
-//
-// const sendResetPasswordEmail = (userEmail, resetToken) => {
-//     const mailOptions = {
-//         from: '3rdyeargroupproject2023@gmail.com',
-//         to: userEmail,
-//         subject: 'Password Reset',
-//         html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
-//               <p><a href="http://localhost:8070/reset-password">Reset Password</a></p>`,
-//     };
-//
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             console.error('Error sending password reset email:', error);
-//         } else {
-//             console.log('Password reset email sent:', info.response);
-//         }
-//     });
-// };
+
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -96,7 +58,7 @@ const sendResetPasswordEmail = (userEmail) => {
         to: userEmail,
         subject: 'Password Reset',
         html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
-              <p><a href="http://localhost:8070/reset-password">Reset Password</a></p>`,
+              <p><a href="http://localhost:4200/reset-password">Reset Password</a></p>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -108,7 +70,7 @@ const sendResetPasswordEmail = (userEmail) => {
     });
 };
 
-const forgotPassword = (req, res) => {
+const forgetPassword = (req, res) => {
     const email = req.body.email;
 
     // Check if the user exists
@@ -126,10 +88,25 @@ const forgotPassword = (req, res) => {
 };
 
 
+const userId = req.user.id; // Assuming you have the user's ID from the authenticated user
+
+// Validate the request and perform password update
+const newPassword = req.body.newPassword; // Assuming the new password is sent in the request body
+
+User.findByIdAndUpdate(userId, { password: hashedNewPassword }, (err, user) => {
+    if (err) {
+        return res.status(500).json({ message: 'Error updating password' });
+    }
+
+    return res.status(200).json({ message: 'Password updated successfully' });
+});
+
+
 module.exports = {
     login,
     logout,
-    forgotPassword,
+    forgetPassword,
     transporter,
     sendResetPasswordEmail,
+    newPassword
 };
