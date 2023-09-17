@@ -211,7 +211,7 @@ const addRequestForm = async (req, res) => {
     // if(!babysitter){
         try{
             const savedRequestForm = await newRequestFormData.save();
-            return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});             
+            return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});
         }
         catch(err){
             console.log(err.message);
@@ -240,7 +240,7 @@ const updateRequestForm = async (req, res) => {
         .then((requestForm) => {
             res.status(200).send({status: "Request form updated", requestForm});
         })
-        .catch((err) => { 
+        .catch((err) => {
             console.log(err);
             res.status(500).send({status: "Error with updating data", error: err.message});
         });
@@ -355,16 +355,16 @@ const getBabysitters = async (req, res) => {
               gender: babysitter.gender,
               image: babysitter.image,
               firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
-              lastName: babysitter.userId.lastName, 
+              lastName: babysitter.userId.lastName,
               email: babysitter.userId.email,
               phone: babysitter.userId.phone,
               address: babysitter.userId.address,
               nic: babysitter.userId.nic
             };
           });
-          res.status(200).send({ status: "All babysitters", babysitters: babysitterData 
+          res.status(200).send({ status: "All babysitters", babysitters: babysitterData
         });
-  
+
     } catch (err) {
         console.error(err.message);
         res.status(500).send({ status: "Error with get all babysitters", error: err.message });
@@ -387,13 +387,13 @@ const getBabysitter = async (req, res) => {
         }
 
         const babysitterData = {
-            
+
             _id: babysitter.userId._id,
             age: babysitter.age,
             gender: babysitter.gender,
             image: babysitter.image,
             firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
-            lastName: babysitter.userId.lastName, 
+            lastName: babysitter.userId.lastName,
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
@@ -424,6 +424,20 @@ const getRequestForms = async(req, res) => {
         res.status(500).send({ status: "Error with get all requestForms", error: err.message });
     }
 }
+const getMyPlan = async (req, res) => {
+    try {
+        // Assuming you have a Parent model with an 'isFree' field
+        const parent = await Parent.findById(req.userId); // You need to replace 'userId' with your actual user identifier
+        if (!parent) {
+            return res.status(404).json({ message: "Parent not found" });
+        }
+
+        res.status(200).json({ isFree: parent.isFree });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
 
 module.exports = {
     addParent,
@@ -442,5 +456,6 @@ module.exports = {
     viewParentProfile,
     getBabysitters,
     getBabysitter,
-    getRequestForms
+    getRequestForms,
+    getMyPlan
 };
