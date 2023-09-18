@@ -426,17 +426,22 @@ const viewParameters = async (req, res) => {
     }
 };
 
-
-const getAgeGroup = async (req, res) => {
-    await ageGroups.find()
+const getAgeGroup = async (req, res) =>{
+    console.log("Nadeesha");
     try{
-        const ageGroups = await ageGroups.find()
-
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send({ status: "Error with get all babysitters", error: err.message });
+        const ageGroups = await AgeGroups.find();
+        if (!ageGroups || ageGroups.length === 0) {
+            res.status(404).send({ status: "No requestForms found for this parent" });
+        } else {
+            res.status(200).send({ status: "All requestForms", ageGroups });
+        }
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review age groups'})
     }
 };
+
+
 
 module.exports = {
     addParent,
