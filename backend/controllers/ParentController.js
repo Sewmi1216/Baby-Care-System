@@ -426,17 +426,17 @@ const viewParameters = async (req, res) => {
     }
 };
 
-const getAgeGroup = async (req, res) =>{
-    try{
-        const groups = await AgeGroups.find();
-        const groupnames = groups.map(groups => groups.type);
 
-        res.json(groupnames);
-    } catch(err) {
-        console.error(err);
-        res.status(500).json({err: 'Error with review age groups'})
+const getAgeGroup = async (req, res) => {
+    await ageGroups.find()
+    try{
+        const ageGroups = await ageGroups.find()
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get all babysitters", error: err.message });
     }
-}
+};
 
 module.exports = {
     addParent,
@@ -455,6 +455,7 @@ module.exports = {
     getBabysitters,
     getBabysitter,
     getRequestForms,
+    getAgeGroup,
     viewParameters,
-    getAgeGroup
+
 };

@@ -8,14 +8,13 @@
   <img src="../../assets/parameters.svg" class="title-img-top" alt="...">
 </div>
 <div class="main-container">
-<!--  <div class="age-group">-->
-<!--    <p>Age Group</p>-->
-<!--   <select class="form-select" aria-label="Default select example" (change)="changeAgeGroup($event)">&ndash;&gt;-->
-<!--&lt;!&ndash;      <option selected value="9 to 12 months">9 to 12 months</option>&ndash;&gt;-->
-<!--      <option value="1">Select the age group</option>-->
-<!--      <option [value]="ageGroup.id" *ngFor="let ageGroup of ageGroups">{{ ageGroup.name }}</option>-->
-<!--    </select>-->
-<!--  </div>-->
+  <div class="age-group">
+    <p>Age Group</p>
+   <select class="form-select" aria-label="Default select example" (change)="changeAgeGroup($event)">-->
+<!--      <option selected value="9 to 12 months">9 to 12 months</option>-->
+      <option [value]="ageGroup.id" *ngFor="let ageGroup of ageGroups">{{ ageGroup.type }}</option>
+    </select>
+  </div>
   <div class="growth_development">
     <h1>Physical Growth and Development</h1>
     <div class="growth_content">
