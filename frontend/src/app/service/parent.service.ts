@@ -121,4 +121,15 @@ export class ParentService {
     return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
   }
 
+  confirmBabysitter(user:any, babysitterId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId); 
+    console.log('Request headers:', headers);
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });   
+  }
+
 }

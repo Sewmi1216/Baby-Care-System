@@ -21,6 +21,7 @@ export class RequestedBabysittersComponent {
   formattedDates: string[] = [];
   requestFormBabysitterId: string = ''
   requestFormId: string = ''
+  babysitterId: string =''
 
   //in the babysitters
   babysitterName: string = ''
@@ -87,6 +88,8 @@ export class RequestedBabysittersComponent {
             this.formattedDates.push(this.formattedDate); // get dates of the request forms
 
             this.isAccept = requestForm.isAccept;
+            // this.babysitterId = requestForm.Babysitter;
+            // console.log(this.babysitterId);
             this.requestFormId = requestForm._id;
             console.log(this.requestFormId)
 
@@ -124,4 +127,24 @@ export class RequestedBabysittersComponent {
     }    
   }
 
+  confirmBabysitter(babysitterId: string, parentId: string){
+    console.log(babysitterId)
+    console.log(parentId)
+    const userJSON = localStorage.getItem('user');
+    if(userJSON !== null){
+      this.parentService.confirmBabysitter(JSON.parse(userJSON), babysitterId).subscribe(
+        (response) => {
+          console.log("Babysitter added succssfully:", response);
+          this.toast.success({detail:"SUCCESS",summary:'Babysitter added succssfully', position:'topCenter'});
+          console.log("Successfully");
+        },
+        (err)=>{
+          this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+          console.log(`unsuccessful babysitter:${err}`, err);
+        }
+      )
+    }
+  }
+
 }
+

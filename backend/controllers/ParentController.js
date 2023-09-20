@@ -406,6 +406,31 @@ const getRequestForms = async(req, res) => {
     }
 }
 
+const updateParent = async (req, res) => {
+    const babysitterID = req.params.id1;
+    const userId = req.params.id2;
+
+    const updateParent = {
+        babysitter: babysitterID,
+    };
+
+    try {
+
+        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+
+        console.log(updatedParent);
+
+        if (!updatedParent) {
+            return res.status(404).send({ status: "Parent not found" });
+        }
+        res.status(200).send({ status: "Parent updated", updatedParent });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
+
+
 module.exports = {
     addParent,
     addTask,
@@ -422,5 +447,6 @@ module.exports = {
     viewParentProfile,
     getBabysitters,
     getBabysitter,
-    getRequestForms
+    getRequestForms,
+    updateParent
 };
