@@ -133,4 +133,14 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getAgeGroup`, { headers });
   }
 
+  getParameters(ageGroupId:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log(ageGroupId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getParameters/${ageGroupId}`, { headers });
+  }
+
 }

@@ -10,79 +10,41 @@
 <div class="main-container">
   <div class="age-group">
     <p>Age Group</p>
-   <select class="form-select" aria-label="Default select example" (change)="changeAgeGroup($event)">-->
-<!--      <option selected value="9 to 12 months">9 to 12 months</option>-->
-      <option [value]="ageGroup.id" *ngFor="let ageGroup of ageGroups">{{ ageGroup.type }}</option>
+   <select class="form-select" aria-label="Default select example" (change)="changeAgeGroup($event)" [(ngModel)]="selectedAgeGroupId">
+      <option [value]="ageGroup._id" *ngFor="let ageGroup of ageGroups">{{ ageGroup.type }}</option>
     </select>
   </div>
   <div class="growth_development">
-    <h1>Physical Growth and Development</h1>
+    <h1>MOVEMENT/PHYSICAL DEVELOPMENT</h1>
     <div class="growth_content">
       <div class="list">
         <div class="form-check">
-          <p>Pull themselves to a seated position</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Stand without assistance</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Take their first step</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Pickup and throw object</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Roll a ball</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Grasp object between their thumb and one finger</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Major milestone such as standing up and walking</p>
-          <input type="checkbox" class="form-check-input">
+          <div class="parameter-item" *ngFor="let movementParameter of movementPhysicalDevelopmentParameters">
+            <div class="d-flex">
+              <p>{{ movementParameter.activity }}</p>
+              <input type="checkbox" class="form-check-input">
+          </div>
         </div>
       </div>
+    </div>
       <div class="side_image">
         <img src="../../assets/growth_dev.svg" class="title-img-top" alt="..." style="width:300px">
       </div>
-    </div>
   </div>
-
+</div>
   <div class="communication">
     <h1>Language and Communication</h1>
-    <p style="font-weight: bold">
-      In this phase, many babies start to understand simple commands and requests. They’ll also mimic more of the sounds they hear as they develop basic language skills.</p>
+<!--    <p style="font-weight: bold">-->
+<!--      In this phase, many babies start to understand simple commands and requests. They’ll also mimic more of the sounds they hear as they develop basic language skills.</p>-->
     <div class="communication_content">
       <div class="communication_list">
         <div class="form-check">
-          <p>Responding to simple requests like “stop” and “no-no”</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Following simple instructions like “come here”</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Saying a few words, like “mama,” “dada,” and “uh-oh”</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Recognizing simple words for objects, like “shoe”</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Immediately imitating sounds</p>
-          <input type="checkbox" class="form-check-input">
-        </div>
-        <div class="form-check">
-          <p>Changes their tone while making sounds, similar to speech</p>
-          <input type="checkbox" class="form-check-input">
+          <div class="parameter-item" *ngFor="let languageParameter of languageAndCommunicationParameters">
+            <div class="d-flex">
+              <p>{{ languageParameter.activity }}</p>
+              <input type="checkbox" class="form-check-input">
+            </div>
+          </div>
         </div>
       </div>
       <div class="side_image">
@@ -90,6 +52,43 @@
       </div>
     </div>
 
+    <div class="growth_development">
+      <h1>SOCIAL/EMOTIONAL DEVELOPMENT</h1>
+      <div class="growth_content">
+        <div class="list">
+          <div class="form-check">
+            <div class="parameter-item" *ngFor="let socialParameter of socialEmotionalDevelopmentParameters">
+              <div class="d-flex">
+                <p>{{ socialParameter.activity }}</p>
+                <input type="checkbox" class="form-check-input">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="side_image">
+          <img src="../../assets/growth_dev.svg" class="title-img-top" alt="..." style="width:300px">
+        </div>
+      </div>
+    </div>
+
+    <div class="growth_development">
+      <h1>COGNITIVE (learning, thinking, problem-solving) DEVELOPMENT</h1>
+      <div class="growth_content">
+        <div class="list">
+          <div class="form-check">
+            <div class="parameter-item" *ngFor="let cognitiveParameter of cognitiveDevelopmentParameters">
+              <div class="d-flex">
+                <p>{{ cognitiveParameter .activity }}</p>
+                <input type="checkbox" class="form-check-input">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="side_image">
+          <img src="../../assets/growth_dev.svg" class="title-img-top" alt="..." style="width:300px">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

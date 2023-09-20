@@ -4,6 +4,12 @@ import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 
+interface Parameter {
+  id: string;
+  type: string;
+  activity: string;
+}
+
 
 
 @Component({
@@ -20,6 +26,16 @@ export class GrowthParametersComponent implements OnInit {
 
   };
 
+  parameters: Parameter[] = [];
+
+  // Separate arrays for different categories
+  movementPhysicalDevelopmentParameters: Parameter[] = [];
+  languageAndCommunicationParameters: Parameter[] = [];
+  socialEmotionalDevelopmentParameters: Parameter[] = [];
+  cognitiveDevelopmentParameters: Parameter[] = [];
+
+
+
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
@@ -27,13 +43,13 @@ export class GrowthParametersComponent implements OnInit {
     private CookieService: CookieService
   ){}
 
+  selectedAgeGroupId!: string;
+
   ngOnInit() {
     this.getAgeGroup();
   }
 
   getAgeGroup(){
-    // const ageGroupJSON = localStorage.getItem('ageGroup');
-    // console.log(ageGroupJSON);
     const userJSON = localStorage.getItem('user');
     if(userJSON!==null){
       this.parentService.getAgeGroups(JSON.parse(userJSON)).subscribe(
@@ -51,10 +67,40 @@ export class GrowthParametersComponent implements OnInit {
 
   // Define the changeAgeGroup method
   changeAgeGroup(event: any) {
-    // Add your logic here
-    console.log('Selected age group:', event.target.value);
-    // You can perform actions based on the selected age group
+    let selectedAgeGroupId = event.target.value;
+    console.log('Selected age group:', selectedAgeGroupId);
+    this.getParameters(selectedAgeGroupId);
+
   }
+
+  // to get the relevant parameters to age group
+  getParameters(selectedAgeGroupId: string) {
+    this.parentService.getParameters(selectedAgeGroupId).subscribe(
+      (response) => {
+        this.parameters = response.parameters;
+        console.log('Parameters:', this.parameters);
+        // Filter parameters into type-specific arrays
+        this.movementPhysicalDevelopmentParameters = this.filterParametersByType('MOVEMENT/PHYSICAL DEVELOPMENT');
+        this.languageAndCommunicationParameters = this.filterParametersByType('LANGUAGE/COMMUNICATION');
+        this.socialEmotionalDevelopmentParameters = this.filterParametersByType('SOCIAL/EMOTIONAL');
+        this.cognitiveDevelopmentParameters = this.filterParametersByType('COGNITIVE (learning, thinking, problem-solving)');
+        console.log(this.movementPhysicalDevelopmentParameters );
+        console.log(this.languageAndCommunicationParameters);
+        console.log(this.socialEmotionalDevelopmentParameters);
+        console.log(this.cognitiveDevelopmentParameters);
+      },
+      (error) => {
+        console.error('Error fetching parameters:', error);
+      }
+    );
+  }
+
+  // to filter parameters by type
+  filterParametersByType(type: string): Parameter[] {
+    return this.parameters.filter(parameter => parameter.type === type);
+  }
+
+
 }
 
 
