@@ -337,7 +337,10 @@ const getBabysitters = async (req, res) => {
               email: babysitter.userId.email,
               phone: babysitter.userId.phone,
               address: babysitter.userId.address,
-              nic: babysitter.userId.nic
+              nic: babysitter.userId.nic,
+              religon: babysitter.userId.religon,
+              language: babysitter.userId.language,
+              isHired: babysitter.isHired
             };
           });
           res.status(200).send({ status: "All babysitters", babysitters: babysitterData 
@@ -416,6 +419,7 @@ const updateParent = async (req, res) => {
 
     const updateBabysitter = {
         parent: userId,
+        isHired: true
     }
 
     try {

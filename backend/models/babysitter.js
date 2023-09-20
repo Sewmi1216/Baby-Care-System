@@ -82,6 +82,10 @@ const babysitterSchema = new schema ({
         type: schema.Types.ObjectId,
         default: null
     },
+    isHired:{
+        type: Boolean,
+        default: 0,
+    }
 })
 
 
