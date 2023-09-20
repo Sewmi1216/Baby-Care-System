@@ -43,4 +43,8 @@ export class ViewBabySittersComponent implements OnInit{
       )
     }
   }
+
+  filteredBabysitters() {
+    return this.babysitters.filter(babysitter => !babysitter.isHired);
+  }
 }

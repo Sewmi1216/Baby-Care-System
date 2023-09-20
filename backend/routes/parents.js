@@ -17,6 +17,9 @@ router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBab
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentController.deleteRequestForm);
+router.route("/updateParent/:id1/:id2").put(authJwt.verifyParent,parentController.updateParent);
+router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
+router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.getOnlyParent); //id=parentID
 
 
 //create
