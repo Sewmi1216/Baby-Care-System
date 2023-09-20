@@ -355,7 +355,7 @@ const getBabysitter = async (req, res) => {
     await Babysitter.find({userId: babysitterId})
     try {
         const babysitter = await Babysitter.findOne({userId: babysitterId})
-            .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+            .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
             .exec();
 
         console.log(babysitter);
@@ -375,7 +375,10 @@ const getBabysitter = async (req, res) => {
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
-            nic: babysitter.userId.nic
+            nic: babysitter.userId.nic,
+            religon: babysitter.religon,
+            language: babysitter.language,
+
         };
         console.log(babysitterData)
 

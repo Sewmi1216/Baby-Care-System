@@ -68,7 +68,15 @@ const babysitterSchema = new schema ({
     // },
     image:{
         type:String,
-        required:false
+        required:true
+    },
+    religon:{
+        type: String,
+        required:false,
+    },
+    language: {
+        type: String,
+        required: false,
     }
 })
 
