@@ -20,7 +20,9 @@ export class AuthService {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
   }
   registerBabysitter(useraccount:any): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter", useraccount);
+     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    // return this.http.post<any>(`${environment.backend_url}/user/login`, user, { headers });
+    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter", useraccount,{ headers });
   }
   storeToken(tokenValue:string){
     localStorage.setItem('token', tokenValue)
