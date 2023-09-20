@@ -77,7 +77,11 @@ const babysitterSchema = new schema ({
     language: {
         type: String,
         required: false,
-    }
+    },
+    parent: {
+        type: schema.Types.ObjectId,
+        default: null
+    },
 })
 
 

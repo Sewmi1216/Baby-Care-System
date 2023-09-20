@@ -414,11 +414,18 @@ const updateParent = async (req, res) => {
         babysitter: babysitterID,
     };
 
+    const updateBabysitter = {
+        parent: userId,
+    }
+
     try {
 
         const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
 
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+
         console.log(updatedParent);
+        console.log(updatedBabysitter)
 
         if (!updatedParent) {
             return res.status(404).send({ status: "Parent not found" });
