@@ -27,10 +27,10 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let requestForm of requestForms let i = index">
-                      <td>
+                      <td *ngIf="isHiredList[i] === false">
                         {{formattedDates[i]}}
                       </td>
-                      <td>
+                      <td *ngIf="isHiredList[i] === false">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
                             <img alt="Image placeholder" src="assets/sewmi.jpg">
@@ -40,7 +40,7 @@
                           </div>
                         </div>
                       </td>
-                      <td>
+                      <td *ngIf="isHiredList[i] === false">
                         <div *ngIf="requestForm.isAccept === -1">
                           <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Pending</span>&nbsp;&nbsp;
                         </div>
@@ -51,9 +51,11 @@
                           <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Rejected</span>&nbsp;&nbsp;
                         </div>
                       </td>
-                      <td>
+                      <td *ngIf="isHiredList[i] === false"> 
                         <div *ngIf="requestForm.isAccept === 1">
-                          <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;" (click)="confirmBabysitter(requestForm.Babysitter, requestForm.parent)">Confirm</button>
+                          <a [routerLink]="['/parent/my_babysitter', requestForm.Babysitter]">
+                            <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;" (click)="confirmBabysitter(requestForm.Babysitter, requestForm.parent)">Confirm</button>
+                          </a>
                         </div>
                         <div *ngIf="requestForm.isAccept === 0">
                           <button class="btn btn-primary" style="background-color: red; border-radius: 16px;" (click)="deleteRequest(requestForm._id)">Delete</button>
