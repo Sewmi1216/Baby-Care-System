@@ -17,6 +17,7 @@ export class RequestedBabysittersComponent {
   //In the requestForms
   isAccept: number | null = null;
   isAccepts: number[] = [];
+
   formattedDate: string = '';
   formattedDates: string[] = [];
   requestFormBabysitterId: string = ''
@@ -25,6 +26,8 @@ export class RequestedBabysittersComponent {
 
   //in the babysitters
   babysitterName: string = ''
+  isHired: boolean = false
+  isHiredList: boolean[] =[]
   babysitterNames: string[] = []
   requestFormBabysittersId: string[] = []
 
@@ -55,6 +58,8 @@ export class RequestedBabysittersComponent {
             const firstName = babysitter.firstName
             const lastName = babysitter.lastName;
             this.babysitterName = `${firstName} ${lastName}`;
+            this.isHired = babysitter.isHired;
+            this.isHiredList.push(this.isHired);
           
               // Check if the babysitter userId matches any requestFormBabysittersId
             const matchingIndex = this.requestFormBabysittersId.indexOf(babysitter.userId);
@@ -65,6 +70,7 @@ export class RequestedBabysittersComponent {
             }
           }
           console.log(this.babysitterNames)
+          console.log(this.isHiredList)
         },
         (error) => {
           console.log(localStorage.getItem('user'))
