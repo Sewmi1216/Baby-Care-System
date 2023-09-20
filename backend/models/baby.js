@@ -40,7 +40,30 @@ const babySchema = new schema({
         isCheck:{
             type: Boolean,
             default:false
+        },
+
+        ageGroup:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'AgeGroup'
         }
+    }],
+
+    vaccinationDetails:[{
+        vaccine:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'vaccine'
+        },
+
+        isCheck:{
+            type: Boolean,
+            default:false
+        },
+
+        reminder:{
+            type:Boolean,
+            default:false
+        }
+
     }]
 
 })

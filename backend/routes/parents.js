@@ -19,6 +19,7 @@ router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.g
 router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentController.deleteRequestForm);
 router.route("/getParameters/:ageGroup").get(authJwt.verifyParent,parentController.getParameters);
 router.route("/getAgeGroup").get(authJwt.verifyParent,parentController.getAgeGroup);
+router.route("/getVaccineList").get(authJwt.verifyParent,parentController.getVaccineList);
 
 //create
 router.route('/addParent').post(parentController.addParent);

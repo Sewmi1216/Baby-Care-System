@@ -16,6 +16,7 @@ const Babysitter  = require("../models/babysitter");
 
 let GrowthParameters = require("../models/GrowthParameters");
 let AgeGroups = require("../models/ageGroup");
+let Vaccines = require("../models/vaccine");
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
@@ -446,6 +447,21 @@ const getAgeGroup = async (req, res) =>{
     }
 };
 
+const getVaccineList = async (req, res) =>{
+    try{
+        const vaccines = await Vaccines.find();
+        if (!vaccines || vaccines.length === 0) {
+            res.status(404).send({ status: "No vaccines for this age" });
+        } else {
+            res.status(200).send({ status: "All vaccines", vaccines });
+        }
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review vaccines'})
+    }
+};
+
 
 
 module.exports = {
@@ -467,5 +483,6 @@ module.exports = {
     getRequestForms,
     getAgeGroup,
     getParameters,
+    getVaccineList,
 
 };
