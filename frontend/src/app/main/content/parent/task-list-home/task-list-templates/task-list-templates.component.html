@@ -10,7 +10,7 @@
 
           <!--          <h2>Task List Name: {{ taskList.listName | json }}</h2>-->
           <h2>Task List Name:{{taskList.taskListName}}</h2>
-          <h4>Task List Id :- {{taskList._id}}</h4>
+
 
 
           <div class="table-wrapper">
@@ -48,11 +48,8 @@
 
           <div class="d-flex justify-content-between mt-3">
             <button class="btn btn-danger" (click)="deleteTemplate(taskList._id)">Delete</button>
-            <button class="btn btn-primary" (click)="updateTemplate()" data-bs-toggle="modal" data-bs-target="#updateTaskListModal">Update</button>
-<!--            <button class="btn btn-success" (click)="addDateAndCreateTaskList(taskList._id)"  data-bs-toggle="modal" data-bs-target="#addDateTaskListModal">Add Date</button>
--->
-            <button class="btn btn-success" (click)="openModal(taskList._id)">Add Date</button>
-        <h4>{{taskList._id}}</h4>
+            <button class="btn btn-primary" (click)="updateTemplate(taskList._id)" data-bs-toggle="modal" data-bs-target="#updateTaskListModal">Update</button>
+            <button class="btn btn-success" (click)="openAddDateModal()" data-bs-toggle="modal" data-bs-target="#addDateForTemplate">Add Date</button>
           </div>
 
         </div>
@@ -60,38 +57,37 @@
     </div>
   </div>
 
+
+
+
+
+
+<form #requestFormForm="ngForm" (ngSubmit)="addDate(taskList._id)" id="requestForm" >
+  <div class="modal" id="addDateForTemplate">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add  Date</h5>
+          <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="container">
+          <div class="modal-body">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="margin-top: 20px">
+          <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Add Date</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</form>
+
 </div>
-
-
-
-
-
-
-
-<!--&lt;!&ndash; Add Date modal &ndash;&gt;-->
-<!--<div class="modal fade" #addDateTaskListModal tabindex="-1" role="dialog" aria-labelledby="addDateTaskListModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title">Add a Date</h5>-->
-<!--        <button type="button" class="close" (click)="closeModal()" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        &lt;!&ndash; Angular Material Datepicker component goes here &ndash;&gt;-->
-<!--        <mat-form-field>-->
-<!--          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">-->
-<!--          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--          <mat-datepicker #picker></mat-datepicker>-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        &lt;!&ndash; Close the modal without saving the date &ndash;&gt;-->
-<!--        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>-->
-<!--        &lt;!&ndash; Add Date button saves the date &ndash;&gt;-->
-<!--        <button class="btn btn-success" (click)="addDateAndCreateTaskList(selectedTaskListId)">Add Date</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->

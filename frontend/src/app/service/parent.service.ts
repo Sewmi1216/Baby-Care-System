@@ -63,20 +63,16 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getAllTaskListTemplates/${userId}`, {headers});
   }
 
-  // getTaskListTemplate(user:any, taskListId:string):Observable<any>{
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
-  //   });
-  //   const userId = user.id;
-  //   console.log('Request headers:', headers);
-  //   //console.log(userId); // working
-  //   return this.http.get<any>(`${environment.backend_url}/parent/getAllTaskListTemplate/${taskListId}`, {headers});
-  // }
-
-
-
-
+  getTaskListTemplate(user:any, taskListId:string):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    //console.log(userId); // working
+    return this.http.get<any>(`${environment.backend_url}/parent/getTaskListTemplate/${taskListId}`, {headers});
+  }
 
 
   private getAccessTokenFromCookie(): string {
@@ -174,20 +170,6 @@ export class ParentService {
 
 
 
-  // getTaskListTemplateForAddDate(userId: any, taskListId: any): Observable<any> {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
-  //   });
-  //
-  //   const url = `${environment.backend_url}/parent/getTaskListTemplateForAddDate/${userId}/${taskListId}`; // Include userId and taskListId in the URL
-  //
-  //   console.log('Request headers:', headers);
-  //   return this.http.get<any>(url, { headers });
-  // }
-
-
-
   getRequestForms(user:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -234,9 +216,9 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log(userId); 
+    console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });   
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });
   }
 
   getParent(user:any): Observable<any> {

@@ -32,12 +32,12 @@ router.route('/addParent').post(parentController.addParent);
 
 router.route('/addTaskList').post(authJwt.verifyParent, parentController.addTaskList);
 router.route('/getAllTaskListTemplates/:id').get(authJwt.verifyParent, parentController.getAllTaskListTemplates);
-//router.route('/getAllTaskListTemplate/:id').get(authJwt.verifyParent, parentController.getAllTaskListTemplate);
+router.route('/getTaskListTemplate/:id').get(authJwt.verifyParent, parentController.getTaskListTemplate);
 //router.route('/getTaskListTemplateForAddDate/:id/:taskListId').get(authJwt.verifyParent, parentController.getTaskListTemplateForAddDate);
 //router.route('/deleteTaskListTemplate/:id').delete(parentController.deleteTaskListTemplate);
 router.route('/addDateForTaskList').post(authJwt.verifyParent,parentController.addDateForTaskList);
 router.route('/deleteTaskListTemp/:id').delete(authJwt.verifyParent, parentController.deleteTaskListTemp);
-router.post('/createTaskListTemplate', authJwt.verifyParent, parentController.createTaskListTemplate);//5
+//router.post('/createTaskListTemplate', authJwt.verifyParent, parentController.createTaskListTemplate);//
 
 
 //router.route('/getTaskList').get(parentController.getTaskList);
