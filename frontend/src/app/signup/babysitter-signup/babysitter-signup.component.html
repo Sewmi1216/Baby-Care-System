@@ -126,7 +126,7 @@
           </div>
         </div>
         <div class="mb-2">
-          <input class="form-control" type="file" name="images" accept="image/*" multiple required>
+          <input class="form-control" type="file" name="image"  (change)="onFileSelected($event)" [(ngModel)]="useraccount.image" #image="ngModel" accept="image/*" multiple required>
         </div>
 
         <div class="form-footer d-flex mb-4">

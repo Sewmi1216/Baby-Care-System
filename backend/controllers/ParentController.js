@@ -418,7 +418,10 @@ const getBabysitters = async (req, res) => {
               email: babysitter.userId.email,
               phone: babysitter.userId.phone,
               address: babysitter.userId.address,
-              nic: babysitter.userId.nic
+              nic: babysitter.userId.nic,
+              religon: babysitter.userId.religon,
+              language: babysitter.userId.language,
+              isHired: babysitter.isHired
             };
           });
           res.status(200).send({ status: "All babysitters", babysitters: babysitterData 
@@ -552,6 +555,56 @@ const createTaskListTemplate = async (req, res) => {// 3
     }
 };
 
+const updateParent = async (req, res) => {
+    const babysitterID = req.params.id1;
+    const userId = req.params.id2;
+
+    const updateParent = {
+        babysitter: babysitterID,
+    };
+
+    const updateBabysitter = {
+        parent: userId,
+        isHired: true
+    }
+
+    try {
+
+        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+
+        console.log(updatedParent);
+        console.log(updatedBabysitter)
+
+        if (!updatedParent) {
+            return res.status(404).send({ status: "Parent not found" });
+        }
+        res.status(200).send({ status: "Parent updated", updatedParent });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
+
+const getOnlyParent = async(req,res) => {
+    try {
+        let parentId = req.params.id;
+        console.log("parentID:", parentId);
+
+        const parent = await Parent.findOne({userId: parentId});
+
+        if (!parent) {
+            res.status(404).send({ status: "No parent found" });
+        } else {
+            res.status(200).send({ status: "parent : ", parent });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get all babies", error: err.message });
+    }
+}
+
 module.exports = {
     // ... other controller methods ...
     createTaskListTemplate
@@ -580,5 +633,7 @@ module.exports = {
     viewParentProfile,
     getBabysitters,
     getBabysitter,
-    getRequestForms
+    getRequestForms,
+    updateParent,
+    getOnlyParent,
 };

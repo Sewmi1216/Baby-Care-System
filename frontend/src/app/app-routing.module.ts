@@ -205,7 +205,7 @@ const routes: Routes = [
         component: ViewNewBabysittersComponent
       },
       {
-        path: 'my_babysitter',
+        path: 'my_babysitter/:babysitter_id',
         component: MyBabysitterComponent
       },
       {

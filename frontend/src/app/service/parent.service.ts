@@ -228,5 +228,28 @@ export class ParentService {
     }
   }
 
+  confirmBabysitter(user:any, babysitterId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId); 
+    console.log('Request headers:', headers);
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });   
+  }
+
+  getParent(user:any): Observable<any> {
+    // const parentId = parentID
+    // console.log(parentId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`);
+  }
 
 }

@@ -53,7 +53,7 @@
                       </td>
                       <td>
                         <div *ngIf="requestForm.isAccept === 1">
-                          <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button>
+                          <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;" (click)="confirmBabysitter(requestForm.Babysitter, requestForm.parent)">Confirm</button>
                         </div>
                         <div *ngIf="requestForm.isAccept === 0">
                           <button class="btn btn-primary" style="background-color: red; border-radius: 16px;" (click)="deleteRequest(requestForm._id)">Delete</button>
