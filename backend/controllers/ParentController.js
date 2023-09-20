@@ -139,6 +139,11 @@ const addTaskList = async (req, res) => {
 };
 
 
+const addDateForTaskList = async(req,res)=> {
+
+}
+
+
 const getAllTaskListTemplates = async(req,res)=>{
     try{
         let userId = req.params.id;
@@ -162,7 +167,37 @@ const getAllTaskListTemplates = async(req,res)=>{
 }
 
 
+// const getAllTaskListTemplate = async (req, res) => {
+//     try {
+//         const taskListId = req.params.id; // Use req.params.id to get the _id from the request
+//
+//         const taskListForms = await TaskListForm.findById(taskListId);
+//
+//         if (!taskListForms) {
+//             res.status(404).send({ status: "No task list found with the provided ID." });
+//         } else {
+//             res.status(200).send({ status: "Task list template found", taskListForms });
+//         }
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send({ status: "Error with getting the task list template", error: err.message });
+//     }
+// };
 
+const deleteTaskListTemp = async (req, res) => {
+    let taskListId = req.params.id;
+    try {
+        const deletedTaskList = await TaskListForm.findByIdAndDelete(taskListId);
+        if (!deletedTaskList) {
+            return res.status(404).json({ error: "Task List not found" });
+        }
+        res.status(200).send({ status: "Task List Template deleted" });
+    } catch (error) {
+        console.error("Error with delete Template:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+
+}
 
 
 const getBabies = async (req, res) => {
@@ -279,6 +314,8 @@ const deleteRequestForm = async (req, res) => {
             res.status(500).save({status: "Error with delete form", error: err.message})
         })
 }
+
+
 //complaint handling
 
 const addComplaint = async (req, res) => {
@@ -502,11 +539,34 @@ const getRequestForms = async(req, res) => {
     }
 }
 
+
+
+const createTaskListTemplate = async (req, res) => {// 3
+    const newTaskListData = req.body;
+    try {
+        const createdTaskList = await TaskListForm.create(newTaskListData);
+        res.status(201).json({ status: "Task List Template created", createdTaskList });
+    } catch (error) {
+        console.error('Error with creating new Template:', error);
+        res.status(500).json({ status: "Error with create Template", error: error.message });
+    }
+};
+
 module.exports = {
+    // ... other controller methods ...
+    createTaskListTemplate
+};
+
+
+module.exports = {
+    createTaskListTemplate,//4
     addParent,
     //addTask,f
     addTaskList,
+    addDateForTaskList,
     getAllTaskListTemplates,
+    //getAllTaskListTemplate,
+    deleteTaskListTemp,
     updateTask,
     deleteTask,
     addRequestForm,

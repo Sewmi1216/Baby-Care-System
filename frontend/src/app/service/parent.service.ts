@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,17 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getAllTaskListTemplates/${userId}`, {headers});
   }
 
+  // getTaskListTemplate(user:any, taskListId:string):Observable<any>{
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+  //   });
+  //   const userId = user.id;
+  //   console.log('Request headers:', headers);
+  //   //console.log(userId); // working
+  //   return this.http.get<any>(`${environment.backend_url}/parent/getAllTaskListTemplate/${taskListId}`, {headers});
+  // }
+
 
 
 
@@ -107,6 +119,33 @@ export class ParentService {
 
     return this.http.post<any>( `${environment.backend_url}/parent/addTaskList`, JSON.stringify(requestBody), {headers});
   }
+
+  addDateToTaskListTemplate(dataToSave:any,userString:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const requestBody ={
+      taskListForm: dataToSave,
+      userID: userString.id,
+    };
+    console.log(requestBody);
+    return this.http.post<any>( `${environment.backend_url}/parent/addDateForTaskList`, JSON.stringify(requestBody), {headers});
+  }
+
+
+  deleteTaskListTemplate(user:any,taskListId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteTaskListTemp/${taskListId}`, { headers });
+  }
+
+
 
 
   getBabysitters(user:any): Observable<any> {
@@ -170,6 +209,23 @@ export class ParentService {
     console.log(userId);
     console.log('Request headers:', headers);
     return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
+  }
+
+
+  createTaskListTemplate(taskList: any): Observable<any> {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      // Send a POST request to save the new task list
+      return this.http.post<any>(`${environment.backend_url}/parent/createTaskListTemplate`, taskList, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+        }
+      });
+    } else {
+      // Return an Observable with an error message or handle this case accordingly
+      return throwError('User JSON is null.'); // You can customize the error message here
+    }
   }
 
 

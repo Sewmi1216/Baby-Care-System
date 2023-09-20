@@ -22,7 +22,7 @@ const taskListSchema = new schema({
     },
 
     date:{
-        type: String,
+        type: Date,
         required: false,
     },
     //tasks:[taskSchema] ,
