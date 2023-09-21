@@ -63,24 +63,14 @@
                 </tbody>
               </table>
             </div>
-<!--            <div class="dropdown">-->
-<!--              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger"  >-->
-<!--                Save as <i class="fa fa-caret-down" aria-hidden="true"></i>-->
-<!--              </button>-->
-<!--              <div class="dropdown-content" [ngClass]="{ 'show': isDropdownOpen }">-->
-<!--                <a (click)="saveAsTemplate(); navigateToTemplatesPage()">Template</a>-->
-<!--&lt;!&ndash;                <a (click)="saveAsTaskList()" routerLink="parent/task_list_templates" >Task List</a>&ndash;&gt;-->
-<!--                <a>Task List</a>-->
-<!--              </div>-->
-<!--            </div>-->
 
             <div class="d-flex justify-content-between mt-3">
               <button style="background-color: #563393; border-color: #563393" class="btn btn-danger" (click)="saveAsTemplate();navigateToTemplatesPage()">
-                Save as Template
+                Save as a Template
               </button>
               <button style="background-color: #563393; border-color: #563393" class="btn btn-danger" (click)="saveAsTaskList();openTaskListModal()"
                       data-bs-toggle="modal" data-bs-target="#saveTaskListModal">
-                Save as Task List
+                Save as a Task List
               </button>
             </div>
           </form>
