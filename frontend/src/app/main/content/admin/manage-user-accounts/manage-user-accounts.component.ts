@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AdminService } from "../../../../service/admin.service";
+import {NgToastService} from "ng-angular-popup";
+import { CookieService } from 'ngx-cookie-service';
+
+
+
 
 @Component({
   selector: 'app-manage-user-accounts',
@@ -6,6 +14,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-user-accounts.component.css']
 })
 export class ManageUserAccountsComponent {
+
+  userArray : userArray[]=[];
+
+  constructor(
+    private adminService: AdminService, private toast: NgToastService, private router:Router,private cookieService: CookieService,private http:HttpClient
+  ) {}
+
+    ngOnInit(): void {
+      
+       this.getUsers();
+     }
+    
+     getUsers() {
+      // @ts-ignore
+      this.adminService.getExperts(JSON.parse(localStorage.getItem('user'))).subscribe(
+        (response) => {
+          this.userArray = response.expert; 
+          console.log(this.userArray);
+        },
+        (error) => {
+          console.log(localStorage.getItem('user'))
+          // console.error('Error fetching babies:', error);
+        }
+      );
+    }
+
+    currentUserID = "";
+
 
   items: any[] = [
     { name: 'Sewmi Thimaya', email: 'sewmithimaya@gmail.com', status: 'Active' },
@@ -28,3 +64,24 @@ export class ManageUserAccountsComponent {
     }
   }
 }
+
+interface userArray{
+  // id: string;
+  firstName: string;
+  lastName: string;
+  nic: string;
+  address: string;
+  phone: string;
+  email: string;
+  password: string;
+  role:string;}
+
+
+
+
+
+
+
+
+
+  

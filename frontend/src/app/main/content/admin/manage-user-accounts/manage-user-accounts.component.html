@@ -43,27 +43,30 @@
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Email Address</th>
+              <th scope="col">Role</th>
+
               <th scope="col">Account Status</th>
 
             </tr>
             </thead>
             <tbody>
 
-            <tr>
+            <tr *ngFor="let UserItem of userArray">
               <th scope="row">
                 <div class="media align-items-center">
                   <a href="#" class="avatar rounded-circle mr-3">
                     <img alt="Image placeholder" src="assets/sewmi.jpg">
                   </a>
                   <div class="media-body">
-                    <span class="mb-0 text-sm">Sewmi Thimaya</span>
+                    <span class="mb-0 text-sm">{{UserItem.firstName}}</span>
                   </div>
                 </div>
               </th>
 
               <td>
-                    <a href="/admin/view_user_profile">sewmithimaya@gmail.com</a>
+                <a routerLink="/admin/view_babysitter_verify" >{{UserItem.email}}</a>
               </td>
+              <td>{{UserItem.role}}</td>
 
               <td>
                 <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Active</span>
@@ -73,7 +76,7 @@
 
             </tr>
 
-            <tr>
+            <!-- <tr>
               <th scope="row">
                 <div class="media align-items-center">
                   <a href="#" class="avatar rounded-circle mr-3">
@@ -86,7 +89,7 @@
               </th>
 
               <td>
-                <a href="#">sewmithimaya@gmail.com</a>
+                <a routerLink="/admin/verify_babysitter">sewmithimaya@gmail.com</a>
               </td>
 
               <td>
@@ -96,76 +99,7 @@
 
 
 
-            </tr>
-
-            <tr>
-              <th scope="row">
-                <div class="media align-items-center">
-                  <a href="#" class="avatar rounded-circle mr-3">
-                    <img alt="Image placeholder" src="assets/sewmi.jpg">
-                  </a>
-                  <div class="media-body">
-                    <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                  </div>
-                </div>
-              </th>
-              <td>
-                <a href="/admin/view_user_profile">sewmithimaya@gmail.com</a>
-              </td>
-              <td>
-                <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Deactive</span>
-              </td>
-
-            </tr>
-
-
-
-            <tr>
-              <th scope="row">
-                <div class="media align-items-center">
-                  <a href="#" class="avatar rounded-circle mr-3">
-                    <img alt="Image placeholder" src="assets/sewmi.jpg">
-                  </a>
-                  <div class="media-body">
-                    <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                  </div>
-                </div>
-              </th>
-
-              <td>
-                <a href="#">sewmithimaya@gmail.com</a>
-              </td>
-
-              <td>
-                <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Active</span>
-              </td>
-
-            </tr>
-
-
-
-            <tr>
-              <th scope="row">
-                <div class="media align-items-center">
-                  <a href="#" class="avatar rounded-circle mr-3">
-                    <img alt="Image placeholder" src="assets/sewmi.jpg">
-                  </a>
-                  <div class="media-body">
-                    <span class="mb-0 text-sm">Sewmi Thimaya</span>
-                  </div>
-                </div>
-              </th>
-
-              <td>
-                <a href="#">sewmithimaya@gmail.com</a>
-              </td>
-              <td>
-                <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Active</span>
-              </td>
-
-
-
-            </tr>
+            </tr> -->
 
             </tbody>
           </table>

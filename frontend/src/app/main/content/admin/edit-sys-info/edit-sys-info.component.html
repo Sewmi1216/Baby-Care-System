@@ -27,7 +27,7 @@
 
         <div class="card-2 d-flex align-items-stretch">
 
-          <div class="content col-md-6 ms-lg-5"
+          <div *ngFor="let info of sytemInfoArray" class="content col-md-6 ms-lg-5"
                style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
             <div class="d-flex align-items-center mb-3">
               <h3 style="color:#4B4389">
@@ -38,10 +38,11 @@
                 </button>
               </h3>
             </div>
-            <p>
+            <!-- <p>
               Stay on top of your baby's well-being by tracking vital signs, sleep patterns, and feeding schedules
               effortlessly.
-            </p>
+            </p> -->
+          <p>{{info.about}}</p>
           </div>
 
           <div class="image col-md-6 text-center">
@@ -107,19 +108,19 @@
         </div>
 
         <!-- Edit About Modal -->
-        <div class="modal fade" id="editAboutModal" tabindex="-1" aria-labelledby="editAboutModalLabel"
+        <div *ngFor="let info of sytemInfoArray" class="modal fade" id="editAboutModal" tabindex="-1" aria-labelledby="editAboutModalLabel"
              aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="editAboutModalLabel">Edit About Cuddle Care</h5>
-                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button  type="button" class="btn-close" (click)="setUpdate(info)"data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <!-- Place your editing form or content here -->
                 <!-- For example, text input for updating the content -->
-                <input type="text" class="form-control mb-3" id="editedAboutContent" placeholder="Edit content here">
-                <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
+                <input type="text" [(ngModel)]="about" class="form-control mb-3" id="about" placeholder="Edit content here">
+                <button style="background-color: #7E57C2;border-color: #563393" type="button"  class="btn btn-primary" (click)="save()">Save Changes</button>
               </div>
             </div>
           </div>
@@ -191,7 +192,7 @@
           <!--          </script>-->
 
 
-          <div class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+          <div *ngFor="let info of sytemInfoArray" class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
             <div class="d-flex align-items-center mb-3">
               <h3 style="color:#4B4389">
                 Goals of Cuddle Care
@@ -201,9 +202,8 @@
                 </button>
               </h3>
             </div>
-            <p>
-              Ensure the safety and security of your baby with our state-of-the-art baby camera. Watch over them with
-              high-resolution video streaming, night vision, and the ability to interact through two-way audio.
+            <p >
+              {{info.goals}}
             </p>
           </div>
 
@@ -221,7 +221,7 @@
               <div class="modal-body">
                 <!-- Place your editing form or content here -->
                 <!-- For example, text input for updating the content -->
-                <textarea class="form-control mb-3" id="editedGoalsContent" rows="4"
+                <textarea [(ngModel)]="goals" class="form-control mb-3" id="goals" rows="4"
                           placeholder="Edit content here"></textarea>
                 <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
               </div>
@@ -235,7 +235,7 @@
 
         <div class="card-4 d-flex align-items-stretch">
 
-          <div class="content col-md-6 ms-lg-5"
+          <div *ngFor="let info of sytemInfoArray" class="content col-md-6 ms-lg-5"
                style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
             <div class="d-flex align-items-center mb-3">
               <h3 style="color:#4B4389">
@@ -247,8 +247,7 @@
               </h3>
             </div>
             <p>
-              Receive timely alerts and reminders tailored to your baby's needs, empowering you to provide the best care
-              possible.
+              {{info.service}}
             </p>
           </div>
 
@@ -326,7 +325,7 @@
               <div class="modal-body">
                 <!-- Place your editing form or content here -->
                 <!-- For example, text input for updating the content -->
-                <textarea class="form-control mb-3" id="editedServicesContent" rows="4"
+                <textarea [(ngModel)]="service" class="form-control mb-3" id="service" rows="4"
                           placeholder="Edit content here"></textarea>
                 <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
               </div>
@@ -400,7 +399,7 @@
           <!--          </script>-->
 
 
-          <div class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+          <div *ngFor="let info of sytemInfoArray"class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
             <div class="d-flex align-items-center mb-3">
               <h3 style="color:#4B4389">
                 Vision of Cuddle Care
@@ -411,8 +410,7 @@
               </h3>
             </div>
             <p>
-              Ensure the safety and security of your baby with our state-of-the-art baby camera. Watch over them with
-              high-resolution video streaming, night vision, and the ability to interact through two-way audio.
+              {{info.vision}}
             </p>
           </div>
 
@@ -430,7 +428,7 @@
               <div class="modal-body">
                 <!-- Place your editing form or content here -->
                 <!-- For example, text input for updating the content -->
-                <textarea class="form-control mb-3" id="editedVisionContent" rows="4"
+                <textarea [(ngModel)]="vision" class="form-control mb-3" id="vision" rows="4"
                           placeholder="Edit content here"></textarea>
                 <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
               </div>
@@ -444,7 +442,7 @@
 
         <div class="card-4 d-flex align-items-stretch">
 
-          <div class="content col-md-6 ms-lg-5"
+          <div *ngFor="let info of sytemInfoArray" class="content col-md-6 ms-lg-5"
                style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
             <div class="d-flex align-items-center mb-3">
               <h3 style="color:#4B4389">
@@ -456,8 +454,7 @@
               </h3>
             </div>
             <p>
-              Receive timely alerts and reminders tailored to your baby's needs, empowering you to provide the best care
-              possible.
+              {{info.team}}
             </p>
           </div>
 
@@ -534,7 +531,7 @@
               <div class="modal-body">
                 <!-- Place your editing form or content here -->
                 <!-- For example, text input for updating the content -->
-                <textarea class="form-control mb-3" id="editedTeamContent" rows="4"
+                <textarea [(ngModel)]="team" class="form-control mb-3" id="team" rows="4"
                           placeholder="Edit content here"></textarea>
                 <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
               </div>
@@ -608,7 +605,7 @@
           <!--          </script>-->
 
 
-          <div class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
+          <div *ngFor="let info of sytemInfoArray" class="content col-md-6" style="background-color: #EDECFF; font-family: 'Sofia Sans', sans-serif;">
             <div class="d-flex align-items-center mb-3">
               <h3 style="color:#4B4389">
                 Thank you
@@ -619,8 +616,7 @@
               </h3>
             </div>
             <p>
-              Ensure the safety and security of your baby with our state-of-the-art baby camera. Watch over them with
-              high-resolution video streaming, night vision, and the ability to interact through two-way audio.
+              {{info.thank}}
             </p>
           </div>
 
@@ -638,7 +634,7 @@
               <div class="modal-body">
                 <!-- Place your editing form or content here -->
                 <!-- For example, text input for updating the content -->
-                <textarea class="form-control mb-3" id="editedThankYouContent" rows="4"
+                <textarea [(ngModel)]="thank" class="form-control mb-3" id="thank" rows="4"
                           placeholder="Edit content here"></textarea>
                 <button style="background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">Save Changes</button>
               </div>

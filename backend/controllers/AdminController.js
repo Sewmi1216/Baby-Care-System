@@ -4,6 +4,8 @@ let Babysitter = require("../models/babysitter");
 let Parent = require("../models/Parent");
 let Complaints = require("../models/Complaint");
 let SystemInfo = require("../models/SystemInfo");
+
+let Expert = require("../models/DomainExpert");
 const bcrypt = require("bcryptjs");
 
 const AddAdmin = (req, res) => {
@@ -52,16 +54,38 @@ const addDomainExpert =async (req, res) => {
         });
 
         
-        const saltRounds = 12;
-        const hashPassword = await bcrypt.hash(password, saltRounds);
-        newDomainexpert.password = hashPassword;
-        const creatednewDomainexpert = await newDomainexpert.save();
+        // const saltRounds = 12;
+        // const hashPassword = await bcrypt.hash(password, saltRounds);
+        // newDomainexpert.password = hashPassword;
+        // const creatednewDomainexpert = await newDomainexpert.save();
 
         await newDomainexpert.save().then(() => {
-            res.json("Admin Added");
+            res.json("Expert Added");
         }).catch((err) => {
             console.log(err);
         })
+};
+
+const ViewAllExperts = async (req, res) => {
+    await User.find()
+        .then((expert) => {
+            res.status(200).send({ status: "All experts", expert });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all experts", error: err.message });
+        });
+};
+
+const ViewAllComplaint = async (req, res) => {
+    await Complaints.find()
+        .then((complaint) => {
+            res.status(200).send({ status: "All complaints", complaint });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all complaints", error: err.message });
+        });
 };
 
 
@@ -153,6 +177,7 @@ const DeleteBabysitter = async (req, res) => {
 };
 
 const ViewAllParents = async (req, res) => {
+    // console.log("here")
     await Parent.find()
         .then((parents) => {    
             res.status(200).send({ status: "All parents", parents });
@@ -189,16 +214,7 @@ const DeleteParent= async (req, res) => {
         });
 };
 
-const ViewAllComplaints = async (req, res) => {
-    await Complaints.find()
-    .then((complaints) => {
-        res.status(200).send({status: "All complaints", complaints});
-    })
-    .catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "Error with view all complaints", error: err.message});
-    })
-};
+
 
 const AddSystemInfo = (req, res) => {
     const about = req.body.about;
@@ -281,6 +297,29 @@ const verifyBabysitter = async (req, res) => {
     }
 };
 
+const ViewAllUsers = async (req, res) => {
+    await User.find()
+        .then((user) => {
+            res.status(200).send({ status: "All users", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all users", error: err.message });
+        });
+};
+
+
+// exports.getDataCount = async (req, res) => {
+//   try {
+//     const count = await User.countDocuments();
+//     res.json({ count });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// };
+
+
 
 module.exports={
     AddAdmin,
@@ -293,10 +332,13 @@ module.exports={
     ViewAllParents,
     ViewParent,
     DeleteParent,
-    ViewAllComplaints,
+    ViewAllComplaint,
     AddSystemInfo,
     UpdateSystemInfo,
     ViewSystemInfo,
     verifyBabysitter,
-    addDomainExpert
+    addDomainExpert,
+    ViewAllExperts,
+    ViewAllUsers,
+    
 };

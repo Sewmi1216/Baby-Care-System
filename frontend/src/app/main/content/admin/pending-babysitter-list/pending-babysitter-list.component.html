@@ -47,27 +47,32 @@
                   <th scope="col">Name</th>
                   <th scope="col">NIC</th>
                   <th scope="col">Address</th>
+                  <th scope="col">Role</th>
+
                   <th scope="col">Verify</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr *ngFor="let user of sitterArray">
                   <td>01</td>
                   <td>20.02.2022</td>
                   <td>
                     <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
+                      <a routerLink="/admin/"
+                      class="avatar rounded-circle mr-3">
                         <img alt="Image placeholder" src="assets/sewmi.jpg">
                       </a>
                       <div class="media-body">
-                        <span class="mb-0 text-sm">Sewmi Thimaya</span>
+                        <span class="mb-0 text-sm">{{user.firstName}}</span>
                       </div>
                     </div>
                   </td>
 
-                  <td>995569847V</td>
-<td>No 50, Kandy Road, Katugastota</td>
+                  <td>{{user.nic}}</td>
+                  <td>{{user.address}}</td>
+                  <td>{{user.role}}</td>
+
                   <td class="text-right">
                     <div class="dropdown">
                       <a class="btn btn-sm btn-icon-only text-light" routerLink="/admin/verify_babysitter" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

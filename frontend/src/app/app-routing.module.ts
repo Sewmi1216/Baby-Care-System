@@ -64,6 +64,9 @@ import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-l
 import {ViewNewParentsComponent} from "./main/content/admin/view-new-parents/view-new-parents.component";
 import {ViewNewBabysittersComponent} from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
 
+import {ViewBabysitterVerifyComponent} from "./main/content/admin/view-babysitter-verify/view-babysitter-verify.component";
+
+
 import {babysitterGuard} from "./guard/babysitter.guard";
 import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
@@ -390,6 +393,12 @@ const routes: Routes = [
         path: 'manage_user_accounts_more',
         component: ManageUserAccountsMoreComponent
       },
+      {
+        path: 'view_babysitter_verify',
+        component: ViewBabysitterVerifyComponent
+      },
+
+      
 
       // {
       // path: 'domain_expert_moderate_community',

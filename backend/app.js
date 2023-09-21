@@ -13,6 +13,7 @@ require("dotenv").config();
 const port = process.env.PORT || 8070
 app.use(cookieParser());
 app.use(cors());    //use cors()
+app.use(express.json());
 app.use(bodyParser.json());     //json format
 app.use(function(req, res, next) {
     res.header(
@@ -74,8 +75,9 @@ app.use("/parent", parentRouter);
 
 //admin
 const adminRouter = require("./routes/admins.js");
-const {request} = require("express");
 app.use("/admin",adminRouter);
+
+const {request} = require("express");
 
 
 
