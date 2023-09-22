@@ -259,7 +259,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'requested_babysitters',
+        path: 'requested_babysitters/:parentId',
         component: RequestedBabysittersComponent
 
       },

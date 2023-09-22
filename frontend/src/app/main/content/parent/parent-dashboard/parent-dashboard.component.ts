@@ -37,6 +37,7 @@ export class ParentDashboardComponent {
     language: '',
   }
   babyCount: string = ''
+  requestCount: string = ''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
@@ -98,6 +99,23 @@ export class ParentDashboardComponent {
         (response)=>{
           this.babyCount = response.count
           console.log(this.babyCount)
+          this.getNoOfRequests();
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }    
+  }
+
+  getNoOfRequests(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getNoOfRequests(JSON.parse(userJSON)).subscribe(
+        (response)=>{
+          this.requestCount = response.count
+          console.log(this.requestCount)
         },
         (error)=>{
           console.log(localStorage.getItem('user'))

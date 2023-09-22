@@ -18,7 +18,7 @@
         </form>        
       </div>
       <div>
-        <a routerLink='/parent/requested_babysitters'>
+        <a [routerLink]="['/parent/requested_babysitters', parentId]">
           <button style=" background-color: #7E57C2;border-color: #563393" type="button" class="btn btn-primary">
             Requested BabySitters
           </button> 
