@@ -66,10 +66,10 @@ const babysitterSchema = new schema ({
     //     type: [verificationDetailsSchema],
     //     required: true,
     // },
-    image:{
+    image:[{
         type:String,
         required:true
-    },
+    }],
     religon:{
         type: String,
         required:false,
@@ -85,7 +85,7 @@ const babysitterSchema = new schema ({
     isHired:{
         type: Boolean,
         default: 0,
-    }
+    },
 })
 
 

@@ -126,7 +126,9 @@
           </div>
         </div>
         <div class="mb-2">
-          <input class="form-control" type="file" name="images" accept="image/*" multiple required>
+          <!-- <img *ngFor="let url of urls" [src]="url" > -->
+          <input type="file" (change)="onselect($event)" multiple>
+          <!-- <input class="form-control" type="file" name="images" accept="image/*" id="imagePreview" [(ngModel)]="useraccount.file" multiple required> -->
         </div>
 
         <div class="form-footer d-flex mb-4">

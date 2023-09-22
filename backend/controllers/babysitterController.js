@@ -1,9 +1,10 @@
 let Parent = require("../models/Parent");
 let User = require('../models/User')
 let Task = require("../models/task");
+let Babysitter = require("../models/babysitter")
 let RequestForm = require("../models/requestForm");
 const bcrypt = require("bcryptjs");
-const {request} = require("express");
+const express = require("express");
 const multer = require("multer");
 const path = require('path');
 
@@ -28,72 +29,82 @@ const path = require('path');
 //     }
 // });
 
+
+const uploadImage = multer({
+    limits: { fileSize: 100 * 1024 * 1024 }, // 100MB limit
+  });
+  
+// ...
+
 const addBabysitter = async (req, res) => {
     try {
-        const {
-            role,
-            firstName,
-            lastName,
-            email,
-            phone,
-            address,
-            password,
-            nic,
-            age,
-            gender,
-            image
-        } = req.body;
-
-        const userExists = await User.findOne({email: email});
-        if (userExists) {
-            return res.status(400).json({message: "User already exists"});
+      const {
+        role,
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+        password,
+        nic,
+        age,
+        gender,
+        image
+      } = req.body;
+  
+      const userExists = await User.findOne({ email: email });
+  
+      if (userExists) {
+        return res.status(400).json({ message: "User already exists" });
+      }
+  
+      const newUser = new User({
+        role,
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+        nic,
+      });
+  
+      const saltRounds = 12;
+      const hashPassword = await bcrypt.hash(password, saltRounds);
+      newUser.password = hashPassword;
+  
+      const createdUser = await newUser.save();
+  
+      // Upload image using multer
+      uploadImage.single("image")(req, res, async function (err) {
+        if (err instanceof multer.MulterError) {
+          return res
+            .status(400)
+            .json({ message: "Image upload error: " + err.message });
+        } else if (err) {
+          return res.status(400).json({ message: err.message });
         }
-
-        const newUser = new User({
-            role,
-            firstName,
-            lastName,
-            email,
-            phone,
-            address,
-            nic
-        });
-        const saltRounds = 12;
-        console.log("Password:", password);
-        console.log("Salt Rounds:", saltRounds);
-
-        const hashPassword = await bcrypt.hash(password, saltRounds);
-        newUser.password = hashPassword;
-
-        const createdUser = await newUser.save();
-
-        // Upload image using multer
-        uploadImage.single('image')(req, res, async function (err) {
-            if (err instanceof multer.MulterError) {
-                return res.status(400).json({message: "Image upload error: " + err.message});
-            } else if (err) {
-                return res.status(400).json({message: err.message});
-            }
-            console.log('success img')
-            // Image successfully uploaded
-            const image = req.file.filename; // Store this filename in the Babysitter model
-        });
-
+  
+        const uploadedImage = req.body.image; // Use req.file to access the uploaded image
+        console.log(uploadedImage)
+  
+        // Create and save the newBabysitter object
         const newBabysitter = new Babysitter({
-            userId: createdUser._id,
-            age,
-            gender,
-            image // Store the filename here
+          userId: createdUser._id,
+          age,
+          gender,
+          image: uploadedImage, // Use the filename from the uploaded image
         });
-
+  
         await newBabysitter.save();
-
-        res.status(201).json({message: "Babysitter added successfully"});
+  
+        res.status(201).json({ message: "Babysitter added successfully" });
+      });
     } catch (err) {
-        console.log(err);
-        res.status(500).json({message: "Error adding babysitter" + err.message});
+      console.log(err);
+      res.status(500).json({ message: "Error adding babysitter: " + err.message });
     }
-};
+  };
+  
 
 
 const getAllbabysitters = async (req, res) => {
