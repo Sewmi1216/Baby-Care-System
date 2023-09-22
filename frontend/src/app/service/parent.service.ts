@@ -155,4 +155,16 @@ export class ParentService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabiesCount/${userId}`);
   }
+
+  getNoOfRequests(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);  
+  }
 }
+

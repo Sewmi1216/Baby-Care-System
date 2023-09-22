@@ -6,7 +6,7 @@ const parentController = require("../controllers/ParentController");
 const babysitterController = require("../controllers/babysitterController");
 
 router.get('/getParent/:id', parentController.viewParentProfile
-);
+); 
 
 router.route('/addBaby').post(parentController.addBaby);
 
@@ -21,6 +21,7 @@ router.route("/updateParent/:id1/:id2").put(authJwt.verifyParent,parentControlle
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.getOnlyParent); //id=parentID
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
+router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 
 
 //create
@@ -46,4 +47,4 @@ router.route("/deleteComplaint/:id").delete(parentController.deleteComplaint);
 
 //getOne
 
-module.exports = router;
+module.exports = router;   

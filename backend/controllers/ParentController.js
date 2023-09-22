@@ -477,6 +477,23 @@ const getBabiesCount = async (req, res) => {
     }
 };
 
+const getRequestsCount = async (req, res)=>{
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+
+        const requestForms = await RequestForm.find({ parent: userId });
+
+        if (!requestForms || requestForms.length === 0) {
+            res.status(404).send({ status: "No requests forms found for this parent" });
+        } else {
+            res.status(200).send({ status: "Success", count: requestForms.length});
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of request forms", error: err.message });
+    }
+}
 
 module.exports = {
     addParent,
@@ -498,4 +515,5 @@ module.exports = {
     updateParent,
     getOnlyParent,
     getBabiesCount,
+    getRequestsCount,
 };

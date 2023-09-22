@@ -17,6 +17,7 @@ export class ViewBabySittersComponent implements OnInit{
     gender: '',
     image: '',
   };
+  parentId: string = ''
 
   private userId: any;
 
@@ -31,6 +32,8 @@ export class ViewBabySittersComponent implements OnInit{
   getBabysitters(){
     const userJSON = localStorage.getItem('user');
     if(userJSON!==null){
+      this.parentId = JSON.parse(userJSON).id
+      console.log(this.parentId)
       this.parentService.getBabysitters(JSON.parse(userJSON)).subscribe(
         (response) => {
           this.babysitters = response.babysitters;
