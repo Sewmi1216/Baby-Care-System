@@ -42,9 +42,9 @@
       <div class="card-01">
         <div class="d-flex justify-content-between align-items-center card_header">
           <div class="card_header_text d-flex flex-column align-items-center">
-            <a routerLink="/parent/baby_details" >
+            <a [routerLink]="['/parent/baby_details',parent._id]" >
             <h4 class="card-title text-uppercase text-muted mb-0">No of Babies</h4></a>
-            <span class="h4 font-weight-bold mb-0 text-muted">3</span>
+            <span class="h4 font-weight-bold mb-0 text-muted">{{babyCount}}</span>
           </div>
           <div class="col-auto">
             <span class="fa-stack fa-2x">

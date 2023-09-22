@@ -459,6 +459,25 @@ const getOnlyParent = async(req,res) => {
     }
 }
 
+const getBabiesCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+
+        const babies = await Baby.find({ parent: userId });
+
+        if (!babies || babies.length === 0) {
+            res.status(404).send({ status: "No babies found for this parent" });
+        } else {
+            res.status(200).send({ status: "Success", count: babies.length});
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of babies", error: err.message });
+    }
+};
+
+
 module.exports = {
     addParent,
     addTask,
@@ -478,4 +497,5 @@ module.exports = {
     getRequestForms,
     updateParent,
     getOnlyParent,
+    getBabiesCount,
 };

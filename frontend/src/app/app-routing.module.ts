@@ -178,7 +178,7 @@ const routes: Routes = [
     canActivate: [parentGuard],
     children: [
       {
-        path: 'parent_dashboard/:userId',
+        path: 'parent_dashboard',
         component: ParentDashboardComponent
 
       },
@@ -219,7 +219,7 @@ const routes: Routes = [
       },
       {
 
-        path: 'baby_details',
+        path: 'baby_details/:parentId',
         component: BabyDetailsComponent
 
       },

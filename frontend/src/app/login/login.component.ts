@@ -32,10 +32,9 @@ export class LoginComponent {
       // expirationDate.setDate(expirationDate.getDate() + 7); // Cookie will expire in 7 days
       // document.cookie = `access_token=${token}; expires=${expirationDate.toUTCString()}; path=/;`;
       console.log(user['role'])
-      console.log(user)
       if (user['msg'] === "login") {
         if (user['role'] === 'Parent') {
-          this.router.navigate([`/parent/parent_dashboard/${user['id']}`]);
+          this.router.navigate(['/parent/parent_dashboard'])
         } else if (user['role'] === 'Babysitter') {
           this.router.navigate(['/babysitter/babysitter_dashboard'])
         } else if (user['role'] === 'Admin') {

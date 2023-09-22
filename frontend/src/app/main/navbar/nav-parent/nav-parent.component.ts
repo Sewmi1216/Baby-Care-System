@@ -1,4 +1,3 @@
-import { babysitterGuard } from './../../../guard/babysitter.guard';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ParentService } from '../../../service/parent.service'
@@ -11,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './nav-parent.component.html',
   styleUrls: ['./nav-parent.component.css']
 })
+
 export class NavParentComponent {
 
   parent = {
@@ -19,13 +19,14 @@ export class NavParentComponent {
     userId:null,
     _id:''
   }
-  babysitterId: string = ''
+  parentId: string = ''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
+    // Get the babysitter_id parameter from the route
     this.getParent();
   }
 
@@ -36,13 +37,14 @@ export class NavParentComponent {
       this.parentService.getParent(JSON.parse(userJSON)).subscribe(
         (response) => {
           this.parent = response.parent;
-          console.log(this.parent.userId);
+          console.log(this.parent);
+          this.parentId = this.parent._id
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
-          console.error('Error fetching parent:', error);
+          console.error('Error fetching babysitters:', error);
         }
       )
     }
-}
+  }
 }

@@ -15,6 +15,12 @@ export class ParentDashboardComponent {
 
   parentId: string = ''
   babysitterId: string = ''
+  parent = {
+    babysitter: '',
+    isFree:'',
+    userId:null,
+    _id:''
+  }
   babysitterProfile = {
     _id: '',
     userId: '',
@@ -29,19 +35,15 @@ export class ParentDashboardComponent {
     nic: '',
     religon: '',
     language: '',
-  };
-  babies: any[] =[]
-  parentUserId: string = ''
+  }
+  babyCount: string = ''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
-    this.route.params.subscribe(params => {
-      const parentUserId = params['userId'];
-      console.log('User ID:', parentUserId);
-    });
+    this.getParent();
   }
 
 //Sidebar toggle show hide function
@@ -51,13 +53,18 @@ export class ParentDashboardComponent {
     this.status = !this.status;
   }
 
-  getBabysitter(){
+  getParent(){
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
-      this.parentService.getBabysitter(this.babysitterId).subscribe(
-        (response)=>{
-          this.babysitterProfile = response.babysitter
-          console.log(this.babysitterProfile._id)
+
+      this.parentService.getParent(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          this.parent = response.parent;
+          console.log(this.parent);
+
+          this.babysitterId = this.parent.babysitter;
+          console.log(this.babysitterId)
+          this.getBabysitter();
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -67,13 +74,14 @@ export class ParentDashboardComponent {
     }
   }
 
-  getBabies(){
+  getBabysitter(){
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
-      this.parentService.getBabies(JSON.parse(userJSON)).subscribe(
+      this.parentService.getBabysitter(this.babysitterId).subscribe(
         (response)=>{
-          this.babies = response.babies
-          console.log(this.babies)
+          this.babysitterProfile = response.babysitter
+          console.log(this.babysitterProfile._id)
+          this.getNoOfBabies();
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -81,5 +89,21 @@ export class ParentDashboardComponent {
         }
       )
     }
+  }
+
+  getNoOfBabies(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getNoOfBabies(JSON.parse(userJSON)).subscribe(
+        (response)=>{
+          this.babyCount = response.count
+          console.log(this.babyCount)
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }    
   }
 }
