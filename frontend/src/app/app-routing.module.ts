@@ -219,7 +219,7 @@ const routes: Routes = [
       },
       {
 
-        path: 'baby_details',
+        path: 'baby_details/:parentId',
         component: BabyDetailsComponent
 
       },

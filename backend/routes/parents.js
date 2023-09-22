@@ -20,6 +20,7 @@ router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentControl
 router.route("/updateParent/:id1/:id2").put(authJwt.verifyParent,parentController.updateParent);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.getOnlyParent); //id=parentID
+router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 
 
 //create
