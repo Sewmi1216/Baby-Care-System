@@ -15,12 +15,6 @@ export class ParentDashboardComponent {
 
   parentId: string = ''
   babysitterId: string = ''
-  parent = {
-    babysitter: '',
-    isFree:'',
-    userId:null,
-    _id:''
-  }
   babysitterProfile = {
     _id: '',
     userId: '',
@@ -36,13 +30,18 @@ export class ParentDashboardComponent {
     religon: '',
     language: '',
   };
+  babies: any[] =[]
+  parentUserId: string = ''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
-    this.getParent();
+    this.route.params.subscribe(params => {
+      const parentUserId = params['userId'];
+      console.log('User ID:', parentUserId);
+    });
   }
 
 //Sidebar toggle show hide function
@@ -50,27 +49,6 @@ export class ParentDashboardComponent {
   addToggle()
   {
     this.status = !this.status;
-  }
-
-  getParent(){
-    const userJSON = localStorage.getItem('user');
-    if (userJSON !== null) {
-
-      this.parentService.getParent(JSON.parse(userJSON)).subscribe(
-        (response) => {
-          this.parent = response.parent;
-          console.log(this.parent);
-
-          this.babysitterId = this.parent.babysitter;
-          console.log(this.babysitterId)
-          this.getBabysitter();
-        },
-        (error)=>{
-          console.log(localStorage.getItem('user'))
-          console.error('Error fetching babysitters:', error);
-        }
-      )
-    }
   }
 
   getBabysitter(){
@@ -82,7 +60,24 @@ export class ParentDashboardComponent {
           console.log(this.babysitterProfile._id)
         },
         (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }
+  }
 
+  getBabies(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getBabies(JSON.parse(userJSON)).subscribe(
+        (response)=>{
+          this.babies = response.babies
+          console.log(this.babies)
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
         }
       )
     }

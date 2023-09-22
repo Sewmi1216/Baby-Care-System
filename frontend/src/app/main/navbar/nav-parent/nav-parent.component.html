@@ -4,7 +4,7 @@
 <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
 
   <div
-    routerLink="/parent/parent_dashboard"
+    [routerLink]="['/parent/parent_dashboard',parent.userId]"
     #dashboard="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': dashboard.isActive ? '#7E57C2' : '', 'color': dashboard.isActive ? '#fff' : ''}">
