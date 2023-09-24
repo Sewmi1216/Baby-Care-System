@@ -378,10 +378,11 @@ const getBabysitter = async (req, res) => {
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
-            nic: babysitter.userId.nic,
+            nic: babysitter.userId.nic, 
             religon: babysitter.religon,
             language: babysitter.language,
-
+            startDate: babysitter.startDate,
+            endDate: babysitter.endDate,
         };
         console.log(babysitterData)
 
@@ -419,7 +420,8 @@ const updateParent = async (req, res) => {
 
     const updateBabysitter = {
         parent: userId,
-        isHired: true
+        isHired: true,
+        startDate: Date.now()
     }
 
     try {
@@ -495,6 +497,37 @@ const getRequestsCount = async (req, res)=>{
     }
 }
 
+const updateBabysitter = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("babysitterId:", userId);
+
+        const { endDate, extendDate } = req.body; // new value
+
+        const updateBabysitter = {
+            endDate,
+        };
+
+        console.log(updateBabysitter);
+
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: userId}, updateBabysitter, { new: true });
+        console.log(updatedBabysitter)
+
+        if (!updatedBabysitter) {
+            return res.status(404).send({ status: "Babysitter not found" , updatedBabysitter});
+        }
+        else{
+            console.log("Tharushi")
+        }
+
+        res.status(200).send({ status: "Babysitter updated", updateBabysitter: updatedBabysitter });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+}
+
+
 module.exports = {
     addParent,
     addTask,
@@ -516,4 +549,5 @@ module.exports = {
     getOnlyParent,
     getBabiesCount,
     getRequestsCount,
+    updateBabysitter
 };
