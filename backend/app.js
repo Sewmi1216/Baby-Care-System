@@ -79,7 +79,7 @@ io.on('connection', (socket) => {
                 } else {
                     console.log('Video frame saved successfully:', filePath);
                     socket.broadcast.emit('acknowledgment', { id: message.id });
-                    socket.broadcast.emit('videoFrame', {data:message.data, contentType: 'image/jpeg' });
+                    socket.broadcast.emit('videoFrame', message.data);
                 }
             });
             console.log('Hello video frame');

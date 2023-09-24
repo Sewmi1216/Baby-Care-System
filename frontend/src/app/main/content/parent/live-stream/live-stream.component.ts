@@ -1,6 +1,5 @@
 import {Component, ElementRef, AfterViewInit, ViewChild} from '@angular/core';
 import * as io from 'socket.io-client'
-import {data} from "@tensorflow/tfjs";
 
 interface ObjectPrediction {
   class: string;
@@ -14,15 +13,14 @@ interface ObjectPrediction {
   styleUrls: ['./live-stream.component.css']
 })
 export class LiveStreamComponent implements AfterViewInit {
-  @ViewChild('videoElement', {static: true}) videoElement!: ElementRef;
+  @ViewChild('videoElement', { static: true }) videoElement!: ElementRef;
 
   private stream!: MediaStream;
   private socket: any;
 
-  constructor(private el: ElementRef) {
+  constructor() {
 
   }
-
   async ngAfterViewInit(): Promise<void> {
     // @ts-ignore
     this.socket = io.connect('http://localhost:8070');
@@ -31,32 +29,22 @@ export class LiveStreamComponent implements AfterViewInit {
     this.socket.on('connect', () => {
       console.log('Connected to WebSocket server');
     });
-    this.socket.on('acknowledgment', (ack: any) => {
+    this.socket.on('acknowledgment', (ack:any) => {
       console.log('Received acknowledgment for frame with ID:', ack.id);
     });
     this.socket.on('videoFrame', (video: any) => {
-      console.log('Received video: ', video.data);
-      if (video.contentType === 'image/jpeg') {
-        // @ts-ignore
-       // document.getElementById('videoElement').src = URL.createObjectURL(video);
-        //const videoElement = this.el.nativeElement.querySelector('#videoElement');
-
-        // const videoElement = this.videoElement.nativeElement;
-        console.log('content type:', video.contentType);
-        const blob = new Blob([video], {type: 'image/jpeg'});
-        const url = URL.createObjectURL(blob);
-        // videoElement.src = url;
-        // @ts-ignore
-        document.getElementById('videoElement').src = url
-        // if (videoElement) {
-        //   const blob = new Blob([data], { type: 'image/jpeg' });
-        //   const url = URL.createObjectURL(blob);
-        //
-        //   videoElement.src = url;
-        // }
-      } else {
-        console.log('Invalid content type:', video.contentType);
-      }
+      console.log('Received video: ', video);
+     // const videoElement = this.videoElement.nativeElement;
+      const blob = new Blob([video], { type: 'image/jpeg' });
+      const url = URL.createObjectURL(blob);
+      // @ts-ignore
+      document.getElementById('videoElement').src = url
+      // if (videoElement) {
+      //   const blob = new Blob([data], { type: 'image/jpeg' });
+      //   const url = URL.createObjectURL(blob);
+      //
+      //   videoElement.src = url;
+      // }
     });
   }
 
