@@ -449,6 +449,7 @@ const getOnlyParent = async(req,res) => {
         console.log("parentID:", parentId);
 
         const parent = await Parent.findOne({userId: parentId});
+        console.log(parent)
 
         if (!parent) {
             res.status(404).send({ status: "No parent found" });

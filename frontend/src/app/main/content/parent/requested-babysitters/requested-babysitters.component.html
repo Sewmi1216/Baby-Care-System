@@ -58,13 +58,28 @@
                           </a>
                         </div>
                         <div *ngIf="requestForm.isAccept === 0">
-                          <button class="btn btn-primary" style="background-color: red; border-radius: 16px;" (click)="deleteRequest(requestForm._id)">Delete</button>
+                          <button class="btn btn-warning" style="background-color: red; border-radius: 16px;" data-bs-toggle="modal" data-bs-target="#reviewModal">View</button>
+                          <div class="modal" id="reviewModal">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <div class="reason">Reason for rejection</div>
+                                </div>
+                                <div class="form-floating">
+                                  <textarea class="form-control" id="floatingTextarea" [(ngModel)]="requestForm.reason" readonly></textarea>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                  <button type="button" class="btn btn-danger" (click)="deleteRequest(requestForm._id)" data-bs-dismiss="modal" style="margin-bottom: 1rem; margin-right:1rem">Delete</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </td>
+                      </td>                       
                   </tr>
                 </tbody>
               </table>
-
+   
             <div class="card-footer py-4">
               <nav aria-label="...">
                 <ul class="pagination justify-content-end mb-0">
@@ -95,24 +110,4 @@
       <!-- </div>
     </div>
   </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
