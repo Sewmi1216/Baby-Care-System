@@ -7,7 +7,6 @@ import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthService {
-
   useraccount :any;
   constructor(private http: HttpClient) { }
 
@@ -20,8 +19,9 @@ export class AuthService {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
   }
   registerBabysitter(useraccount:any): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter", useraccount);
-  }
+    console.log(useraccount)
+    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter",useraccount);
+ }
   storeToken(tokenValue:string){
     localStorage.setItem('token', tokenValue)
   }

@@ -1,110 +1,109 @@
 let Parent = require("../models/Parent");
 let User = require('../models/User')
 let Task = require("../models/task");
-let Babysitter = require("../models/babysitter")
 let RequestForm = require("../models/requestForm");
 const bcrypt = require("bcryptjs");
-const express = require("express");
+const {request} = require("express");
 const multer = require("multer");
 const path = require('path');
+const Babysitter = require("../models/babysitter");
 
-// Define the multer storage and fileFilter outside the function
-// const fileStorage = multer.diskStorage({
-//     destination: 'uploads',
-//     filename: (req, file, cb) => {
-//         cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname));
-//     }
-// });
-//
-// const uploadImage = multer({
-//     storage: fileStorage,
-//     limits: {
-//         fileSize: 1000000 // Adjust as needed
-//     },
-//     fileFilter(req, file, cb) {
-//         if (!file.originalname.match(/\.(png|jpg)$/)) {
-//             return cb(new Error('Please upload an image file with .png or .jpg extension!'));
-//         }
-//         cb(null, true);
-//     }
-// });
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        console.log("Tharushi")
+        cb(null, '../uploads/'); // Upload files to the 'uploads' directory
+    },
+    filename: (req, file, cb) => {
+        const filename = useraccount.image; // Use the desired filename from useraccount.image
+        cb(null, filename); // Set the file name to the value in useraccount.image
+    },
+});
 
-
-const uploadImage = multer({
-    limits: { fileSize: 100 * 1024 * 1024 }, // 100MB limit
-  });
-  
-// ...
+console.log(storage)
+const uploadImage = multer({storage})
 
 const addBabysitter = async (req, res) => {
+    console.log(req.body)
     try {
-      const {
-        role,
-        firstName,
-        lastName,
-        email,
-        phone,
-        address,
-        password,
-        nic,
-        age,
-        gender,
-        image
-      } = req.body;
-  
-      const userExists = await User.findOne({ email: email });
-  
-      if (userExists) {
-        return res.status(400).json({ message: "User already exists" });
-      }
-  
-      const newUser = new User({
-        role,
-        firstName,
-        lastName,
-        email,
-        phone,
-        address,
-        nic,
-      });
-  
-      const saltRounds = 12;
-      const hashPassword = await bcrypt.hash(password, saltRounds);
-      newUser.password = hashPassword;
-  
-      const createdUser = await newUser.save();
-  
-      // Upload image using multer
-      uploadImage.single("image")(req, res, async function (err) {
-        if (err instanceof multer.MulterError) {
-          return res
-            .status(400)
-            .json({ message: "Image upload error: " + err.message });
-        } else if (err) {
-          return res.status(400).json({ message: err.message });
+        const {
+            role,
+            firstName,
+            lastName,
+            email,
+            phone,
+            address,
+            password,
+            nic,
+            age,
+            gender,
+        } = req.body;
+
+        console.log(req.body)
+        // Check if the user with the same email already exists
+        const userExists = await User.findOne({email: email});
+        if (userExists) {
+            return res.status(400).json({message: 'User already exists'});
         }
-  
-        const uploadedImage = req.body.image; // Use req.file to access the uploaded image
-        console.log(uploadedImage)
-  
-        // Create and save the newBabysitter object
-        const newBabysitter = new Babysitter({
-          userId: createdUser._id,
-          age,
-          gender,
-          image: uploadedImage, // Use the filename from the uploaded image
+
+        // Create a new user and save it
+        const newUser = new User({
+            role,
+            firstName,
+            lastName,
+            email,
+            phone,
+            password,
+            address,
+            nic,
         });
-  
-        await newBabysitter.save();
-  
-        res.status(201).json({ message: "Babysitter added successfully" });
-      });
+        console.log("user: " + newUser)
+        // Hash the password using bcrypt
+        const saltRounds = 12;
+        const hashPassword = await bcrypt.hash(password, saltRounds);
+        newUser.password = hashPassword;
+
+
+        // const createdUser = await newUser.save();
+
+        // Upload image using multer
+        uploadImage.single('image')(req, res, async function (err) {
+            if (err instanceof multer.MulterError) {
+                return res.status(400).json({message: 'Image upload error: ' + err.message});
+            } else if (err) {
+                return res.status(400).json({message: err.message});
+            }
+        
+            if (!req.file) {
+                console.error('No file uploaded.');
+                return res.status(400).json({message: 'No file uploaded.'});
+            }
+        
+            // Image successfully uploaded
+            const uploadedImageFilename = req.file.filename; // Store this filename
+            console.log('Success img:', uploadedImageFilename);
+        
+            // Use useraccount.image as the filename (it's already set by Multer)
+        
+            // Create a new Babysitter document and save it
+            const newBabysitter = new Babysitter({
+                userId: createdUser._id,
+                age,
+                gender,
+                // Use useraccount.image as the uploaded image filename
+                image: uploadedImageFilename,
+            });
+        
+            await newBabysitter.save();
+        
+            res.status(201).json({message: 'Babysitter added successfully'});
+        });
+        
+        
     } catch (err) {
-      console.log(err);
-      res.status(500).json({ message: "Error adding babysitter: " + err.message });
+        console.error(err);
+        res.status(500).json({message: 'Error adding babysitter: ' + err.message});
     }
-  };
-  
+};
 
 
 const getAllbabysitters = async (req, res) => {
@@ -248,48 +247,49 @@ const updateRequestForm = async (req, res) => {
         });
 }
 
-const getRequestForms = async(req, res) => {
+const getRequestForms = async (req, res) => {
     try {
         let userId = req.params.id;
         console.log("babysitterID:", userId);
-        const requestForms = await RequestForm.find({ Babysitter: userId });
+        const requestForms = await RequestForm.find({Babysitter: userId});
 
         if (!requestForms || requestForms.length === 0) {
-            res.status(404).send({ status: "No requestForms found for this babysitter" });
+            res.status(404).send({status: "No requestForms found for this babysitter"});
         } else {
-            res.status(200).send({ status: "All requestForms", requestForms });
+            res.status(200).send({status: "All requestForms", requestForms});
         }
     } catch (err) {
         console.log(err.message);
-        res.status(500).send({ status: "Error with get all requestForms", error: err.message });
+        res.status(500).send({status: "Error with get all requestForms", error: err.message});
     }
 }
 
-const getParents = async (req,res) => {
+const getParents = async (req, res) => {
     await Parent.find()
-    try{
+    try {
         const parents = await Parent.find()
-        .populate('userId', 'firstName lastName email ') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
-        .exec();
+            .populate('userId', 'firstName lastName email ') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+            .exec();
         console.log(parents)
         const parentData = parents.map((parent) => {
             return {
-              userId: parent.userId._id,
-              firstName: parent.userId.firstName, // Access the first name from the populated 'userId' field
-              lastName: parent.userId.lastName, 
-              email: parent.userId.email,
+                userId: parent.userId._id,
+                firstName: parent.userId.firstName, // Access the first name from the populated 'userId' field
+                lastName: parent.userId.lastName,
+                email: parent.userId.email,
             };
-          });
-          res.status(200).send({ status: "All parents", parents: parentData 
         });
-  
+        res.status(200).send({
+            status: "All parents", parents: parentData
+        });
+
     } catch (err) {
         console.error(err.message);
-        res.status(500).send({ status: "Error with get all parents", error: err.message });
+        res.status(500).send({status: "Error with get all parents", error: err.message});
     }
 }
 
-const getRequestForm = async(req,res) => {
+const getRequestForm = async (req, res) => {
     try {
         let requestFormId = req.params.id;
         console.log("requestFormID:", requestFormId);
@@ -297,13 +297,13 @@ const getRequestForm = async(req,res) => {
         const requestForm = await RequestForm.findById(requestFormId);
 
         if (!requestForm) {
-            res.status(404).send({ status: "No request form found for this parent" });
+            res.status(404).send({status: "No request form found for this parent"});
         } else {
-            res.status(200).send({ status: "request form : ", requestForm });
+            res.status(200).send({status: "request form : ", requestForm});
         }
     } catch (err) {
         console.log(err.message);
-        res.status(500).send({ status: "Error with get all babies", error: err.message });
+        res.status(500).send({status: "Error with get all babies", error: err.message});
     }
 }
 
