@@ -126,6 +126,7 @@ export class MyBabysitterComponent {
           console.log("update babysitter successful:", data);
           this.toast.success({detail:"SUCCESS",summary:'Update work date and extend date', position:'topCenter'});
           console.log("Successfully");
+          location.reload();
         },
         (err) => {
           this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});

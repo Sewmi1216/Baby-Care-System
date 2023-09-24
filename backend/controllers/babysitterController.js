@@ -229,12 +229,14 @@ const getAllRequestForm = async (req, res) => {
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
     console.log("Tharushi")
-    console.log(req.body.requestForm.isAccept);
+    console.log(req.body.requestForm);
 
     const isAccept = req.body.requestForm.isAccept === 1 ? 1 : 0;
+    const reason = req.body.requestForm.reason
 
     const updateRequestForm = {
-        isAccept
+        isAccept,
+        reason
     };
 
     await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)

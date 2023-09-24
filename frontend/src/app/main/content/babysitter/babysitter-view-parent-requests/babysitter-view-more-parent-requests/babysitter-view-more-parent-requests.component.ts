@@ -15,6 +15,7 @@ export class BabysitterViewMoreParentRequestsComponent {
 
   requestFormId: string = '';
   parentName: string = '';
+  reason: string = '';
 
   requestForm = {
     Babysitter: '',
@@ -24,6 +25,7 @@ export class BabysitterViewMoreParentRequestsComponent {
       gender: ''
     }],
     isAccept: null as number | null,
+    reason: '',
     parent: '',
     date: '',
     specialNeeds: '',
@@ -120,6 +122,7 @@ export class BabysitterViewMoreParentRequestsComponent {
   rejectRequest(){
     const userJSON = localStorage.getItem('user');
     this.requestForm.isAccept = 0
+    this.requestForm.reason = this.reason
     console.log(userJSON)
     if(userJSON!==null){
       this.babysitterService.updateRequestForm(this.requestForm, this.requestFormId).subscribe(

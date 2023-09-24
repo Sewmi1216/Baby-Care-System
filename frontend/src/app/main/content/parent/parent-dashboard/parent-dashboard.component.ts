@@ -65,7 +65,12 @@ export class ParentDashboardComponent {
 
           this.babysitterId = this.parent.babysitter;
           console.log(this.babysitterId)
-          this.getBabysitter();
+          if(this.babysitterId){
+            this.getBabysitter();
+          }
+          else{
+            this.getNoOfBabies();
+          }
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
