@@ -1,6 +1,6 @@
-import {Component, ElementRef, AfterViewInit, ViewChild, Renderer2} from '@angular/core';
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
-import '@tensorflow/tfjs';
+import {Component, ElementRef, AfterViewInit, ViewChild} from '@angular/core';
+import * as io from 'socket.io-client'
+import {data} from "@tensorflow/tfjs";
 
 interface ObjectPrediction {
   class: string;
@@ -14,64 +14,62 @@ interface ObjectPrediction {
   styleUrls: ['./live-stream.component.css']
 })
 export class LiveStreamComponent implements AfterViewInit {
-  @ViewChild('liveView', {static: true}) liveView!: ElementRef;
-  @ViewChild('videoElement') videoElement!: ElementRef;
-  @ViewChild('canvasElement') canvasElement!: ElementRef;
+  @ViewChild('videoElement', {static: true}) videoElement!: ElementRef;
 
-  // private socket!:Socket;
-  private model: any; // Store the COCO-SSD model
   private stream!: MediaStream;
-  private children: any[] = [];
+  private socket: any;
 
+  constructor(private el: ElementRef) {
 
-  constructor(private renderer: Renderer2) {
-
-    let lastAlertTime = 0;
-    const alertInterval = 10 * 60 * 1000;
   }
 
   async ngAfterViewInit(): Promise<void> {
-    await this.loadModel();
-    this.analyzeCameraFrames();
-    // this.socket = io('http://localhost:3000');
+    // @ts-ignore
+    this.socket = io.connect('http://localhost:8070');
+
+    // Handle WebSocket events
+    this.socket.on('connect', () => {
+      console.log('Connected to WebSocket server');
+    });
+    this.socket.on('acknowledgment', (ack: any) => {
+      console.log('Received acknowledgment for frame with ID:', ack.id);
+    });
+    this.socket.on('videoFrame', (video: any) => {
+      console.log('Received video: ', video.data);
+      if (video.contentType === 'image/jpeg') {
+        // @ts-ignore
+       // document.getElementById('videoElement').src = URL.createObjectURL(video);
+        //const videoElement = this.el.nativeElement.querySelector('#videoElement');
+
+        // const videoElement = this.videoElement.nativeElement;
+        console.log('content type:', video.contentType);
+        const blob = new Blob([video], {type: 'image/jpeg'});
+        const url = URL.createObjectURL(blob);
+        // videoElement.src = url;
+        // @ts-ignore
+        document.getElementById('videoElement').src = url
+        // if (videoElement) {
+        //   const blob = new Blob([data], { type: 'image/jpeg' });
+        //   const url = URL.createObjectURL(blob);
+        //
+        //   videoElement.src = url;
+        // }
+      } else {
+        console.log('Invalid content type:', video.contentType);
+      }
+    });
   }
 
-  async loadModel() {
-    this.model = await cocoSsd.load();
-  }
-
-  async setupCamera() {
+  async viewStream() {
     try {
       this.stream = await navigator.mediaDevices.getUserMedia({
         video: {width: 1250, height: 600},
         audio: true
       });
 
-      this.videoElement.nativeElement.srcObject = this.stream;
-
-      // Play the video once the stream is set
-      this.videoElement.nativeElement.play();
     } catch (error) {
-      console.error('Error accessing camera:', error);
+      console.error('Error accessing stream:', error);
     }
-  }
-
-
-  async analyzeCameraFrames() {
-    const video = this.videoElement.nativeElement;
-
-    if (video.readyState === 4 && video.videoWidth > 0 && video.videoHeight > 0) {
-      const predictions: ObjectPrediction[] = await this.model.detect(video);
-      const babyDetection = predictions.find(prediction => prediction.class === 'person');
-      console.log('Predictions: ');
-      console.log(predictions);
-      if (!babyDetection) {
-        // Trigger alert logic and WebSocket event here
-        // You can emit a WebSocket event to notify the backend
-      }
-    }
-
-    requestAnimationFrame(() => this.analyzeCameraFrames());
   }
 
   stopCamera() {
