@@ -6,7 +6,7 @@
     <div class="container p-2 py-4"
          style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
       <form class="row g-3 needs-validation" #userAccountForm="ngForm" enctype="multipart/form-data"
-            (ngSubmit)="userAccountForm.form.valid && onSubmit()" id="signUpForm" novalidate>
+            (ngSubmit)="userAccountForm.form.valid && onSubmit(userAccountForm)" id="signUpForm" novalidate>
         <!-- start step indicators -->
 
         <div class="form-header d-flex mb-4">
@@ -126,7 +126,7 @@
           </div>
         </div>
         <div class="mb-2">
-          <input class="form-control" type="file" name="image"  (change)="onFileSelected($event)" [(ngModel)]="useraccount.image" #image="ngModel" accept="image/*" multiple required>
+          <input class="form-control" type="file" name="image" (change)="onFileSelected($event)" #imageInput accept="image/*" multiple required>
         </div>
 
         <div class="form-footer d-flex mb-4">

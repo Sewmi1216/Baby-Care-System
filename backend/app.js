@@ -10,6 +10,9 @@ const cookieSession =require("cookie-session");
 const multer = require('multer')
 require("dotenv").config(); 
 
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
+
 const port = process.env.PORT || 8070
 app.use(cookieParser());
 app.use(cors());    //use cors()

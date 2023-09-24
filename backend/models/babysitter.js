@@ -85,7 +85,7 @@ const babysitterSchema = new schema ({
     isHired:{
         type: Boolean,
         default: 0,
-    }
+    },
 })
 
 
