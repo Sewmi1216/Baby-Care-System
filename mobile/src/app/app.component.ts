@@ -31,18 +31,20 @@ export class AppComponent implements AfterViewInit {
   }
 
   async ngAfterViewInit(): Promise<void> {
-    console.log('vid: ');
+    console.log('video');
    await this.loadModel();
 
 
     // @ts-ignore
     this.socket = io.connect('http://localhost:8070');
-
+    console.log('Connected???');
     // Handle WebSocket events
     this.socket.on('connect', () => {
       console.log('Connected to WebSocket server');
     });
-
+    this.socket.on('error', (error:any) => {
+      console.error('Error connecting to WebSocket server:', error);
+    });
     // this.socket.on('disconnect', () => {
     //   console.log('Disconnected from WebSocket server');
     // });
@@ -67,7 +69,7 @@ export class AppComponent implements AfterViewInit {
       // Play the video once the stream is set
       this.videoElement.nativeElement.play();
       this.sendVideoFrames();
-      //this.analyzeCameraFrames();
+    //  this.analyzeCameraFrames();
     } catch (error) {
       console.error('Error accessing camera:', error);
     }

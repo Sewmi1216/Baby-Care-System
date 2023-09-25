@@ -20,7 +20,7 @@ const port = process.env.PORT || 8070
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
     cors: {
-        origin: ["https://192.168.157.250:4200", "http://localhost:4200"],
+        origin: ["https://192.168.255.250:4200", "http://localhost:4200"],
     },
 });
 app.use(cookieParser());
