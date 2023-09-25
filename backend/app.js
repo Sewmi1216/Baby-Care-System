@@ -10,6 +10,7 @@ const cookieSession =require("cookie-session");
 const multer = require('multer')
 require("dotenv").config();
 const fs = require('fs');
+const https = require('https');
 
 // const { Server } = require("socket.io");
 // const { createServer } = require('node:http');
@@ -17,12 +18,33 @@ const fs = require('fs');
 // const io = new Server();
 
 const port = process.env.PORT || 8070
-const http = require('http').createServer(app);
-const io = require('socket.io')(http, {
+//const http = require('http').createServer(app);
+const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
+const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
+
+const credentials = {
+    key: privateKey,
+    cert: certificate,
+};
+const httpsServer = https.createServer(credentials);
+const ipAddress = "192.168.255.250";
+httpsServer.listen(port, ipAddress, () => {
+    console.log(`websocket server is listening on https://${ipAddress}:${port}`);
+});
+const io = require('socket.io')(httpsServer, {
     cors: {
-        origin: ["https://192.168.255.250:4200", "http://localhost:4200"],
+        origin: ["https://192.168.255.250:4200", "https://localhost:4200"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
     },
 });
+// const io = require('socket.io')(http, {
+//     cors: {
+//         origin: ["https://192.168.255.250:4200", "http://localhost:4200"],
+//         allowedHeaders: ["my-custom-header"],
+//         credentials: true
+//     },
+// });
 app.use(cookieParser());
 app.use(cors());    //use cors()
 app.use(bodyParser.json());     //json format
@@ -32,6 +54,10 @@ app.use(function(req, res, next) {
         "Origin, Content-Type, Accept"
     );
     next();
+});
+const backendPort = 8070;
+app.listen(backendPort, () => {
+    console.log(`app is listening on port ${backendPort}`);
 });
 //sid.signature
 // app.use(session({
@@ -57,9 +83,6 @@ app.use(function(req, res, next) {
 //     next()
 // })
 
-http.listen(port, () => {
-    console.log(`app is listening on port ${port}`)
-})
 
 
 

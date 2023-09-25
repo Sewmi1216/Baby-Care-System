@@ -1,7 +1,7 @@
 import {Component, ElementRef, AfterViewInit, ViewChild, Renderer2} from '@angular/core';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
-import * as io from 'socket.io-client'
+import {io} from 'socket.io-client'
 
 interface ObjectPrediction {
   class: string;
@@ -34,9 +34,14 @@ export class AppComponent implements AfterViewInit {
     console.log('video');
    await this.loadModel();
 
-
     // @ts-ignore
-    this.socket = io.connect('http://localhost:8070');
+   // this.socket = io('http://192.168.255.250:8070');
+    this.socket = io("https://192.168.255.250:8070", {
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd"
+      }
+    });
     console.log('Connected???');
     // Handle WebSocket events
     this.socket.on('connect', () => {
