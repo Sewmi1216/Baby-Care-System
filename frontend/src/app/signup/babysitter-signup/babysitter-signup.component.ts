@@ -12,7 +12,11 @@ import {NgToastService} from "ng-angular-popup";
 export class BabysitterSignupComponent implements OnInit{
   @ViewChild('userAccountForm', { static: true }) public userAccountForm!: NgForm;
 
+  selectedFile: File | null = null;
+
+
   useraccount = {
+    role:'Babysitter',
     firstName: '',
     lastName: '',
     email: '',
@@ -22,7 +26,8 @@ export class BabysitterSignupComponent implements OnInit{
     address: '',
     nic: '',
     age:'',
-    gender:''
+    gender:'',
+    image: ''
   };
 
   constructor(
@@ -34,23 +39,52 @@ export class BabysitterSignupComponent implements OnInit{
 
   }
 
-
-
-  onSubmit() {
-    console.log("Submitting form...");
-    this.authService.register(this.useraccount).subscribe(
-      (data) => {
-        this.router.navigate(['/login'])
-        this.toast.success({detail:"SUCCESS",summary:data.message, position:'topCenter'});
-        console.log("Registration successful:", data);
-        console.log("Successfully");
-
-      },
-      (err) => {
-        this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter', sticky:true});
-        console.log('Registration failed:', err);
-      }
-    );
+  onFileSelected(event: any): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files?.length) {
+      // Extract the filename from the selected file
+      const filename = inputElement.files[0].name;
+      // Set the useraccount.image property to the filename
+      this.useraccount.image = filename;
+    }
   }
 
-}
+  onSubmit(data:any) {
+    console.log(this.useraccount)
+
+      // console.log("Submitting form...");
+      // console.log(this.useraccount)
+      // console.log(this.selectedFile)
+      // if (this.selectedFile) {
+      //   const formData = new FormData();
+      //   console.log(formData)
+      //   formData.append('image', this.selectedFile);
+      //   formData.append('role', this.useraccount.role);
+      //   formData.append('firstName', this.useraccount.firstName);
+      //   formData.append('lastName', this.useraccount.lastName);
+      //   formData.append('email', this.useraccount.email);
+      //   formData.append('phone', this.useraccount.phone);
+      //   formData.append('cpassword', this.useraccount.cpassword);
+      //   formData.append('address', this.useraccount.address);
+      //   formData.append('nic', this.useraccount.nic);
+      //   formData.append('age', this.useraccount.age);
+      //   console.log(formData)
+      //   console.log(formData.get)
+  
+        // Now you can send formData to your backend using an HTTP request
+        this.authService.registerBabysitter(this.useraccount).subscribe(
+          (data) => {
+            console.log(this.useraccount)
+            this.router.navigate(['/login'])
+            this.toast.success({detail:"SUCCESS",summary:data.message, position:'topCenter'});
+            console.log("Registration successful:", data);
+            console.log("Successfully");
+  
+          },
+          (err) => {
+            this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter', sticky:true});
+            console.log('Registration failed:', err);
+          }
+        );
+    }
+  }
