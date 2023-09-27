@@ -6,6 +6,7 @@ import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 
+
 interface WorkExpectation {
   date: string; // Change the type if needed
   fromTime: string;
@@ -61,6 +62,7 @@ export class SitterPersonalInformationComponent {
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
   babysitterId: string | null = null; // Initialize the babysitterId variable
+  parentId:  string = ''
 
 
   requestForm: RequestForm = {
@@ -156,6 +158,12 @@ export class SitterPersonalInformationComponent {
 
   getBabysitter(){
     const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      const userString = JSON.parse(userJSON); // Use the User interface
+      console.log(userString);
+      this.parentId = userString.id;
+      console.log(this.parentId)
+    }
     console.log(this.babysitterId);
     if(userJSON!==null){
       this.parentService.getBabysitter(this.babysitterId).subscribe(
@@ -188,11 +196,13 @@ export class SitterPersonalInformationComponent {
         // console.log(this.userId);
         console.log("Submitting form...");
         console.log(this.requestForm);
+        console.log(userString)
         this.parentService.addRequestForm(this.requestForm, userString).subscribe(
           (data) => {
             console.log("Registration successful:", data);
             this.toast.success({detail:"SUCCESS",summary:'Request form added successfully', position:'topCenter'});
             console.log("Successfully");
+            this.router.navigate([`parent/requested_babysitters/${this.parentId}`]);
           },
           (err) => {
             this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});

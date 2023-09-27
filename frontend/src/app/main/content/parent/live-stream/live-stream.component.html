@@ -17,19 +17,10 @@
     padding-left: 10px;
     padding-top: 37px;">Live Stream</h3>
     </div>
-    <div class="col-2">
-      <button type="submit" class="btn btn-dark mb-3" (click)="setupCamera()" title="Start Live Stream">
-        Enable webcam
-      </button>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-dark mb-3" (click)="stopCamera()">Stop Stream</button>
-    </div>
   </div>
-  <!--  <video #videoElement id="webcam" ></video>-->
   <div class="video-container">
-    <video #videoElement></video>
-
+<!--    <video id="videoElement" type="video/webm" autoplay preload="auto"></video>-->
+    <img id="videoElement"/>
   </div>
 
 </div>

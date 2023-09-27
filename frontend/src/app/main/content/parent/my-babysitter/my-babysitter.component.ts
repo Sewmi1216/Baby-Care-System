@@ -59,8 +59,20 @@ export class MyBabysitterComponent {
     nic: '',
     religon: '',
     language: '',
+    startDate: '',
+    endDate: '',
   };
 
+  updateBabysitter = {
+    endDate:'',
+    extendDate:''
+  }
+
+  endDate: string = ''
+  extendDate: string = ''
+  formattedDate: string = ''
+  formattedEndDate: string = ''
+  formattedExtendDate: string =''
   babysitterFullName: string | null = null;
 
   constructor(
@@ -82,11 +94,43 @@ export class MyBabysitterComponent {
       this.parentService.getBabysitter(this.babysitterId).subscribe(
         (response)=>{
           this.babysitterProfile = response.babysitter
+          console.log(this.babysitterProfile)
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
+          const date = new Date(this.babysitterProfile.startDate);
+          this.formattedDate = `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+          const endDate = new Date(this.babysitterProfile.endDate);
+          this.formattedEndDate = `${endDate.getFullYear()}.${(endDate.getMonth() + 1).toString().padStart(2, '0')}.${endDate.getDate().toString().padStart(2, '0')}`;
           console.log(this.babysitterProfile._id)
+          console.log(this.formattedEndDate)
         },
         (error)=>{
 
+        }
+      )
+    }
+  }
+
+  updateDates(babysitterId:any){ 
+    console.log(babysitterId)
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      if(this.extendDate){
+        this.updateBabysitter.endDate = this.extendDate
+      }
+      else if(!this.extendDate){
+        this.updateBabysitter.endDate = this.endDate
+      }
+      console.log(this.updateBabysitter)
+      this.parentService.updateDates(this.updateBabysitter, this.babysitterId).subscribe(
+        (data) => {
+          console.log("update babysitter successful:", data);
+          this.toast.success({detail:"SUCCESS",summary:'Update work date and extend date', position:'topCenter'});
+          console.log("Successfully");
+          location.reload();
+        },
+        (err) => {
+          this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+          console.log(`unsuccessful requestForm:${err}`, err);
         }
       )
     }

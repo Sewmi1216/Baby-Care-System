@@ -17,6 +17,10 @@ export class ViewBabySittersComponent implements OnInit{
     gender: '',
     image: '',
   };
+  requestForms: any[] = [];
+  babysitterId: any[] = [];
+
+  parentId: string = ''
 
   private userId: any;
 
@@ -31,10 +35,13 @@ export class ViewBabySittersComponent implements OnInit{
   getBabysitters(){
     const userJSON = localStorage.getItem('user');
     if(userJSON!==null){
+      this.parentId = JSON.parse(userJSON).id
+      console.log(this.parentId)
       this.parentService.getBabysitters(JSON.parse(userJSON)).subscribe(
         (response) => {
           this.babysitters = response.babysitters;
           console.log(this.babysitters)
+          this.getRequestForms();
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -44,7 +51,28 @@ export class ViewBabySittersComponent implements OnInit{
     }
   }
 
+  getRequestForms() {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getRequestForms(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          this.requestForms = response.requestForms; // get all requestForms
+          console.log(this.requestForms)
+
+          for (const requestForm of this.requestForms){
+            this.babysitterId.push(requestForm.Babysitter)
+          }
+          console.log(this.babysitterId)
+        },
+        (error) => {
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching requestForms:', error);
+        }
+      )
+    }
+  }
+
   filteredBabysitters() {
-    return this.babysitters.filter(babysitter => !babysitter.isHired);
+    return this.babysitters.filter(babysitter => !babysitter.isHired && !this.babysitterId.includes(babysitter.userId));
   }
 }

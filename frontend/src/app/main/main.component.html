@@ -69,7 +69,10 @@
               <a href="#" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
                  id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 <!--                <img src="../../assets/sewmi.jpg" alt="profile" width="50" height="50" class="img-fluid rounded-circle">-->
-                <span class="d-none d-sm-inline mx-1" style="font-size: 15px;">Sewmi Thimaya</span>
+                <div class="user">
+                  <span class="d-none d-sm-inline mx-1" style="font-size: 15px;">{{user.firstName}} {{user.lastName}}</span>
+                  <span class="d-none d-sm-inline mx-1" style="font-size: 11px; text-align:center; font-weight: bold;">{{user.role}}</span>
+                </div>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark text-small shadow drop">
                 <li><a class="dropdown-item" routerLink="/parent/parent_profile">My Profile</a></li>

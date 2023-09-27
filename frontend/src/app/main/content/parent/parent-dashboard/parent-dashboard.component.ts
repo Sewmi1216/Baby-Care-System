@@ -35,7 +35,9 @@ export class ParentDashboardComponent {
     nic: '',
     religon: '',
     language: '',
-  };
+  }
+  babyCount: string = ''
+  requestCount: string = ''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
@@ -63,7 +65,12 @@ export class ParentDashboardComponent {
 
           this.babysitterId = this.parent.babysitter;
           console.log(this.babysitterId)
-          this.getBabysitter();
+          if(this.babysitterId){
+            this.getBabysitter();
+          }
+          else{
+            this.getNoOfBabies();
+          }
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -80,11 +87,46 @@ export class ParentDashboardComponent {
         (response)=>{
           this.babysitterProfile = response.babysitter
           console.log(this.babysitterProfile._id)
+          this.getNoOfBabies();
         },
         (error)=>{
-
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
         }
       )
     }
+  }
+
+  getNoOfBabies(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getNoOfBabies(JSON.parse(userJSON)).subscribe(
+        (response)=>{
+          this.babyCount = response.count
+          console.log(this.babyCount)
+          this.getNoOfRequests();
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }    
+  }
+
+  getNoOfRequests(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getNoOfRequests(JSON.parse(userJSON)).subscribe(
+        (response)=>{
+          this.requestCount = response.count
+          console.log(this.requestCount)
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }    
   }
 }

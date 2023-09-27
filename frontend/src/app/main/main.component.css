@@ -169,9 +169,7 @@ a.sidebar-link {
   font-size: 30px; /* Increase font size on hover */
 }
 
-
-
-
-
-
-
+.user{
+  display: flex;
+  flex-direction: column;
+}

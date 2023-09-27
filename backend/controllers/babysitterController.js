@@ -10,17 +10,20 @@ const Babysitter = require("../models/babysitter");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './uploads/'); // Upload files to the 'uploads' directory
+        console.log("Tharushi")
+        cb(null, '../uploads/'); // Upload files to the 'uploads' directory
     },
     filename: (req, file, cb) => {
-        const fileName = Date.now() + path.extname(file.originalname);
-        cb(null, fileName); // Set the file name to a unique value
+        const filename = useraccount.image; // Use the desired filename from useraccount.image
+        cb(null, filename); // Set the file name to the value in useraccount.image
     },
 });
 
-const uploadImage = multer({storage});
+console.log(storage)
+const uploadImage = multer({storage})
 
 const addBabysitter = async (req, res) => {
+    console.log(req.body)
     try {
         const {
             role,
@@ -35,6 +38,7 @@ const addBabysitter = async (req, res) => {
             gender,
         } = req.body;
 
+        console.log(req.body)
         // Check if the user with the same email already exists
         const userExists = await User.findOne({email: email});
         if (userExists) {
@@ -59,7 +63,7 @@ const addBabysitter = async (req, res) => {
         newUser.password = hashPassword;
 
 
-        const createdUser = await newUser.save();
+        // const createdUser = await newUser.save();
 
         // Upload image using multer
         uploadImage.single('image')(req, res, async function (err) {
@@ -68,28 +72,33 @@ const addBabysitter = async (req, res) => {
             } else if (err) {
                 return res.status(400).json({message: err.message});
             }
-
+        
             if (!req.file) {
                 console.error('No file uploaded.');
                 return res.status(400).json({message: 'No file uploaded.'});
             }
-
+        
             // Image successfully uploaded
             const uploadedImageFilename = req.file.filename; // Store this filename
             console.log('Success img:', uploadedImageFilename);
-
+        
+            // Use useraccount.image as the filename (it's already set by Multer)
+        
             // Create a new Babysitter document and save it
             const newBabysitter = new Babysitter({
                 userId: createdUser._id,
                 age,
                 gender,
-                image: uploadedImageFilename, // Use the uploaded image filename here
+                // Use useraccount.image as the uploaded image filename
+                image: uploadedImageFilename,
             });
-
+        
             await newBabysitter.save();
-
+        
             res.status(201).json({message: 'Babysitter added successfully'});
         });
+        
+        
     } catch (err) {
         console.error(err);
         res.status(500).json({message: 'Error adding babysitter: ' + err.message});
@@ -220,12 +229,14 @@ const getAllRequestForm = async (req, res) => {
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
     console.log("Tharushi")
-    console.log(req.body.requestForm.isAccept);
+    console.log(req.body.requestForm);
 
     const isAccept = req.body.requestForm.isAccept === 1 ? 1 : 0;
+    const reason = req.body.requestForm.reason
 
     const updateRequestForm = {
-        isAccept
+        isAccept,
+        reason
     };
 
     await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)

@@ -227,7 +227,7 @@ const routes: Routes = [
       },
       {
 
-        path: 'baby_details',
+        path: 'baby_details/:parentId',
         component: BabyDetailsComponent
 
       },
@@ -267,7 +267,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'requested_babysitters',
+        path: 'requested_babysitters/:parentId',
         component: RequestedBabysittersComponent
 
       },
