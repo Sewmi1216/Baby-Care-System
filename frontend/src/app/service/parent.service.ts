@@ -143,4 +143,28 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getParameters/${ageGroupId}`, { headers });
   }
 
+  getVaccineList(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getVaccineList`, { headers });
+  }
+
+  getBaby(babyID: any): Observable<any> {
+    const babyId = babyID
+    console.log(babyId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getBaby/${babyId}`, { headers });
+  }
+
 }

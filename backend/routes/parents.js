@@ -12,6 +12,7 @@ router.route('/addBaby').post(parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
+router.route("/getBaby/:id").get(authJwt.verifyParent,parentController.getBaby);
 router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);

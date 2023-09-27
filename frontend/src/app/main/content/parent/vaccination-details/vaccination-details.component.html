@@ -31,47 +31,14 @@
                 <input type="checkbox" class="vaccine-checkbox">
               </div>
               <div class="sub-steps">
-                <li>
+                <li *ngFor="let vaccine of underOneYearVaccines" >
                   <span></span>
                   <div class="year">
-                    <span class="year_content_sub">2 month</span>
+                    <span class="year_content_sub">{{vaccine.age}} month</span>
                   </div>
                   <div class="timeline"></div>
                   <div class="vaccination">
-                    <p>Penta(D,T,P,HepB & Hib) OPV (1st dose)</p>
-                    <input type="checkbox" class="vaccine-checkbox">
-                  </div>
-                </li>
-                <li>
-                  <span></span>
-                  <div class="year">
-                    <span class="year_content_sub">4 month</span>
-                  </div>
-                  <div class="timeline"></div>
-                  <div class="vaccination">
-                    <p>Penta(D,T,P,HepB & Hib) OPV (2nd dose)</p>
-                    <input type="checkbox" class="vaccine-checkbox">
-                  </div>
-                </li>
-                <li>
-                  <span></span>
-                  <div class="year">
-                    <span class="year_content_sub">6 month</span>
-                  </div>
-                  <div class="timeline"></div>
-                  <div class="vaccination">
-                    <p>Penta(D,T,P,HepB & Hib) OPV (3rd dose)</p>
-                    <input type="checkbox" class="vaccine-checkbox">
-                  </div>
-                </li>
-                <li>
-                  <span></span>
-                  <div class="year">
-                    <span class="year_content_sub">9 month</span>
-                  </div>
-                  <div class="timeline"></div>
-                  <div class="vaccination">
-                    <p>Penta(D,T,P,HepB & Hib) OPV (4th dose)</p>
+                    <p>{{vaccine.name}}</p>
                     <input type="checkbox" class="vaccine-checkbox">
                   </div>
                 </li>
@@ -84,12 +51,27 @@
             </div>
             <span class="main_step"></span>
             <div class="timeline"></div>
-            <div class="vaccination">
-              <p>MMR[1st Dose]</p>
-              <input type="checkbox" class="vaccine-checkbox">
+            <div *ngFor="let vaccine of EqualToOneYearVaccines">
+              <div class="vaccination">
+                <p>{{vaccine.name}}</p>
+                <input type="checkbox" class="vaccine-checkbox">
+              </div>
+              <div class="year">
+                <span class="year_content">1 Year</span>
+              </div>
             </div>
-            <div class="year">
-              <span class="year_content">1 Year</span>
+            <div class="sub-steps-18">
+              <li *ngFor="let vaccine of underTwoYearVaccines">
+                <span></span>
+                <div class="year">
+                  <span class="year_content_sub">{{vaccine.age}} month</span>
+                </div>
+                <div class="timeline"></div>
+                <div class="vaccination">
+                  <p>{{vaccine.name}}</p>
+                  <input type="checkbox" class="vaccine-checkbox">
+                </div>
+              </li>
             </div>
 
           </li>
@@ -105,14 +87,14 @@
             </div>
 
           </li>
-          <li class="main">
+          <li class="main" *ngFor="let vaccine of underFourYearVaccines">
             <div class="outer_frame">
               <span></span>
             </div>
             <span class="main_step"></span>
             <div class="timeline"></div>
             <div class="vaccination">
-              <p>MMR[2nd Dose]</p>
+              <p>{{vaccine.name}}</p>
               <input type="checkbox" class="vaccine-checkbox">
             </div>
             <div class="year">
@@ -132,14 +114,14 @@
             </div>
 
           </li>
-          <li class="main">
+          <li class="main" *ngFor="let vaccine of underSixYearVaccines">
             <div class="outer_frame">
               <span></span>
             </div>
             <span class="main_step"></span>
             <div class="timeline"></div>
             <div class="vaccination">
-              <p>DT & OPV[5th Dose]</p>
+              <p>{{vaccine.name}}</p>
               <input type="checkbox" class="vaccine-checkbox">
             </div>
             <div class="year">

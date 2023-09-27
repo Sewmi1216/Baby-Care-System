@@ -116,7 +116,7 @@
         <div class="card-body bg-custom text-center">
           <h4 class="card-title">{{ baby.firstName }} {{ baby.lastName }}</h4>
           <p class="card-text">{{ baby.age }} years</p>
-          <a routerLink="/parent/view_baby_details" class="btn btn-primary"
+          <a [routerLink]="['/parent/view_baby_details',baby._id]" class="btn btn-primary"
              style="background-color: #7E57C2;border-color: #563393">View Profile</a>
         </div>
       </div>

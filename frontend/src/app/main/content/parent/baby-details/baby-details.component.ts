@@ -2,9 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../../../service/auth.service";
 import {NgToastService} from "ng-angular-popup";
-import {Router} from "@angular/router";
 import {ParentService} from "../../../../service/parent.service";
 import { CookieService } from 'ngx-cookie-service';
+import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-baby-details',
   templateUrl: './baby-details.component.html',
@@ -15,6 +15,7 @@ export class BabyDetailsComponent implements OnInit{
 
   babies: any[] = [];
   baby = {
+    id:'',
     firstName: '',
     lastName: '',
     age:'',
@@ -68,4 +69,5 @@ export class BabyDetailsComponent implements OnInit{
       }
     );
   }
+
 }

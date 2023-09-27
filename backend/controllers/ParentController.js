@@ -152,6 +152,28 @@ const getBabies = async (req, res) => {
 };
 
 
+const getBaby = async (req, res) => {
+    try {
+        let babyId = req.params.id;
+
+        console.log("BabyId:",babyId);
+
+        const Baby = await Baby.find({userId: babyId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!Baby || Baby.length === 0) {
+            res.status(404).send({ status: "No activities found for this ageGroup" });
+        } else {
+            res.status(200).send({ status: "Baby details", Baby});
+        }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
 
 const updateTask = async (req, res) => {
     let taskId = req.params.id; //fetch the id
@@ -484,5 +506,6 @@ module.exports = {
     getAgeGroup,
     getParameters,
     getVaccineList,
+    getBaby,
 
 };
