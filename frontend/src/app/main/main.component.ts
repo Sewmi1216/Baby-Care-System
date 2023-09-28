@@ -10,8 +10,13 @@ import {AuthService} from "../service/auth.service";
 })
 export class MainComponent implements OnInit{
   isCollapsed = false;
-  private user: any;
+  // private user: any;
   username:any;
+  user =  {
+    firstName: '',
+    lastName: '',
+    role: '',
+  }
 
   constructor(private authService: AuthService, private router: Router, private toast:NgToastService) {
   }
@@ -26,5 +31,24 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+
+      this.authService.getUser(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          console.log(response)
+          this.user = response.user;
+          console.log(this.user)
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
     }
+  }
 }

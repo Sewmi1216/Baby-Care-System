@@ -8,9 +8,46 @@ const app = express()
 const cookieParser = require('cookie-parser');
 const cookieSession =require("cookie-session");
 const multer = require('multer')
-require("dotenv").config(); 
+require("dotenv").config();
+const fs = require('fs');
+const https = require('https');
+
+// const { Server } = require("socket.io");
+// const { createServer } = require('node:http');
+// const server = createServer(app);
+// const io = new Server();
+
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 const port = process.env.PORT || 8070
+//const http = require('http').createServer(app);
+// const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
+// const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
+
+// const credentials = {
+//     key: privateKey,
+//     cert: certificate,
+// };
+// const httpsServer = https.createServer(credentials);
+// const ipAddress = "192.168.255.250";
+// httpsServer.listen(port, ipAddress, () => {
+//     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
+// });
+// const io = require('socket.io')(httpsServer, {
+//     cors: {
+//         origin: ["https://192.168.255.250:4200", "https://localhost:4200"],
+//         allowedHeaders: ["my-custom-header"],
+//         credentials: true
+//     },
+// });
+// const io = require('socket.io')(http, {
+//     cors: {
+//         origin: ["https://192.168.255.250:4200", "http://localhost:4200"],
+//         allowedHeaders: ["my-custom-header"],
+//         credentials: true
+//     },
+// });
 app.use(cookieParser());
 app.use(cors());    //use cors()
 app.use(bodyParser.json());     //json format
@@ -20,6 +57,10 @@ app.use(function(req, res, next) {
         "Origin, Content-Type, Accept"
     );
     next();
+});
+const backendPort = 8070;
+app.listen(backendPort, () => {
+    console.log(`app is listening on port ${backendPort}`);
 });
 //sid.signature
 // app.use(session({
@@ -45,10 +86,40 @@ app.use(function(req, res, next) {
 //     next()
 // })
 
-app.listen(port, () => {
-    console.log(`app is listening on port ${port}`)
-})
 
+
+
+// io.on('connection', (socket) => {
+//     console.log('Client connected.');
+//     socket.on('videoFrame', (message) => {
+//         console.log('Received video frame with ID:', message.id);
+
+//         console.log('Received video frame.Data length:', message.data.length);
+//         if (message.contentType === 'image/jpeg') {
+
+//             const filePath = 'uploads/frame.jpeg';
+
+//             fs.writeFile(filePath, message.data, (err) => {
+//                 if (err) {
+//                     console.error('Error saving video frame:', err);
+//                 } else {
+//                     console.log('Video frame saved successfully:', filePath);
+//                     socket.broadcast.emit('acknowledgment', { id: message.id });
+//                     socket.broadcast.emit('videoFrame', message.data);
+//                 }
+//             });
+//             console.log('Hello video frame');
+//         } else {
+//             console.error('Invalid content type:', message.contentType);
+//         }
+
+//     });
+
+//     // Handle disconnection
+//     // socket.on('disconnect', () => {
+//     //     console.log('A client disconnected.');
+//     // });
+// });
 
 //mongodb configuration
 const URL = process.env.MONGODB_URL;
