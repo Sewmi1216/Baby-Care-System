@@ -36,7 +36,7 @@ export class AppComponent implements AfterViewInit {
 
     // @ts-ignore
    // this.socket = io('http://192.168.255.250:8070');
-    this.socket = io("https://192.168.255.250:8070", {
+    this.socket = io("https://192.168.235.250:8070", {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"
@@ -74,7 +74,7 @@ export class AppComponent implements AfterViewInit {
       // Play the video once the stream is set
       this.videoElement.nativeElement.play();
       this.sendVideoFrames();
-    //  this.analyzeCameraFrames();
+    // this.analyzeCameraFrames();
     } catch (error) {
       console.error('Error accessing camera:', error);
     }
@@ -140,8 +140,7 @@ export class AppComponent implements AfterViewInit {
       console.log('Predictions: ');
       console.log(predictions);
       if (!babyDetection) {
-        // Trigger alert logic and WebSocket event here
-        // You can emit a WebSocket event to notify the backend
+       
       }
     }
 
