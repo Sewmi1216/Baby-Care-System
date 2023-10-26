@@ -26,7 +26,7 @@
 
 
   <div
-    routerLink="/parent/baby_details"
+    [routerLink]="['/parent/baby_details', parentId]"
     #babyDetails="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': babyDetails.isActive ? '#7E57C2' : '', 'color': babyDetails.isActive ? '#fff' : ''}">

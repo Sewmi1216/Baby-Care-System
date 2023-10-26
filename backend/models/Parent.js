@@ -11,6 +11,10 @@ const parentSchema = new schema({
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'tasklist',
     // }],
+    babysitter: {
+        type: schema.Types.ObjectId,
+        default: null
+    },
 
 })
 

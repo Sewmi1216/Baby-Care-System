@@ -3,7 +3,7 @@
 }
 
 .custom-card .card {
-  padding: 25px;
+  padding: 5px;
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 0 4px 8px 0 #BFBBF1, 0 6px 20px 0 #BFBBF1;
@@ -43,4 +43,38 @@
   margin-left: 2rem;
   margin-bottom: 1rem;
   margin-right: 5rem;
+}
+
+.view-request{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 36px; /* Adjust font size for smaller screens */
+  text-align: center;
+  color: #39315d;
+  margin-top: 2rem;
+}
+
+.modal-content{
+  width: 120%;
+}
+
+.reason{
+  font-family: "Sofia Sans";
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #39315d;
+  margin-left: 15rem;
+}
+
+#floatingTextarea{
+  padding: 0.5rem;
+  margin: 1rem;
+  width: 95%;
+}
+
+.modal-content{
+  width: 120%;
+  margin-left: 5rem;
+  margin-top: 18rem;
 }

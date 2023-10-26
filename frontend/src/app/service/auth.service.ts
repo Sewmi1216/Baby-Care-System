@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   useraccount :any;
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+  }
 
   accLogin(user: any): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -20,10 +22,9 @@ export class AuthService {
     return this.http.post<any>(environment.backend_url + "/parent/addParent", useraccount);
   }
   registerBabysitter(useraccount:any): Observable<any> {
-     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    // return this.http.post<any>(`${environment.backend_url}/user/login`, user, { headers });
-    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter", useraccount,{ headers });
-  }
+    console.log(useraccount)
+    return this.http.post<any>(environment.backend_url + "/babysitter/addBabysitter",useraccount);
+ }
   storeToken(tokenValue:string){
     localStorage.setItem('token', tokenValue)
   }
@@ -40,18 +41,19 @@ export class AuthService {
     localStorage.clear();
   }
 
+  private getAccessTokenFromCookie(): string {
+    const accessToken = this.cookieService.get('access_token');
+    return accessToken;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  getUser(user:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/user/getUser/${userId}`, { headers });
+  }
 }

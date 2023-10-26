@@ -17,34 +17,34 @@ const https = require('https');
 // const server = createServer(app);
 // const io = new Server();
 
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
+
 const port = process.env.PORT || 8070
 //const http = require('http').createServer(app);
 // const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
 // const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
-//
+
 // const credentials = {
 //     key: privateKey,
 //     cert: certificate,
 // };
 // const httpsServer = https.createServer(credentials);
-// const ipAddress = "192.168.235.250";
+
+// const ipAddress = "192.168.255.250";
+
 // httpsServer.listen(port, ipAddress, () => {
 //     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
 // });
 // const io = require('socket.io')(httpsServer, {
 //     cors: {
-//         origin: ["https://192.168.235.250:4200", "https://localhost:4200"],
+
+//         origin: ["https://192.168.255.250:4200", "https://localhost:4200"],
 //         allowedHeaders: ["my-custom-header"],
 //         credentials: true
 //     },
 // });
-// const io = require('socket.io')(http, {
-//     cors: {
-//         origin: ["https://192.168.255.250:4200", "http://localhost:4200"],
-//         allowedHeaders: ["my-custom-header"],
-//         credentials: true
-//     },
-// });
+
 app.use(cookieParser());
 app.use(cors());    //use cors()
 app.use(bodyParser.json());     //json format

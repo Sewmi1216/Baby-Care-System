@@ -15,14 +15,17 @@ export class BabysitterViewMoreParentRequestsComponent {
 
   requestFormId: string = '';
   parentName: string = '';
+  reason: string = '';
 
   requestForm = {
     Babysitter: '',
     babyDetails: [{
-      age: null,
+      years: '',
+      months: '',
       gender: ''
     }],
     isAccept: null as number | null,
+    reason: '',
     parent: '',
     date: '',
     specialNeeds: '',
@@ -37,7 +40,8 @@ export class BabysitterViewMoreParentRequestsComponent {
   workDays: string[] = []
   fromTimes: string[] = []
   toTimes: string[] = []
-  ages: any[] = []
+  years: string[] = []
+  months: string[] = []
   genders: string[] = []
   specialNeeds: string = ''
 
@@ -80,12 +84,14 @@ export class BabysitterViewMoreParentRequestsComponent {
           // console.log(this.fromTimes)
           // console.log(this.toTimes)
           for(const babyDetails of this.requestForm.babyDetails){
-            this.ages.push(babyDetails.age);
-            this.genders.push(babyDetails.gender)
+            this.years.push(babyDetails.years);
+            this.months.push(babyDetails.months);
+            this.genders.push(babyDetails.gender);
           }
           // console.log(this.ages)
           // console.log(this.genders)
           this.specialNeeds = this.requestForm.specialNeeds;
+          console.log(this.months)
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -116,6 +122,7 @@ export class BabysitterViewMoreParentRequestsComponent {
   rejectRequest(){
     const userJSON = localStorage.getItem('user');
     this.requestForm.isAccept = 0
+    this.requestForm.reason = this.reason
     console.log(userJSON)
     if(userJSON!==null){
       this.babysitterService.updateRequestForm(this.requestForm, this.requestFormId).subscribe(
