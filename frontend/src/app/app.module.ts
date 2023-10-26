@@ -344,5 +344,4 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export class YourModule { }
-export class ForgetPasswordModule { }
+

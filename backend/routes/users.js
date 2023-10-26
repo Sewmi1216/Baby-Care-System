@@ -7,7 +7,7 @@ const passport = require('passport'); // Assuming you use Passport.js for authen
 
 router.route('/login').post(userController.login);
 router.route('/logout').get(userController.logout);
-router.post('/forget_password', userController.forgetPassword);
- router.route('/resetPassword').post(userController.resetPassword);
+router.route('/forget-password').post(userController.forgetPassword);
+// router.route('/resetPassword').post(userController.resetPassword);
 
 module.exports = router;

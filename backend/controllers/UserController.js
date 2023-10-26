@@ -47,14 +47,14 @@ const logout = (req, res) => {
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: '3rdyeargroupproject2023@gmail.com',
-        pass: 'ucsc@2023',
+        user: 'sewmi.rotaract3220@gmail.com',
+        pass: 'uaqgejykofzquoaf',
     },
 });
 
 const sendResetPasswordEmail = (userEmail) => {
     const mailOptions = {
-        from: '3rdyeargroupproject2023@gmail.com',
+        from: 'sewmi.rotaract3220@gmail.com',
         to: userEmail,
         subject: 'Password Reset',
         html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
@@ -76,30 +76,29 @@ const forgetPassword = (req, res) => {
     // Check if the user exists
     User.findOne({ email: email }).then((user) => {
         if (!user) {
-            return res.status(400).json({ msg: "User does not exist" });
+            return res.status(400).json({message: 'User already not exists'});
         }
-
         // Send the reset password email to the user
         sendResetPasswordEmail(email);
 
         // Respond to the client with a success message
-        res.status(200).json({ message: 'Password reset email sent successfully.' });
+        res.status(200).json({ message: 'sent' });
     });
 };
 
 
-const userId = req.user.id; // Assuming you have the user's ID from the authenticated user
+//const userId = res.user.id; // Assuming you have the user's ID from the authenticated user
 
 // Validate the request and perform password update
-const newPassword = req.body.newPassword; // Assuming the new password is sent in the request body
+//const newPassword = req.body.newPassword; // Assuming the new password is sent in the request body
 
-User.findByIdAndUpdate(userId, { password: hashedNewPassword }, (err, user) => {
-    if (err) {
-        return res.status(500).json({ message: 'Error updating password' });
-    }
-
-    return res.status(200).json({ message: 'Password updated successfully' });
-});
+// User.findByIdAndUpdate(userId, { password: hashedNewPassword }, (err, user) => {
+//     if (err) {
+//         return res.status(500).json({ message: 'Error updating password' });
+//     }
+//
+//     return res.status(200).json({ message: 'Password updated successfully' });
+// });
 
 
 module.exports = {
@@ -108,5 +107,5 @@ module.exports = {
     forgetPassword,
     transporter,
     sendResetPasswordEmail,
-    newPassword
+
 };

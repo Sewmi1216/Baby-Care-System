@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-// @ts-ignore
-import {AuthService } from '../service/auth.service';
+import {Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
+import {NgToastService} from "ng-angular-popup";
 
 
 
@@ -13,21 +13,20 @@ import {AuthService } from '../service/auth.service';
 export class ForgetPasswordComponent {
   user = {email: ''}; // Initialize an object to hold form data
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router,private toast: NgToastService) {
   }
 
 
   onSubmit() {
-    this.authService.forgetPassword(this.user).subscribe(() => {
+    this.authService.forgetPassword(this.user).subscribe((user) => {
       // Send a POST request to your Node.js backend to initiate the password reset process
-      this.http.post('/forget_password', {email: this.user.email}).subscribe(
-        (response: any) => {
-          console.log(response.message);
-        },
-        (error) => {
-          console.error('Error:', error);
-        }
-      );
+      if (user['message'] == "sent") {
+        this.toast.success({detail: "SUCCESS", summary: user.message, position: 'topCenter'});
+      } else {
+        this.toast.success({detail: "ERROR", summary: user.message, position:'topCenter'});
+      }
+
+
     });
   }
 }
