@@ -34,10 +34,14 @@ const requestFormSchema = new schema({
     //     required: false,
     // },
     babyDetails: [{
-        age: {
+        years: {
             type: Number,
             required: true
         },
+        months: {
+            type: Number,
+            required: true
+        },        
         gender: {
             type: String,
             required: true,
@@ -50,6 +54,10 @@ const requestFormSchema = new schema({
     date: {
         type: Date,
         default: Date.now // Automatically set the current date when the document is saved
+    },
+    reason: {
+        type: String,
+        default: null
     }
 })
 

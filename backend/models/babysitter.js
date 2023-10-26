@@ -68,8 +68,32 @@ const babysitterSchema = new schema ({
     // },
     image:{
         type:String,
-        required:true
-    }
+        required:false
+    },
+    religon:{
+        type: String,
+        required:false,
+    },
+    language: {
+        type: String,
+        required: false,
+    },
+    parent: {
+        type: schema.Types.ObjectId,
+        default: null
+    },
+    isHired:{
+        type: Boolean,
+        default: 0,
+    },
+    startDate:{
+        type: Date,
+        default: null
+    },
+    endDate:{
+        type: Date,
+        default: null
+    },
 })
 
 

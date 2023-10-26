@@ -1,0 +1,57 @@
+<nav class="navbar fixed-top navbar-expand-lg"
+     style="background: linear-gradient(to right, #BFBBF1, #FFDDFC, #DDFFFF, #F6DDFF, #BCB8E8)">
+  <div class="container-fluid">
+    <img src="../../assets/img.png" width="80px">
+    <a class="navbar-brand" href="#">Cuddle Care</a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+         aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header text-dark border-bottom">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cuddle Care</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+        <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="description mt-5 p-5">
+  <div class="tile text-center mb-5 pb-5 "
+       style="color:#4B4389 ; font-family: 'Sofia Sans', sans-serif; font-size: 60px">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-2">
+          <button type="submit" class="btn btn-dark mb-3" (click)="setupfrontCamera()" title="Start Live Stream">
+            front camera
+          </button>
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-dark mb-3" (click)="setupbackCamera()" title="Start Live Stream">
+            Back camera
+          </button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-dark mb-3" (click)="stopCamera()">Stop Stream</button>
+        </div>
+      </div>
+      <div class="video-container">
+        <video #videoElement></video>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+

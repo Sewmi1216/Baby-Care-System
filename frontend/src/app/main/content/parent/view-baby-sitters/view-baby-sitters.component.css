@@ -44,10 +44,6 @@
   cursor: pointer;
 }
 
-a{
-
-}
-
 .custom-img {
   border-radius: 50%;
   width: 140px;
@@ -85,4 +81,28 @@ a{
     padding-left: 10px; /* Adjust padding for smaller screens */
     padding-top: 10px; /* Adjust padding for smaller screens */
   }
+}
+
+.babysitter{
+  font-family: "Sofia Sans";
+  font-weight: bold;
+  font-size: 36px; /* Adjust font size for smaller screens */
+  text-align: center;
+  color: #39315d;
+  padding-left: 71px; /* Adjust padding for smaller screens */
+  padding-top: 39px; /* Adjust padding for smaller screens */ 
+  padding-bottom: 2rem;
+}
+
+.btn-search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.babysitter-card{
+  display: flex;
+  justify-content: space-between;
 }

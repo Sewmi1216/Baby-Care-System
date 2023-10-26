@@ -1,21 +1,5 @@
 <div class="container-fluid">
-  <div class="d-flex justify-content-between align-items-center custom-margin" style="margin-top: 30px">
-    <div style="background-color: #e8e3fc;
-    width: 544px;
-    height: 120px;
-    padding: 5px 0 0 5px;
-    margin-top: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px 0 #563393;
-">
-      <img class="topic_image" src="../../assets/sitter.svg">
-      <h3 style="font-family: 'Sofia Sans', sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-    color: #39315d;
-    padding-left: 10px;
-    padding-top: 37px;">Requested babysitters</h3>
-    </div>
+  <div class="requested-babysitter">Requested Babysitters</div>
 
     <!-- Search bar -->
     <form action="#">
@@ -25,7 +9,6 @@
       </div>
     </form>
 
-  </div>
 
   <div class="main-content">
     <div class="container mt-7">
@@ -44,10 +27,10 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let requestForm of requestForms let i = index">
-                      <td>
+                      <td *ngIf="isHiredList[i] === false">
                         {{formattedDates[i]}}
                       </td>
-                      <td>
+                      <td *ngIf="isHiredList[i] === false">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
                             <img alt="Image placeholder" src="assets/sewmi.jpg">
@@ -57,7 +40,7 @@
                           </div>
                         </div>
                       </td>
-                      <td>
+                      <td *ngIf="isHiredList[i] === false">
                         <div *ngIf="requestForm.isAccept === -1">
                           <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Pending</span>&nbsp;&nbsp;
                         </div>
@@ -68,15 +51,35 @@
                           <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Rejected</span>&nbsp;&nbsp;
                         </div>
                       </td>
-                      <td>
+                      <td *ngIf="isHiredList[i] === false"> 
                         <div *ngIf="requestForm.isAccept === 1">
-                          <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button>
+                          <a [routerLink]="['/parent/my_babysitter', requestForm.Babysitter]">
+                            <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;" (click)="confirmBabysitter(requestForm.Babysitter, requestForm.parent)">Confirm</button>
+                          </a>
                         </div>
-                      </td>
+                        <div *ngIf="requestForm.isAccept === 0">
+                          <button class="btn btn-warning" style="background-color: red; border-radius: 16px;" data-bs-toggle="modal" data-bs-target="#reviewModal">View</button>
+                          <div class="modal" id="reviewModal">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <div class="reason">Reason for rejection</div>
+                                </div>
+                                <div class="form-floating">
+                                  <textarea class="form-control" id="floatingTextarea" [(ngModel)]="requestForm.reason" readonly></textarea>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                  <button type="button" class="btn btn-danger" (click)="deleteRequest(requestForm._id)" data-bs-dismiss="modal" style="margin-bottom: 1rem; margin-right:1rem">Delete</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>                       
                   </tr>
                 </tbody>
               </table>
-
+   
             <div class="card-footer py-4">
               <nav aria-label="...">
                 <ul class="pagination justify-content-end mb-0">
@@ -107,24 +110,4 @@
       <!-- </div>
     </div>
   </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>

@@ -17,12 +17,17 @@ export class RequestedBabysittersComponent {
   //In the requestForms
   isAccept: number | null = null;
   isAccepts: number[] = [];
+
   formattedDate: string = '';
   formattedDates: string[] = [];
   requestFormBabysitterId: string = ''
+  requestFormId: string = ''
+  babysitterId: string =''
 
   //in the babysitters
   babysitterName: string = ''
+  isHired: boolean = false
+  isHiredList: boolean[] =[]
   babysitterNames: string[] = []
   requestFormBabysittersId: string[] = []
 
@@ -53,6 +58,8 @@ export class RequestedBabysittersComponent {
             const firstName = babysitter.firstName
             const lastName = babysitter.lastName;
             this.babysitterName = `${firstName} ${lastName}`;
+            this.isHired = babysitter.isHired;
+            this.isHiredList.push(this.isHired);
           
               // Check if the babysitter userId matches any requestFormBabysittersId
             const matchingIndex = this.requestFormBabysittersId.indexOf(babysitter.userId);
@@ -63,6 +70,7 @@ export class RequestedBabysittersComponent {
             }
           }
           console.log(this.babysitterNames)
+          console.log(this.isHiredList)
         },
         (error) => {
           console.log(localStorage.getItem('user'))
@@ -86,6 +94,11 @@ export class RequestedBabysittersComponent {
             this.formattedDates.push(this.formattedDate); // get dates of the request forms
 
             this.isAccept = requestForm.isAccept;
+            // this.babysitterId = requestForm.Babysitter;
+            // console.log(this.babysitterId);
+            this.requestFormId = requestForm._id;
+            console.log(this.requestFormId)
+
             if (this.isAccept !== null) {
               this.isAccepts.push(this.isAccept);
             }
@@ -103,5 +116,41 @@ export class RequestedBabysittersComponent {
     }
   }
 
+  deleteRequest(requestFormId: string){
+    const userJSON = localStorage.getItem('user');
+    console.log(requestFormId)
+    if (userJSON !== null) {
+      this.parentService.deleteRequestForm(JSON.parse(userJSON), requestFormId).subscribe(
+        (response) => {
+          console.log(response);
+          window.location.reload();
+        },
+        (error) => {
+          console.log(localStorage.getItem('user'))
+          console.error('Error with delete requestForm:', error);
+        }
+      )
+    }    
+  }
+
+  confirmBabysitter(babysitterId: string, parentId: string){
+    console.log(babysitterId)
+    console.log(parentId)
+    const userJSON = localStorage.getItem('user');
+    if(userJSON !== null){
+      this.parentService.confirmBabysitter(JSON.parse(userJSON), babysitterId).subscribe(
+        (response) => {
+          console.log("Babysitter added succssfully:", response);
+          this.toast.success({detail:"SUCCESS",summary:'Babysitter added succssfully', position:'topCenter'});
+          console.log("Successfully");
+        },
+        (err)=>{
+          this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+          console.log(`unsuccessful babysitter:${err}`, err);
+        }
+      )
+    }
+  }
 
 }
+
