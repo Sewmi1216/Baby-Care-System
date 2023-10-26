@@ -5,6 +5,7 @@ import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
 import {ParentService} from "../../../../service/parent.service";
 import { CookieService } from 'ngx-cookie-service';
+import {DatePipe} from "@angular/common";
 @Component({
   selector: 'app-baby-details',
   templateUrl: './baby-details.component.html',
@@ -22,7 +23,7 @@ export class BabyDetailsComponent implements OnInit{
     birthDate:''
   };
   private userId: any;
-
+  today = new Date();
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
@@ -33,6 +34,15 @@ export class BabyDetailsComponent implements OnInit{
    // this.userId = this.parentService.getUserId();
    // this.babyProfile = this.parentService.babyProfile;
     this.getBabies();
+  }
+  calculateAge(birthDate: string): string {
+    const birthDateObj = new Date(birthDate);
+    const ageInMilliseconds = this.today.getTime() - birthDateObj.getTime();
+    const ageInYears = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+    const ageInMonths = Math.floor((ageInMilliseconds / (1000 * 60 * 60 * 24)) % 365.25 / 30.4375);
+    const ageInDays = Math.floor((ageInMilliseconds / (1000 * 60 * 60 * 24)) % 30.4375);
+
+    return `${ageInYears} years ${ageInMonths} months ${ageInDays} days`;
   }
   getBabies() {
     // @ts-ignore
