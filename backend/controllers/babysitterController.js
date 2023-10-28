@@ -8,21 +8,20 @@ const multer = require("multer");
 const path = require('path');
 const Babysitter = require("../models/babysitter");
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        console.log("Tharushi")
-        cb(null, '../uploads/'); // Upload files to the 'uploads' directory
-    },
-    filename: (req, file, cb) => {
-        const filename = useraccount.image; // Use the desired filename from useraccount.image
-        cb(null, filename); // Set the file name to the value in useraccount.image
-    },
-});
 
-console.log(storage)
-const uploadImage = multer({storage})
 
 const addBabysitter = async (req, res) => {
+    // Set up Multer for file uploads
+    const storage = multer.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, 'uploads/');
+        },
+        filename: (req, file, cb) => {
+            cb(null, file.originalname);
+        }
+    });
+
+    const uploadImage = multer({storage})
     console.log(req.body)
     try {
         const {
@@ -38,7 +37,7 @@ const addBabysitter = async (req, res) => {
             gender,
         } = req.body;
 
-        console.log(req.body)
+        console.log("image name: "+ req.body.image)
         // Check if the user with the same email already exists
         const userExists = await User.findOne({email: email});
         if (userExists) {
@@ -72,18 +71,18 @@ const addBabysitter = async (req, res) => {
             } else if (err) {
                 return res.status(400).json({message: err.message});
             }
-        
+
             if (!req.file) {
                 console.error('No file uploaded.');
                 return res.status(400).json({message: 'No file uploaded.'});
             }
-        
+
             // Image successfully uploaded
             const uploadedImageFilename = req.file.filename; // Store this filename
             console.log('Success img:', uploadedImageFilename);
-        
+
             // Use useraccount.image as the filename (it's already set by Multer)
-        
+
             // Create a new Babysitter document and save it
             const newBabysitter = new Babysitter({
                 userId: createdUser._id,
@@ -92,13 +91,13 @@ const addBabysitter = async (req, res) => {
                 // Use useraccount.image as the uploaded image filename
                 image: uploadedImageFilename,
             });
-        
+
             await newBabysitter.save();
-        
+
             res.status(201).json({message: 'Babysitter added successfully'});
         });
-        
-        
+
+
     } catch (err) {
         console.error(err);
         res.status(500).json({message: 'Error adding babysitter: ' + err.message});

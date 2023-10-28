@@ -181,6 +181,7 @@ import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitt
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
 import {TokenInterceptor} from "./interceptor/token.interceptor";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -309,6 +310,7 @@ import {TokenInterceptor} from "./interceptor/token.interceptor";
 
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
