@@ -5,6 +5,19 @@ const authJwt = require("../middlewares/authJwt");
 const parentController = require("../controllers/ParentController");
 const babysitterController = require("../controllers/babysitterController");
 
+const multer = require('multer')
+const path = require('path')
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+})
+let upload = multer({ storage: storage });
+
 router.get('/getParent/:id', parentController.viewParentProfile
 ); 
 
@@ -26,7 +39,8 @@ router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.
 
 
 //create
-router.route('/addParent').post(parentController.addParent);
+router.route('/addParent').post(upload.single('file'), parentController.addParent);
+
 //router.route('/addTask').post(parentController.addTask);
 // router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 // router.route('/addFeedback').post(parentController.addFeedback);
