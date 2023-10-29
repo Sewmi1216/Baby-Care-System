@@ -17,6 +17,7 @@ const Babysitter  = require("../models/babysitter");
 let GrowthParameters = require("../models/GrowthParameters");
 let AgeGroups = require("../models/ageGroup");
 let Vaccines = require("../models/vaccine");
+const path = require("path");
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
@@ -82,23 +83,23 @@ const addParent = async (req, res) => {
 };
 
 const addBaby = async (req, res) => {
-    const firstName = req.body.baby.firstName;
-    const lastName = req.body.baby.lastName;
-    const age = req.body.baby.age;
-    const gender = req.body.baby.gender;
-    const birthDate = req.body.baby.birthDate;
-    const parentID = req.body.userID; // Add this line to retrieve parentID from the request body
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const gender = req.body.gender;
+    const birthDate = req.body.birthDate;
+    const parentID = req.body.userId; // retrieve parentID from the request body
+    const img= req.file.filename;
 
-    console.log(firstName)
+    console.log(parentID)
     if (!parentID) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
     }
     const newBaby = new Baby({
         firstName,
         lastName,
-        age,
         gender,
         birthDate,
+        img,
         parent: parentID
     });
 
@@ -152,7 +153,17 @@ const getBabies = async (req, res) => {
         if (!babies || babies.length === 0) {
             res.status(404).send({ status: "No babies found for this parent" });
         } else {
-            res.status(200).send({ status: "All babies", babies });
+            const imageUrls = babies.map(baby => {
+                console.log("baby object:", baby);
+                const imageFilename = baby.img;
+                console.log("imageFilename: ", imageFilename);
+                const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+                console.log("imageFilePath: ", imageFilePath);
+                const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+                return { baby, imageUrl };
+            });
+
+            res.status(200).send({ status: "All babies", babies: imageUrls });
         }
     } catch (err) {
         console.log(err.message);

@@ -30,15 +30,18 @@ export class ParentService {
   addTaskList(tasklist: any): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/parent/addTaskList", tasklist)
   }
-
-  addBaby(baby: any, userID: any): Observable<any> {
-    const requestBody = {
-      baby: baby,
-      userID: userID
-    };
-
-    return this.http.post<any>(environment.backend_url + "/parent/addBaby", requestBody);
+  addBaby(baby: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/parent/addBaby", baby)
   }
+
+  // addBaby(baby: any, userID: any): Observable<any> {
+  //   const requestBody = {
+  //     baby: baby,
+  //     userID: userID
+  //   };
+  //
+  //   return this.http.post<any>(environment.backend_url + "/parent/addBaby", requestBody);
+  // }
 
   // @ts-ignore
   getBabies(user): Observable<any> {
