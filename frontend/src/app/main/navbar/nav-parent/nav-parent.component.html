@@ -1,8 +1,9 @@
 <div style="margin-left: 30px;" xmlns="http://www.w3.org/1999/html">
-  <img src="../../assets/sewmi.jpg" alt="profile" width="200" height="200" class="img-fluid rounded-circle">
+  <img [src]="profile" alt="profileImg" width="200" height="200" class="rounded-circle">
+  
 </div>
 <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
-
+  <span class="d-none d-sm-inline mx-1" style="font-size: 11px; text-align:center; font-weight: bold;">{{user.role}}</span>
   <div
     routerLink="/parent/parent_dashboard"
     #dashboard="routerLinkActive"
