@@ -73,7 +73,6 @@ import { LiveStreamComponent } from './main/content/parent/live-stream/live-stre
 import { ForgetPasswordComponent } from './password/forget-password/forget-password.component';
 
 
-
 /*Admin Components*/
 import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -180,7 +179,8 @@ import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitt
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
 import {TokenInterceptor} from "./interceptor/token.interceptor";
-import { ResetPasswordComponent } from './password/reset-password/reset-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './main/content/parent/payment/payment.component';
 
 
 
@@ -229,7 +229,6 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
     ParentProfileComponent,
     MyBabysitterComponent,
     BabysitterChatComponent,
-    ResetPasswordComponent,
 
 
     /*Admin*/
@@ -303,13 +302,14 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
       BlogViewComponent,
       BlogListComponent,
       AddModeratorComponent,
-
+      PaymentComponent
 
 
 
 
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -325,7 +325,6 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
     /*imports modules for angular calender */
     MatDatepickerModule,
     MatNativeDateModule,
-
 
     MatTabsModule,
     /*chats module*/
@@ -344,4 +343,4 @@ import { ResetPasswordComponent } from './password/reset-password/reset-password
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
+export class YourModule { }

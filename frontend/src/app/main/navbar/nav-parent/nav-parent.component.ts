@@ -1,21 +1,10 @@
-// import { Component } from '@angular/core';
-//
-// @Component({
-//   selector: 'app-nav-parent',
-//   templateUrl: './nav-parent.component.html',
-//   styleUrls: ['./nav-parent.component.css']
-// })
-// export class NavParentComponent {
-//
-// }
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ParentService } from '../../../service/parent.service'
 import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
-
+import {any} from "@tensorflow/tfjs";
 
 @Component({
   selector: 'app-nav-parent',
@@ -24,15 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class NavParentComponent {
-  private _isFree: boolean = false; // Initialize with a default value
 
-
-  get isFree(): boolean {
-    return this._isFree;
-  }
-
-  set isFree(value: boolean) {
-    this._isFree = value;}
   parent = {
     babysitter: '',
     isFree:'',
@@ -40,7 +21,10 @@ export class NavParentComponent {
     _id:''
   }
   parentId: string = ''
-
+type= {
+    isFree:any
+}
+   isFree: any;
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
@@ -48,6 +32,7 @@ export class NavParentComponent {
   ngOnInit():void{
     // Get the babysitter_id parameter from the route
     this.getParent();
+    this.getType();
   }
 
   getParent(){
@@ -67,4 +52,21 @@ export class NavParentComponent {
       )
     }
   }
-}
+  getType(){
+
+      const userJSON = localStorage.getItem('user');
+      if (userJSON !== null) {
+        this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
+          (response: any) => {
+            this.type = response.type;
+            this.isFree = response.isFree;
+          },
+          (error) => {
+            console.error('Error fetching: ', error);
+          }
+        );
+      }
+    }
+
+  }
+

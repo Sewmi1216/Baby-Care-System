@@ -1,28 +1,92 @@
-import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
+import { CookieService } from 'ngx-cookie-service';
+import { ParentService } from '../../../../service/parent.service';
 
 @Component({
   selector: 'app-parent-my-plan',
   templateUrl: './parent-my-plan.component.html',
   styleUrls: ['./parent-my-plan.component.css']
 })
-export class ParentMyPlanComponent {
+export class ParentMyPlanComponent implements OnInit {
+  plan = {
+    isFree: '',
+    userId: null,
+    _id: ''
+  };
+  isFree: any;
+  paymentHandler: any = null;
+   checkout: any;
+   success:boolean = false;
+  failure:boolean = false;
+  constructor(
+    private parentService: ParentService,
+    private toast: NgToastService,
+    private router: Router,
+    private cookieService: CookieService
+  ) {}
 
-  isFree: boolean | undefined; // Initialize with a default value or 'undefined'
+  ngOnInit(): void {
+    this.getPlan();
+    this.invokeStripe();
+  }
 
-  constructor(private http: HttpClient) {}
+  getPlan() {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
+        (response: any) => {
+          this.plan = response.plan;
+          this.isFree = response.isFree;
+        },
+        (error) => {
+          console.error('Error fetching: ', error);
+        }
+      );
+    }
+  }
 
-  ngOnInit() {
-    // Make a GET request to your backend API to fetch the plan information
-    this.http.get<{ isFree: boolean }>('/parent/parent_my_plan').subscribe(
-      (data) => {
-        this.isFree = data.isFree;
-        console.log('isFree:', this.isFree); // Add this line to log the value
-      },
-      (error) => {
-        console.error('Error fetching plan information:', error);
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax',
+          locale: 'auto',
+          token: (stripeToken: any) => {
+            console.log(stripeToken);
+            this.paymentStripe(stripeToken);
+          }
+        });
+      };
+      window.document.body.appendChild(script);
+    }
+  }
+
+  paymentStripe(stripeToken: any) {
+    this.checkout.makePayment(stripeToken).subscribe((data: any) => {
+      console.log(data);
+
+
+      if (data.data === "success") {
+        this.success = true
+      } else {
+        this.failure = true
       }
-    );
+    });
+  }
+
+  makePayment(amount: number) {
+    if (this.paymentHandler) {
+      this.paymentHandler.open({
+        name: 'Cuddle Care System',
+        description: 'Premium Option',
+        amount: amount * 100
+      });
+    }
   }
 }
-

@@ -12,6 +12,7 @@ router.route('/addBaby').post(parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
+router.route("/getPlan/:id").get(authJwt.verifyParent,parentController.getPlan);
 router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
@@ -20,6 +21,9 @@ router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentControl
 router.route("/updateParent/:id1/:id2").put(authJwt.verifyParent,parentController.updateParent);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.getOnlyParent); //id=parentID
+router.route("/getType/:id").get(authJwt.verifyParent,parentController.getType);
+router.route("/checkout/:id").get(authJwt.verifyParent,parentController.checkout);
+
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.updateBabysitter); //id=babysitterID

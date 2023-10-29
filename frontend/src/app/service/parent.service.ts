@@ -127,9 +127,9 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log(userId); 
+    console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });   
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });
   }
 
   getParent(user:any): Observable<any> {
@@ -164,7 +164,7 @@ export class ParentService {
     const userId = user.id;
     console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);  
+    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);
   }
 
   updateDates(updatebabysitter: any, babysitterId: any): Observable<any>{
@@ -173,7 +173,33 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log('Request headers:', headers);
-    return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });    
+    return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });
   }
-}
-
+  getPlan(user:any):Observable<any>{
+    const headers:HttpHeaders =new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('userid:',userId)
+    return this.http.get<any>(`${environment.backend_url}/parent/getPlan/${userId}`);
+  }
+  getType(user:any):Observable<any>{
+    const headers:HttpHeaders =new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('userid:',userId)
+    return this.http.get<any>(`${environment.backend_url}/parent/getType/${userId}`);
+  }
+  makePayment(stripeToken:any):Observable<any>{
+    const headers:HttpHeaders =new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log('userid:',userId)
+    return this.http.get<any>(`${environment.backend_url}/parent/checkout/{token:stripeToken}`);
+  }
+  }

@@ -1,3 +1,4 @@
+
 //parent controller
 let Parent = require("../models/Parent");
 let User = require("../models/User");
@@ -13,6 +14,7 @@ let Complaint = require("../models/Complaint");
 
 let Feedback = require("../models/feedback");
 const Babysitter  = require("../models/babysitter");
+//const getPlan =require("../models/Admin")
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
@@ -147,6 +149,60 @@ const getBabies = async (req, res) => {
     }
 };
 
+// const getPlan = async (req, res) => {
+//     try {
+//         let userId = req.params.id;
+//         console.log("parentID:", userId);
+//
+//         const plan = await parents.findOne({ userId: userId }); // Replace with your database query
+//
+//         if (plan) {
+//             // Assuming 'isFree' is a field in the database
+//             const isFree = parent.isFree;
+//             res.status(200).json({ isFree });
+//         } else {
+//             res.status(404).json({ status: "Plan not found" });
+//         }
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).json({ status: "Error with get plan", error: err.message });
+//     }
+// };
+
+// Mongoose model definition
+
+const getPlan = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const parents = await Parent.findOne({ userId });
+
+
+        const isFree = parents.isFree;
+
+        res.status(200).send({ parents, isFree });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get plans", error: err.message });
+    }
+};
+
+const getType = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const parents = await Parent.findOne({ userId });
+
+
+        const isFree = parents.isFree;
+
+        res.status(200).send({ parents, isFree });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get plans", error: err.message });
+    }
+};
+
+
+
 
 
 const updateTask = async (req, res) => {
@@ -211,7 +267,7 @@ const addRequestForm = async (req, res) => {
     // if(!babysitter){
         try{
             const savedRequestForm = await newRequestFormData.save();
-            return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});
+            return res.status(201).send({status: "RequestForm is added", requestForm: savedRequestForm});             
         }
         catch(err){
             console.log(err.message);
@@ -223,30 +279,6 @@ const addRequestForm = async (req, res) => {
     // }
 
 }
-
-
-const updateRequestForm = async (req, res) => {
-    let requestFormId = req.params.id; //fetch the id
-
-    const {workExpectation, numberofBabies, babyDetails, specialNeeds} = req.body; // new value
-
-    const updateRequestForm = {
-        workExpectation,
-        numberofBabies,
-        babyDetails,
-        specialNeeds
-    };
-
-    await RequestForm.findByIdAndUpdate(requestFormId, updateRequestForm)
-        .then((requestForm) => {
-            res.status(200).send({status: "Request form updated", requestForm});
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send({status: "Error with updating data", error: err.message});
-        });
-};
-
 
 const deleteRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
@@ -357,7 +389,7 @@ const getBabysitters = async (req, res) => {
               gender: babysitter.gender,
               image: babysitter.image,
               firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
-              lastName: babysitter.userId.lastName,
+              lastName: babysitter.userId.lastName, 
               email: babysitter.userId.email,
               phone: babysitter.userId.phone,
               address: babysitter.userId.address,
@@ -367,9 +399,9 @@ const getBabysitters = async (req, res) => {
               isHired: babysitter.isHired
             };
           });
-          res.status(200).send({ status: "All babysitters", babysitters: babysitterData
+          res.status(200).send({ status: "All babysitters", babysitters: babysitterData 
         });
-
+  
     } catch (err) {
         console.error(err.message);
         res.status(500).send({ status: "Error with get all babysitters", error: err.message });
@@ -392,13 +424,13 @@ const getBabysitter = async (req, res) => {
         }
 
         const babysitterData = {
-
+            
             _id: babysitter.userId._id,
             age: babysitter.age,
             gender: babysitter.gender,
             image: babysitter.image,
             firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
-            lastName: babysitter.userId.lastName,
+            lastName: babysitter.userId.lastName, 
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
@@ -433,20 +465,6 @@ const getRequestForms = async(req, res) => {
         res.status(500).send({ status: "Error with get all requestForms", error: err.message });
     }
 }
-const getMyPlan = async (req, res) => {
-    try {
-        // Assuming you have a Parent model with an 'isFree' field
-        const parent = await Parent.findById(req.userId); // You need to replace 'userId' with your actual user identifier
-        if (!parent) {
-            return res.status(404).json({ message: "Parent not found" });
-        }
-
-        res.status(200).json({ isFree: parent.isFree });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Internal server error" });
-    }
-};
 
 const updateParent = async (req, res) => {
     const babysitterID = req.params.id1;
@@ -564,6 +582,38 @@ const updateBabysitter = async (req, res) => {
         console.error(err.message);
         res.status(500).send({ status: "Error with updating data", error: err.message });
     }
+    const checkout = async (req, res) => {
+        try {
+            const token = req.body.token;
+
+            const customer = await stripe.customers.create({
+                email: " ",
+                source: token.id,
+            });
+
+            const charge = await stripe.charges.create({
+                amount: 10000,
+                description: "Premium Option",
+                currency: "USD",
+                customer: customer.id,
+            });
+
+            console.log(charge);
+
+            res.json({
+                data: "success",
+            });
+        } catch (err) {
+            res.json({
+                data: "failure",
+            });
+            return true;
+        }
+
+    };
+
+
+
 }
 
 
@@ -584,11 +634,12 @@ module.exports = {
     getBabysitters,
     getBabysitter,
     getRequestForms,
-
     updateParent,
     getOnlyParent,
     getBabiesCount,
     getRequestsCount,
-    updateBabysitter
-
+    updateBabysitter,
+    getPlan,
+    getType,
+    checkout
 };
