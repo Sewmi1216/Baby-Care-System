@@ -21,7 +21,7 @@ let upload = multer({ storage: storage });
 router.get('/getParent/:id', parentController.viewParentProfile
 ); 
 
-router.route('/addBaby').post(parentController.addBaby);
+router.route('/addBaby').post(upload.single('file'),parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);

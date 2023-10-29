@@ -12,11 +12,11 @@ const babySchema = new schema({
         type: String,
         required: true,
     },
-
-    age: {
-        type: Number,
-        required: true,
-    },
+    //
+    // age: {
+    //     type: Number,
+    //     required: true,
+    // },
     gender: {
         type: String,
         required: true,
@@ -24,6 +24,10 @@ const babySchema = new schema({
     birthDate: {
         type: Date,
         required: true,
+    },
+    img:{
+        type:String,
+        required:true
     },
 
     parent: {

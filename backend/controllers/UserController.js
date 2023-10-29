@@ -42,8 +42,25 @@ const logout = (req, res) => {
     });
 }
 
-
 const getUser = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("userID:", userId);
+
+        const user = await User.findOne({_id: userId});
+        console.log(user)
+
+        if (!user) {
+            res.status(404).send({ status: "No user found" });
+        } else {
+            res.status(200).send({ status: "user : ", user});
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get user", error: err.message });
+    }
+}
+const getImg = async (req, res) => {
     try {
         let userId = req.params.id;
         console.log("userID:", userId);
@@ -71,10 +88,9 @@ const getUser = async (req, res) => {
     }
 }
 
-
-
 module.exports = {
     login,
     logout,
-    getUser
+    getUser,
+    getImg
 }
