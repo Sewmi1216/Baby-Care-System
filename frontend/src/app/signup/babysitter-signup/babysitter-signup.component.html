@@ -5,8 +5,8 @@
     </div>
     <div class="container p-2 py-4"
          style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
-      <form class="row g-3 needs-validation" #userAccountForm="ngForm" enctype="multipart/form-data"
-            (ngSubmit)="userAccountForm.form.valid && onSubmit(userAccountForm)" id="signUpForm" novalidate>
+      <form class="row g-3 needs-validation" #userAccountForm="ngForm"
+            (ngSubmit)="userAccountForm.form.valid" id="signUpForm" novalidate>
         <!-- start step indicators -->
 
         <div class="form-header d-flex mb-4">
@@ -36,7 +36,8 @@
           </div>
         </div>
         <div class="col-md-6">
-          <input type="number" min="0" [(ngModel)]="useraccount.age" #age="ngModel" name="age" class="form-control" placeholder="Age" required>
+          <input type="number" min="0" [(ngModel)]="useraccount.age" #age="ngModel" name="age" class="form-control"
+                 placeholder="Age" required>
           <div *ngIf="(firstName.touched || userAccountForm.submitted) && firstName.errors?.['required']"
                class="validErr">
             Age is required
@@ -45,7 +46,8 @@
         <div class="col-md-6">
 
           <label>
-            <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="male" selected> Male
+            <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="male" selected>
+            Male
           </label>
           <label>
             <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="female"> Female
@@ -105,7 +107,8 @@
 
         <div class="col-md-6">
           <!--          <label for="validationCustom03" class="form-label">Password</label>-->
-          <input type="password" [(ngModel)]="useraccount.cpassword" #cpassword="ngModel" [ngModelOptions]="{standalone: true}"
+          <input type="password" [(ngModel)]="useraccount.cpassword" #cpassword="ngModel"
+                 [ngModelOptions]="{standalone: true}"
                  class="form-control" placeholder="Password" required>
           <div *ngIf="(cpassword.touched || userAccountForm.submitted) && cpassword.errors?.['required']"
                class="validErr">
@@ -126,11 +129,12 @@
           </div>
         </div>
         <div class="mb-2">
-          <input class="form-control" type="file" name="image" (change)="onFileSelected($event)" #imageInput accept="image/*" multiple required>
+          <input type="file" name="images" (change)="selectMultipleImage($event)" multiple required>
+          <!--          <input class="form-control" type="file" name="image" #imageInput accept="image/*" multiple required>-->
         </div>
 
         <div class="form-footer d-flex mb-4">
-          <button type="submit">Signup</button>
+          <button type="submit" (click)="onSubmit()">Signup</button>
         </div>
         <div class="mb-4" style="margin-top: 5px;font-family: 'Sofia Sans', sans-serif">Already have an account?
           <div

@@ -77,8 +77,9 @@ export class SitterPersonalInformationComponent {
 
   
 
-  yearsFieldValue: number | null = null; // Initialize here
-  monthsFieldValue: number | null = null;
+  // yearsFieldValue: number | null = null; // Initialize 
+  yearsFieldValue: number = 0;
+  monthsFieldValue: number = 0;
   genderFieldValue: string | null = null;
   selectedDays: string[] = [];
   fromTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
@@ -87,6 +88,9 @@ export class SitterPersonalInformationComponent {
   genderValues: (string | null)[] = [];
   babydetail: any[]=[];
   specialNeeds: string = '';
+  timeValidation: boolean[] = new Array(7).fill(false);
+  missingValue: boolean[] = new Array(7).fill(false);
+  mistake: boolean = false;
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
@@ -101,14 +105,53 @@ export class SitterPersonalInformationComponent {
     });
   }
 
-  onCheckboxChange(day: string, index: number) {
-    if (this.selectedDays[index] === day) {
-      this.selectedDays[index] = '';
-    } else {
-      this.selectedDays[index] = day;
+  validateTimeRange(index: number) {
+    const fromTime = this.fromTimeFieldValues[index];
+    const toTime = this.toTimeFieldValues[index];
+  
+    if (fromTime && toTime && fromTime <= toTime) {
+      // Handle the validation error, e.g., set an error flag or prevent form submission
+      this.timeValidation[index] = true;
+      // You can also set an error flag or message to display to the user.
     }
   }
 
+  areValuesMissing(index: number){
+    this.missingValue[index] = (
+      this.fromTimeFieldValues[index] === '' ||
+      this.toTimeFieldValues[index] === ''
+    );
+  }
+
+  hasMissingFields() {
+    for (let i = 0; i < this.selectedDays.length; i++) {
+      if (this.missingValue[i] && (this.fromTimeFieldValues[i] === '' || this.toTimeFieldValues[i] === '') || !this.timeValidation[i]) {
+        return true; // Disable the button if any condition is met
+      }
+    }
+    return false; // Enable the button if no condition is met
+  }
+
+  onCheckboxChange(day: string, index: number) {
+    if(this.selectedDays[index]){
+      if (this.selectedDays[index] === day) {
+        this.selectedDays[index] = '';
+      } else {
+        this.selectedDays[index] = day;
+      }
+      this.validateTimeRange(index);
+      this.areValuesMissing(index);
+    }
+    else{
+      this.missingValue[index] = false;
+      this.mistake = true;
+    }
+  }
+
+  onTimeChange(index: number) {
+    // Handle time input change
+    this.validateTimeRange(index);
+  }
 
   deleteBabyDetail(index: number) {
     if (index >= 0 && index < this.requestForm.babyDetails.length) {
@@ -148,8 +191,8 @@ export class SitterPersonalInformationComponent {
       this.requestForm.babyDetails.push(newBabyDetail);
 
       // Clear the form fields after adding the details
-      this.yearsFieldValue = null;
-      this.monthsFieldValue = null;
+      this.yearsFieldValue = 0;
+      this.monthsFieldValue = 0;
       this.genderFieldValue = null;
 
       this.babydetail.push(newBabyDetail);

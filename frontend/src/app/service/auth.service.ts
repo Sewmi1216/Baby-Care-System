@@ -56,4 +56,14 @@ export class AuthService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/user/getUser/${userId}`, { headers });
   }
+  getImg(user:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/user/getUser/${userId}`, { headers });
+  }
 }

@@ -32,7 +32,15 @@ const viewParentProfile = async (req, res) => {
 }
 const addParent = async (req, res) => {
     try {
-        const {role, firstName, lastName, email, phone, address, password, nic} = req.body;
+        const role = req.body.role;
+        const firstName = req.body.firstName;
+        const lastName = req.body.lastName;
+        const email = req.body.email;
+        const phone = req.body.phone;
+        const address = req.body.address;
+        const password = req.body.cpassword;
+        const nic = req.body.nic;
+        const profile= req.file.filename;
 
         const userExists = await User.findOne({email: email});
         if (userExists) {
@@ -46,7 +54,8 @@ const addParent = async (req, res) => {
             email,
             phone,
             address,
-            nic
+            nic,
+            profile
         });
 
         const saltRounds = 12;
