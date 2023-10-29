@@ -103,6 +103,13 @@ ul .sub-steps li{
   width:400px;
 }
 
+ul .sub-steps-18 li{
+  margin:90px 60px;
+  position:relative;
+  width:400px;
+  padding: 0px 40px;
+}
+
 .sub-steps li .vaccination{
   top:-10px;
   position:relative;
@@ -194,27 +201,32 @@ ul li > span:after{
   color:white;
 }
 
-.sub-steps li .year_content_sub{
+.sub-steps li .year_content_sub,
+.sub-steps-18 li .year_content_sub{
   position:absolute;
   left:-200px;
   border-radius: 10px;
-  padding:10px 40px;
+  padding:20px 40px;
   top:-100%;
   font-weight: bolder;
 }
 
-.sub-steps{
+.sub-steps,
+.sub-steps-18{
   position:relative;
   left:-100px;
   width: 10px;
   margin-top:0px;
 }
 
-.sub-steps li{
+
+.sub-steps li,
+.sub-steps-18 li{
   margin-top:0px;
 }
 
-ul li .sub-steps li > span:before{
+ul li .sub-steps li > span:before,
+ul li .sub-steps-18 li > span:before{
   content:'';
   width:20px;
   height:20px;

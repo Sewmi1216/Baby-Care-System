@@ -29,7 +29,43 @@ const babySchema = new schema({
     parent: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Parent' // Reference to the 'Parent' model
-    }
+    },
+
+    growthParameters: [{
+        parameter:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'growthParameters'
+        },
+
+        isCheck:{
+            type: Boolean,
+            default:false
+        },
+
+        ageGroup:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'AgeGroup'
+        }
+    }],
+
+    vaccinationDetails:[{
+        vaccine:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'vaccine'
+        },
+
+        isCheck:{
+            type: Boolean,
+            default:false
+        },
+
+        reminder:{
+            type:Boolean,
+            default:false
+        }
+
+    }]
+
 })
 
 const Baby = mongoose.model("Baby", babySchema);

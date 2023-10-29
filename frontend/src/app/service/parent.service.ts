@@ -121,15 +121,16 @@ export class ParentService {
     return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
   }
 
+
   confirmBabysitter(user:any, babysitterId: string){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log(userId); 
+    console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });   
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });
   }
 
   getParent(user:any): Observable<any> {
@@ -145,6 +146,28 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`);
   }
 
+
+  getParameters(ageGroupId:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log(ageGroupId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getParameters/${ageGroupId}`, { headers });
+  }
+
+  getVaccineList(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getVaccineList`, { headers });
+  }
+
   getNoOfBabies(user:any): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -156,6 +179,20 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getBabiesCount/${userId}`);
   }
 
+
+  getBaby(babyID: any): Observable<any> {
+    const babyId = babyID
+    console.log(babyId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getBaby/${babyId}`, { headers });
+  }
+
   getNoOfRequests(user:any): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -164,7 +201,7 @@ export class ParentService {
     const userId = user.id;
     console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);  
+    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);
   }
 
   updateDates(updatebabysitter: any, babysitterId: any): Observable<any>{
@@ -173,7 +210,20 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log('Request headers:', headers);
-    return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });    
+    return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });
   }
+
+  getAgeGroups(user:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getAgeGroup`, { headers });
+  }
+
+
 }
 

@@ -14,6 +14,10 @@ let Complaint = require("../models/Complaint");
 let Feedback = require("../models/feedback");
 const Babysitter  = require("../models/babysitter");
 
+let GrowthParameters = require("../models/GrowthParameters");
+let AgeGroups = require("../models/ageGroup");
+let Vaccines = require("../models/vaccine");
+
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
     console.log('access-token:', token);
@@ -153,6 +157,28 @@ const getBabies = async (req, res) => {
     } catch (err) {
         console.log(err.message);
         res.status(500).send({ status: "Error with get all babies", error: err.message });
+    }
+};
+
+
+const getBaby = async (req, res) => {
+    try {
+        let babyId = req.params.id;
+
+        console.log("BabyId:",babyId);
+
+        const Baby = await Baby.find({userId: babyId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!Baby || Baby.length === 0) {
+            res.status(404).send({ status: "No activities found for this ageGroup" });
+        } else {
+            res.status(200).send({ status: "Baby details", Baby});
+        }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
     }
 };
 
@@ -419,6 +445,58 @@ const getRequestForms = async(req, res) => {
     }
 }
 
+// fetching parameters, according to user choose age Group
+const getParameters = async (req, res) => {
+    try {
+        let ageGroupId = req.params.ageGroup;
+
+        console.log("ageGroup:",ageGroupId);
+
+        const parameters = await GrowthParameters.find({ ageGroup : ageGroupId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!parameters || parameters.length === 0) {
+            res.status(404).send({ status: "No activities found for this ageGroup" });
+        } else {
+            res.status(200).send({ status: "All ageGroups", parameters});
+        }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+const getAgeGroup = async (req, res) =>{
+    try{
+        const ageGroups = await AgeGroups.find();
+        if (!ageGroups || ageGroups.length === 0) {
+            res.status(404).send({ status: "No ageGroups found for this baby" });
+        } else {
+            res.status(200).send({ status: "All ageGroups", ageGroups });
+        }
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review age groups'})
+    }
+};
+
+const getVaccineList = async (req, res) =>{
+    try{
+        const vaccines = await Vaccines.find();
+        if (!vaccines || vaccines.length === 0) {
+            res.status(404).send({ status: "No vaccines for this age" });
+        } else {
+            res.status(200).send({ status: "All vaccines", vaccines });
+        }
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review vaccines'})
+    }
+};
+
 const updateParent = async (req, res) => {
     const babysitterID = req.params.id1;
     const userId = req.params.id2;
@@ -555,6 +633,10 @@ module.exports = {
     getBabysitters,
     getBabysitter,
     getRequestForms,
+    getAgeGroup,
+    getParameters,
+    getVaccineList,
+    getBaby,
     updateParent,
     getOnlyParent,
     getBabiesCount,
