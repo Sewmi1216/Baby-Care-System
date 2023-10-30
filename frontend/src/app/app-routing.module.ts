@@ -105,9 +105,7 @@ import {BlogListComponent} from "./blog/blog-list/blog-list.component";
 
 import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
 
-import {
-  PreviosTaskListsComponent
-} from "./main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component";
+import { PreviousTaskListsComponent} from "./main/content/parent/task-list-home/previous-task-lists/previous-task-lists.component";
 import {
   PreviousBabysitterTaskListMoreComponent
 } from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component";
@@ -226,15 +224,16 @@ const routes: Routes = [
         component: TaskListTemplatesComponent
       },
       {
-
+        path:'previous_task_lists',
+        component: PreviousTaskListsComponent
+      },
+      {
         path: 'baby_details/:parentId',
         component: BabyDetailsComponent
-
       },
       {
         path: 'live_stream',
         component: LiveStreamComponent
-
       },
       {
         path: 'view_baby_details',
@@ -285,10 +284,7 @@ const routes: Routes = [
         component: ParentMyPlanComponent
 
       },
-      {
-        path: 'view_previous_task_list',
-        component: PreviosTaskListsComponent
-      }
+
     ]
   },
   {

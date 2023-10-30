@@ -47,6 +47,7 @@ export class ParentService {
       'Content-Type': 'application/json',
       'Authorization': `${this.getAccessTokenFromCookie()}`
     });
+
     const userId = user.id;
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabies/${userId}`, { headers });
@@ -63,12 +64,26 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getAllTaskListTemplates/${userId}`, {headers});
   }
 
-  getTaskListTemplate(user:any, taskListId:string):Observable<any>{
+  getAllOldTaskLists(user:any):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getAllOldTaskLists/${userId}`, {headers});
+  }
+
+
+  getTaskListTemplate(user:any, taskListId:string):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log(headers);
+    const userId = user.id;
+    console.log(userId);
+    console.log(taskListId)
     console.log('Request headers:', headers);
     //console.log(userId); // working
     return this.http.get<any>(`${environment.backend_url}/parent/getTaskListTemplate/${taskListId}`, {headers});
@@ -253,7 +268,7 @@ export class ParentService {
     const userId = user.id;
     console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);  
+    return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);
   }
 
   updateDates(updatebabysitter: any, babysitterId: any): Observable<any>{
@@ -262,7 +277,7 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log('Request headers:', headers);
-    return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });    
+    return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });
   }
 }
 

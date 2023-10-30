@@ -149,7 +149,7 @@ const getAllTaskListTemplates = async(req,res)=>{
         let userId = req.params.id;
         // console.log(userId);
 
-        const taskListForms = await TaskListForm.find({parent: userId});
+        const taskListForms = await TaskListForm.find({parent: userId, date:null});
         // console.log(taskListAllTemplates);
 
         if(!taskListForms || taskListForms.length === 0)
@@ -166,16 +166,17 @@ const getAllTaskListTemplates = async(req,res)=>{
     }
 }
 
-
 const getTaskListTemplate = async (req, res) => {
     try {
         const taskListId = req.params.id; // Use req.params.id to get the _id from the request
 
         const taskListForms = await TaskListForm.findById(taskListId);
+        console.log(taskListForms);
 
         if (!taskListForms) {
             res.status(404).send({ status: "No task list found with the provided ID." });
         } else {
+            console.log(taskListForms);
             res.status(200).send({ status: "Task list template found", taskListForms });
         }
     } catch (err) {
@@ -220,27 +221,110 @@ const getBabies = async (req, res) => {
 
 
 
-const updateTask = async (req, res) => {
-    let taskId = req.params.id; //fetch the id
+const getOldAllTaskLists = async(req,res) => {
+    try {
+        let userId = req.params.id;
+        const todayDate = new Date().toJSON().slice(0,10);
+        const OldAllTaskLists = await TaskListForm.find(
+            {
+                parent:userId,
+                date :{$lt : todayDate}
+            }
+        );
+        if( !OldAllTaskLists || OldAllTaskLists.length === 0)
+        {
+            res.status(404).send({status : "No old task lists found for this parent"});
+        }else{
+            res.status(200).send({status: "Old task lists found for this parent"})
+            console.log(OldAllTaskLists)
+        }
+    }
+    catch(err)
+    {
+        console.log(err.message)
+        res.status(500).send({status: "Error with get old task lists.", error: err.message});
+    }
+}
 
-    const {taskName, time, isRemainder, specialNote} = req.body; // new value
+
+const getNextAllTaskLists = async(req,res) =>
+{
+    try {
+        let userId = req.params.id;
+        const todayDate = new Date().toJSON().slice(0,10);
+        const nextTaskLists = await TaskListForm.find(
+            {
+                parent:userId,
+                date :{$gt : todayDate}
+            }
+           );
+        if( !nextTaskLists || nextTaskLists.length === 0)
+        {
+            res.status(404).send({status : "No Next task lists found for this parent"});
+        }else{
+            res.status(200).send({status: "Next task lists found for this parent"})
+            console.log(nextTaskLists)
+        }
+    }
+    catch(err)
+    {
+        console.log(err.message)
+        res.status(500).send({status: "Error with get next task lists.", error: err.message});
+    }
+};
+
+
+
+
+const getTodayTaskList = async (req,res) =>{
+    try{
+        let userId = req.params.id;
+        const todayDate = new Date().toJSON().slice(0,10);
+        console.log("parentID: ", userId);
+        console.log(todayDate);
+        const todayTaskList = await TaskListForm.find(
+            {
+                parent: userId,
+            });
+
+        if( !todayTaskList || todayTaskList.length === 0)
+        {
+            res.status(404).send({status : "No task list found in today for this parent"});
+
+        }else{
+            res.status(200).send({status: "Today task list found for this parent"})
+            console.log(todayTaskList)
+        }
+    }catch(err)
+    {
+        console.log(err.message)
+        res.status(500).send({status: "Error with get today task list", error: err.message});
+    }
+};
+
+const  updateTaskListTemplate = async(req,res) => {
+
+    let taskId = req.params.id;
+
+    const {taskName, time, isRemainder,specialNote } = req.body;
 
     const updateTask = {
         taskName,
         time,
         isRemainder,
-        specialNote,
+        specialNote
     };
 
-    await Task.findByIdAndUpdate(taskId, updateTask)
-        .then((task) => {
-            res.status(200).send({status: "Task updated", task});
+    await TaskListForm.findByIdAndUpdate(taskId, updateTask).then(
+        (tasklistforms) => {
+            res.status(200).send({status: "Task List updated."});
         })
         .catch((err) => {
             console.log(err);
-            res.status(500).send({status: "Error with updating data", error: err.message});
+            res.status(500).send({status: "Error with updating data", error:err.message});
         });
 };
+
 
 
 
@@ -571,6 +655,7 @@ const getBabiesCount = async (req, res) => {
             res.status(404).send({ status: "No babies found for this parent" });
         } else {
             res.status(200).send({ status: "Success", count: babies.length});
+
         }
     } catch (err) {
         console.log(err.message);
@@ -636,14 +721,11 @@ module.exports = {
 module.exports = {
     createTaskListTemplate,//4
     addParent,
-    //addTask,f
     addTaskList,
     addDateForTaskList,
     getAllTaskListTemplates,
     getTaskListTemplate,
-    //getAllTaskListTemplate,
     deleteTaskListTemp,
-    updateTask,
     deleteTask,
     addRequestForm,
     deleteRequestForm,
@@ -661,5 +743,9 @@ module.exports = {
     getOnlyParent,
     getBabiesCount,
     getRequestsCount,
-    updateBabysitter
+    updateBabysitter,
+    getTodayTaskList,
+    getOldAllTaskLists,
+    getNextAllTaskLists,
+    updateTaskListTemplate,
 };

@@ -1,23 +1,16 @@
-
 <div class="container py-5" *ngFor="let taskList of taskListForms; let i = index">
-  <div class="row" >
+  <div class="row">
     <div class="col-lg-7 mx-auto">
-      <!--      <div class="col-lg-7 mx-auto" *ngFor="let taskList of taskListForms; let i = index">-->
       <div class="card rounded-0 border-0 shadow">
-        <!--        <div class="card rounded-0 border-0 shadow" *ngFor="let taskList of taskListForms; let i = index">-->
         <div class="card-body p-5">
-
-
-          <!--          <h2>Task List Name: {{ taskList.listName | json }}</h2>-->
           <h2>Task List Name:{{taskList.taskListName}}</h2>
-
-
+          <h5>Date :- {{taskList.date}}</h5>
+          <h5>Task List ID :- {{taskList._id}}</h5>
 
           <div class="table-wrapper">
             <table class="table">
               <thead>
               <tr>
-                <!-- <th scope="col">#</th> -->
                 <th>#</th>
                 <th scope="col">Task Name</th>
                 <th scope="col">Time</th>
@@ -42,52 +35,126 @@
                 </td>
               </tr>
               </tbody>
-
             </table>
           </div>
-
+          <!--add 3 buttons for update, add date and delete-->
           <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-danger" (click)="deleteTemplate(taskList._id)">Delete</button>
-            <button class="btn btn-primary" (click)="updateTemplate(taskList._id)" data-bs-toggle="modal" data-bs-target="#updateTaskListModal">Update</button>
-            <button class="btn btn-success" (click)="openAddDateModal()" data-bs-toggle="modal" data-bs-target="#addDateForTemplate">Add Date</button>
+            <button >Delete</button>
+            <button data-toggle="modal" data-target="#updateModalCenter" (click)="openUpdateModal(taskList._id)">Update</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Add Date</button>
           </div>
+
+          <!-- Update Modal-->
+          <div class="modal fade" id="updateModalCenter" tabindex="-1" role="dialog" aria-labelledby="updateModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="updateModalCenterLongTitle">Update Your task list :-</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+
+
+                <div class="modal-body">
+                  <div class="container py-5">
+                    <div class="row">
+                      <div class="col-lg-7 mx-auto">
+                        <div class="card rounded-0 border-0 shadow">
+                          <div class="card-body p-5">
+                            <h2>Task List Name:</h2>
+                            <h5>Date :- </h5>
+                            <h5>Task List ID :-</h5>
+                            <div class="table-wrapper">
+                            <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th scope="col">Task Name</th>
+                                <th scope="col">Time</th>
+                        <th scope="col">Send remainders</th>
+                        <th scope="col">Any note</th>
+                      </tr>
+                      </thead>
+                              <tbody>
+                              <tr *ngFor="let task of taskList.tasks;let k=index">
+                                <td>{{k+1}}</td>
+                                <td>
+                                  <input [ngModel]="task.taskName" [disabled]="true" />
+                                </td>
+                                <td>
+                                  <input [ngModel]="task.time" [disabled]="true" />
+                                </td>
+                                <td>
+                                  <input type="checkbox" [ngModel]="task.isRemainder" [disabled]="true" />
+                                </td>
+                                <td>
+                                  <input type="text" [ngModel]="task.specialNote" [disabled]="true" />
+                                </td>
+                              </tr>
+                              </tbody>
+
+                    </table>
+                  </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="addDate(taskListId)" data-mdb-dismiss="modal">Save Date</button>
+                </div>
+              </div>
+0           </div>
+          </div>
+
+          <!-- Update Modal end-->
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLongTitle">Add Date</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="todayDate" name="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="addDate(taskListId)" data-mdb-dismiss="modal">Save Date</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+<!--          <div class="d-flex justify-content-between mt-3">-->
+<!--            <button class="btn btn-danger" (click)="deleteTemplate(taskList._id)">Delete</button>-->
+<!--            <button class="btn btn-primary" (click)="updateTemplate(taskList._id)" data-bs-toggle="modal" data-bs-target="#updateTaskListModal">Update</button>-->
+<!--            <button class="btn btn-success" (click)="openAddDateModal()" data-bs-toggle="modal" data-bs-target="#addDateForTaskListTemplate">Add Date</button>-->
+<!--          </div>-->
 
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-
-
-<form #requestFormForm="ngForm" (ngSubmit)="addDate(taskList._id)" id="requestForm" >
-  <div class="modal" id="addDateForTemplate">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Add  Date</h5>
-          <button style="background-color: #39315d ; border-radius: 15px ;" type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="container">
-          <div class="modal-body">
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" name="date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="modal-footer" style="margin-top: 20px">
-          <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Add Date</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</form>
-
 </div>
+
+
+

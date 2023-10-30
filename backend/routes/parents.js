@@ -23,6 +23,11 @@ router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.get
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.updateBabysitter); //id=babysitterID
+router.route("/getTodayTaskList/:id").get(authJwt.verifyParent,parentController.getTodayTaskList); // id=parent ID
+router.route("/getOldAllTaskLists/:id").get(authJwt.verifyParent,parentController.getOldAllTaskLists);
+router.route("/getNextAllTaskLists/:id").get(authJwt.verifyParent,parentController.getNextAllTaskLists);
+router.route("/updateTaskListTemplate/:id").put(authJwt.verifyParent, parentController.updateTaskListTemplate);
+
 
 
 //create
@@ -60,7 +65,7 @@ router.route('/addComplaint').post(parentController.addComplaint);
 //router.route("/updateTask/:id").put(parentController.updateTask);
 //router.route("/updateRequestForm/:id").put(parentController.updateRequestForm);
 
-router.route("/updateTask/:id").put(parentController.updateTask);
+//router.route("/updateTask/:id").put(parentController.updateTask);
 
 router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 

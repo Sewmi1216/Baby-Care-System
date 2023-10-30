@@ -30,8 +30,7 @@ interface TaskListForm {
 export class TaskListTemplatesComponent {
 
   taskListForms: any[] = [];
-  // date: string | null = null;
-  date:Date | null = null;
+  todayDate:Date | null = null;
   taskListName: string = '';
   taskDetails: any[] = [];
   taskListId: string='';
@@ -68,7 +67,7 @@ export class TaskListTemplatesComponent {
           this.taskListForms = response.taskListForms;
           console.log(response.taskListForms);
           for (const taskListForm of this.taskListForms) {
-            this.date = taskListForm.date;
+            // this.date = taskListForm.date;
             this.taskListName = taskListForm.taskListName;
             this.taskDetails = taskListForm.tasks;
              this.taskListId = taskListForm._id;
@@ -80,6 +79,7 @@ export class TaskListTemplatesComponent {
       )
     }
   }
+
 
   deleteTemplate(taskListId: string){
     console.log(taskListId);
@@ -99,33 +99,25 @@ export class TaskListTemplatesComponent {
     }
   }
 
-  updateTemplate(taskListId: string){
-
-  }
-
-
-  openAddDateModal(){
-  }
-
 
   addDate(taskListId: string) {
-    console.log(taskListId);
+    const todayDate = this.todayDate;
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
       this.parentService.getTaskListTemplate(JSON.parse(userJSON), taskListId).subscribe(
         (response) => {
-          console.log('Response:', response); // Print the entire response to inspect its structure
 
-          // Check if taskListName and tasks are present in the response
-          if (response.taskListName && response.tasks) {
-            // Access the properties
-            this.taskListName = response.taskListName;
-            this.taskDetails = response.tasks;
-            console.log('Task List Name:', this.taskListName);
-            console.log('Task Details:', this.taskDetails);
-          } else {
-            console.error('taskListName and/or tasks not found in the response');
-          }
+          this.taskListForms = response.taskListForms;
+          console.log(response.taskListForms);
+
+           // this.date = taskListForm.date;
+            this.taskListName = response.taskListForms.taskListName;
+            console.log(this.taskListName);
+            this.taskDetails = response.taskListForms.tasks;
+            console.log(this.taskDetails);
+
+            this.insertDateToTaskList(todayDate, this.taskListName, this.taskDetails)
+           // this.closeModal();
         },
         (error) => {
           console.error('Error fetching task list templates:', error);
@@ -133,6 +125,67 @@ export class TaskListTemplatesComponent {
       );
     }
   }
+
+  private insertDateToTaskList(todayDate: Date | null, taskListName: string, taskDetails: any[]) {
+    console.log(todayDate);
+    console.log(taskListName);
+    console.log(taskDetails);
+
+    this.taskListForm.date = <Date>this.todayDate;
+    this.taskListForm.taskListName = this.taskListName;
+    this.taskListForm.tasks = this.taskDetails;
+
+    const userJSON = localStorage.getItem('user');
+
+    if (userJSON !== null) {
+      const userString: string = JSON.parse(userJSON);
+      console.log("Submitting form...");
+      console.log(this.taskListForm);
+      this.parentService.addTaskListForm(this.taskListForm, userString).subscribe(
+        (data) => {
+          console.log(data);
+          console.log("Registration successful:", data);
+          this.toast.success({detail:"SUCCESS",summary:'Task List added successfully', position:'topCenter'});
+          console.log("Successfully");
+        },
+        (err) => {
+          this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+          console.log(`unsuccessful requestForm:${err}`, err);
+        }
+      )
+    }
+    else{
+      console.log("Error")
+      console.error("User data in localStorage is null.");
+    }
+  }
+
+  openUpdateModal(taskListId :string){
+    console.log(taskListId);
+
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getTaskListTemplate(JSON.parse(userJSON), taskListId).subscribe(
+        (response) => {
+
+          this.taskListForms = response.taskListForms;
+          console.log(response.taskListForms);
+
+          // this.date = taskListForm.date;
+          this.taskListName = response.taskListForms.taskListName;
+          console.log(this.taskListName);
+          this.taskDetails = response.taskListForms.tasks;
+          console.log(this.taskDetails);
+
+        },
+        (error) => {
+          console.error('Error fetching task list template:', error);
+        }
+      );
+    }
+  }
+
+
 
 
 }
