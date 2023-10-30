@@ -29,7 +29,6 @@ export class BabysitterSignupComponent implements OnInit {
     age: '',
     gender: '',
     multipleImages: [],
-    profile: ''
   };
 
   constructor(
@@ -46,14 +45,6 @@ export class BabysitterSignupComponent implements OnInit {
       this.useraccount.multipleImages = event.target.files
     }
   }
-  selectImage(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0]
-      console.log(file)
-      this.useraccount.profile = file
-    }
-  }
-
 
   onSubmit() {
     const formData = new FormData()
@@ -67,11 +58,16 @@ export class BabysitterSignupComponent implements OnInit {
     formData.append('nic', this.useraccount.nic);
     formData.append('age', this.useraccount.age);
     formData.append('gender', this.useraccount.gender);
-    formData.append('file', this.useraccount.profile)
     for (let img of this.useraccount.multipleImages) {
-      formData.append('files', img)
+      formData.append('file', img)
     }
     console.log(formData)
+    // this.http.post<any>("http://localhost:8090/student/addMultiple", formData)
+    //   .subscribe((res) => {
+    //     console.log(res)
+    //   }, error => {
+    //     console.log(error)
+    //   })
     this.authService.registerBabysitter(formData).subscribe(
             (data) => {
               console.log(data)

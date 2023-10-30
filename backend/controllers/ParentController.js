@@ -178,14 +178,28 @@ const getBaby = async (req, res) => {
 
         console.log("BabyId:",babyId);
 
-        const Baby = await Baby.find({userId: babyId});
+        const baby = await Baby.findOne({_id: babyId});
         // const activities = parameters.map(parameters => parameters.activity);
 
-        if (!Baby || Baby.length === 0) {
-            res.status(404).send({ status: "No activities found for this ageGroup" });
+        if (!baby) {
+            res.status(404).send({ status: "No baby" });
         } else {
-            res.status(200).send({ status: "Baby details", Baby});
+            const imageFilename = baby.img;
+            console.log("baby: ", baby);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "user", baby, imageUrl });
         }
+        // if (!Baby || Baby.length === 0) {
+        //     res.status(404).send({ status: "No activities found for this ageGroup" });
+        // } else {
+        //     res.status(200).send({ status: "Baby details", Baby});
+        // }
 
     } catch (err) {
         console.error(err);
