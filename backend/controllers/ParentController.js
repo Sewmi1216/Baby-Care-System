@@ -736,6 +736,6 @@ module.exports = {
     getBabiesCount,
     getRequestsCount,
     updateBabysitter,
-    updateParentProfile
+    updateParentProfile,
     deleteBabysitter
 };
