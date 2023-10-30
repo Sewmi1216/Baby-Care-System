@@ -1,5 +1,5 @@
 import {Component, ElementRef, AfterViewInit, ViewChild} from '@angular/core';
-import * as io from 'socket.io-client'
+// import * as io from 'socket.io-client'
 
 interface ObjectPrediction {
   class: string;
