@@ -44,7 +44,7 @@ export class MyBabysitterComponent {
   ]
 
   babysitterId: string = ''
-
+  requestForms: any[] = [];
   babysitterProfile = {
     _id: '',
     userId: '',
@@ -135,6 +135,66 @@ export class MyBabysitterComponent {
       )
     }
   }
+
+ deleteBabysitter(babysitterId:any){ 
+    console.log(babysitterId)
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      const userObject = JSON.parse(userJSON);
+      const parentId = userObject.id;
+      console.log(parentId)
+      this.parentService.deleteBabysitter(this.babysitterId, parentId).subscribe(
+        (data) => {
+          console.log(data);
+          console.log("update babysitter successful:", data);
+          this.toast.success({detail:"SUCCESS",summary:'Successfully remove babysitter', position:'topCenter'});
+          console.log("Successfully");
+          this.router.navigate(['/parent/parent_dashboard']);
+          // this.deleteRequestFormID();
+          // this.deleteRequestForm();
+          
+        },
+        (err) => {
+          this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+          console.log(`unsuccessful requestForm:${err}`, err);
+        }
+      )
+    }
+  }   
+
+  // deleteRequestFormID() {
+  //   const userJSON = localStorage.getItem('user');
+  //   if (userJSON !== null) {
+  //     const userObject = JSON.parse(userJSON);
+  //     const parentId = userObject.id;
+  //     this.parentService.deleteRequestFormID(this.babysitterId, parentId).subscribe(
+  //       (response) => {
+  //         this.requestForms = response.requestForms; // get all requestForms
+  //         console.log(this.requestForms)
+  //       },
+  //       (error) => {
+  //         console.log(localStorage.getItem('user'))
+  //         console.error('Error fetching requestForms:', error);
+  //       }
+  //     )
+  //   }
+  // }
+
+  // deleteRequestForm(){
+  //   const userJSON = localStorage.getItem('user');
+  //   if (userJSON !== null) {
+  //     this.parentService.getRequestForms(JSON.parse(userJSON)).subscribe(
+  //       (response) => {
+  //         this.requestForms = response.requestForms; // get all requestForms
+  //         console.log(this.requestForms)
+  //       },
+  //       (error) => {
+  //         console.log(localStorage.getItem('user'))
+  //         console.error('Error fetching requestForms:', error);
+  //       }
+  //     )
+  //   }
+  // }
 
   toggleExpand(feedback: any): void {
     feedback.expanded = !feedback.expanded;

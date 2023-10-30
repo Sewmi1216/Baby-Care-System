@@ -640,6 +640,40 @@ const updateBabysitter = async (req, res) => {
     }
 }
 
+const deleteBabysitter = async (req, res) => {
+    let babysitterID = req.params.id1;
+    let userId = req.params.id2;
+    console.log(babysitterID)
+    console.log(userId);
+
+    const updateParent = {
+        babysitter: null,
+    };
+
+    const updateBabysitter = {
+        parent: null,
+        isHired: false,
+        startDate: null,
+        endDate: null,
+        extendDate: null
+    };
+
+    try {
+        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+
+        const requestForm = await RequestForm.findOneAndDelete({Babysitter: babysitterID}, {parent: userId});
+
+        if (!updatedParent) {
+            return res.status(404).send({ status: "Parent not found" });
+        }
+        res.status(200).send({ status: "Parent updated", updatedBabysitter });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
 
 module.exports = {
     addParent,
@@ -666,5 +700,6 @@ module.exports = {
     getOnlyParent,
     getBabiesCount,
     getRequestsCount,
-    updateBabysitter
+    updateBabysitter,
+    deleteBabysitter
 };
