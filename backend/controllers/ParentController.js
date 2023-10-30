@@ -409,6 +409,10 @@ const getBabysitters = async (req, res) => {
     }
 };
 
+
+
+
+
 const getBabysitter = async (req, res) => {
     let babysitterId = req.params.id;
     console.log("babysitterID:", babysitterId);
@@ -583,37 +587,37 @@ const updateBabysitter = async (req, res) => {
         console.error(err.message);
         res.status(500).send({ status: "Error with updating data", error: err.message });
     }
-    const invokeStripe= async (req, res) => {
-        try {
-            let userId = req.params.id;
-            console.log("UserId:", userId);
-            const token = req.body.token;
-
-            const customer = await stripe.customers.create({
-                email: req.body.email,
-                source: token.id,
-            });
-
-            const charge = await stripe.charges.create({
-                amount: 10000,
-                description: "Premium Option",
-                currency: "USD",
-                customer: customer.id,
-            });
-
-            console.log(charge);
-
-            res.json({
-                data: "success",
-            });
-        } catch (err) {
-            res.json({
-                data: "failure",
-            });
-            return true;
-        }
-
-    };
+    // const invokeStripe= async (req, res) => {
+    //     try {
+    //         let userId = req.params.id;
+    //         console.log("UserId:", userId);
+    //         const token = req.body.token;
+    //
+    //         const customer = await stripe.customers.create({
+    //             email: req.body.email,
+    //             source: token.id,
+    //         });
+    //
+    //         const charge = await stripe.charges.create({
+    //             amount: 10000,
+    //             description: "Premium Option",
+    //             currency: "USD",
+    //             customer: customer.id,
+    //         });
+    //
+    //         console.log(charge);
+    //
+    //         res.json({
+    //             data: "success",
+    //         });
+    //     } catch (err) {
+    //         res.json({
+    //             data: "failure",
+    //         });
+    //         return true;
+    //     }
+    //
+    // };
 
 
 
@@ -645,7 +649,7 @@ module.exports = {
     updateBabysitter,
     getPlan,
     getType,
-    invokeStripe,
+  //  invokeStripe,
 
 
 };
