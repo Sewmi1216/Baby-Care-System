@@ -40,6 +40,7 @@ router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.get
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.updateBabysitter); //id=babysitterID
+router.route("/updateParentProfile/:id").put(authJwt.verifyParent,parentController.updateParentProfile);
 
 //create
 router.route('/addParent').post(upload.single('file'), parentController.addParent);

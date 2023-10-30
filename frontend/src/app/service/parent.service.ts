@@ -139,7 +139,17 @@ export class ParentService {
     });
     const userId = user;
     console.log(userId);
-    return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`);
+    return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`,{headers});
+  }
+  updateParent(user:any): Observable<any> {
+    // const parentId = parentID
+    // console.log(parentId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user._id;
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParentProfile/${userId}`, user);
   }
 
 

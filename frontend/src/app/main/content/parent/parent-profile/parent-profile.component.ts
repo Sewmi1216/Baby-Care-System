@@ -32,7 +32,6 @@ export class ParentProfileComponent {
     private route:ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
 
-  // const accessToken = this.cookieService.get('access_token');
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.userId = params['user_id'];
@@ -44,7 +43,7 @@ export class ParentProfileComponent {
     // @ts-ignore
     this.parentService.getParent(this.userId).subscribe(
       (response) => {
-        this.user = response.parent; // Assign fetched data to the babies array
+        this.user = response.parent;
         console.log(response.parent);
         this.img=response.imageUrl
       },
@@ -55,4 +54,18 @@ export class ParentProfileComponent {
   }
 
 
+  gotoUpdate() {
+    this.parentService.updateParent(this.user).subscribe(
+      (response) => {
+        // this.router.navigate(['/parent/parent_profile/:this.userId'])
+        this.toast.success({detail:"SUCCESS",summary:'Parent updated successfully', position:'topCenter'});
+        console.log("Parent updated successful:", response);
+
+      },
+      (err) => {
+        this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+        console.log(`unsuccessful parent update:${err}`, err);
+      }
+    );
+  }
 }
