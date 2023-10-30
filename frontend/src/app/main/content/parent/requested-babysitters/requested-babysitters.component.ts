@@ -13,7 +13,12 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 export class RequestedBabysittersComponent {
   babysitters: any[] = [];
   requestForms: any[] = [];
-
+  parent = {
+    _id: '',
+    userId: '',
+    babysitter: '',
+    isFree: ''
+  }
   //In the requestForms
   isAccept: number | null = null;
   isAccepts: number[] = [];
@@ -23,6 +28,7 @@ export class RequestedBabysittersComponent {
   requestFormBabysitterId: string = ''
   requestFormId: string = ''
   babysitterId: string =''
+  parentId: string = ''
 
   //in the babysitters
   babysitterName: string = ''
@@ -114,6 +120,7 @@ export class RequestedBabysittersComponent {
         }
       )
     }
+    this.getParent();
   }
 
   deleteRequest(requestFormId: string){
@@ -152,5 +159,22 @@ export class RequestedBabysittersComponent {
     }
   }
 
+  getParent(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+
+      this.parentService.getParent(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          this.parent = response.parent;
+          console.log(this.parent);
+          this.parentId = this.parent._id
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }
+  }
 }
 
