@@ -227,6 +227,21 @@ const updateTask = async (req, res) => {
             res.status(500).send({status: "Error with updating data", error: err.message});
         });
 };
+const updatePassword = async (req, res) => {
+    const userId = req.params.id; // Fetch the user's ID from the request parameters
+    const { password } = req.body; // Get the new password from the request body
+
+    try {
+        const user = await User.findByIdAndUpdate(userId, { password }, { new: true });
+
+
+
+        res.status(200).send({ status: "Password updated", user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
 
 const deleteTask = async (req, res) => {
     let taskId = req.params.id;
@@ -650,6 +665,7 @@ module.exports = {
     getPlan,
     getType,
   //  invokeStripe,
+    updatePassword,
 
 
 };
