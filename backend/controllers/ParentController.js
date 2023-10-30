@@ -560,17 +560,25 @@ const getOnlyParent = async(req,res) => {
         let parentId = req.params.id;
         console.log("parentID:", parentId);
 
-        const parent = await Parent.findOne({userId: parentId});
+        const parent = await User.findOne({_id: parentId});
         console.log(parent)
 
         if (!parent) {
             res.status(404).send({ status: "No parent found" });
         } else {
-            res.status(200).send({ status: "parent : ", parent });
+
+            const imageFilename = parent.profile;
+            console.log("parent: ", parent);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+            res.status(200).json({ status: "user", parent, imageUrl });
         }
     } catch (err) {
         console.log(err.message);
-        res.status(500).send({ status: "Error with get all babies", error: err.message });
+        res.status(500).send({ status: "Error with getting parent", error: err.message });
     }
 }
 

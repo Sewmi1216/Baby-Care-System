@@ -18,7 +18,7 @@
           <div style="width: 30%">
             <!--        <div class="card custom-card" style="flex: 0 0 20rem; height: 390px; background-color: #FFFFFF; margin: 55px 0 0 20px;">-->
             <div class="d-flex justify-content-center">
-              <img class="card-img-top custom-img" src="../../assets/sewmi.jpg" alt="Sewmi Image">
+              <img class="card-img-top custom-img" [src]="img" alt="Profile Image">
             </div>
           </div>
 
@@ -29,15 +29,15 @@
             <div class="card custom-card"
                  style="width: 98%; background-color: #FFFFFF; margin: 55px 10px 30px 10px;padding: 20px 20px 20px;">
               <p class="font-weight-bold">First Name</p>
-              <input value="Ishini" type="text" class="form-control"readonly>
+              <input value="{{user.firstName}}" type="text" class="form-control" readonly>
               <p class="font-weight-bold">Last Name</p>
-              <input value="Ekanayake" type="text" class="form-control"readonly>
+              <input value="{{user.lastName}}" type="text" class="form-control" readonly>
               <p class="font-weight-bold">Contact Number</p>
-              <input value="0714403415" type="text" class="form-control"readonly>
+              <input value="{{user.phone}}" type="text" class="form-control" readonly>
               <p class="font-weight-bold">Home Address</p>
-              <input value="No 50 , Kandy Road,Wattegema" type="text" class="form-control"readonly>
+              <input value="{{user.address}}" type="text" class="form-control" readonly>
               <p class="font-weight-bold">Email</p>
-              <input value="ishini123@gmail.com" type="text" class="form-control"readonly>
+              <input value="{{user.email}}" type="text" class="form-control" readonly>
             </div>
           </div>
 
@@ -51,7 +51,7 @@
           <div style="width: 30%">
             <!--        <div class="card custom-card" style="flex: 0 0 20rem; height: 390px; background-color: #FFFFFF; margin: 55px 0 0 20px;">-->
             <div class="d-flex justify-content-center">
-              <img class="card-img-top custom-img" src="../../assets/sewmi.jpg" alt="Sewmi Image">
+              <img class="card-img-top custom-img" [src]="img" alt="Profile Image">
             </div>
           </div>
 
@@ -62,15 +62,15 @@
             <div class="card custom-card"
                  style="width: 98%; background-color: #FFFFFF; margin: 55px 10px 30px 10px;padding: 20px 20px 20px;">
               <p class="font-weight-bold">First Name</p>
-              <input value="Ishini" type="text" class="form-control">
+              <input value="{{user.firstName}}" type="text" class="form-control">
               <p class="font-weight-bold">Last Name</p>
-              <input value="Ekanayake" type="text" class="form-control">
+              <input value="{{user.lastName}}" type="text" class="form-control">
               <p class="font-weight-bold">Contact Number</p>
-              <input value="0714403415" type="text" class="form-control">
+              <input value="{{user.phone}}" type="text" class="form-control">
               <p class="font-weight-bold">Home Address</p>
-              <input value="No 50 , Kandy Road,Wattegema" type="text" class="form-control">
+              <input value="{{user.address}}" type="text" class="form-control">
               <p class="font-weight-bold">Email</p>
-              <input value="ishini123@gmail.com" type="text" class="form-control">
+              <input value="{{user.email}}" type="text" class="form-control">
             </div>
           </div>
 
