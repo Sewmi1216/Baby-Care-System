@@ -11,97 +11,61 @@ const Babysitter = require("../models/babysitter");
 
 
 const addBabysitter = async (req, res) => {
-    // Set up Multer for file uploads
-    const storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, 'uploads/');
-        },
-        filename: (req, file, cb) => {
-            cb(null, file.originalname);
-        }
-    });
-
-    const uploadImage = multer({storage})
-    console.log(req.body)
     try {
-        const {
-            role,
-            firstName,
-            lastName,
-            email,
-            phone,
-            address,
-            password,
-            nic,
-            age,
-            gender,
-        } = req.body;
+        const role = req.body.role;
+        const firstName = req.body.firstName;
+        const lastName = req.body.lastName;
+        const email = req.body.email;
+        const phone = req.body.phone;
+        const address = req.body.address;
+        const password = req.body.cpassword;
+        const nic = req.body.nic;
+        const age = Number(req.body.age);
+        const gender = req.body.gender;
+        const images = req.files.map(file => ({ filename: file.filename }));
 
-        console.log("image name: "+ req.body.image)
+
         // Check if the user with the same email already exists
         const userExists = await User.findOne({email: email});
         if (userExists) {
             return res.status(400).json({message: 'User already exists'});
         }
 
-        // Create a new user and save it
+
         const newUser = new User({
             role,
             firstName,
             lastName,
             email,
             phone,
-            password,
             address,
-            nic,
+            nic
         });
-        console.log("user: " + newUser)
-        // Hash the password using bcrypt
+
         const saltRounds = 12;
-        const hashPassword = await bcrypt.hash(password, saltRounds);
-        newUser.password = hashPassword;
+        console.log("Password:", password);
+        console.log("Salt Rounds:", saltRounds);
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+        newUser.password = hashedPassword;
 
-        // const createdUser = await newUser.save();
+        const createdUser = await newUser.save();
 
-        // Upload image using multer
-        uploadImage.single('image')(req, res, async function (err) {
-            if (err instanceof multer.MulterError) {
-                return res.status(400).json({message: 'Image upload error: ' + err.message});
-            } else if (err) {
-                return res.status(400).json({message: err.message});
-            }
-
-            if (!req.file) {
-                console.error('No file uploaded.');
-                return res.status(400).json({message: 'No file uploaded.'});
-            }
-
-            // Image successfully uploaded
-            const uploadedImageFilename = req.file.filename; // Store this filename
-            console.log('Success img:', uploadedImageFilename);
-
-            // Use useraccount.image as the filename (it's already set by Multer)
-
-            // Create a new Babysitter document and save it
-            const newBabysitter = new Babysitter({
-                userId: createdUser._id,
-                age,
-                gender,
-                // Use useraccount.image as the uploaded image filename
-                image: uploadedImageFilename,
-            });
-
-            await newBabysitter.save();
-
-            res.status(201).json({message: 'Babysitter added successfully'});
+        const newBabysitter = new Babysitter({
+            userId: createdUser._id,
+            age,
+            gender,
+            qualifications: images,
         });
 
+        await newBabysitter.save();
 
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({message: 'Error adding babysitter: ' + err.message});
+        res.status(201).json({message: "Babysitter added successfully"});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({message: "An error occurred"});
     }
+
 };
 
 

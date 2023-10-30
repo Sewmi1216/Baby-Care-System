@@ -232,7 +232,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'view_baby_details',
+        path: 'view_baby_details/:baby_id',
         component: ViewBabyDetailsComponent
       },
       {

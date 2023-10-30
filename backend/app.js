@@ -11,6 +11,7 @@ const multer = require('multer')
 require("dotenv").config();
 const fs = require('fs');
 const https = require('https');
+const path = require('path')
 
 // const { Server } = require("socket.io");
 // const { createServer } = require('node:http');
@@ -56,6 +57,7 @@ app.use(function(req, res, next) {
     );
     next();
 });
+app.use('/images', express.static(path.join(__dirname, 'uploads')));
 const backendPort = 8070;
 app.listen(backendPort, () => {
     console.log(`app is listening on port ${backendPort}`);

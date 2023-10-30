@@ -14,6 +14,11 @@ let Complaint = require("../models/Complaint");
 let Feedback = require("../models/feedback");
 const Babysitter  = require("../models/babysitter");
 
+let GrowthParameters = require("../models/GrowthParameters");
+let AgeGroups = require("../models/ageGroup");
+let Vaccines = require("../models/vaccine");
+const path = require("path");
+
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
     console.log('access-token:', token);
@@ -28,7 +33,15 @@ const viewParentProfile = async (req, res) => {
 }
 const addParent = async (req, res) => {
     try {
-        const {role, firstName, lastName, email, phone, address, password, nic} = req.body;
+        const role = req.body.role;
+        const firstName = req.body.firstName;
+        const lastName = req.body.lastName;
+        const email = req.body.email;
+        const phone = req.body.phone;
+        const address = req.body.address;
+        const password = req.body.cpassword;
+        const nic = req.body.nic;
+        const profile= req.file.filename;
 
         const userExists = await User.findOne({email: email});
         if (userExists) {
@@ -42,7 +55,8 @@ const addParent = async (req, res) => {
             email,
             phone,
             address,
-            nic
+            nic,
+            profile
         });
 
         const saltRounds = 12;
@@ -69,23 +83,23 @@ const addParent = async (req, res) => {
 };
 
 const addBaby = async (req, res) => {
-    const firstName = req.body.baby.firstName;
-    const lastName = req.body.baby.lastName;
-    const age = req.body.baby.age;
-    const gender = req.body.baby.gender;
-    const birthDate = req.body.baby.birthDate;
-    const parentID = req.body.userID; // Add this line to retrieve parentID from the request body
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const gender = req.body.gender;
+    const birthDate = req.body.birthDate;
+    const parentID = req.body.userId; // retrieve parentID from the request body
+    const img= req.file.filename;
 
-    console.log(firstName)
+    console.log(parentID)
     if (!parentID) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
     }
     const newBaby = new Baby({
         firstName,
         lastName,
-        age,
         gender,
         birthDate,
+        img,
         parent: parentID
     });
 
@@ -139,11 +153,57 @@ const getBabies = async (req, res) => {
         if (!babies || babies.length === 0) {
             res.status(404).send({ status: "No babies found for this parent" });
         } else {
-            res.status(200).send({ status: "All babies", babies });
+            const imageUrls = babies.map(baby => {
+                console.log("baby object:", baby);
+                const imageFilename = baby.img;
+                console.log("imageFilename: ", imageFilename);
+                const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+                console.log("imageFilePath: ", imageFilePath);
+                const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+                return { baby, imageUrl };
+            });
+
+            res.status(200).send({ status: "All babies", babies: imageUrls });
         }
     } catch (err) {
         console.log(err.message);
         res.status(500).send({ status: "Error with get all babies", error: err.message });
+    }
+};
+
+
+const getBaby = async (req, res) => {
+    try {
+        let babyId = req.params.id;
+
+        console.log("BabyId:",babyId);
+
+        const baby = await Baby.findOne({_id: babyId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!baby) {
+            res.status(404).send({ status: "No baby" });
+        } else {
+            const imageFilename = baby.img;
+            console.log("baby: ", baby);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "user", baby, imageUrl });
+        }
+        // if (!Baby || Baby.length === 0) {
+        //     res.status(404).send({ status: "No activities found for this ageGroup" });
+        // } else {
+        //     res.status(200).send({ status: "Baby details", Baby});
+        // }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
     }
 };
 
@@ -410,6 +470,58 @@ const getRequestForms = async(req, res) => {
     }
 }
 
+// fetching parameters, according to user choose age Group
+const getParameters = async (req, res) => {
+    try {
+        let ageGroupId = req.params.ageGroup;
+
+        console.log("ageGroup:",ageGroupId);
+
+        const parameters = await GrowthParameters.find({ ageGroup : ageGroupId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!parameters || parameters.length === 0) {
+            res.status(404).send({ status: "No activities found for this ageGroup" });
+        } else {
+            res.status(200).send({ status: "All ageGroups", parameters});
+        }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+const getAgeGroup = async (req, res) =>{
+    try{
+        const ageGroups = await AgeGroups.find();
+        if (!ageGroups || ageGroups.length === 0) {
+            res.status(404).send({ status: "No ageGroups found for this baby" });
+        } else {
+            res.status(200).send({ status: "All ageGroups", ageGroups });
+        }
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review age groups'})
+    }
+};
+
+const getVaccineList = async (req, res) =>{
+    try{
+        const vaccines = await Vaccines.find();
+        if (!vaccines || vaccines.length === 0) {
+            res.status(404).send({ status: "No vaccines for this age" });
+        } else {
+            res.status(200).send({ status: "All vaccines", vaccines });
+        }
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({err: 'Error with review vaccines'})
+    }
+};
+
 const updateParent = async (req, res) => {
     const babysitterID = req.params.id1;
     const userId = req.params.id2;
@@ -546,6 +658,10 @@ module.exports = {
     getBabysitters,
     getBabysitter,
     getRequestForms,
+    getAgeGroup,
+    getParameters,
+    getVaccineList,
+    getBaby,
     updateParent,
     getOnlyParent,
     getBabiesCount,
