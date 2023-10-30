@@ -77,11 +77,8 @@
                         </div>
                       </td>
                      
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm" style="color: rgb(21, 128, 215); font-weight: bold">{{complaint.status}}</span>
-                        </div>
-                      </td>
+                      <td [ngClass]="{ 'solved': complaint.status === 'solved', 'unsolved': complaint.status === 'unsolved' }">{{complaint.status}} </td>
+                        
                       <td class="text-right">
                         <div class="dropdown">
                           <a class="btn btn-sm btn-icon-only text-light" routerLink="/admin/handle_complaints_view_more"

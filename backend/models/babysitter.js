@@ -94,6 +94,10 @@ const babysitterSchema = new schema ({
         type: Date,
         default: null
     },
+    status:{
+        type:String,
+        required:true
+    },
 })
 
 

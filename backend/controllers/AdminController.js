@@ -67,7 +67,7 @@ const addDomainExpert =async (req, res) => {
 };
 
 const ViewAllExperts = async (req, res) => {
-    await User.find()
+    await User.find({role : 'domain-expert'})
         .then((expert) => {
             res.status(200).send({ status: "All experts", expert });
         })
@@ -200,6 +200,18 @@ const ViewParent = async (req, res) => {
             res.status(500).send({ status: "Error with get parent", error: err.message });
         });
 };
+const ViewUser = async (req, res) => {
+    let userId = req.params.id;
+
+    await User.findById(userId)
+        .then((user) => {
+            res.status(200).send({ status: "User fetched", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get user", error: err.message });
+        });
+};
 
 const DeleteParent= async (req, res) => {
     let userId = req.params.id;
@@ -297,8 +309,8 @@ const verifyBabysitter = async (req, res) => {
     }
 };
 
-const ViewAllUsers = async (req, res) => {
-    await User.find()
+const ViewAllSitters = async (req, res) => {
+    await User.find({role:"Babysitter"} && {status:"pending"})
         .then((user) => {
             res.status(200).send({ status: "All users", user });
         })
@@ -307,6 +319,114 @@ const ViewAllUsers = async (req, res) => {
             res.status(500).send({ status: "Error with view all users", error: err.message });
         });
 };
+const ViewAllUsers = async (req, res) => {
+    await User.find({status:"active"})
+        .then((user) => {
+            res.status(200).send({ status: "All users", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all users", error: err.message });
+        });
+};
+
+
+const getParentCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+        const parents = await User.find({role:'Parent'});
+        res.status(200).send({ status: "Success", count: parents.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of parents", error: err.message });
+    }
+};
+
+const getBabysitterCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("BabysitterID:", userId);
+        const babysitter = await User.find({role:'Babysitter'});
+        res.status(200).send({ status: "Success", count: babysitter.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of babysitters", error: err.message });
+    }
+};
+const getUserCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("UserID:", userId);
+        const users = await User.find();
+        res.status(200).send({ status: "Success", count: users.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of users", error: err.message });
+    }
+};
+
+const getComplaintCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("ComplaintID:", userId);
+        const complaint = await Complaints.find();
+        res.status(200).send({ status: "Success", count: complaint.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of complaint", error: err.message });
+    }
+};
+const getBabysitter = async (req, res) => {
+    let babysitterId = req.params.id;
+    console.log("babysitterID:", babysitterId);
+    await User.find({userId: babysitterId})
+    try {
+        const babysitter = await User.findOne({userId: babysitterId})
+            .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+            .exec();
+
+        console.log(babysitter);
+
+        if (!babysitter.userId._id) {
+            return res.status(404).send({ status: "Babysitter not found" });
+        }
+
+        const babysitterData = {
+            
+            _id: babysitter.userId._id,
+            userId:babysitter.userId._id,
+            age: babysitter.age,
+            gender: babysitter.gender,
+            image: babysitter.image,
+            firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+            lastName: babysitter.userId.lastName, 
+            email: babysitter.userId.email,
+            phone: babysitter.userId.phone,
+            address: babysitter.userId.address,
+            nic: babysitter.userId.nic, 
+            religon: babysitter.religon,
+            language: babysitter.language,
+            startDate: babysitter.startDate,
+            endDate: babysitter.endDate,
+        };
+        console.log(babysitterData)
+
+        res.status(200).send({ status: "babysitter", babysitter: babysitterData });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get babysitter", error: err.message });
+    }
+};
+  
 
 
 // exports.getDataCount = async (req, res) => {
@@ -340,5 +460,12 @@ module.exports={
     addDomainExpert,
     ViewAllExperts,
     ViewAllUsers,
+    ViewUser,
+    ViewAllSitters,
+    getParentCount,
+    getBabysitterCount,
+    getUserCount,
+    getComplaintCount,
+    getBabysitter
     
 };

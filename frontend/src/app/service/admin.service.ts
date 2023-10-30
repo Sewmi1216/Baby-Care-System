@@ -51,7 +51,7 @@ export class AdminService {
     const userId = user.id;
     console.log(userId);
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/admin/getAllUsers`, { headers });
+    return this.http.get<any>(`${environment.backend_url}/admin/getAllBabysitters`, { headers });
   }
 
 
@@ -88,6 +88,79 @@ export class AdminService {
     console.log(userId);
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/admin/getAllComplaints`, { headers });
+  }
+
+
+  // getuser(user:any, requestFormId: any): Observable<any>{
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+  //   });
+  //   const userId = user.id;
+  //   console.log(userId);
+  //   console.log(requestFormId);
+  //   console.log('Request headers:', headers);
+  //   return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
+  // }
+
+  getUserDetails(userId:any) {
+    return this.http.get<any>(`${environment.backend_url}/admin/viewUser/${userId}`);
+  }
+
+  getNoOfParent(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/admin/getParentCount/${userId}`);
+  }
+  
+  getNoOfBabysitter(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/admin/getBabysitterCount/${userId}`);
+  }
+  getNoOfUsers(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/admin/getUserCount/${userId}`);
+  }
+
+  getNoOfComplaint(user:any): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/admin/getComplaintCount/${userId}`);
+  }
+
+  getBabysitter(babysitterID: any): Observable<any> {
+    const babysitterId = babysitterID
+    console.log(babysitterId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/admin/getBabysitters/${babysitterId}`, { headers });
   }
  
 

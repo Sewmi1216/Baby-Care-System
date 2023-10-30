@@ -54,12 +54,17 @@ export class EditSysInfoComponent {
 
     setUpdate(data:any){
       this.about = data.about;
+      this.goals = data.goals;
+      this.service = data.service;
+      this.vision = data.vision;
+      this.thank = data.thank;
+
 
       this.currentInfoID = data.id;
 
     }
 
-    UpdateRecords(){
+    UpdateRecords(data:any){
       let BodyData = {
         "about":this.about,
         "goals":this.goals,
@@ -76,8 +81,14 @@ export class EditSysInfoComponent {
 
     }
 
-    save(){
-      this.currentInfoID == '';
+    save(data:any){
+      this.about = data.about;
+      this.goals = data.goals;
+      this.service = data.service;
+      this.vision = data.vision;
+      this.thank = data.thank;
+
+      this.currentInfoID == data.id;
     }
 
 }

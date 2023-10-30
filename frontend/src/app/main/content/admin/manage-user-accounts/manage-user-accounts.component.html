@@ -16,7 +16,7 @@
     font-size: 30px;
     color: #39315d;
     padding-left: 10px;
-    padding-top: 37px;">Manage User Accounts</h3>
+    padding-top: 37px;">Manage User Accounts..</h3>
       </div>
 
       <!-- Search bar -->
@@ -63,13 +63,14 @@
                 </div>
               </th>
 
-              <td>
-                <a routerLink="/admin/view_babysitter_verify" >{{UserItem.email}}</a>
+              <td (click)="goToUserDetails(user)">
+                <!-- <a routerLink="'/admin/view_babysitter_verify',UserItem.id" >{{UserItem.email}}</a> -->
+                <a [routerLink]="['/admin/view_babysitter_verify']">{{ UserItem.email }}</a>
               </td>
               <td>{{UserItem.role}}</td>
 
               <td>
-                <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">Active</span>
+                <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">{{UserItem.status}}</span>
               </td>
 
 

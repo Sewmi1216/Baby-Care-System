@@ -48,6 +48,8 @@
                   <th scope="col">NIC</th>
                   <th scope="col">Address</th>
                   <th scope="col">Role</th>
+                  <th scope="col">Status</th>
+
 
                   <th scope="col">Verify</th>
 
@@ -72,10 +74,14 @@
                   <td>{{user.nic}}</td>
                   <td>{{user.address}}</td>
                   <td>{{user.role}}</td>
+                  <td>
+                    <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">{{user.status}}</span>
+                  </td>
+                  
 
                   <td class="text-right">
                     <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" routerLink="/admin/verify_babysitter" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="btn btn-sm btn-icon-only text-light" routerLink="/admin/verify_babysitter/{{user._id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
                       </a>
 
@@ -83,7 +89,7 @@
                   </td>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                   <td>02</td>
                   <td>20.02.2022</td>
                   <td>
@@ -108,8 +114,8 @@
 
                     </div>
                   </td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <td>03</td>
                   <td>20.02.2022</td>
                   <td>
@@ -133,12 +139,12 @@
                     </div>
                   </td>
 
-                </tr>
+                </tr> -->
                 </tbody>
               </table>
             </div>
 
-            <div class="card-footer py-4">
+            <!-- <div class="card-footer py-4">
               <nav aria-label="...">
                 <ul class="pagination justify-content-end mb-0">
                   <li class="page-item disabled">
@@ -162,7 +168,7 @@
                   </li>
                 </ul>
               </nav>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

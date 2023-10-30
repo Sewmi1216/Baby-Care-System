@@ -28,16 +28,31 @@
  router.route('/viewAdmin/:id').get(adminController.ViewAdmin);
 
  router.route("/viewBabysitters").get(adminController.ViewAllBabysitters);
- router.route("/viewParent/:id").get(adminController.ViewBabysitter);
+ router.route("/viewBabysitter/:id").get(adminController.ViewBabysitter);
 
  router.route("/viewParents").get(adminController.ViewAllParents);
  router.route("/viewParent/:id").get(adminController.ViewParent);
+ router.route("/viewUser/:id").get(adminController.ViewUser);
 
 //  router.route("/viewComplaint").get(adminController.ViewAllComplaints);
  router.route("/viewSystemInfo").get(adminController.ViewSystemInfo);
  router.route("/getAllExperts").get(adminController.ViewAllExperts);
  router.route("/getAllUsers").get(adminController.ViewAllUsers);
+ router.route("/getAllBabysitters").get(adminController.ViewAllSitters);
+
+ 
  router.route("/getAllComplaints").get(adminController.ViewAllComplaint);
+ router.route("/getParentCount/:id").get(adminController.getParentCount); //id=parentID
+ router.route("/getBabysitterCount/:id").get(adminController.getBabysitterCount); //id=parentID
+ router.route("/getUserCount/:id").get(adminController.getUserCount); //id=parentID
+ router.route("/getComplaintCount/:id").get(adminController.getComplaintCount); //id=parentID
+
+ router.route("/getBabysitters/:id").get(adminController.getBabysitter);
+
+
+
+
+ 
 
 //  router.route("/dataCount").get(adminController.getDataCount);
 

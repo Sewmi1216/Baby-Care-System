@@ -358,7 +358,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'verify_babysitter',
+        path: 'verify_babysitter/:id',
         component: VerifyBabysittersComponent
       },
       // {

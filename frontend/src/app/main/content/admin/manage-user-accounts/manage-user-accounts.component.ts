@@ -17,6 +17,10 @@ export class ManageUserAccountsComponent {
 
   userArray : userArray[]=[];
 
+  user: any;
+  
+
+
   constructor(
     private adminService: AdminService, private toast: NgToastService, private router:Router,private cookieService: CookieService,private http:HttpClient
   ) {}
@@ -24,13 +28,14 @@ export class ManageUserAccountsComponent {
     ngOnInit(): void {
       
        this.getUsers();
+       
      }
     
      getUsers() {
       // @ts-ignore
-      this.adminService.getExperts(JSON.parse(localStorage.getItem('user'))).subscribe(
+      this.adminService.getAllUsers(JSON.parse(localStorage.getItem('user'))).subscribe(
         (response) => {
-          this.userArray = response.expert; 
+          this.userArray = response.user; 
           console.log(this.userArray);
         },
         (error) => {
@@ -41,6 +46,7 @@ export class ManageUserAccountsComponent {
     }
 
     currentUserID = "";
+    
 
 
   items: any[] = [
@@ -63,10 +69,15 @@ export class ManageUserAccountsComponent {
       this.filteredItems = this.items;
     }
   }
+
+  goToUserDetails(user:any) {
+    this.router.navigate(['/view-babysitter-verify.component', user._id]);
+  }
+
 }
 
 interface userArray{
-  // id: string;
+  _id: string;
   firstName: string;
   lastName: string;
   nic: string;
@@ -74,7 +85,8 @@ interface userArray{
   phone: string;
   email: string;
   password: string;
-  role:string;}
+  role:string;
+  status:string}
 
 
 

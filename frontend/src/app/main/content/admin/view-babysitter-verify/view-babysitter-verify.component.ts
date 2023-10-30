@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AdminService } from "../../../../service/admin.service";
+import {NgToastService} from "ng-angular-popup";
+import { CookieService } from 'ngx-cookie-service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-babysitter-verify',
@@ -8,6 +14,21 @@ import { Component } from '@angular/core';
 
 
 export class ViewBabysitterVerifyComponent {
+  userArray : userArray[]=[];
+
+  details: any;
+  constructor(
+    private adminService: AdminService, private toast: NgToastService, private router:Router,private cookieService: CookieService,private http:HttpClient,private route: ActivatedRoute ) {}
+
+    ngOnInit(): void {
+      
+      //  this.getUserDetails();
+
+       const userId = this.route.snapshot.paramMap.get('id');
+       this.adminService.getUserDetails(userId).subscribe(data => {
+         this.userArray = data;
+       });
+     }
   showReasonInput: boolean = false;
   deactivationReason: string = '';
 
@@ -25,4 +46,31 @@ export class ViewBabysitterVerifyComponent {
     }
   }
   // ... (component properties and methods)
+
+
+//   getUserDetails() {
+//     // @ts-ignore
+//     this.adminService.getDetail(response.id).subscribe((data: any) => {
+//       this.details = data;
+  
+//   })
+
+
+// }
+
+
+  user: any;
+
 }
+
+
+interface userArray{
+  _id: string;
+  firstName: string;
+  lastName: string;
+  nic: string;
+  address: string;
+  phone: string;
+  email: string;
+  password: string;
+  role:string;}

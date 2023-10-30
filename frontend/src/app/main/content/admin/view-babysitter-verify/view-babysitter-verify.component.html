@@ -16,13 +16,13 @@
 
                 <div>
                    
-                    <div class="card mb-3">
+                    <div *ngIf="user" class="card mb-3">
                         
                         <div class="babysitter-data">
                             <h3 class="card-main-title">Personal Details</h3>
                             <div class="personal-data">
                                 <h4 class="card-title">Name</h4>
-                                <h5 class="details">Tharika Kumari Siriwardhana</h5>
+                                <h5 class="details">{{ user.firstName }}</h5>
                             </div> 
                             <div class="personal-data">
                                 <h4 class="card-title">Gender</h4>
@@ -35,11 +35,11 @@
                             <h3 class="card-main-title">Contact</h3>
                             <div class="personal-data">
                                 <h4 class="card-title">Phone Number</h4>
-                                <h5 class="details">0771234567</h5>
+                                <h5 class="details">user.phone</h5>
                             </div> 
                             <div class="personal-data">
                                 <h4 class="card-title">Email </h4>
-                                <h5 class="details">kumari1234@gm.com</h5>
+                                <h5 class="details">user.email</h5>
                             </div> 
                             
                         </div>
