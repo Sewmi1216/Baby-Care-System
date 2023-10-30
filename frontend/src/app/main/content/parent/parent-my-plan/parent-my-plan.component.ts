@@ -17,16 +17,17 @@ export class ParentMyPlanComponent implements OnInit {
   };
   isFree: any;
   paymentHandler: any = null;
-   checkout: any;
-   success:boolean = false;
-  failure:boolean = false;
-   StripeToken:any ;
+  checkout: any;
+  success: boolean = false;
+  failure: boolean = false;
+
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
     private router: Router,
-    private cookieService: CookieService
-  ) {}
+    private cookieService: CookieService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.getPlan();
@@ -47,28 +48,29 @@ export class ParentMyPlanComponent implements OnInit {
       );
     }
   }
-  makePayment(amount: number) {
 
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax',
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(this.StripeToken)
-      }
-    });
-    paymentHandler.open({
-      name: 'Cuddle Care System',
-      description: 'Premium Option',
-    })
+  makePayment(amount: number) {
+    if (this.paymentHandler) {
+      this.paymentHandler.open({
+        name: 'Cuddle Care System',
+        description: 'Premium Option',
+        // amount: amount * 100
+      });
+    }
   }
-  //   if (this.paymentHandler) {
-  //     this.paymentHandler.open({
-  //       name: 'Cuddle Care System',
-  //       description: 'Premium Option',
-  //       // amount: amount * 100
-  //     });
-  //   }
-  // }
+
+  paymentStripe(stripeToken: any) {
+    this.checkout.makePayment(stripeToken).subscribe((data: any) => {
+      console.log(data);
+
+      // if (data.data === "success") {
+      //   this.success = true;
+      // } else {
+      //   this.failure = true;
+      // }
+    });
+  }
+
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
       const script = window.document.createElement('script');
@@ -79,28 +81,13 @@ export class ParentMyPlanComponent implements OnInit {
         this.paymentHandler = (<any>window).StripeCheckout.configure({
           key: 'pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax',
           locale: 'auto',
-          token: function (stripeToken: any)  {
+          token: (stripeToken: any) => {
             console.log(stripeToken);
-           // this.paymentStripe(stripeToken);
+            this.paymentStripe(stripeToken);
           },
         });
       };
       window.document.body.appendChild(script);
     }
   }
-
-  paymentStripe(stripeToken: any) {
-    this.checkout.makePayment(stripeToken).subscribe((data: any) => {
-      console.log(data);
-
-
-      if (data.data === "success") {
-        this.success = true
-      } else {
-        this.failure = true
-      }
-    });
-  }
-
-
 }

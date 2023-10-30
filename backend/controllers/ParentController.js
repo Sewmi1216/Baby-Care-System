@@ -1,3 +1,4 @@
+//export let invokeStripe = undefined;
 
 //parent controller
 let Parent = require("../models/Parent");
@@ -582,12 +583,14 @@ const updateBabysitter = async (req, res) => {
         console.error(err.message);
         res.status(500).send({ status: "Error with updating data", error: err.message });
     }
-    const checkout = async (req, res) => {
+    const invokeStripe= async (req, res) => {
         try {
+            let userId = req.params.id;
+            console.log("UserId:", userId);
             const token = req.body.token;
 
             const customer = await stripe.customers.create({
-                email: " ",
+                email: req.body.email,
                 source: token.id,
             });
 
@@ -617,6 +620,7 @@ const updateBabysitter = async (req, res) => {
 }
 
 
+
 module.exports = {
     addParent,
     addTask,
@@ -641,5 +645,7 @@ module.exports = {
     updateBabysitter,
     getPlan,
     getType,
-    checkout
+    invokeStripe,
+
+
 };
