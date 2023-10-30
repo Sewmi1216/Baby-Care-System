@@ -16,7 +16,12 @@ export class ViewBabyDetailsComponent {
   baby = {
     id: '',
     firstName: '',
+    lastName:'',
+    birthDate: '',
+    gender:''
   };
+  img:string=''
+
 
   constructor(
     private parentService: ParentService,
@@ -30,7 +35,6 @@ export class ViewBabyDetailsComponent {
     // Get the baby_id parameter from the route
     this.route.params.subscribe(params => {
       this.babyId = params['baby_id'];
-      console.log(this.babyId);
       this.getBaby();
     });
   }
@@ -43,6 +47,7 @@ export class ViewBabyDetailsComponent {
         (response) => {
           this.baby = response.baby;
           console.log(this.baby)
+          this.img=response.imageUrl
         },
         (error)=>{
           console.log(localStorage.getItem('user'))

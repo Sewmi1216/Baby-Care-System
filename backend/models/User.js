@@ -34,8 +34,7 @@ const userSchema = new schema({
         required:true
     },
     profile:{
-        type:String,
-        required:true
+        type:String
     }
 })
 

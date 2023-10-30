@@ -4,7 +4,7 @@
       <img alt="" src="../../assets/loginbackground.svg" width="1100px" height="660px">
     </div>
     <div class="container p-2 py-4"
-         style="margin-left:100px;margin-top:40px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
+         style="margin-left:100px;margin-top:20px;background-color:rgba(255, 255, 255, 0.42);border-radius: 40px;text-align: center;font-family: 'Sofia Sans', sans-serif">
       <form class="row g-3 needs-validation" #userAccountForm="ngForm"
             (ngSubmit)="userAccountForm.form.valid" id="signUpForm" novalidate>
         <!-- start step indicators -->
@@ -44,6 +44,7 @@
           </div>
         </div>
         <div class="col-md-6">
+          <p class="font-weight-bold" style="margin-bottom:-15px; text-align: left; font-weight: bolder">Gender</p>
 
           <label>
             <input type="radio" [(ngModel)]="useraccount.gender" #gender="ngModel" name="gender" value="male" selected>
@@ -128,10 +129,16 @@
             Passwords do not match
           </div>
         </div>
-        <div class="mb-2">
-          <input type="file" name="images" (change)="selectMultipleImage($event)" multiple required>
+        <div class="col-md-12">
+          <p class="font-weight-bold" style="text-align: left; font-weight: bolder">Qualifications</p>
+          <input type="file" class="form-control" name="file" (change)="selectMultipleImage($event)" multiple
+                 required>
           <!--          <input class="form-control" type="file" name="image" #imageInput accept="image/*" multiple required>-->
         </div>
+<!--        <div class="col-md-6">-->
+<!--          <p class="font-weight-bold" style="text-align: left; font-weight: bolder">Profile Picture</p>-->
+<!--          <input type="file" name="files" (change)="selectImage($event)" class="form-control" required>-->
+<!--        </div>-->
 
         <div class="form-footer d-flex mb-4">
           <button type="submit" (click)="onSubmit()">Signup</button>

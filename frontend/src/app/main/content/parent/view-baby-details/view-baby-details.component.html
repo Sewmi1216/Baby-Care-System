@@ -11,7 +11,7 @@
             <div class="card custom-card" style="height: 287px; background-color: #FFFFFF;border-radius: 10px; margin: 30px 35px;">
               <div class="d-flex justify-content-center align-items-center">
 
-                <img class="card-img-top custom-img" src="../../assets/baby1.jpg">
+                <img class="card-img-top custom-img" [src]="img">
 
               </div>
             </div>
@@ -20,11 +20,13 @@
             <div class="card custom-card" style="background-color: #ffffff;border-radius: 10px; margin: 30px 10px; box-shadow: 0 3px 2px 0px #ddcff5;">
               <div class="card-body">
                 <p class="font-weight-bold">First Name</p>
-                <input type="text" class="form-control"value="Senura ">
+                <input type="text" class="form-control" value="{{baby.firstName}}" readonly>
                 <p class="font-weight-bold">Last Name</p>
-                <input type="text" class="form-control" value="Rathnayake">
+                <input type="text" class="form-control" value="{{baby.lastName}}" readonly>
                 <p class="font-weight-bold">Date of Birth</p>
-                <input type="text" class="form-control" value="2005.2.3">
+                <input type="text" class="form-control" value="{{baby.birthDate}}" readonly>
+                <p class="font-weight-bold">Gender</p>
+                <input type="text" class="form-control" value="{{baby.gender}}" readonly>
               </div>
             </div>
           </div>
