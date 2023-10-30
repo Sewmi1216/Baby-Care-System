@@ -175,5 +175,23 @@ export class ParentService {
     console.log('Request headers:', headers);
     return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });    
   }
+
+  deleteBabysitter(babysitterId: any, parentId: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log('Request headers:', headers);
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteBabysitter/${babysitterId}/${parentId}`);    
+  }
+
+  deleteRequestFormID(babysitterId:any, parentId: any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/deleteRequestFormID/${babysitterId}/${parentId}`);      
+  }
 }
 
