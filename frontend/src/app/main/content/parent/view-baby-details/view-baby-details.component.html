@@ -1,87 +1,89 @@
+<div class="path">
+  Baby-Details > My Baby
+</div>
 <div class="container-fluid">
-  <div class="mb-3">
-    <div style="background-color: #e8e3fc; width: 365px; height: 120px; padding: 5px 0 0 5px; margin-top: 10px; border-radius: 10px; box-shadow: 0 2px 2px 0px #563393;">    <img class="topic_image" src="../../assets/Happybaby.svg">
-      <h3 class="topic">My Baby</h3>
-    </div>
-    <div class="card custom-card" style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;width: 100%">
-      <div class="row">
-        <div class="col-md-4 col-sm-12">
-          <div class="card custom-card" style="height: 287px; background-color: #FFFFFF;border-radius: 10px; margin: 30px 35px;">
-            <div class="d-flex justify-content-center align-items-center">
-
-              <img class="card-img-top custom-img" src="../../assets/baby1.jpg">
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8 col-sm-12">
-          <div class="card custom-card" style="background-color: #ffffff;border-radius: 10px; margin: 30px 10px; box-shadow: 0 3px 2px 0px #ddcff5;">
-            <div class="card-body">
-              <p class="font-weight-bold">First Name</p>
-              <input type="text" class="form-control"value="Senura ">
-              <p class="font-weight-bold">Last Name</p>
-              <input type="text" class="form-control" value="Rathnayake">
-              <p class="font-weight-bold">Date of Birth</p>
-              <input type="text" class="form-control" value="2005.2.3">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="card custom-card"style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
-
-
-      <div class="card-body d-flex justify-content-center align-items-center">
+  <div class="mb-3 ">
+    <h3 class="topic">My Baby</h3>
+    <div class="main_container">
+      <div class="card custom-card" style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;width: 100%">
         <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="card custom-card" style="height: 287px; background-color: #FFFFFF;border-radius: 10px; margin: 30px 35px;">
+              <div class="d-flex justify-content-center align-items-center">
 
-        <!-- First Inner Card -->
-        <div class="col-md-3 col-sm-4">
-          <a routerLink="/parent/vaccination_details" class="card custom-card" style="background-color: rgba(255, 0, 0, 0.33);">
+                <img class="card-img-top custom-img" [src]="img">
 
-            <div class="d-flex justify-content-center">
-              <img class="card-img-top custom-img" src="../../assets/1.png" style="height: 157px; width: 142px; border-radius: 50%;">
+              </div>
             </div>
-            <h6 class="card-title text-center mt-2">Vaccination Details</h6>
-          </a>
-        </div>
-
-        <!-- Second Inner Card -->
-        <div class="col-md-3 col-sm-4">
-          <a routerLink="/parent/growth_parameters" class="card custom-card" style="background-color: rgba(81, 202, 202, 0.42);">
-            <div class="d-flex justify-content-center">
-              <img class="card-img-top custom-img" src="../../assets/2.png" style="height: 157px; width: 142px; ">
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <div class="card custom-card" style="background-color: #ffffff;border-radius: 10px; margin: 30px 10px; box-shadow: 0 3px 2px 0px #ddcff5;">
+              <div class="card-body">
+                <p class="font-weight-bold">First Name</p>
+                <input type="text" class="form-control" value="{{baby.firstName}}" readonly>
+                <p class="font-weight-bold">Last Name</p>
+                <input type="text" class="form-control" value="{{baby.lastName}}" readonly>
+                <p class="font-weight-bold">Date of Birth</p>
+                <input type="text" class="form-control" value="{{baby.birthDate}}" readonly>
+                <p class="font-weight-bold">Gender</p>
+                <input type="text" class="form-control" value="{{baby.gender}}" readonly>
+              </div>
             </div>
-            <h6 class="card-title text-center mt-2">Growth Parameters</h6>
-          </a>
+          </div>
         </div>
-        <!-- Third Inner Card -->
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="card custom-card" style="background-color: rgba(236, 181, 214, 0.7552);">
-            <div class="d-flex justify-content-center">
-              <img class="card-img-top custom-img" src="../../assets/3.png" style="height: 157px; width: 142px; border-radius: 40%;">
-            </div>
-            <h6 class="card-title text-center mt-2">Doctor Visits</h6>
-          </a>
-        </div>
-        <!-- Fourth Inner Card -->
-        <div class="col-md-3 col-sm-5">
-          <a href="/parent/baby_growth" class="card custom-card" style="background-color: #C5E8DC;">
-            <div class="d-flex justify-content-center">
-              <img class="card-img-top custom-img" src="../../assets/4.png" style="height: 157px; width: 142px; border-radius: 50%;">
-            </div>
-            <h6 class="card-title text-center mt-2">Growth Measurements</h6>
-          </a>
-        </div>
+      </div>
 
 
 
+      <div class="card custom-card"style="background-color: #e8e3fc;border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <div class="row">
+
+          <!-- First Inner Card -->
+          <div class="col-md-3 col-sm-4">
+            <a routerLink="/parent/vaccination_details" class="card custom-card" style="background-color: rgba(255, 0, 0, 0.33);">
+
+              <div class="d-flex justify-content-center">
+                <img class="card-img-top custom-img" src="../../assets/1.png" style="height: 157px; width: 142px; border-radius: 50%;">
+              </div>
+              <h6 class="card-title text-center mt-2">Vaccination Details</h6>
+            </a>
+          </div>
+
+          <!-- Second Inner Card -->
+          <div class="col-md-3 col-sm-4">
+            <a routerLink="/parent/growth_parameters" class="card custom-card" style="background-color: rgba(81, 202, 202, 0.42);">
+              <div class="d-flex justify-content-center">
+                <img class="card-img-top custom-img" src="../../assets/2.png" style="height: 157px; width: 142px; ">
+              </div>
+              <h6 class="card-title text-center mt-2">Growth Parameters</h6>
+            </a>
+          </div>
+          <!-- Third Inner Card -->
+          <div class="col-md-3 col-sm-4">
+            <a href="#" class="card custom-card" style="background-color: rgba(236, 181, 214, 0.7552);">
+              <div class="d-flex justify-content-center">
+                <img class="card-img-top custom-img" src="../../assets/3.png" style="height: 157px; width: 142px; border-radius: 40%;">
+              </div>
+              <h6 class="card-title text-center mt-2">Doctor Visits</h6>
+            </a>
+          </div>
+          <!-- Fourth Inner Card -->
+          <div class="col-md-3 col-sm-5">
+            <a href="/parent/baby_growth" class="card custom-card" style="background-color: #C5E8DC;">
+              <div class="d-flex justify-content-center">
+                <img class="card-img-top custom-img" src="../../assets/4.png" style="height: 157px; width: 142px; border-radius: 50%;">
+              </div>
+              <h6 class="card-title text-center mt-2">Growth Measurements</h6>
+            </a>
+          </div>
+
+
+
+          </div>
+        </div>
 
       </div>
     </div>
-
-  </div>
 </div>
 </div>
