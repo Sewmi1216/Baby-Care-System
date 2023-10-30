@@ -153,6 +153,8 @@ export class AdminService {
   getBabysitter(babysitterID: any): Observable<any> {
     const babysitterId = babysitterID
     console.log(babysitterId)
+    console.log('huu')
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`

@@ -234,6 +234,8 @@ const AddSystemInfo = (req, res) => {
     const service = req.body.service;
     const vision = req.body.vision;
     const team = req.body.team;
+    const thank = req.body.thank;
+
     
     
 
@@ -242,7 +244,8 @@ const AddSystemInfo = (req, res) => {
         goals,
         service,
         vision,
-        team
+        team,
+        thank
        
         
     })
@@ -258,14 +261,15 @@ const AddSystemInfo = (req, res) => {
 const UpdateSystemInfo = async (req, res) => {
     let userId = req.params.id; //fetch the id
   
-    const {about, goals, service,vision, team} = req.body; // new value
+    const {about, goals, service,vision, team, thank} = req.body; // new value
     //create a object
     const updateInfo = {
        about,
        goals,
        service,
        vision,
-       team
+       team,
+       thank
        
     };
 
@@ -386,12 +390,14 @@ const getComplaintCount = async (req, res) => {
     }
 };
 const getBabysitter = async (req, res) => {
+
     let babysitterId = req.params.id;
     console.log("babysitterID:", babysitterId);
-    await User.find({userId: babysitterId})
+
+        await User.find({userId: babysitterId})
     try {
         const babysitter = await User.findOne({userId: babysitterId})
-            .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+            .populate('userId', 'role firstName lastName email phone address nic status ')
             .exec();
 
         console.log(babysitter);
@@ -401,22 +407,15 @@ const getBabysitter = async (req, res) => {
         }
 
         const babysitterData = {
-            
             _id: babysitter.userId._id,
-            userId:babysitter.userId._id,
-            age: babysitter.age,
-            gender: babysitter.gender,
-            image: babysitter.image,
-            firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+            role:babysitter.role,
+            firstName: babysitter.userId.firstName,
             lastName: babysitter.userId.lastName, 
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
             nic: babysitter.userId.nic, 
-            religon: babysitter.religon,
-            language: babysitter.language,
-            startDate: babysitter.startDate,
-            endDate: babysitter.endDate,
+            status:babysitter.status,
         };
         console.log(babysitterData)
 
@@ -426,6 +425,52 @@ const getBabysitter = async (req, res) => {
         res.status(500).send({ status: "Error with get babysitter", error: err.message });
     }
 };
+
+// const getBabysitter = async (req, res) => {
+
+//     try {
+//         let babysitterId = req.params.id;
+//         console.log("babysitterID:", babysitterId);
+
+//         const babysitter = await User.findOne({userId: babysitterId})
+//             .populate('userId', 'role firstName lastName email phone address nic status ') 
+//             .exec();
+
+//         if (!babysitter) {
+//             return res.status(404).send({ status: "Babysitter not found" });
+//         }
+
+//         const babysitterData = {
+//             _id: babysitter.userId._id,
+//             role:babysitter.role,
+//             firstName: babysitter.userId.firstName,
+//             lastName: babysitter.userId.lastName, 
+//             email: babysitter.userId.email,
+//             phone: babysitter.userId.phone,
+//             address: babysitter.userId.address,
+//             nic: babysitter.userId.nic, 
+//             status:babysitter.status,
+//             // age: babysitter.age,
+//             // gender: babysitter.gender,
+//             // image: babysitter.image,
+           
+            
+            
+//             // religon: babysitter.religon,
+//             // language: babysitter.language,
+//             // startDate: babysitter.startDate,
+//             // endDate: babysitter.endDate,
+//         };
+
+//         console.log(babysitterData)
+
+//         res.status(200).send({ status: "babysitter", babysitter: babysitterData });
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send({ status: "Error with get babysitter", error: err.message });
+//     }
+// };
+
   
 
 
@@ -466,6 +511,6 @@ module.exports={
     getBabysitterCount,
     getUserCount,
     getComplaintCount,
-    getBabysitter
+    getBabysitter,
     
 };

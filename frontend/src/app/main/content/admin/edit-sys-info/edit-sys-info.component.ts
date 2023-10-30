@@ -57,14 +57,18 @@ export class EditSysInfoComponent {
       this.goals = data.goals;
       this.service = data.service;
       this.vision = data.vision;
+      this.team = data.team;
       this.thank = data.thank;
 
 
-      this.currentInfoID = data.id;
+      this.currentInfoID = data._id;
+      console.log('hello')
+      console.log(this.currentInfoID)
 
     }
 
     UpdateRecords(data:any){
+      console.log("hi hui")
       let BodyData = {
         "about":this.about,
         "goals":this.goals,
@@ -82,19 +86,22 @@ export class EditSysInfoComponent {
     }
 
     save(data:any){
-      this.about = data.about;
-      this.goals = data.goals;
-      this.service = data.service;
-      this.vision = data.vision;
-      this.thank = data.thank;
+      // this.about = data.about;
+      // this.goals = data.goals;
+      // this.service = data.service;
+      // this.vision = data.vision;
+      // this.thank = data.thank;
 
-      this.currentInfoID == data.id;
+      this.currentInfoID == data._id;
+
+      this.UpdateRecords(data)
+
     }
 
 }
 
 interface sytemInfoArray{
-  id: string;
+  _id: string;
   about: string;
   goals: string;
   service: string;
