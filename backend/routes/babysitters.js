@@ -38,7 +38,7 @@ router.route("/getRequestForm/:id").get(babysitterController.getRequestForm);
 router.route("/updateRequestForm/:id").put(babysitterController.updateRequestForm); 
 
 //create
-router.route("/addBabysitter").post(multipleupload.array('file'),babysitterController.addBabysitter);
+router.route("/addBabysitter").post(upload.single('file'),multipleupload.array('files'),babysitterController.addBabysitter);
 
 //retrive
 router.route("/viewBabysitters").get(babysitterController.getAllbabysitters);

@@ -22,6 +22,7 @@ const addBabysitter = async (req, res) => {
         const nic = req.body.nic;
         const age = Number(req.body.age);
         const gender = req.body.gender;
+        const profile= req.file.filename;
         const images = req.files.map(file => ({ filename: file.filename }));
 
 
@@ -39,7 +40,8 @@ const addBabysitter = async (req, res) => {
             email,
             phone,
             address,
-            nic
+            nic,
+            profile
         });
 
         const saltRounds = 12;
