@@ -22,7 +22,11 @@ router.route("/updateParent/:id1/:id2").put(authJwt.verifyParent,parentControlle
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.getOnlyParent); //id=parentID
 router.route("/getType/:id").get(authJwt.verifyParent,parentController.getType);
+
+//payment
 router.route("/checkout/:id").get(authJwt.verifyParent,parentController.checkout);
+//router.route("/invokeStripe/:id").get(authJwt.verifyParent,parentController.invokeStripe);
+//router.route("/makePayment/:id").get(authJwt.verifyParent,parentController.makePayment);
 
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
