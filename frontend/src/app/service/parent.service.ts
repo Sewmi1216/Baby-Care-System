@@ -146,6 +146,8 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`);
   }
 
+
+
   getNoOfBabies(user: any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -198,16 +200,16 @@ export class ParentService {
   }
 
 
-  makePayment(stripeToken: any): Observable<any> {
-    const headers: HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
-    });
-
-    // Assuming you have a 'userId' variable defined in your class
-    const userId = this.userId; // Replace with the correct way to get the user ID
-
-    return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
-  }
-}
+//   makePayment(stripeToken: any): Observable<any> {
+//     const headers: HttpHeaders = new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+//     });
+//
+//     // Assuming you have a 'userId' variable defined in your class
+//     const userId = this.userId; // Replace with the correct way to get the user ID
+//
+//     return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
+//   }
+ }
 
