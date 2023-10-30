@@ -13,6 +13,7 @@ export class MainComponent implements OnInit{
   // private user: any;
   username:any;
   user =  {
+    _id:'',
     firstName: '',
     lastName: '',
     role: '',

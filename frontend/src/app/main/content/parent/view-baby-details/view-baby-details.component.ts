@@ -39,6 +39,12 @@ export class ViewBabyDetailsComponent {
     });
   }
 
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    // @ts-ignore
+    return date.toLocaleDateString('en-US', options);
+  }
   getBaby(){
     const userJSON = localStorage.getItem('user');
     console.log(this.babyId);

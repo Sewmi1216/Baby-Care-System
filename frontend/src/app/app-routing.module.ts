@@ -183,7 +183,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'parent_profile',
+        path: 'parent_profile/:user_id',
         component: ParentProfileComponent
 
       },

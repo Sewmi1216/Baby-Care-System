@@ -50,7 +50,6 @@ export class ParentService {
       'Authorization': `${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabies/${userId}`, { headers });
   }
 
@@ -85,7 +84,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters`, { headers });
   }
 
@@ -98,7 +96,6 @@ export class ParentService {
     });
     // const userId = user.id;
     // console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters/${babysitterId}`, { headers });
   }
 
@@ -109,7 +106,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestForms/${userId}`, { headers });
   }
 
@@ -120,7 +116,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
   }
 
@@ -132,7 +127,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });
   }
 
@@ -143,9 +137,8 @@ export class ParentService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
-    const userId = user.id;
+    const userId = user;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`);
   }
 
@@ -156,7 +149,6 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log(ageGroupId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getParameters/${ageGroupId}`, { headers });
   }
 
@@ -167,7 +159,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getVaccineList`, { headers });
   }
 
@@ -178,7 +169,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabiesCount/${userId}`);
   }
 
@@ -192,7 +182,6 @@ export class ParentService {
     });
     // const userId = user.id;
     // console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBaby/${babyId}`, { headers });
   }
 
@@ -203,7 +192,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);
   }
 
@@ -212,7 +200,6 @@ export class ParentService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
-    console.log('Request headers:', headers);
     return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });
   }
 
@@ -223,7 +210,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getAgeGroup`, { headers });
   }
   
