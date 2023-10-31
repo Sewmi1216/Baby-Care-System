@@ -49,13 +49,13 @@ export class ParentProfileComponent implements OnInit {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) {
         this.parentService.updatePassword(user).subscribe(
-          (data) => {
+          (data:any) => {
             console.log("Password updated successfully:", data);
             this.toast.success({detail: "Password updated successfully", summary: 'Updated', position: 'topCenter'});
             console.log("Successfully");
             location.reload();
           },
-          (err) => {
+          (err:any) => {
             this.toast.error({detail: "Error", summary: err.error.message, position: 'topCenter'});
             console.error(`Failed to update password: ${err}`, err);
           }

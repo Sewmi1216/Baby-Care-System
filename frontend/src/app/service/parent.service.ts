@@ -13,6 +13,7 @@ export class ParentService {
   authToken: any;
   tasklist: any;
   baby: any;
+
   babyProfile: any;
 
   private userId: any;
@@ -243,7 +244,6 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/deleteRequestFormID/${babysitterId}/${parentId}`);
   }
 
-  //update password
   updatePassword(user: any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -286,5 +286,20 @@ export class ParentService {
 
     return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
   }
- }
+
+  addComplaint(formdata:any) {
+    return this.http.post<any>(environment.backend_url + "/parent/addComplaint", formdata)
+
+  }
+  //complaints
+  // addComplaint(formdata: FormData) {
+  //   let complaint;
+  //   return this.http.post<any>(environment.backend_url + "/parent/addComplaint", complaint)
+  //
+  // }
+
+
+
+
+}
 
