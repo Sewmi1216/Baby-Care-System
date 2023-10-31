@@ -24,8 +24,9 @@
       <div class="row">
         <div class="col-lg-5 mx-auto">
           <div class="text-center">
-            <button *ngIf="isFree==true" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
-              Current Plan
+            Free plan
+            <button  *ngIf="getPlan()['isFree']==='true'" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
+              Activate
             </button>
 <!--            <button *ngIf="!isFree" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
 <!--              Upgrade Plan-->
@@ -66,9 +67,9 @@
 <!--            <button *ngIf="isFree" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
 <!--              Activate-->
 <!--            </button>-->
-<!--            <button *ngIf="!isFree" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
-<!--             Deactivate-->
-<!--            </button>-->
+            <button *ngIf="getPlan()['isFree']==='false'" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
+             Activate
+            </button>
 <!--            <button (click)="makePayment(10000)" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
 <!--              Activate-->
 <!--            </button>-->

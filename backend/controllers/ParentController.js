@@ -15,7 +15,7 @@ let Complaint = require("../models/Complaint");
 
 let Feedback = require("../models/feedback");
 
-const Babysitter  = require("../models/babysitter");
+const Babysitter = require("../models/babysitter");
 //const getPlan =require("../models/Admin")
 
 let GrowthParameters = require("../models/GrowthParameters");
@@ -201,34 +201,32 @@ const getBabies = async (req, res) => {
 const getPlan = async (req, res) => {
     try {
         const userId = req.userId;
-        const parents = await Parent.findOne({ userId });
+        const parents = await Parent.findOne({userId});
 
 
         const isFree = parents.isFree;
 
-        res.status(200).send({ parents, isFree });
+        res.status(200).send({parents, isFree});
     } catch (err) {
         console.error(err.message);
-        res.status(500).send({ status: "Error with get plans", error: err.message });
+        res.status(500).send({status: "Error with get plans", error: err.message});
     }
 };
 
 const getType = async (req, res) => {
     try {
         const userId = req.userId;
-        const parents = await Parent.findOne({ userId });
+        const parents = await Parent.findOne({userId});
 
 
         const isFree = parents.isFree;
 
-        res.status(200).send({ parents, isFree });
+        res.status(200).send({parents, isFree});
     } catch (err) {
         console.error(err.message);
-        res.status(500).send({ status: "Error with get plans", error: err.message });
+        res.status(500).send({status: "Error with get plans", error: err.message});
     }
 };
-
-
 
 
 const getBaby = async (req, res) => {
@@ -290,17 +288,16 @@ const updateTask = async (req, res) => {
 };
 const updatePassword = async (req, res) => {
     let userId = req.params.id; // Fetch the user's ID from the request parameters
-    const { password } = req.body; // Get the new password from the request body
+    const {password} = req.body; // Get the new password from the request body
 
     try {
-        const user = await User.findByIdAndUpdate(userId, { password }, { new: true });
+        const user = await User.findByIdAndUpdate(userId, {password}, {new: true});
 
 
-
-        res.status(200).send({ status: "Password updated", user });
+        res.status(200).send({status: "Password updated", user});
     } catch (err) {
         console.error(err);
-        res.status(500).send({ status: "Error with updating data", error: err.message });
+        res.status(500).send({status: "Error with updating data", error: err.message});
     }
 };
 
@@ -486,9 +483,6 @@ const getBabysitters = async (req, res) => {
 };
 
 
-
-
-
 const getBabysitter = async (req, res) => {
     let babysitterId = req.params.id;
     console.log("babysitterID:", babysitterId);
@@ -667,7 +661,7 @@ const updateParentProfile = async (req, res) => {
         const phone = req.body.phone;
         const address = req.body.address;
 
-        console.log("body",req.body)
+        console.log("body", req.body)
         const updateParent = {
             firstName,
             lastName,
@@ -676,7 +670,7 @@ const updateParentProfile = async (req, res) => {
             email
         }
 
-        const update = await User.findByIdAndUpdate(parentId, updateParent, { new: true });
+        const update = await User.findByIdAndUpdate(parentId, updateParent, {new: true});
 
         if (!update) {
             return res.status(404).send({status: "Parent not found", update});
@@ -751,41 +745,37 @@ const updateBabysitter = async (req, res) => {
         console.error(err.message);
         res.status(500).send({status: "Error with updating data", error: err.message});
     }
-    // const invokeStripe= async (req, res) => {
-    //     try {
-    //         let userId = req.params.id;
-    //         console.log("UserId:", userId);
-    //         const token = req.body.token;
-    //
-    //         const customer = await stripe.customers.create({
-    //             email: req.body.email,
-    //             source: token.id,
-    //         });
-    //
-    //         const charge = await stripe.charges.create({
-    //             amount: 10000,
-    //             description: "Premium Option",
-    //             currency: "USD",
-    //             customer: customer.id,
-    //         });
-    //
-    //         console.log(charge);
-    //
-    //         res.json({
-    //             data: "success",
-    //         });
-    //     } catch (err) {
-    //         res.json({
-    //             data: "failure",
-    //         });
-    //         return true;
-    //     }
-    //
-    // };
-
-
-
 }
+const invokeStripe = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("UserId:", userId);
+        const token = req.body.token;
+
+        const customer = await stripe.customers.create({
+            email: req.body.email,
+            source: token.id,
+        });
+
+        const charge = await stripe.charges.create({
+            amount: 10000,
+            description: "Premium Option",
+            currency: "USD",
+            customer: customer.id,
+        });
+
+        console.log(charge);
+
+        res.json({
+            data: "success",
+        });
+    } catch (err) {
+        res.json({
+            data: "failure",
+        });
+        return true;
+    }
+};
 
 const deleteBabysitter = async (req, res) => {
     let babysitterID = req.params.id1;
@@ -806,19 +796,19 @@ const deleteBabysitter = async (req, res) => {
     };
 
     try {
-        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+        const updatedParent = await Parent.findOneAndUpdate({userId}, updateParent, {new: true});
 
-        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new: true})
 
         const requestForm = await RequestForm.findOneAndDelete({Babysitter: babysitterID}, {parent: userId});
 
         if (!updatedParent) {
-            return res.status(404).send({ status: "Parent not found" });
+            return res.status(404).send({status: "Parent not found"});
         }
-        res.status(200).send({ status: "Parent updated", updatedBabysitter });
+        res.status(200).send({status: "Parent updated", updatedBabysitter});
     } catch (err) {
         console.error(err);
-        res.status(500).send({ status: "Error with updating data", error: err.message });
+        res.status(500).send({status: "Error with updating data", error: err.message});
     }
 };
 
@@ -851,7 +841,7 @@ module.exports = {
     updateBabysitter,
     getPlan,
     getType,
-  //  invokeStripe,
+    invokeStripe,
     updatePassword,
     updateParentProfile,
     deleteBabysitter
