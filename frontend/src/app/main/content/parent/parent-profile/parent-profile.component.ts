@@ -1,6 +1,6 @@
-import { NgToastService } from 'ng-angular-popup'; // Assuming you're using ng-angular-popup
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {ParentService} from "../../../../service/parent.service";
+import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 
@@ -9,11 +9,7 @@ import {CookieService} from "ngx-cookie-service";
   templateUrl: './parent-profile.component.html',
   styleUrls: ['./parent-profile.component.css']
 })
-export class ParentProfileComponent implements OnInit {
-  newPassword: string = '';
-  confirmNewPassword: string = '';
-  userId: string = '';
-
+export class ParentProfileComponent {
 
   user = {
     id:'',
@@ -27,6 +23,7 @@ export class ParentProfileComponent implements OnInit {
     email:''
   };
 
+  userId: any;
   today = new Date();
   img:string=''
   parent: any;
@@ -35,11 +32,10 @@ export class ParentProfileComponent implements OnInit {
     private route:ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
 
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.userId = params['user_id'];
-      console.log(this.userId);
+      this.getParent();
     });
   }
 
@@ -71,7 +67,7 @@ export class ParentProfileComponent implements OnInit {
 
   getParent() {
     // @ts-ignore
-    this.parentService.getParent(this.userId).subscribe(
+    this.parentService.getParentProfile(this.userId).subscribe(
       (response) => {
         this.user = response.parent;
         console.log(response.parent);

@@ -13,40 +13,34 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path')
 
-
-//payment
-const stripe =require("stripe")("pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax");
-app.post('checkout');
-
-
-// const { Server } = require("socket.io");
-// const { createServer } = require('node:http');
-// const server = createServer(app);
+const { Server } = require("socket.io");
+const { createServer } = require('node:http');
+const server = createServer(app);
 // const io = new Server();
 
 app.use(bodyParser.json({ limit: "100mb" }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 const port = process.env.PORT || 8070
-//const http = require('http').createServer(app);
+// const http = require('http').createServer(app);
 // const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
 // const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
-
+//
 // const credentials = {
 //     key: privateKey,
 //     cert: certificate,
 // };
 // const httpsServer = https.createServer(credentials);
-
-// const ipAddress = "192.168.255.250";
-
+//
+// const ipAddress = "192.168.68.250";
+//
 // httpsServer.listen(port, ipAddress, () => {
 //     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
 // });
 // const io = require('socket.io')(httpsServer, {
 //     cors: {
-
-//         origin: ["https://192.168.255.250:4200", "https://localhost:4200"],
+//
+//         origin: ["https://192.168.68.250:4200", "https://localhost:4200"],
 //         allowedHeaders: ["my-custom-header"],
 //         credentials: true
 //     },
@@ -68,6 +62,7 @@ const backendPort = 8070;
 app.listen(backendPort, () => {
     console.log(`app is listening on port ${backendPort}`);
 });
+
 
 //sid.signature
 // app.use(session({
@@ -121,7 +116,10 @@ app.listen(backendPort, () => {
 //         }
 //
 //     });
-//
+//     socket.on('BabyNotDetected', () => {
+//         console.log('Baby not detected. Sending alert...');
+//         // Handle the BabyNotDetected event here, e.g., send an alert or take any necessary actions.
+//     });
 //     // Handle disconnection
 //     // socket.on('disconnect', () => {
 //     //     console.log('A client disconnected.');

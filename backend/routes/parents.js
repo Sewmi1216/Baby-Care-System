@@ -25,11 +25,7 @@ router.route('/addBaby').post(upload.single('file'),parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
-
-router.route("/getPlan/:id").get(authJwt.verifyParent,parentController.getPlan);
-
 router.route("/getBaby/:id").get(authJwt.verifyParent,parentController.getBaby);
-
 router.route('/addRequestForm').post(authJwt.verifyParent,parentController.addRequestForm);
 router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBabysitters);
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
@@ -41,21 +37,11 @@ router.route("/getVaccineList").get(authJwt.verifyParent,parentController.getVac
 router.route("/updateParent/:id1/:id2").put(authJwt.verifyParent,parentController.updateParent);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.getOnlyParent); //id=parentID
-router.route("/getType/:id").get(authJwt.verifyParent,parentController.getType);
-
-//payment
-// router.route("/checkout/:id").post(authJwt.verifyParent,parentController.checkout);
-router.route("/invokeStripe/:id").post(authJwt.verifyParent,parentController.invokeStripe);
-// router.route("/makePayment/:id").post(authJwt.verifyParent,parentController.makePayment);
-
-
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.updateBabysitter); //id=babysitterID
 router.route("/updateParentProfile/:id").put(authJwt.verifyParent,parentController.updateParentProfile);
-router.route("/deleteBabysitter/:id1/:id2").delete(authJwt.verifyParent,parentController.deleteBabysitter); //id=babysitterID
-router.route("/deleteRequestFormID/:id1/:id2").get(authJwt.verifyParent,parentController.deleteBabysitter); //id=parentID
-
+router.route("/getParentProfile/:id").get(authJwt.verifyParent,parentController.getParentProfile);
 //create
 router.route('/addParent').post(upload.single('file'), parentController.addParent);
 
@@ -72,8 +58,6 @@ router.route('/addComplaint').post(parentController.addComplaint);
 
 //update
 router.route("/updateTask/:id").put(parentController.updateTask);
-
-router.route("/updatePassword/:id").put(parentController.updatePassword);
 router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
 //delete
