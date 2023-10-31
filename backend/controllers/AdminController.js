@@ -283,6 +283,27 @@ const UpdateSystemInfo = async (req, res) => {
         });
 };
 
+const UpdateVerifyStatus = async (req, res) => {
+    let userId = req.params.id; //fetch the id
+  
+    const {status} = req.body; // new value
+    //create a object
+    const updateInfo = {
+       status,
+       
+    };
+
+    await User.findByIdAndUpdate(userId, updateInfo,{status:"active"})
+        .then((info) => {
+            
+            res.status(200).send({ status: "Info are updated", info });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating info", error: err.message });
+        });
+};
+
 const ViewSystemInfo = async (req, res) => {
     await SystemInfo.find()
         .then((information) => {
@@ -389,54 +410,26 @@ const getComplaintCount = async (req, res) => {
         res.status(500).send({ status: "Error with get number of complaint", error: err.message });
     }
 };
-const getBabysitter = async (req, res) => {
-
-    let babysitterId = req.params.id;
-    console.log("babysitterID:", babysitterId);
-
-        await User.find({userId: babysitterId})
-    try {
-        const babysitter = await User.findOne({userId: babysitterId})
-            .populate('userId', 'role firstName lastName email phone address nic status ')
-            .exec();
-
-        console.log(babysitter);
-
-        if (!babysitter.userId._id) {
-            return res.status(404).send({ status: "Babysitter not found" });
-        }
-
-        const babysitterData = {
-            _id: babysitter.userId._id,
-            role:babysitter.role,
-            firstName: babysitter.userId.firstName,
-            lastName: babysitter.userId.lastName, 
-            email: babysitter.userId.email,
-            phone: babysitter.userId.phone,
-            address: babysitter.userId.address,
-            nic: babysitter.userId.nic, 
-            status:babysitter.status,
-        };
-        console.log(babysitterData)
-
-        res.status(200).send({ status: "babysitter", babysitter: babysitterData });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send({ status: "Error with get babysitter", error: err.message });
-    }
-};
-
 // const getBabysitter = async (req, res) => {
+//     console.log('hi')
 
+
+//     let babysitterId = req.params.id;
+//     console.log("babysitterID:", babysitterId);
+
+        
+        
 //     try {
-//         let babysitterId = req.params.id;
-//         console.log("babysitterID:", babysitterId);
-
-//         const babysitter = await User.findOne({userId: babysitterId})
-//             .populate('userId', 'role firstName lastName email phone address nic status ') 
+//         // await User.find({userId: babysitterId})
+//         console.log('hi')
+//         const babysitter = await User.findById(babysitterId)
+//             .populate('userId', 'role firstName lastName email phone address nic status ')
 //             .exec();
 
-//         if (!babysitter) {
+//         console.log(babysitter);
+
+
+//         if (!babysitter.userId._id) {
 //             return res.status(404).send({ status: "Babysitter not found" });
 //         }
 
@@ -450,19 +443,9 @@ const getBabysitter = async (req, res) => {
 //             address: babysitter.userId.address,
 //             nic: babysitter.userId.nic, 
 //             status:babysitter.status,
-//             // age: babysitter.age,
-//             // gender: babysitter.gender,
-//             // image: babysitter.image,
-           
-            
-            
-//             // religon: babysitter.religon,
-//             // language: babysitter.language,
-//             // startDate: babysitter.startDate,
-//             // endDate: babysitter.endDate,
 //         };
-
 //         console.log(babysitterData)
+//         debugger
 
 //         res.status(200).send({ status: "babysitter", babysitter: babysitterData });
 //     } catch (err) {
@@ -470,6 +453,80 @@ const getBabysitter = async (req, res) => {
 //         res.status(500).send({ status: "Error with get babysitter", error: err.message });
 //     }
 // };
+const getBabysitter = async (req, res) => {
+    try {
+        let babysitterId = req.params.id;
+
+
+        console.log("babysitterID:",babysitterId);
+
+        const babysitter = await User.findOne({_id: babysitterId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!babysitter) {
+            res.status(404).send({ status: "No babysitter" });
+        } else {
+            // const imageFilename = baby.img;
+            console.log("babysitter: ", babysitter);
+            // const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            // console.log("imageFilePath: ", imageFilePath);
+            // const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "babysitter", babysitter});
+        }
+        // if (!Baby || Baby.length === 0) {
+        //     res.status(404).send({ status: "No activities found for this ageGroup" });
+        // } else {
+        //     res.status(200).send({ status: "Baby details", Baby});
+        // }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+const getOneUser = async (req, res) => {
+    try {
+        let userId = req.params.id;
+
+
+        console.log("userID:",userId);
+
+        const user = await User.findOne({_id: userId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!user) {
+            res.status(404).send({ status: "No user" });
+        } else {
+            // const imageFilename = baby.img;
+            console.log("user: ", user);
+            // const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            // console.log("imageFilePath: ", imageFilePath);
+            // const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "user", user});
+        }
+        // if (!Baby || Baby.length === 0) {
+        //     res.status(404).send({ status: "No activities found for this ageGroup" });
+        // } else {
+        //     res.status(200).send({ status: "Baby details", Baby});
+        // }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+
 
   
 
@@ -512,5 +569,7 @@ module.exports={
     getUserCount,
     getComplaintCount,
     getBabysitter,
+    UpdateVerifyStatus,
+    getOneUser
     
 };

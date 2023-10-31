@@ -35,6 +35,9 @@ const userSchema = new schema({
     },
     profile:{
         type:String
+    },
+    status:{
+        type:String
     }
 })
 

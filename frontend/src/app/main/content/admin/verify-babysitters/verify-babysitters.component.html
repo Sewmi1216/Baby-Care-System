@@ -9,20 +9,20 @@
         <div class="list-group list-group-flush">
           <!-- List group items here -->
           <div class="list-group">
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue; width: 600px" >Full  Name</p>
-            <input type="text" class="form-control" [(ngModel)]="babysitterFullName" readonly>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue; width: 600px;font-size:x-large;" >Full  Name</p>
+            <input type="text" class="form-control" style="text-align: center" value="{{babysitterFullName}}" readonly>
 
             <!-- <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue">Age</p>
             <input type="number" class="form-control" [(ngModel)]="babysitterProfile.age" readonly> -->
 
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue">NIC No</p>
-            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.nic" readonly>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue;display: flex;justify-content: center;font-size:x-large;">NIC No</p>
+            <input type="text" class="form-control" style="text-align: center" value="{{babysitterProfile.nic}}" readonly>
 
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue">Home Address</p>
-            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.address" readonly>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue;font-size:x-large">Home Address</p>
+            <input type="text" class="form-control" style="text-align: center" value="{{babysitterProfile.address}}" readonly>
 
-            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue">Contact Number</p>
-            <input type="text" class="form-control" [(ngModel)]="babysitterProfile.phone" readonly>
+            <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue;font-size:x-large;">Contact Number</p>
+            <input type="text" class="form-control" style="text-align: center" value="{{babysitterProfile.phone}}" readonly>
 
             <p class="list-group-item list-group-item-action px-3 py-2 mb-2 list-group-item-primary rounded-3 text-center custom-data" style="background-color: aliceblue;border-color: aliceblue">
               <a href="assets/sewmi.jpg" download>
@@ -30,7 +30,7 @@
               </a>
             </p>
             <p>
-              <button class="bbtn btn-custom btn-primary" style="background-color: mediumpurple;border-color: #BFBBF1;border-radius: 16px; align-content: center;width: 30pxcd fronte" >Verify</button>
+              <button class="bbtn btn-custom btn-primary" style="background-color: mediumpurple;border-color: #BFBBF1;border-radius: 16px; align-content: center;width: 30pxcd fronte" (click)="save(babysitterProfile)">Verify</button>
               <button class="bbtn btn-custom btn-primary" style="background-color: rgb(229, 60, 13);border-color: #BFBBF1;border-radius: 16px; align-content: center;width: 30pxcd fronte;margin-left: 2rem;" >Reject</button>
 
             </p>

@@ -15,9 +15,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VerifyBabysittersComponent {
   babysitterProfile = {
-    _id: '',
+    id: '',
     // userId: '',
-    role:'',
+    // role:'',
     firstName: '',
     lastName: '', 
     email: '',
@@ -26,24 +26,18 @@ export class VerifyBabysittersComponent {
     nic: '',
     status:'',
 
-
-
-
-    // age: '',
-    // gender: '',
-    // image:'',
-    // religon: '',
-    // language: '',
   };
+  babysitterId: string | null = null;
+
   babysitterFullName: string | null = null;
 
   currentInfoID = ''
-  about: string ="";
+  status: string ="";
 
 
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
-  babysitterId: string | null = null; // Initialize the babysitterId variable
+  // babysitterId: string | null = null; // Initialize the babysitterId variable
   parentId:  string = ''
 
   constructor(
@@ -54,7 +48,7 @@ export class VerifyBabysittersComponent {
     // Get the babysitter_id parameter from the route
     this.route.params.subscribe(params => {
       this.babysitterId = params['id'];
-      console.log('hello');
+      // console.log('hello');
       console.log(this.babysitterId);
       this.getBabysitter();
     });
@@ -62,30 +56,17 @@ export class VerifyBabysittersComponent {
 
 
   getBabysitter(){
+
     const userJSON = localStorage.getItem('user');
-    console.log('hello');
-
-    if (userJSON !== null) {
-      const userString = JSON.parse(userJSON); // Use the User interface
-      console.log(userString);
-      this.parentId = userString.id;
-      console.log(this.parentId)
-      console.log('hellooo');
-
-    }
     console.log(this.babysitterId);
     if(userJSON!==null){
       this.adminService.getBabysitter(this.babysitterId).subscribe(
         (response) => {
           this.babysitterProfile = response.babysitter;
-          console.log('hiiiiko')
-
           console.log(this.babysitterProfile)
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
-          console.log(this.babysitterProfile.firstName);
-          console.log(this.babysitterFullName);
 
-
+          // this.img=response.imageUrl
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -93,47 +74,37 @@ export class VerifyBabysittersComponent {
         }
       )
     }
-    console.log('hello');
+ 
 
   }
 
-  setUpdate(data:any){
-    this.about = data.about;
-    
-
-    this.currentInfoID = data.id;
-
-  }
-
-  UpdateRecords(data:any){
+  UpdateVerifyRecords(data:any){
+    console.log("hi hui")
     let BodyData = {
-      "about":this.about,
-      
+      "status": "active",
     };
 
-    this.http.put("http://localhost:8070/admin/updateSystemInfo"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
+    this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.babysitterId,BodyData).subscribe((res: any)=>{
       console.log(res);
-      alert("Info Updated")
+      // this.status=response.info;
+      // alert("Info Updated")
     });
 
   }
 
   save(data:any){
-    this.about = data.about;
     
+    this.currentInfoID == data._id;
 
-    this.currentInfoID == data.id;
+    this.UpdateVerifyRecords(data)
+
   }
 
 }
 
-interface sytemInfoArray{
-id: string;
-about: string;
-goals: string;
-service: string;
-vision: string;
-team: string;
-thank: string;
-}
+// interface sytemInfoArray{
+// _id: string;
+// status: string;
+
+// }
 
