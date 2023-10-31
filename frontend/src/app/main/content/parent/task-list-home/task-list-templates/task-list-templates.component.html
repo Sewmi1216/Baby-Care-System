@@ -3,9 +3,9 @@
     <div class="col-lg-7 mx-auto">
       <div class="card rounded-0 border-0 shadow">
         <div class="card-body p-5">
-          <h2>Task List Name:{{taskList.taskListName}}</h2>
-          <h5>Date :- {{taskList.date}}</h5>
-          <h5>Task List ID :- {{taskList._id}}</h5>
+          <h2>Task List Name : <span class="custom-text-color">{{ taskList.taskListName }}</span></h2>
+<!--          <h5>Date :- {{taskList.date}}</h5>-->
+<!--          <h5>Task List ID :- {{taskList._id}}</h5>-->
 
           <div class="table-wrapper">
             <table class="table">
@@ -39,8 +39,8 @@
           </div>
           <!--add 3 buttons for update, add date and delete-->
           <div class="d-flex justify-content-between mt-3">
-            <button >Delete</button>
-            <button data-toggle="modal" data-target="#updateModalCenter" (click)="openUpdateModal(taskList._id)">Update</button>
+            <button class="btn btn-danger" >Delete</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#updateModalCenter" (click)="openUpdateModal(taskList._id)">Update</button>
             <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Add Date</button>
           </div>
 
