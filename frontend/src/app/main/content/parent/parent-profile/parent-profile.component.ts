@@ -20,13 +20,17 @@ export class ParentProfileComponent {
     profile:'',
     phone:'',
     address:'',
-    email:''
+    email:'',
+    newPassword: undefined,
+    confirmPassword: undefined
   };
 
   userId: any;
   today = new Date();
   img:string=''
   parent: any;
+  // newPassword: any;
+ // confirmNewPassword: any;
 
   constructor(
     private route:ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
@@ -40,19 +44,19 @@ export class ParentProfileComponent {
   }
 
   updatePassword() {
-    if (this.newPassword === this.confirmNewPassword) {
+    if (this.user.newPassword === this.user.confirmPassword) {
       // @ts-ignore
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) {
         this.parentService.updatePassword(user).subscribe(
-          (data:any) => {
+          (data: any) => {
             console.log("Password updated successfully:", data);
-            this.toast.success({detail: "Password updated successfully", summary: 'Updated', position: 'topCenter'});
+            this.toast.success({ detail: "Password updated successfully", summary: 'Updated', position: 'topCenter' });
             console.log("Successfully");
             location.reload();
           },
-          (err:any) => {
-            this.toast.error({detail: "Error", summary: err.error.message, position: 'topCenter'});
+          (err: any) => {
+            this.toast.error({ detail: "Error", summary: err.error.message, position: 'topCenter' });
             console.error(`Failed to update password: ${err}`, err);
           }
         );
@@ -60,10 +64,14 @@ export class ParentProfileComponent {
         console.error("User data not found in local storage.");
       }
     } else {
+      this.toast.error({ detail: "Passwords do not match", summary: "Error", position: 'topCenter' });
       console.error("Passwords do not match");
     }
-
   }
+
+
+
+
 
   getParent() {
     // @ts-ignore
