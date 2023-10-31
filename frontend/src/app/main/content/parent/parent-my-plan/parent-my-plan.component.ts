@@ -31,65 +31,69 @@ export class ParentMyPlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlan();
-   // this.invokeStripe();
+    this.invokeStripe();
+  }
+  getPlan() {
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem('user'));
   }
 
-  getPlan() {
-    const userJSON = localStorage.getItem('user');
-    if (userJSON !== null) {
-      this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
-        (response: any) => {
-          this.plan = response.plan;
-          this.isFree = response.isFree;
-        },
-        (error) => {
-          console.error('Error fetching: ', error);
-        }
-      );
+  // getPlan() {
+  //   const userJSON = localStorage.getItem('user');
+  //   if (userJSON !== null) {
+  //     this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
+  //       (response: any) => {
+  //         this.plan = response.plan;
+  //         this.isFree = response.isFree;
+  //       },
+  //       (error) => {
+  //         console.error('Error fetching: ', error);
+  //       }
+  //     );
+  //   }
+  // }
+
+  makePayment(amount: number) {
+    if (this.paymentHandler) {
+      this.paymentHandler.open({
+        name: 'Cuddle Care System',
+        description: 'Premium Option',
+        // amount: amount * 100
+      });
     }
   }
-//
-//   makePayment(amount: number) {
-//     if (this.paymentHandler) {
-//       this.paymentHandler.open({
-//         name: 'Cuddle Care System',
-//         description: 'Premium Option',
-//         // amount: amount * 100
-//       });
-//     }
-//   }
-//
-//   paymentStripe(stripeToken: any) {
-//   //  this.makePayment(stripeToken).subscribe((data: any) => {
 
-//     this.parentService(stripeToken).subscribe((data: any) => {
-//       console.log(data);
-//
-//       if (data.data === "success") {
-//         this.success = true;
-//       } else {
-//         this.failure = true;
-//       }
-//     });
-//   }
-//
-//   invokeStripe() {
-//     if (!window.document.getElementById('stripe-script')) {
-//       const script = window.document.createElement('script');
-//       script.id = 'stripe-script';
-//       script.type = 'text/javascript';
-//       script.src = 'https://checkout.stripe.com/checkout.js';
-//       script.onload = () => {
-//         this.paymentHandler = (<any>window).StripeCheckout.configure({
-//           key: 'pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax',
-//           locale: 'auto',
-//           token: (stripeToken: any) => {
-//             console.log(stripeToken);
-//             this.paymentStripe(stripeToken);
-//           },
-//         });
-//       };
-//       window.document.body.appendChild(script);
-//     }
-//   }
+  paymentStripe(stripeToken: any) {
+  // this.makePayment(stripeToken).subscribe((data: any) => {
+
+    this.parentService.makePayment(stripeToken).subscribe((data: any) => {
+      console.log(data);
+
+      if (data.data === "success") {
+        this.success = true;
+      } else {
+        this.failure = true;
+      }
+    });
+  }
+
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax',
+          locale: 'auto',
+          token: (stripeToken: any) => {
+            console.log(stripeToken);
+            this.paymentStripe(stripeToken);
+          },
+        });
+      };
+      window.document.body.appendChild(script);
+    }
+  }
  }

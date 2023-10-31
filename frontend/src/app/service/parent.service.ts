@@ -224,14 +224,14 @@ export class ParentService {
     console.log(userId);
     return this.http.get<any>(`${environment.backend_url}/parent/getAgeGroup`, { headers });
   }
-  
+
   deleteBabysitter(babysitterId: any, parentId: string): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log('Request headers:', headers);
-    return this.http.delete<any>(`${environment.backend_url}/parent/deleteBabysitter/${babysitterId}/${parentId}`);    
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteBabysitter/${babysitterId}/${parentId}`);
   }
 
   deleteRequestFormID(babysitterId:any, parentId: any):Observable<any>{
@@ -240,7 +240,7 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/parent/deleteRequestFormID/${babysitterId}/${parentId}`);      
+    return this.http.get<any>(`${environment.backend_url}/parent/deleteRequestFormID/${babysitterId}/${parentId}`);
   }
 
   //update password
@@ -275,16 +275,16 @@ export class ParentService {
   }
 
 
-//   makePayment(stripeToken: any): Observable<any> {
-//     const headers: HttpHeaders = new HttpHeaders({
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
-//     });
-//
-//     // Assuming you have a 'userId' variable defined in your class
-//     const userId = this.userId; // Replace with the correct way to get the user ID
-//
-//     return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
-//   }
+  makePayment(stripeToken: any): Observable<any> {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+
+    // Assuming you have a 'userId' variable defined in your class
+    const userId = this.userId; // Replace with the correct way to get the user ID
+
+    return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
+  }
  }
 

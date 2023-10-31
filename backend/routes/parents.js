@@ -45,8 +45,9 @@ router.route("/getType/:id").get(authJwt.verifyParent,parentController.getType);
 
 //payment
 // router.route("/checkout/:id").post(authJwt.verifyParent,parentController.checkout);
-// router.route("/invokeStripe/:id").post(authJwt.verifyParent,parentController.invokeStripe);
+router.route("/invokeStripe/:id").post(authJwt.verifyParent,parentController.invokeStripe);
 // router.route("/makePayment/:id").post(authJwt.verifyParent,parentController.makePayment);
+
 
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
