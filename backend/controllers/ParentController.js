@@ -18,8 +18,6 @@ let Feedback = require("../models/feedback");
 const Babysitter  = require("../models/babysitter");
 //const getPlan =require("../models/Admin")
 
-const Babysitter = require("../models/babysitter");
-
 let GrowthParameters = require("../models/GrowthParameters");
 let AgeGroups = require("../models/ageGroup");
 let Vaccines = require("../models/vaccine");

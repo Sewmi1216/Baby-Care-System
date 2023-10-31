@@ -2,7 +2,7 @@ const config = require("../config/auth.config");
 let User = require("../models/User")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
- const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 const path = require('path')
 
 const login = (req, res) => {
@@ -29,7 +29,7 @@ const login = (req, res) => {
                 email: user.email,
                 role: user.role,
                 msg: "login",
-                token:token
+                token: token
             });
             console.log("Access-token", token)
         });
@@ -42,47 +42,46 @@ const logout = (req, res) => {
         res.clearCookie("id"); // clears cookie containing expired sessionID
         res.send("Logged out successfully");
     });
+}
 
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'sewmi.rotaract3220@gmail.com',
+        pass: 'uaqgejykofzquoaf',
+    },
+});
 
-    const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'sewmi.rotaract3220@gmail.com',
-            pass: 'uaqgejykofzquoaf',
-        },
-    });
-
-    const sendResetPasswordEmail = (userEmail) => {
-        const mailOptions = {
-            from: 'sewmi.rotaract3220@gmail.com',
-            to: userEmail,
-            subject: 'Password Reset',
-            html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
+const sendResetPasswordEmail = (userEmail) => {
+    const mailOptions = {
+        from: 'sewmi.rotaract3220@gmail.com',
+        to: userEmail,
+        subject: 'Password Reset',
+        html: `<p>We have received a password reset request. Please use the following link to navigate to reset password page:</p>
               <p><a href="http://localhost:4200/reset-password">Reset Password</a></p>`,
-        };
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending password reset email:', error);
-            } else {
-                console.log('Password reset email sent:', info.response);
-            }
-        });
     };
-    const forgetPassword = (req, res) => {
-        const email = req.body.email;
-        // Check if the user exists
-        User.findOne({ email: email }).then((user) => {
-            if (!user) {
-                return res.status(400).json({message: 'User already not exists'});
-            }
-            // Send the reset password email to the user
-            sendResetPasswordEmail(email);
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending password reset email:', error);
+        } else {
+            console.log('Password reset email sent:', info.response);
+        }
+    });
+};
+const forgetPassword = (req, res) => {
+    const email = req.body.email;
+    // Check if the user exists
+    User.findOne({email: email}).then((user) => {
+        if (!user) {
+            return res.status(400).json({message: 'User already not exists'});
+        }
+        // Send the reset password email to the user
+        sendResetPasswordEmail(email);
 
-            // Respond to the client with a success message
-            res.status(200).json({ message: 'sent' });
-        });
-    };
-
+        // Respond to the client with a success message
+        res.status(200).json({message: 'sent'});
+    });
+}
 
 // const userId = res.user.id; // Assuming you have the user's ID from the authenticated user
 //
@@ -97,17 +96,16 @@ const logout = (req, res) => {
 //     return res.status(200).json({ message: 'Password updated successfully' });
 // });
 
-}
 const getImg = async (req, res) => {
     try {
         let userId = req.params.id;
         console.log("userID:", userId);
 
-        const user = await User.findOne({ _id: userId });
+        const user = await User.findOne({_id: userId});
         console.log(user);
 
         if (!user) {
-            res.status(404).send({ status: "No user found" });
+            res.status(404).send({status: "No user found"});
         } else {
             const imageFilename = user.profile;
             console.log("imageFilename: ", imageFilename);
@@ -118,22 +116,41 @@ const getImg = async (req, res) => {
 
 
             // Send user information along with the image file
-            res.status(200).json({ status: "user", user, imageUrl });
+            res.status(200).json({status: "user", user, imageUrl});
         }
     } catch (err) {
         console.log(err.message);
-        res.status(500).send({ status: "Error with get user", error: err.message });
+        res.status(500).send({status: "Error with get user", error: err.message});
     }
 }
+const getUser = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("userID:", userId);
+
+        const user = await User.findOne({_id: userId});
+        console.log(user)
+
+        if (!user) {
+            res.status(404).send({status: "No user found"});
+        } else {
+            res.status(200).send({status: "user : ", user});
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({status: "Error with get user", error: err.message});
+    }
+}
+
 
 module.exports = {
     login,
     logout,
-   //getUser,
+    //getUser,
     forgetPassword,
     transporter,
     sendResetPasswordEmail,
-   // newPassword
+    // newPassword
     getUser,
     getImg
 }
