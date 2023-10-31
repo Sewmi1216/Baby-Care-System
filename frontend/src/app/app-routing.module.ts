@@ -90,6 +90,7 @@ import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-s
 
 import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
+
 import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
 
 import {
@@ -121,6 +122,7 @@ import {
   RequestedBabysittersMoreComponent
 } from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
 import {parentGuard} from "./guard/parent.guard";
+import {ContactUsComponent} from "./contact-us/contact-us.component";
 
 
 
@@ -144,6 +146,10 @@ const routes: Routes = [
   {
     path: 'about_us',
     component:AboutUsComponent
+  },
+  {
+    path: 'contact_us',
+    component:ContactUsComponent
   },
   {
     path: 'blog_view',
@@ -398,7 +404,7 @@ const routes: Routes = [
         component: ViewBabysitterVerifyComponent
       },
 
-      
+
 
       // {
       // path: 'domain_expert_moderate_community',
