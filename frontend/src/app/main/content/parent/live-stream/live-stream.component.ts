@@ -1,5 +1,5 @@
 import {Component, ElementRef, AfterViewInit, ViewChild} from '@angular/core';
-// import * as io from 'socket.io-client'
+import * as io from 'socket.io-client'
 
 interface ObjectPrediction {
   class: string;
@@ -23,7 +23,7 @@ export class LiveStreamComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     // @ts-ignore
-    this.socket = io.connect('https://192.168.235.250:8070');
+    this.socket = io.connect('https://192.168.68.250:8070');
 
     // Handle WebSocket events
     this.socket.on('connect', () => {
