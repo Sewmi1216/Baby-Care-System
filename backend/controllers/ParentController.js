@@ -228,7 +228,7 @@ const updateTask = async (req, res) => {
         });
 };
 const updatePassword = async (req, res) => {
-    const userId = req.params.id; // Fetch the user's ID from the request parameters
+    let userId = req.params.id; // Fetch the user's ID from the request parameters
     const { password } = req.body; // Get the new password from the request body
 
     try {

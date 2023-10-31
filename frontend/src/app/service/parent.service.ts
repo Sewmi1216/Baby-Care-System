@@ -179,6 +179,17 @@ export class ParentService {
     return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), {headers});
   }
 
+  //update password
+  updatePassword(user: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId =user.id;
+    console.log('Request headers:', headers);
+    return this.http.put<any>(`${environment.backend_url}/parent/updatePassword/${(userId)}`, JSON.stringify(this.updatePassword), {headers});
+  }
+
   getPlan(user: any): Observable<any> {
     const headers: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',

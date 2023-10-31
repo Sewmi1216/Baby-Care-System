@@ -60,7 +60,9 @@ export class ParentMyPlanComponent implements OnInit {
 //   }
 //
 //   paymentStripe(stripeToken: any) {
-//     this.checkout.makePayment(stripeToken).subscribe((data: any) => {
+//   //  this.makePayment(stripeToken).subscribe((data: any) => {
+
+//     this.parentService(stripeToken).subscribe((data: any) => {
 //       console.log(data);
 //
 //       if (data.data === "success") {

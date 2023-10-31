@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   forgetPassword(user: any): Observable<any> {
-    return this.http.post<any>(environment.backend_url + "/user/forget-password", user);
+    return this.http.post<any>(environment.backend_url + "/user/forget_password", user);
   }
   resetPassword(user: any): Observable<any> {
     return this.http.post<any>(environment.backend_url + "/user/reset-password", user);
