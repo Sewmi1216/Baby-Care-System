@@ -64,7 +64,7 @@ type= {
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
 
-      this.parentService.getParent(JSON.parse(userJSON)).subscribe(
+      this.parentService.getParentProfile(JSON.parse(userJSON)).subscribe(
         (response) => {
           this.parent = response.parent;
           console.log(this.parent);
