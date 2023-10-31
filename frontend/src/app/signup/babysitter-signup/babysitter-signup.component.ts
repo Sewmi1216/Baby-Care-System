@@ -20,6 +20,8 @@ export class BabysitterSignupComponent implements OnInit {
     role: 'Babysitter',
     firstName: '',
     lastName: '',
+    religion:'',
+    language:'',
     email: '',
     phone: '',
     cpassword: '',
@@ -51,6 +53,8 @@ export class BabysitterSignupComponent implements OnInit {
     formData.append('role', this.useraccount.role);
     formData.append('firstName', this.useraccount.firstName);
     formData.append('lastName', this.useraccount.lastName);
+    formData.append('religion', this.useraccount.religion);
+    formData.append('language', this.useraccount.language);
     formData.append('email', this.useraccount.email);
     formData.append('phone', this.useraccount.phone);
     formData.append('cpassword', this.useraccount.cpassword);
