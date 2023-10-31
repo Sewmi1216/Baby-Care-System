@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup'; // Assuming you're using ng-angular-popup
+import { Component, OnInit } from '@angular/core';
 import {ParentService} from "../../../../service/parent.service";
-import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 
@@ -9,7 +9,11 @@ import {CookieService} from "ngx-cookie-service";
   templateUrl: './parent-profile.component.html',
   styleUrls: ['./parent-profile.component.css']
 })
-export class ParentProfileComponent {
+export class ParentProfileComponent implements OnInit {
+  newPassword: string = '';
+  confirmNewPassword: string = '';
+  userId: string = '';
+
 
   user = {
     id:'',
@@ -23,7 +27,6 @@ export class ParentProfileComponent {
     email:''
   };
 
-  userId: any;
   today = new Date();
   img:string=''
   parent: any;
@@ -32,11 +35,38 @@ export class ParentProfileComponent {
     private route:ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
 
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.userId = params['user_id'];
-      this.getParent();
+      console.log(this.userId);
     });
+  }
+
+  updatePassword() {
+    if (this.newPassword === this.confirmNewPassword) {
+      // @ts-ignore
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        this.parentService.updatePassword(user).subscribe(
+          (data) => {
+            console.log("Password updated successfully:", data);
+            this.toast.success({detail: "Password updated successfully", summary: 'Updated', position: 'topCenter'});
+            console.log("Successfully");
+            location.reload();
+          },
+          (err) => {
+            this.toast.error({detail: "Error", summary: err.error.message, position: 'topCenter'});
+            console.error(`Failed to update password: ${err}`, err);
+          }
+        );
+      } else {
+        console.error("User data not found in local storage.");
+      }
+    } else {
+      console.error("Passwords do not match");
+    }
+
   }
 
   getParent() {

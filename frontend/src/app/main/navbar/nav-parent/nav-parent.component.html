@@ -57,7 +57,10 @@
     <i class="fas fa-users"></i>
     <label>Community</label>
   </div>
-  <div
+
+
+
+ <div *ngIf="!isFree"
     routerLink="/parent/live_stream"
     #live="routerLinkActive"
     routerLinkActive
@@ -66,3 +69,4 @@
     <label>Live Stream</label>
   </div>
 </div>
+

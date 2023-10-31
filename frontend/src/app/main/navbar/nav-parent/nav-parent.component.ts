@@ -29,12 +29,18 @@ export class NavParentComponent {
   }
   profile:string=''
   parentId: string = ''
-
+type= {
+    isFree:'',
+}
+   isFree: any;
   constructor(
     private parentService: ParentService, private authService:AuthService,private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
+    // Get the babysitter_id parameter from the route
+    this.getParent();
+    this.getType();
     // this.getParent();
     this.getImg()
   }
@@ -71,4 +77,21 @@ export class NavParentComponent {
       )
     }
   }
-}
+  getType(){
+
+      const userJSON = localStorage.getItem('user');
+      if (userJSON !== null) {
+        this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
+          (response: any) => {
+            this.type = response.type;
+            this.isFree = response.isFree;
+          },
+          (error) => {
+            console.error('Error fetching: ', error);
+          }
+        );
+      }
+    }
+
+  }
+

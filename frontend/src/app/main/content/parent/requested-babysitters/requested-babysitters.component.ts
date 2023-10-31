@@ -37,12 +37,6 @@ export class RequestedBabysittersComponent {
   babysitterNames: string[] = []
   requestFormBabysittersId: string[] = []
 
-  // requestedbabysitterId: any[] = [];
-  // babysittersId: any[] = []
-  // requestedBabysitterNames: any[] = []
-  // babysitterName: string | null = null;
-  // babysitterNames: string[] = []
-  // babysitterId: string | null = null
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router: Router, private CookieService: CookieService, private route: ActivatedRoute
@@ -66,7 +60,7 @@ export class RequestedBabysittersComponent {
             this.babysitterName = `${firstName} ${lastName}`;
             this.isHired = babysitter.isHired;
             this.isHiredList.push(this.isHired);
-          
+
               // Check if the babysitter userId matches any requestFormBabysittersId
             const matchingIndex = this.requestFormBabysittersId.indexOf(babysitter.userId);
 
@@ -109,7 +103,7 @@ export class RequestedBabysittersComponent {
               this.isAccepts.push(this.isAccept);
             }
             this.requestFormBabysitterId = requestForm.Babysitter;
-            this.requestFormBabysittersId.push(this.requestFormBabysitterId);  
+            this.requestFormBabysittersId.push(this.requestFormBabysitterId);
 
           }
           console.log(this.requestFormBabysittersId)
@@ -137,7 +131,7 @@ export class RequestedBabysittersComponent {
           console.error('Error with delete requestForm:', error);
         }
       )
-    }    
+    }
   }
 
   confirmBabysitter(babysitterId: string, parentId: string){
