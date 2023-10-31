@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+
 import { GrowthParametersComponent } from './growth-parameters.component';
 
 describe('GrowthParametersComponent', () => {

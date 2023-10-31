@@ -4,7 +4,8 @@ import { ParentService } from '../../../service/parent.service'
 import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
-import {any} from "@tensorflow/tfjs";
+import {AuthService} from "../../../service/auth.service";
+import {log} from "@tensorflow/tfjs";
 
 @Component({
   selector: 'app-nav-parent',
@@ -20,19 +21,43 @@ export class NavParentComponent {
     userId:null,
     _id:''
   }
+  user =  {
+    firstName: '',
+    lastName: '',
+    role: '',
+    _id:''
+  }
+  profile:string=''
   parentId: string = ''
 type= {
-    isFree:any
+    isFree:'',
 }
    isFree: any;
   constructor(
-    private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
+    private parentService: ParentService, private authService:AuthService,private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
   ){}
 
   ngOnInit():void{
     // Get the babysitter_id parameter from the route
     this.getParent();
     this.getType();
+    // this.getParent();
+    this.getImg()
+  }
+  getImg() {
+    const userJSON = localStorage.getItem('user');
+
+    if (userJSON !== null) {
+      this.authService.getImg(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          console.log(response.imageUrl)
+          this.profile=response.imageUrl
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    }
   }
 
   getParent(){

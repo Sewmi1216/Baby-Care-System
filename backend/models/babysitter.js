@@ -43,7 +43,12 @@ const verificationDetailsSchema = new schema ({
         required: true,
     }
 })
-
+const imageSchema  = new schema ({
+    filename: {
+        type: String,
+        required: true,
+    },
+})
 const babysitterSchema = new schema ({
     userId: { 
         type: mongoose.Schema.Types.ObjectId, 
@@ -58,6 +63,10 @@ const babysitterSchema = new schema ({
         type: String,
         required: true,
     },
+    qualifications: {
+        type: [imageSchema],
+        required: true,
+    },
     // qualifications:{
     //     type: [qualificationsSchema],
     //     required: true,
@@ -66,10 +75,10 @@ const babysitterSchema = new schema ({
     //     type: [verificationDetailsSchema],
     //     required: true,
     // },
-    image:{
-        type:String,
-        required:false
-    },
+    // image:{
+    //     type:String,
+    //     required:false
+    // },
     religon:{
         type: String,
         required:false,
@@ -93,6 +102,10 @@ const babysitterSchema = new schema ({
     endDate:{
         type: Date,
         default: null
+    },
+    status:{
+        type:String,
+        required:true
     },
 })
 

@@ -3,6 +3,7 @@ let User = require("../models/User")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
  const nodemailer = require('nodemailer');
+const path = require('path')
 
 const login = (req, res) => {
     const email = req.body.email;
@@ -97,6 +98,33 @@ const logout = (req, res) => {
 // });
 
 }
+const getImg = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("userID:", userId);
+
+        const user = await User.findOne({ _id: userId });
+        console.log(user);
+
+        if (!user) {
+            res.status(404).send({ status: "No user found" });
+        } else {
+            const imageFilename = user.profile;
+            console.log("imageFilename: ", imageFilename);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "user", user, imageUrl });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get user", error: err.message });
+    }
+}
 
 module.exports = {
     login,
@@ -106,4 +134,6 @@ module.exports = {
     transporter,
     sendResetPasswordEmail,
    // newPassword
+    getUser,
+    getImg
 }

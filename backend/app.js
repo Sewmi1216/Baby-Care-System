@@ -11,6 +11,7 @@ const multer = require('multer')
 require("dotenv").config();
 const fs = require('fs');
 const https = require('https');
+const path = require('path')
 
 
 //payment
@@ -53,6 +54,7 @@ const port = process.env.PORT || 8070
 
 app.use(cookieParser());
 app.use(cors());    //use cors()
+app.use(express.json());
 app.use(bodyParser.json());     //json format
 app.use(function(req, res, next) {
     res.header(
@@ -61,10 +63,12 @@ app.use(function(req, res, next) {
     );
     next();
 });
+app.use('/images', express.static(path.join(__dirname, 'uploads')));
 const backendPort = 8070;
 app.listen(backendPort, () => {
     console.log(`app is listening on port ${backendPort}`);
 });
+
 //sid.signature
 // app.use(session({
 //     secret : "mysecret",
@@ -148,8 +152,9 @@ app.use("/parent", parentRouter);
 
 //admin
 const adminRouter = require("./routes/admins.js");
-const {request} = require("express");
 app.use("/admin",adminRouter);
+
+const {request} = require("express");
 
 
 

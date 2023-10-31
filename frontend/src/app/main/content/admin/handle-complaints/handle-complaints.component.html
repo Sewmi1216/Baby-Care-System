@@ -38,20 +38,24 @@
               <div class="table-responsive">
                 <table class="table align-items-center table-flush">
                   <thead class="thead-light">
-                    <tr>
+                    <tr >
                       <th scope="col">Date</th>
                       <th scope="col">User Name</th>
                       <th scope="col">Email Address</th>
+                      <th scope="col">Type</th>
+
+                      <th scope="col">Description</th>
+
                       <th scope="col">Status</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr *ngFor="let complaint of complintArray">
                       <th scope="row">
                         <div class="media align-items-center">
                           <div class="media-body">
-                            <span class="mb-0 text-sm">2023/08/10</span>
+                            <span class="mb-0 text-sm">{{complaint.date}}</span>
                           </div>
                         </div>
                       </th>
@@ -59,15 +63,22 @@
                         <div class="media-body">
                           <span class="mb-0 text-sm">Charitha Sewwandi</span>
                         </div>
-                      </td>
                       <td>
                         <a href="#">charithasewwandi@gmail.com</a>
                       </td>
                       <td>
                         <div class="media-body">
-                          <span class="mb-0 text-sm" style="color: indianred; font-weight: bold">Unsolved</span>
+                          <span class="mb-0 text-sm">{{complaint.type}}</span>
                         </div>
                       </td>
+                      <td>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{complaint.description}}</span>
+                        </div>
+                      </td>
+                     
+                      <td [ngClass]="{ 'solved': complaint.status === 'solved', 'unsolved': complaint.status === 'unsolved' }">{{complaint.status}} </td>
+                        
                       <td class="text-right">
                         <div class="dropdown">
                           <a class="btn btn-sm btn-icon-only text-light" routerLink="/admin/handle_complaints_view_more"
@@ -78,129 +89,11 @@
                       </td>
                     </tr>
 
-                    <tr>
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="media-body">
-                            <span class="mb-0 text-sm">2023/08/10</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Charitha Sewwandi</span>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="#">charithasewwandi@gmail.com</a>
-                      </td>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm" style="color: indianred; font-weight: bold">Unsolved</span>
-                        </div>
-                      </td>
-                      <td class="text-right">
-                        <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                    
+                   
 
-                    <tr>
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="media-body">
-                            <span class="mb-0 text-sm">2023/08/10</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Charitha Sewwandi</span>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="#">charithasewwandi@gmail.com</a>
-                      </td>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm" style="color: blueviolet; font-weight: bold">Solved</span>
-                        </div>
-                      </td>
-                      <td class="text-right">
-                        <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="media-body">
-                            <span class="mb-0 text-sm">2023/08/10</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Charitha Sewwandi</span>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="#">charithasewwandi@gmail.com</a>
-                      </td>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm" style="color: indianred; font-weight: bold">Unsolved</span>
-                        </div>
-                      </td>
-                      <td class="text-right">
-                        <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="media-body">
-                            <span class="mb-0 text-sm">2023/08/10</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Charitha Sewwandi</span>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="#">charithasewwandi@gmail.com</a>
-                      </td>
-                      <td>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm" style="color: blueviolet; font-weight: bold">Solved</span>
-                        </div>
-                      </td>
-                      <td class="text-right">
-                        <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                    
+                    
 
 
 
