@@ -183,6 +183,8 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
 import {TokenInterceptor} from "./interceptor/token.interceptor";
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { PaymentComponent } from './main/content/parent/payment/payment.component';
+
 
 
 @NgModule({
@@ -303,7 +305,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       CreateBlogComponent,
       BlogViewComponent,
       BlogListComponent,
-      AddModeratorComponent
+      AddModeratorComponent,
+      PaymentComponent
 
 
 

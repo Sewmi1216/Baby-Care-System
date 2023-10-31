@@ -96,18 +96,15 @@
           <div class="d-md-flex flex-column justify-content-between" style="flex: 1;">
 
 
-            <div class="card custom-card"
-                 style="width: 98%; background-color: #FFFFFF; margin: 81px 10px 30px 0;padding: 20px 20px 20px;">
-
-              <input type="text" class="form-control" placeholder="New Password " style="margin: 0 0 30px 0 ">
-
-              <input  type="text" class="form-control" placeholder="Confirm New Password">
-              <button class="btn btn-primary " style="background-color: #563393; border-color: #27183f; margin-top: 10px">
+            <!-- password-update.component.html -->
+            <div class="card custom-card" style="width: 98%; background-color: #FFFFFF; margin: 81px 10px 30px 0; padding: 20px 20px 20px;">
+              <input [(ngModel)]="newPassword" type="password" class="form-control" placeholder="New Password" style="margin: 0 0 30px 0">
+              <input [(ngModel)]="confirmNewPassword" type="password" class="form-control" placeholder="Confirm New Password">
+              <button (click)="updatePassword()" class="btn btn-primary" style="background-color: #563393; border-color: #27183f; margin-top: 10px">
                 Reset
               </button>
-
-
             </div>
+
           </div>
 
         </div>

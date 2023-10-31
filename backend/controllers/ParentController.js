@@ -1,3 +1,5 @@
+//export let invokeStripe = undefined;
+
 //parent controller
 let Parent = require("../models/Parent");
 let User = require("../models/User");
@@ -12,12 +14,15 @@ const bcrypt = require("bcryptjs");
 let Complaint = require("../models/Complaint");
 
 let Feedback = require("../models/feedback");
-const Babysitter = require("../models/babysitter");
+
+const Babysitter  = require("../models/babysitter");
+//const getPlan =require("../models/Admin")
 
 let GrowthParameters = require("../models/GrowthParameters");
 let AgeGroups = require("../models/ageGroup");
 let Vaccines = require("../models/vaccine");
 const path = require("path");
+
 
 const viewParentProfile = async (req, res) => {
     let token = req.cookies.access_token;
@@ -171,6 +176,60 @@ const getBabies = async (req, res) => {
     }
 };
 
+// const getPlan = async (req, res) => {
+//     try {
+//         let userId = req.params.id;
+//         console.log("parentID:", userId);
+//
+//         const plan = await parents.findOne({ userId: userId }); // Replace with your database query
+//
+//         if (plan) {
+//             // Assuming 'isFree' is a field in the database
+//             const isFree = parent.isFree;
+//             res.status(200).json({ isFree });
+//         } else {
+//             res.status(404).json({ status: "Plan not found" });
+//         }
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).json({ status: "Error with get plan", error: err.message });
+//     }
+// };
+
+// Mongoose model definition
+
+const getPlan = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const parents = await Parent.findOne({ userId });
+
+
+        const isFree = parents.isFree;
+
+        res.status(200).send({ parents, isFree });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get plans", error: err.message });
+    }
+};
+
+const getType = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const parents = await Parent.findOne({ userId });
+
+
+        const isFree = parents.isFree;
+
+        res.status(200).send({ parents, isFree });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with get plans", error: err.message });
+    }
+};
+
+
+
 
 const getBaby = async (req, res) => {
     try {
@@ -228,6 +287,21 @@ const updateTask = async (req, res) => {
             console.log(err);
             res.status(500).send({status: "Error with updating data", error: err.message});
         });
+};
+const updatePassword = async (req, res) => {
+    let userId = req.params.id; // Fetch the user's ID from the request parameters
+    const { password } = req.body; // Get the new password from the request body
+
+    try {
+        const user = await User.findByIdAndUpdate(userId, { password }, { new: true });
+
+
+
+        res.status(200).send({ status: "Password updated", user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
 };
 
 const deleteTask = async (req, res) => {
@@ -410,6 +484,10 @@ const getBabysitters = async (req, res) => {
         res.status(500).send({status: "Error with get all babysitters", error: err.message});
     }
 };
+
+
+
+
 
 const getBabysitter = async (req, res) => {
     let babysitterId = req.params.id;
@@ -673,6 +751,40 @@ const updateBabysitter = async (req, res) => {
         console.error(err.message);
         res.status(500).send({status: "Error with updating data", error: err.message});
     }
+    // const invokeStripe= async (req, res) => {
+    //     try {
+    //         let userId = req.params.id;
+    //         console.log("UserId:", userId);
+    //         const token = req.body.token;
+    //
+    //         const customer = await stripe.customers.create({
+    //             email: req.body.email,
+    //             source: token.id,
+    //         });
+    //
+    //         const charge = await stripe.charges.create({
+    //             amount: 10000,
+    //             description: "Premium Option",
+    //             currency: "USD",
+    //             customer: customer.id,
+    //         });
+    //
+    //         console.log(charge);
+    //
+    //         res.json({
+    //             data: "success",
+    //         });
+    //     } catch (err) {
+    //         res.json({
+    //             data: "failure",
+    //         });
+    //         return true;
+    //     }
+    //
+    // };
+
+
+
 }
 
 const deleteBabysitter = async (req, res) => {
@@ -710,6 +822,7 @@ const deleteBabysitter = async (req, res) => {
     }
 };
 
+
 module.exports = {
     addParent,
     addTask,
@@ -736,6 +849,10 @@ module.exports = {
     getBabiesCount,
     getRequestsCount,
     updateBabysitter,
-    updateParentProfile
+    getPlan,
+    getType,
+  //  invokeStripe,
+    updatePassword,
+    updateParentProfile,
     deleteBabysitter
 };

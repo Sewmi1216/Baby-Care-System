@@ -13,6 +13,12 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path')
 
+
+//payment
+const stripe =require("stripe")("pk_test_51MlRwNLkwnMeV4KrakhfHzMSWe8uOGMTgdxT6UBukJUP0AJB9memAAlcnkBEShf1HWwMH3wFaBV1XROZ7TQidM5y00OM0lgTax");
+app.post('checkout');
+
+
 // const { Server } = require("socket.io");
 // const { createServer } = require('node:http');
 // const server = createServer(app);
