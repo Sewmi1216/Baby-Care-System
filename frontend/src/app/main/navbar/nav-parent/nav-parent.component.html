@@ -1,8 +1,10 @@
 <div style="margin-left: 30px;" xmlns="http://www.w3.org/1999/html">
-  <img src="../../assets/sewmi.jpg" alt="profile" width="200" height="200" class="img-fluid rounded-circle">
+  <img [src]="profile" alt="profileImg" width="200" height="200" class="img-fluid rounded-circle">
+
+
 </div>
 <div style="padding-left: 10px;padding-top: 20px;padding-right: 10px;margin-top: 0px">
-
+  <span class="d-none d-sm-inline mx-1" style="font-size: 11px; text-align:center; font-weight: bold;">{{user.role}}</span>
   <div
     routerLink="/parent/parent_dashboard"
     #dashboard="routerLinkActive"
@@ -47,15 +49,18 @@
 
   <div
 
-    routerLink="/parent/community_discussion_forum"
+    routerLink="/parent/complaints"
 
-    #community="routerLinkActive"
+    #complaints="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': community.isActive ? '#7E57C2' : '', 'color': community.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': complaints.isActive ? '#7E57C2' : '', 'color': complaints.isActive ? '#fff' : ''}">
     <i class="fas fa-users"></i>
-    <label>Community</label>
+    <label>Complaints</label>
   </div>
-  <div
+
+
+
+ <div *ngIf="!isFree"
     routerLink="/parent/live_stream"
     #live="routerLinkActive"
     routerLinkActive
@@ -64,3 +69,4 @@
     <label>Live Stream</label>
   </div>
 </div>
+

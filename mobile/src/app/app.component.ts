@@ -24,19 +24,24 @@ export class AppComponent implements AfterViewInit {
   private stream!: MediaStream;
   private children: any[] = [];
   private socket: any;
+  private lastAlertTime = 0;
+  private alertInterval = 10 * 60 * 1000;
 
   constructor(private renderer: Renderer2) {
     let lastAlertTime = 0;
-    const alertInterval = 10 * 60 * 1000;
+    const alertInterval =  60 * 1000;
+    setInterval(() => {
+      this.checkBabyDetectionAndAlert();
+    }, this.alertInterval);
   }
 
   async ngAfterViewInit(): Promise<void> {
     console.log('video');
-   await this.loadModel();
+    await this.loadModel();
 
     // @ts-ignore
-   // this.socket = io('http://192.168.255.250:8070');
-    this.socket = io("https://192.168.255.250:8070", {
+    // this.socket = io('http://192.168.255.250:8070');
+    this.socket = io("https://192.168.68.250:8070", {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"
@@ -47,7 +52,7 @@ export class AppComponent implements AfterViewInit {
     this.socket.on('connect', () => {
       console.log('Connected to WebSocket server');
     });
-    this.socket.on('error', (error:any) => {
+    this.socket.on('error', (error: any) => {
       console.error('Error connecting to WebSocket server:', error);
     });
     // this.socket.on('disconnect', () => {
@@ -58,13 +63,14 @@ export class AppComponent implements AfterViewInit {
   async loadModel() {
     this.model = await cocoSsd.load();
   }
+
   async setupfrontCamera() {
     try {
       if (this.stream) {
         this.stopCamera();
       }
       this.stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 1250, height: 600},
+        video: {width: 1250, height: 600},
         audio: true
       });
 
@@ -74,11 +80,12 @@ export class AppComponent implements AfterViewInit {
       // Play the video once the stream is set
       this.videoElement.nativeElement.play();
       this.sendVideoFrames();
-    //  this.analyzeCameraFrames();
+      this.analyzeCameraFrames();
     } catch (error) {
       console.error('Error accessing camera:', error);
     }
   }
+
   sendVideoFrames() {
     const video = this.videoElement.nativeElement;
     const canvas = document.createElement('canvas');
@@ -94,7 +101,7 @@ export class AppComponent implements AfterViewInit {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
         canvas.toBlob((blob) => {
-         //this.socket.emit('videoFrame', blob);
+          //this.socket.emit('videoFrame', blob);
           this.socket.emit('videoFrame', {
             id: frameCounter,
             data: blob,
@@ -110,6 +117,7 @@ export class AppComponent implements AfterViewInit {
     console.log('sending frame');
     sendFrame();
   }
+
   async setupbackCamera() {
     try {
 
@@ -117,7 +125,7 @@ export class AppComponent implements AfterViewInit {
         this.stopCamera();
       }
       this.stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 1250, height: 600 ,facingMode: "environment"},
+        video: {width: 1250, height: 600, facingMode: "environment"},
         audio: true
       });
 
@@ -140,12 +148,21 @@ export class AppComponent implements AfterViewInit {
       console.log('Predictions: ');
       console.log(predictions);
       if (!babyDetection) {
-        // Trigger alert logic and WebSocket event here
-        // You can emit a WebSocket event to notify the backend
+        // Baby not detected, send an alert to the web server
+        // this.lastAlertTime = Date.now();
+
+         this.socket.emit('BabyNotDetected',{data:'Baby not detect'});
       }
     }
 
     requestAnimationFrame(() => this.analyzeCameraFrames());
+  }
+  checkBabyDetectionAndAlert() {
+    const currentTime = Date.now();
+    if (currentTime - this.lastAlertTime >= this.alertInterval) {
+      this.socket.emit('BabyNotDetected');
+      this.lastAlertTime = currentTime; // Update the last alert time
+    }
   }
 
   stopCamera() {

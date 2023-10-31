@@ -2,9 +2,11 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../../../service/auth.service";
 import {NgToastService} from "ng-angular-popup";
-import {Router} from "@angular/router";
 import {ParentService} from "../../../../service/parent.service";
 import { CookieService } from 'ngx-cookie-service';
+import {ActivatedRoute, Router} from "@angular/router";
+
+import {DatePipe} from "@angular/common";
 @Component({
   selector: 'app-baby-details',
   templateUrl: './baby-details.component.html',
@@ -15,14 +17,17 @@ export class BabyDetailsComponent implements OnInit{
 
   babies: any[] = [];
   baby = {
+    id:'',
     firstName: '',
     lastName: '',
-    age:'',
     gender:'',
-    birthDate:''
+    birthDate:'',
+    img:''
   };
-  private userId: any;
 
+  private userId: any;
+  today = new Date();
+  image:string=''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
@@ -34,29 +39,66 @@ export class BabyDetailsComponent implements OnInit{
    // this.babyProfile = this.parentService.babyProfile;
     this.getBabies();
   }
+  calculateAge(birthDate: string): string {
+    const birthDateObj = new Date(birthDate);
+    const ageInMilliseconds = this.today.getTime() - birthDateObj.getTime();
+    const ageInYears = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+    const ageInMonths = Math.floor((ageInMilliseconds / (1000 * 60 * 60 * 24)) % 365.25 / 30.4375);
+    const ageInDays = Math.floor((ageInMilliseconds / (1000 * 60 * 60 * 24)) % 30.4375);
+
+    return `${ageInYears} years ${ageInMonths} months ${ageInDays} days`;
+  }
   getBabies() {
     // @ts-ignore
     this.parentService.getBabies(JSON.parse(localStorage.getItem('user'))).subscribe(
       (response) => {
-        this.babies = response.babies; // Assign fetched data to the babies array
+        this.babies = response.babies;
         console.log(this.babies);
       },
       (error) => {
-        console.log(localStorage.getItem('user'))
+      //  console.log(localStorage.getItem('user'))
         console.error('Error fetching babies:', error);
       }
     );
   }
+  // getBabyImg() {
+  //   const userJSON = localStorage.getItem('user');
+  //
+  //   if (userJSON !== null) {
+  //     this.authService.getImg(JSON.parse(userJSON)).subscribe(
+  //       (response) => {
+  //         console.log(response.imageUrl)
+  //         this.profile=response.imageUrl
+  //       },
+  //       (error) => {
+  //         console.error('Error:', error);
+  //       }
+  //     );
+  //   }
+  // }
 
 
-
+  selectImage(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0]
+      console.log(file)
+      this.baby.img = file
+    }
+  }
 
   onSubmit() {
-    console.log("Submitting form...");
-    console.log(this.userId);
-    this.parentService.addBaby(this.baby, this.userId).subscribe(
+    // @ts-ignore
+    const userId= JSON.parse(localStorage.getItem('user')).id
+    const formdata = new FormData()
+    formdata.append('userId', userId);
+    formdata.append('firstName', this.baby.firstName);
+    formdata.append('lastName', this.baby.lastName);
+    formdata.append('gender', this.baby.gender);
+    formdata.append('birthDate', this.baby.birthDate);
+    formdata.append('file', this.baby.img)
+     console.log(formdata);
+    this.parentService.addBaby(formdata).subscribe(
       (data) => {
-        console.log("Successfully");
         this.router.navigate(['/parent/baby_details'])
         this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
         console.log("Baby added successful:", data);
@@ -68,4 +110,5 @@ export class BabyDetailsComponent implements OnInit{
       }
     );
   }
+
 }

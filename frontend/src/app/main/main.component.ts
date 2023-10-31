@@ -13,9 +13,11 @@ export class MainComponent implements OnInit{
   // private user: any;
   username:any;
   user =  {
+    _id:'',
     firstName: '',
     lastName: '',
     role: '',
+    // isfree:''
   }
 
   constructor(private authService: AuthService, private router: Router, private toast:NgToastService) {

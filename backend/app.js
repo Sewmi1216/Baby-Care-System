@@ -11,45 +11,22 @@ const multer = require('multer')
 require("dotenv").config();
 const fs = require('fs');
 const https = require('https');
+const path = require('path')
 
-// const { Server } = require("socket.io");
-// const { createServer } = require('node:http');
-// const server = createServer(app);
+const { Server } = require("socket.io");
+const { createServer } = require('node:http');
+const server = createServer(app);
 // const io = new Server();
 
 app.use(bodyParser.json({ limit: "100mb" }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 const port = process.env.PORT || 8070
-//const http = require('http').createServer(app);
-// const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
-// const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
 
-// const credentials = {
-//     key: privateKey,
-//     cert: certificate,
-// };
-// const httpsServer = https.createServer(credentials);
-// const ipAddress = "192.168.255.250";
-// httpsServer.listen(port, ipAddress, () => {
-//     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
-// });
-// const io = require('socket.io')(httpsServer, {
-//     cors: {
-//         origin: ["https://192.168.255.250:4200", "https://localhost:4200"],
-//         allowedHeaders: ["my-custom-header"],
-//         credentials: true
-//     },
-// });
-// const io = require('socket.io')(http, {
-//     cors: {
-//         origin: ["https://192.168.255.250:4200", "http://localhost:4200"],
-//         allowedHeaders: ["my-custom-header"],
-//         credentials: true
-//     },
-// });
+
 app.use(cookieParser());
 app.use(cors());    //use cors()
+app.use(express.json());
 app.use(bodyParser.json());     //json format
 app.use(function(req, res, next) {
     res.header(
@@ -58,10 +35,13 @@ app.use(function(req, res, next) {
     );
     next();
 });
+app.use('/images', express.static(path.join(__dirname, 'uploads')));
 const backendPort = 8070;
 app.listen(backendPort, () => {
     console.log(`app is listening on port ${backendPort}`);
 });
+
+
 //sid.signature
 // app.use(session({
 //     secret : "mysecret",
@@ -86,19 +66,41 @@ app.listen(backendPort, () => {
 //     next()
 // })
 
+//websocket connection
 
-
-
+// const http = require('http').createServer(app);
+// const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
+// const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
+//
+// const credentials = {
+//     key: privateKey,
+//     cert: certificate,
+// };
+// const httpsServer = https.createServer(credentials);
+//
+// const ipAddress = "192.168.68.250";
+//
+// httpsServer.listen(port, ipAddress, () => {
+//     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
+// });
+// const io = require('socket.io')(httpsServer, {
+//     cors: {
+//
+//         origin: ["https://192.168.68.250:4200", "https://localhost:4200"],
+//         allowedHeaders: ["my-custom-header"],
+//         credentials: true
+//     },
+// });
 // io.on('connection', (socket) => {
 //     console.log('Client connected.');
 //     socket.on('videoFrame', (message) => {
 //         console.log('Received video frame with ID:', message.id);
-
+//
 //         console.log('Received video frame.Data length:', message.data.length);
 //         if (message.contentType === 'image/jpeg') {
-
+//
 //             const filePath = 'uploads/frame.jpeg';
-
+//
 //             fs.writeFile(filePath, message.data, (err) => {
 //                 if (err) {
 //                     console.error('Error saving video frame:', err);
@@ -106,19 +108,23 @@ app.listen(backendPort, () => {
 //                     console.log('Video frame saved successfully:', filePath);
 //                     socket.broadcast.emit('acknowledgment', { id: message.id });
 //                     socket.broadcast.emit('videoFrame', message.data);
+//
 //                 }
 //             });
 //             console.log('Hello video frame');
 //         } else {
 //             console.error('Invalid content type:', message.contentType);
 //         }
-
+//
 //     });
-
-//     // Handle disconnection
-//     // socket.on('disconnect', () => {
-//     //     console.log('A client disconnected.');
-//     // });
+//     socket.on('BabyNotDetected', (message) => {
+//         console.log('Baby not detected. Sending alert...');
+//         socket.broadcast.emit('BabyNotDetected', message.data);
+//     });
+//     //Handle disconnection
+//     socket.on('disconnect', () => {
+//         console.log('A client disconnected.');
+//     });
 // });
 
 //mongodb configuration
@@ -145,8 +151,9 @@ app.use("/parent", parentRouter);
 
 //admin
 const adminRouter = require("./routes/admins.js");
-const {request} = require("express");
 app.use("/admin",adminRouter);
+
+const {request} = require("express");
 
 
 

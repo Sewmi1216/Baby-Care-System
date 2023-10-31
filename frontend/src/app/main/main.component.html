@@ -75,7 +75,7 @@
                 </div>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark text-small shadow drop">
-                <li><a class="dropdown-item" routerLink="/parent/parent_profile">My Profile</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/parent/parent_profile', user._id]">My Profile</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>

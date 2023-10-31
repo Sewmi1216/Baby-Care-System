@@ -1095,3 +1095,12 @@ p {
   }
 }
 
+/* status  */
+
+.solved {
+  color: blue;
+}
+
+.unsolved {
+  color: red;
+}
