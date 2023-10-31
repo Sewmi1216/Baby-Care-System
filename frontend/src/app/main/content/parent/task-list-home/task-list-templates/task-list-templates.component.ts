@@ -4,6 +4,7 @@ import { ParentService } from "../../../../../service/parent.service";
 import { NgToastService } from "ng-angular-popup";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 // names of input fields in html file
@@ -35,6 +36,25 @@ export class TaskListTemplatesComponent {
   taskDetails: any[] = [];
   taskListId: string='';
 
+  // these for update modal
+  // tListForm: any[] = [];
+  // tListName: string = '';
+  // tDetails: any[] = [];
+  // tDate:Date |null = null;
+
+  tListForm: any = {
+    date: '',
+    taskListId: '',
+    tasks: [],
+  };
+  tListName: string = '';
+  tDetails:any[] = [];
+
+
+  // content: any;
+
+
+
 
   taskListForm: TaskListForm = {
     taskListName: '',
@@ -45,13 +65,15 @@ export class TaskListTemplatesComponent {
 
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
+
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
     private router: Router,
     private cookieService: CookieService,
     private route: ActivatedRoute,
-    private elRef: ElementRef
+    private elRef: ElementRef,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -168,21 +190,25 @@ export class TaskListTemplatesComponent {
       this.parentService.getTaskListTemplate(JSON.parse(userJSON), taskListId).subscribe(
         (response) => {
 
-          this.taskListForms = response.taskListForms;
-          console.log(response.taskListForms);
+          this.tListForm = response.taskListForms;
+          console.log(this.tListForm);
 
           // this.date = taskListForm.date;
-          this.taskListName = response.taskListForms.taskListName;
-          console.log(this.taskListName);
-          this.taskDetails = response.taskListForms.tasks;
-          console.log(this.taskDetails);
+          this.tListName = response.taskListForms.taskListName;
+          console.log(this.tListName);
+          this.tDetails = response.taskListForms.tasks;
+          console.log(this.tDetails);
 
+          // tListForm: any[] = [];
+          // tListName: string = '';
+          // tDetails: any[] = [];
         },
         (error) => {
           console.error('Error fetching task list template:', error);
         }
       );
     }
+    // const modalRef = this.modalService.open(this.content, { centered: true, windowClass: 'custom-modal' });
   }
 
 
