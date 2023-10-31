@@ -22,29 +22,7 @@ app.use(bodyParser.json({ limit: "100mb" }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 const port = process.env.PORT || 8070
-// const http = require('http').createServer(app);
-// const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
-// const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
-//
-// const credentials = {
-//     key: privateKey,
-//     cert: certificate,
-// };
-// const httpsServer = https.createServer(credentials);
-//
-// const ipAddress = "192.168.68.250";
-//
-// httpsServer.listen(port, ipAddress, () => {
-//     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
-// });
-// const io = require('socket.io')(httpsServer, {
-//     cors: {
-//
-//         origin: ["https://192.168.68.250:4200", "https://localhost:4200"],
-//         allowedHeaders: ["my-custom-header"],
-//         credentials: true
-//     },
-// });
+
 
 app.use(cookieParser());
 app.use(cors());    //use cors()
@@ -88,9 +66,31 @@ app.listen(backendPort, () => {
 //     next()
 // })
 
+//websocket connection
 
-
-
+// const http = require('http').createServer(app);
+// const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
+// const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
+//
+// const credentials = {
+//     key: privateKey,
+//     cert: certificate,
+// };
+// const httpsServer = https.createServer(credentials);
+//
+// const ipAddress = "192.168.68.250";
+//
+// httpsServer.listen(port, ipAddress, () => {
+//     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
+// });
+// const io = require('socket.io')(httpsServer, {
+//     cors: {
+//
+//         origin: ["https://192.168.68.250:4200", "https://localhost:4200"],
+//         allowedHeaders: ["my-custom-header"],
+//         credentials: true
+//     },
+// });
 // io.on('connection', (socket) => {
 //     console.log('Client connected.');
 //     socket.on('videoFrame', (message) => {
@@ -108,6 +108,7 @@ app.listen(backendPort, () => {
 //                     console.log('Video frame saved successfully:', filePath);
 //                     socket.broadcast.emit('acknowledgment', { id: message.id });
 //                     socket.broadcast.emit('videoFrame', message.data);
+//
 //                 }
 //             });
 //             console.log('Hello video frame');
@@ -116,14 +117,14 @@ app.listen(backendPort, () => {
 //         }
 //
 //     });
-//     socket.on('BabyNotDetected', () => {
+//     socket.on('BabyNotDetected', (message) => {
 //         console.log('Baby not detected. Sending alert...');
-//         // Handle the BabyNotDetected event here, e.g., send an alert or take any necessary actions.
+//         socket.broadcast.emit('BabyNotDetected', message.data);
 //     });
-//     // Handle disconnection
-//     // socket.on('disconnect', () => {
-//     //     console.log('A client disconnected.');
-//     // });
+//     //Handle disconnection
+//     socket.on('disconnect', () => {
+//         console.log('A client disconnected.');
+//     });
 // });
 
 //mongodb configuration
