@@ -81,14 +81,20 @@
             <div class="row" *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
               <div class="col-md-4">
                 <input class="form-check-input" type="checkbox" [value]="day" [id]="day + i" [name]="day + i"
-                  [(ngModel)]="selectedDays[i]" (change)="onCheckboxChange(day, i)">
-                <label class="form-check-label day" [for]="day + i">{{ day }}</label>
+                  [(ngModel)]="selectedDays[i]" (change)="onCheckboxChange(day, i)" required>
+                <label class="form-check-label day" [for]="day + i">{{ day }}</label>  
               </div>
               <div class="col-md-4">
-                <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime" class="form-control">
+                <input type="time" [(ngModel)]="fromTimeFieldValues[i]" name="fromtime" class="form-control" (change)="onTimeChange(i)" required>
               </div>
               <div class="col-md-4">
-                <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime" class="form-control form-control-right">
+                <input type="time" [(ngModel)]="toTimeFieldValues[i]" name="totime" class="form-control" (change)="onTimeChange(i)" required>
+              </div>
+              <div class="error-message" *ngIf="fromTimeFieldValues[i] > toTimeFieldValues[i] && fromTimeFieldValues[i] && toTimeFieldValues[i]">
+                <p style="color:red; text-align:center">From time must be before To time.</p>
+              </div>
+              <div class="error-message" *ngIf="missingValue[i] && (fromTimeFieldValues[i] === '' || toTimeFieldValues[i] === '')">
+                <p style="color: red; text-align: center">Please fill in all fields for {{ day }}</p>
               </div>
             </div>
 
@@ -107,13 +113,13 @@
                     <tbody>
                       <tr>
                         <td>
-                          <input class="form-control rounded-0" type="number"  name="ageYears" [(ngModel)] = "yearsFieldValue">
+                          <input class="form-control rounded-0" type="number"  name="ageYears" [(ngModel)] = "yearsFieldValue" required>
                         </td>
                         <td>
-                          <input class="form-control rounded-0" type="number"  name="ageMonths" [(ngModel)] = "monthsFieldValue">
+                          <input class="form-control rounded-0" type="number"  name="ageMonths" [(ngModel)] = "monthsFieldValue" required>
                         </td>
                         <td>
-                          <select id="" [(ngModel)]="genderFieldValue" name="genderField" aria-label="Gender Selection" style="height: 38px; width:100px">
+                          <select id="" [(ngModel)]="genderFieldValue" name="genderField" aria-label="Gender Selection" style="height: 38px; width:100px" required>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                           </select>
@@ -148,15 +154,18 @@
                 </div>
 
                 <p class="font-weight-bold title ">If there are any special needs</p>
-                <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds"></textarea>
-
+                <textarea class="form-control table" rows="3" placeholder="Enter here" [(ngModel)]="specialNeeds" name="specialNeeds" required></textarea>
+                      
         </div>
 
-            <div class="modal-footer" style="margin-top: 20px">
-              <button type="submit" style="background-color: #563393;border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+            <div class="modal-footer" style="margin-top: 20px" *ngIf="!mistake">
+              <button type="submit" [disabled]="!timeValidation || hasMissingFields()" style="background-color: #563393; border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
+            </div>
+            <div class="modal-footer" style="margin-top: 20px" *ngIf="mistake">
+              <button type="submit" style="background-color: #563393; border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
             </div>
 
       </div>
     </div>
-  </div>
+  </div>              
 </form>

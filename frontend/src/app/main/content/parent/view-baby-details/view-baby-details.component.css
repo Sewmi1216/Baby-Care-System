@@ -1,4 +1,9 @@
 /* Custom CSS */
+.main_container{
+  background-color: #C4BCE5;
+  margin: 0px;
+}
+
 .custom-card {
   background-color: #DFDDFF;
   margin: 30px 5px;

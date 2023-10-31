@@ -177,13 +177,17 @@ import {
 import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
-import { TokenInterceptor} from "./interceptor/token.interceptor";
+
+//import { TokenInterceptor} from "./interceptor/token.interceptor";
 //import { CreateTaskListComponent } from './main/content/parent/task-list-home/create-task-list/create-task-list.component';
 import { TaskListTemplatesComponent } from './main/content/parent/task-list-home/task-list-templates/task-list-templates.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import { PreviousTaskListsComponent } from './main/content/parent/task-list-home/previous-task-lists/previous-task-lists.component';
 //import { CreateNewTaskListComponent } from './main/content/parent/task-list-home/create-new-task-list/create-new-task-list.component';
+
+import {TokenInterceptor} from "./interceptor/token.interceptor";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -315,6 +319,7 @@ import { PreviousTaskListsComponent } from './main/content/parent/task-list-home
 
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

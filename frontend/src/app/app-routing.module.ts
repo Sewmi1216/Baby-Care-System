@@ -236,7 +236,7 @@ const routes: Routes = [
         component: LiveStreamComponent
       },
       {
-        path: 'view_baby_details',
+        path: 'view_baby_details/:baby_id',
         component: ViewBabyDetailsComponent
       },
       {

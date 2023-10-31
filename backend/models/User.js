@@ -32,6 +32,9 @@ const userSchema = new schema({
     nic :{
         type:String,
         required:true
+    },
+    profile:{
+        type:String
     }
 })
 
