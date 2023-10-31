@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ParentService } from '../../../service/parent.service'
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {ParentService} from '../../../service/parent.service'
 import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService} from 'ngx-cookie-service';
 import {AuthService} from "../../../service/auth.service";
 import {log} from "@tensorflow/tfjs";
 
@@ -17,33 +17,36 @@ export class NavParentComponent {
 
   parent = {
     babysitter: '',
-    isFree:'',
-    userId:null,
-    _id:''
+    isFree: '',
+    userId: null,
+    _id: ''
   }
-  user =  {
+  user = {
     firstName: '',
     lastName: '',
     role: '',
-    _id:''
+    _id: ''
   }
-  profile:string=''
+  profile: string = ''
   parentId: string = ''
-type= {
-    isFree:'',
-}
-   isFree: any;
-  constructor(
-    private parentService: ParentService, private authService:AuthService,private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
-  ){}
+  type = {
+    isFree: '',
+  }
+  isFree: any;
 
-  ngOnInit():void{
+  constructor(
+    private parentService: ParentService, private authService: AuthService, private toast: NgToastService, private router: Router, private cookieService: CookieService, private route: ActivatedRoute
+  ) {
+  }
+
+  ngOnInit(): void {
     // Get the babysitter_id parameter from the route
     this.getParent();
     this.getType();
     // this.getParent();
     this.getImg()
   }
+
   getImg() {
     const userJSON = localStorage.getItem('user');
 
@@ -51,7 +54,7 @@ type= {
       this.authService.getImg(JSON.parse(userJSON)).subscribe(
         (response) => {
           console.log(response.imageUrl)
-          this.profile=response.imageUrl
+          this.profile = response.imageUrl
         },
         (error) => {
           console.error('Error:', error);
@@ -60,7 +63,7 @@ type= {
     }
   }
 
-  getParent(){
+  getParent() {
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
 
@@ -70,28 +73,29 @@ type= {
           console.log(this.parent);
           this.parentId = this.parent._id
         },
-        (error)=>{
+        (error) => {
           console.log(localStorage.getItem('user'))
           console.error('Error fetching babysitters:', error);
         }
       )
     }
   }
-  getType(){
 
-      const userJSON = localStorage.getItem('user');
-      if (userJSON !== null) {
-        this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
-          (response: any) => {
-            this.type = response.type;
-            this.isFree = response.isFree;
-          },
-          (error) => {
-            console.error('Error fetching: ', error);
-          }
-        );
-      }
+  getType() {
+
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
+        (response: any) => {
+          this.type = response.type;
+          this.isFree = response.isFree;
+        },
+        (error) => {
+          console.error('Error fetching: ', error);
+        }
+      );
     }
-
   }
+
+}
 
