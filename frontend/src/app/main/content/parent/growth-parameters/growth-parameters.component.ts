@@ -2,14 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {ParentService} from "../../../../service/parent.service";
 import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService} from 'ngx-cookie-service';
 
 interface Parameter {
   id: string;
   type: string;
   activity: string;
 }
-
 
 
 @Component({
@@ -20,7 +19,7 @@ interface Parameter {
 export class GrowthParametersComponent implements OnInit {
 
   babyId: string | null = null;
-  baby: { id: string, birthDate: string } = { id: '', birthDate: '' };
+  baby: { id: string, birthDate: string } = {id: '', birthDate: ''};
   ageGroups: any[] = [];
   parameters: Parameter[] = [];
 
@@ -32,32 +31,57 @@ export class GrowthParametersComponent implements OnInit {
   cognitiveDevelopmentParameters: Parameter[] = [];
 
 
-
-
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
     private router: Router,
     private CookieService: CookieService,
     private route: ActivatedRoute
-  ){}
+  ) {
+  }
 
   selectedAgeGroupId!: string;
   today = new Date();
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.babyId = params['babyId'];
-      console.log(this.babyId);
-      this.getBaby();
+      this.babyId = params['baby_id'];
+      console.log(this.babyId); // This should print the correct value
+      this.getBaby(); // Call getBaby after setting this.babyId
+      this.getAgeGroup(); // Get the age groups
     });
-    this.getAgeGroup();
-    const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
-    this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
-    console.log(this.selectedAgeGroupId );
 
+    // Calculate the age in months
+    const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
+    console.log(ageInMonths);
+
+    // Get the default age group based on age in months
+    this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
+
+    // Call getParameters with the default age group
+    this.getParameters(this.selectedAgeGroupId);
+    console.log(this.selectedAgeGroupId);
   }
 
+  getBaby() {
+    const userJSON = localStorage.getItem('user');
+    console.log(this.babyId);
+    if (userJSON !== null) {
+      this.parentService.getBaby(this.babyId).subscribe(
+        (response) => {
+          this.baby = response.baby;
+          const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
+          this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
+          this.getParameters(this.selectedAgeGroupId);
+
+        },
+        (error) => {
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching baby details:', error);
+        }
+      )
+    }
+  }
 
 
   calculateAgeInMonths(birthDate: string): number {
@@ -75,6 +99,7 @@ export class GrowthParametersComponent implements OnInit {
 
     return ageInMonths;
   }
+
 
   getDefaultAgeGroup(ageInMonths: number): string {
     let ageGroupId: string = ""; // Initialize the age group ID variable
@@ -105,16 +130,15 @@ export class GrowthParametersComponent implements OnInit {
   }
 
 
-
-  getAgeGroup(){
+  getAgeGroup() {
     const userJSON = localStorage.getItem('user');
-    if(userJSON!==null){
+    if (userJSON !== null) {
       this.parentService.getAgeGroups(JSON.parse(userJSON)).subscribe(
         (response) => {
           this.ageGroups = response.ageGroups;
           console.log(this.ageGroups)
         },
-        (error)=>{
+        (error) => {
           console.log(localStorage.getItem('ageGroup'))
           console.error('Error fetching ageGroups:', error);
         }
@@ -132,6 +156,7 @@ export class GrowthParametersComponent implements OnInit {
 
   // to get the relevant parameters to age group
   getParameters(selectedAgeGroupId: string) {
+    console.log(selectedAgeGroupId);
     this.parentService.getParameters(selectedAgeGroupId).subscribe(
       (response) => {
         this.parameters = response.parameters;
@@ -141,7 +166,7 @@ export class GrowthParametersComponent implements OnInit {
         this.languageAndCommunicationParameters = this.filterParametersByType('LANGUAGE/COMMUNICATION');
         this.socialEmotionalDevelopmentParameters = this.filterParametersByType('SOCIAL/EMOTIONAL');
         this.cognitiveDevelopmentParameters = this.filterParametersByType('COGNITIVE (learning, thinking, problem-solving)');
-        console.log(this.movementPhysicalDevelopmentParameters );
+        console.log(this.movementPhysicalDevelopmentParameters);
         console.log(this.languageAndCommunicationParameters);
         console.log(this.socialEmotionalDevelopmentParameters);
         console.log(this.cognitiveDevelopmentParameters);
@@ -157,24 +182,8 @@ export class GrowthParametersComponent implements OnInit {
     return this.parameters.filter(parameter => parameter.type === type);
   }
 
-  getBaby(){
-    const userJSON = localStorage.getItem('user');
-    console.log(this.babyId);
-    if(userJSON!==null){
-      this.parentService.getBaby(this.babyId).subscribe(
-        (response) => {
-          this.baby = response.baby;
-          const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
-          this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
-          console.log("nadwwwwwwwwwww",this.baby);
-        },
-        (error)=>{
-          console.log(localStorage.getItem('user'))
-          console.error('Error fetching babysitters:', error);
-        }
-      )
-    }
-  }
+
+
 
 
 }
