@@ -48,6 +48,10 @@
  router.route("/getComplaintCount/:id").get(adminController.getComplaintCount); //id=parentID
 
  router.route("/getBabysitters/:id").get(adminController.getBabysitter);
+ router.route("/getOneUser/:id").get(adminController.getOneUser);
+ router.route("/getOneComplaint/:id").get(adminController.getOneComplaint);
+
+
 
 
 
@@ -65,6 +69,9 @@
 
  router.route("/updateAdmin/:id").put(adminController.UpdateAdmin);
  router.route("/updateSystemInfo/:id").put(adminController.UpdateSystemInfo);
+
+ router.route("/updateVerifyStatus/:id").put(adminController.UpdateVerifyStatus);
+
  router.route("/verifyBabysitter").put(adminController.verifyBabysitter);
 
 

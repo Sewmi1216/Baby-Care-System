@@ -35,7 +35,11 @@ const userSchema = new schema({
     },
     profile:{
         type:String
-    }
+    },
+    status:{
+        type:String,
+        default: "pending"
+    },
 })
 
 const User = mongoose.model("User", userSchema);

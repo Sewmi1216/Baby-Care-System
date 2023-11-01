@@ -293,68 +293,69 @@ const deleteRequestForm = async (req, res) => {
             res.status(500).save({status: "Error with delete form", error: err.message})
         })
 }
-//complaint handling
-
-const addComplaint = async (req, res) => {
-
-    const type = req.body.type;
-    const description = req.body.description;
-    const status = req.body.status;
 
 
-    const newComplaint = new Complaint({
-        type,
-        description,
-        status,
-        date,
+// const addComplaint = async (req, res) => {
+//
+//     const type = req.body.type;
+//     const description = req.body.description;
+//     const status = req.body.status;
+//
+//
+//     const newComplaint = new Complaint({
+//         type,
+//         description,
+//         status,
+//         date,
+//
+//     });
+//
+//     await newComplaint.save()
+//         .then(() => {
+//             res.status(200).send({status: "Complaint is added"});
+//         })
+//         .catch((err) => {
+//             console.log(err.message);
+//             res.status(500).send({status: "Error with the complaint", error: err.message});
+//         });
+// };
+//
+//
+// const updateComplaint = async (req, res) => {
+//     let complaintid = req.params.id; //fetch the id
+//
+//     const {type, description, status, date} = req.body; // new value
+//
+//     const updateComplaint = {
+//         type,
+//         description,
+//         status,
+//         date
+//     };
+//
+//     await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
+//         .then((complaint) => {
+//             res.status(200).send({status: "Complaint is updated", complaint});
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).send({status: "Error with updating data", error: err.message});
+//         });
+// };
+//
+// const deleteComplaint = async (req, res) => {
+//     let complaintid = req.params.id;
+//
+//     await Complaint.findByIdAndDelete(complaintid)
+//         .then((complaint) => {
+//             res.status(200).send({status: "Complaint is Deleted", complaint});
+//         })
+//         .catch((err) => {
+//             console.log(err.message);
+//             res.status(500).send({status: "Error with delete complaint", error: err.message});
+//         });
+// }
 
-    });
-
-    await newComplaint.save()
-        .then(() => {
-            res.status(200).send({status: "Complaint is added"});
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with the complaint", error: err.message});
-        });
-};
-
-
-const updateComplaint = async (req, res) => {
-    let complaintid = req.params.id; //fetch the id
-
-    const {type, description, status, date} = req.body; // new value
-
-    const updateComplaint = {
-        type,
-        description,
-        status,
-        date
-    };
-
-    await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
-        .then((complaint) => {
-            res.status(200).send({status: "Complaint is updated", complaint});
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send({status: "Error with updating data", error: err.message});
-        });
-};
-
-const deleteComplaint = async (req, res) => {
-    let complaintid = req.params.id;
-
-    await Complaint.findByIdAndDelete(complaintid)
-        .then((complaint) => {
-            res.status(200).send({status: "Complaint is Deleted", complaint});
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with delete complaint", error: err.message});
-        });
-}
 
 const addFeedback = async (req, res) => {
     //parent name
@@ -711,6 +712,32 @@ const updateBabysitter = async (req, res) => {
         res.status(500).send({status: "Error with updating data", error: err.message});
     }
 }
+const addComplaint = async (req, res) => {
+    const id = req.body.id;
+    const type = req.body.type;
+    const  description = req.body. description;
+
+
+    console.log("ishini",userId)
+    if (!userId) {
+        return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
+    }
+    const newComplaint = new Complaint({
+        id,
+        type,
+        description,
+
+       user: userId
+    });
+
+    try {
+        const savedComplaint = await newComplaint.save();
+        res.status(201).send({status: "Complaint is added",complaint: savedComplaint});
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({status: "Error adding Complaint", error: err.message});
+    }
+};
 
 const deleteBabysitter = async (req, res) => {
     let babysitterID = req.params.id1;
@@ -755,8 +782,8 @@ module.exports = {
     addRequestForm,
     deleteRequestForm,
     addComplaint,
-    updateComplaint,
-    deleteComplaint,
+    // updateComplaint,
+    // deleteComplaint,
     addBaby,
     addFeedback,
     getBabies,

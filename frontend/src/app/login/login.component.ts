@@ -17,7 +17,7 @@ export class LoginComponent {
   };
   logged = true;
 
-  constructor(private authService: AuthService, private parentService:ParentService,private router: Router,  private toast: NgToastService) {
+  constructor(private authService: AuthService, private parentService: ParentService, private router: Router, private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -35,20 +35,29 @@ export class LoginComponent {
       if (user['msg'] === "login") {
         if (user['role'] === 'Parent') {
           this.router.navigate(['/parent/parent_dashboard'])
+          this.toast.success({detail: "SUCCESS", summary: user.msg, position: 'topCenter'});
         } else if (user['role'] === 'Babysitter') {
-          this.router.navigate(['/babysitter/babysitter_dashboard'])
+          console.log(user['status'])
+          if (user['status'] === "pending") {
+            this.toast.error({detail: "ERROR", summary: 'Your account has not verified. Try again later', position: 'topCenter'});
+          }else{
+            this.router.navigate(['/babysitter/babysitter_dashboard'])
+            this.toast.success({detail: "SUCCESS", summary: user.msg, position: 'topCenter'});
+          }
         } else if (user['role'] === 'Admin') {
           this.router.navigate(['/admin/admin_dashboard'])
+          this.toast.success({detail: "SUCCESS", summary: user.msg, position: 'topCenter'});
         } else {
           this.router.navigate(['/domain_expert/domain_expert_dashboard'])
+          this.toast.success({detail: "SUCCESS", summary: user.msg, position: 'topCenter'});
         }
-        this.toast.success({detail:"SUCCESS",summary:user.msg, position:'topCenter'});
+
       } else {
         console.log("Login unsuccessful");
       }
     }, (err) => {
       this.logged = false;
-      this.toast.error({detail:"ERROR",summary:err.error.msg, position:'topCenter'});
+      this.toast.error({detail: "ERROR", summary: err.error.msg, position: 'topCenter'});
       console.log("Error during login", err);
     });
   }

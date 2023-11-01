@@ -26,38 +26,39 @@
         <div>
           <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
 
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#">Blog</a>-->
+<!--            </li>-->
             <li class="nav-item">
-              <a class="nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="../../contact_us">Contact Us</a>
             </li>
             <li></li>
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" href="../../about_us">About</a>-->
-<!--            </li>-->
+            <li class="nav-item">
+              <a class="nav-link" href="../../about_us">About</a>
 
-            <li class="nav-item" style="padding-right: 30px;">
-              <i class="fas fa-bell" style="color: black"></i>
             </li>
+
+<!--            <li class="nav-item" style="padding-right: 30px;">-->
+<!--              <i class="fas fa-bell" style="color: black"></i>-->
+<!--            </li>-->
             <!-- <li class="nav-item" style="padding-right: 30px;">
               <a href="/babysitter/babysitter_chat">
                 <i class="fas fa-comment-alt" style="color: black"></i>
               </a>
             </li> -->
 
-            <li class="nav-item" style="padding-right: 30px;">
-              <a href="#" class="notification" style="color: black">
-                <i class='bx bxs-bell' ></i>
-                <span class="num">8</span>
-              </a>
-            </li>
-            <li class="nav-item" style="padding-right: 30px;">
-              <a href="/babysitter/babysitter_chat" class="notification" style="color: black">
-                 <i class='fas fa-comment-alt' style="color: black"></i>
-                <span class="num">1</span>
-              </a>
-            </li>
+<!--            <li class="nav-item" style="padding-right: 30px;">-->
+<!--              <a href="#" class="notification" style="color: black">-->
+<!--                <i class='bx bxs-bell' ></i>-->
+<!--                <span class="num">8</span>-->
+<!--              </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item" style="padding-right: 30px;">-->
+<!--              <a href="/babysitter/babysitter_chat" class="notification" style="color: black">-->
+<!--                 <i class='fas fa-comment-alt' style="color: black"></i>-->
+<!--                <span class="num">1</span>-->
+<!--              </a>-->
+<!--            </li>-->
 
 
 
@@ -68,7 +69,7 @@
             <div class="dropdown pb-2">
               <a href="#" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
                  id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-<!--                <img src="../../assets/sewmi.jpg" alt="profile" width="50" height="50" class="img-fluid rounded-circle">-->
+                <img [src]="profile" alt="profile" width="50" height="50" class="rounded-circle">
                 <div class="user">
                   <span class="d-none d-sm-inline mx-1" style="font-size: 15px;">{{user.firstName}} {{user.lastName}}</span>
                   <span class="d-none d-sm-inline mx-1" style="font-size: 11px; text-align:center; font-weight: bold;">{{user.role}}</span>

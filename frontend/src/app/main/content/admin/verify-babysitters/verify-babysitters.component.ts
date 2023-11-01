@@ -1,5 +1,7 @@
 // import { Component } from '@angular/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+
+// import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdminService } from '../../../../service/admin.service'
 import {NgToastService} from "ng-angular-popup";
@@ -14,8 +16,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./verify-babysitters.component.css']
 })
 export class VerifyBabysittersComponent {
+  sytemInfoArray : sytemInfoArray[]=[];
+
   babysitterProfile = {
-    _id: '',
+    id: '',
     // userId: '',
     role:'',
     firstName: '',
@@ -26,24 +30,29 @@ export class VerifyBabysittersComponent {
     nic: '',
     status:'',
 
-
-
-
-    // age: '',
-    // gender: '',
-    // image:'',
-    // religon: '',
-    // language: '',
   };
+  babysitterId: string | null = null;
+
   babysitterFullName: string | null = null;
 
   currentInfoID = ''
-  about: string ="";
+  status: string ="active";
+  status1:string="reject";
+  // role: string ="";
+  // firstName: string ="";
+  // lastName: string ="";
+  // nic: string ="";
+  // phone: string ="";
+  // address: string ="";
+  // email: string ="";
+
+  koko:string="";
+  kokoId:string="";
 
 
-  @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
+  // @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
-  babysitterId: string | null = null; // Initialize the babysitterId variable
+  // babysitterId: string | null = null; // Initialize the babysitterId variable
   parentId:  string = ''
 
   constructor(
@@ -54,38 +63,38 @@ export class VerifyBabysittersComponent {
     // Get the babysitter_id parameter from the route
     this.route.params.subscribe(params => {
       this.babysitterId = params['id'];
-      console.log('hello');
+      // console.log('hello');
       console.log(this.babysitterId);
       this.getBabysitter();
+      // this.updateVerifyStatus();
     });
   }
 
 
   getBabysitter(){
+
     const userJSON = localStorage.getItem('user');
-    console.log('hello');
-
-    if (userJSON !== null) {
-      const userString = JSON.parse(userJSON); // Use the User interface
-      console.log(userString);
-      this.parentId = userString.id;
-      console.log(this.parentId)
-      console.log('hellooo');
-
-    }
     console.log(this.babysitterId);
     if(userJSON!==null){
       this.adminService.getBabysitter(this.babysitterId).subscribe(
         (response) => {
           this.babysitterProfile = response.babysitter;
-          console.log('hiiiiko')
+          this.sytemInfoArray = response.babysitter; 
+          this.koko=response.babysitter.status;
+          this.kokoId=response.babysitter._id;
 
           console.log(this.babysitterProfile)
+          console.log(this.sytemInfoArray)
+          console.log(this.koko);
+          console.log('hello machn')
+          console.log(this.kokoId)
+          console.log('hello machn')
+
+
+
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
-          console.log(this.babysitterProfile.firstName);
-          console.log(this.babysitterFullName);
 
-
+          // this.img=response.imageUrl
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -93,47 +102,118 @@ export class VerifyBabysittersComponent {
         }
       )
     }
-    console.log('hello');
+ 
 
   }
+  // updateVerifyStatus(){
 
-  setUpdate(data:any){
-    this.about = data.about;
-    
+  //   console.log('hello')
 
-    this.currentInfoID = data.id;
+  //   const userJSON = localStorage.getItem('user');
+  //   console.log(this.babysitterId);
+  //   if(userJSON!==null){
+  //     this.adminService.updateVerifyStatus(this.babysitterId).subscribe(
+  //       (response) => {
+  //         this.babysitterProfile = response.babysitter;
+  //         console.log('amma')
+  //         console.log(this.babysitterProfile)
 
-  }
+  //         // this.img=response.imageUrl
+  //       },
+  //       (error)=>{
+  //         console.log(localStorage.getItem('user'))
+  //         console.error('Error fetching babysitters:', error);
+  //       }
+  //     )
+  //   }
+ 
 
-  UpdateRecords(data:any){
+  // }
+
+  UpdateVerifyRecords(){
+    console.log("hi hui")
     let BodyData = {
-      "about":this.about,
-      
+    //   "role":this.role,
+    // "firstName": this.firstName,
+    // "lastName": this. lastName,
+    // "email": this.email,
+    // "phone": this.phone,
+    // "address": this.address,
+    // "nic": this.nic,
+    "status":this.status,
     };
 
-    this.http.put("http://localhost:8070/admin/updateSystemInfo"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
+    
+    this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
       console.log(res);
-      alert("Info Updated")
+      // this.status=response.info;
+      alert("Babysitter Verified")
     });
 
+
   }
 
-  save(data:any){
-    this.about = data.about;
+  UpdateRejectRecords(){
+    console.log("hi hui")
+    let BodyData = {
+    //   "role":this.role,
+    // "firstName": this.firstName,
+    // "lastName": this. lastName,
+    // "email": this.email,
+    // "phone": this.phone,
+    // "address": this.address,
+    // "nic": this.nic,
+    "status":this.status1,
+    };
+
     
+    this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
+      console.log(res);
+      // this.status=response.info;
+      alert("Babysitter Rejected")
+    });
 
-    this.currentInfoID == data.id;
+
   }
+
+  save(){
+    
+    this.currentInfoID = this.kokoId;
+    console.log("hello hui")
+    console.log(this.currentInfoID);
+
+    this.UpdateVerifyRecords();
+
+  }
+  saveReject(){
+    this.currentInfoID = this.kokoId;
+    console.log("hello hui")
+    console.log(this.currentInfoID);
+
+    this.UpdateRejectRecords();
+  }
+
+  // setUpdate(data:any){
+  //   this.status = data.koko;
+
+    
+  //   this.currentInfoID = data.response.babysitter._id
+  //   console.log('hello')
+  //   console.log(this.currentInfoID)
+
+  // }
 
 }
 
 interface sytemInfoArray{
-id: string;
-about: string;
-goals: string;
-service: string;
-vision: string;
-team: string;
-thank: string;
-}
+  _id: string;
+  firstName: string;
+  lastName: string; 
+  email: string;
+  phone: string;
+  address: string;
+  nic: string;
+  status: string;
+ 
+  }
 

@@ -73,15 +73,19 @@
 
                   <td>{{user.nic}}</td>
                   <td>{{user.address}}</td>
-                  <td>{{user.role}}</td>
-                  <td>
-                    <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">{{user.status}}</span>
+                  <td >{{user.role}}</td>
+                  <td [ngClass]="{ 'pending': user.status === 'pending', 'reject': user.status === 'reject' }">
+                    <span class="mb-0 text-sm" style="font-weight: bold;">{{user.status}}</span>
                   </td>
                   
 
                   <td class="text-right">
                     <div class="dropdown">
-                      <a class="btn btn-sm btn-icon-only text-light" routerLink="/admin/verify_babysitter/{{user._id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <!-- <a class="btn btn-sm btn-icon-only text-light" [routerLink]="/admin/verify_babysitter/{{user._id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a> -->
+
+                      <a class="btn btn-sm btn-icon-only text-light" [routerLink]="['/admin/verify_babysitter/',user._id]" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
                       </a>
 

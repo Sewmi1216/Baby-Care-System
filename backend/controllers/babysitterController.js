@@ -15,6 +15,8 @@ const addBabysitter = async (req, res) => {
         const role = req.body.role;
         const firstName = req.body.firstName;
         const lastName = req.body.lastName;
+        const religion = req.body.religion;
+        const language = req.body.language;
         const email = req.body.email;
         const phone = req.body.phone;
         const address = req.body.address;
@@ -55,6 +57,8 @@ const addBabysitter = async (req, res) => {
             userId: createdUser._id,
             age,
             gender,
+            religion,
+            language,
             qualifications: images,
         });
 
