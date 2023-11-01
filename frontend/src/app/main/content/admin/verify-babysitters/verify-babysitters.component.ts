@@ -1,5 +1,7 @@
 // import { Component } from '@angular/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+
+// import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdminService } from '../../../../service/admin.service'
 import {NgToastService} from "ng-angular-popup";
@@ -14,10 +16,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./verify-babysitters.component.css']
 })
 export class VerifyBabysittersComponent {
+  sytemInfoArray : sytemInfoArray[]=[];
+
   babysitterProfile = {
     id: '',
     // userId: '',
-    // role:'',
+    role:'',
     firstName: '',
     lastName: '', 
     email: '',
@@ -33,9 +37,18 @@ export class VerifyBabysittersComponent {
 
   currentInfoID = ''
   status: string ="";
+  role: string ="";
+  firstName: string ="";
+  lastName: string ="";
+  nic: string ="";
+  phone: string ="";
+  address: string ="";
+  email: string ="";
+
+  koko:string="";
 
 
-  @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
+  // @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
   // babysitterId: string | null = null; // Initialize the babysitterId variable
   parentId:  string = ''
@@ -51,6 +64,7 @@ export class VerifyBabysittersComponent {
       // console.log('hello');
       console.log(this.babysitterId);
       this.getBabysitter();
+      // this.updateVerifyStatus();
     });
   }
 
@@ -63,7 +77,16 @@ export class VerifyBabysittersComponent {
       this.adminService.getBabysitter(this.babysitterId).subscribe(
         (response) => {
           this.babysitterProfile = response.babysitter;
+          this.sytemInfoArray = response.babysitter; 
+          this.koko=response.babysitter.status;
+
           console.log(this.babysitterProfile)
+          console.log(this.sytemInfoArray)
+          console.log(this.koko);
+          console.log('hello machn')
+          console.log(response.babysitter._id)
+
+
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
 
           // this.img=response.imageUrl
@@ -77,34 +100,85 @@ export class VerifyBabysittersComponent {
  
 
   }
+  // updateVerifyStatus(){
 
-  UpdateVerifyRecords(data:any){
+  //   console.log('hello')
+
+  //   const userJSON = localStorage.getItem('user');
+  //   console.log(this.babysitterId);
+  //   if(userJSON!==null){
+  //     this.adminService.updateVerifyStatus(this.babysitterId).subscribe(
+  //       (response) => {
+  //         this.babysitterProfile = response.babysitter;
+  //         console.log('amma')
+  //         console.log(this.babysitterProfile)
+
+  //         // this.img=response.imageUrl
+  //       },
+  //       (error)=>{
+  //         console.log(localStorage.getItem('user'))
+  //         console.error('Error fetching babysitters:', error);
+  //       }
+  //     )
+  //   }
+ 
+
+  // }
+
+  UpdateVerifyRecords(){
     console.log("hi hui")
     let BodyData = {
-      "status": "active",
+      "role":this.role,
+    "firstName": this.firstName,
+    "lastName": this. lastName,
+    "email": this.email,
+    "phone": this.phone,
+    "address": this.address,
+    "nic": this.nic,
+    "status":this.status,
     };
 
-    this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.babysitterId,BodyData).subscribe((res: any)=>{
+    
+    this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
       console.log(res);
       // this.status=response.info;
-      // alert("Info Updated")
+      alert("Info Updated")
     });
 
+
   }
 
-  save(data:any){
+  save(){
     
-    this.currentInfoID == data._id;
+    this.currentInfoID == this.babysitterId;
+    console.log("hiiiiii hui")
+    console.log(this.currentInfoID)
 
-    this.UpdateVerifyRecords(data)
+    this.UpdateVerifyRecords();
 
   }
+
+  // setUpdate(data:any){
+  //   this.status = data.koko;
+
+    
+  //   this.currentInfoID = data.response.babysitter._id
+  //   console.log('hello')
+  //   console.log(this.currentInfoID)
+
+  // }
 
 }
 
-// interface sytemInfoArray{
-// _id: string;
-// status: string;
-
-// }
+interface sytemInfoArray{
+  _id: string;
+  firstName: string;
+  lastName: string; 
+  email: string;
+  phone: string;
+  address: string;
+  nic: string;
+  status: string;
+ 
+  }
 

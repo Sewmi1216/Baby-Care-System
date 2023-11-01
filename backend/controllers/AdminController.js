@@ -283,26 +283,53 @@ const UpdateSystemInfo = async (req, res) => {
         });
 };
 
-const UpdateVerifyStatus = async (req, res) => {
-    let userId = req.params.id; //fetch the id
+// const UpdateVerifyStatus = async (req, res) => {
+//     let userId = req.params.id; //fetch the id
   
-    const {status} = req.body; // new value
-    //create a object
-    const updateInfo = {
-       status,
+//     const {status} = req.body; // new value
+//     //create a object
+//     const updateInfo = {
+//        status,
        
+//     };
+
+//     await User.findByIdAndUpdate(userId, updateInfo,{status:"active"})
+//         .then((info) => {
+            
+//             res.status(200).send({ status: "Info are updated", info });
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).send({ status: "Error with updating info", error: err.message });
+//         });
+// };
+    const UpdateVerifyStatus = async (req, res) => {
+        let userId = req.params.id; //fetch the id
+  
+        const {role,firstName,lastName,nic,phone,address,email,status }= req.body; // new value
+        //create a object
+        const verifyInfo = {
+            role,
+            firstName,
+            lastName,
+            email,
+            phone,
+            address,
+            nic,
+            status
+           
+        };
+    
+        await User.findByIdAndUpdate(userId, verifyInfo)
+            .then((info) => {
+                res.status(200).send({ status: "Info are updated", info });
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).send({ status: "Error with updating info", error: err.message });
+            });
     };
 
-    await User.findByIdAndUpdate(userId, updateInfo,{status:"active"})
-        .then((info) => {
-            
-            res.status(200).send({ status: "Info are updated", info });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send({ status: "Error with updating info", error: err.message });
-        });
-};
 
 const ViewSystemInfo = async (req, res) => {
     await SystemInfo.find()

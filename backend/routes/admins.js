@@ -68,7 +68,7 @@
  router.route("/updateAdmin/:id").put(adminController.UpdateAdmin);
  router.route("/updateSystemInfo/:id").put(adminController.UpdateSystemInfo);
 
- router.route("/updateVerifyStatus:id").put(adminController.UpdateVerifyStatus);
+ router.route("/updateVerifyStatus/:id").put(adminController.UpdateVerifyStatus);
 
  router.route("/verifyBabysitter").put(adminController.verifyBabysitter);
 

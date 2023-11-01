@@ -181,6 +181,22 @@ export class AdminService {
     return this.http.get<any>(`${environment.backend_url}/admin/getOneUser/${userId}`, { headers });
   }
 
+  updateVerifyStatus(userID: any): Observable<any> {
+    const userId = userID
+    console.log(userId)
+    console.log('adoo')
+
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.put<any>(`${environment.backend_url}/admin/updateVerifyStatus/${userId}`, { headers });
+  }
+
 
  
 

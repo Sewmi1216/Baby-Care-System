@@ -29,17 +29,48 @@
                 <i class="fas fa-file-download"></i> Qualification file
               </a>
             </p>
-            <p>
+            <!-- <p>
               <button class="bbtn btn-custom btn-primary" style="background-color: mediumpurple;border-color: #BFBBF1;border-radius: 16px; align-content: center;width: 30pxcd fronte" (click)="save(babysitterProfile)">Verify</button>
               <button class="bbtn btn-custom btn-primary" style="background-color: rgb(229, 60, 13);border-color: #BFBBF1;border-radius: 16px; align-content: center;width: 30pxcd fronte;margin-left: 2rem;" >Reject</button>
 
-            </p>
+            </p> -->
+
+                <div class="d-flex align-items-center mb-3">
+                  
+                    <button type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
+                            data-bs-target="#editThankYouModal">
+                      <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
+                    </button>
+                  
+                </div>
+
+
+               
 
           </div>
+
+          <div  class="modal fade" id="editThankYouModal" tabindex="-1" aria-labelledby="editThankYouModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editThankYouModalLabel">verify Babysitter</h5>
+                  <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" [(ngModel)]="koko" class="form-control mb-3" id="status" placeholder="Edit content here">
+                  <!-- <button style="background-color: #58d1e9;border-color: #100f11;margin-right: 3px;" type="button" (click)="setUpdate(koko)"  class="btn btn-primary" >View</button> -->
+                  <button style="background-color: #26cf3d;border-color: #563393" type="button" id="status"  class="btn btn-primary" (click)="save()">Verify</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
   </div>
+
 </div>
 
 
