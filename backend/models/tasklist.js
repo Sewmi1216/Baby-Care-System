@@ -11,10 +11,10 @@ const taskListSchema = new schema({
         ref: 'Parent',
     },
 
-    // Babysitter: {
-    //     type: schema.Types.ObjectId,
-    //     required: true,
-    // },
+    Babysitter: {
+        type: schema.Types.ObjectId,
+        required: true,
+    },
 
     taskListName: {
         type:String,

@@ -30,6 +30,10 @@ interface TaskListForm {
 })
 export class TaskListTemplatesComponent {
 
+  todayDate2: string;
+  minDate: string;
+
+
   taskListForms: any[] = [];
   todayDate:Date | null = null;
   taskListName: string = '';
@@ -61,6 +65,8 @@ export class TaskListTemplatesComponent {
   // content: any;
 
 
+// Define a variable to control modal visibility
+  modalVisible: boolean = false;
 
 
   taskListForm: TaskListForm = {
@@ -73,6 +79,7 @@ export class TaskListTemplatesComponent {
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
 
+
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
@@ -80,8 +87,14 @@ export class TaskListTemplatesComponent {
     private cookieService: CookieService,
     private route: ActivatedRoute,
     private elRef: ElementRef,
-    private modalService: NgbModal
-  ) {}
+    private modalService: NgbModal,
+
+
+  ) {
+    const currentDate = new Date();
+    this.todayDate2 = currentDate.toISOString().slice(0, 10); // Format it as 'YYYY-MM-DD'
+    this.minDate = this.todayDate2;
+  }
 
   ngOnInit(): void {
     this.getTaskListTemplates();
@@ -130,6 +143,10 @@ export class TaskListTemplatesComponent {
 
   openDeleteModal(taskListId: string){
 
+  }
+  openModal()
+  {
+    this.modalVisible = true;
   }
 
 

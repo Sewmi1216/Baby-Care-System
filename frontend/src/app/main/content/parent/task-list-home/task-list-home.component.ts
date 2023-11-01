@@ -19,7 +19,6 @@ interface TaskListForm {
   tasks: TaskListItems[];
   //Babysitter: string;
 }
-
 @Component({
   selector: 'app-task-list-home',
   templateUrl: './task-list-home.component.html',
@@ -29,12 +28,27 @@ interface TaskListForm {
 
 export class TaskListHomeComponent implements OnInit {
 
+
+
+
   taskListForms: any[] = [];
-  // date: string | null = null;
-  date:Date | null = null;
+  todayDate:Date | null = null;
   taskListName: string = '';
   taskDetails: any[] = [];
   taskListId: string='';
+
+  searchTerm: string = '';
+
+  filteredTaskListForms: any[] = [];
+
+
+  tListForm: any = {
+    date: '',
+    taskListId: '',
+    tasks: [],
+  };
+  tListName: string = '';
+  tDetails:any[] = [];
 
 
   taskListForm: TaskListForm = {
@@ -43,6 +57,8 @@ export class TaskListHomeComponent implements OnInit {
     tasks: [],
     //Babysitter: ''
   };
+
+
 
   constructor(
 
@@ -56,29 +72,36 @@ export class TaskListHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTaskListTemplates();
+    //this.getTaskListTemplates();
+    this.getTodayTaskList();
   }
 
-  getTaskListTemplates() { // get all task list templates
-    const userJSON = localStorage.getItem('user');
-    if (userJSON !== null) {
-      this.parentService.getTaskListTemplates(JSON.parse(userJSON)).subscribe(
-        (response) => {
-          console.log(response); //- this is working
-          this.taskListForms = response.taskListForms;
-          console.log(response.taskListForms);
-          for (const taskListForm of this.taskListForms) {
-            this.date = taskListForm.date;
-            this.taskListName = taskListForm.taskListName;
-            this.taskDetails = taskListForm.tasks;
-            this.taskListId = taskListForm._id;
-          }
-        },
-        (error) => {
-          console.error('Error fetching task list templates:', error);
-        }
-      )
-    }
-  }
+getTodayTaskList(){
+  const userJSON = localStorage.getItem('user');
+  if (userJSON !== null) {
+    this.parentService.getTodayTaskList(JSON.parse(userJSON)).subscribe(
+      (response) => {
+        this.tListForm = response.todayTaskList;
+        console.log(this.tListForm);
+
+        // this.date = taskListForm.date;
+        this.tListName = response.todayTaskList.taskListName;
+        console.log(this.tListName);
+        this.tDetails = response.todayTaskList.tasks;
+        console.log(this.tDetails);
+      },
+      (error) => {
+        console.error('Error fetching task list template:', error);
+      }
+    );
+}
+}
+
+
+
+
+
+
+
 
 }

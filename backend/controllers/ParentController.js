@@ -126,7 +126,7 @@ const addTaskList = async (req, res) => {
     const date = req.body.taskListForm.date;
     const tasks = req.body.taskListForm.tasks;
     const parentID = req.body.userID;
-    //const Babysitter = req.body.taskListForm.Babysitter;
+    const babysitter = req.body.taskListForm.Babysitter;
     console.log(parentID);
 
     if(!parentID){
@@ -139,7 +139,7 @@ const addTaskList = async (req, res) => {
         taskListName,
         tasks,
         date,
-        //Babysitter
+        babysitter
     })
     try{
         const savedTaskListForm = await newTaskListFormData.save();
@@ -345,19 +345,19 @@ const getTodayTaskList = async (req,res) =>{
         const todayTaskList = await TaskListForm.find(
             {
                 parent: userId,
+                date : todayDate
             });
 
         if( !todayTaskList || todayTaskList.length === 0)
         {
             res.status(404).send({status : "No task list found in today for this parent"});
 
-        }else{
-            res.status(200).send({status: "Today task list found for this parent"})
-            console.log(todayTaskList)
+        }else {
+            res.status(200).send({ status: "Today task list found for this parent", todayTaskList });
         }
     }catch(err)
     {
-        console.log(err.message)
+        console.log(err.message);
         res.status(500).send({status: "Error with get today task list", error: err.message});
     }
 };

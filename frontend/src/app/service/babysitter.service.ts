@@ -61,7 +61,7 @@ export class BabysitterService {
     console.log(userId);
     console.log(requestFormId);
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
+    return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });
   }
 
   updateRequestForm(requestForm: any, requestFormId: any): Observable<any>{
@@ -74,7 +74,7 @@ export class BabysitterService {
       requestForm: requestForm,
     };
 
-    console.log(requestBody); 
-    return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm/${requestFormId}`, JSON.stringify(requestBody),{ headers });      
+    console.log(requestBody);
+    return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm/${requestFormId}`, JSON.stringify(requestBody),{ headers });
   }
 }

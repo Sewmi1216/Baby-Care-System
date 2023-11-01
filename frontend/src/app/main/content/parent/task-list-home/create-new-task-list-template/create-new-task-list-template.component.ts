@@ -212,8 +212,6 @@ export class CreateNewTaskListTemplateComponent {
     }
   }
 
-
-
   getTaskListTemplate() {
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {

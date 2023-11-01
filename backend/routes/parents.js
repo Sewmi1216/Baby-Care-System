@@ -45,7 +45,6 @@ router.route("/getOldAllTaskLists/:id").get(authJwt.verifyParent,parentControlle
 router.route("/getNextAllTaskLists/:id").get(authJwt.verifyParent,parentController.getNextAllTaskLists);
 router.route("/updateTaskListTemplate/:id").put(authJwt.verifyParent, parentController.updateTaskListTemplate);
 
-
 //create
 router.route('/addParent').post(upload.single('file'), parentController.addParent);
 
@@ -63,6 +62,7 @@ router.route('/getTaskListTemplate/:id').get(authJwt.verifyParent, parentControl
 //router.route('/deleteTaskListTemplate/:id').delete(parentController.deleteTaskListTemplate);
 router.route('/addDateForTaskList').post(authJwt.verifyParent,parentController.addDateForTaskList);
 router.route('/deleteTaskListTemp/:id').delete(authJwt.verifyParent, parentController.deleteTaskListTemp);
+router.route('/getTodayTaskList').get(authJwt.verifyParent, parentController.getTodayTaskList);
 //router.post('/createTaskListTemplate', authJwt.verifyParent, parentController.createTaskListTemplate);//
 
 
