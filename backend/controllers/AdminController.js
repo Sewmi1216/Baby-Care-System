@@ -306,16 +306,17 @@ const UpdateSystemInfo = async (req, res) => {
     const UpdateVerifyStatus = async (req, res) => {
         let userId = req.params.id; //fetch the id
   
-        const {role,firstName,lastName,nic,phone,address,email,status }= req.body; // new value
+        const {status }= req.body; // new value
+        // const status ="active"
         //create a object
         const verifyInfo = {
-            role,
-            firstName,
-            lastName,
-            email,
-            phone,
-            address,
-            nic,
+            // role,
+            // firstName,
+            // lastName,
+            // email,
+            // phone,
+            // address,
+            // nic,
             status
            
         };
@@ -361,16 +362,28 @@ const verifyBabysitter = async (req, res) => {
     }
 };
 
+// const ViewAllSitters = async (req, res) => {
+//     await User.find({role:"Babysitter", status:{$in: ["pending", "reject"]}} )
+//         .then((user) => {
+//             res.status(200).send({ status: "All users", user });
+//         })
+//         .catch((err) => {
+//             console.log(err.message);
+//             res.status(500).send({ status: "Error with view all users", error: err.message });
+//         });
+// };
 const ViewAllSitters = async (req, res) => {
-    await User.find({role:"Babysitter"} && {status:"pending"})
-        .then((user) => {
-            res.status(200).send({ status: "All users", user });
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({ status: "Error with view all users", error: err.message });
-        });
+    try {
+        const users = await User.find({ role: "Babysitter", status: { $in: ["pending", "reject"] } });
+        const babysitters = await Babysitter.find({}); // You might want to add some filtering criteria here
+        
+        res.status(200).send({ status: "All users and babysitters", users, babysitters });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with view all users", error: err.message });
+    }
 };
+
 const ViewAllUsers = async (req, res) => {
     await User.find({status:"active"})
         .then((user) => {
