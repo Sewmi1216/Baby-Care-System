@@ -48,14 +48,37 @@
         </div>
 
         <div class="card custom-card" style="background-color: #FFFFFF;">
-          <div class="right">
-            <p class="font-weight-bold">Qualification Details</p>
-            <div *ngFor="let qualification of qualificationList" >
-              <!-- {{qualification}} -->
+          <div class="right" >
+            <p style="font-size:large">Qualification Details</p>
+            <div class="row" style="margin-top:2rem">
+              <p style="font-size:small">1. Gramseva Certificate</p>
+              <p style="font-size:small">2. Registration Confirmation Certificate</p>
+              <p style="font-size:small">3. Police Clearance Report</p>
+              <p style="font-size:small">4. Other qualifications</p>
+            </div>
+            <div class="row" style="margin-top:2rem">
+              <div class="col-md-4" *ngFor="let qualification of qualificationList">
+                <div class="qualification-card">
+                  <img [src]="qualification" alt="Qualification Image" class="img-fluid" style="max-width: 100%;"  (click)="openModal(qualification)">
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row" *ngFor="let qualification of qualificationList">
               <img [src]="qualification" alt="Qualification Image">
+            </div> -->
+          </div>
+        </div>
+
+        <div class="modal1" *ngIf="modalOpen">
+          <div class="modal1-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <img id="modal1-image" [src]="modalImageSrc" alt="Qualification Image" class="img-fluid">
+            <div id="modal1-details">
+              {{ modalDetails }}
             </div>
           </div>
         </div>
+
     </div>
   </div>
 </div>
