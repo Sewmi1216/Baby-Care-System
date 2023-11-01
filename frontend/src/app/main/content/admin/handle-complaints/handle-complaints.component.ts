@@ -13,6 +13,16 @@ import { CookieService } from 'ngx-cookie-service';
 export class HandleComplaintsComponent implements OnInit {
 
   complintArray: complaintArray[]=[];
+  complaintProfile = {
+    id: '',
+    type: '',
+    description: '',
+    status:'',
+    date: '',
+
+
+  };
+  complaintId: string | null = null;
 
 
 
@@ -40,6 +50,8 @@ export class HandleComplaintsComponent implements OnInit {
       );
     }
 
+    
+
 
 
   isActive: boolean = false;
@@ -58,7 +70,7 @@ export class HandleComplaintsComponent implements OnInit {
 }
 
 interface complaintArray{
-  id: string;
+  _id: string;
   type: string;
   description: string;
   status: string;

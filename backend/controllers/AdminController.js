@@ -7,6 +7,7 @@ let SystemInfo = require("../models/SystemInfo");
 
 let Expert = require("../models/DomainExpert");
 const bcrypt = require("bcryptjs");
+const Complaint = require("../models/Complaint");
 
 const AddAdmin = (req, res) => {
     const firstName = req.body.firstName;
@@ -565,6 +566,29 @@ const getOneUser = async (req, res) => {
     }
 };
 
+const getOneComplaint = async (req, res) => {
+    try {
+        let complaintId = req.params.id;
+
+
+        console.log("complaintId:",complaintId);
+
+        const complaint = await Complaint.findOne({_id: complaintId});
+
+        if (!complaint) {
+            res.status(404).send({ status: "No complaint" });
+        } else {
+            console.log("complaint: ", complaint);
+            
+            res.status(200).json({ status: "complaint", complaint});
+        }
+    
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
 
 
 
@@ -610,6 +634,7 @@ module.exports={
     getComplaintCount,
     getBabysitter,
     UpdateVerifyStatus,
-    getOneUser
+    getOneUser,
+    getOneComplaint
     
 };

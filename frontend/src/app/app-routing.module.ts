@@ -378,7 +378,7 @@ const routes: Routes = [
         component: HandleComplaintsComponent
       },
       {
-        path: 'handle_complaints_view_more',
+        path: 'handle_complaints_view_more/:id',
         component: HandleComplaintsViewMoreComponent
       },
       {
