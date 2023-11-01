@@ -49,6 +49,9 @@ export class SitterPersonalInformationComponent {
     nic: '',
     religon: '',
     language: '',
+    qualifications:[{
+      imageUrl: '',
+    }]
   };
 
   babysitterFullName: string | null = null;
@@ -91,6 +94,7 @@ export class SitterPersonalInformationComponent {
   timeValidation: boolean[] = new Array(7).fill(false);
   missingValue: boolean[] = new Array(7).fill(false);
   initialValue: boolean[] = new Array(7) .fill(false);
+  qualificationList: string[] = []
   // mistake: boolean = true;
 
   constructor(
@@ -222,6 +226,10 @@ export class SitterPersonalInformationComponent {
           console.log(this.babysitterProfile)
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
           console.log(this.babysitterProfile);
+          for (const qualification of this.babysitterProfile.qualifications) {
+            this.qualificationList.push(qualification.imageUrl)
+          }
+          console.log(this.qualificationList)
         },
         (error)=>{
           console.log(localStorage.getItem('user'))

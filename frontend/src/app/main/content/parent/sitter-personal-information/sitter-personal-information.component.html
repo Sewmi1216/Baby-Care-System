@@ -50,6 +50,10 @@
         <div class="card custom-card" style="background-color: #FFFFFF;">
           <div class="right">
             <p class="font-weight-bold">Qualification Details</p>
+            <div *ngFor="let qualification of qualificationList" >
+              <!-- {{qualification}} -->
+              <img [src]="qualification" alt="Qualification Image">
+            </div>
           </div>
         </div>
     </div>
