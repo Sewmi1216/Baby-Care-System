@@ -699,8 +699,8 @@ const addComplaint = async (req, res) => {
     const  description = req.body. description;
 
 
-    console.log(parentID)
-    if (!parentID) {
+    console.log("ishini",userId)
+    if (!userId) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
     }
     const newComplaint = new Complaint({
@@ -708,7 +708,7 @@ const addComplaint = async (req, res) => {
         type,
         description,
 
-        parent: parentID
+       user: userId
     });
 
     try {
