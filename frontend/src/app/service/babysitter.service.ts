@@ -83,7 +83,7 @@ export class BabysitterService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
- 
+    console.log(userId)
     return this.http.get<any>(`${environment.backend_url}/babysitter/getParent/${userId}`);      
   }
 }

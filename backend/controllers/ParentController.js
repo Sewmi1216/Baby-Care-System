@@ -382,10 +382,16 @@ const getBabysitters = async (req, res) => {
     await Babysitter.find()
     try {
         const babysitters = await Babysitter.find()
-            .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+            .populate('userId', 'firstName lastName email phone address nic profile') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
             .exec();
 
         const babysitterData = babysitters.map((babysitter) => {
+            console.log("babysitter object:", babysitter);
+            const imageFilename = babysitter.userId.profile;
+            console.log("imageFilename: ", imageFilename);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
             return {
                 userId: babysitter.userId._id,
                 age: babysitter.age,
@@ -399,7 +405,8 @@ const getBabysitters = async (req, res) => {
                 nic: babysitter.userId.nic,
                 religon: babysitter.userId.religon,
                 language: babysitter.userId.language,
-                isHired: babysitter.isHired
+                isHired: babysitter.isHired,
+                profile: imageUrl
             };
         });
         res.status(200).send({
@@ -732,6 +739,40 @@ const addComplaint = async (req, res) => {
     }
 };
 
+const deleteBabysitter = async (req, res) => {
+    let babysitterID = req.params.id1;
+    let userId = req.params.id2;
+    console.log(babysitterID)
+    console.log(userId);
+
+    const updateParent = {
+        babysitter: null,
+    };
+
+    const updateBabysitter = {
+        parent: null,
+        isHired: false,
+        startDate: null,
+        endDate: null,
+        extendDate: null
+    };
+
+    try {
+        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+
+        const requestForm = await RequestForm.findOneAndDelete({Babysitter: babysitterID}, {parent: userId});
+
+        if (!updatedParent) {
+            return res.status(404).send({ status: "Parent not found" });
+        }
+        res.status(200).send({ status: "Parent updated", updatedBabysitter });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
 
 module.exports = {
     addParent,
@@ -760,5 +801,6 @@ module.exports = {
     getRequestsCount,
     updateBabysitter,
     updateParentProfile,
-    getParentProfile
+    getParentProfile,
+    deleteBabysitter
 };

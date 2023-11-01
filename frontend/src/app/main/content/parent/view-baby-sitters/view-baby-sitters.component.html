@@ -32,7 +32,8 @@
           <div class="col-md-4">
             <div class="card custom-card" style="width: 80%; height: 342px; margin-top: 2rem; margin-right: 2rem; margin-left: 2rem; margin-bottom:2rem; border-width: 0px;">
               <div class="d-flex justify-content-center mt-3">
-                <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+                <!-- {{babysitter.profile}} -->
+                <img class="card-img-top custom-img" [src]="babysitter.profile">
               </div>
               <div class="card-body bg-custom text-center">
                 <h4 style="font-weight: bold" class="card-title">{{babysitter.firstName}} {{babysitter.lastName}}</h4>
