@@ -39,6 +39,32 @@ export class ParentProfileComponent {
     });
   }
 
+  updatePassword() {
+    if (this.newPassword === this.confirmNewPassword) {
+      // @ts-ignore
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        this.parentService.updatePassword(user).subscribe(
+          (data:any) => {
+            console.log("Password updated successfully:", data);
+            this.toast.success({detail: "Password updated successfully", summary: 'Updated', position: 'topCenter'});
+            console.log("Successfully");
+            location.reload();
+          },
+          (err:any) => {
+            this.toast.error({detail: "Error", summary: err.error.message, position: 'topCenter'});
+            console.error(`Failed to update password: ${err}`, err);
+          }
+        );
+      } else {
+        console.error("User data not found in local storage.");
+      }
+    } else {
+      console.error("Passwords do not match");
+    }
+
+  }
+
   getParent() {
     // @ts-ignore
     this.parentService.getParentProfile(this.userId).subscribe(
