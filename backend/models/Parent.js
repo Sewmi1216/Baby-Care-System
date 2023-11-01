@@ -15,6 +15,10 @@ const parentSchema = new schema({
         type: schema.Types.ObjectId,
         default: null
     },
+    plan:{
+        type:String,
+        default: 'free'
+    },
 
 })
 

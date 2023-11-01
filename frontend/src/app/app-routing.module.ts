@@ -400,7 +400,7 @@ const routes: Routes = [
         component: ManageUserAccountsMoreComponent
       },
       {
-        path: 'view_babysitter_verify',
+        path: 'view_babysitter_verify/:id',
         component: ViewBabysitterVerifyComponent
       },
 

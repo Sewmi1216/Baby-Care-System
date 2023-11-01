@@ -80,7 +80,7 @@ export class AppComponent implements AfterViewInit {
       // Play the video once the stream is set
       this.videoElement.nativeElement.play();
       this.sendVideoFrames();
-     // this.analyzeCameraFrames();
+      this.analyzeCameraFrames();
     } catch (error) {
       console.error('Error accessing camera:', error);
     }
@@ -150,7 +150,8 @@ export class AppComponent implements AfterViewInit {
       if (!babyDetection) {
         // Baby not detected, send an alert to the web server
         // this.lastAlertTime = Date.now();
-         this.socket.emit('BabyNotDetected');
+
+         this.socket.emit('BabyNotDetected',{data:'Baby not detect'});
       }
     }
 

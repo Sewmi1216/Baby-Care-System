@@ -4,45 +4,28 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 
-const qualificationsSchema = new schema ({
-    filename: {
-        type: String,
-        required: true,
-    },
-    filetype: {
-        type: String,
-        required: true,
-    },
-    size: {
-        type: Number,
-    },
-    data: {
-        type: String, //binary_data_or_file_url_here
-        required: true,
-    },
-    isVerified: {
-        type: Boolean,
-        default: false,
-    }
-})
+// const qualificationsSchema = new schema ({
+//     filename: {
+//         type: String,
+//         required: true,
+//     },
+//     filetype: {
+//         type: String,
+//         required: true,
+//     },
+//     size: {
+//         type: Number,
+//     },
+//     data: {
+//         type: String, //binary_data_or_file_url_here
+//         required: true,
+//     },
+//     isVerified: {
+//         type: Boolean,
+//         default: false,
+//     }
+// })
 
-const verificationDetailsSchema = new schema ({
-    filename: {
-        type: String,
-        required: true,
-    },
-    filetype: {
-        type: String,
-        required: true,
-    },
-    size: {
-        type: Number,
-    },
-    data: {
-        type: String,
-        required: true,
-    }
-})
 const imageSchema  = new schema ({
     filename: {
         type: String,
@@ -79,13 +62,13 @@ const babysitterSchema = new schema ({
     //     type:String,
     //     required:false
     // },
-    religon:{
+    religion:{
         type: String,
-        required:false,
+        required:true,
     },
     language: {
         type: String,
-        required: false,
+        required: true,
     },
     parent: {
         type: schema.Types.ObjectId,
@@ -103,10 +86,7 @@ const babysitterSchema = new schema ({
         type: Date,
         default: null
     },
-    status:{
-        type:String,
-        required:true
-    },
+
 })
 
 

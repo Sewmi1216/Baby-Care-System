@@ -86,11 +86,7 @@ export class EditSysInfoComponent {
     }
 
     save(data:any){
-      // this.about = data.about;
-      // this.goals = data.goals;
-      // this.service = data.service;
-      // this.vision = data.vision;
-      // this.thank = data.thank;
+
 
       this.currentInfoID == data._id;
 
