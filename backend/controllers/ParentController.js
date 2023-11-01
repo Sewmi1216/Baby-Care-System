@@ -144,7 +144,7 @@ const addTaskList = async (req, res) => {
     try{
         const savedTaskListForm = await newTaskListFormData.save();
         console.log(savedTaskListForm);
-        return res.status(201).send({status: "RequestForm is added", taskListForm: savedTaskListForm});
+        return res.status(201).send({status: "RequestForm is added", taskListForm: savedgetAllOldTaskListsgetAllOldTaskListsTaskListForm});
     }
     catch(err){
         console.log(err.message);
@@ -281,21 +281,23 @@ const getBaby = async (req, res) => {
 
 
 
-const getOldAllTaskLists = async(req,res) => {
+const getAllOldTaskLists = async(req,res) => {
     try {
         let userId = req.params.id;
         const todayDate = new Date().toJSON().slice(0,10);
+
         const OldAllTaskLists = await TaskListForm.find(
             {
                 parent:userId,
                 date :{$lt : todayDate}
             }
         );
+        console.log(OldAllTaskLists);
         if( !OldAllTaskLists || OldAllTaskLists.length === 0)
         {
             res.status(404).send({status : "No old task lists found for this parent"});
         }else{
-            res.status(200).send({status: "Old task lists found for this parent"})
+            res.status(200).send({status: "Old task lists found for this parent", OldAllTaskLists});
             console.log(OldAllTaskLists)
         }
     }
@@ -859,7 +861,7 @@ module.exports = {
     getRequestsCount,
     updateBabysitter,
     getTodayTaskList,
-    getOldAllTaskLists,
+    getAllOldTaskLists,
     getNextAllTaskLists,
     updateTaskListTemplate,
 };

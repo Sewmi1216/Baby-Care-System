@@ -41,7 +41,7 @@ router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.ge
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.updateBabysitter); //id=babysitterID
 router.route("/getTodayTaskList/:id").get(authJwt.verifyParent,parentController.getTodayTaskList); // id=parent ID
-router.route("/getOldAllTaskLists/:id").get(authJwt.verifyParent,parentController.getOldAllTaskLists);
+router.route("/getAllOldTaskLists/:id").get(authJwt.verifyParent,parentController.getAllOldTaskLists);
 router.route("/getNextAllTaskLists/:id").get(authJwt.verifyParent,parentController.getNextAllTaskLists);
 router.route("/updateTaskListTemplate/:id").put(authJwt.verifyParent, parentController.updateTaskListTemplate);
 

@@ -14,6 +14,14 @@
   margin-top: -51px;
 }
 
+/* CSS in your styles.css or component-specific CSS file */
+.blue-checkbox:checked {
+  background-color: blue; /* Change the background color to blue */
+  border: 1px solid blue; /* Change the border color to blue */
+  color: white; /* Change the text color to white */
+}
+
+
 @media (max-width: 768px) {
 
 

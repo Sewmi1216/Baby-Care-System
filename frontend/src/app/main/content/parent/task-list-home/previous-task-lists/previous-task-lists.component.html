@@ -1,1 +1,44 @@
-<p>previous-task-lists works!</p>
+<div *ngFor="let taskList of taskLists; let i = index">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <div class="card rounded-0 border-0 shadow">
+          <div class="card-body p-5">
+            <h2>Task List Name: <span class="custom-text-color">{{ taskList.taskListName }}</span></h2>
+
+            <div class="table-wrapper">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th scope="col">Task Name</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Send reminders</th>
+                  <th scope="col">Any note</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let task of taskList.tasks; let k = index">
+                  <td>{{ k + 1 }}</td>
+                  <td>
+                    <input [ngModel]="task.taskName" [disabled]="true" />
+                  </td>
+                  <td>
+                    <input [ngModel]="task.time" [disabled]="true" />
+                  </td>
+                  <td>
+                    <input type="checkbox" [ngModel]="task.isRemainder" [disabled]="true" />
+                  </td>
+                  <td>
+                    <input [ngModel]="task.specialNote || 'N/A'" [disabled]="true" />
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

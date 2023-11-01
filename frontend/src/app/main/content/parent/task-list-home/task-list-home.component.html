@@ -10,13 +10,13 @@
       </div>
       <div>
         <button routerLink="/parent/create_new_task_list" type="button" class="btn btn-info btn-rounded mt-3 custom-addevent-btn-color"
-                title="Click to create task list for create new template or add task list">Create new Task List</button>
+                title="Click to create task list for create a new template or add a task list">Create new Task List</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CHARTS STARTS HERE -->
+<!-- CHARTS START HERE -->
 <div class="charts">
   <div class="charts__left">
     <div class="charts__left__title">
@@ -56,38 +56,31 @@
             </a>
           </div>
           <div class="col-auto">
-      <span class="fa-stack fa-2x">
-
-      </span>
+            <span class="fa-stack fa-2x"></span>
           </div>
         </div>
         <p class="mt-3 mb-0 text-muted text-sm">
-
         </p>
       </div>
-
 
     </div>
   </div>
 
   <div class="charts__right">
     <div class="charts__right__cards">
-      <div class="btn-container">
+      <div class="btn-container col-lg-6">
 
       </div>
-
       <!--right side-->
       <!-- Inside your HTML template -->
-
       <div class="btn-container">
         <div class="btn-row">
           <div class="container py-4">
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-lg"> <!-- Reduced to col-lg-8, adjust as needed -->
                 <div class="card rounded-0 border-0 shadow">
-                  <div class="card-body p-3">
+                  <div class="card-body p-4">
                     <h2>Task List Name: {{ taskListForm.taskListName }}</h2>
-
                     <div class="table-responsive">
                       <table class="table table-lg">
                         <thead>
@@ -97,8 +90,10 @@
                           <th scope="col">Time</th>
                           <th scope="col">Send Reminders</th>
                           <th scope="col">Any Note</th>
+                          <th scope="col">Completed</th>
                         </tr>
                         </thead>
+                        <!-- ... -->
                         <tbody>
                         <tr *ngFor="let task of taskDetails; let i = index">
                           <td>{{ i + 1 }}</td>
@@ -114,8 +109,12 @@
                           <td>
                             <input type="text" [value]="task.specialNote || 'N/A'" disabled />
                           </td>
+                          <td>
+                            <input type="checkbox" [checked]="task.isCompleted" disabled />
+                          </td>
                         </tr>
                         </tbody>
+                        <!-- ... -->
                       </table>
                     </div>
                   </div>
@@ -125,12 +124,7 @@
           </div>
         </div>
       </div>
-
-
-
-
-
-      <!-- CHARTS ENDS HERE -->
+      <!-- CHARTS END HERE -->
     </div>
   </div>
 </div>

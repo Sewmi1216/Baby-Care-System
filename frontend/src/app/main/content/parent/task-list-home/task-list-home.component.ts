@@ -76,7 +76,35 @@ export class TaskListHomeComponent implements OnInit {
   ngOnInit(): void {
     //this.getTaskListTemplates();
     this.getTodayTaskList();
+    this.sortTasks();
   }
+
+  sortTasks() {
+    this.taskDetails = this.sortTasksByTime(this.taskDetails);
+  }
+
+  sortTasksByTime(tasks: TaskListItems[]): TaskListItems[] {
+    // Separate tasks with time and tasks without time
+    const tasksWithTime = tasks.filter(task => task.time);
+    const tasksWithoutTime = tasks.filter(task => !task.time);
+
+    // Sort tasks with time in ascending order
+    tasksWithTime.sort((a, b) => {
+      // Convert time strings to Date objects for comparison
+      const timeA = a.time ? new Date(a.time) : null;
+      const timeB = b.time ? new Date(b.time) : null;
+
+      if (timeA && timeB) {
+        return timeA.getTime() - timeB.getTime();
+      }
+
+      return 0;
+    });
+
+    // Concatenate tasks with time and tasks without time
+    return [...tasksWithTime, ...tasksWithoutTime];
+  }
+
 
   getTodayTaskList() {
     const userJSON = localStorage.getItem('user');
@@ -92,14 +120,6 @@ export class TaskListHomeComponent implements OnInit {
 
           console.log(this.taskListName);
           console.log(this.taskDetails);
-
-
-          // this.tListForm  = response.todayTaskList.taskListForms;
-          // this.tListName = response.todayTaskList.taskListName;
-          // this.tDetails = response.tasks;
-          //
-          // console.log(response);
-          // console.log(response.todayTaskList);
 
         },
         (error) => {

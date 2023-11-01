@@ -20,6 +20,25 @@ interface TaskListForm {
   //Babysitter: string;
 }
 
+interface TaskList {
+  _id: string;
+  parent: string;
+  Babysitter: string;
+  taskListName: string;
+  date: Date;
+  tasks: {
+    taskName: string;
+    time: string;
+    isRemainder: boolean | null;
+    isCompleted: boolean | null;
+    specialNote: string | null;
+    _id: string;
+  }[];
+  __v: number;
+}
+
+
+
 @Component({
   selector: 'app-previous-task-lists',
   templateUrl: './previous-task-lists.component.html',
@@ -53,19 +72,23 @@ export class PreviousTaskListsComponent {
     this.getAllOldTaskLists();
   }
 
+  taskLists: TaskList[] = [];
+
   getAllOldTaskLists(){
     const userJSON = localStorage.getItem('user');
       if(userJSON !== null){
          this.parentService.getAllOldTaskLists(JSON.parse(userJSON)).subscribe(
           (response) =>{
             console.log(response);
-
-            this.taskListForms = response.taskListForms;
-            for(const taskListForm of this.taskListForms){
-              this.taskListName = taskListForm.taskListName;
-              this.taskDetails = taskListForm.tasks;
-              this.taskListId = taskListForm._id;
-            }
+            this.taskLists = response.OldAllTaskLists;
+            // console.log(response);
+            //
+            // this.taskListForms = response.taskListForms;
+            // for(const taskListForm of this.taskListForms){
+            //   this.taskListName = taskListForm.taskListName;
+            //   this.taskDetails = taskListForm.tasks;
+            //   this.taskListId = taskListForm._id;
+            // }
           },
           (error) => {
             console.error('Error fetching Old task lists.', error);
