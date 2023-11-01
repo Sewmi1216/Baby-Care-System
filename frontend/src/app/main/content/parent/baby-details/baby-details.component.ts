@@ -15,6 +15,7 @@ import {DatePipe} from "@angular/common";
 export class BabyDetailsComponent implements OnInit{
   @ViewChild('addBabyForm', { static: true }) public addBabyForm!: NgForm;
 
+  parentId: string | null = null;
   babies: any[] = [];
   baby = {
     id:'',
@@ -30,14 +31,16 @@ export class BabyDetailsComponent implements OnInit{
   image:string=''
 
   constructor(
-    private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
+    private route: ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
 
  // const accessToken = this.cookieService.get('access_token');
   ngOnInit(): void {
-   // this.userId = this.parentService.getUserId();
-   // this.babyProfile = this.parentService.babyProfile;
-    this.getBabies();
+    this.route.params.subscribe(params => {
+      this.parentId = params['parentId'];
+      this.getBabies();
+    });
+
   }
   calculateAge(birthDate: string): string {
     const birthDateObj = new Date(birthDate);

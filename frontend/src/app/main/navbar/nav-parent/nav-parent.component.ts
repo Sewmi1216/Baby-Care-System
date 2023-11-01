@@ -71,7 +71,7 @@ export class NavParentComponent {
         (response) => {
           this.parent = response.parent;
           console.log(this.parent);
-          this.parentId = this.parent._id
+          // this.parentId = this.parent._id
         },
         (error) => {
           console.log(localStorage.getItem('user'))

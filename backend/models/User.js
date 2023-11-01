@@ -37,11 +37,8 @@ const userSchema = new schema({
         type:String
     },
     status:{
-        type:String
-    },
-    status:{
-        type:Boolean,
-        default: 0
+        type:String,
+        default: "pending"
     },
 })
 

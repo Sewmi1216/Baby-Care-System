@@ -62,7 +62,7 @@ export class ParentProfileComponent {
   //   } else {
   //     console.error("Passwords do not match");
   //   }
-  //
+
   // }
 
   getParent() {
