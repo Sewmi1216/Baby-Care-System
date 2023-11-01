@@ -73,7 +73,6 @@ export class ParentProfileComponent {
 
 
 
-  }
 
   getParent() {
     // @ts-ignore
