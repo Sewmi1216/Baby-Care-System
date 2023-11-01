@@ -13,7 +13,7 @@ const taskListSchema = new schema({
 
     Babysitter: {
         type: schema.Types.ObjectId,
-        required: true,
+        default: null,
     },
 
     taskListName: {
@@ -25,7 +25,7 @@ const taskListSchema = new schema({
         type: Date,
         required: false,
     },
-    //tasks:[taskSchema] ,
+
 
     tasks:[{
         taskName:{

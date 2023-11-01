@@ -88,6 +88,16 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getAllOldTaskLists/${userId}`, {headers});
   }
 
+  // getParent(user:any):Observable<any>{
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+  //   });
+  //   const userId = user.id;
+  //   console.log('Request headers:', headers);
+  //   return this.http.get<any>(`${environment.backend_url}/parent/getParent/${userId}`, {headers});
+  // }
+
 
   getTaskListTemplate(user:any, taskListId:string):Observable<any>{
     const headers = new HttpHeaders({
@@ -102,6 +112,7 @@ export class ParentService {
     //console.log(userId); // working
     return this.http.get<any>(`${environment.backend_url}/parent/getTaskListTemplate/${taskListId}`, {headers});
   }
+
 
 
   private getAccessTokenFromCookie(): string {
@@ -252,8 +263,6 @@ export class ParentService {
   }
 
   getParent(user:any): Observable<any> {
-    // const parentId = parentID
-    // console.log(parentId)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`

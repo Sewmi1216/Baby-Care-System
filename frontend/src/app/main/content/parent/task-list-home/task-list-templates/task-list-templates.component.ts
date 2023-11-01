@@ -44,6 +44,8 @@ export class TaskListTemplatesComponent {
 
   filteredTaskListForms: any[] = [];
 
+  userId:string = ''
+
 
 
 
@@ -76,6 +78,8 @@ export class TaskListTemplatesComponent {
     //Babysitter: ''
   };
 
+  babySitterId : string = '';
+
   @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
 
 
@@ -98,22 +102,32 @@ export class TaskListTemplatesComponent {
 
   ngOnInit(): void {
     this.getTaskListTemplates();
+    //this.getBabySitter();
   }
 
   getTaskListTemplates() { // get all task list templates
     const userJSON = localStorage.getItem('user');
+
     if (userJSON !== null) {
+      const userString = JSON.parse(userJSON);
+      this.userId = userString.id;
+      console.log(this.userId);
+
+      this.getBabySitter( this.userId, userJSON);
+
       this.parentService.getTaskListTemplates(JSON.parse(userJSON)).subscribe(
         (response) => {
           console.log(response); //- this is working
           this.taskListForms = response.taskListForms;
           console.log(response.taskListForms);
+          console.log(response.taskListForms.parent)
           for (const taskListForm of this.taskListForms) {
             // this.date = taskListForm.date;
             this.taskListName = taskListForm.taskListName;
             this.taskDetails = taskListForm.tasks;
              this.taskListId = taskListForm._id;
           }
+
         },
         (error) => {
           console.error('Error fetching task list templates:', error);
@@ -121,6 +135,26 @@ export class TaskListTemplatesComponent {
       )
     }
   }
+
+
+
+  private getBabySitter(userId: string, userJSON :any) {
+    this.parentService.getParent(JSON.parse(userJSON)).subscribe(
+      (response) => {
+
+        this.babySitterId = response.parent.babysitter;
+        console.log(response.parent.babysitter);
+        console.log(this.babySitterId);
+
+      },
+      (error) => {
+        console.error('Error fetching task list templates:', error);
+      }
+    )
+
+  }
+
+
 
 
   deleteTemplate(taskListId: string){
@@ -165,6 +199,7 @@ export class TaskListTemplatesComponent {
             console.log(this.taskListName);
             this.taskDetails = response.taskListForms.tasks;
             console.log(this.taskDetails);
+            //console.log(this.)
 
             this.insertDateToTaskList(todayDate, this.taskListName, this.taskDetails)
            // this.closeModal();
@@ -238,22 +273,6 @@ export class TaskListTemplatesComponent {
     }
     // const modalRef = this.modalService.open(this.content, { centered: true, windowClass: 'custom-modal' });
   }
-
-
-  searchTaskLists() {
-    // Perform the filtering logic here based on the searchTerm
-    // You can filter your taskListForms array by the taskListName property.
-    // Assuming you have a taskListForms array:
-    if (this.searchTerm) {
-      this.filteredTaskListForms = this.taskListForms.filter((taskList) =>
-        taskList.taskListName.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    } else {
-      // If the search term is empty, show all task lists
-      this.filteredTaskListForms = this.taskListForms;
-    }
-  }
-
 
 
 }
