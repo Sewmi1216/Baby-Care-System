@@ -347,6 +347,7 @@ const getTodayTaskList = async (req,res) =>{
                 parent: userId,
                 date : todayDate
             });
+        console.log(todayTaskList.tasks);
 
         if( !todayTaskList || todayTaskList.length === 0)
         {

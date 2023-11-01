@@ -28,8 +28,7 @@ interface TaskListForm {
 
 export class TaskListHomeComponent implements OnInit {
 
-
-
+  todayTaskList:any[] = [];
 
   taskListForms: any[] = [];
   todayDate:Date | null = null;
@@ -47,7 +46,7 @@ export class TaskListHomeComponent implements OnInit {
     taskListId: '',
     tasks: [],
   };
-  tListName: string = '';
+  // tListName: string = '';
   tDetails:any[] = [];
 
 
@@ -57,6 +56,9 @@ export class TaskListHomeComponent implements OnInit {
     tasks: [],
     //Babysitter: ''
   };
+
+  tListName : string = '';
+
 
 
 
@@ -76,32 +78,35 @@ export class TaskListHomeComponent implements OnInit {
     this.getTodayTaskList();
   }
 
-getTodayTaskList(){
-  const userJSON = localStorage.getItem('user');
-  if (userJSON !== null) {
-    this.parentService.getTodayTaskList(JSON.parse(userJSON)).subscribe(
-      (response) => {
-        this.tListForm = response.todayTaskList;
-        console.log(this.tListForm);
+  getTodayTaskList() {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getTodayTaskList(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          console.log(response);
+          console.log(response.todayTaskList);
+          this.taskListForm = response.todayTaskList;
+          // this.taskListName = response.todayTaskList.taskListName;
+          this.taskListName = response.todayTaskList[0].taskListName;
+          this.taskDetails = response.todayTaskList[0].tasks;
 
-        // this.date = taskListForm.date;
-        this.tListName = response.todayTaskList.taskListName;
-        console.log(this.tListName);
-        this.tDetails = response.todayTaskList.tasks;
-        console.log(this.tDetails);
-      },
-      (error) => {
-        console.error('Error fetching task list template:', error);
-      }
-    );
-}
-}
+          console.log(this.taskListName);
+          console.log(this.taskDetails);
 
 
+          // this.tListForm  = response.todayTaskList.taskListForms;
+          // this.tListName = response.todayTaskList.taskListName;
+          // this.tDetails = response.tasks;
+          //
+          // console.log(response);
+          // console.log(response.todayTaskList);
 
-
-
-
-
+        },
+        (error) => {
+          console.error('Error fetching today task list:', error);
+        }
+      );
+    }
+  }
 
 }

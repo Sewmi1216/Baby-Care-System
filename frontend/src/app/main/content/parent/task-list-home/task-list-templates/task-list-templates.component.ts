@@ -40,20 +40,8 @@ export class TaskListTemplatesComponent {
   taskDetails: any[] = [];
   taskListId: string='';
 
-  searchTerm: string = '';
-
-  filteredTaskListForms: any[] = [];
-
   userId:string = ''
 
-
-
-
-  // these for update modal
-  // tListForm: any[] = [];
-  // tListName: string = '';
-  // tDetails: any[] = [];
-  // tDate:Date |null = null;
 
   tListForm: any = {
     date: '',
@@ -126,6 +114,7 @@ export class TaskListTemplatesComponent {
             this.taskListName = taskListForm.taskListName;
             this.taskDetails = taskListForm.tasks;
              this.taskListId = taskListForm._id;
+
           }
 
         },

@@ -45,6 +45,7 @@ export class ViewBabyDetailsComponent {
     if(userJSON!==null){
       this.parentService.getBaby(this.babyId).subscribe(
         (response) => {
+          console.log(response);
           this.baby = response.baby;
           console.log(this.baby)
           this.img=response.imageUrl

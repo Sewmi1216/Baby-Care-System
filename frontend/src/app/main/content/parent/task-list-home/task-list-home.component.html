@@ -16,16 +16,10 @@
   </div>
 </div>
 
-
-
-
-
-
 <!-- CHARTS STARTS HERE -->
 <div class="charts">
   <div class="charts__left">
     <div class="charts__left__title">
-
     </div>
     <div class="charts__left__cards">
 
@@ -83,128 +77,51 @@
       </div>
 
       <!--right side-->
+      <!-- Inside your HTML template -->
 
       <div class="btn-container">
         <div class="btn-row">
+          <!-- Bootstrap table -->
+          <div class="container py-4">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card rounded-0 border-0 shadow">
+                  <div class="card-body p-3">
+                    <h2>Task List Name: {{ taskListForm.taskListName }}</h2>
 
-          <!--  Bootstrap table-->
-          <div class="table-responsive">
-            <h1>Today's Task List</h1>
+                    <div class="table-responsive">
+                      <table class="table table-lg">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th scope="col">Task Name</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Send Reminders</th>
+                          <th scope="col">Any Note</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let task of tDetails; let i = index">
+                          <td>{{ i + 1 }}</td>
+                          <td>{{ task.taskName }}</td>
+                          <td>{{ task.time }}</td>
+                          <td>{{ task.isRemainder ? 'Yes' : 'No' }}</td>
+                          <td>{{ task.specialNote || 'N/A' }}</td>
+                        </tr>
 
-
-            <p><strong>Date : </strong>2023/11/01</p>
-            <p><strong>Task List Name : </strong>Monday Task List</p>
-
-            <table class="table">
-              <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Task Name</th>
-                <th scope="col">Time</th>
-                <th scope="col">Send reminders</th>
-                <th scope="col">Any special Note</th>
-                <th scope="col">Completed</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr >
-                <td>1</td>
-                <td>Feeding</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <tr >
-                <td>2</td>
-                <td>Preapare meal</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <tr >
-                <td>3</td>
-                <td>Give medicine</td>
-                <td>8.00AM</td>
-                <td>
-                  <i style="color: #0c4548" class="fa fa-check-circle finished-icon"></i>
-                </td>
-
-                <td>Any note</td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <tr >
-                <td>4</td>
-                <td>Washing clothes</td>
-                <td></td>
-                <td></td>
-                <td>Any note</td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <tr >
-                <td>5</td>
-                <td>Dressing up</td>
-                <td></td>
-                <td></td>
-                <td>Any note</td>
-                <td><input type="checkbox"></td>
-              </tr>
-              <tr >
-                <td>6</td>
-                <td>Give medicine</td>
-                <td>12.00PM</td>
-                <td></td>
-                <td>Any note</td>
-                <td><input type="checkbox"></td>
-              </tr>
-              </tbody>
-            </table>
-
-
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-<!--          <div class="table-responsive">-->
-<!--            <div class="table-wrapper">-->
-<!--              <table class="table">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                  <th>#</th>-->
-<!--                  <th scope="col">Task Name</th>-->
-<!--                  <th scope="col">Time</th>-->
-<!--                  <th scope="col">Send remainders</th>-->
-<!--                  <th scope="col">Any note</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--&lt;!&ndash;                <tr  *ngFor="let taskList of taskListForms; let i = index">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <td>{{i+1}}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input [ngModel]="taskList.taskName" [disabled]="true" />&ndash;&gt;-->
-<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input [ngModel]="taskList.time" [disabled]="true" />&ndash;&gt;-->
-<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input type="checkbox" [ngModel]="taskList.isRemainder" [disabled]="true" />&ndash;&gt;-->
-<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input type="text" [ngModel]="taskList.specialNote" [disabled]="true" />&ndash;&gt;-->
-<!--&lt;!&ndash;                  </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
-<!--                </tbody>-->
-<!--              </table>-->
-<!--            </div>-->
-
-
-<!--            </div>-->
-
-
+        </div>
       </div>
 
 
-  </div>
-  <!-- CHARTS ENDS HERE -->
+      <!-- CHARTS ENDS HERE -->
     </div>
   </div>
 </div>
