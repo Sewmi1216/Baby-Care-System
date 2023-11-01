@@ -38,11 +38,11 @@ export class LoginComponent {
           this.toast.success({detail: "SUCCESS", summary: user.msg, position: 'topCenter'});
         } else if (user['role'] === 'Babysitter') {
           console.log(user['status'])
-          if (user['status'] === 'true') {
+          if (user['status'] === true) {
             this.router.navigate(['/babysitter/babysitter_dashboard'])
             this.toast.success({detail: "SUCCESS", summary: user.msg, position: 'topCenter'});
           }else{
-            this.toast.error({detail: "SUCCESS", summary: 'Your account has not verified. Try again later', position: 'topCenter'});
+            this.toast.error({detail: "ERROR", summary: 'Your account has not verified. Try again later', position: 'topCenter'});
           }
         } else if (user['role'] === 'Admin') {
           this.router.navigate(['/admin/admin_dashboard'])

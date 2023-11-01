@@ -58,6 +58,7 @@ export class BabyDetailsComponent implements OnInit{
       (error) => {
       //  console.log(localStorage.getItem('user'))
         console.error('Error fetching babies:', error);
+        this.toast.error({detail:"ERROR",summary:"No babies were added", position:'topCenter'});
       }
     );
   }
@@ -99,7 +100,7 @@ export class BabyDetailsComponent implements OnInit{
      console.log(formdata);
     this.parentService.addBaby(formdata).subscribe(
       (data) => {
-        this.router.navigate(['/parent/baby_details'])
+        this.router.navigate(['/parent/baby_details/', userId])
         this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
         console.log("Baby added successful:", data);
 

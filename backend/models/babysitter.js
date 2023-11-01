@@ -103,10 +103,7 @@ const babysitterSchema = new schema ({
         type: Date,
         default: null
     },
-    status:{
-        type:Boolean,
-        default: 0
-    },
+
 })
 
 
