@@ -241,7 +241,7 @@ const routes: Routes = [
         component: VaccinationDetailsComponent
       },
       {
-        path: 'growth_parameters',
+        path: 'growth_parameters/:baby_id',
         component: GrowthParametersComponent
       },
       {

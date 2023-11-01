@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ParentService} from "../../../../service/parent.service";
 import {NgToastService} from "ng-angular-popup";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 
 interface Parameter {
@@ -18,15 +18,12 @@ interface Parameter {
   styleUrls: ['./growth-parameters.component.css']
 })
 export class GrowthParametersComponent implements OnInit {
+
+  babyId: string | null = null;
+  baby: { id: string, birthDate: string } = { id: '', birthDate: '' };
   ageGroups: any[] = [];
-
-  ageGroup = {
-    id: '',
-    type: '',
-
-  };
-
   parameters: Parameter[] = [];
+
 
   // Separate arrays for different categories
   movementPhysicalDevelopmentParameters: Parameter[] = [];
@@ -36,18 +33,77 @@ export class GrowthParametersComponent implements OnInit {
 
 
 
+
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
     private router: Router,
-    private CookieService: CookieService
+    private CookieService: CookieService,
+    private route: ActivatedRoute
   ){}
 
   selectedAgeGroupId!: string;
+  today = new Date();
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.babyId = params['babyId'];
+      console.log(this.babyId);
+      this.getBaby();
+    });
     this.getAgeGroup();
+    const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
+    this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
+
   }
+
+
+
+  calculateAgeInMonths(birthDate: string): number {
+    const birthDateObj = new Date(birthDate);
+    const today = new Date();
+    console.log(today);
+    console.log(birthDateObj);
+
+    const yearsDiff = today.getFullYear() - birthDateObj.getFullYear();
+    const monthsDiff = today.getMonth() - birthDateObj.getMonth();
+
+    // Calculate the age in months
+    const ageInMonths = yearsDiff * 12 + monthsDiff;
+    console.log(ageInMonths);
+
+    return ageInMonths;
+  }
+
+  getDefaultAgeGroup(ageInMonths: number): string {
+    let ageGroupId: string = ""; // Initialize the age group ID variable
+
+    if (ageInMonths >= 0 && ageInMonths < 2) {
+      ageGroupId = "64fff0a2dba1d5e14100c6d3";
+    } else if (ageInMonths >= 2 && ageInMonths < 4) {
+      ageGroupId = "64fff11bdba1d5e14100c6d5";
+    } else if (ageInMonths >= 4 && ageInMonths < 6) {
+      ageGroupId = "64fff12edba1d5e14100c6d6";
+    } else if (ageInMonths >= 6 && ageInMonths < 9) {
+      ageGroupId = "64fff149dba1d5e14100c6d7";
+    } else if (ageInMonths >= 9 && ageInMonths < 12) {
+      ageGroupId = "64fff15cdba1d5e14100c6d8";
+    } else if (ageInMonths >= 12 && ageInMonths < 18) {
+      ageGroupId = "64fff174dba1d5e14100c6d9";
+    } else if (ageInMonths >= 18 && ageInMonths < 24) {
+      ageGroupId = "64fff11bdba1d5e14100c6d5";
+    } else if (ageInMonths >= 24 && ageInMonths < 36) {
+      ageGroupId = "64fff197dba1d5e14100c6da";
+    } else if (ageInMonths >= 36 && ageInMonths < 48) {
+      ageGroupId = "64fff1cedba1d5e14100c6db";
+    } else if (ageInMonths >= 48 && ageInMonths < 60) {
+      ageGroupId = "64fff1e3dba1d5e14100c6dc";
+    }
+
+    return ageGroupId;
+  }
+
+
 
   getAgeGroup(){
     const userJSON = localStorage.getItem('user');
@@ -98,6 +154,24 @@ export class GrowthParametersComponent implements OnInit {
   // to filter parameters by type
   filterParametersByType(type: string): Parameter[] {
     return this.parameters.filter(parameter => parameter.type === type);
+  }
+
+  getBaby(){
+    const userJSON = localStorage.getItem('user');
+    console.log(this.babyId);
+    if(userJSON!==null){
+      this.parentService.getBaby(this.babyId).subscribe(
+        (response) => {
+          this.baby = response.baby;
+          const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
+          this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }
   }
 
 

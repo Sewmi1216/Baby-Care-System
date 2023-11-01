@@ -32,7 +32,15 @@ const viewParentProfile = async (req, res) => {
 }
 const addParent = async (req, res) => {
     try {
-        const {role, firstName, lastName, email, phone, address, password, nic} = req.body;
+        const role = req.body.role;
+        const firstName = req.body.firstName;
+        const lastName = req.body.lastName;
+        const email = req.body.email;
+        const phone = req.body.phone;
+        const address = req.body.address;
+        const password = req.body.cpassword;
+        const nic = req.body.nic;
+        const profile= req.file.filename;
 
         const userExists = await User.findOne({email: email});
         if (userExists) {
@@ -46,7 +54,8 @@ const addParent = async (req, res) => {
             email,
             phone,
             address,
-            nic
+            nic,
+            profile
         });
 
         const saltRounds = 12;
@@ -154,19 +163,17 @@ const getBabies = async (req, res) => {
 
 const getBaby = async (req, res) => {
     try {
-        let babyId = req.params.id;
+        const babyId = req.params.id; // Assuming this is a unique identifier
 
-        console.log("BabyId:",babyId);
+        console.log("BabyId:", babyId);
 
-        const Baby = await Baby.find({userId: babyId});
-        // const activities = parameters.map(parameters => parameters.activity);
+        const baby = await Baby.findById(babyId); // Use findOne to get a single document
 
-        if (!Baby || Baby.length === 0) {
-            res.status(404).send({ status: "No activities found for this ageGroup" });
+        if (!baby) {
+            res.status(404).send({ status: "Baby not found" });
         } else {
-            res.status(200).send({ status: "Baby details", Baby});
+            res.status(200).send({ status: "Baby details", baby });
         }
-
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Internal server error' });

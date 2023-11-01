@@ -35,20 +35,19 @@ export class ViewBabyDetailsComponent {
     });
   }
 
-  getBaby(){
+  getBaby() {
     const userJSON = localStorage.getItem('user');
-    console.log(this.babyId);
-    if(userJSON!==null){
+    if (userJSON !== null) {
       this.parentService.getBaby(this.babyId).subscribe(
         (response) => {
           this.baby = response.baby;
-          console.log(this.baby)
+          console.log('Baby data:', this.baby); // Add this log to check if the baby object is correctly populated
         },
-        (error)=>{
-          console.log(localStorage.getItem('user'))
-          console.error('Error fetching babysitters:', error);
+        (error) => {
+          console.log(localStorage.getItem('user'));
+          console.error('Error fetching baby details:', error);
         }
-      )
+      );
     }
   }
 
