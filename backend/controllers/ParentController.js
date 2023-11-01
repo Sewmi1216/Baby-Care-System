@@ -420,19 +420,30 @@ const getBabysitter = async (req, res) => {
             .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
             .exec();
 
-        console.log(babysitter);
+        // console.log(babysitter);
 
         if (!babysitter.userId._id) {
             return res.status(404).send({status: "Babysitter not found"});
         }
 
+        if(babysitter.qualifications){  
+            imageUrls = babysitter.qualifications.map(qualification => {
+                console.log("Tharushi");
+                console.log("baby object:", qualification);
+                const imageFilename = qualification.filename;
+                console.log("imageFilename: ", imageFilename);
+                const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+                console.log("imageFilePath: ", imageFilePath);
+                const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+                return {imageUrl}; // Return an object with qualification and imageUrl
+            });
+        }
         const babysitterData = {
-
             _id: babysitter.userId._id,
             age: babysitter.age,
             gender: babysitter.gender,
-            image: babysitter.image,
-            firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+            // image: babysitter.image,
+            firstName: babysitter.userId.firstName,
             lastName: babysitter.userId.lastName,
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
@@ -442,6 +453,7 @@ const getBabysitter = async (req, res) => {
             language: babysitter.language,
             startDate: babysitter.startDate,
             endDate: babysitter.endDate,
+            qualifications: imageUrls // Assign the imageUrls array to qualifications
         };
         console.log(babysitterData)
 

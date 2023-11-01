@@ -26,23 +26,6 @@ const schema = mongoose.Schema;
 //     }
 // })
 
-// const verificationDetailsSchema = new schema ({
-//     filename: {
-//         type: String,
-//         required: true,
-//     },
-//     filetype: {
-//         type: String,
-//         required: true,
-//     },
-//     size: {
-//         type: Number,
-//     },
-//     data: {
-//         type: String,
-//         required: true,
-//     }
-// })
 const imageSchema  = new schema ({
     filename: {
         type: String,

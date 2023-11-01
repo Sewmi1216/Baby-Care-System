@@ -49,6 +49,9 @@ export class SitterPersonalInformationComponent {
     nic: '',
     religon: '',
     language: '',
+    qualifications:[{
+      imageUrl: '',
+    }]
   };
 
   babysitterFullName: string | null = null;
@@ -81,7 +84,7 @@ export class SitterPersonalInformationComponent {
   yearsFieldValue: number = 0;
   monthsFieldValue: number = 0;
   genderFieldValue: string | null = null;
-  selectedDays: string[] = [];
+  selectedDays: string[] = ['', '', '', '', '', '', ''];
   fromTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
   toTimeFieldValues: string[] = ['', '', '', '', '', '', ''];
   ageValues: (number | null)[] = []; // Allow null values
@@ -90,7 +93,9 @@ export class SitterPersonalInformationComponent {
   specialNeeds: string = '';
   timeValidation: boolean[] = new Array(7).fill(false);
   missingValue: boolean[] = new Array(7).fill(false);
-  mistake: boolean = false;
+  initialValue: boolean[] = new Array(7) .fill(false);
+  qualificationList: string[] = []
+  // mistake: boolean = true;
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
@@ -105,27 +110,37 @@ export class SitterPersonalInformationComponent {
     });
   }
 
-  validateTimeRange(index: number) {
+  invalidateTimeRange(index: number) {
     const fromTime = this.fromTimeFieldValues[index];
     const toTime = this.toTimeFieldValues[index];
+    // console.log(fromTime);
+    // console.log(toTime)
   
-    if (fromTime && toTime && fromTime <= toTime) {
+    if (fromTime && toTime && fromTime > toTime) {
       // Handle the validation error, e.g., set an error flag or prevent form submission
       this.timeValidation[index] = true;
       // You can also set an error flag or message to display to the user.
     }
+    this.areValuesMissing(index);
+    // console.log(this.fromTimeFieldValues)
+    // console.log(this.toTimeFieldValues)
   }
 
-  areValuesMissing(index: number){
-    this.missingValue[index] = (
-      this.fromTimeFieldValues[index] === '' ||
-      this.toTimeFieldValues[index] === ''
-    );
+  areValuesMissing(index: number) {
+    if(this.selectedDays[index] === '' && (this.fromTimeFieldValues[index] !== '' || this.toTimeFieldValues[index] !== '')){
+      this.missingValue[index] = true;
+    }
+    else if(this.selectedDays[index] !== '' && (this.fromTimeFieldValues[index] === '' || this.toTimeFieldValues[index] === '')){
+      this.missingValue[index] = true;      
+    }
+    else if(this.selectedDays[index] !== '' && this.fromTimeFieldValues[index] !== '' || this.toTimeFieldValues[index] !== ''){
+      this.missingValue[index] = false;      
+    }
   }
 
-  hasMissingFields() {
+  hasError() {
     for (let i = 0; i < this.selectedDays.length; i++) {
-      if (this.missingValue[i] && (this.fromTimeFieldValues[i] === '' || this.toTimeFieldValues[i] === '') || !this.timeValidation[i]) {
+      if (this.missingValue[i] || !this.timeValidation) {
         return true; // Disable the button if any condition is met
       }
     }
@@ -133,24 +148,20 @@ export class SitterPersonalInformationComponent {
   }
 
   onCheckboxChange(day: string, index: number) {
-    if(this.selectedDays[index]){
-      if (this.selectedDays[index] === day) {
-        this.selectedDays[index] = '';
-      } else {
-        this.selectedDays[index] = day;
-      }
-      this.validateTimeRange(index);
-      this.areValuesMissing(index);
-    }
-    else{
+    if (this.selectedDays[index] == '') {
+      this.selectedDays[index] = '';
       this.missingValue[index] = false;
-      this.mistake = true;
+    } else {
+      this.selectedDays[index] = day;
     }
+    this.areValuesMissing(index);
+    console.log(this.selectedDays);
   }
+
 
   onTimeChange(index: number) {
     // Handle time input change
-    this.validateTimeRange(index);
+    this.invalidateTimeRange(index);
   }
 
   deleteBabyDetail(index: number) {
@@ -215,6 +226,10 @@ export class SitterPersonalInformationComponent {
           console.log(this.babysitterProfile)
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
           console.log(this.babysitterProfile);
+          for (const qualification of this.babysitterProfile.qualifications) {
+            this.qualificationList.push(qualification.imageUrl)
+          }
+          console.log(this.qualificationList)
         },
         (error)=>{
           console.log(localStorage.getItem('user'))
@@ -225,7 +240,7 @@ export class SitterPersonalInformationComponent {
   }
 
   onSubmit() {
-    if(this.requestFormForm.valid){
+    // if(this.requestFormForm.valid){
       this.saveWorkExpectations();
       this.saveSpecialNeeds();
       // this.saveBabyDetail();
@@ -258,5 +273,5 @@ export class SitterPersonalInformationComponent {
         console.error("User data in localStorage is null.");
       }
     }
-  }
+  // }
 }
