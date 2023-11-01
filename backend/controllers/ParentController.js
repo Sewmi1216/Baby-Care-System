@@ -457,7 +457,7 @@ const getBabysitter = async (req, res) => {
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
             nic: babysitter.userId.nic,
-            religon: babysitter.religon,
+            religon: babysitter.religion,
             language: babysitter.language,
             startDate: babysitter.startDate,
             endDate: babysitter.endDate,

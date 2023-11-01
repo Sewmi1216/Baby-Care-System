@@ -158,6 +158,20 @@ export class SitterPersonalInformationComponent {
     console.log(this.selectedDays);
   }
 
+  modalOpen = false;
+  modalImageSrc = '';
+  modalDetails = '';
+
+  openModal(imageSrc: string) {
+    // console.log("Tharushi")
+    this.modalOpen = true;
+    this.modalImageSrc = imageSrc;
+    // You can add additional details to modalDetails here.
+  }
+
+  closeModal() {
+    this.modalOpen = false;
+  }
 
   onTimeChange(index: number) {
     // Handle time input change

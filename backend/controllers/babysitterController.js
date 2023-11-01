@@ -237,15 +237,22 @@ const getParents = async (req, res) => {
     await Parent.find()
     try {
         const parents = await Parent.find()
-            .populate('userId', 'firstName lastName email ') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+            .populate('userId', 'firstName lastName email profile') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
             .exec();
         console.log(parents)
         const parentData = parents.map((parent) => {
+            console.log("parent object:", parent);
+            const imageFilename = parent.userId.profile;
+            console.log("imageFilename: ", imageFilename);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
             return {
                 userId: parent.userId._id,
                 firstName: parent.userId.firstName, // Access the first name from the populated 'userId' field
                 lastName: parent.userId.lastName,
                 email: parent.userId.email,
+                profile: imageUrl
             };
         });
         res.status(200).send({
