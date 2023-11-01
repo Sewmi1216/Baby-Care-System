@@ -54,6 +54,7 @@ export class ViewBabyDetailsComponent {
           this.baby = response.baby;
           console.log(this.baby)
           this.img=response.imageUrl
+          console.log(response.imageUrl)
         },
         (error)=>{
           console.log(localStorage.getItem('user'))

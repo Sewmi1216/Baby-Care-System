@@ -65,7 +65,7 @@
 
               <td (click)="goToUserDetails(user)">
                 <!-- <a routerLink="'/admin/view_babysitter_verify',UserItem.id" >{{UserItem.email}}</a> -->
-                <a [routerLink]="['/admin/view_babysitter_verify']">{{ UserItem.email }}</a>
+                <a [routerLink]="['/admin/view_babysitter_verify',UserItem._id]">{{ UserItem.email }}</a>
               </td>
               <td>{{UserItem.role}}</td>
 

@@ -32,9 +32,21 @@ const verifyParent = (req, res, next) => {
     });
 };
 
+const verifyAdmin = (req, res, next) => {
+    verifyToken(req, res, () => {
+        console.log("userId:", req.user.id)
+        if (req.user.id === req.params.id || req.user.role === 'Admin') {
+            next();
+        } else {
+            return res.status(401).send({message: "Unauthorized user!"});
+        }
+    });
+};
+
 
 
 module.exports = {
     verifyToken,
-    verifyParent
+    verifyParent,
+    verifyAdmin
 };

@@ -16,6 +16,23 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewBabysitterVerifyComponent {
   userArray : userArray[]=[];
 
+  userProfile = {
+    id: '',
+    role:'',
+    firstName: '',
+    lastName: '', 
+    email: '',
+    phone: '',
+    address: '',
+    nic: '',
+    status:'',
+
+  };
+  userId: string | null = null;
+
+  userFullName: string | null = null;
+  
+  
   details: any;
   constructor(
     private adminService: AdminService, private toast: NgToastService, private router:Router,private cookieService: CookieService,private http:HttpClient,private route: ActivatedRoute ) {}
@@ -24,10 +41,16 @@ export class ViewBabysitterVerifyComponent {
       
       //  this.getUserDetails();
 
-       const userId = this.route.snapshot.paramMap.get('id');
-       this.adminService.getUserDetails(userId).subscribe(data => {
-         this.userArray = data;
-       });
+      //  const userId = this.route.snapshot.paramMap.get('id');
+      //  this.adminService.getUserDetails(userId).subscribe(data => {
+      //    this.userArray = data;
+      //  });
+       this.route.params.subscribe(params => {
+        this.userId = params['id'];
+        // console.log('hello');
+        console.log(this.userId);
+        this.getUser();
+      });
      }
   showReasonInput: boolean = false;
   deactivationReason: string = '';
@@ -45,21 +68,28 @@ export class ViewBabysitterVerifyComponent {
       this.deactivationReason = '';
     }
   }
-  // ... (component properties and methods)
 
+  getUser(){
 
-//   getUserDetails() {
-//     // @ts-ignore
-//     this.adminService.getDetail(response.id).subscribe((data: any) => {
-//       this.details = data;
-  
-//   })
+    const userJSON = localStorage.getItem('user');
+    console.log(this.userId);
+    console.log('hi')
+    if(userJSON!==null){
+      this.adminService.getUser(this.userId).subscribe(
+        (response) => {
+          this.userProfile = response.user;
+          console.log(this.userProfile)
+          this.userFullName = `${this.userProfile.firstName} ${this.userProfile.lastName}`;
 
+          // this.img=response.imageUrl
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching user:', error);
+        }
+      )
+    }}
 
-// }
-
-
-  user: any;
 
 }
 

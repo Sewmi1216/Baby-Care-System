@@ -29,7 +29,8 @@ const login = (req, res) => {
                 email: user.email,
                 role: user.role,
                 msg: "login",
-                token: token
+                token: token,
+                status:user.status
             });
             console.log("Access-token", token)
         });
