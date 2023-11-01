@@ -54,6 +54,7 @@ export class GrowthParametersComponent implements OnInit {
     this.getAgeGroup();
     const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
     this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
+    console.log(this.selectedAgeGroupId );
 
   }
 
@@ -165,6 +166,7 @@ export class GrowthParametersComponent implements OnInit {
           this.baby = response.baby;
           const ageInMonths = this.calculateAgeInMonths(this.baby.birthDate);
           this.selectedAgeGroupId = this.getDefaultAgeGroup(ageInMonths);
+          console.log("nadwwwwwwwwwww",this.baby);
         },
         (error)=>{
           console.log(localStorage.getItem('user'))

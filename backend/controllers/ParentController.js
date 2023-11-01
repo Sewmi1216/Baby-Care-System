@@ -172,9 +172,10 @@ const getBabies = async (req, res) => {
 };
 
 
+
 const getBaby = async (req, res) => {
     try {
-        const babyId = req.params.id; // Assuming this is a unique identifier
+        let babyId = req.params.id;
 
         console.log("BabyId:", babyId);
 
@@ -206,6 +207,7 @@ const getBaby = async (req, res) => {
         res.status(500).json({error: 'Internal server error'});
     }
 };
+
 
 
 const updateTask = async (req, res) => {
