@@ -30,7 +30,7 @@ export class CompliantsComponent  {
    formdata.append('userId', userId);
    formdata.append('type', this.complaint.type);
    formdata.append('description', this.complaint.description);
-   console.log(formdata);
+  // console.log(formdata);
    this.parentService.addComplaint(formdata).subscribe(
      (data) => {
        this.router.navigate(['/parent/complaints'])
