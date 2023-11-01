@@ -12,6 +12,7 @@ export class ParentService {
   authToken: any;
   tasklist: any;
   baby: any;
+
   babyProfile: any;
 
   private userId: any;
@@ -50,7 +51,6 @@ export class ParentService {
       'Authorization': `${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabies/${userId}`, { headers });
   }
 
@@ -85,7 +85,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters`, { headers });
   }
 
@@ -98,7 +97,6 @@ export class ParentService {
     });
     // const userId = user.id;
     // console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters/${babysitterId}`, { headers });
   }
 
@@ -109,7 +107,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestForms/${userId}`, { headers });
   }
 
@@ -120,7 +117,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.delete<any>(`${environment.backend_url}/parent/deleteRequestForm/${requestFormId}`, { headers });
   }
 
@@ -132,7 +128,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.put<any>(`${environment.backend_url}/parent/updateParent/${babysitterId}/${userId}`, { headers });
   }
 
@@ -148,6 +143,27 @@ export class ParentService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getOnlyParent/${userId}`);
   }
+  getParentProfile(user:any): Observable<any> {
+    // const parentId = parentID
+    // console.log(parentId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user;
+    console.log("hi",userId);
+    return this.http.get<any>(`${environment.backend_url}/parent/getParentProfile/${userId}`,{headers});
+  }
+  updateParent(user:any): Observable<any> {
+    // const parentId = parentID
+    // console.log(parentId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user._id;
+    return this.http.put<any>(`${environment.backend_url}/parent/updateParentProfile/${userId}`, user);
+  }
 
 
   getParameters(ageGroupId:any): Observable<any>{
@@ -156,7 +172,6 @@ export class ParentService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     console.log(ageGroupId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getParameters/${ageGroupId}`, { headers });
   }
 
@@ -167,7 +182,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getVaccineList`, { headers });
   }
 
@@ -178,7 +192,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBabiesCount/${userId}`);
   }
 
@@ -192,7 +205,6 @@ export class ParentService {
     });
     // const userId = user.id;
     // console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getBaby/${babyId}`, { headers });
   }
 
@@ -203,7 +215,6 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestsCount/${userId}`);
   }
 
@@ -212,7 +223,6 @@ export class ParentService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
-    console.log('Request headers:', headers);
     return this.http.put<any>(`${environment.backend_url}/parent/updateBabysitter/${babysitterId}`, JSON.stringify(updatebabysitter), { headers });
   }
 
@@ -223,9 +233,79 @@ export class ParentService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/parent/getAgeGroup`, { headers });
   }
+  deleteBabysitter(babysitterId: any, parentId: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log('Request headers:', headers);
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteBabysitter/${babysitterId}/${parentId}`);
+  }
+
+  deleteRequestFormID(babysitterId:any, parentId: any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/deleteRequestFormID/${babysitterId}/${parentId}`);
+  }
+
+  updatePassword(user: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId =user.id;
+    console.log('Request headers:', headers);
+    return this.http.put<any>(`${environment.backend_url}/parent/updatePassword/${(userId)}`, JSON.stringify(this.updatePassword), {headers});
+  }
+
+  getPlan(user: any): Observable<any> {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('userid:', userId)
+    return this.http.get<any>(`${environment.backend_url}/parent/getPlan/${userId}`);
+  }
+
+  getType(user: any): Observable<any> {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('userid:', userId)
+    return this.http.get<any>(`${environment.backend_url}/parent/getType/${userId}`);
+  }
+
+
+  makePayment(stripeToken: any): Observable<any> {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+
+    // Assuming you have a 'userId' variable defined in your class
+    const userId = this.userId; // Replace with the correct way to get the user ID
+
+    return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
+  }
+
+  addComplaint(formdata:any) {
+    return this.http.post<any>(environment.backend_url + "/parent/addComplaint", formdata)
+
+  }
+  //complaints
+  // addComplaint(formdata: FormData) {
+  //   let complaint;
+  //   return this.http.post<any>(environment.backend_url + "/parent/addComplaint", complaint)
+  //
+  // }
 
 
 }

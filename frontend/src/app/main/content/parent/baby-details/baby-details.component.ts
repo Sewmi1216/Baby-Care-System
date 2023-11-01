@@ -52,12 +52,13 @@ export class BabyDetailsComponent implements OnInit{
     // @ts-ignore
     this.parentService.getBabies(JSON.parse(localStorage.getItem('user'))).subscribe(
       (response) => {
-        this.babies = response.babies; // Assign fetched data to the babies array
-        console.log(response.babies);
+        this.babies = response.babies;
+        console.log(this.babies);
       },
       (error) => {
-        console.log(localStorage.getItem('user'))
+      //  console.log(localStorage.getItem('user'))
         console.error('Error fetching babies:', error);
+        this.toast.error({detail:"ERROR",summary:"No babies were added", position:'topCenter'});
       }
     );
   }
@@ -99,7 +100,7 @@ export class BabyDetailsComponent implements OnInit{
      console.log(formdata);
     this.parentService.addBaby(formdata).subscribe(
       (data) => {
-        this.router.navigate(['/parent/baby_details'])
+        this.router.navigate(['/parent/baby_details/', userId])
         this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
         console.log("Baby added successful:", data);
 

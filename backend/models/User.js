@@ -38,7 +38,11 @@ const userSchema = new schema({
     },
     status:{
         type:String
-    }
+    },
+    status:{
+        type:Boolean,
+        default: 0
+    },
 })
 
 const User = mongoose.model("User", userSchema);
