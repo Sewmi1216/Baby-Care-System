@@ -51,19 +51,22 @@ router.route('/addParent').post(upload.single('file'), parentController.addParen
 //  router.route('/fillGrowthParameters').post(parentController.completeParameter);
 
 router.route('/addTaskList').post(parentController.addTask);
-router.route('/addComplaint').post(parentController.addComplaint);
+// router.route('/addComplaint').post(parentController.addComplaint);
+router.route('/addComplaint').post(upload.single('file'),parentController.addComplaint);
+
+
 
 
 //retrive
 
 //update
 router.route("/updateTask/:id").put(parentController.updateTask);
-router.route("/updateComplaint/:id").put(parentController.updateComplaint);
+//router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
 //delete
 router.route("/deleteTask/:id").delete(parentController.deleteTask);
 router.route("/deleteRequestForm/:id").delete(parentController.deleteRequestForm);
-router.route("/deleteComplaint/:id").delete(parentController.deleteComplaint);
+//router.route("/deleteComplaint/:id").delete(parentController.deleteComplaint);
 
 //getOne
 
