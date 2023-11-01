@@ -37,8 +37,9 @@ const userSchema = new schema({
         type:String
     },
     status:{
-        type:String
-    }
+        type:String,
+        default: "pending"
+    },
 })
 
 const User = mongoose.model("User", userSchema);
