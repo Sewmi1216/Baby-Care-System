@@ -40,7 +40,7 @@ export class ViewBabySittersComponent implements OnInit{
       this.parentService.getBabysitters(JSON.parse(userJSON)).subscribe(
         (response) => {
           this.babysitters = response.babysitters;
-          console.log(this.babysitters)
+          console.log("tharu",this.babysitters)
           this.getRequestForms();
         },
         (error)=>{

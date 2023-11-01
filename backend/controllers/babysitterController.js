@@ -254,6 +254,45 @@ const getParents = async (req, res) => {
     }
 }
 
+const getParent = async (req, res) => {
+    let babysitterId = req.params.id;
+    console.log("babysitterID:", babysitterId);
+    await Babysitter.find({userId: babysitterId})
+    try {
+        const babysitter = await Babysitter.findOne({userId: babysitterId})
+
+        console.log("dcscw: " ,babysitter);
+
+        if (!babysitter.userId._id) {
+            return res.status(404).send({status: "Babysitter not found"});
+        }
+
+        // const babysitterData = {
+        //     _id: babysitter.userId._id,
+        //     age: babysitter.age,
+        //     gender: babysitter.gender,
+        //     // image: babysitter.image,
+        //     firstName: babysitter.userId.firstName,
+        //     lastName: babysitter.userId.lastName,
+        //     email: babysitter.userId.email,
+        //     phone: babysitter.userId.phone,
+        //     address: babysitter.userId.address,
+        //     nic: babysitter.userId.nic,
+        //     religon: babysitter.religon,
+        //     language: babysitter.language,
+        //     startDate: babysitter.startDate,
+        //     endDate: babysitter.endDate,
+        //     qualifications: imageUrls // Assign the imageUrls array to qualifications
+        // };
+        // console.log(babysitterData)
+
+        // res.status(200).send({status: "babysitter", babysitter: babysitterData});
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({status: "Error with get babysitter", error: err.message});
+    }
+};
+
 const getRequestForm = async (req, res) => {
     try {
         let requestFormId = req.params.id;
@@ -284,5 +323,6 @@ module.exports = {
     updateRequestForm,
     getRequestForms,
     getParents,
-    getRequestForm
+    getRequestForm,
+    getParent
 };

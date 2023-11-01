@@ -31,6 +31,7 @@ router.route("/getBabysitters").get(authJwt.verifyParent,parentController.getBab
 router.route("/getBabysitters/:id").get(authJwt.verifyParent,parentController.getBabysitter);
 router.route("/getRequestForms/:id").get(authJwt.verifyParent,parentController.getRequestForms); //id=parentID
 router.route("/deleteRequestForm/:id").delete(authJwt.verifyParent,parentController.deleteRequestForm);
+router.route("/deleteBabysitter/:id1/:id2").delete(authJwt.verifyParent,parentController.deleteBabysitter);
 router.route("/getParameters/:ageGroup").get(authJwt.verifyParent,parentController.getParameters);
 router.route("/getAgeGroup").get(authJwt.verifyParent,parentController.getAgeGroup);
 router.route("/getVaccineList").get(authJwt.verifyParent,parentController.getVaccineList);
