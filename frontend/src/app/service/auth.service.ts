@@ -46,6 +46,13 @@ export class AuthService {
     return accessToken;
   }
 
+  forgetPassword(user: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/forget_password", user);
+  }
+  resetPassword(user: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/reset-password", user);
+  }
+
   getUser(user:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -53,7 +60,6 @@ export class AuthService {
     });
     const userId = user.id;
     console.log(userId);
-    console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/user/getUser/${userId}`, { headers });
   }
   getImg(user:any): Observable<any> {
@@ -62,8 +68,7 @@ export class AuthService {
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
     const userId = user.id;
-    console.log(userId);
-    console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/user/getUser/${userId}`, { headers });
+    return this.http.get<any>(`${environment.backend_url}/user/getImg/${userId}`, { headers });
   }
 }
+

@@ -34,9 +34,15 @@ const userSchema = new schema({
         required:true
     },
     profile:{
-        type:String,
-        required:true
-    }
+        type:String
+    },
+    status:{
+        type:String
+    },
+    status:{
+        type:Boolean,
+        default: 0
+    },
 })
 
 const User = mongoose.model("User", userSchema);

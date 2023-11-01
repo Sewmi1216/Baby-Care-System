@@ -21,7 +21,7 @@ let upload = multer({ storage: storage });
 router.get('/getParent/:id', parentController.viewParentProfile
 ); 
 
-router.route('/addBaby').post(parentController.addBaby);
+router.route('/addBaby').post(upload.single('file'),parentController.addBaby);
 
 //completed
 router.route("/getBabies/:id").get(authJwt.verifyParent,parentController.getBabies);
@@ -40,7 +40,8 @@ router.route("/getOnlyParent/:id").get(authJwt.verifyParent,parentController.get
 router.route("/getBabiesCount/:id").get(authJwt.verifyParent,parentController.getBabiesCount); //id=parentID
 router.route("/getRequestsCount/:id").get(authJwt.verifyParent,parentController.getRequestsCount); //id=parentID
 router.route("/updateBabysitter/:id").put(authJwt.verifyParent,parentController.updateBabysitter); //id=babysitterID
-
+router.route("/updateParentProfile/:id").put(authJwt.verifyParent,parentController.updateParentProfile);
+router.route("/getParentProfile/:id").get(authJwt.verifyParent,parentController.getParentProfile);
 //create
 router.route('/addParent').post(upload.single('file'), parentController.addParent);
 

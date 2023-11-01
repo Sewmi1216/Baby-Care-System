@@ -82,6 +82,8 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
 import { HandlePaymentComponent } from './main/content/admin/handle-payment/handle-payment.component';
 import { HandleComplaintsComponent } from './main/content/admin/handle-complaints/handle-complaints.component';
 import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sys-info.component';
+import { ViewBabysitterVerifyComponent } from './main/content/admin/view-babysitter-verify/view-babysitter-verify.component';
+
 
 
 
@@ -181,6 +183,8 @@ import { RequestedBabysittersMoreComponent } from './main/content/parent/request
 import {TokenInterceptor} from "./interceptor/token.interceptor";
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { PaymentComponent } from './main/content/parent/payment/payment.component';
+
 
 
 @NgModule({
@@ -236,6 +240,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     VerifyBabysittersComponent,
     ForgetPasswordComponent,
     LiveStreamComponent,
+    ViewBabysitterVerifyComponent,
 
     //domain-expert
     DomainExpertDashboardComponent,
@@ -300,7 +305,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       CreateBlogComponent,
       BlogViewComponent,
       BlogListComponent,
-      AddModeratorComponent
+      AddModeratorComponent,
+      PaymentComponent
 
 
 

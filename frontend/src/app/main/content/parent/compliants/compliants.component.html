@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-    <div style="background-color: #e8e3fc;
+  <div style="background-color: #e8e3fc;
     width: 544px;
     height: 120px;
     padding: 5px 0 0 5px;
@@ -8,50 +8,56 @@
     border-radius: 10px;
     box-shadow: 0 2px 2px 0 #563393;
 ">
-      <img class="topic_image" src="../../assets/sitter.svg">
-      <h3 style="font-family: 'Sofia Sans', sans-serif;
+    <img class="topic_image" src="../../assets/sitter.svg">
+    <h3 style="font-family: 'Sofia Sans', sans-serif;
     font-weight: bold;
     font-size: 30px;
     color: #39315d;
     padding-left: 10px;
     padding-top: 37px;">Complaints</h3>
-    </div>
-
-    <div  class="container">
-      <div  style="width: 100% ;margin-top: 20px;border-radius: 10px; box-shadow: 0 0 2px 2px #563393;" >
-        <div >
-          <form method="POST" class="w-100 rounded p-4 border bg-white" action="">
-
-            <div class="form-group mb-4">
-              <label for="name">
-                <h4>Reason For Complaining
-                </h4></label>
-              <div class="input-group">
-
-                <select name="name" class="form-control" id="name">
-                  <option value="Baby Sitter">Baby Sitter</option>
-                  <option value="Domain Expert">Domain Expert</option>
-                  <option value="Admin">Admin</option>
-
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group mb-4">
-              <h4>
-                <label for="message">Complaint</label></h4>
-              <textarea name="message" class="form-control" rows="3" id="message" placeholder="Please describe your problem"></textarea>
-            </div>
-
-            <div class="mb-3">
-              <button style="background-color: #7E57C2;border-color: #563393" type="submit" class="btn btn-primary px-3">Submit</button>
-            </div>
-
-
-          </form>
-        </div>
-
-      </div>
   </div>
+
+  <div class="container">
+    <div style="width: 100% ;margin-top: 20px;border-radius: 10px; box-shadow: 0 0 2px 2px #563393;">
+      <div>
+        <form class="w-100 rounded p-4 border bg-white" #addComplaintForm="ngForm"
+              (ngSubmit)="addComplaintForm.form.valid && onSubmit()">
+
+          <div class="form-group mb-4">
+            <label for="name">
+              <h4>Reason For Complaining
+              </h4></label>
+            <div class="input-group">
+
+              <select name="name" class="form-control" id="name">
+                <option value="Baby Sitter">Baby Sitter</option>
+                <!--                  <option value="Domain Expert">Domain Expert</option>-->
+                <option value="Admin">Admin</option>
+                <option value="Admin">Parent</option>
+
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <h4>
+              <label for="message">Complaint</label></h4>
+            <textarea name="message" class="form-control" rows="3" id="message"
+                      placeholder="Please describe your problem"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <button style="background-color: #7E57C2;border-color: #563393" type="submit"
+                    class="btn btn-primary px-3">Submit
+            </button>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 

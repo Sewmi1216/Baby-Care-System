@@ -51,13 +51,7 @@
                        class="validErr">
                     First Name is required
                   </div>
-                  <p class="font-weight-bold">Age</p>
-                  <input type="number" class="form-control" placeholder="age" [(ngModel)]="baby.age" #age="ngModel"
-                         name="age" required>
-                  <div *ngIf="(age.touched || addBabyForm.submitted) && age.errors?.['required']"
-                       class="validErr">
-                    Age is required
-                  </div>
+
                   <p class="font-weight-bold">Date of birth</p>
                   <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="baby.birthDate"
                          #birthDate="ngModel" name="birthDate">
@@ -111,12 +105,10 @@
       <div class="card custom-card"
            style="width: 70%;height: 320px;margin-top: 20px;margin-right: 20px;margin-left: 10px;">
         <div class="d-flex justify-content-center mt-3">
-          <img class="card-img-top custom-img" src="../../assets/baby1.jpg">
         </div>
         <div class="card-body bg-custom text-center">
           <h4 class="card-title">{{ baby.firstName }} {{ baby.lastName }}</h4>
           <p class="card-text">{{ calculateAge(baby.birthDate) }}</p>
-          <p class="card-text">{{ baby.age }} years</p>
           <a [routerLink]="['/parent/view_baby_details',baby._id]" class="btn btn-primary"
              style="background-color: #7E57C2;border-color: #563393">View Profile</a>
         </div>

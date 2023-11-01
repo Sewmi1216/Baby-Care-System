@@ -16,7 +16,12 @@ export class ViewBabyDetailsComponent {
   baby = {
     id: '',
     firstName: '',
+    lastName:'',
+    birthDate: '',
+    gender:''
   };
+  img:string=''
+
 
   constructor(
     private parentService: ParentService,
@@ -30,18 +35,25 @@ export class ViewBabyDetailsComponent {
     // Get the baby_id parameter from the route
     this.route.params.subscribe(params => {
       this.babyId = params['baby_id'];
-      console.log(this.babyId);
       this.getBaby();
     });
   }
 
-  getBaby() {
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    // @ts-ignore
+    return date.toLocaleDateString('en-US', options);
+  }
+  getBaby(){
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
       this.parentService.getBaby(this.babyId).subscribe(
         (response) => {
           this.baby = response.baby;
-          console.log('Baby data:', this.baby); // Add this log to check if the baby object is correctly populated
+console.log('Baby data:', this.baby); // Add this log to check if the baby object is correctly populated
+ console.log(this.baby)
+          this.img=response.imageUrl
         },
         (error) => {
           console.log(localStorage.getItem('user'));
