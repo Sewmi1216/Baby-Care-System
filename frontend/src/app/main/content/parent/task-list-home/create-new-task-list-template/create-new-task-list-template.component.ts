@@ -193,10 +193,10 @@ export class CreateNewTaskListTemplateComponent {
   }
 
   addNewRow() {
-    if (this.taskName !== null && this.time !== null) {
+    if (this.taskName!.trim() !== '') {
       const newTaskListItems: TaskListItems = {
-        taskName: this.taskName,
-        time: this.time,
+        taskName: this.taskName!,
+        time: this.time ?? '', // Use the nullish coalescing operator (??) to provide a default value
         isRemainder: null,
         isCompleted: null,
         specialNote: null
@@ -206,12 +206,13 @@ export class CreateNewTaskListTemplateComponent {
       this.time = null;
 
       // Show a success message using the alert function.
-      alert("Task added successfully!");
     } else {
       // Show an error message using the alert function.
-      alert("Error: Task name and time are required.");
+      alert("Error: Task name is required.");
     }
   }
+
+
 
   getTaskListTemplate() {
     const userJSON = localStorage.getItem('user');

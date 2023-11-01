@@ -3,12 +3,18 @@
     <div class="col-lg-7 mx-auto">
       <div class="card rounded-0 border-0 shadow">
         <div class="card-body p-5">
-          <form #taskListFormForm="ngForm"  id="taskListForm" >
-          <div class="table-responsive">
-            <h2>Create Task list</h2>
-            <label for="listName">Task List Name:</label>
-            <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="nameOfTaskList" required>
-
+          <form #taskListFormForm="ngForm" id="taskListForm">
+            <div class="table-responsive">
+              <h2>Create Task list</h2>
+              <div class="form-group">
+                <label for="listName">Task List Name:</label>
+                <input class="form-control rounded-0" type="text" id="listName" name="listName" [(ngModel)]="nameOfTaskList" required #listNameInput="ngModel">
+                <div *ngIf="listNameInput.invalid && (listNameInput.dirty || listNameInput.touched)">
+                  <div class="alert alert-danger">
+                    Task List Name is required.
+                  </div>
+                </div>
+              </div>
             <table class="table">
               <thead>
               <tr>
@@ -65,10 +71,12 @@
             </div>
 
             <div class="d-flex justify-content-between mt-3">
-              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger" (click)="saveAsTemplate();navigateToTemplatesPage()">
+              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger"
+                      [disabled]="taskListFormForm.invalid" (click)="saveAsTemplate(); navigateToTemplatesPage()">
                 Save as a Template
               </button>
-              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger" (click)="saveAsTaskList();openTaskListModal()"
+              <button style="background-color: #563393; border-color: #563393" class="btn btn-danger"
+                      [disabled]="taskListFormForm.invalid" (click)="saveAsTaskList(); openTaskListModal()"
                       data-bs-toggle="modal" data-bs-target="#saveTaskListModal">
                 Save as a Task List
               </button>

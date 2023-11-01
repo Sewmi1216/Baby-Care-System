@@ -1,11 +1,16 @@
-<div class="container py-5" *ngFor="let taskList of taskListForms; let i = index">
+<!--<div id="carouselExampleControls" class="carousel slide">-->
+<!--  <div class="carousel-inner">-->
+
+    <div *ngFor="let taskList of taskListForms; let i = index" >
+      <div class="container py-5">
+
+
+
   <div class="row">
     <div class="col-lg-7 mx-auto">
       <div class="card rounded-0 border-0 shadow">
         <div class="card-body p-5">
           <h2>Task List Name : <span class="custom-text-color">{{ taskList.taskListName }}</span></h2>
-<!--          <h5>Date :- {{taskList.date}}</h5>-->
-<!--          <h5>Task List ID :- {{taskList._id}}</h5>-->
 
           <div class="table-wrapper">
             <table class="table">
@@ -39,7 +44,7 @@
           </div>
           <!--add 3 buttons for update, add date and delete-->
           <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-danger" >Delete</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#DeleteModalCenter" (click)="openDeleteModal(taskList._id)">Delete</button>
             <button class="btn btn-primary" data-toggle="modal" data-target="#updateModalCenter" (click)="openUpdateModal(taskList._id)">Update</button>
             <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Add Date</button>
           </div>
@@ -129,6 +134,28 @@
           </div>
 
 
+          <div class="modal fade" id="DeleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="DeleteModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="DeleteModalCenterTitle">Add Date</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h4>Are you sure you want to delete this Task List Template?</h4>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" (click)=" deleteTemplate(taskListId)" data-mdb-dismiss="modal">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 
 <!--          <div class="d-flex justify-content-between mt-3">-->
 <!--            <button class="btn btn-danger" (click)="deleteTemplate(taskList._id)">Delete</button>-->
@@ -141,6 +168,13 @@
     </div>
   </div>
 </div>
+    </div>
+<!--  </div>-->
+<!-- -->
+
+
+<!--</div>-->
+
 
 
 

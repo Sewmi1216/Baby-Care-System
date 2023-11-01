@@ -36,6 +36,13 @@ export class TaskListTemplatesComponent {
   taskDetails: any[] = [];
   taskListId: string='';
 
+  searchTerm: string = '';
+
+  filteredTaskListForms: any[] = [];
+
+
+
+
   // these for update modal
   // tListForm: any[] = [];
   // tListName: string = '';
@@ -119,6 +126,10 @@ export class TaskListTemplatesComponent {
         }
       )
     }
+  }
+
+  openDeleteModal(taskListId: string){
+
   }
 
 
@@ -211,6 +222,20 @@ export class TaskListTemplatesComponent {
     // const modalRef = this.modalService.open(this.content, { centered: true, windowClass: 'custom-modal' });
   }
 
+
+  searchTaskLists() {
+    // Perform the filtering logic here based on the searchTerm
+    // You can filter your taskListForms array by the taskListName property.
+    // Assuming you have a taskListForms array:
+    if (this.searchTerm) {
+      this.filteredTaskListForms = this.taskListForms.filter((taskList) =>
+        taskList.taskListName.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      // If the search term is empty, show all task lists
+      this.filteredTaskListForms = this.taskListForms;
+    }
+  }
 
 
 
