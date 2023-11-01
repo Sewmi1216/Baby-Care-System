@@ -81,7 +81,6 @@
 
       <div class="btn-container">
         <div class="btn-row">
-          <!-- Bootstrap table -->
           <div class="container py-4">
             <div class="row">
               <div class="col-lg-12">
@@ -101,14 +100,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let task of tDetails; let i = index">
+                        <tr *ngFor="let task of taskDetails; let i = index">
                           <td>{{ i + 1 }}</td>
-                          <td>{{ task.taskName }}</td>
-                          <td>{{ task.time }}</td>
-                          <td>{{ task.isRemainder ? 'Yes' : 'No' }}</td>
-                          <td>{{ task.specialNote || 'N/A' }}</td>
+                          <td>
+                            <input type="text" [value]="task.taskName" disabled />
+                          </td>
+                          <td>
+                            <input type="text" [value]="task.time" disabled />
+                          </td>
+                          <td>
+                            <input type="checkbox" [checked]="task.isRemainder" disabled />
+                          </td>
+                          <td>
+                            <input type="text" [value]="task.specialNote || 'N/A'" disabled />
+                          </td>
                         </tr>
-
                         </tbody>
                       </table>
                     </div>
@@ -119,6 +125,9 @@
           </div>
         </div>
       </div>
+
+
+
 
 
       <!-- CHARTS ENDS HERE -->
