@@ -362,27 +362,27 @@ const verifyBabysitter = async (req, res) => {
     }
 };
 
-// const ViewAllSitters = async (req, res) => {
-//     await User.find({role:"Babysitter", status:{$in: ["pending", "reject"]}} )
-//         .then((user) => {
-//             res.status(200).send({ status: "All users", user });
-//         })
-//         .catch((err) => {
-//             console.log(err.message);
-//             res.status(500).send({ status: "Error with view all users", error: err.message });
-//         });
-// };
 const ViewAllSitters = async (req, res) => {
-    try {
-        const users = await User.find({ role: "Babysitter", status: { $in: ["pending", "reject"] } });
-        const babysitters = await Babysitter.find({}); // You might want to add some filtering criteria here
-        
-        res.status(200).send({ status: "All users and babysitters", users, babysitters });
-    } catch (err) {
-        console.log(err.message);
-        res.status(500).send({ status: "Error with view all users", error: err.message });
-    }
+    await User.find({role:"Babysitter", status:{$in: ["pending", "reject"]}} )
+        .then((user) => {
+            res.status(200).send({ status: "All users", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all users", error: err.message });
+        });
 };
+// const ViewAllSitters = async (req, res) => {
+//     try {
+//         const users = await User.find({ role: "Babysitter", status: { $in: ["pending", "reject"] } });
+//         const babysitters = await Babysitter.find({}); // You might want to add some filtering criteria here
+        
+//         res.status(200).send({ status: "All users and babysitters", users, babysitters });
+//     } catch (err) {
+//         console.log(err.message);
+//         res.status(500).send({ status: "Error with view all users", error: err.message });
+//     }
+// };
 
 const ViewAllUsers = async (req, res) => {
     await User.find({status:"active"})
