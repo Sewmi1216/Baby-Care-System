@@ -49,6 +49,8 @@
 
  router.route("/getBabysitters/:id").get(adminController.getBabysitter);
  router.route("/getOneUser/:id").get(adminController.getOneUser);
+ router.route("/getOneComplaint/:id").get(adminController.getOneComplaint);
+
 
 
 
