@@ -67,7 +67,7 @@ app.listen(backendPort, () => {
 // })
 
 //websocket connection
-
+//
 // const http = require('http').createServer(app);
 // const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
 // const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
@@ -126,12 +126,12 @@ app.listen(backendPort, () => {
 //         console.log('A client disconnected.');
 //     });
 // });
-
-//mongodb configuration
+//
+// //mongodb configuration
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL,{
-})
+mongoose.connect(URL, {
+ })
 
 const connection = mongoose.connection;
 connection.once("open", () => {

@@ -20,13 +20,17 @@ export class ParentProfileComponent {
     profile:'',
     phone:'',
     address:'',
-    email:''
+    email:'',
+    newPassword: undefined,
+    confirmPassword: undefined
   };
 
   userId: any;
   today = new Date();
   img:string=''
   parent: any;
+  // newPassword: any;
+ // confirmNewPassword: any;
 
   constructor(
     private route:ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
@@ -38,6 +42,7 @@ export class ParentProfileComponent {
       this.getParent();
     });
   }
+
 
   // updatePassword() {
   //   if (this.newPassword === this.confirmNewPassword) {
@@ -63,7 +68,11 @@ export class ParentProfileComponent {
   //     console.error("Passwords do not match");
   //   }
 
+  //
   // }
+
+  // }
+
 
   getParent() {
     // @ts-ignore

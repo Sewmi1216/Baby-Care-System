@@ -59,9 +59,9 @@
                   <!--                    Age is required-->
                   <!--                  </div>-->
                   <p class="font-weight-bold">Date of birth</p>
-                  <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="baby.birthDate"
+                  <input type="date" class="form-control" [(ngModel)]="baby.birthDate" [min]="getFormattedDate()"
                          #birthDate="ngModel" name="birthDate">
-                  <div *ngIf="(birthDate.touched || addBabyForm.submitted) && birthDate.errors?.['required']"
+                  <div *ngIf="(birthDate.touched || addBabyForm.submitted) && birthDate.errors?.['min']"
                        class="validErr">
                     Date of birth is required
                   </div>

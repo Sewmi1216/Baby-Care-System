@@ -52,6 +52,7 @@ export class ViewBabyDetailsComponent {
     if (userJSON !== null) {
       this.parentService.getBaby(this.babyId).subscribe(
         (response) => {
+          console.log(response);
           this.baby = response.baby;
           console.log('Baby data:', this.baby); // Add this log to check if the baby object is correctly populated
           console.log(this.baby)

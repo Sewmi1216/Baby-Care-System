@@ -73,9 +73,9 @@
 
                   <td>{{user.nic}}</td>
                   <td>{{user.address}}</td>
-                  <td>{{user.role}}</td>
-                  <td>
-                    <span class="mb-0 text-sm" style="color: darkgreen; font-weight: bold;">{{user.status}}</span>
+                  <td >{{user.role}}</td>
+                  <td [ngClass]="{ 'pending': user.status === 'pending', 'reject': user.status === 'reject' }">
+                    <span class="mb-0 text-sm" style="font-weight: bold;">{{user.status}}</span>
                   </td>
                   
 

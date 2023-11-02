@@ -27,6 +27,8 @@ export class BabysitterViewParentRequestsComponent {
   parentEmail: string = ''
   parentEmails: string[] = []
   requestedParentsId: string[] = []
+  imageUrl: string = ''
+  imageUrls: string[] = []
 
   constructor(
     private babysitterService: BabysitterService, private toast: NgToastService, private router: Router, private CookieService: CookieService, private route: ActivatedRoute
@@ -80,6 +82,9 @@ export class BabysitterViewParentRequestsComponent {
           for (const parent of this.parents){
             const firstName = parent.firstName
             const lastName = parent.lastName;
+            this.imageUrl = parent.profile;
+            // console.log(this.imageUrl)
+            // this.imageUrls.push(this.imageUrl)
 
             this.parentName = `${firstName} ${lastName}`;
 
@@ -92,8 +97,10 @@ export class BabysitterViewParentRequestsComponent {
               // If there's a match, assign the name to the corresponding index in babysitterNames
               this.parentNames[matchingIndex] = this.parentName;
               this.parentEmails[matchingIndex] = this.parentEmail;
+              this.imageUrls[matchingIndex] = this.imageUrl;
             }
           }
+          console.log(this.imageUrls)
           console.log(this.parentNames)
           console.log(this.parentEmails)
         },

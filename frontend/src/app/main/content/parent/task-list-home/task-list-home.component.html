@@ -1,268 +1,130 @@
 <div class="grid-container">
   <div class="responsive-container">
-    <div class="d-flex justify-content-between align-items-center custom-margin" >
-
-      <div style="background-color: #e8e3fc;
-    width: 544px;
-    height: 120px;
-    padding: 5px 0 0 5px;
-    margin-top: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px 0 #563393;
-    margin-bottom: 20px;
-">
-        <img class="topic_image" src="../../assets/sitter.svg">
-        <h3 style="font-family: 'Sofia Sans', sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-    color: #39315d;
-    padding-left: 10px;
-    padding-top: 37px;">Task List</h3>
-
+    <div class="d-flex justify-content-between align-items-center custom-margin">
+      <div class="d-flex align-items-center justify-content-start flex-grow-1">
+        <span class="fa-stack fa-2x">
+          <i class="fa fa-square fa-stack-2x icon-background-square"></i>
+          <i class="fa-solid fa-list fa-stack-1x white-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+        </span>
+        <h1 class="mat-h1 ml-3">Home</h1>
+      </div>
+      <div>
+        <button routerLink="/parent/create_new_task_list" type="button" class="btn btn-info btn-rounded mt-3 custom-addevent-btn-color"
+                title="Click to create task list for create a new template or add a task list">Create new Task List</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- CHARTS START HERE -->
+<div class="charts">
+  <div class="charts__left">
+    <div class="charts__left__title">
+    </div>
+    <div class="charts__left__cards">
 
-<mat-tab-group>
-  <mat-tab label="Today Task List">
-
-    <button routerLink="/parent/create_new_task_list" type="button" class="btn btn-info btn-rounded mt-3 custom-addevent-btn-color">Create Task List</button>
-
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-lg-7 mx-auto">
-          <div class="card rounded-0 border-0 shadow">
-            <div class="card-body p-5">
-              <!--  Bootstrap table-->
-              <div class="table-responsive">
-                <h1>Today's Task List</h1>
-
-
-                <p><strong>Date : </strong>2023/08/17</p>
-                <p><strong>Task List Name : </strong>Monday Task List</p>
-
-                <table class="table">
-                  <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Send reminders</th>
-                    <th scope="col">Any special Note</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr >
-                    <td>1</td>
-                    <td>Feeding</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr >
-                    <td>2</td>
-                    <td>Preapare meal</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr >
-                    <td>3</td>
-                    <td>Give medicine</td>
-                    <td>8.00AM</td>
-                    <td>
-                        <i style="color: #0c4548" class="fa fa-check-circle finished-icon"></i>
-                    </td>
-
-                    <td>Any note</td>
-                  </tr>
-                  <tr >
-                    <td>4</td>
-                    <td>Washing clothes</td>
-                    <td></td>
-                    <td></td>
-                    <td>Any note</td>
-                  </tr>
-                  <tr >
-                    <td>5</td>
-                    <td>Dressing up</td>
-                    <td></td>
-                    <td></td>
-                    <td>Any note</td>
-                  </tr>
-                  <tr >
-                    <td>6</td>
-                    <td>Give medicine</td>
-                    <td>12.00PM</td>
-                    <td></td>
-                    <td>Any note</td>
-                  </tr>
-                  </tbody>
-                </table>
-
-
-              </div>
-            </div>
+      <div class="card-01">
+        <div class="d-flex justify-content-between align-items-center card_header">
+          <div class="card_header_text d-flex flex-column align-items-center">
+            <a routerLink="/parent/task_list_templates">
+              <h4 class="card-title text-uppercase text-muted mb-0">Task List Templates</h4>
+              <span class="card-text">Click to view all templates you've created.</span>
+            </a>
           </div>
         </div>
       </div>
+
+
+      <div class="card-02">
+        <div class="d-flex justify-content-between align-items-center card_header">
+          <div class="card_header_text d-flex flex-column align-items-center">
+            <a routerLink="/parent/previous_task_lists">
+              <h4 class="card-title text-uppercase text-muted mb-0">History</h4>
+              <span class="card-text">Click to view previous task list details.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card-03">
+        <div class="d-flex justify-content-between align-items-center card_header">
+          <div class="card_header_text d-flex flex-column align-items-center">
+            <a routerLink="/parent/next_task_lists">
+              <h4 class="card-title text-uppercase text-muted mb-0">Upcoming Task Lists</h4>
+              <span class="card-text">View task lists for the upcoming days</span>
+            </a>
+          </div>
+          <div class="col-auto">
+            <span class="fa-stack fa-2x"></span>
+          </div>
+        </div>
+        <p class="mt-3 mb-0 text-muted text-sm">
+        </p>
+      </div>
+
     </div>
-  </mat-tab>
+  </div>
 
+  <div class="charts__right">
+    <div class="charts__right__cards">
+      <div class="btn-container col-lg-6">
 
-  <mat-tab label="Previous Task Lists">
-    <main>
-      <!--MDB Tables-->
-      <div class="container mt-4">
-
-        <div class="card mb-4">
-          <div class="card-body">
-            <!-- Grid row -->
+      </div>
+      <!--right side-->
+      <!-- Inside your HTML template -->
+      <div class="btn-container">
+        <div class="btn-row">
+          <div class="container py-4">
             <div class="row">
-              <!-- Grid column -->
-              <div class="col-md-12">
-
-                <div class="input-group md-form form-sm form-2 pl-0">
-                  <input class="form-control my-0 py-1 pl-3 purple-border" type="text" placeholder="Search by Date ..." aria-label="Search">
-                  <span class="input-group-addon waves-effect purple lighten-2" id="basic-addon1"><a><i class="fa fa-search white-text" aria-hidden="true"></i></a></span>
+              <div class="col-lg"> <!-- Reduced to col-lg-8, adjust as needed -->
+                <div class="card rounded-0 border-0 shadow">
+                  <div class="card-body p-4">
+                    <h2>Task List Name: {{ taskListForm.taskListName }}</h2>
+                    <div class="table-responsive">
+                      <table class="table table-lg">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th scope="col">Task Name</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Send Reminders</th>
+                          <th scope="col">Any Note</th>
+                          <th scope="col">Completed</th>
+                        </tr>
+                        </thead>
+                        <!-- ... -->
+                        <tbody>
+                        <tr *ngFor="let task of taskDetails; let i = index">
+                          <td>{{ i + 1 }}</td>
+                          <td>
+                            <input type="text" [value]="task.taskName" disabled />
+                          </td>
+                          <td>
+                            <input type="text" [value]="task.time" disabled />
+                          </td>
+                          <td>
+                            <input type="checkbox" [checked]="task.isRemainder" disabled />
+                          </td>
+                          <td>
+                            <input type="text" [value]="task.specialNote || 'N/A'" disabled />
+                          </td>
+                          <td>
+                            <input type="checkbox" [checked]="task.isCompleted" disabled />
+                          </td>
+                        </tr>
+                        </tbody>
+                        <!-- ... -->
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <!-- Grid column -->
             </div>
-            <!-- Grid row -->
-            <!--Table-->
-            <table class="table table-striped">
-              <!--Table head-->
-              <thead>
-              <tr>
-                <th>Date</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-              </thead>
-              <!--Table head-->
-              <!--Table body-->
-              <tbody>
-              <tr>
-                <th>2023/07/10</th>
-                <td>
-                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
-                </td>
-                <td >
-                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
-                </td>
-
-              </tr>
-
-              <tr>
-                <th>2023/07/10</th>
-                <td>
-                  <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Incompleted</span>
-                </td>
-                <td >
-                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <th>2023/07/10</th>
-                <td>
-                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
-                </td>
-                <td >
-                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <th>2023/07/10</th>
-                <td>
-                  <span class="mb-0 text-sm" style="color: red; font-weight: bold;">Incompleted</span>
-                </td>
-                <td >
-                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <th>2023/07/10</th>
-                <td>
-                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
-                </td>
-                <td >
-                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <th>2023/07/10</th>
-                <td>
-                  <span class="mb-0 text-sm" style="color: blue; font-weight: bold;">Completed</span>
-                </td>
-                <td >
-                  <a routerLink="/parent/view_previous_task_list"><i class="fas fa-ellipsis-v"></i></a>
-                </td>
-              </tr>
-              </tbody>
-              <!--Table body-->
-            </table>
-            <!--Table-->
-
-            <!--Bottom Table UI-->
-            <div class="d-flex justify-content-center">
-              <!--Pagination -->
-              <nav class="my-4 pt-2">
-                <ul class="pagination pagination-circle pg-blue mb-0">
-                  <!--First-->
-                  <li class="page-item disabled clearfix d-none d-md-block"><a class="page-link">First</a></li>
-                  <!--Arrow left-->
-                  <li class="page-item disabled">
-                    <a class="page-link" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <!--Numbers-->
-                  <li class="page-item active"><a class="page-link">1</a></li>
-                  <li class="page-item"><a class="page-link">2</a></li>
-                  <li class="page-item"><a class="page-link">3</a></li>
-                  <li class="page-item"><a class="page-link">4</a></li>
-                  <li class="page-item"><a class="page-link">5</a></li>
-                  <!--Arrow right-->
-                  <li class="page-item">
-                    <a class="page-link" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                  <!--First-->
-                  <li class="page-item clearfix d-none d-md-block"><a class="page-link">Last</a></li>
-                </ul>
-              </nav>
-              <!--/Pagination -->
-            </div>
-
-
           </div>
         </div>
-
-
-
-
-
       </div>
-      <!--MDB Tables-->
-
-    </main>
-
-
-
-
-  </mat-tab>
-
-
-
-  <mat-tab label="Next 7 days Task list">
-
-   <app-next-task-lists></app-next-task-lists>
-
-  </mat-tab>
-</mat-tab-group>
+      <!-- CHARTS END HERE -->
+    </div>
+  </div>
+</div>

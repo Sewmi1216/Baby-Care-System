@@ -61,8 +61,20 @@ export class BabysitterService {
     console.log(userId);
     console.log(requestFormId);
     console.log('Request headers:', headers);
-    return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
+    return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });
   }
+
+  getTodayTaskList(user:any) : Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    //console.log(userId); // working
+    return this.http.get<any>(`${environment.backend_url}/babysitter/getTodayTaskList/${userId}`, {headers});
+  }
+
 
   updateRequestForm(requestForm: any, requestFormId: any): Observable<any>{
     const headers = new HttpHeaders({
@@ -74,8 +86,8 @@ export class BabysitterService {
       requestForm: requestForm,
     };
 
-    console.log(requestBody); 
-    return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm/${requestFormId}`, JSON.stringify(requestBody),{ headers });      
+    console.log(requestBody);
+    return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm/${requestFormId}`, JSON.stringify(requestBody),{ headers });
   }
 
   getParent(userId: any): Observable<any>{
@@ -83,7 +95,7 @@ export class BabysitterService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
- 
+    console.log(userId)
     return this.http.get<any>(`${environment.backend_url}/babysitter/getParent/${userId}`);      
   }
 }

@@ -36,16 +36,16 @@
             </p> -->
 
                 <div class="d-flex align-items-center mb-3">
-                  
+
                     <button type="button" class="btn btn-link edit-button ms-2" data-bs-toggle="modal"
                             data-bs-target="#editThankYouModal">
                       <i class="fas fa-edit" style="font-size: 24px; color: black;"></i>
                     </button>
-                  
+
                 </div>
 
 
-               
+
 
           </div>
 
@@ -53,13 +53,24 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="editThankYouModalLabel">verify Babysitter</h5>
+                  <h4 class="modal-title" id="editThankYouModalLabel">verify Babysitter</h4>
                   <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                  <h5 class="modal-title" id="editThankYouModalLabel">Current Status</h5>
+                  
                   <input type="text" [(ngModel)]="koko" class="form-control mb-3" id="status" placeholder="Edit content here">
                   <!-- <button style="background-color: #58d1e9;border-color: #100f11;margin-right: 3px;" type="button" (click)="setUpdate(koko)"  class="btn btn-primary" >View</button> -->
-                  <button style="background-color: #26cf3d;border-color: #563393" type="button" id="status"  class="btn btn-primary" (click)="save()">Verify</button>
+
+                  <button style="background-color: #26cf3d;border-color: #563393" type="button" class="btn btn-primary" (click)="save()">Verify</button>
+
+                  <a routerLink="/admin/manage_user_accounts">
+                    <button style="background-color: #26cf3d;margin-right: 1rem;" type="button" id="status"  class="btn btn-primary" (click)="save()">Verify</button></a>
+                  
+                    <a routerLink="/admin/pending_babysitter_list">
+                      <button style="background-color: #cf2626;" type="button" id="status"  class="btn btn-primary" (click)="saveReject()">Reject</button></a>
+  
+
                 </div>
               </div>
             </div>

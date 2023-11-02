@@ -36,16 +36,18 @@ export class VerifyBabysittersComponent {
   babysitterFullName: string | null = null;
 
   currentInfoID = ''
-  status: string ="";
-  role: string ="";
-  firstName: string ="";
-  lastName: string ="";
-  nic: string ="";
-  phone: string ="";
-  address: string ="";
-  email: string ="";
+  status: string ="active";
+  status1:string="reject";
+  // role: string ="";
+  // firstName: string ="";
+  // lastName: string ="";
+  // nic: string ="";
+  // phone: string ="";
+  // address: string ="";
+  // email: string ="";
 
   koko:string="";
+  kokoId:string="";
 
 
   // @ViewChild('requestFormForm', {static: true}) public requestFormForm!:NgForm;
@@ -79,12 +81,15 @@ export class VerifyBabysittersComponent {
           this.babysitterProfile = response.babysitter;
           this.sytemInfoArray = response.babysitter; 
           this.koko=response.babysitter.status;
+          this.kokoId=response.babysitter._id;
 
           console.log(this.babysitterProfile)
           console.log(this.sytemInfoArray)
           console.log(this.koko);
           console.log('hello machn')
-          console.log(response.babysitter._id)
+          console.log(this.kokoId)
+          console.log('hello machn')
+
 
 
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
@@ -128,13 +133,13 @@ export class VerifyBabysittersComponent {
   UpdateVerifyRecords(){
     console.log("hi hui")
     let BodyData = {
-      "role":this.role,
-    "firstName": this.firstName,
-    "lastName": this. lastName,
-    "email": this.email,
-    "phone": this.phone,
-    "address": this.address,
-    "nic": this.nic,
+    //   "role":this.role,
+    // "firstName": this.firstName,
+    // "lastName": this. lastName,
+    // "email": this.email,
+    // "phone": this.phone,
+    // "address": this.address,
+    // "nic": this.nic,
     "status":this.status,
     };
 
@@ -142,7 +147,30 @@ export class VerifyBabysittersComponent {
     this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
       console.log(res);
       // this.status=response.info;
-      alert("Info Updated")
+      alert("Babysitter Verified")
+    });
+
+
+  }
+
+  UpdateRejectRecords(){
+    console.log("hi hui")
+    let BodyData = {
+    //   "role":this.role,
+    // "firstName": this.firstName,
+    // "lastName": this. lastName,
+    // "email": this.email,
+    // "phone": this.phone,
+    // "address": this.address,
+    // "nic": this.nic,
+    "status":this.status1,
+    };
+
+    
+    this.http.put("http://localhost:8070/admin/updateVerifyStatus"+"/"+this.currentInfoID,BodyData).subscribe((res: any)=>{
+      console.log(res);
+      // this.status=response.info;
+      alert("Babysitter Rejected")
     });
 
 
@@ -150,12 +178,19 @@ export class VerifyBabysittersComponent {
 
   save(){
     
-    this.currentInfoID == this.babysitterId;
-    console.log("hiiiiii hui")
-    console.log(this.currentInfoID)
+    this.currentInfoID = this.kokoId;
+    console.log("hello hui")
+    console.log(this.currentInfoID);
 
     this.UpdateVerifyRecords();
 
+  }
+  saveReject(){
+    this.currentInfoID = this.kokoId;
+    console.log("hello hui")
+    console.log(this.currentInfoID);
+
+    this.UpdateRejectRecords();
   }
 
   // setUpdate(data:any){

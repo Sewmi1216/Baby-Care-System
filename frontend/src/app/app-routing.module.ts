@@ -53,16 +53,16 @@ import {LiveStreamComponent} from "./main/content/parent/live-stream/live-stream
 
 
 /* Admin */
-import {AdminDashboardComponent} from "./main/content/admin/admin-dashboard/admin-dashboard.component";
-import {ManageUserAccountsComponent} from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
-import {VerifyBabysittersComponent} from "./main/content/admin/verify-babysitters/verify-babysitters.component";
-import {EditSysInfoComponent} from "./main/content/admin/edit-sys-info/edit-sys-info.component";
-import {HandleComplaintsComponent} from "./main/content/admin/handle-complaints/handle-complaints.component";
-import {HandlePaymentComponent} from "./main/content/admin/handle-payment/handle-payment.component";
+import { AdminDashboardComponent } from "./main/content/admin/admin-dashboard/admin-dashboard.component";
+import { ManageUserAccountsComponent } from "./main/content/admin/manage-user-accounts/manage-user-accounts.component";
+import { VerifyBabysittersComponent } from "./main/content/admin/verify-babysitters/verify-babysitters.component";
+import { EditSysInfoComponent } from "./main/content/admin/edit-sys-info/edit-sys-info.component";
+import { HandleComplaintsComponent } from "./main/content/admin/handle-complaints/handle-complaints.component";
+import { HandlePaymentComponent } from "./main/content/admin/handle-payment/handle-payment.component";
 
-import {TaskListHomeComponent} from "./main/content/parent/task-list-home/task-list-home.component";
-import {ViewNewParentsComponent} from "./main/content/admin/view-new-parents/view-new-parents.component";
-import {ViewNewBabysittersComponent} from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
+import { TaskListHomeComponent } from "./main/content/parent/task-list-home/task-list-home.component";
+import { ViewNewParentsComponent  } from "./main/content/admin/view-new-parents/view-new-parents.component";
+import { ViewNewBabysittersComponent } from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
 
 import {ViewBabysitterVerifyComponent} from "./main/content/admin/view-babysitter-verify/view-babysitter-verify.component";
 
@@ -90,6 +90,7 @@ import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-s
 
 import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
+
 import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
 
 import {
@@ -108,9 +109,7 @@ import {BlogListComponent} from "./blog/blog-list/blog-list.component";
 
 import {AddModeratorComponent} from "./main/content/admin/add-moderator/add-moderator.component";
 
-import {
-  PreviosTaskListsComponent
-} from "./main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component";
+import { PreviousTaskListsComponent} from "./main/content/parent/task-list-home/previous-task-lists/previous-task-lists.component";
 import {
   PreviousBabysitterTaskListMoreComponent
 } from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component";
@@ -121,6 +120,14 @@ import {
   RequestedBabysittersMoreComponent
 } from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
 import {parentGuard} from "./guard/parent.guard";
+
+import {
+  TaskListTemplatesComponent
+} from "./main/content/parent/task-list-home/task-list-templates/task-list-templates.component";
+import {NextTaskListsComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-lists.component";
+
+import {ContactUsComponent} from "./contact-us/contact-us.component";
+
 
 
 
@@ -140,10 +147,15 @@ const routes: Routes = [
         component: HomeHeaderComponent,
       },
     ]
+
   },
   {
     path: 'about_us',
     component:AboutUsComponent
+  },
+  {
+    path: 'contact_us',
+    component:ContactUsComponent
   },
   {
     path: 'blog_view',
@@ -221,15 +233,24 @@ const routes: Routes = [
         component: CreateNewTaskListTemplateComponent
       },
       {
-
+        path:'task_list_templates',
+        component: TaskListTemplatesComponent
+      },
+      {
+        path:'previous_task_lists',
+        component: PreviousTaskListsComponent
+      },
+      {
+        path:'next_task_lists',
+        component: NextTaskListsComponent
+      },
+      {
         path: 'baby_details/:parentId',
         component: BabyDetailsComponent
-
       },
       {
         path: 'live_stream',
         component: LiveStreamComponent
-
       },
       {
         path: 'view_baby_details/:baby_id',
@@ -280,10 +301,7 @@ const routes: Routes = [
         component: ParentMyPlanComponent
 
       },
-      {
-        path: 'view_previous_task_list',
-        component: PreviosTaskListsComponent
-      }
+
     ]
   },
   {
@@ -378,7 +396,7 @@ const routes: Routes = [
         component: HandleComplaintsComponent
       },
       {
-        path: 'handle_complaints_view_more',
+        path: 'handle_complaints_view_more/:id',
         component: HandleComplaintsViewMoreComponent
       },
       {

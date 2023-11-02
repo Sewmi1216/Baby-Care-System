@@ -12,6 +12,7 @@ import { MainComponent } from './main/main.component';
 import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
+
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
@@ -151,7 +152,6 @@ import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 // import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
 
-
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
 
@@ -168,22 +168,31 @@ import {
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component";
 import { AddModeratorComponent } from './main/content/admin/add-moderator/add-moderator.component';
 
-//import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previuos-task-lists/previos-task-lists.component';
+//import { PreviosTaskListsComponent } from './main/content/parent/task-list-home/previous-task-lists/previos-task-lists.component';
 //import {NextTaskListstComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-listst.component";
 import { NextTaskListsComponent } from './main/content/parent/task-list-home/next-task-lists/next-task-lists.component';
 import { TodayTaskListComponent } from './main/content/babysitter/babysitter-tasklist/today-task-list/today-task-list.component';
-//import { PreviousTaskListComponent } from './main/content/babysitter/previous-babysitter-task-list/previous-babysitter-task-list.component';
-import { PreviousTaskListComponent} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-task-list.component";
+//import { PreviousTaskListComponent} from "./main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-task-list.component";
 import {
   BabysitterViewParentRequestsComponent
 } from "./main/content/babysitter/babysitter-view-parent-requests/babysitter-view-parent-requests.component";
 import { PreviousBabysitterTaskListMoreComponent } from './main/content/babysitter/babysitter-tasklist/previous-babysitter-task-list/previous-babysitter-task-list-more/previous-babysitter-task-list-more.component';
 import { ManageUserAccountsMoreComponent } from './main/content/admin/manage-user-accounts/manage-user-accounts-more/manage-user-accounts-more.component';
 import { RequestedBabysittersMoreComponent } from './main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component';
+
+//import { TokenInterceptor} from "./interceptor/token.interceptor";
+//import { CreateTaskListComponent } from './main/content/parent/task-list-home/create-task-list/create-task-list.component';
+import { TaskListTemplatesComponent } from './main/content/parent/task-list-home/task-list-templates/task-list-templates.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import { PreviousTaskListsComponent } from './main/content/parent/task-list-home/previous-task-lists/previous-task-lists.component';
+//import { CreateNewTaskListComponent } from './main/content/parent/task-list-home/create-new-task-list/create-new-task-list.component';
+
 import {TokenInterceptor} from "./interceptor/token.interceptor";
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaymentComponent } from './main/content/parent/payment/payment.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
@@ -286,10 +295,10 @@ import { PaymentComponent } from './main/content/parent/payment/payment.componen
     //ModerateForumComponent,
     //PreviosTaskListsComponent,
     NextTaskListsComponent,
-    TodayTaskListComponent,
+    //TodayTaskListComponent,
     //PreviousTaskListComponent,
     //PreviosTaskListsComponent,
-    PreviousTaskListComponent,
+    //PreviousTaskListComponent,
     BabysitterViewParentRequestsComponent,
     PreviousBabysitterTaskListMoreComponent,
     ManageUserAccountsMoreComponent,
@@ -306,7 +315,13 @@ import { PaymentComponent } from './main/content/parent/payment/payment.componen
       BlogViewComponent,
       BlogListComponent,
       AddModeratorComponent,
-      PaymentComponent
+    //  CreateTaskListComponent,
+      TaskListTemplatesComponent,
+    PreviousTaskListsComponent,
+    TodayTaskListComponent
+      //CreateNewTaskListComponent
+      PaymentComponent,
+      ContactUsComponent
 
 
 
@@ -336,6 +351,7 @@ import { PaymentComponent } from './main/content/parent/payment/payment.componen
     /* ngx-chart module*/
     //NgxChartsModule
     BsDatepickerModule.forRoot(), FormsModule,
+    MatDialogModule, MatInputModule
 
 
   ],

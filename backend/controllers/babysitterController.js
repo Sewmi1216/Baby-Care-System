@@ -7,6 +7,7 @@ const {request} = require("express");
 const multer = require("multer");
 const path = require('path');
 const Babysitter = require("../models/babysitter");
+const TaskListForm = require("../models/tasklist");
 
 
 
@@ -237,15 +238,22 @@ const getParents = async (req, res) => {
     await Parent.find()
     try {
         const parents = await Parent.find()
-            .populate('userId', 'firstName lastName email ') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+            .populate('userId', 'firstName lastName email profile') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
             .exec();
         console.log(parents)
         const parentData = parents.map((parent) => {
+            console.log("parent object:", parent);
+            const imageFilename = parent.userId.profile;
+            console.log("imageFilename: ", imageFilename);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
             return {
                 userId: parent.userId._id,
                 firstName: parent.userId.firstName, // Access the first name from the populated 'userId' field
                 lastName: parent.userId.lastName,
                 email: parent.userId.email,
+                profile: imageUrl
             };
         });
         res.status(200).send({
@@ -257,6 +265,45 @@ const getParents = async (req, res) => {
         res.status(500).send({status: "Error with get all parents", error: err.message});
     }
 }
+
+const getParent = async (req, res) => {
+    let babysitterId = req.params.id;
+    console.log("babysitterID:", babysitterId);
+    await Babysitter.find({userId: babysitterId})
+    try {
+        const babysitter = await Babysitter.findOne({userId: babysitterId})
+
+        console.log("dcscw: " ,babysitter);
+
+        if (!babysitter.userId._id) {
+            return res.status(404).send({status: "Babysitter not found"});
+        }
+
+        // const babysitterData = {
+        //     _id: babysitter.userId._id,
+        //     age: babysitter.age,
+        //     gender: babysitter.gender,
+        //     // image: babysitter.image,
+        //     firstName: babysitter.userId.firstName,
+        //     lastName: babysitter.userId.lastName,
+        //     email: babysitter.userId.email,
+        //     phone: babysitter.userId.phone,
+        //     address: babysitter.userId.address,
+        //     nic: babysitter.userId.nic,
+        //     religon: babysitter.religon,
+        //     language: babysitter.language,
+        //     startDate: babysitter.startDate,
+        //     endDate: babysitter.endDate,
+        //     qualifications: imageUrls // Assign the imageUrls array to qualifications
+        // };
+        // console.log(babysitterData)
+
+        // res.status(200).send({status: "babysitter", babysitter: babysitterData});
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({status: "Error with get babysitter", error: err.message});
+    }
+};
 
 const getRequestForm = async (req, res) => {
     try {
@@ -276,6 +323,36 @@ const getRequestForm = async (req, res) => {
     }
 }
 
+
+const getTodayTaskList = async (req,res) =>{
+    try{
+        let userId = req.params.id;
+        const todayDate = new Date().toJSON().slice(0,10);
+        console.log("BabysitterID: ", userId);
+        console.log(todayDate);
+        const todayTaskList = await TaskListForm.find(
+            {
+                Babysitter: userId,
+                date : todayDate
+            });
+        console.log(todayTaskList.tasks);
+
+        if( !todayTaskList || todayTaskList.length === 0)
+        {
+            res.status(404).send({status : "No task list found in today for this bs"});
+
+        }else {
+            res.status(200).send({ status: "Today task list found for this bs", todayTaskList });
+        }
+    }catch(err)
+    {
+        console.log(err.message);
+        res.status(500).send({status: "Error with get today task list", error: err.message});
+    }
+};
+
+
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
@@ -288,5 +365,7 @@ module.exports = {
     updateRequestForm,
     getRequestForms,
     getParents,
-    getRequestForm
+    getRequestForm,
+    getTodayTaskList,
+    getParent
 };

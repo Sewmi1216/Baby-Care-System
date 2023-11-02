@@ -48,18 +48,41 @@
         </div>
 
         <div class="card custom-card" style="background-color: #FFFFFF;">
-          <div class="right">
-            <p class="font-weight-bold">Qualification Details</p>
-            <div *ngFor="let qualification of qualificationList" >
-              <!-- {{qualification}} -->
+          <div class="right" >
+            <p style="font-size:large">Qualification Details</p>
+            <div class="row" style="margin-top:2rem">
+              <p style="font-size:small">1. Gramseva Certificate</p>
+              <p style="font-size:small">2. Registration Confirmation Certificate</p>
+              <p style="font-size:small">3. Police Clearance Report</p>
+              <p style="font-size:small">4. Other qualifications</p>
+            </div>
+            <div class="row" style="margin-top:2rem">
+              <div class="col-md-4" *ngFor="let qualification of qualificationList">
+                <div class="qualification-card">
+                  <img [src]="qualification" alt="Qualification Image" class="img-fluid" style="max-width: 100%;"  (click)="openModal(qualification)">
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row" *ngFor="let qualification of qualificationList">
               <img [src]="qualification" alt="Qualification Image">
+            </div> -->
+          </div>
+        </div>
+
+        <div class="modal1" *ngIf="modalOpen">
+          <div class="modal1-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <img id="modal1-image" [src]="modalImageSrc" alt="Qualification Image" class="img-fluid">
+            <div id="modal1-details">
+              {{ modalDetails }}
             </div>
           </div>
         </div>
+
     </div>
   </div>
 </div>
-      
+
 <form #requestFormForm="ngForm" (ngSubmit)="onSubmit()" id="requestForm" >
   <div class="modal" id="myModal">
     <div class="modal-dialog">
@@ -81,7 +104,7 @@
                 <label class="form-label">To Time</label>
               </div>
             </div>
-            
+
             <div class="row" *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
               <div class="col-md-4">
                 <input class="form-check-input" type="checkbox" [value]="day" [id]="day + i" [name]="day + i"
@@ -101,7 +124,7 @@
                 <p style="color: red; text-align: center">Please fill in all fields for {{ day }}</p>
               </div> 
             </div>
-         
+
             <p class="font-weight-bold title">Baby details</p>
               <div class="tables-container">
                 <div class="table-wrapper">
@@ -131,7 +154,7 @@
                         <td>
                           <button type="button" class="btn btn-primary" (click)="saveBabyDetails()">Add</button>
                         </td>
-                      </tr>                      
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -174,7 +197,7 @@
             <div class="modal-footer" style="margin-top: 20px">
               <button type="submit" [disabled]="hasError()" style="background-color: #563393; border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
             </div>
-  
+
       </div>
     </div>
   </div>              

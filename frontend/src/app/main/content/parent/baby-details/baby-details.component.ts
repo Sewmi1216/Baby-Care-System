@@ -33,7 +33,24 @@ export class BabyDetailsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
+  getMinDate() {
+    return this.getFormattedDate();
+  }
+  getCurDate(): Date {
+    return new Date();
+  }
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
 
+    return `${month}/${day}/${year}`;
+  }
+
+  getFormattedDate() {
+    const currentDate = this.getCurDate();
+    return this.formatDate(currentDate);
+  }
  // const accessToken = this.cookieService.get('access_token');
   ngOnInit(): void {
     this.route.params.subscribe(params => {
