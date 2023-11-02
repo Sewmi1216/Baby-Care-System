@@ -45,6 +45,7 @@ router.route("/getAllOldTaskLists/:id").get(authJwt.verifyParent,parentControlle
 router.route("/getNextAllTaskLists/:id").get(authJwt.verifyParent,parentController.getNextAllTaskLists);
 router.route("/updateTaskListTemplate/:id").put(authJwt.verifyParent, parentController.updateTaskListTemplate);
 
+
 //create
 router.route('/addParent').post(upload.single('file'), parentController.addParent);
 

@@ -308,6 +308,33 @@ const getAllOldTaskLists = async(req,res) => {
     }
 }
 
+// const getAllNextTaskLists = async(req,res) => {
+//     try {
+//         let userId = req.params.id;
+//         const todayDate = new Date().toJSON().slice(0,10);
+//
+//         const NextAllTaskLists = await TaskListForm.find(
+//             {
+//                 parent:userId,
+//                 date :{$gt : todayDate},
+//             }
+//         );
+//         console.log(NextAllTaskLists);
+//         if( !NextAllTaskLists || NextAllTaskLists.length === 0)
+//         {
+//             res.status(404).send({status : "No next task lists found for this parent"});
+//         }else{
+//             res.status(200).send({status: "Next task lists found for this parent", NextAllTaskLists});
+//             console.log(NextAllTaskLists)
+//         }
+//     }
+//     catch(err)
+//     {
+//         console.log(err.message);
+//         res.status(500).send({status: "Error with get next task lists.", error: err.message});
+//     }
+// }
+
 
 const getNextAllTaskLists = async(req,res) =>
 {
@@ -324,7 +351,7 @@ const getNextAllTaskLists = async(req,res) =>
         {
             res.status(404).send({status : "No Next task lists found for this parent"});
         }else{
-            res.status(200).send({status: "Next task lists found for this parent"})
+            res.status(200).send({status: "Next task lists found for this parent", nextTaskLists});
             console.log(nextTaskLists)
         }
     }

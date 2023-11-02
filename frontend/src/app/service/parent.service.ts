@@ -88,6 +88,18 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getAllOldTaskLists/${userId}`, {headers});
   }
 
+  getAllNextTaskLists(user:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getNextAllTaskLists/${userId}`, {headers});
+  }
+
+
+
   // getParent(user:any):Observable<any>{
   //   const headers = new HttpHeaders({
   //     'Content-Type': 'application/json',

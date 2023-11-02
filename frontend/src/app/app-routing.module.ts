@@ -119,6 +119,7 @@ import {parentGuard} from "./guard/parent.guard";
 import {
   TaskListTemplatesComponent
 } from "./main/content/parent/task-list-home/task-list-templates/task-list-templates.component";
+import {NextTaskListsComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-lists.component";
 
 
 
@@ -226,6 +227,10 @@ const routes: Routes = [
       {
         path:'previous_task_lists',
         component: PreviousTaskListsComponent
+      },
+      {
+        path:'next_task_lists',
+        component: NextTaskListsComponent
       },
       {
         path: 'baby_details/:parentId',
