@@ -1,0 +1,72 @@
+/* styles.css or your custom stylesheet */
+.custom-modal-lg {
+  max-width: 100%; /* Adjust the maximum width as needed */
+  width: 100%; /* Adjust the width as needed */
+  /* Add other styling properties if necessary */
+}
+
+/* styles.css or your custom stylesheet */
+.custom-text-color {
+  color: #7A4988;
+}
+
+/*!* Custom CSS to change carousel control icon colors *!*/
+/*.carousel-control-prev-icon::before,*/
+/*.carousel-control-next-icon::before {*/
+/*  color: red; !* Change to the desired color *!*/
+/*}*/
+
+/* Change the color of the previous control icon */
+
+
+
+/* Increase specificity */
+.carousel-control-prev-icon {
+  color: red !important;
+}
+
+.carousel-control-next-icon {
+  color: blue !important;
+}
+
+
+
+
+.form-input {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 300px;
+}
+
+.form-input:hover{
+  transform: translateY(-2px);
+}
+
+.form-input input {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  flex-grow: 1;
+  padding: 0 16px;
+  height: 100%;
+  border: none;
+  background:#FFFFFF;
+  border-radius: 36px 0 0 36px;
+  outline: none;
+  width: 100%;
+  color: #000000;
+}
+.form-input button {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  width: 36px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(111, 90, 158, 1);
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+}

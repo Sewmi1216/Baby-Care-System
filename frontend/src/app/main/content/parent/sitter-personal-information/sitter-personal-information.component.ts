@@ -42,7 +42,7 @@ export class SitterPersonalInformationComponent {
     gender: '',
     image:'',
     firstName: '',
-    lastName: '', 
+    lastName: '',
     email: '',
     phone: '',
     address: '',
@@ -78,7 +78,7 @@ export class SitterPersonalInformationComponent {
   };
   private userId: any;
 
-  
+
 
   // yearsFieldValue: number | null = null; // Initialize 
   yearsFieldValue: number = 0;
@@ -223,7 +223,7 @@ export class SitterPersonalInformationComponent {
       this.babydetail.push(newBabyDetail);
     }
   }
- 
+
   getBabysitter(){
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
@@ -287,5 +287,6 @@ export class SitterPersonalInformationComponent {
         console.error("User data in localStorage is null.");
       }
     }
+
   // }
 }

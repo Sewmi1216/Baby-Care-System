@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,9 +51,81 @@ export class ParentService {
       'Content-Type': 'application/json',
       'Authorization': `${this.getAccessTokenFromCookie()}`
     });
+
     const userId = user.id;
     return this.http.get<any>(`${environment.backend_url}/parent/getBabies/${userId}`, { headers });
   }
+
+  getTaskListTemplates(user:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    //console.log(userId); // working
+    return this.http.get<any>(`${environment.backend_url}/parent/getAllTaskListTemplates/${userId}`, {headers});
+  }
+
+  getTodayTaskList(user:any) : Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    //console.log(userId); // working
+    return this.http.get<any>(`${environment.backend_url}/parent/getTodayTaskList/${userId}`, {headers});
+  }
+
+  getAllOldTaskLists(user:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getAllOldTaskLists/${userId}`, {headers});
+  }
+
+  getAllNextTaskLists(user:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/parent/getNextAllTaskLists/${userId}`, {headers});
+  }
+
+
+
+  // getParent(user:any):Observable<any>{
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+  //   });
+  //   const userId = user.id;
+  //   console.log('Request headers:', headers);
+  //   return this.http.get<any>(`${environment.backend_url}/parent/getParent/${userId}`, {headers});
+  // }
+
+
+  getTaskListTemplate(user:any, taskListId:string):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    console.log(headers);
+    const userId = user.id;
+    console.log(userId);
+    console.log(taskListId)
+    console.log('Request headers:', headers);
+    //console.log(userId); // working
+    return this.http.get<any>(`${environment.backend_url}/parent/getTaskListTemplate/${taskListId}`, {headers});
+  }
+
+
 
   private getAccessTokenFromCookie(): string {
     const accessToken = this.cookieService.get('access_token');
@@ -78,6 +151,51 @@ export class ParentService {
     return this.http.post<any>(`${environment.backend_url}/parent/addRequestForm`, JSON.stringify(requestBody), { headers });
   }
 
+
+  addTaskListForm(taskListForm:any, userString:any): Observable<any>{
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const requestBody ={
+      taskListForm:taskListForm,
+      userID: userString.id,
+    };
+    console.log(requestBody);
+
+
+    return this.http.post<any>( `${environment.backend_url}/parent/addTaskList`, JSON.stringify(requestBody), {headers});
+  }
+
+  addDateToTaskListTemplate(dataToSave:any,userString:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const requestBody ={
+      taskListForm: dataToSave,
+      userID: userString.id,
+    };
+    console.log(requestBody);
+    return this.http.post<any>( `${environment.backend_url}/parent/addDateForTaskList`, JSON.stringify(requestBody), {headers});
+  }
+
+
+  deleteTaskListTemplate(user:any,taskListId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user.id;
+    console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.delete<any>(`${environment.backend_url}/parent/deleteTaskListTemp/${taskListId}`, { headers });
+  }
+
+
+
+
   getBabysitters(user:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -100,6 +218,8 @@ export class ParentService {
     return this.http.get<any>(`${environment.backend_url}/parent/getBabysitters/${babysitterId}`, { headers });
   }
 
+
+
   getRequestForms(user:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -109,6 +229,7 @@ export class ParentService {
     console.log(userId);
     return this.http.get<any>(`${environment.backend_url}/parent/getRequestForms/${userId}`, { headers });
   }
+
 
   deleteRequestForm(user:any, requestFormId: string){
     const headers = new HttpHeaders({
@@ -121,6 +242,23 @@ export class ParentService {
   }
 
 
+
+  createTaskListTemplate(taskList: any): Observable<any> {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      // Send a POST request to save the new task list
+      return this.http.post<any>(`${environment.backend_url}/parent/createTaskListTemplate`, taskList, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+        }
+      });
+    } else {
+      // Return an Observable with an error message or handle this case accordingly
+      return throwError('User JSON is null.'); // You can customize the error message here
+    }
+  }
+
   confirmBabysitter(user:any, babysitterId: string){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -132,8 +270,6 @@ export class ParentService {
   }
 
   getParent(user:any): Observable<any> {
-    // const parentId = parentID
-    // console.log(parentId)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
