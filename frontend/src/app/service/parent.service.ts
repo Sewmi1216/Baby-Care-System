@@ -164,6 +164,24 @@ export class ParentService {
     const userId = user._id;
     return this.http.put<any>(`${environment.backend_url}/parent/updateParentProfile/${userId}`, user);
   }
+  updatePlan(user:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user;
+    console.log("mnk",userId)
+    return this.http.put<any>(`${environment.backend_url}/parent/updatePlan/${userId}`, user);
+  }
+  updateToPremium(user:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    const userId = user;
+    console.log("mnk",userId)
+    return this.http.put<any>(`${environment.backend_url}/parent/updateToPremium/${userId}`, user);
+  }
 
 
   getParameters(ageGroupId:any): Observable<any>{

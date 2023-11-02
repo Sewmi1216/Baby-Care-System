@@ -1,7 +1,8 @@
 <div class="row">
   <!-- Left Div Box -->
   <div class="col-lg-6">
-    <div class="left-box p-3" style="background-color: #e8e3fc; border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
+    <div class="left-box p-3"
+         style="background-color: #e8e3fc; border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
       <!-- Content for the left box -->
       <h3 style="font-size: 20px;">Free Plan</h3>
       <h4>LKR.00.00 / month</h4>
@@ -24,13 +25,11 @@
       <div class="row">
         <div class="col-lg-5 mx-auto">
           <div class="text-center">
-            Free plan
-            <button  *ngIf="getPlan()['isFree']==='true'" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
-              Activate
+
+            <button *ngIf="myplan === 'premium'" class="btn btn-primary btn-block rounded-2" (click)="activateFree()"
+                    style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
+              Activate free plan
             </button>
-<!--            <button *ngIf="!isFree" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
-<!--              Upgrade Plan-->
-<!--            </button>-->
           </div>
         </div>
       </div>
@@ -39,7 +38,8 @@
 
   <!-- Right Div Box -->
   <div class="col-lg-6">
-    <div class="right-box p-3" style="background-color: #e8e3fc; border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
+    <div class="right-box p-3"
+         style="background-color: #e8e3fc; border-radius: 10px; box-shadow: 0 3px 2px 0px #563393;">
       <!-- Content for the right box -->
       <h3 style="font-size: 20px;">Premium Plan</h3>
       <h4>LKR. 10000.00 / month</h4>
@@ -64,22 +64,15 @@
       <div class="row">
         <div class="col-lg-5 mx-auto">
           <div class="text-center">
-<!--            <button *ngIf="isFree" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
-<!--              Activate-->
-<!--            </button>-->
-            <button *ngIf="getPlan()['isFree']==='false'" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
-             Activate
+            <button *ngIf="myplan === 'free'" class="btn btn-primary btn-block rounded-2" (click)="upgradeToPremium(1000)"
+                    style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">
+              Upgrade to Premium plan
             </button>
-<!--            <button (click)="makePayment(10000)" class="btn btn-primary btn-block rounded-2" style="background-color: #563393; border-color: #27183f; border-radius: 7px; color: white;">-->
-<!--              Activate-->
-<!--            </button>-->
-
-
             <div *ngIf="success">
               <h1>Your Payment is complete successfully</h1>
             </div>
             <div *ngIf="failure">
-               <h1>Some Error is taken place inside the payment</h1>
+              <h1>Some Error is taken place inside the payment</h1>
             </div>
           </div>
         </div>

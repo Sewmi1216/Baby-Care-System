@@ -70,5 +70,7 @@ router.route("/deleteRequestForm/:id").delete(parentController.deleteRequestForm
 //router.route("/deleteComplaint/:id").delete(parentController.deleteComplaint);
 
 //getOne
-
+router.route("/getPlan/:id").get(authJwt.verifyParent,parentController.getPlan);
+router.route("/updatePlan/:id").put(authJwt.verifyParent,parentController.updateToPlan);
+router.route("/updateToPremium/:id").put(authJwt.verifyParent,parentController.updateToPremium);
 module.exports = router;   
