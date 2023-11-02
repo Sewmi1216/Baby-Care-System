@@ -10,7 +10,7 @@
 <div class="main-container">
   <div class="age-group">
     <p>Age Group</p>
-   <select class="form-select" aria-label="Default select example" (change)="changeAgeGroup($event)" [(ngModel)]="selectedAgeGroupId">
+    <select class="form-select" aria-label="Default select example" (change)="changeAgeGroup($event)" [(ngModel)]="selectedAgeGroupId">
       <option [value]="ageGroup._id" *ngFor="let ageGroup of ageGroups">{{ ageGroup.type }}</option>
     </select>
   </div>
