@@ -18,7 +18,6 @@
                     <th scope="col">Completed</th>
                   </tr>
                   </thead>
-                  <!-- ... -->
                   <tbody>
                   <tr *ngFor="let task of taskDetails; let i = index">
                     <td>{{ i + 1 }}</td>
@@ -35,12 +34,14 @@
                       <input type="text" [value]="task.specialNote || 'N/A'" disabled />
                     </td>
                     <td>
-                      <input type="checkbox" [checked]="task.isCompleted" disabled />
+                      <input type="checkbox" [checked]="task.isCompleted" (change)="onTaskCompletedChange(i)" />
                     </td>
                   </tr>
                   </tbody>
-                  <!-- ... -->
+
+
                 </table>
+
               </div>
             </div>
           </div>

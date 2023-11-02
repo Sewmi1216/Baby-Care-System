@@ -393,11 +393,8 @@ const getTodayTaskList = async (req,res) =>{
 };
 
 const  updateTaskListTemplate = async(req,res) => {
-
     let taskId = req.params.id;
-
     const {taskName, time, isRemainder,specialNote } = req.body;
-
     const updateTask = {
         taskName,
         time,
@@ -443,11 +440,6 @@ const addRequestForm = async (req, res) => {
     const specialNeeds = req.body.requestForm.specialNeeds;
     const parentID = req.body.userID;
     const Babysitter = req.body.requestForm.Babysitter;
-    // console.log(parentID)
-    // console.log(specialNeeds)
-
-    // const babysitter = await RequestForm.find({babysitter: Babysitter});
-    // console.log(babysitter);
 
     if (!parentID) {
         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
@@ -470,10 +462,6 @@ const addRequestForm = async (req, res) => {
             console.log(err.message);
             return res.status(500).send({status: "Error adding requestForm", error: err.message});
         }
-    // }
-    // else{
-    //     return res.status(500).send({status: "Already added", error: "Already added"});
-    // }
 
 }
 
@@ -679,7 +667,7 @@ const createTaskListTemplate = async (req, res) => {// 3
     } catch (error) {
         console.error('Error with creating new Template:', error);
         res.status(500).json({ status: "Error with create Template", error: error.message });}}
-// fetching parameters, according to user choose age Group
+
 const getParameters = async (req, res) => {
     try {
         let ageGroupId = req.params.ageGroup;

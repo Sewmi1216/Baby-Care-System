@@ -55,6 +55,7 @@ export class TodayTaskListComponent {
     taskListName: '',
     date: new Date(),
     tasks: [],
+
     //Babysitter: ''
   };
 
@@ -68,8 +69,6 @@ export class TodayTaskListComponent {
     //this.getTaskListTemplates();
     this.getTodayTaskList();
   }
-
-
 
 
   getTodayTaskList() {
@@ -94,5 +93,49 @@ export class TodayTaskListComponent {
       );
     }
   }
+
+  // onTaskCompletedChange(index: number) {
+  //   // Toggle the 'isCompleted' property of the corresponding task
+  //   this.taskDetails[index].isCompleted = !this.taskDetails[index].isCompleted;
+  //
+  //   // Update the database by making an API call
+  //   const taskId = this.taskDetails[index]._id; // Replace '_id' with the actual task ID property
+  //   const isCompleted = this.taskDetails[index].isCompleted;
+  //
+  //   this.babysitterService.updateTaskCompletion(taskId, isCompleted).subscribe(
+  //     (response) => {
+  //       // Handle the response from the backend (e.g., display a success message)
+  //       console.log('Task completion updated:', response);
+  //     },
+  //     (error) => {
+  //       // Handle errors (e.g., show an error message to the user)
+  //       console.error('Error updating task completion:', error);
+  //     }
+  //   );
+  // }
+
+  onTaskCompletedChange(index: number) {
+    this.taskDetails[index].isCompleted = !this.taskDetails[index].isCompleted;
+    this.updateTaskListOnServer();
+  }
+
+  updateTaskListOnServer() {
+    const updatedTaskList: TaskListForm = {
+
+      taskListName: this.taskListForm.taskListName,
+      date: this.taskListForm.date,
+      tasks: this.taskDetails,
+    };
+
+    this.babysitterService.updateTaskList(updatedTaskList).subscribe(
+      (response) => {
+        console.log('Task list updated successfully:', response);
+      },
+      (error) => {
+        console.error('Error updating task list:', error);
+      }
+    );
+  }
+
 
 }
