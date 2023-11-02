@@ -293,68 +293,69 @@ const deleteRequestForm = async (req, res) => {
             res.status(500).save({status: "Error with delete form", error: err.message})
         })
 }
-//complaint handling
-
-const addComplaint = async (req, res) => {
-
-    const type = req.body.type;
-    const description = req.body.description;
-    const status = req.body.status;
 
 
-    const newComplaint = new Complaint({
-        type,
-        description,
-        status,
-        date,
+// const addComplaint = async (req, res) => {
+//
+//     const type = req.body.type;
+//     const description = req.body.description;
+//     const status = req.body.status;
+//
+//
+//     const newComplaint = new Complaint({
+//         type,
+//         description,
+//         status,
+//         date,
+//
+//     });
+//
+//     await newComplaint.save()
+//         .then(() => {
+//             res.status(200).send({status: "Complaint is added"});
+//         })
+//         .catch((err) => {
+//             console.log(err.message);
+//             res.status(500).send({status: "Error with the complaint", error: err.message});
+//         });
+// };
+//
+//
+// const updateComplaint = async (req, res) => {
+//     let complaintid = req.params.id; //fetch the id
+//
+//     const {type, description, status, date} = req.body; // new value
+//
+//     const updateComplaint = {
+//         type,
+//         description,
+//         status,
+//         date
+//     };
+//
+//     await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
+//         .then((complaint) => {
+//             res.status(200).send({status: "Complaint is updated", complaint});
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).send({status: "Error with updating data", error: err.message});
+//         });
+// };
+//
+// const deleteComplaint = async (req, res) => {
+//     let complaintid = req.params.id;
+//
+//     await Complaint.findByIdAndDelete(complaintid)
+//         .then((complaint) => {
+//             res.status(200).send({status: "Complaint is Deleted", complaint});
+//         })
+//         .catch((err) => {
+//             console.log(err.message);
+//             res.status(500).send({status: "Error with delete complaint", error: err.message});
+//         });
+// }
 
-    });
-
-    await newComplaint.save()
-        .then(() => {
-            res.status(200).send({status: "Complaint is added"});
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with the complaint", error: err.message});
-        });
-};
-
-
-const updateComplaint = async (req, res) => {
-    let complaintid = req.params.id; //fetch the id
-
-    const {type, description, status, date} = req.body; // new value
-
-    const updateComplaint = {
-        type,
-        description,
-        status,
-        date
-    };
-
-    await Complaint.findByIdAndUpdate(complaintid, updateComplaint)
-        .then((complaint) => {
-            res.status(200).send({status: "Complaint is updated", complaint});
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send({status: "Error with updating data", error: err.message});
-        });
-};
-
-const deleteComplaint = async (req, res) => {
-    let complaintid = req.params.id;
-
-    await Complaint.findByIdAndDelete(complaintid)
-        .then((complaint) => {
-            res.status(200).send({status: "Complaint is Deleted", complaint});
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({status: "Error with delete complaint", error: err.message});
-        });
-}
 
 const addFeedback = async (req, res) => {
     //parent name
@@ -381,10 +382,16 @@ const getBabysitters = async (req, res) => {
     await Babysitter.find()
     try {
         const babysitters = await Babysitter.find()
-            .populate('userId', 'firstName lastName email phone address nic') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
+            .populate('userId', 'firstName lastName email phone address nic profile') // Populate the 'userId' field with 'firstName', 'lastName', and 'role' from the associated 'User' model
             .exec();
 
         const babysitterData = babysitters.map((babysitter) => {
+            console.log("babysitter object:", babysitter);
+            const imageFilename = babysitter.userId.profile;
+            console.log("imageFilename: ", imageFilename);
+            const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+            console.log("imageFilePath: ", imageFilePath);
+            const imageUrl = `http://localhost:8070/images/${imageFilename}`;
             return {
                 userId: babysitter.userId._id,
                 age: babysitter.age,
@@ -398,7 +405,8 @@ const getBabysitters = async (req, res) => {
                 nic: babysitter.userId.nic,
                 religon: babysitter.userId.religon,
                 language: babysitter.userId.language,
-                isHired: babysitter.isHired
+                isHired: babysitter.isHired,
+                profile: imageUrl
             };
         });
         res.status(200).send({
@@ -420,19 +428,30 @@ const getBabysitter = async (req, res) => {
             .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
             .exec();
 
-        console.log(babysitter);
+        // console.log(babysitter);
 
         if (!babysitter.userId._id) {
             return res.status(404).send({status: "Babysitter not found"});
         }
 
+        if(babysitter.qualifications){  
+            imageUrls = babysitter.qualifications.map(qualification => {
+                console.log("Tharushi");
+                console.log("baby object:", qualification);
+                const imageFilename = qualification.filename;
+                console.log("imageFilename: ", imageFilename);
+                const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+                console.log("imageFilePath: ", imageFilePath);
+                const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+                return {imageUrl}; // Return an object with qualification and imageUrl
+            });
+        }
         const babysitterData = {
-
             _id: babysitter.userId._id,
             age: babysitter.age,
             gender: babysitter.gender,
-            image: babysitter.image,
-            firstName: babysitter.userId.firstName, // Access the first name from the populated 'userId' field
+            // image: babysitter.image,
+            firstName: babysitter.userId.firstName,
             lastName: babysitter.userId.lastName,
             email: babysitter.userId.email,
             phone: babysitter.userId.phone,
@@ -442,6 +461,7 @@ const getBabysitter = async (req, res) => {
             language: babysitter.language,
             startDate: babysitter.startDate,
             endDate: babysitter.endDate,
+            qualifications: imageUrls // Assign the imageUrls array to qualifications
         };
         console.log(babysitterData)
 
@@ -743,6 +763,7 @@ const updateBabysitter = async (req, res) => {
         res.status(500).send({status: "Error with updating data", error: err.message});
     }
 }
+
 const getPlan = async (req, res) => {
     try {
         let userId = req.params.id;
@@ -762,7 +783,68 @@ const getPlan = async (req, res) => {
     }
 };
 
+const addComplaint = async (req, res) => {
+    const id = req.body.id;
+    const type = req.body.type;
+    const  description = req.body. description;
 
+
+    console.log("ishini",userId)
+    if (!userId) {
+        return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
+    }
+    const newComplaint = new Complaint({
+        id,
+        type,
+        description,
+
+       user: userId
+    });
+
+
+    try {
+        const savedComplaint = await newComplaint.save();
+        res.status(201).send({status: "Complaint is added",complaint: savedComplaint});
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({status: "Error adding Complaint", error: err.message});
+    }
+};
+
+const deleteBabysitter = async (req, res) => {
+    let babysitterID = req.params.id1;
+    let userId = req.params.id2;
+    console.log(babysitterID)
+    console.log(userId);
+
+    const updateParent = {
+        babysitter: null,
+    };
+
+    const updateBabysitter = {
+        parent: null,
+        isHired: false,
+        startDate: null,
+        endDate: null,
+        extendDate: null
+    };
+
+    try {
+        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+
+        const requestForm = await RequestForm.findOneAndDelete({Babysitter: babysitterID}, {parent: userId});
+
+        if (!updatedParent) {
+            return res.status(404).send({ status: "Parent not found" });
+        }
+        res.status(200).send({ status: "Parent updated", updatedBabysitter });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+};
 
 module.exports = {
     addParent,
@@ -772,8 +854,8 @@ module.exports = {
     addRequestForm,
     deleteRequestForm,
     addComplaint,
-    updateComplaint,
-    deleteComplaint,
+    // updateComplaint,
+    // deleteComplaint,
     addBaby,
     addFeedback,
     getBabies,
@@ -794,5 +876,7 @@ module.exports = {
     getParentProfile,
     getPlan,
     updateToPlan,
-    updateToPremium
+    updateToPremium,
+    deleteBabysitter
+
 };

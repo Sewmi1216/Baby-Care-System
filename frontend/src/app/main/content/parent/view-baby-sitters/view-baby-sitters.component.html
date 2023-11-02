@@ -32,16 +32,17 @@
           <div class="col-md-4">
             <div class="card custom-card" style="width: 80%; height: 342px; margin-top: 2rem; margin-right: 2rem; margin-left: 2rem; margin-bottom:2rem; border-width: 0px;">
               <div class="d-flex justify-content-center mt-3">
-                <img class="card-img-top custom-img" src="../../assets/sewmi.jpg">
+                <!-- {{babysitter.profile}} -->
+                <img class="card-img-top custom-img" [src]="babysitter.profile">
               </div>
               <div class="card-body bg-custom text-center">
                 <h4 style="font-weight: bold" class="card-title">{{babysitter.firstName}} {{babysitter.lastName}}</h4>
                 <p>Location : {{babysitter.address}}</p>
-                <p>Rate:
+                <!-- <p>Rate:
                   <ng-container *ngFor="let _ of [1, 2, 3, 4]; let j = index">
                     <i style="color: #fad103" class="fas fa-star"></i>
                   </ng-container>
-                </p>
+                </p> -->
                 <a [routerLink]="['/parent/sitter_personal_information', babysitter.userId]" class="btn btn-primary" style="background-color: #7E57C2; border-color: #563393">View Profile</a>
               </div>
             </div>

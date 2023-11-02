@@ -12,6 +12,7 @@ import { MainComponent } from './main/main.component';
 import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
+
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
@@ -151,7 +152,6 @@ import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 // import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
 
-
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
 
@@ -184,6 +184,7 @@ import {TokenInterceptor} from "./interceptor/token.interceptor";
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaymentComponent } from './main/content/parent/payment/payment.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
@@ -306,7 +307,8 @@ import { PaymentComponent } from './main/content/parent/payment/payment.componen
       BlogViewComponent,
       BlogListComponent,
       AddModeratorComponent,
-      PaymentComponent
+      PaymentComponent,
+      ContactUsComponent
 
 
 

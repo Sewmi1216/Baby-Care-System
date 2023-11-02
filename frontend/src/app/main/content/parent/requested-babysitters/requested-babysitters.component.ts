@@ -29,6 +29,7 @@ export class RequestedBabysittersComponent {
   requestFormId: string = ''
   babysitterId: string =''
   parentId: string = ''
+  imageUrl: string = ''
 
   //in the babysitters
   babysitterName: string = ''
@@ -36,6 +37,7 @@ export class RequestedBabysittersComponent {
   isHiredList: boolean[] =[]
   babysitterNames: string[] = []
   requestFormBabysittersId: string[] = []
+  imageUrls: string[] =[]
 
 
   constructor(
@@ -60,6 +62,8 @@ export class RequestedBabysittersComponent {
             this.babysitterName = `${firstName} ${lastName}`;
             this.isHired = babysitter.isHired;
             this.isHiredList.push(this.isHired);
+            this.imageUrl = babysitter.profile
+            this.imageUrls.push(this.imageUrl)
 
               // Check if the babysitter userId matches any requestFormBabysittersId
             const matchingIndex = this.requestFormBabysittersId.indexOf(babysitter.userId);
