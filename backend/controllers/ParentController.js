@@ -17,8 +17,6 @@ const Babysitter = require("../models/babysitter");
 const TaskListForm = require("../models/tasklist");
 
 
-const Babysitter = require("../models/babysitter");
-
 let GrowthParameters = require("../models/GrowthParameters");
 let AgeGroups = require("../models/ageGroup");
 let Vaccines = require("../models/vaccine");
@@ -118,7 +116,6 @@ const addBaby = async (req, res) => {
 };
 
 
-
 /* Create task list*/
 const addTaskList = async (req, res) => {
     console.log(req.body);
@@ -129,54 +126,53 @@ const addTaskList = async (req, res) => {
     const babysitter = req.body.taskListForm.Babysitter;
     console.log(parentID);
 
-    if(!parentID){
-        return res.status(400).send({status:"Bad Request", error:"Invalid"});
+    if (!parentID) {
+        return res.status(400).send({status: "Bad Request", error: "Invalid"});
     }
-    const newTaskListFormData = new TaskListForm ({
+    const newTaskListFormData = new TaskListForm({
 
-        parent:parentID,
+        parent: parentID,
 
         taskListName,
         tasks,
         date,
         babysitter
     })
-    try{
+    try {
         const savedTaskListForm = await newTaskListFormData.save();
         console.log(savedTaskListForm);
-        return res.status(201).send({status: "RequestForm is added", taskListForm: savedgetAllOldTaskListsgetAllOldTaskListsTaskListForm});
-    }
-    catch(err){
+        return res.status(201).send({
+            status: "RequestForm is added",
+            taskListForm: savedgetAllOldTaskListsgetAllOldTaskListsTaskListForm
+        });
+    } catch (err) {
         console.log(err.message);
         return res.status(500).send({status: "Error adding requestForm", error: err.message});
     }
 };
 
 
-const addDateForTaskList = async(req,res)=> {
+const addDateForTaskList = async (req, res) => {
 
 }
 
 
-const getAllTaskListTemplates = async(req,res)=>{
-    try{
+const getAllTaskListTemplates = async (req, res) => {
+    try {
         let userId = req.params.id;
         // console.log(userId);
 
-        const taskListForms = await TaskListForm.find({parent: userId, date:null});
+        const taskListForms = await TaskListForm.find({parent: userId, date: null});
         // console.log(taskListAllTemplates);
 
-        if(!taskListForms || taskListForms.length === 0)
-        {
+        if (!taskListForms || taskListForms.length === 0) {
             res.status(404).send({status: "No task list added previously."});
-        }
-        else{
+        } else {
             res.status(200).send({status: "All templates", taskListForms});
         }
-    }
-    catch(err){
+    } catch (err) {
         console.log(err.message);
-        res.status(500).send({ status: "Error with get all templates", error: err.message });
+        res.status(500).send({status: "Error with get all templates", error: err.message});
     }
 }
 
@@ -188,14 +184,14 @@ const getTaskListTemplate = async (req, res) => {
         console.log(taskListForms);
 
         if (!taskListForms) {
-            res.status(404).send({ status: "No task list found with the provided ID." });
+            res.status(404).send({status: "No task list found with the provided ID."});
         } else {
             console.log(taskListForms);
-            res.status(200).send({ status: "Task list template found", taskListForms });
+            res.status(200).send({status: "Task list template found", taskListForms});
         }
     } catch (err) {
         console.error(err.message);
-        res.status(500).send({ status: "Error with getting the task list template", error: err.message });
+        res.status(500).send({status: "Error with getting the task list template", error: err.message});
     }
 };
 
@@ -204,12 +200,12 @@ const deleteTaskListTemp = async (req, res) => {
     try {
         const deletedTaskList = await TaskListForm.findByIdAndDelete(taskListId);
         if (!deletedTaskList) {
-            return res.status(404).json({ error: "Task List not found" });
+            return res.status(404).json({error: "Task List not found"});
         }
-        res.status(200).send({ status: "Task List Template deleted" });
+        res.status(200).send({status: "Task List Template deleted"});
     } catch (error) {
         console.error("Error with delete Template:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({error: "Internal Server Error"});
     }
 
 }
@@ -280,32 +276,30 @@ const getBaby = async (req, res) => {
 };
 
 
-const getAllOldTaskLists = async(req,res) => {
+const getAllOldTaskLists = async (req, res) => {
     try {
         let userId = req.params.id;
-        const todayDate = new Date().toJSON().slice(0,10);
+        const todayDate = new Date().toJSON().slice(0, 10);
 
         const OldAllTaskLists = await TaskListForm.find(
             {
-                parent:userId,
-                date :{$lt : todayDate}
+                parent: userId,
+                date: {$lt: todayDate}
             }
         );
         console.log(OldAllTaskLists);
-        if( !OldAllTaskLists || OldAllTaskLists.length === 0)
-        {
-            res.status(404).send({status : "No old task lists found for this parent"});
-        }else{
+        if (!OldAllTaskLists || OldAllTaskLists.length === 0) {
+            res.status(404).send({status: "No old task lists found for this parent"});
+        } else {
             res.status(200).send({status: "Old task lists found for this parent", OldAllTaskLists});
             console.log(OldAllTaskLists)
         }
-    }
-    catch(err)
-    {
+    } catch (err) {
         console.log(err.message)
         res.status(500).send({status: "Error with get old task lists.", error: err.message});
     }
 }
+
 
 // const getAllNextTaskLists = async(req,res) => {
 //     try {
@@ -335,66 +329,58 @@ const getAllOldTaskLists = async(req,res) => {
 // }
 
 
-const getNextAllTaskLists = async(req,res) =>
-{
+const getNextAllTaskLists = async (req, res) => {
     try {
         let userId = req.params.id;
-        const todayDate = new Date().toJSON().slice(0,10);
+        const todayDate = new Date().toJSON().slice(0, 10);
         const nextTaskLists = await TaskListForm.find(
             {
-                parent:userId,
-                date :{$gt : todayDate}
+                parent: userId,
+                date: {$gt: todayDate}
             }
-           );
-        if( !nextTaskLists || nextTaskLists.length === 0)
-        {
-            res.status(404).send({status : "No Next task lists found for this parent"});
-        }else{
+        );
+        if (!nextTaskLists || nextTaskLists.length === 0) {
+            res.status(404).send({status: "No Next task lists found for this parent"});
+        } else {
             res.status(200).send({status: "Next task lists found for this parent", nextTaskLists});
             console.log(nextTaskLists)
         }
-    }
-    catch(err)
-    {
+    } catch (err) {
         console.log(err.message)
         res.status(500).send({status: "Error with get next task lists.", error: err.message});
     }
 };
 
 
-
-
-const getTodayTaskList = async (req,res) =>{
-    try{
+const getTodayTaskList = async (req, res) => {
+    try {
         let userId = req.params.id;
-        const todayDate = new Date().toJSON().slice(0,10);
+        const todayDate = new Date().toJSON().slice(0, 10);
         console.log("parentID: ", userId);
         console.log(todayDate);
         const todayTaskList = await TaskListForm.find(
             {
                 parent: userId,
-                date : todayDate
+                date: todayDate
             });
         console.log(todayTaskList.tasks);
 
-        if( !todayTaskList || todayTaskList.length === 0)
-        {
-            res.status(404).send({status : "No task list found in today for this parent"});
+        if (!todayTaskList || todayTaskList.length === 0) {
+            res.status(404).send({status: "No task list found in today for this parent"});
 
-        }else {
-            res.status(200).send({ status: "Today task list found for this parent", todayTaskList });
+        } else {
+            res.status(200).send({status: "Today task list found for this parent", todayTaskList});
         }
-    }catch(err)
-    {
+    } catch (err) {
         console.log(err.message);
         res.status(500).send({status: "Error with get today task list", error: err.message});
     }
 };
 
 
-const  updateTaskListTemplate = async(req,res) => {
+const updateTaskListTemplate = async (req, res) => {
     let taskId = req.params.id;
-    const {taskName, time, isRemainder,specialNote } = req.body;
+    const {taskName, time, isRemainder, specialNote} = req.body;
     const updateTask = {
         taskName,
         time,
@@ -408,14 +394,9 @@ const  updateTaskListTemplate = async(req,res) => {
         })
         .catch((err) => {
             console.log(err);
-            res.status(500).send({status: "Error with updating data", error:err.message});
+            res.status(500).send({status: "Error with updating data", error: err.message});
         });
 };
-
-
-
-
-
 
 
 const deleteTask = async (req, res) => {
@@ -430,11 +411,6 @@ const deleteTask = async (req, res) => {
             res.status(500).send({status: "Error with delete task", error: err.message});
         });
 };
-
-
-
-
-
 
 
 const addRequestForm = async (req, res) => {
@@ -484,7 +460,6 @@ const deleteRequestForm = async (req, res) => {
 }
 
 
-
 //complaint handling
 
 const addComplaint = async (req, res) => {
@@ -524,7 +499,6 @@ const updateComplaint = async (req, res) => {
         status,
         date
     };
-
 
 
 // const addComplaint = async (req, res) => {
@@ -586,7 +560,7 @@ const updateComplaint = async (req, res) => {
 //             console.log(err.message);
 //             res.status(500).send({status: "Error with delete complaint", error: err.message});
 //         });
-// }
+}
 
 
 const addFeedback = async (req, res) => {
@@ -667,7 +641,7 @@ const getBabysitter = async (req, res) => {
             return res.status(404).send({status: "Babysitter not found"});
         }
 
-        if(babysitter.qualifications){  
+        if (babysitter.qualifications) {
             imageUrls = babysitter.qualifications.map(qualification => {
                 console.log("Tharushi");
                 console.log("baby object:", qualification);
@@ -725,16 +699,17 @@ const getRequestForms = async (req, res) => {
 }
 
 
-
 const createTaskListTemplate = async (req, res) => {// 3
     const newTaskListData = req.body;
     try {
         const createdTaskList = await TaskListForm.create(newTaskListData);
-        res.status(201).json({ status: "Task List Template created", createdTaskList });
+        res.status(201).json({status: "Task List Template created", createdTaskList});
     } catch (error) {
         console.error('Error with creating new Template:', error);
-        res.status(500).json({ status: "Error with create Template", error: error.message });}}
-
+        res.status(500).json({status: "Error with create Template", error: error.message});
+    }
+}
+// fetching parameters, according to user choose age Group
 const getParameters = async (req, res) => {
     try {
         let ageGroupId = req.params.ageGroup;
@@ -819,7 +794,7 @@ const updateParent = async (req, res) => {
     }
 };
 
-const getOnlyParent = async(req,res) => {
+const getOnlyParent = async (req, res) => {
     try {
         let parentId = req.params.id;
         console.log("parentID:", parentId);
@@ -828,13 +803,13 @@ const getOnlyParent = async(req,res) => {
         console.log(parent)
 
         if (!parent) {
-            res.status(404).send({ status: "No parent found" });
+            res.status(404).send({status: "No parent found"});
         } else {
-            res.status(200).send({ status: "parent : ", parent });
+            res.status(200).send({status: "parent : ", parent});
         }
     } catch (err) {
         console.log(err.message);
-        res.status(500).send({ status: "Error with get all babies", error: err.message });
+        res.status(500).send({status: "Error with get all babies", error: err.message});
     }
 }
 const getParentProfile = async (req, res) => {
@@ -872,7 +847,7 @@ const updateParentProfile = async (req, res) => {
         const phone = req.body.phone;
         const address = req.body.address;
 
-        console.log("body",req.body)
+        console.log("body", req.body)
         const updateParent = {
             firstName,
             lastName,
@@ -881,7 +856,7 @@ const updateParentProfile = async (req, res) => {
             email
         }
 
-        const update = await User.findByIdAndUpdate(parentId, updateParent, { new: true });
+        const update = await User.findByIdAndUpdate(parentId, updateParent, {new: true});
 
         if (!update) {
             return res.status(404).send({status: "Parent not found", update});
@@ -904,18 +879,18 @@ const updateToPlan = async (req, res) => {
             plan: "free"
         }
 
-        const updatedUser = await Parent.findOneAndUpdate({ userId: userId }, updatePlan, { new: true });
+        const updatedUser = await Parent.findOneAndUpdate({userId: userId}, updatePlan, {new: true});
 
         console.log(updatedUser);
 
         if (!updatedUser) {
-            return res.status(404).send({ status: "User not found", update: updatedUser });
+            return res.status(404).send({status: "User not found", update: updatedUser});
         }
 
-        res.status(200).send({ status: "Plan updated", update: updatedUser });
+        res.status(200).send({status: "Plan updated", update: updatedUser});
     } catch (err) {
         console.error(err.message);
-        res.status(500).send({ status: "Error with updating data", error: err.message });
+        res.status(500).send({status: "Error with updating data", error: err.message});
     }
 }
 const updateToPremium = async (req, res) => {
@@ -928,18 +903,18 @@ const updateToPremium = async (req, res) => {
             plan: "premium"
         }
 
-        const updatedUser = await Parent.findOneAndUpdate({ userId: userId }, updatePlan, { new: true });
+        const updatedUser = await Parent.findOneAndUpdate({userId: userId}, updatePlan, {new: true});
 
         console.log(updatedUser);
 
         if (!updatedUser) {
-            return res.status(404).send({ status: "User not found", update: updatedUser });
+            return res.status(404).send({status: "User not found", update: updatedUser});
         }
 
-        res.status(200).send({ status: "Plan updated", update: updatedUser });
+        res.status(200).send({status: "Plan updated", update: updatedUser});
     } catch (err) {
         console.error(err.message);
-        res.status(500).send({ status: "Error with updating data", error: err.message });
+        res.status(500).send({status: "Error with updating data", error: err.message});
     }
 }
 
@@ -1014,47 +989,47 @@ const getPlan = async (req, res) => {
         let userId = req.params.id;
         console.log("parentID:", userId);
 
-        const plan = await Parent.findOne({ userId: userId });
+        const plan = await Parent.findOne({userId: userId});
 
 
         if (plan) {
-            res.status(200).json({ plan });
+            res.status(200).json({plan});
         } else {
-            res.status(404).json({ status: "Plan not found" });
+            res.status(404).json({status: "Plan not found"});
         }
     } catch (err) {
         console.error(err.message);
-        res.status(500).json({ status: "Error with get plan", error: err.message });
+        res.status(500).json({status: "Error with get plan", error: err.message});
     }
 };
 
-const addComplaint = async (req, res) => {
-    const id = req.body.id;
-    const type = req.body.type;
-    const  description = req.body. description;
-
-
-    console.log("ishini",userId)
-    if (!userId) {
-        return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
-    }
-    const newComplaint = new Complaint({
-        id,
-        type,
-        description,
-
-       user: userId
-    });
-
-
-    try {
-        const savedComplaint = await newComplaint.save();
-        res.status(201).send({status: "Complaint is added",complaint: savedComplaint});
-    } catch (err) {
-        console.log(err.message);
-        res.status(500).send({status: "Error adding Complaint", error: err.message});
-    }
-};
+// const addComplaint = async (req, res) => {
+//     const id = req.body.id;
+//     const type = req.body.type;
+//     const description = req.body.description;
+//
+//
+//     console.log("ishini", userId)
+//     if (!userId) {
+//         return res.status(400).send({status: "Bad Request", error: "Incomplete or invalid data"});
+//     }
+//     const newComplaint = new Complaint({
+//         id,
+//         type,
+//         description,
+//
+//         user: userId
+//     });
+//
+//
+//     try {
+//         const savedComplaint = await newComplaint.save();
+//         res.status(201).send({status: "Complaint is added", complaint: savedComplaint});
+//     } catch (err) {
+//         console.log(err.message);
+//         res.status(500).send({status: "Error adding Complaint", error: err.message});
+//     }
+// };
 
 const deleteBabysitter = async (req, res) => {
     let babysitterID = req.params.id1;
@@ -1075,25 +1050,20 @@ const deleteBabysitter = async (req, res) => {
     };
 
     try {
-        const updatedParent = await Parent.findOneAndUpdate({ userId }, updateParent,{ new: true });
+        const updatedParent = await Parent.findOneAndUpdate({userId}, updateParent, {new: true});
 
-        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new:true})
+        const updatedBabysitter = await Babysitter.findOneAndUpdate({userId: babysitterID}, updateBabysitter, {new: true})
 
         const requestForm = await RequestForm.findOneAndDelete({Babysitter: babysitterID}, {parent: userId});
 
         if (!updatedParent) {
-            return res.status(404).send({ status: "Parent not found" });
+            return res.status(404).send({status: "Parent not found"});
         }
-        res.status(200).send({ status: "Parent updated", updatedBabysitter });
+        res.status(200).send({status: "Parent updated", updatedBabysitter});
     } catch (err) {
         console.error(err);
-        res.status(500).send({ status: "Error with updating data", error: err.message });
+        res.status(500).send({status: "Error with updating data", error: err.message});
     }
-};
-
-module.exports = {
-    // ... other controller methods ...
-    createTaskListTemplate
 };
 
 

@@ -80,7 +80,7 @@ router.route('/getTodayTaskList').get(authJwt.verifyParent, parentController.get
 router.route('/addComplaint').post(parentController.addComplaint);
 //router.route('/addComplaint').post(parentController.addComplaint);
 
-//router.route('/addTaskList').post(parentController.addTask);
+// router.route('/addTaskList').post(parentController.addTask);
 // router.route('/addComplaint').post(parentController.addComplaint);
 router.route('/addComplaint').post(upload.single('file'),parentController.addComplaint);
 
@@ -98,9 +98,9 @@ router.route('/addComplaint').post(upload.single('file'),parentController.addCom
 
 //router.route("/updateTask/:id").put(parentController.updateTask);
 
-router.route("/updateComplaint/:id").put(parentController.updateComplaint);
+// router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
-router.route("/updateTask/:id").put(parentController.updateTask);
+// router.route("/updateTask/:id").put(parentController.updateTask);
 //router.route("/updateComplaint/:id").put(parentController.updateComplaint);
 
 
