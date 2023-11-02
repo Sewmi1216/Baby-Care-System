@@ -635,9 +635,10 @@ const getBabysitter = async (req, res) => {
     let babysitterId = req.params.id;
     console.log("babysitterID:", babysitterId);
     await Babysitter.find({userId: babysitterId})
+    
     try {
         const babysitter = await Babysitter.findOne({userId: babysitterId})
-            .populate('userId', 'firstName lastName email phone address nic age religon language') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+            .populate('userId', 'firstName lastName email phone address nic age religon language profile') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
             .exec();
 
         // console.log(babysitter);
@@ -673,7 +674,8 @@ const getBabysitter = async (req, res) => {
             language: babysitter.language,
             startDate: babysitter.startDate,
             endDate: babysitter.endDate,
-            qualifications: imageUrls // Assign the imageUrls array to qualifications
+            qualifications: imageUrls ,// Assign the imageUrls array to qualifications
+            profile: babysitter.userId.profile
         };
         console.log(babysitterData)
 

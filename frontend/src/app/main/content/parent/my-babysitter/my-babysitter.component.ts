@@ -61,6 +61,7 @@ export class MyBabysitterComponent {
     language: '',
     startDate: '',
     endDate: '',
+    profile: ''
   };
 
   updateBabysitter = {
@@ -73,7 +74,8 @@ export class MyBabysitterComponent {
   formattedDate: string = ''
   formattedEndDate: string = ''
   formattedExtendDate: string =''
-  babysitterFullName: string | null = null;
+  babysitterFullName: string | null = null
+  image: string = ''
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router:Router, private cookieService: CookieService, private route: ActivatedRoute
@@ -95,6 +97,8 @@ export class MyBabysitterComponent {
         (response)=>{
           this.babysitterProfile = response.babysitter
           console.log(this.babysitterProfile)
+          this.image = this.babysitterProfile.profile
+          console.log(this.image)
           this.babysitterFullName = `${this.babysitterProfile.firstName} ${this.babysitterProfile.lastName}`;
           const date = new Date(this.babysitterProfile.startDate);
           this.formattedDate = `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;

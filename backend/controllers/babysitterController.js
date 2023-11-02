@@ -279,26 +279,66 @@ const getParent = async (req, res) => {
             return res.status(404).send({status: "Babysitter not found"});
         }
 
-        // const babysitterData = {
-        //     _id: babysitter.userId._id,
-        //     age: babysitter.age,
-        //     gender: babysitter.gender,
-        //     // image: babysitter.image,
-        //     firstName: babysitter.userId.firstName,
-        //     lastName: babysitter.userId.lastName,
-        //     email: babysitter.userId.email,
-        //     phone: babysitter.userId.phone,
-        //     address: babysitter.userId.address,
-        //     nic: babysitter.userId.nic,
-        //     religon: babysitter.religon,
-        //     language: babysitter.language,
-        //     startDate: babysitter.startDate,
-        //     endDate: babysitter.endDate,
-        //     qualifications: imageUrls // Assign the imageUrls array to qualifications
-        // };
-        // console.log(babysitterData)
+        const babysitterData = {
+            _id: babysitter.userId._id,
+            age: babysitter.age,
+            gender: babysitter.gender,
+            parent: babysitter.parent,
+            profile: babysitter.userId.profile,
+            firstName: babysitter.userId.firstName,
+            lastName: babysitter.userId.lastName,
+            email: babysitter.userId.email,
+            phone: babysitter.userId.phone,
+            address: babysitter.userId.address,
+            nic: babysitter.userId.nic,
+            religon: babysitter.religion,
+            language: babysitter.language,
+            startDate: babysitter.startDate,
+            endDate: babysitter.endDate,
+            // qualifications: imageUrls // Assign the imageUrls array to qualifications
+        };
+        console.log(babysitterData)
 
-        // res.status(200).send({status: "babysitter", babysitter: babysitterData});
+        res.status(200).send({status: "babysitter", babysitter: babysitterData});
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({status: "Error with get babysitter", error: err.message});
+    }
+};
+
+const getParentDetails = async (req, res) => {
+    let parentId = req.params.id;
+    console.log("fbgds")
+    console.log("parentID:", parentId);
+    const parent = await Parent.findOne({userId: parentId})
+    .populate('userId', 'firstName lastName email phone address nic age religon language profile') // Populate the 'userId' field with 'firstName', 'lastName', and other fields from the associated 'User' model
+    .exec();
+
+    if (!parent.userId._id) {
+        return res.status(404).send({status: "Parent not found"});
+    }
+
+    const imageFilename = parent.userId.profile;
+    console.log("parent: ", parent);
+    const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+    console.log("imageFilePath: ", imageFilePath);
+    const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+    try {
+        const parentData = {
+            profile: imageUrl,
+            firstName: parent.userId.firstName,
+            lastName: parent.userId.lastName,
+            email: parent.userId.email,
+            phone: parent.userId.phone,
+            address: parent.userId.address,
+            nic: parent.userId.nic,
+            phone: parent.userId.phone
+            // qualifications: imageUrls // Assign the imageUrls array to qualifications
+        };
+        console.log(parentData)
+
+        res.status(200).send({status: "babysitter",parent: parentData});
     } catch (err) {
         console.error(err.message);
         res.status(500).send({status: "Error with get babysitter", error: err.message});
@@ -366,6 +406,7 @@ module.exports = {
     getRequestForms,
     getParents,
     getRequestForm,
+    getParent,
+    getParentDetails
     getTodayTaskList,
-    getParent
 };

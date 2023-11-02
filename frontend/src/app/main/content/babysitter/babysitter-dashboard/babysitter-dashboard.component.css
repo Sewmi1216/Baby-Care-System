@@ -1,4 +1,4 @@
-/*html { font-size: 22px; }
+html { font-size: 22px; }
 body { padding: 1rem; }
 
 .cards {
@@ -6,15 +6,15 @@ body { padding: 1rem; }
   margin: 0 auto;
   display: grid;
   gap: 1rem;
-}
+} 
 
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 900px) {
   .cards { grid-template-columns: repeat(3, 1fr); }
-}*/
+} */
 
 .mat-h1{
   font-size: 27px;
@@ -22,6 +22,13 @@ body { padding: 1rem; }
 }
 .grid-container {
   margin: 50px;
+}
+
+.parent-profile{
+  display:flex;
+  flex-direction: row;
+  gap:5rem;
+  margin-left: 3rem;
 }
 
 
@@ -75,6 +82,7 @@ a {
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+  width: 400px;
 }
 
 /* Customize the size of individual cards */
@@ -351,3 +359,22 @@ margin-bottom: 30px;
   padding-top: 39px; /* Adjust padding for smaller screens */ 
   padding-bottom: 2rem;
 }
+
+.custom-card {
+  width: 400px;
+  max-width: 48rem;
+  background-color: white;
+  /* text-align: center; */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  gap:3rem;
+  font-family: "Sofia Sans";
+  font-weight: bold;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+}
+
