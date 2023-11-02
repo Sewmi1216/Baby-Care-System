@@ -80,7 +80,7 @@ router.route('/getTodayTaskList').get(authJwt.verifyParent, parentController.get
 router.route('/addComplaint').post(parentController.addComplaint);
 //router.route('/addComplaint').post(parentController.addComplaint);
 
-router.route('/addTaskList').post(parentController.addTask);
+//router.route('/addTaskList').post(parentController.addTask);
 // router.route('/addComplaint').post(parentController.addComplaint);
 router.route('/addComplaint').post(upload.single('file'),parentController.addComplaint);
 
