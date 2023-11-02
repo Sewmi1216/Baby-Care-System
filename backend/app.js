@@ -149,6 +149,7 @@ const parentRouter = require("./routes/parents");
 app.use("/parent", parentRouter);
 
 
+
 //admin
 const adminRouter = require("./routes/admins.js");
 app.use("/admin",adminRouter);

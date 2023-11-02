@@ -1,6 +1,3 @@
-
-import { Injectable } from '@angular/core';
-
 //admin service
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
@@ -8,16 +5,10 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-
-
-  constructor() { }
-}
-
   authToken: any;
   tasklist: any;
   baby: any;
@@ -86,7 +77,7 @@ export class AdminService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/admin/viewSystemInfo`, { headers });
   }
- 
+
 
   getComplaints(user:any): Observable<any> {
     const headers = new HttpHeaders({
@@ -109,7 +100,7 @@ export class AdminService {
   //   console.log(userId);
   //   console.log(requestFormId);
   //   console.log('Request headers:', headers);
-  //   return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
+  //   return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });
   // }
 
   getUserDetails(userId:any) {
@@ -126,7 +117,7 @@ export class AdminService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/admin/getParentCount/${userId}`);
   }
-  
+
   getNoOfBabysitter(user:any): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -222,10 +213,14 @@ export class AdminService {
   }
 
 
- 
+
 
 
 
 
 }
+
+
+
+
 

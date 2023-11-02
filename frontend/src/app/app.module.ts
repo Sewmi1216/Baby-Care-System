@@ -318,7 +318,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     //  CreateTaskListComponent,
       TaskListTemplatesComponent,
     PreviousTaskListsComponent,
-    TodayTaskListComponent
+    TodayTaskListComponent,
       //CreateNewTaskListComponent
       PaymentComponent,
       ContactUsComponent
