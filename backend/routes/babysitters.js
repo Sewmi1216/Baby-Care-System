@@ -35,6 +35,7 @@ let multipleupload = multer({ storage: storage });
 router.route("/getRequestForms/:id").get(babysitterController.getRequestForms); 
 router.route("/getParents").get(babysitterController.getParents); 
 router.route("/getParent/:id").get(babysitterController.getParent); 
+router.route("/getParentDetails/:id").get(babysitterController.getParentDetails); 
 router.route("/getRequestForm/:id").get(babysitterController.getRequestForm); 
 router.route("/updateRequestForm/:id").put(babysitterController.updateRequestForm); 
 
