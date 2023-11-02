@@ -289,7 +289,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     //ModerateForumComponent,
     //PreviosTaskListsComponent,
     NextTaskListsComponent,
-    TodayTaskListComponent,
+    //TodayTaskListComponent,
     //PreviousTaskListComponent,
     //PreviosTaskListsComponent,
     //PreviousTaskListComponent,
@@ -312,6 +312,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     //  CreateTaskListComponent,
       TaskListTemplatesComponent,
     PreviousTaskListsComponent,
+    TodayTaskListComponent
       //CreateNewTaskListComponent
 
 
