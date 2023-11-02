@@ -26,5 +26,15 @@
       <i class="fas fa-clipboard-list" ></i>
       <label>Task List</label>
     </div>
+    <div
+
+      routerLink="/parent/complaints"
+
+      #complaints="routerLinkActive"
+      routerLinkActive
+      [ngStyle]="{'background-color': complaints.isActive ? '#7E57C2' : '', 'color': complaints.isActive ? '#fff' : ''}">
+      <i class="fas fa-users"></i>
+      <label>Complaints</label>
+    </div>
 
   </div>
