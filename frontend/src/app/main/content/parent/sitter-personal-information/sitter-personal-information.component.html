@@ -82,7 +82,7 @@
     </div>
   </div>
 </div>
-      
+
 <form #requestFormForm="ngForm" (ngSubmit)="onSubmit()" id="requestForm" >
   <div class="modal" id="myModal">
     <div class="modal-dialog">
@@ -104,7 +104,7 @@
                 <label class="form-label">To Time</label>
               </div>
             </div>
-            
+
             <div class="row" *ngFor="let day of ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; let i = index">
               <div class="col-md-4">
                 <input class="form-check-input" type="checkbox" [value]="day" [id]="day + i" [name]="day + i"
@@ -124,7 +124,7 @@
                 <p style="color: red; text-align: center">Please fill in all fields for {{ day }}</p>
               </div> 
             </div>
-         
+
             <p class="font-weight-bold title">Baby details</p>
               <div class="tables-container">
                 <div class="table-wrapper">
@@ -154,7 +154,7 @@
                         <td>
                           <button type="button" class="btn btn-primary" (click)="saveBabyDetails()">Add</button>
                         </td>
-                      </tr>                      
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -197,7 +197,7 @@
             <div class="modal-footer" style="margin-top: 20px">
               <button type="submit" [disabled]="hasError()" style="background-color: #563393; border-color: #563393" class="btn btn-danger" data-bs-dismiss="modal">Send Request</button>
             </div>
-  
+
       </div>
     </div>
   </div>              

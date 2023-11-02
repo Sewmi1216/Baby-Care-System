@@ -7,6 +7,7 @@ const {request} = require("express");
 const multer = require("multer");
 const path = require('path');
 const Babysitter = require("../models/babysitter");
+const TaskListForm = require("../models/tasklist");
 
 
 
@@ -362,6 +363,36 @@ const getRequestForm = async (req, res) => {
     }
 }
 
+
+const getTodayTaskList = async (req,res) =>{
+    try{
+        let userId = req.params.id;
+        const todayDate = new Date().toJSON().slice(0,10);
+        console.log("BabysitterID: ", userId);
+        console.log(todayDate);
+        const todayTaskList = await TaskListForm.find(
+            {
+                Babysitter: userId,
+                date : todayDate
+            });
+        console.log(todayTaskList.tasks);
+
+        if( !todayTaskList || todayTaskList.length === 0)
+        {
+            res.status(404).send({status : "No task list found in today for this bs"});
+
+        }else {
+            res.status(200).send({ status: "Today task list found for this bs", todayTaskList });
+        }
+    }catch(err)
+    {
+        console.log(err.message);
+        res.status(500).send({status: "Error with get today task list", error: err.message});
+    }
+};
+
+
+
 module.exports = {
     getAllbabysitters,
     addBabysitter,
@@ -377,4 +408,5 @@ module.exports = {
     getRequestForm,
     getParent,
     getParentDetails
+    getTodayTaskList,
 };

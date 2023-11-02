@@ -77,7 +77,7 @@ export class AdminService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/admin/viewSystemInfo`, { headers });
   }
- 
+
 
   getComplaints(user:any): Observable<any> {
     const headers = new HttpHeaders({
@@ -100,7 +100,7 @@ export class AdminService {
   //   console.log(userId);
   //   console.log(requestFormId);
   //   console.log('Request headers:', headers);
-  //   return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });    
+  //   return this.http.get<any>(`${environment.backend_url}/babysitter/getRequestForm/${requestFormId}`, { headers });
   // }
 
   getUserDetails(userId:any) {
@@ -117,7 +117,7 @@ export class AdminService {
     console.log('Request headers:', headers);
     return this.http.get<any>(`${environment.backend_url}/admin/getParentCount/${userId}`);
   }
-  
+
   getNoOfBabysitter(user:any): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -213,13 +213,12 @@ export class AdminService {
   }
 
 
- 
+
 
 
 
 
 }
-
 
 
 

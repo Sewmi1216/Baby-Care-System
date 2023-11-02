@@ -52,7 +52,7 @@
 
           <!-- Second Inner Card -->
           <div class="col-md-3 col-sm-4">
-            <a routerLink="/parent/growth_parameters" class="card custom-card" style="background-color: rgba(81, 202, 202, 0.42);">
+            <a  [routerLink]="['/parent/growth_parameters',babyId]" class="card custom-card" style="background-color: rgba(81, 202, 202, 0.42);">
               <div class="d-flex justify-content-center">
                 <img class="card-img-top custom-img" src="../../assets/2.png" style="height: 157px; width: 142px; ">
               </div>
@@ -70,7 +70,7 @@
           </div>
           <!-- Fourth Inner Card -->
           <div class="col-md-3 col-sm-5">
-            <a href="/parent/baby_growth" class="card custom-card" style="background-color: #C5E8DC;">
+            <a [routerLink]="['/parent/growth_parameters',babyId]"  class="card custom-card" style="background-color: #C5E8DC;">
               <div class="d-flex justify-content-center">
                 <img class="card-img-top custom-img" src="../../assets/4.png" style="height: 157px; width: 142px; border-radius: 50%;">
               </div>

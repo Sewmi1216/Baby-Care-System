@@ -57,5 +57,5 @@ router.route("/delete/:id").delete(babysitterController.deleteBabysitter);
 
 //getOne
 router.route("/get/:id").get(babysitterController.getBabysitter);
-
+router.route("/getTodayTaskList/:id").get(babysitterController.getTodayTaskList);
 module.exports = router;

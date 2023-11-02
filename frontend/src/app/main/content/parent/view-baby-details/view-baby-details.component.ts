@@ -1,8 +1,8 @@
-import { Component , OnInit } from '@angular/core';
-import { ParentService } from '../../../../service/parent.service'
+import {Component, OnInit} from '@angular/core';
+import {ParentService} from '../../../../service/parent.service'
 import {NgToastService} from "ng-angular-popup";
 import {ActivatedRoute, Router} from "@angular/router";
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-view-baby-details',
@@ -16,22 +16,23 @@ export class ViewBabyDetailsComponent {
   baby = {
     id: '',
     firstName: '',
-    lastName:'',
+    lastName: '',
     birthDate: '',
-    gender:''
+    gender: ''
   };
-  img:string=''
+  img: string = ''
 
 
   constructor(
     private parentService: ParentService,
     private toast: NgToastService,
-    private router:Router,
+    private router: Router,
     private cookieService: CookieService,
     private route: ActivatedRoute
-  ){}
+  ) {
+  }
 
-  ngOnInit():void{
+  ngOnInit(): void {
     // Get the baby_id parameter from the route
     this.route.params.subscribe(params => {
       this.babyId = params['baby_id'];
@@ -41,26 +42,28 @@ export class ViewBabyDetailsComponent {
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const options = {year: 'numeric', month: '2-digit', day: '2-digit'};
     // @ts-ignore
     return date.toLocaleDateString('en-US', options);
   }
-  getBaby(){
+
+  getBaby() {
     const userJSON = localStorage.getItem('user');
-    console.log(this.babyId);
-    if(userJSON!==null){
+    if (userJSON !== null) {
       this.parentService.getBaby(this.babyId).subscribe(
         (response) => {
+          console.log(response);
           this.baby = response.baby;
+          console.log('Baby data:', this.baby); // Add this log to check if the baby object is correctly populated
           console.log(this.baby)
-          this.img=response.imageUrl
+          this.img = response.imageUrl
           console.log(response.imageUrl)
         },
-        (error)=>{
-          console.log(localStorage.getItem('user'))
-          console.error('Error fetching babysitters:', error);
+        (error) => {
+          console.log(localStorage.getItem('user'));
+          console.error('Error fetching baby details:', error);
         }
-      )
+      );
     }
   }
 

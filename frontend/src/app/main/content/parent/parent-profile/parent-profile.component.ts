@@ -68,10 +68,10 @@ export class ParentProfileComponent {
   //     console.error("Passwords do not match");
   //   }
 
+  //
   // }
 
-
-
+  // }
 
 
   getParent() {
