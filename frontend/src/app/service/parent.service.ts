@@ -314,16 +314,10 @@ export class ParentService {
     return this.http.put<any>(`${environment.backend_url}/parent/invokeStripe/${userId}`, {token: stripeToken}, {headers});
   }
 
-  addComplaint(formdata:any) {
-    return this.http.post<any>(environment.backend_url + "/parent/addComplaint", formdata)
-
+  addComplaint(complaint:any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/parent/addComplaint", complaint)
   }
-  //complaints
-  // addComplaint(formdata: FormData) {
-  //   let complaint;
-  //   return this.http.post<any>(environment.backend_url + "/parent/addComplaint", complaint)
-  //
-  // }
+
 
 
 }

@@ -7,6 +7,7 @@ let SystemInfo = require("../models/SystemInfo");
 
 let Expert = require("../models/DomainExpert");
 const bcrypt = require("bcryptjs");
+const Complaint = require("../models/Complaint");
 
 const AddAdmin = (req, res) => {
     const firstName = req.body.firstName;
@@ -306,16 +307,17 @@ const UpdateSystemInfo = async (req, res) => {
     const UpdateVerifyStatus = async (req, res) => {
         let userId = req.params.id; //fetch the id
   
-        const {role,firstName,lastName,nic,phone,address,email,status }= req.body; // new value
+        const {status }= req.body; // new value
+        // const status ="active"
         //create a object
         const verifyInfo = {
-            role,
-            firstName,
-            lastName,
-            email,
-            phone,
-            address,
-            nic,
+            // role,
+            // firstName,
+            // lastName,
+            // email,
+            // phone,
+            // address,
+            // nic,
             status
            
         };
@@ -362,7 +364,7 @@ const verifyBabysitter = async (req, res) => {
 };
 
 const ViewAllSitters = async (req, res) => {
-    await User.find({role:"Babysitter"} && {status:"pending"})
+    await User.find({role:"Babysitter", status:{$in: ["pending", "reject"]}} )
         .then((user) => {
             res.status(200).send({ status: "All users", user });
         })
@@ -371,6 +373,18 @@ const ViewAllSitters = async (req, res) => {
             res.status(500).send({ status: "Error with view all users", error: err.message });
         });
 };
+// const ViewAllSitters = async (req, res) => {
+//     try {
+//         const users = await User.find({ role: "Babysitter", status: { $in: ["pending", "reject"] } });
+//         const babysitters = await Babysitter.find({}); // You might want to add some filtering criteria here
+        
+//         res.status(200).send({ status: "All users and babysitters", users, babysitters });
+//     } catch (err) {
+//         console.log(err.message);
+//         res.status(500).send({ status: "Error with view all users", error: err.message });
+//     }
+// };
+
 const ViewAllUsers = async (req, res) => {
     await User.find({status:"active"})
         .then((user) => {
@@ -552,6 +566,29 @@ const getOneUser = async (req, res) => {
     }
 };
 
+const getOneComplaint = async (req, res) => {
+    try {
+        let complaintId = req.params.id;
+
+
+        console.log("complaintId:",complaintId);
+
+        const complaint = await Complaint.findOne({_id: complaintId});
+
+        if (!complaint) {
+            res.status(404).send({ status: "No complaint" });
+        } else {
+            console.log("complaint: ", complaint);
+            
+            res.status(200).json({ status: "complaint", complaint});
+        }
+    
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
 
 
 
@@ -597,6 +634,7 @@ module.exports={
     getComplaintCount,
     getBabysitter,
     UpdateVerifyStatus,
-    getOneUser
+    getOneUser,
+    getOneComplaint
     
 };

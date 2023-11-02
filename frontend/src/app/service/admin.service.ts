@@ -165,6 +165,21 @@ export class AdminService {
     return this.http.get<any>(`${environment.backend_url}/admin/getBabysitters/${babysitterId}`, { headers });
   }
 
+
+  getOneComplaint(complaintID: any): Observable<any> {
+    const complaintId = complaintID
+    console.log(complaintId)
+
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
+    });
+    // const userId = user.id;
+    // console.log(userId);
+    console.log('Request headers:', headers);
+    return this.http.get<any>(`${environment.backend_url}/admin/getOneComplaint/${complaintId}`, { headers });
+  }
   getUser(userID: any): Observable<any> {
     const userId = userID
     console.log(userId)
