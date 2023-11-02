@@ -33,6 +33,7 @@ export class NavParentComponent {
     isFree: '',
   }
   isFree: any;
+  myplan:any;
 
   constructor(
     private parentService: ParentService, private authService: AuthService, private toast: NgToastService, private router: Router, private cookieService: CookieService, private route: ActivatedRoute
@@ -44,7 +45,8 @@ export class NavParentComponent {
     this.getParent();
     this.getType();
     // this.getParent();
-    this.getImg()
+    this.getImg();
+    this.getPlan();
   }
 
   getImg() {
@@ -62,7 +64,20 @@ export class NavParentComponent {
       );
     }
   }
-
+  getPlan() {
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+      this.parentService.getPlan(JSON.parse(userJSON)).subscribe(
+        (response: any) => {
+          this.myplan = response.plan.plan;
+          console.log(response.plan.plan)
+        },
+        (error) => {
+          console.error('Error fetching: ', error);
+        }
+      );
+    }
+  }
   getParent() {
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {

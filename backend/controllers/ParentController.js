@@ -438,7 +438,7 @@ const getBabysitter = async (req, res) => {
             phone: babysitter.userId.phone,
             address: babysitter.userId.address,
             nic: babysitter.userId.nic,
-            religon: babysitter.religon,
+            religion: babysitter.religion,
             language: babysitter.language,
             startDate: babysitter.startDate,
             endDate: babysitter.endDate,
@@ -628,6 +628,57 @@ const updateParentProfile = async (req, res) => {
         res.status(500).send({status: "Error with updating data", error: err.message});
     }
 }
+
+const updateToPlan = async (req, res) => {
+    try {
+        const userId = req.params.id; // Assuming userId is used to identify the user
+
+        console.log(userId);
+
+        const updatePlan = {
+            plan: "free"
+        }
+
+        const updatedUser = await Parent.findOneAndUpdate({ userId: userId }, updatePlan, { new: true });
+
+        console.log(updatedUser);
+
+        if (!updatedUser) {
+            return res.status(404).send({ status: "User not found", update: updatedUser });
+        }
+
+        res.status(200).send({ status: "Plan updated", update: updatedUser });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+}
+const updateToPremium = async (req, res) => {
+    try {
+        const userId = req.params.id; // Assuming userId is used to identify the user
+
+        console.log(userId);
+
+        const updatePlan = {
+            plan: "premium"
+        }
+
+        const updatedUser = await Parent.findOneAndUpdate({ userId: userId }, updatePlan, { new: true });
+
+        console.log(updatedUser);
+
+        if (!updatedUser) {
+            return res.status(404).send({ status: "User not found", update: updatedUser });
+        }
+
+        res.status(200).send({ status: "Plan updated", update: updatedUser });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with updating data", error: err.message });
+    }
+}
+
+
 const getBabiesCount = async (req, res) => {
     try {
         let userId = req.params.id;
@@ -692,6 +743,25 @@ const updateBabysitter = async (req, res) => {
         res.status(500).send({status: "Error with updating data", error: err.message});
     }
 }
+const getPlan = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+
+        const plan = await Parent.findOne({ userId: userId });
+
+
+        if (plan) {
+            res.status(200).json({ plan });
+        } else {
+            res.status(404).json({ status: "Plan not found" });
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ status: "Error with get plan", error: err.message });
+    }
+};
+
 
 
 module.exports = {
@@ -721,5 +791,8 @@ module.exports = {
     getRequestsCount,
     updateBabysitter,
     updateParentProfile,
-    getParentProfile
+    getParentProfile,
+    getPlan,
+    updateToPlan,
+    updateToPremium
 };
