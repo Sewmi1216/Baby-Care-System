@@ -394,6 +394,7 @@ a.btn.disabled {
   border-radius: .375rem;
   background-color: #fff;
   background-clip: border-box;
+  
 }
 
 .card-header {
@@ -1095,3 +1096,12 @@ p {
   }
 }
 
+/* status  */
+
+.solved {
+  color: blue;
+}
+
+.unsolved {
+  color: red;
+}

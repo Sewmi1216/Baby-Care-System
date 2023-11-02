@@ -12,6 +12,7 @@ import { MainComponent } from './main/main.component';
 import { ContentComponent } from './main/content/content.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { NavParentComponent } from './main/navbar/nav-parent/nav-parent.component';
+
 //import { NavAdminComponent } from './main/navbar/nav-admin/nav-admin.component';
 import { NavAdminComponent} from "./main/navbar/nav-admin/nav-admin.component";
 import { NavDomainExpertComponent } from './main/navbar/nav-domain-expert/nav-domain-expert.component';
@@ -82,6 +83,8 @@ import { VerifyBabysittersComponent } from './main/content/admin/verify-babysitt
 import { HandlePaymentComponent } from './main/content/admin/handle-payment/handle-payment.component';
 import { HandleComplaintsComponent } from './main/content/admin/handle-complaints/handle-complaints.component';
 import { EditSysInfoComponent } from './main/content/admin/edit-sys-info/edit-sys-info.component';
+import { ViewBabysitterVerifyComponent } from './main/content/admin/view-babysitter-verify/view-babysitter-verify.component';
+
 
 
 
@@ -149,7 +152,6 @@ import { BsDatepickerModule} from "ngx-bootstrap/datepicker";
 // import { BabysitterViewMoreParentRequestsComponent } from './main/content/babysitter/babysitter-view-parent-requests/babysitter-view-more-parent-requests/babysitter-view-more-parent-requests.component';
 
 
-
 import { PendingBabysitterListComponent } from './main/content/admin/pending-babysitter-list/pending-babysitter-list.component';
 import { CommunityDiscussionForumComponent } from './main/content/parent/community-discussion-forum/community-discussion-forum.component';
 
@@ -188,6 +190,9 @@ import { PreviousTaskListsComponent } from './main/content/parent/task-list-home
 
 import {TokenInterceptor} from "./interceptor/token.interceptor";
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { PaymentComponent } from './main/content/parent/payment/payment.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
@@ -244,6 +249,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     VerifyBabysittersComponent,
     ForgetPasswordComponent,
     LiveStreamComponent,
+    ViewBabysitterVerifyComponent,
 
     //domain-expert
     DomainExpertDashboardComponent,
@@ -314,6 +320,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PreviousTaskListsComponent,
     TodayTaskListComponent
       //CreateNewTaskListComponent
+      PaymentComponent,
+      ContactUsComponent
 
 
 

@@ -15,6 +15,7 @@ import {DatePipe} from "@angular/common";
 export class BabyDetailsComponent implements OnInit{
   @ViewChild('addBabyForm', { static: true }) public addBabyForm!: NgForm;
 
+  parentId: string | null = null;
   babies: any[] = [];
   baby = {
     id:'',
@@ -30,14 +31,33 @@ export class BabyDetailsComponent implements OnInit{
   image:string=''
 
   constructor(
-    private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
+    private route: ActivatedRoute,private parentService: ParentService, private toast: NgToastService, private router:Router,private cookieService: CookieService
   ) {}
+  getMinDate() {
+    return this.getFormattedDate();
+  }
+  getCurDate(): Date {
+    return new Date();
+  }
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
 
+    return `${month}/${day}/${year}`;
+  }
+
+  getFormattedDate() {
+    const currentDate = this.getCurDate();
+    return this.formatDate(currentDate);
+  }
  // const accessToken = this.cookieService.get('access_token');
   ngOnInit(): void {
-   // this.userId = this.parentService.getUserId();
-   // this.babyProfile = this.parentService.babyProfile;
-    this.getBabies();
+    this.route.params.subscribe(params => {
+      this.parentId = params['parentId'];
+      this.getBabies();
+    });
+
   }
   calculateAge(birthDate: string): string {
     const birthDateObj = new Date(birthDate);
@@ -52,13 +72,13 @@ export class BabyDetailsComponent implements OnInit{
     // @ts-ignore
     this.parentService.getBabies(JSON.parse(localStorage.getItem('user'))).subscribe(
       (response) => {
-        console.log(response);
-        this.babies = response.babies; // Assign fetched data to the babies array
-        console.log(response.babies);
+        this.babies = response.babies;
+        console.log(this.babies);
       },
       (error) => {
-        console.log(localStorage.getItem('user'))
+      //  console.log(localStorage.getItem('user'))
         console.error('Error fetching babies:', error);
+        this.toast.error({detail:"ERROR",summary:"No babies were added", position:'topCenter'});
       }
     );
   }
@@ -100,7 +120,7 @@ export class BabyDetailsComponent implements OnInit{
      console.log(formdata);
     this.parentService.addBaby(formdata).subscribe(
       (data) => {
-        this.router.navigate(['/parent/baby_details'])
+        this.router.navigate(['/parent/baby_details/', userId])
         this.toast.success({detail:"SUCCESS",summary:'Baby added successfully', position:'topCenter'});
         console.log("Baby added successful:", data);
 

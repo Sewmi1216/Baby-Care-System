@@ -38,21 +38,23 @@
 
           <div class="card custom-card" style="width: 100%; background-color: #FFFFFF; margin: 40px 40px 30px 50px; padding: 20px 20px 40px 20px">
 
-            <p class="font-weight-bold">Name</p>
-            <input type="text" class="form-control" >
+            <p class="font-weight-bold">First Name</p>
+            <input type="text" [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}" id="firstName" class="form-control" >
+            <p class="font-weight-bold">Last Name</p>
+            <input type="text" [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}" id="lastName" class="form-control" >
             <p class="font-weight-bold">NIC</p>
-            <input type="text" class="form-control" >
+            <input type="text" [(ngModel)]="nic" [ngModelOptions]="{standalone: true}" id="nic" class="form-control" >
             <p class="font-weight-bold">Address</p>
-            <input type="text" class="form-control" >
+            <input type="text" [(ngModel)]="address" [ngModelOptions]="{standalone: true}" id="address" class="form-control" >
 
             <p class="font-weight-bold">Contact Number</p>
-            <input type="text" class="form-control">
+            <input type="text" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" id="phone" class="form-control">
             <p class="font-weight-bold">Email</p>
-            <input type="text" class="form-control">
+            <input type="text" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" id="email" class="form-control">
             <p class="font-weight-bold">Password</p>
-            <input type="text" class="form-control" >
+            <input type="text" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" id="password" class="form-control" >
             <button style="background-color: #563393;border-color: #563393;margin: 20px 10px 0 10px;
-" type="submit" class="btn btn-primary">Register</button>
+" type="submit" (click)="register()" class="btn btn-primary">Register</button>
           </div>
 
         </div>
@@ -134,28 +136,30 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr>
+                      <tr *ngFor="let expertItem of expertArray">
+                        <!-- <th>{{i + 1}}</th> -->
 
-                        <td>20.02.2022</td>
-                        <td>
+                        <td>263826</td>
+                         <td>
                           <div class="media align-items-center">
                             <a href="#" class="avatar rounded-circle mr-3">
                               <img alt="Image placeholder" src="assets/sewmi.jpg">
                             </a>
                             <div class="media-body">
-                              <span class="mb-0 text-sm">Sewmi Thimaya</span>
+                              <span class="mb-0 text-sm">{{ expertItem.firstName }}</span>
                             </div>
                           </div>
-                        </td>
+                        </td> 
 
-                        <td>995569847V</td>
-                        <td>No 50, Kandy Road, Katugastota</td>
+                        <td><span>{{ expertItem.nic }}</span></td>
+                        <td>{{ expertItem.address }}</td>
+                        <td>{{ expertItem.phone }}</td>
+                        <td>{{ expertItem.email }}</td>
 
-                        <td>0814569654</td>
-                        <td>ishini2@gmail.com</td>
+                        
 
                       </tr>
-                      <tr>
+                      <!-- <tr>
 
                         <td>25.02.2023</td>
                         <td>
@@ -175,8 +179,8 @@
                         <td>0814569654</td>
                         <td>ishini2@gmail.com</td>
 
-                      </tr>
-                      <tr>
+                      </tr> -->
+                      <!-- <tr>
 
                         <td>20.04.2023</td>
                         <td>
@@ -196,7 +200,7 @@
                         <td>0814569654</td>
                         <td>ishini2@gmail.com</td>
 
-                      </tr>
+                      </tr> -->
 
 
 
@@ -204,36 +208,14 @@
                     </table>
                   </div>
 
-<!--                  <div class="card-footer py-4">-->
-<!--                    <nav aria-label="...">-->
-<!--                      <ul class="pagination justify-content-end mb-0">-->
-<!--                        <li class="page-item disabled">-->
-<!--                          <a class="page-link" href="#" tabindex="-1">-->
-<!--                            <i class="fas fa-angle-left"></i>-->
-<!--                            <span class="sr-only">Previous</span>-->
-<!--                          </a>-->
-<!--                        </li>-->
-<!--                        <li class="page-item active">-->
-<!--                          <a class="page-link" href="#">1</a>-->
-<!--                        </li>-->
-<!--                        <li class="page-item">-->
-<!--                          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
-<!--                        </li>-->
-<!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--                        <li class="page-item">-->
-<!--                          <a class="page-link" href="#">-->
-<!--                            <i  class="fas fa-angle-right"></i>-->
-<!--                            <span class="sr-only">Next</span>-->
-<!--                          </a>-->
-<!--                        </li>-->
-<!--                      </ul>-->
-<!--                    </nav>-->
-<!--                  </div>-->
+
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+       
 
 
 

@@ -46,6 +46,13 @@ export class AuthService {
     return accessToken;
   }
 
+  forgetPassword(user: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/forget_password", user);
+  }
+  resetPassword(user: any): Observable<any> {
+    return this.http.post<any>(environment.backend_url + "/user/reset-password", user);
+  }
+
   getUser(user:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -64,3 +71,4 @@ export class AuthService {
     return this.http.get<any>(`${environment.backend_url}/user/getImg/${userId}`, { headers });
   }
 }
+

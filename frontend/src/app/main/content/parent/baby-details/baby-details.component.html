@@ -51,17 +51,17 @@
                        class="validErr">
                     First Name is required
                   </div>
-<!--                  <p class="font-weight-bold">Age</p>-->
-<!--                  <input type="number" class="form-control" placeholder="age" [(ngModel)]="baby.age" #age="ngModel"-->
-<!--                         name="age" required>-->
-<!--                  <div *ngIf="(age.touched || addBabyForm.submitted) && age.errors?.['required']"-->
-<!--                       class="validErr">-->
-<!--                    Age is required-->
-<!--                  </div>-->
+                  <!--                  <p class="font-weight-bold">Age</p>-->
+                  <!--                  <input type="number" class="form-control" placeholder="age" [(ngModel)]="baby.age" #age="ngModel"-->
+                  <!--                         name="age" required>-->
+                  <!--                  <div *ngIf="(age.touched || addBabyForm.submitted) && age.errors?.['required']"-->
+                  <!--                       class="validErr">-->
+                  <!--                    Age is required-->
+                  <!--                  </div>-->
                   <p class="font-weight-bold">Date of birth</p>
-                  <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="baby.birthDate"
+                  <input type="date" class="form-control" [(ngModel)]="baby.birthDate" [min]="getFormattedDate()"
                          #birthDate="ngModel" name="birthDate">
-                  <div *ngIf="(birthDate.touched || addBabyForm.submitted) && birthDate.errors?.['required']"
+                  <div *ngIf="(birthDate.touched || addBabyForm.submitted) && birthDate.errors?.['min']"
                        class="validErr">
                     Date of birth is required
                   </div>
