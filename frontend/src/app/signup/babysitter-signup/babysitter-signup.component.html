@@ -58,6 +58,22 @@
           </div>
 
         </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="useraccount.religion" #religion="ngModel" name="religion"
+                 class="form-control" placeholder="Religion" required appTextValidator="">
+          <div *ngIf="(religion.touched || userAccountForm.submitted) && religion.errors?.['required']"
+               class="validErr">
+            Religion is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="useraccount.language" #language="ngModel" name="language" class="form-control"
+                 placeholder="Language" required appTextValidator="">
+          <div *ngIf="(language.touched || userAccountForm.submitted) && language.errors?.['required']"
+               class="validErr">
+            Language is required
+          </div>
+        </div>
         <div class="col-md-12">
           <input type="text" [(ngModel)]="useraccount.nic" #nic="ngModel" name="nic" class="form-control"
                  placeholder="NIC Number" style="width: 98%;" required appNicValidator>
@@ -130,15 +146,17 @@
           </div>
         </div>
         <div class="col-md-12">
-          <p class="font-weight-bold" style="text-align: left; font-weight: bolder">Qualifications</p>
+          <p class="font-weight-bold" style="margin-bottom:-26px;text-align: left; font-weight: bolder">
+            Qualifications</p>
+          <i class="fas fa-info" style="font-size: small;margin-left: -270px;margin-top: 11px;" title="Qualifications must include following"></i>
           <input type="file" class="form-control" name="file" (change)="selectMultipleImage($event)" multiple
                  required>
           <!--          <input class="form-control" type="file" name="image" #imageInput accept="image/*" multiple required>-->
         </div>
-<!--        <div class="col-md-6">-->
-<!--          <p class="font-weight-bold" style="text-align: left; font-weight: bolder">Profile Picture</p>-->
-<!--          <input type="file" name="files" (change)="selectImage($event)" class="form-control" required>-->
-<!--        </div>-->
+        <!--        <div class="col-md-6">-->
+        <!--          <p class="font-weight-bold" style="text-align: left; font-weight: bolder">Profile Picture</p>-->
+        <!--          <input type="file" name="files" (change)="selectImage($event)" class="form-control" required>-->
+        <!--        </div>-->
 
         <div class="form-footer d-flex mb-4">
           <button type="submit" (click)="onSubmit()">Signup</button>

@@ -91,14 +91,19 @@ export class BabysitterService {
   }
 
   updateTaskList(updateTaskList:any):Observable<any>{
+  getParent(userId: any): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.getAccessTokenFromCookie()}`
     });
+
     const updateBody ={
       updateTaskList:updateTaskList
     };
 
     return this.http.put<any>(`${environment.backend_url}/babysitter/updateRequestForm`, JSON.stringify(updateBody),{ headers });
+
+
   }
+}
 }

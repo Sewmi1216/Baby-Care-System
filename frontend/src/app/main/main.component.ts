@@ -8,18 +8,22 @@ import {AuthService} from "../service/auth.service";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
   isCollapsed = false;
   // private user: any;
-  username:any;
-  user =  {
+  username: any;
+  user = {
+    _id: '',
     firstName: '',
     lastName: '',
     role: '',
+    // isfree:''
+  }
+  profile: string = ''
+
+  constructor(private authService: AuthService, private router: Router, private toast: NgToastService) {
   }
 
-  constructor(private authService: AuthService, private router: Router, private toast:NgToastService) {
-  }
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
   }
@@ -27,14 +31,31 @@ export class MainComponent implements OnInit{
   logout() {
     this.authService.logout();
     this.router.navigate(['/login'])
-    this.toast.success({detail:"SUCCESS",summary:"Log out Successfully", position:'topCenter'});
+    this.toast.success({detail: "SUCCESS", summary: "Log out Successfully", position: 'topCenter'});
   }
 
   ngOnInit(): void {
     this.getUser();
+    this.getImg();
   }
 
-  getUser(){
+  getImg() {
+    const userJSON = localStorage.getItem('user');
+
+    if (userJSON !== null) {
+      this.authService.getImg(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          console.log(response.imageUrl)
+          this.profile = response.imageUrl
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    }
+  }
+
+  getUser() {
     const userJSON = localStorage.getItem('user');
     if (userJSON !== null) {
 
@@ -44,7 +65,7 @@ export class MainComponent implements OnInit{
           this.user = response.user;
           console.log(this.user)
         },
-        (error)=>{
+        (error) => {
           console.log(localStorage.getItem('user'))
           console.error('Error fetching babysitters:', error);
         }

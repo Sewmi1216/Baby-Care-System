@@ -64,6 +64,9 @@ import { TaskListHomeComponent } from "./main/content/parent/task-list-home/task
 import { ViewNewParentsComponent  } from "./main/content/admin/view-new-parents/view-new-parents.component";
 import { ViewNewBabysittersComponent } from "./main/content/admin/view-new-babysitters/view-new-babysitters.component";
 
+import {ViewBabysitterVerifyComponent} from "./main/content/admin/view-babysitter-verify/view-babysitter-verify.component";
+
+
 import {babysitterGuard} from "./guard/babysitter.guard";
 import {adminGuard} from "./guard/admin.guard";
 import {domainExpertGuard} from "./guard/domain-expert.guard";
@@ -87,6 +90,7 @@ import {BabysitterSignupComponent} from "./signup/babysitter-signup/babysitter-s
 
 import {CompliantsComponent} from "./main/content/parent/compliants/compliants.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
+
 import {ModerateForumComponent} from "./main/content/domain-expert/moderate-forum/moderate-forum.component";
 
 import {
@@ -116,10 +120,14 @@ import {
   RequestedBabysittersMoreComponent
 } from "./main/content/parent/requested-babysitters/requested-babysitters-more/requested-babysitters-more.component";
 import {parentGuard} from "./guard/parent.guard";
+
 import {
   TaskListTemplatesComponent
 } from "./main/content/parent/task-list-home/task-list-templates/task-list-templates.component";
 import {NextTaskListsComponent} from "./main/content/parent/task-list-home/next-task-lists/next-task-lists.component";
+
+import {ContactUsComponent} from "./contact-us/contact-us.component";
+
 
 
 
@@ -144,6 +152,10 @@ const routes: Routes = [
   {
     path: 'about_us',
     component:AboutUsComponent
+  },
+  {
+    path: 'contact_us',
+    component:ContactUsComponent
   },
   {
     path: 'blog_view',
@@ -186,7 +198,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'parent_profile',
+        path: 'parent_profile/:user_id',
         component: ParentProfileComponent
 
       },
@@ -364,7 +376,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'verify_babysitter',
+        path: 'verify_babysitter/:id',
         component: VerifyBabysittersComponent
       },
       // {
@@ -384,7 +396,7 @@ const routes: Routes = [
         component: HandleComplaintsComponent
       },
       {
-        path: 'handle_complaints_view_more',
+        path: 'handle_complaints_view_more/:id',
         component: HandleComplaintsViewMoreComponent
       },
       {
@@ -399,6 +411,12 @@ const routes: Routes = [
         path: 'manage_user_accounts_more',
         component: ManageUserAccountsMoreComponent
       },
+      {
+        path: 'view_babysitter_verify/:id',
+        component: ViewBabysitterVerifyComponent
+      },
+
+
 
       // {
       // path: 'domain_expert_moderate_community',

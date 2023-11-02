@@ -1,5 +1,5 @@
 <div style="margin-left: 30px;" xmlns="http://www.w3.org/1999/html">
-  <img [src]="profile" alt="profileImg" width="200" height="200" class="img-fluid rounded-circle">
+  <img [src]="profile" alt="profileImg" width="200" height="200" class="rounded-circle">
 
 
 </div>
@@ -28,7 +28,7 @@
 
 
   <div
-    [routerLink]="['/parent/baby_details', parentId]"
+    [routerLink]="['/parent/baby_details', parent._id]"
     #babyDetails="routerLinkActive"
     routerLinkActive
     [ngStyle]="{'background-color': babyDetails.isActive ? '#7E57C2' : '', 'color': babyDetails.isActive ? '#fff' : ''}">
@@ -49,15 +49,18 @@
 
   <div
 
-    routerLink="/parent/community_discussion_forum"
+    routerLink="/parent/complaints"
 
-    #community="routerLinkActive"
+    #complaints="routerLinkActive"
     routerLinkActive
-    [ngStyle]="{'background-color': community.isActive ? '#7E57C2' : '', 'color': community.isActive ? '#fff' : ''}">
+    [ngStyle]="{'background-color': complaints.isActive ? '#7E57C2' : '', 'color': complaints.isActive ? '#fff' : ''}">
     <i class="fas fa-users"></i>
-    <label>Community</label>
+    <label>Complaints</label>
   </div>
-  <div
+
+
+
+ <div *ngIf="myplan === 'premium'"
     routerLink="/parent/live_stream"
     #live="routerLinkActive"
     routerLinkActive
@@ -66,3 +69,4 @@
     <label>Live Stream</label>
   </div>
 </div>
+

@@ -13,7 +13,12 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 export class RequestedBabysittersComponent {
   babysitters: any[] = [];
   requestForms: any[] = [];
-
+  parent = {
+    _id: '',
+    userId: '',
+    babysitter: '',
+    isFree: ''
+  }
   //In the requestForms
   isAccept: number | null = null;
   isAccepts: number[] = [];
@@ -23,6 +28,8 @@ export class RequestedBabysittersComponent {
   requestFormBabysitterId: string = ''
   requestFormId: string = ''
   babysitterId: string =''
+  parentId: string = ''
+  imageUrl: string = ''
 
   //in the babysitters
   babysitterName: string = ''
@@ -30,13 +37,8 @@ export class RequestedBabysittersComponent {
   isHiredList: boolean[] =[]
   babysitterNames: string[] = []
   requestFormBabysittersId: string[] = []
+  imageUrls: string[] =[]
 
-  // requestedbabysitterId: any[] = [];
-  // babysittersId: any[] = []
-  // requestedBabysitterNames: any[] = []
-  // babysitterName: string | null = null;
-  // babysitterNames: string[] = []
-  // babysitterId: string | null = null
 
   constructor(
     private parentService: ParentService, private toast: NgToastService, private router: Router, private CookieService: CookieService, private route: ActivatedRoute
@@ -60,7 +62,9 @@ export class RequestedBabysittersComponent {
             this.babysitterName = `${firstName} ${lastName}`;
             this.isHired = babysitter.isHired;
             this.isHiredList.push(this.isHired);
-          
+            this.imageUrl = babysitter.profile
+            this.imageUrls.push(this.imageUrl)
+
               // Check if the babysitter userId matches any requestFormBabysittersId
             const matchingIndex = this.requestFormBabysittersId.indexOf(babysitter.userId);
 
@@ -103,7 +107,7 @@ export class RequestedBabysittersComponent {
               this.isAccepts.push(this.isAccept);
             }
             this.requestFormBabysitterId = requestForm.Babysitter;
-            this.requestFormBabysittersId.push(this.requestFormBabysitterId);  
+            this.requestFormBabysittersId.push(this.requestFormBabysitterId);
 
           }
           console.log(this.requestFormBabysittersId)
@@ -114,6 +118,7 @@ export class RequestedBabysittersComponent {
         }
       )
     }
+    this.getParent();
   }
 
   deleteRequest(requestFormId: string){
@@ -130,7 +135,7 @@ export class RequestedBabysittersComponent {
           console.error('Error with delete requestForm:', error);
         }
       )
-    }    
+    }
   }
 
   confirmBabysitter(babysitterId: string, parentId: string){
@@ -152,5 +157,22 @@ export class RequestedBabysittersComponent {
     }
   }
 
+  getParent(){
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+
+      this.parentService.getParent(JSON.parse(userJSON)).subscribe(
+        (response) => {
+          this.parent = response.parent;
+          console.log(this.parent);
+          this.parentId = this.parent._id
+        },
+        (error)=>{
+          console.log(localStorage.getItem('user'))
+          console.error('Error fetching babysitters:', error);
+        }
+      )
+    }
+  }
 }
 

@@ -4,7 +4,10 @@ let Babysitter = require("../models/babysitter");
 let Parent = require("../models/Parent");
 let Complaints = require("../models/Complaint");
 let SystemInfo = require("../models/SystemInfo");
+
+let Expert = require("../models/DomainExpert");
 const bcrypt = require("bcryptjs");
+const Complaint = require("../models/Complaint");
 
 const AddAdmin = (req, res) => {
     const firstName = req.body.firstName;
@@ -52,16 +55,38 @@ const addDomainExpert =async (req, res) => {
         });
 
         
-        const saltRounds = 12;
-        const hashPassword = await bcrypt.hash(password, saltRounds);
-        newDomainexpert.password = hashPassword;
-        const creatednewDomainexpert = await newDomainexpert.save();
+        // const saltRounds = 12;
+        // const hashPassword = await bcrypt.hash(password, saltRounds);
+        // newDomainexpert.password = hashPassword;
+        // const creatednewDomainexpert = await newDomainexpert.save();
 
         await newDomainexpert.save().then(() => {
-            res.json("Admin Added");
+            res.json("Expert Added");
         }).catch((err) => {
             console.log(err);
         })
+};
+
+const ViewAllExperts = async (req, res) => {
+    await User.find({role : 'domain-expert'})
+        .then((expert) => {
+            res.status(200).send({ status: "All experts", expert });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all experts", error: err.message });
+        });
+};
+
+const ViewAllComplaint = async (req, res) => {
+    await Complaints.find()
+        .then((complaint) => {
+            res.status(200).send({ status: "All complaints", complaint });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all complaints", error: err.message });
+        });
 };
 
 
@@ -153,6 +178,7 @@ const DeleteBabysitter = async (req, res) => {
 };
 
 const ViewAllParents = async (req, res) => {
+    // console.log("here")
     await Parent.find()
         .then((parents) => {    
             res.status(200).send({ status: "All parents", parents });
@@ -175,6 +201,18 @@ const ViewParent = async (req, res) => {
             res.status(500).send({ status: "Error with get parent", error: err.message });
         });
 };
+const ViewUser = async (req, res) => {
+    let userId = req.params.id;
+
+    await User.findById(userId)
+        .then((user) => {
+            res.status(200).send({ status: "User fetched", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get user", error: err.message });
+        });
+};
 
 const DeleteParent= async (req, res) => {
     let userId = req.params.id;
@@ -189,16 +227,7 @@ const DeleteParent= async (req, res) => {
         });
 };
 
-const ViewAllComplaints = async (req, res) => {
-    await Complaints.find()
-    .then((complaints) => {
-        res.status(200).send({status: "All complaints", complaints});
-    })
-    .catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "Error with view all complaints", error: err.message});
-    })
-};
+
 
 const AddSystemInfo = (req, res) => {
     const about = req.body.about;
@@ -206,6 +235,8 @@ const AddSystemInfo = (req, res) => {
     const service = req.body.service;
     const vision = req.body.vision;
     const team = req.body.team;
+    const thank = req.body.thank;
+
     
     
 
@@ -214,7 +245,8 @@ const AddSystemInfo = (req, res) => {
         goals,
         service,
         vision,
-        team
+        team,
+        thank
        
         
     })
@@ -230,14 +262,15 @@ const AddSystemInfo = (req, res) => {
 const UpdateSystemInfo = async (req, res) => {
     let userId = req.params.id; //fetch the id
   
-    const {about, goals, service,vision, team} = req.body; // new value
+    const {about, goals, service,vision, team, thank} = req.body; // new value
     //create a object
     const updateInfo = {
        about,
        goals,
        service,
        vision,
-       team
+       team,
+       thank
        
     };
 
@@ -250,6 +283,55 @@ const UpdateSystemInfo = async (req, res) => {
             res.status(500).send({ status: "Error with updating info", error: err.message });
         });
 };
+
+// const UpdateVerifyStatus = async (req, res) => {
+//     let userId = req.params.id; //fetch the id
+  
+//     const {status} = req.body; // new value
+//     //create a object
+//     const updateInfo = {
+//        status,
+       
+//     };
+
+//     await User.findByIdAndUpdate(userId, updateInfo,{status:"active"})
+//         .then((info) => {
+            
+//             res.status(200).send({ status: "Info are updated", info });
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500).send({ status: "Error with updating info", error: err.message });
+//         });
+// };
+    const UpdateVerifyStatus = async (req, res) => {
+        let userId = req.params.id; //fetch the id
+  
+        const {status }= req.body; // new value
+        // const status ="active"
+        //create a object
+        const verifyInfo = {
+            // role,
+            // firstName,
+            // lastName,
+            // email,
+            // phone,
+            // address,
+            // nic,
+            status
+           
+        };
+    
+        await User.findByIdAndUpdate(userId, verifyInfo)
+            .then((info) => {
+                res.status(200).send({ status: "Info are updated", info });
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).send({ status: "Error with updating info", error: err.message });
+            });
+    };
+
 
 const ViewSystemInfo = async (req, res) => {
     await SystemInfo.find()
@@ -281,6 +363,249 @@ const verifyBabysitter = async (req, res) => {
     }
 };
 
+const ViewAllSitters = async (req, res) => {
+    await User.find({role:"Babysitter", status:{$in: ["pending", "reject"]}} )
+        .then((user) => {
+            res.status(200).send({ status: "All users", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all users", error: err.message });
+        });
+};
+// const ViewAllSitters = async (req, res) => {
+//     try {
+//         const users = await User.find({ role: "Babysitter", status: { $in: ["pending", "reject"] } });
+//         const babysitters = await Babysitter.find({}); // You might want to add some filtering criteria here
+        
+//         res.status(200).send({ status: "All users and babysitters", users, babysitters });
+//     } catch (err) {
+//         console.log(err.message);
+//         res.status(500).send({ status: "Error with view all users", error: err.message });
+//     }
+// };
+
+const ViewAllUsers = async (req, res) => {
+    await User.find({status:"active"})
+        .then((user) => {
+            res.status(200).send({ status: "All users", user });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with view all users", error: err.message });
+        });
+};
+
+
+const getParentCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("parentID:", userId);
+        const parents = await User.find({role:'Parent'});
+        res.status(200).send({ status: "Success", count: parents.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of parents", error: err.message });
+    }
+};
+
+const getBabysitterCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("BabysitterID:", userId);
+        const babysitter = await User.find({role:'Babysitter'});
+        res.status(200).send({ status: "Success", count: babysitter.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of babysitters", error: err.message });
+    }
+};
+const getUserCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("UserID:", userId);
+        const users = await User.find();
+        res.status(200).send({ status: "Success", count: users.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of users", error: err.message });
+    }
+};
+
+const getComplaintCount = async (req, res) => {
+    try {
+        let userId = req.params.id;
+        console.log("ComplaintID:", userId);
+        const complaint = await Complaints.find();
+        res.status(200).send({ status: "Success", count: complaint.length});
+        
+    } 
+     catch (err) {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get number of complaint", error: err.message });
+    }
+};
+// const getBabysitter = async (req, res) => {
+//     console.log('hi')
+
+
+//     let babysitterId = req.params.id;
+//     console.log("babysitterID:", babysitterId);
+
+        
+        
+//     try {
+//         // await User.find({userId: babysitterId})
+//         console.log('hi')
+//         const babysitter = await User.findById(babysitterId)
+//             .populate('userId', 'role firstName lastName email phone address nic status ')
+//             .exec();
+
+//         console.log(babysitter);
+
+
+//         if (!babysitter.userId._id) {
+//             return res.status(404).send({ status: "Babysitter not found" });
+//         }
+
+//         const babysitterData = {
+//             _id: babysitter.userId._id,
+//             role:babysitter.role,
+//             firstName: babysitter.userId.firstName,
+//             lastName: babysitter.userId.lastName, 
+//             email: babysitter.userId.email,
+//             phone: babysitter.userId.phone,
+//             address: babysitter.userId.address,
+//             nic: babysitter.userId.nic, 
+//             status:babysitter.status,
+//         };
+//         console.log(babysitterData)
+//         debugger
+
+//         res.status(200).send({ status: "babysitter", babysitter: babysitterData });
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send({ status: "Error with get babysitter", error: err.message });
+//     }
+// };
+const getBabysitter = async (req, res) => {
+    try {
+        let babysitterId = req.params.id;
+
+
+        console.log("babysitterID:",babysitterId);
+
+        const babysitter = await User.findOne({_id: babysitterId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!babysitter) {
+            res.status(404).send({ status: "No babysitter" });
+        } else {
+            // const imageFilename = baby.img;
+            console.log("babysitter: ", babysitter);
+            // const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            // console.log("imageFilePath: ", imageFilePath);
+            // const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "babysitter", babysitter});
+        }
+        // if (!Baby || Baby.length === 0) {
+        //     res.status(404).send({ status: "No activities found for this ageGroup" });
+        // } else {
+        //     res.status(200).send({ status: "Baby details", Baby});
+        // }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+const getOneUser = async (req, res) => {
+    try {
+        let userId = req.params.id;
+
+
+        console.log("userID:",userId);
+
+        const user = await User.findOne({_id: userId});
+        // const activities = parameters.map(parameters => parameters.activity);
+
+        if (!user) {
+            res.status(404).send({ status: "No user" });
+        } else {
+            // const imageFilename = baby.img;
+            console.log("user: ", user);
+            // const imageFilePath = path.join(__dirname, 'uploads/', imageFilename);
+
+            // console.log("imageFilePath: ", imageFilePath);
+            // const imageUrl = `http://localhost:8070/images/${imageFilename}`;
+
+
+            // Send user information along with the image file
+            res.status(200).json({ status: "user", user});
+        }
+        // if (!Baby || Baby.length === 0) {
+        //     res.status(404).send({ status: "No activities found for this ageGroup" });
+        // } else {
+        //     res.status(200).send({ status: "Baby details", Baby});
+        // }
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+const getOneComplaint = async (req, res) => {
+    try {
+        let complaintId = req.params.id;
+
+
+        console.log("complaintId:",complaintId);
+
+        const complaint = await Complaint.findOne({_id: complaintId});
+
+        if (!complaint) {
+            res.status(404).send({ status: "No complaint" });
+        } else {
+            console.log("complaint: ", complaint);
+            
+            res.status(200).json({ status: "complaint", complaint});
+        }
+    
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+
+  
+
+
+// exports.getDataCount = async (req, res) => {
+//   try {
+//     const count = await User.countDocuments();
+//     res.json({ count });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// };
+
+
 
 module.exports={
     AddAdmin,
@@ -293,10 +618,23 @@ module.exports={
     ViewAllParents,
     ViewParent,
     DeleteParent,
-    ViewAllComplaints,
+    ViewAllComplaint,
     AddSystemInfo,
     UpdateSystemInfo,
     ViewSystemInfo,
     verifyBabysitter,
-    addDomainExpert
+    addDomainExpert,
+    ViewAllExperts,
+    ViewAllUsers,
+    ViewUser,
+    ViewAllSitters,
+    getParentCount,
+    getBabysitterCount,
+    getUserCount,
+    getComplaintCount,
+    getBabysitter,
+    UpdateVerifyStatus,
+    getOneUser,
+    getOneComplaint
+    
 };

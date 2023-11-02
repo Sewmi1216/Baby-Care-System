@@ -33,7 +33,7 @@
                       <td *ngIf="isHiredList[i] === false">
                         <div class="media align-items-center">
                           <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="assets/sewmi.jpg">
+                            <img alt="Image placeholder" [src]="imageUrls[i]">
                           </a>
                           <div class="media-body">
                             <span class="mb-0 text-sm">{{babysitterNames[i]}}</span>
@@ -52,10 +52,13 @@
                         </div>
                       </td>
                       <td *ngIf="isHiredList[i] === false"> 
-                        <div *ngIf="requestForm.isAccept === 1">
+                        <div *ngIf="requestForm.isAccept === 1 && !parent.babysitter">
                           <a [routerLink]="['/parent/my_babysitter', requestForm.Babysitter]">
                             <button class="btn btn-primary" style="background-color: cornflowerblue;border-radius: 16px;" (click)="confirmBabysitter(requestForm.Babysitter, requestForm.parent)">Confirm</button>
                           </a>
+                        </div>
+                        <div *ngIf="requestForm.isAccept === 1 && parent.babysitter">
+                          <button class="btn btn-primary" [disabled]="parent.babysitter" style="background-color: cornflowerblue;border-radius: 16px;">Confirm</button>
                         </div>
                         <div *ngIf="requestForm.isAccept === 0">
                           <button class="btn btn-warning" style="background-color: red; border-radius: 16px;" data-bs-toggle="modal" data-bs-target="#reviewModal">View</button>
