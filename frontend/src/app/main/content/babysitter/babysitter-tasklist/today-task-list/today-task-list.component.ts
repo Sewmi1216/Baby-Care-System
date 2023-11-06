@@ -116,26 +116,26 @@ export class TodayTaskListComponent {
 
   onTaskCompletedChange(index: number) {
     this.taskDetails[index].isCompleted = !this.taskDetails[index].isCompleted;
-    this.updateTaskListOnServer();
+    //this.updateTaskListOnServer();
   }
 
-  updateTaskListOnServer() {
-    const updatedTaskList: TaskListForm = {
-
-      taskListName: this.taskListForm.taskListName,
-      date: this.taskListForm.date,
-      tasks: this.taskDetails,
-    };
-
-    this.babysitterService.updateTaskList(updatedTaskList).subscribe(
-      (response) => {
-        console.log('Task list updated successfully:', response);
-      },
-      (error) => {
-        console.error('Error updating task list:', error);
-      }
-    );
-  }
+  // updateTaskListOnServer() {
+  //   const updatedTaskList: TaskListForm = {
+  //
+  //     taskListName: this.taskListForm.taskListName,
+  //     date: this.taskListForm.date,
+  //     tasks: this.taskDetails,
+  //   };
+  //
+  //   this.babysitterService.updateTaskList(updatedTaskList).subscribe(
+  //     (response) => {
+  //       console.log('Task list updated successfully:', response);
+  //     },
+  //     (error) => {cdcd
+  //       console.error('Error updating task list:', error);
+  //     }
+  //   );
+  // }
 
 
 }

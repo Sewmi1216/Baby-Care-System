@@ -20,26 +20,26 @@ export class BabysitterDashboardComponent {
   ){}
 
   ngOnInit():void{
-    this.getParent();
+    //this.getParent();
   }
 
-  getParent(){
-    const userJSON = localStorage.getItem('user');
-    if(userJSON !== null){
-      const userString = JSON.parse(userJSON);
-      this.userId = userString.id;
-      this.babysitterService.getParent(this.userId).subscribe(
-        (data) => {
-          // console.log("Registration successful:", data);
-          // this.toast.success({detail:"SUCCESS",summary:'Request form added successfully', position:'topCenter'});
-          // console.log("Successfully");
-          // this.router.navigate([`parent/requested_babysitters/${this.parentId}`]);
-        },
-        (err) => {
-          // this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
-          // console.log(`unsuccessful requestForm:${err}`, err);
-        }
-      )
-    }
-  }
+  // getParent(){
+  //   const userJSON = localStorage.getItem('user');
+  //   if(userJSON !== null){
+  //     const userString = JSON.parse(userJSON);
+  //     this.userId = userString.id;
+  //     this.babysitterService.getParent(this.userId).subscribe(
+  //       (data) => {
+  //         // console.log("Registration successful:", data);
+  //         // this.toast.success({detail:"SUCCESS",summary:'Request form added successfully', position:'topCenter'});
+  //         // console.log("Successfully");
+  //         // this.router.navigate([`parent/requested_babysitters/${this.parentId}`]);
+  //       },
+  //       (err) => {
+  //         // this.toast.error({detail:"ERROR",summary:err.error.message, position:'topCenter'});
+  //         // console.log(`unsuccessful requestForm:${err}`, err);
+  //       }
+  //     )
+  //   }
+  // }
 }
