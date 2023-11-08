@@ -257,7 +257,7 @@ const routes: Routes = [
         component: ViewBabyDetailsComponent
       },
       {
-        path: 'baby_growth',
+        path: 'baby_growth/:baby_id',
         component: BabyGrowthComponent
       },
       {

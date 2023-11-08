@@ -68,65 +68,65 @@ app.listen(backendPort, () => {
 
 //websocket connection
 //
-// const http = require('http').createServer(app);
-// const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
-// const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
-//
-// const credentials = {
-//     key: privateKey,
-//     cert: certificate,
-// };
-// const httpsServer = https.createServer(credentials);
-//
-// const ipAddress = "192.168.68.250";
-//
-// httpsServer.listen(port, ipAddress, () => {
-//     console.log(`websocket server is listening on https://${ipAddress}:${port}`);
-// });
-// const io = require('socket.io')(httpsServer, {
-//     cors: {
-//
-//         origin: ["https://192.168.68.250:4200", "https://localhost:4200"],
-//         allowedHeaders: ["my-custom-header"],
-//         credentials: true
-//     },
-// });
-// io.on('connection', (socket) => {
-//     console.log('Client connected.');
-//     socket.on('videoFrame', (message) => {
-//         console.log('Received video frame with ID:', message.id);
-//
-//         console.log('Received video frame.Data length:', message.data.length);
-//         if (message.contentType === 'image/jpeg') {
-//
-//             const filePath = 'uploads/frame.jpeg';
-//
-//             fs.writeFile(filePath, message.data, (err) => {
-//                 if (err) {
-//                     console.error('Error saving video frame:', err);
-//                 } else {
-//                     console.log('Video frame saved successfully:', filePath);
-//                     socket.broadcast.emit('acknowledgment', { id: message.id });
-//                     socket.broadcast.emit('videoFrame', message.data);
-//
-//                 }
-//             });
-//             console.log('Hello video frame');
-//         } else {
-//             console.error('Invalid content type:', message.contentType);
-//         }
-//
-//     });
-//     socket.on('BabyNotDetected', (message) => {
-//         console.log('Baby not detected. Sending alert...');
-//         socket.broadcast.emit('BabyNotDetected', message.data);
-//     });
-//     //Handle disconnection
-//     socket.on('disconnect', () => {
-//         console.log('A client disconnected.');
-//     });
-// });
-//
+const http = require('http').createServer(app);
+const privateKey = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.key', 'utf8');
+const certificate = fs.readFileSync('C:/Users/hp/Documents/ssl/MyServer.crt', 'utf8');
+
+const credentials = {
+    key: privateKey,
+    cert: certificate,
+};
+const httpsServer = https.createServer(credentials);
+
+const ipAddress = "192.168.94.250";
+
+httpsServer.listen(port, ipAddress, () => {
+    console.log(`websocket server is listening on https://${ipAddress}:${port}`);
+});
+const io = require('socket.io')(httpsServer, {
+    cors: {
+
+        origin: ["https://192.168.94.250:4200", "https://localhost:4200"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
+    },
+});
+io.on('connection', (socket) => {
+    console.log('Client connected.');
+    socket.on('videoFrame', (message) => {
+        console.log('Received video frame with ID:', message.id);
+
+        console.log('Received video frame.Data length:', message.data.length);
+        if (message.contentType === 'image/jpeg') {
+
+            const filePath = 'uploads/frame.jpeg';
+
+            fs.writeFile(filePath, message.data, (err) => {
+                if (err) {
+                    console.error('Error saving video frame:', err);
+                } else {
+                    console.log('Video frame saved successfully:', filePath);
+                    socket.broadcast.emit('acknowledgment', { id: message.id });
+                    socket.broadcast.emit('videoFrame', message.data);
+
+                }
+            });
+            console.log('Hello video frame');
+        } else {
+            console.error('Invalid content type:', message.contentType);
+        }
+
+    });
+    socket.on('BabyNotDetected', (message) => {
+        console.log('Baby not detected. Sending alert...');
+        socket.broadcast.emit('BabyNotDetected', message.data);
+    });
+    //Handle disconnection
+    socket.on('disconnect', () => {
+        console.log('A client disconnected.');
+    });
+});
+
 // //mongodb configuration
 const URL = process.env.MONGODB_URL;
 

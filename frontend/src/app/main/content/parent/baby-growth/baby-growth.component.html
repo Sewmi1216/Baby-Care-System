@@ -10,96 +10,148 @@
 <div class="main-container">
   <div class="tables">
     <h1>Tables</h1>
+    <div class="d-grid gap-2 d-md-flex pb-1 justify-content-md-end">
+      <button type="button" class="btn btn-secondary btn-sm"  data-bs-toggle="modal" data-bs-target="#heightModal"> Add New Measurement </button>
+    </div>
     <div class="table-row d-flex">
+
       <div class="table">
         <h2>Height</h2>
+        <!-- Modal -->
+        <div class="modal fade" id="heightModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Height</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="myForm">
+                  <label for="height" class="form-label">Height or Length</label>
+                  <input type="text" id="height" formControlName="height" class="form-control">
+                  <div class="form-text">
+                    Please add baby's height in Centimeters.
+                  </div>
+                  <label for="weight" class="form-label">Weight</label>
+                  <input type="text" id="weight" formControlName="height" class="form-control">
+                  <div class="form-text">
+                    Please add baby's weight in grams.
+                  </div>
+                  <label for="circumference" class="form-label">Head circumference</label>
+                  <input type="text" id="circumference" formControlName="height" class="form-control">
+                  <div class="form-text">
+                    Please add baby's head circumference in Centimeters.
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" (click)="addMeasurements()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--    displaying measurement related to height-->
         <table class="table table-striped">
           <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
-            <th scope="col">Height</th>
+            <th scope="col">Height(cm)</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>2023-04-05</td>
-            <td>35cm</td>
+            <td>2023-10-10</td>
+            <td> 54</td>
 
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>2023-04-23</td>
-            <td>40cm</td>
+            <td>2023-10-18</td>
+            <td>54.8</td>
 
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>2023-04-30</td>
-            <td colspan="2">45cm</td>
+            <td>2023-11-01</td>
+            <td colspan="2">55.5</td>
           </tr>
           </tbody>
         </table>
       </div>
       <div class="table">
         <h2>Weight</h2>
+        <!--        weight table-->
         <table class="table table-striped">
           <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
-            <th scope="col">Weight</th>
+            <th scope="col">Weight(g)</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>2023-04-05</td>
-            <td>3.5kg</td>
+            <td>2023-10-10</td>
+            <td>3800</td>
 
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>2023-04-23</td>
-            <td>4kg</td>
+            <td>2023-10-18</td>
+            <td>3950</td>
 
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>5kg</td>
-            <td colspan="2">45cm</td>
+            <td>2023-11-01</td>
+            <td colspan="2">4050</td>
           </tr>
           </tbody>
         </table>
       </div>
       <div class="table">
         <h2>Head circumference</h2>
+
+        <!--        <form (ngSubmit)="addRow(dateInput.value, circumferenceInput.value)">-->
+        <!--          <div class="form-group">-->
+        <!--            <label for="dateInput">Date:</label>-->
+        <!--            <input type="text" id="dateInput" name="date" [(ngModel)]="dateInput" required>-->
+        <!--          </div>-->
+        <!--        <div class="form-group">-->
+        <!--          <label for="circumferenceInput">Head Circumference:</label>-->
+        <!--          <input type="text" id="circumferenceInput" name="circumference"  required>-->
+        <!--        </div>-->
+        <!--        <button type="submit">Add Row</button>-->
+        <!--        </form>-->
         <table class="table table-striped">
           <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
-            <th scope="col">Head circumference</th>
+            <th scope="col">H. circumference(cm)</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>2023-04-05</td>
-            <td>30cm</td>
+            <td>2023-10-10</td>
+            <td>35.5</td>
 
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>2023-04-23</td>
-            <td>40cm</td>
+            <td>2023-10-18</td>
+            <td>35.7</td>
 
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>2023-04-30</td>
-            <td colspan="2">45cm</td>
+            <td>2023-11-01</td>
+            <td colspan="2">37</td>
           </tr>
           </tbody>
         </table>
@@ -118,22 +170,10 @@
         </thead>
         <tbody>
         <tr>
-          <th scope="row">1</th>
-          <td>Weight for age</td>
-          <td>OverWeight</td>
-          <td>Take actions</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>BMI</td>
-          <td>OverWeight</td>
-          <td>Take actions</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Height for age</td>
-          <td>Normal</td>
-          <td></td>
+          <th scope="row"></th>
+          <td>There</td>
+          <td>is no</td>
+          <td>analysis data</td>
         </tr>
         </tbody>
       </table>
@@ -185,4 +225,3 @@
 
   </div>
 </div>
-

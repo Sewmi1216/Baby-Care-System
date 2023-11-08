@@ -40,7 +40,7 @@ export class AppComponent implements AfterViewInit {
     await this.loadModel();
 
     // @ts-ignore
-    this.socket = io("https://192.168.68.250:8070", {
+    this.socket = io("https://192.168.94.250:8070", {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"

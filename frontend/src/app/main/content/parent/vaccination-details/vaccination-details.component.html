@@ -14,54 +14,24 @@
       <h1 style="margin-right:-100px">Year</h1>
       <h1>Vaccine</h1>
     </div>
-      <div class="container">
-        <ul>
-          <div class="active">
-            <li class="main">
-              <div class="outer_frame_1" data-bs-toggle="modal" data-bs-target="#myModal">
-                <span></span>
-              </div>
-              <span class="main_step_active"></span>
-              <div class="year">
-                <span class="year_content-start">start</span>
-              </div>
-              <div class="timeline"></div>
-              <div class="vaccination">
-                <p>BCG</p>
-                <input type="checkbox" class="vaccine-checkbox">
-              </div>
-              <div class="sub-steps">
-                <li *ngFor="let vaccine of underOneYearVaccines" >
-                  <span></span>
-                  <div class="year">
-                    <span class="year_content_sub">{{vaccine.age}} month</span>
-                  </div>
-                  <div class="timeline"></div>
-                  <div class="vaccination">
-                    <p>{{vaccine.name}}</p>
-                    <input type="checkbox" class="vaccine-checkbox">
-                  </div>
-                </li>
-              </div>
-            </li>
-          </div>
+    <div class="container">
+      <ul>
+        <div class="active">
           <li class="main">
-            <div class="outer_frame">
+            <div class="outer_frame_1" data-bs-toggle="modal" data-bs-target="#myModal1">
               <span></span>
             </div>
-            <span class="main_step"></span>
-            <div class="timeline"></div>
-            <div *ngFor="let vaccine of EqualToOneYearVaccines">
-              <div class="vaccination">
-                <p>{{vaccine.name}}</p>
-                <input type="checkbox" class="vaccine-checkbox">
-              </div>
-              <div class="year">
-                <span class="year_content">1 Year</span>
-              </div>
+            <span class="main_step_active"></span>
+            <div class="year">
+              <span class="year_content-start">start</span>
             </div>
-            <div class="sub-steps-18">
-              <li *ngFor="let vaccine of underTwoYearVaccines">
+            <div class="timeline"></div>
+            <div class="vaccination">
+              <p>BCG</p>
+              <input type="checkbox" class="vaccine-checkbox">
+            </div>
+            <div class="sub-steps">
+              <li *ngFor="let vaccine of underOneYearVaccines" >
                 <span></span>
                 <div class="year">
                   <span class="year_content_sub">{{vaccine.age}} month</span>
@@ -73,78 +43,141 @@
                 </div>
               </li>
             </div>
-
           </li>
-          <li class="main">
-            <div class="outer_frame">
+        </div>
+        <li class="main">
+          <div class="outer_frame">
+            <div class="outer_frame_1" data-bs-toggle="modal" data-bs-target="#myModal2">
               <span></span>
             </div>
-            <span class="main_step"></span>
-            <div class="timeline"></div>
-            <div class="vaccination"></div>
-            <div class="year">
-              <span class="year_content">2 Year</span>
-            </div>
-
-          </li>
-          <li class="main" *ngFor="let vaccine of underFourYearVaccines">
-            <div class="outer_frame">
-              <span></span>
-            </div>
-            <span class="main_step"></span>
-            <div class="timeline"></div>
+            <span></span>
+          </div>
+          <span class="main_step"></span>
+          <div class="timeline"></div>
+          <div *ngFor="let vaccine of EqualToOneYearVaccines">
             <div class="vaccination">
               <p>{{vaccine.name}}</p>
               <input type="checkbox" class="vaccine-checkbox">
             </div>
             <div class="year">
-              <span class="year_content">3 Year</span>
+              <span class="year_content">1 Year</span>
             </div>
+          </div>
+          <div class="sub-steps-18">
+            <li *ngFor="let vaccine of underTwoYearVaccines">
+              <span></span>
+              <div class="year">
+                <span class="year_content_sub">{{vaccine.age}} month</span>
+              </div>
+              <div class="timeline"></div>
+              <div class="vaccination">
+                <p>{{vaccine.name}}</p>
+                <input type="checkbox" class="vaccine-checkbox">
+              </div>
+            </li>
+          </div>
 
-          </li>
-          <li class="main">
-            <div class="outer_frame">
+        </li>
+        <li class="main">
+          <span class="main_step"></span>
+          <div class="timeline"></div>
+          <div class="vaccination"></div>
+          <div class="year">
+            <span class="year_content">2 Year</span>
+          </div>
+
+        </li>
+        <li class="main" *ngFor="let vaccine of underFourYearVaccines">
+          <div class="outer_frame">
+            <div class="outer_frame_1" data-bs-toggle="modal" data-bs-target="#myModal">
               <span></span>
             </div>
-            <span class="main_step"></span>
-            <div class="timeline"></div>
-            <div class="vaccination"></div>
-            <div class="year">
-              <span class="year_content">5 Year</span>
-            </div>
+            <span></span>
+          </div>
+          <span class="main_step"></span>
+          <div class="timeline"></div>
+          <div class="vaccination">
+            <p>{{vaccine.name}}</p>
+            <input type="checkbox" class="vaccine-checkbox">
+          </div>
+          <div class="year">
+            <span class="year_content">3 Year</span>
+          </div>
 
-          </li>
-          <li class="main" *ngFor="let vaccine of underSixYearVaccines">
-            <div class="outer_frame">
+        </li>
+        <li class="main">
+          <div class="outer_frame">
+            <span></span>
+          </div>
+          <span class="main_step"></span>
+          <div class="timeline"></div>
+          <div class="vaccination"></div>
+          <div class="year">
+            <span class="year_content">5 Year</span>
+          </div>
+
+        </li>
+        <li class="main" *ngFor="let vaccine of underSixYearVaccines">
+          <div class="outer_frame">
+            <div class="outer_frame_1" data-bs-toggle="modal" data-bs-target="#myModal">
               <span></span>
             </div>
-            <span class="main_step"></span>
-            <div class="timeline"></div>
-            <div class="vaccination">
-              <p>{{vaccine.name}}</p>
-              <input type="checkbox" class="vaccine-checkbox">
-            </div>
-            <div class="year">
-              <span class="year_content">6 Year</span>
-            </div>
-          </li>
-        </ul>
-      </div>
+            <span></span>
+          </div>
+          <span class="main_step"></span>
+          <div class="timeline"></div>
+          <div class="vaccination">
+            <p>{{vaccine.name}}</p>
+            <input type="checkbox" class="vaccine-checkbox">
+          </div>
+          <div class="year">
+            <span class="year_content">6 Year</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-<!--modal begin-->
-  <div class="modal" id="myModal">
+  <!--modal begin-->
+  <div class="modal" id="myModal1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Vaccination details</h4>
+          <h1 class="modal-title">Vaccination details</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body align-content-center d-flex align-items-center">
-
+          <div class="table">
+            <h2>Summary of the tables</h2>
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Age</th>
+                <th scope="col">Vaccine</th>
+                <th scope="col">Mark</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- Use *ngFor to iterate through your vaccination data -->
+              <ng-container *ngFor="let vaccine of underOneYearVaccines; let i = index">
+                <tr>
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ vaccine.age }} months</td>
+                  <td>{{ vaccine.name }}</td>
+                  <td><input type="checkbox" class="vaccine-checkbox"></td>
+                  <td>
+                    <!-- You can add an input or button for marking the vaccine here -->
+                    <!--                    <button (click)="markVaccine(i)">Take actions</button>-->
+                  </td>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="container">
@@ -155,17 +188,17 @@
 
             <!-- Right Side: Last Name and Gender -->
             <div class="col-sm-6">
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer" style="margin-top: 20px">
-        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Save</button>
-      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer" style="margin-top: 20px">
+          <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Save</button>
+        </div>
 
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
 </div>

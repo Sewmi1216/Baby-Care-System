@@ -27,7 +27,6 @@ const addBabysitter = async (req, res) => {
         const gender = req.body.gender;
         const images = req.files.map(file => ({ filename: file.filename }));
 
-
         // Check if the user with the same email already exists
         const userExists = await User.findOne({email: email});
         if (userExists) {
@@ -193,6 +192,7 @@ const getAllRequestForm = async (req, res) => {
             res.status(500).send({status: "Error with get all request form", error: err.message})
         })
 }
+
 
 const updateRequestForm = async (req, res) => {
     let requestFormId = req.params.id;
@@ -407,6 +407,6 @@ module.exports = {
     getParents,
     getRequestForm,
     getParent,
-    getParentDetails
+    getParentDetails,
     getTodayTaskList,
 };

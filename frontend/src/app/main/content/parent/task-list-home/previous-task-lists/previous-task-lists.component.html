@@ -13,7 +13,7 @@
                   <th>#</th>
                   <th scope="col">Task Name</th>
                   <th scope="col">Time</th>
-                  <th scope="col">Send reminders</th>
+<!--                  <th scope="col">Send reminders</th>-->
                   <th scope="col">Any note</th>
                 </tr>
                 </thead>
@@ -26,9 +26,9 @@
                   <td>
                     <input [ngModel]="task.time" [disabled]="true" />
                   </td>
-                  <td>
-                    <input type="checkbox" [ngModel]="task.isRemainder" [disabled]="true" />
-                  </td>
+<!--                  <td>-->
+<!--                    <input type="checkbox" [ngModel]="task.isRemainder" [disabled]="true" />-->
+<!--                  </td>-->
                   <td>
                     <input [ngModel]="task.specialNote || 'N/A'" [disabled]="true" />
                   </td>
