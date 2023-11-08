@@ -25,7 +25,7 @@ export class LiveStreamComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     // @ts-ignore
-    this.socket = io.connect('https://192.168.68.250:8070');
+    this.socket = io.connect('https://192.168.94.250:8070');
 
     // Handle WebSocket events
     this.socket.on('connect', () => {
