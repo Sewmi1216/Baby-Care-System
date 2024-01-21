@@ -1,4 +1,4 @@
-Baby Care System<br>
+# Baby Care System<br>
 A baby care system that provides a central hub for parents to take care of their babies by providing services such as finding a babysitter, live video monitoring, baby growth analysis, etc. 
 It is really challenging for the parents to care for their children because of their busy lives.
 schedules. As a result, parents are hoping to receive certain services, like babysitting,
