@@ -14,8 +14,7 @@ well-being, activities, and progress.<br>
 milestones. Parents should be able to use the system to keep an eye on their child's activities.
 including feeding times, cry detection, and overall health.<br>
 ● Parents who use the app can receive notifications and alerts about critical health and safety
-issues. For instance, it can follow the baby or inform parents about an emergency.
-notifications in the event of odd events, or both.<br>
+issues. For instance, it can follow the baby or inform parents about an emergency, notifications in the event of odd events, or both.<br>
 The following tools and technologies will be used to accomplish the relevant tasks mentioned:<br>
 
 • Frontend Technologies AngularJS, Bootstrap<br>
