@@ -21,7 +21,6 @@ The following tools and technologies will be used to accomplish the relevant tas
 • Frontend Technologies AngularJS, Bootstrap<br>
 • Backend Technologies Express JS<br>
 • Database MongoDB<br>
-• Hosting AWS<br>
 • Designing Tools: Figma<br>
 • Versioning control: Github<br>
 • Project management tools: Github<br>
